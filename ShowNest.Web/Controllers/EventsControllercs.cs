@@ -13,6 +13,5 @@ namespace ShowNest.Web.Controllers
         {
             return View();
         }
-
     }
 }
