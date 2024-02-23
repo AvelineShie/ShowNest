@@ -1,0 +1,227 @@
+﻿:root {
+    --light-green: #82b99b;
+    --main-green: #3b7555;
+    --dark-green: #1d5545;
+    --light-gray: #ddd;
+    --dark-gray: #888;
+    --main-font-size: 15px;
+    --common-border: 1px #ddd solid;
+    --dark-border: 1px #999EA2 solid;
+    --common-border-radius: 5px;
+}
+
+body {
+    font-family: sans-serif;
+    font-size: var(--main-font-size);
+    background-color: #fafafa;
+}
+
+
+* {
+    box-sizing: border-box;
+}
+
+
+/* change bootstrap nav color start */
+.nav-tabs {
+    --bs-nav-tabs-link-active-color: var(--bs-emphasis-color);
+    --bs-emphasis-color: #333333
+}
+
+ul.nav li a,
+ul.nav li a:visited {
+    color: var(--main-green);
+}
+
+    ul.nav li a:hover,
+    ul.nav li a:active {
+        color: var(--main-green);
+        background-color: #FAFAFA;
+        text-decoration: none;
+    }
+
+ul.nav li.active a {
+    color: var(--main-green);
+}
+
+/* change bootstrap nav color end */
+
+
+/* main Body */
+.section_wrap {
+    width: 100%;
+    max-width: 1200px;
+    margin: auto;
+}
+
+.main-wrap {
+    width: 75%;
+    margin: auto;
+    margin-top: 20px;
+}
+
+.title {
+    display: block;
+    line-height: 2;
+    align-items: center;
+}
+
+.btn {
+    text-align: left;
+}
+
+h2 {
+    font-size: 30px;
+}
+
+.form_contaner {
+    display: grid;
+    grid-template-columns: 3fr 8fr;
+    margin-bottom: 10px;
+}
+
+.id-contaner {
+    padding-top: 10px;
+    display: grid;
+    grid-template-columns: 1fr 6fr;
+}
+
+    .id-contaner input {
+        margin-top: 10px;
+        margin-right: 3px;
+    }
+
+.disabled-people-check {
+    text-align: left;
+    padding: 10px;
+}
+
+    .disabled-people-check .checkbox-group {
+        display: flex;
+        flex-wrap: nowrap;
+        align-items: baseline;
+    }
+
+    .disabled-people-check ul {
+        list-style: none;
+    }
+
+    .disabled-people-check li label {
+        text-align: left;
+        cursor: pointer;
+    }
+
+label {
+    display: inline-block;
+    padding-top: 18px;
+    margin-right: 20px;
+    font-size: 15px;
+    font-weight: bold;
+    text-align: right;
+    color: #333333;
+    min-width: 80px;
+}
+
+.collapse-group button {
+    color: #333333;
+}
+
+    .collapse-group button:hover {
+        color: var(--function-color-hover);
+    }
+
+.ident-collapse.btn.collapsed::before {
+    content: "▿";
+    left: -5px;
+}
+
+.ident-collapse.btn::before {
+    content: "▵";
+    left: -5px;
+}
+
+p {
+    display: inline-block;
+    margin-top: 5px;
+    margin-bottom: 10px;
+    line-height: 1;
+    color: gray;
+    font-size: 15px;
+}
+
+div.border {
+    border-bottom: 1px solid #333333;
+    margin-top: 20px;
+}
+
+.btn-save {
+    display: flex;
+    justify-content: center;
+    padding: 20px 0px;
+}
+
+.div-wrap {
+    display: grid;
+    grid-template-columns: 5.8fr 3fr;
+}
+
+
+
+@media screen and (max-width:768px) {
+    .wrap {
+        max-width: 960px;
+    }
+
+    .title {
+        text-align: center;
+    }
+
+    .form_contaner {
+        display: flex;
+        flex-direction: column;
+    }
+
+    .id-contaner {
+        display: flex;
+        flex-direction: column;
+        text-align: left;
+    }
+
+    .form_contaner input {
+        width: 100%;
+    }
+
+    label {
+        min-width: 75px;
+        text-align: center;
+    }
+
+    .disabled-people-check .checkbox-group input {
+        width: auto;
+    }
+
+    .div-wrap {
+        display: block;
+    }
+
+    .nav-tabs .nav-link {
+        background-color: none;
+        border: 1px solid transparent;
+        border-radius: 5rem;
+        margin: 5px;
+    }
+
+        .nav-tabs .nav-link.active {
+            color: #fff;
+            background-color: var(--main-green);
+            border: 1px solid var(--main-green);
+            border-radius: 5rem;
+        }
+
+    .btn-save button {
+        display: block;
+        width: 100%;
+        border-radius: 3px;
+        text-align: center;
+    }
+}
