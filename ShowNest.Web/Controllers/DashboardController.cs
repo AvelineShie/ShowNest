@@ -16,7 +16,7 @@ namespace ShowNest.Web.Controllers
 
         public IActionResult Events()
         {
-            return View();
+            return View("ActivitiesList");
         }
     }
 }
