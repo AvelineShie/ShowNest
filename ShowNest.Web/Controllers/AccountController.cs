@@ -16,9 +16,14 @@ namespace ShowNest.Web.Controllers
         {
             return View();
         }
-        public IActionResult Joined_organizations()
+        public IActionResult JoinedOrganizations()
         {
             return View();
         }
+        public IActionResult ReclaimOrders()
+        {
+            return View();
+        }
+
     }
 }
