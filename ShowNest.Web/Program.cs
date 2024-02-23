@@ -1,3 +1,7 @@
+using Microsoft.AspNetCore.Mvc;
+using Microsoft.Extensions.FileSystemGlobbing.Internal.Patterns;
+using Microsoft.Extensions.Logging;
+
 namespace ShowNest.Web
 {
     public class Program
@@ -26,10 +30,17 @@ namespace ShowNest.Web
 
             app.UseAuthorization();
 
+            ///測試用路由
+            //app.MapControllerRoute(
+            //    name: "organizationEvents",
+            //    pattern: "{OrganizationId}/{controller=Events}/{action=Index}/{EventId?}");
+            ///以上測試中--------------------------------------------------------------------------------------------
+
             app.MapControllerRoute(
                 name: "default",
                 pattern: "{controller=Home}/{action=Index}/{id?}");
 
+            
             app.Run();
         }
     }
