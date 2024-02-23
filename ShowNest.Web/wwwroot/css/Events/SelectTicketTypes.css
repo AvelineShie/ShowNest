@@ -73,7 +73,7 @@ h2 {
 }
 
 #add-to-calendar::before {
-    content: url(./imgs/calendar-alt-solid.svg);
+    content: url(https://res.cloudinary.com/dwn2iafcc/image/upload/v1708682216/calendar-alt-solid_azh1zr.svg);
     display: inline-block;
     height: 100%;
     vertical-align: middle;
@@ -81,7 +81,7 @@ h2 {
 }
 
 #view-the-map::before {
-    content: url(./imgs/map-marker-alt-solid.svg);
+    content: url(https://res.cloudinary.com/dwn2iafcc/image/upload/v1708682216/map-marker-alt-solid_pqjnsi.svg);
     display: inline-block;
     height: 100%;
     vertical-align: middle;
