@@ -2,7 +2,7 @@
 
 namespace ShowNest.Web.Controllers
 {
-    public class EventsControllercs : Controller
+    public class EventsController : Controller
     {
         public IActionResult Index()
         {
