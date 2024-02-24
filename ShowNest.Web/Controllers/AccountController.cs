@@ -28,6 +28,9 @@ namespace ShowNest.Web.Controllers
         {
             return View();
         }
-
+        public IActionResult Orders()
+        {
+            return View();
+        }
     }
 }
