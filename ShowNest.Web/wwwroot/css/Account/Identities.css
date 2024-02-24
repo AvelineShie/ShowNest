@@ -120,6 +120,7 @@ label {
     text-align: right;
     color: #333333;
     min-width: 80px;
+    line-height:1.5;
 }
 
 .collapse-group button {
@@ -144,7 +145,7 @@ p {
     display: inline-block;
     margin-top: 5px;
     margin-bottom: 10px;
-    line-height: 1;
+    line-height: 1.5;
     color: var(--dark-gray);
     font-size: 15px;
 }
