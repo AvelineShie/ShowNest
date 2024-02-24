@@ -8,5 +8,9 @@ namespace ShowNest.Web.Controllers
         {
             return View();
         }
+        public IActionResult ContactOrganization()
+        {
+            return View();
+        }
     }
 }
