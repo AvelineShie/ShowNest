@@ -44,12 +44,24 @@ namespace ShowNest.Web.Controllers
         {
             return View();
         }
+        public IActionResult SelectArea()
+        {
+            return View();
+        }
 
         public IActionResult SelectSeats()
         {
             return View();
         }
-        public IActionResult SelectArea()
+        public IActionResult Registrations()
+        {
+            return View();
+        }
+        public IActionResult PaymentInfo()
+        {
+            return View();
+        }
+        public IActionResult OrderDetail()
         {
             return View();
         }
