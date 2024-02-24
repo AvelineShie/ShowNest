@@ -44,5 +44,10 @@ namespace ShowNest.Web.Controllers
         {
             return View();
         }
+
+        public IActionResult SelectSeats()
+        {
+            return View();
+        }
     }
 }
