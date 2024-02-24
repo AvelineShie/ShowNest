@@ -320,22 +320,22 @@ ul.nav li.active a {
 }
 
 .order-btns .btn-edit-order a::before {
-    content: url(./imgs/pencil-alt-solid.svg);
+    content: url(https://res.cloudinary.com/dwn2iafcc/image/upload/v1708764402/pencil-alt-solid_g0wcew.svg);
     padding-right: 10px;
 }
 
 .order-btns .btn-contact-organizer a::before {
-    content: url(./imgs/envelope-solid.svg);
+    content: url(https://res.cloudinary.com/dwn2iafcc/image/upload/v1708764404/envelope-solid_sohnut.svg);
     padding-right: 10px;
 }
 
 .order-btns .btn-contact-customer-service a::before {
-    content: url(./imgs/paper-plane-solid.svg);
+    content: url(https://res.cloudinary.com/dwn2iafcc/image/upload/v1708764403/paper-plane-solid_xywgkq.svg);
     padding-right: 10px;
 }
 
 .order-btns .btn-cancel-order a::before {
-    content: url(./imgs/circle-xmark-solid.svg);
+    content: url(https://res.cloudinary.com/dwn2iafcc/image/upload/v1708682220/circle-xmark-solid_filbbn.svg);
     padding-right: 10px;
 }
 
