@@ -8,11 +8,23 @@ namespace ShowNest.Web.Controllers
         {
             return View();
         }
-        public IActionResult Identities()
+        public IActionResult UserEdit()
         {
             return View();
         }
         public IActionResult Prefills()
+        {
+            return View();
+        }
+        public IActionResult ChangePassword()
+        {
+            return View();
+        }
+        public IActionResult Identities()
+        {
+            return View();
+        }
+        public IActionResult Orders()
         {
             return View();
         }
@@ -21,14 +33,6 @@ namespace ShowNest.Web.Controllers
             return View();
         }
         public IActionResult ReclaimOrders()
-        {
-            return View();
-        }
-        public IActionResult ChangePassword()
-        {
-            return View();
-        }
-        public IActionResult Orders()
         {
             return View();
         }

@@ -86,7 +86,7 @@ h2 {
     grid-template-columns: 1fr 6fr;
 }
 
-    .id-contaner input {
+.id-contaner input {
         margin-top: 10px;
         margin-right: 3px;
     }
@@ -126,7 +126,7 @@ label {
     color: #333333;
 }
 
-    .collapse-group button:hover {
+.collapse-group button:hover {
         color: var(--function-color-hover);
     }
 
