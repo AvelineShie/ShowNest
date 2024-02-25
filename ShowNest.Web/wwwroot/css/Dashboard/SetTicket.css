@@ -54,11 +54,16 @@
     line-height: 20px;
 }
 
-.breadcrumb a{
+.breadcrumb a {
     display: inline-block;
     padding: 0;
     color: #333333;
     margin-left: 10px;
+    
+}
+
+a {
+    text-decoration: none;
 }
 
 
