@@ -25,6 +25,11 @@ namespace ShowNest.Web.Controllers
                 return View("RegistrationList");
             }
 
+            if (viewType == "SetActivity")
+            {
+                return View("SetActivity");
+            }
+
             if (viewType == "SetTicket")
             {
                 return View("SetTicket");
