@@ -1,0 +1,49 @@
+﻿/* 底部 */
+footer {
+    width: 100%;
+    height: 200px;
+    background-color: #323530;
+    text-align: center;
+    font-size: 14px;
+    color: #aaa;
+}
+
+    footer a {
+        text-decoration: none;
+        color: #aaa;
+        margin: 2%;
+    }
+
+    footer div img {
+        width: 200px;
+        margin-top: 15px;
+        color: #aaa;
+    }
+
+.language {
+    padding: 15px;
+}
+
+    .language .current {
+        border-bottom: 2px solid #64c025;
+        color: #fff;
+        padding: 5px;
+    }
+
+    .language a:hover {
+        color: #fff;
+    }
+@media (min-width:768px){
+    /* 底部 */
+    footer .container {
+        display: flex;
+        width: 100%;
+        justify-content: space-between;
+        align-items: center;
+        padding: 10px 0px;
+    }
+
+    .language a {
+        margin: 15px;
+    }
+}
