@@ -80,7 +80,7 @@
 }
 
 /* GENERAL */
-#footer-section {
+footer {
     background-color: #323530;
     padding: 50px 0px;
 }
@@ -88,7 +88,7 @@
 footer p,
 footer i,
 footer span,
-footer a {
+#footer a {
     color: var(--dark-gray);
     transition: .2s ease;
 }
