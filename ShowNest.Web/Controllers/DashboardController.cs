@@ -20,9 +20,14 @@ namespace ShowNest.Web.Controllers
             {
                 return View("ActivitiesList");
             }
-            else if (viewType == "RegistrationList")
+            if (viewType == "RegistrationList")
             {
                 return View("RegistrationList");
+            }
+
+            if (viewType == "SetTicket")
+            {
+                return View("SetTicket");
             }
 
             return BadRequest("Invalid view type.");
