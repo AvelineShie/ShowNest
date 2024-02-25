@@ -14,49 +14,8 @@
     .main-content {
         margin-left: -200px;
     }
-
-    label {
-        width: 50px;
-        height: 60px;
-        background-color: #d1d1d1;
-        color: #a1a1a1;
-        position: absolute;
-        /* 絕對定位在 sideMenu 上 */
-        right: -20px;
-        top: 0;
-        /* 絕對定位垂直置中 */
-        bottom: 0;
-        /* 絕對定位垂直置中 */
-        margin: auto;
-        line-height: 80px;
-        /* text-align: center; */
-        border-radius: 0 3px 3px 0;
-        box-shadow: 3px 0 3px rgba(23, 23, 54, 0.6);
-    }
-
-    #sideMenu-active:checked + .sideBarMenu {
-        transform: translateX(0);
-        label .fas
-
-{
-    transform: scaleX(-1);
 }
 
-#sideMenu-active {
-    position: absolute;
-    opacity: 0;
-    z-index: -1;
-}
-
-}
-
-.sideBarMenu {
-    position: relative;
-    transform: translateX(-100%);
-    transition: 0.5s;
-}
-
-}
 
 /* RWD end */
 
@@ -73,17 +32,19 @@
     flex-direction: column;
 }
 
-    .sideBarMenu #publish-btn {
-        width: 140px;
-        margin: 10px;
-        background-color: #fff;
-        color: var(--main-color);
-    }
 
-    .sideBarMenu a {
-        padding-left: 20px;
-        padding-bottom: 10px;
-    }
+.sideBarMenu #publish-btn {
+    width: 140px;
+    margin: 10px;
+    background-color: #fff;
+    color: var(--main-color);
+    border-radius: 5px;
+}
+
+.sideBarMenu a {
+    padding-left: 20px;
+    padding-bottom: 10px;
+}
 
 nav a {
     display: block;

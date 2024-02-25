@@ -8,8 +8,9 @@
     <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
     <link rel="stylesheet" href="~/ShowNest.Web.styles.css" asp-append-version="true" />
     <script src="https://kit.fontawesome.com/d928366fbc.js" crossorigin="anonymous"></script>
+    @await RenderSectionAsync("topJS", required: false)
     @await RenderSectionAsync("topCSS", required: false)
-   @*  @await RenderSectionAsync("ActivitiesList", required: false) *@
+
 
 </head>
 <body>
@@ -49,7 +50,6 @@
     <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
     <script src="~/js/site.js" asp-append-version="true"></script>
     @await RenderSectionAsync("Scripts", required: false)
-
-    @await RenderSectionAsync("ActivitiesList", required: false)
+    @await RenderSectionAsync("endJS", required: false)
 </body>
 </html>
