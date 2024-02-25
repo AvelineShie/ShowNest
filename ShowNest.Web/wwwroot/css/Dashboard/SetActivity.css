@@ -32,18 +32,18 @@
 
 /* 正式版面 */
 .wrap{
-    width: calc(100% - 200px);
     display: flex;
     flex-direction: column;
     margin: 0 auto;
     margin-bottom: 90px;
 }
 
-.container{
+.container {
     color: #333333;
     margin-top: 5px;
     display: flex;
     flex-direction: row;
+    justify-content: space-between;
 }
 
 /* 左半邊 */
@@ -180,7 +180,8 @@ span.note, .map-note{
 
 
 /* 右欄 */
-.log> img{
+
+.log > img {
     margin-bottom: 18px;
 }
 
