@@ -86,7 +86,7 @@ h2 {
     grid-template-columns: 1fr 6fr;
 }
 
-    .id-contaner input {
+.id-contaner input {
         margin-top: 10px;
         margin-right: 3px;
     }
@@ -120,13 +120,14 @@ label {
     text-align: right;
     color: #333333;
     min-width: 80px;
+    line-height:1.5;
 }
 
 .collapse-group button {
     color: #333333;
 }
 
-    .collapse-group button:hover {
+.collapse-group button:hover {
         color: var(--function-color-hover);
     }
 
@@ -144,7 +145,7 @@ p {
     display: inline-block;
     margin-top: 5px;
     margin-bottom: 10px;
-    line-height: 1;
+    line-height: 1.5;
     color: var(--dark-gray);
     font-size: 15px;
 }
