@@ -2,10 +2,14 @@
     For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
 *@
 @{
+	Layout = null;
+}
+@{
+	Layout = "_LayoutForEventPage";
 }
 
 @section topCSS {
-	<link href="~/css/reset.css" rel="stylesheet" />
+	<link href="~/css/share/reset.css" rel="stylesheet" />
 	<link href="~/css/events/eventpage.css" rel="stylesheet" />
 }
 @section Scripts {
@@ -300,17 +304,5 @@
 		</div>
 	</div>
 </body>
-<footer>
-	<div class="container">
-		<div class="language">
-			Language:
-			<a href="#" class="current">繁體中文</a>
-			<a href="#">English</a>
-			<a href="#">日本語</a>
-		</div>
-		<div>
-			<a href="#" class="loge"><img src="~/img/dashboard/shownest-logo.png" alt="loge">
-		</div>
-	</div>
-</footer>
+
 
