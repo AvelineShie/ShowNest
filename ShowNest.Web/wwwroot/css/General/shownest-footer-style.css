@@ -93,7 +93,7 @@ footer span,
     transition: .2s ease;
 }
 
-footer a:hover{
+#footer a:hover{
     color: var(--light-gray);
     transition: .2s ease;
 }
@@ -107,7 +107,7 @@ footer a {
     font-size: 14px;
 }
 
-.footer-icon-li span {
+.footer-icon-li span:last-of-type {
     margin-left: 3px;
 }
 
