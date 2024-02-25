@@ -9,20 +9,16 @@ namespace ShowNest.Web.Controllers
             return View();
         }
 
-        public IActionResult Organization()
+        public IActionResult NewEvent()
         {
             return View();
         }
 
         public IActionResult Events(string viewType)
         {
-            if (viewType == "ActivitiesList")
+            if (viewType == "CreateActivity")
             {
-                return View("ActivitiesList");
-            }
-            if (viewType == "RegistrationList")
-            {
-                return View("RegistrationList");
+                return View("CreateActivity");
             }
 
             if (viewType == "SetActivity")
@@ -33,6 +29,20 @@ namespace ShowNest.Web.Controllers
             if (viewType == "SetTicket")
             {
                 return View("SetTicket");
+            }
+
+            if(viewType == "SetTable")
+            {
+                return View("SetTable");
+            }
+
+            if (viewType == "ActivitiesList")
+            {
+                return View("ActivitiesList");
+            }
+            if (viewType == "RegistrationList")
+            {
+                return View("RegistrationList");
             }
 
             return BadRequest("Invalid view type.");
