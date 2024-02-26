@@ -94,8 +94,9 @@ td>button{
     color: var(--main-color);
 }
 
-.delete{
-    color:#b1564a;
+.delete {
+    color: #b1564a;
+    margin-left: 5px;
 }
 
 .table-log{
