@@ -8,9 +8,12 @@
 }
 
 body {
-    /* font-family: sans-serif; */
+    font-family: sans-serif;
     font-size: var(--main-font-size);
     color: #333333;
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
 }
 
 a {
@@ -19,7 +22,7 @@ a {
 
 h2,
 h6 {
-    color: var(--main-color);
+    color: var(--main-green);
     font-weight: bold;
 }
 
@@ -35,90 +38,6 @@ h6 {
     margin: 0px auto;
     position: relative;
 }
-
-/* start ----- header-nav ----- */
-#header-nav {
-    background-color: var(--main-color);
-}
-
-#header-nav a {
-    color: #fff;
-}
-
-#header-nav a:hover {
-    background-color: var(--main-color-hover);
-}
-
-h1 {
-    display: inline-block;
-    padding: 10px 0px;
-}
-
-#header-nav #header-nav-logo:hover {
-    background-color: transparent;
-}
-
-#header-nav img {
-    height: 20px;
-}
-
-#header-nav-search-div {
-    background-color: #fff;
-}
-
-#header-nav-magnifier-icon {
-    padding: 0px 5px 0px 10px;
-}
-
-
-#header-nav-search-input {
-    border: none;
-    width: 110px;
-    height: 40px;
-    transition: .3s ease;
-}
-
-#header-nav-search-input:focus {
-    outline: none;
-    width: 130px;
-}
-
-#header-nav .dropdown-item {
-    width: 300px;
-    color: #333;
-}
-
-#header-nav .dropdown-item:hover {
-    background-color: #ddd;
-}
-
-#header-functions-right i {
-    margin-right: 10px;
-}
-
-#header-nav-search-div {
-    margin-left: 10px;
-}
-
-#header-nav .dropdown-menu p {
-    padding: 13px 15px;
-    font-weight: 700;
-}
-
-#header-nav .dropdown-menu img {
-    height: 65px;
-    width: 65px;
-    border-radius: 50%;
-    margin: 0 auto 10px auto;
-}
-
-#user-name {
-    text-align: center;
-}
-
-/* end ----- header-nav ----- */
-
-
 
 /* action bar*/
 .action-bar {
@@ -431,6 +350,7 @@ h1 {
     background-color: var(--select-seat-bgc);
     position: relative;
     height: 600px;
+    flex-grow: 1;
 }
 
 /* stage */
@@ -596,71 +516,6 @@ h1 {
             width: 90%;
             margin: 0px auto;
         }
-
-
-        /* start ----- MOBILE-header-nav ----- */
-
-
-        #header-functions-right li a {
-            padding: 13px 20px;
-        }
-
-
-        #header-nav-logo-and-menu-button-wrap {
-            margin: 15px 0px 10px;
-        }
-
-
-        #header-functions {
-            display: none;
-            padding: 5px 0px 10px;
-        }
-
-
-        #header-functions a {
-            display: block;
-            padding: 15px 0px;
-        }
-
-
-        #header-nav-search-div {
-            margin: 15px 0px;
-        }
-
-
-        #nav-checkbox:checked~div #header-functions {
-            display: block;
-        }
-
-
-        #nav-checkbox-label {
-            display: inline-block;
-            width: 30px;
-            height: 30px;
-            background-color: var(--main-color);
-            border: #fff 1px solid;
-            border-radius: 5px;
-            margin-bottom: 5px;
-            /* for ::after */
-            position: relative;
-        }
-
-
-        #nav-checkbox-label::after {
-            content: '';
-            display: inline-block;
-            position: absolute;
-            inset: 0;
-            margin: auto;
-            width: 80%;
-            height: 2px;
-            background-color: #fff;
-            border-radius: 1px;
-            box-shadow: 0px 6px 0 0 #fff, 0px -6px 0 0 #fff;
-        }
-
-
-        /* end ----- MOBILE-header-nav ----- */
     }
 
     /* li0 */
@@ -836,23 +691,6 @@ h1 {
         }
 
         /* end-li0 */
-
-        .width {
-            width: 95%;
-        }
-
-        #header-nav a {
-            padding: 13px 10px;
-        }
-
-        #user-account i {
-            display: inline-block;
-            margin-right: 5px;
-        }
-
-        #user-account span {
-            display: none;
-        }
     }
 
 
@@ -865,51 +703,6 @@ h1 {
         }
 
         /* end-li0 */
-
-        .width {
-            width: 75%;
-        }
-
-        #header-nav a {
-            padding: 13px 20px;
-        }
-
-        #user-account i {
-            display: none;
-        }
-
-        #user-account span {
-            display: inline-block;
-        }
     }
 
-    .width {
-        max-width: 1200px;
-        margin: 0px auto;
-    }
-
-    /* start ----- DESKTOP-header-nav ----- */
-    #header-nav-wrap {
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-        position: relative;
-    }
-
-    #header-functions {
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-        position: absolute;
-        width: 100%;
-        padding-left: 120px;
-    }
-
-    #header-functions-left,
-    #header-functions-right {
-        display: flex;
-        align-items: center;
-    }
-
-    /* end ----- DESKTOP-header-nav ----- */
 }
