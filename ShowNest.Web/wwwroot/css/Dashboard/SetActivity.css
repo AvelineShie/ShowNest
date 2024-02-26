@@ -110,25 +110,32 @@ span.note, .map-note{
 /* 所有radio */
 .form-check-label{
     display: contents;
-    /* vertical-align: baseline; */
 }
 
 
 /*網址長度*/
 .input-group {
-    min-width:440px;
+    min-width: 530px;
+   
 }
-.input-group-text{
-    font-size:15px;
-    padding:6px;
+
+.mb-3{
+    margin-bottom:0;
+}
+
+.input-group-text {
+    font-size: 15px;
+    padding: 6px;
+
 }
 
 .input-group > .form-control {
-    width
+    width:110px;
 }
 
 .OK {
     color: var(--main-color-hover);
+    padding-top: 5px;
     
 }
 
@@ -138,7 +145,7 @@ span.note, .map-note{
     margin: 10px;
     line-height: 24px;
     color:#555555;
-    width: 150px;
+    width: 200px;
 
 }
 
