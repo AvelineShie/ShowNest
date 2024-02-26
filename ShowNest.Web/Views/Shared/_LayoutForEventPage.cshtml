@@ -9,15 +9,18 @@
 	<link href="~/css/share/footerforeventpage.css" rel="stylesheet" />
 	<script src="https://kit.fontawesome.com/d928366fbc.js" crossorigin="anonymous"></script>
 	@await RenderSectionAsync("topCSS", required: false)
+	@await RenderSectionAsync("Scripts", required: false)
 	
 </head>
+<body>
 
-    
 		  @RenderBody()
+</body>
+    
    
 
 <footer>
-	<div class="container">
+	<div class="footer-container">
 		<div class="language">
 			Language:
 			<a href="#" class="current">繁體中文</a>
@@ -29,7 +32,7 @@
 		</div>
 	</div>
 </footer>
-<script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
-@await RenderSectionAsync("Scripts", required: false)
+@* <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script> *@
+
 
 </html>

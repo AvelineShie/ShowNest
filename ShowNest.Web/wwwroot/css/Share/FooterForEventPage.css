@@ -6,6 +6,7 @@ footer {
     text-align: center;
     font-size: 14px;
     color: #aaa;
+    
 }
 
     footer a {
@@ -20,6 +21,7 @@ footer {
         color: #aaa;
     }
 
+
 .language {
     padding: 15px;
 }
@@ -33,17 +35,18 @@ footer {
     .language a:hover {
         color: #fff;
     }
-@media (min-width:768px){
+
+@media (min-width:768px) {
     /* 底部 */
-    footer .container {
+    .footer-container {
         display: flex;
         width: 100%;
-        justify-content: space-between;
+        justify-content: space-around;
         align-items: center;
         padding: 10px 0px;
     }
-
-    .language a {
-        margin: 15px;
+    .language > a:nth-of-type(-n+3) {
+        margin: 10px;
     }
 }
+
