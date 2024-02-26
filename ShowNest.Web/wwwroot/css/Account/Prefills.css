@@ -144,7 +144,7 @@ div.border {
 
 .div-wrap {
     display: grid;
-    grid-template-columns: 2.7fr 5fr;
+    grid-template-columns: 3.1fr 5fr;
 }
 
 .link {
