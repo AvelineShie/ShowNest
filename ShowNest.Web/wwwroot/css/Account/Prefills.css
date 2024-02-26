@@ -36,12 +36,12 @@ ul.nav li.active a {
     width: 100%;
     max-width: 1200px;
     margin: auto;
+    padding-top: 20px;
 }
 
 .main-wrap {
     width: 75%;
     margin: auto;
-    margin-top: 20px;
 }
 
 .title {
@@ -150,7 +150,7 @@ div.border {
 
 .div-wrap {
     display: grid;
-    grid-template-columns: 3.4fr 5fr;
+    grid-template-columns: 2.7fr 5fr;
 }
 
 .link {
@@ -228,7 +228,7 @@ div.border {
 }
 
 @media screen and (max-width:768px) {
-    .title {
+    #title {
         text-align: center;
     }
 

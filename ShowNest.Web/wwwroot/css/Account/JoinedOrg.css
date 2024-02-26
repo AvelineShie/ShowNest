@@ -1,6 +1,9 @@
 ﻿
 
 body {
+    display: flex;
+    flex-direction: column;
+    height: 100vh
 }
 
 
@@ -38,12 +41,16 @@ ul.nav li.active a {
     width: 100%;
     max-width: 1200px;
     margin: auto;
+    flex-grow: 1;
+    display: flex;
+    align-items: start;
+    justify-content: center;
+    margin-top: 20px;
 }
 
 .main-wrap {
     width: 75%;
     margin: auto;
-    margin-top: 20px;
 }
 
 .title {
@@ -108,7 +115,7 @@ p {
 }
 
 .pages {
-    padding: 10px;
+    padding: 20px 10px;
     display: flex;
     flex-direction: column-reverse;
 }

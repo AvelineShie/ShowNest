@@ -1,19 +1,6 @@
-﻿:root {
-    --light-green: #82b99b;
-    --main-green: #3b7555;
-    --dark-green: #1d5545;
-    --light-gray: #ddd;
-    --dark-gray: #888;
-    --main-font-size: 15px;
-    --common-border: 1px #ddd solid;
-    --dark-border: 1px #999EA2 solid;
-    --common-border-radius: 5px;
-}
-
+﻿
 body {
-    font-family: sans-serif;
-    font-size: var(--main-font-size);
-    background-color: #fafafa;
+
 }
 
 
@@ -33,7 +20,7 @@ body {
     width: 75%;
     margin: auto;
     margin-top: 20px;
-    line-height: 1.5em;
+    line-height: 1.5;
 }
 
 .count_down_group {
@@ -125,7 +112,7 @@ button.btn_Confirm:hover {
 }
 
 .map_area {
-    padding-top: 50px;
+    padding: 20px 0;
     display: flex;
     justify-content: center;
     vertical-align: middle;
