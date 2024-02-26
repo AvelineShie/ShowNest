@@ -64,7 +64,6 @@ ul.nav li.active a {
 }
 
 h2 {
-    font-size: 30px;
     text-align: left;
 }
 
@@ -109,7 +108,6 @@ label {
     display: inline-block;
     padding-top: 18px;
     margin-right: 20px;
-    font-size: 15px;
     font-weight: bold;
     text-align: right;
     color: #333333;
@@ -141,7 +139,6 @@ p {
     margin-bottom: 10px;
     line-height: 1.5;
     color: var(--dark-gray);
-    font-size: 15px;
 }
 
 div.border {

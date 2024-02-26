@@ -42,12 +42,10 @@ body {
 
 h2 {
     font-weight: 500;
-    font-size: 24px;
     margin-bottom: 20px;
 }
 
 h3 {
-    font-size: 18px;
     margin-top: 10px;
     margin-bottom: 10px;
 }
@@ -58,7 +56,6 @@ p {
     margin-bottom: 10px;
     line-height: 1;
     color: #888;
-    font-size: 15px;
 }
 
 a {
@@ -255,7 +252,6 @@ button.btn_Confirm:hover {
     .display-total-amount .total-amount span {
         display: inline-block;
         vertical-align: middle;
-        font-size: 13px;
         color: #888888;
         font-weight: normal;
         margin: 10px 0;
@@ -263,7 +259,6 @@ button.btn_Confirm:hover {
 
     .display-total-amount .total-amount p {
         display: inline-block;
-        font-size: 26px;
         font-weight: 900;
         margin: 10px 0;
     }
@@ -398,7 +393,6 @@ button.btn_Confirm:hover {
         background-color: transparent;
         margin-left: 0;
         font-weight: bold;
-        font-size: 20px;
     }
 
     .modal-body .ticket-detail {
@@ -412,7 +406,6 @@ button.btn_Confirm:hover {
         .modal-footer .total-amount span {
             display: inline-block;
             vertical-align: middle;
-            font-size: 13px;
             color: #888888;
             font-weight: normal;
             margin: 10px 0;
@@ -420,7 +413,6 @@ button.btn_Confirm:hover {
 
         .modal-footer .total-amount p {
             display: inline-block;
-            font-size: 26px;
             font-weight: 900;
             margin: 10px 0;
         }
