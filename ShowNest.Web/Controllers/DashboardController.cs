@@ -9,14 +9,43 @@ namespace ShowNest.Web.Controllers
             return View();
         }
 
-        public IActionResult Organization()
+        public IActionResult NewEvent()
         {
             return View();
         }
 
-        public IActionResult Events()
+        public IActionResult Events(string viewType)
         {
-            return View("ActivitiesList");
+            if (viewType == "CreateActivity")
+            {
+                return View("CreateActivity");
+            }
+
+            if (viewType == "SetActivity")
+            {
+                return View("SetActivity");
+            }
+
+            if (viewType == "SetTicket")
+            {
+                return View("SetTicket");
+            }
+
+            if(viewType == "SetTable")
+            {
+                return View("SetTable");
+            }
+
+            if (viewType == "ActivitiesList")
+            {
+                return View("ActivitiesList");
+            }
+            if (viewType == "RegistrationList")
+            {
+                return View("RegistrationList");
+            }
+
+            return BadRequest("Invalid view type.");
         }
     }
 }

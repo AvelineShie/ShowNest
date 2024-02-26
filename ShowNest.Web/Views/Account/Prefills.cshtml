@@ -1,9 +1,11 @@
 ﻿@*
-    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
 *@
 @section topCSS {
-    <link href="~/css/account/prefillsstylesheet.css" rel="stylesheet" />
+    <link href="~/css/reset.css" rel="stylesheet" />
+    <link href="~/css/account/prefills.css" rel="stylesheet" />
 }
+
 <body>
     <section class="section_wrap">
         <div id="" class="main-wrap ">
@@ -12,25 +14,25 @@
             <!--  Account Navigation -->
             <ul class="nav nav-tabs mt-3 mb-3">
                 <li class="nav-item">
-                    <a class="nav-link" aria-current="page" href="https://danichen12.github.io/00Project/edit/edit.html">帳號設定</a>
+                    <a class="nav-link" aria-current="page" href="UserEdit">帳號設定</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link active" href="https://danichen12.github.io/00Project/prefills/prefills.html">報名預填資料</a>
+                    <a class="nav-link active" href="#">報名預填資料</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="https://danichen12.github.io/00Project/change_password/change_password.html">修改密碼</a>
+                    <a class="nav-link" href="ChangePassword">修改密碼</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="https://danichen12.github.io/00Project/identities/identities.html">身份認證</a>
+                    <a class="nav-link" href="Identities">身份認證</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="https://libclf.github.io/practice/account/orders.html">個人帳務清單</a>
+                    <a class="nav-link" href="Orders">個人帳務清單</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="https://danichen12.github.io/00Project/joined_organizations/joined_organizations.html">成為粉絲的組織</a>
+                    <a class="nav-link" href="JoinedOrganizations">成為粉絲的組織</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="https://danichen12.github.io/00Project/reclaim_orders/reclaim_orders.html">訂單歸戶</a>
+                    <a class="nav-link" href="ReclaimOrders">訂單歸戶</a>
                 </li>
             </ul>
             <!-- Account Navigation End-->
@@ -59,8 +61,8 @@
                             <div class="form-content">
                                 <div class="contect-group btn-group">
                                     <select class="btn-sm dropdown-toggle col-12" type="button"
-                                            data-bs-toggle="dropdown" name="" id="CountyAndCity"
-                                            aria-placeholder="CountyAndCity">
+                                        data-bs-toggle="dropdown" name="" id="CountyAndCity"
+                                        aria-placeholder="CountyAndCity">
                                         <option value="選擇縣市">選擇縣市</option>
                                     </select>
                                 </div>
@@ -78,37 +80,37 @@
                             <label for="zipcode">郵遞區號</label>
                             <div class="form-content input-group-sm">
                                 <input class="zipcode form-control" id="zipcode" type="text" name="zipcode"
-                                       placeholder="郵遞區號">
+                                    placeholder="郵遞區號">
                             </div>
                             <!-- --------------------地址----------------  -->
                             <label for="address">地址</label>
                             <div class="form-content input-group-sm">
                                 <input class="address form-control" id="address" type="text" name="address"
-                                       placeholder="地址">
+                                    placeholder="地址">
                             </div>
                             <!-- ----------------公司或組織名稱----------------  -->
                             <label for="org-name">公司或組織名稱</label>
                             <div class="form-content input-group-sm">
                                 <input class="org-name form-control" id="org-name" type="text" name="org-name"
-                                       placeholder="公司或組織名稱">
+                                    placeholder="公司或組織名稱">
                             </div>
                             <!-- ----------------------職稱----------------  -->
                             <label for="job-title">職稱</label>
                             <div class="form-content input-group-sm">
                                 <input class="job-title form-control" id="job-title" type="text" name="job-title"
-                                       placeholder="職稱">
+                                    placeholder="職稱">
                             </div>
                             <!-- ------------------公司郵遞區號----------------  -->
                             <label for="org-zipcode">公司郵遞區號</label>
                             <div class="form-content input-group-sm">
                                 <input class="org-zipcode form-control" id="org-zipcode" type="text" name="org-zipcode"
-                                       placeholder="公司郵遞區號">
+                                    placeholder="公司郵遞區號">
                             </div>
                             <!-- -------------------公司地址----------------  -->
                             <label for="org-address">公司地址</label>
                             <div class="form-content input-group-sm">
                                 <input class="org-address form-control" id="org-address" type="text" name="org-address"
-                                       placeholder="公司地址">
+                                    placeholder="公司地址">
                             </div>
                         </div>
                     </div>
@@ -121,8 +123,7 @@
                             <!-- -------------------公司統一編號-------------------  -->
                             <label for="vat">公司統一編號</label>
                             <div class="form-content input-group-sm">
-                                <input class="vat form-control" id="vat" type="vat" name="vat"
-                                       placeholder="公司統一編號">
+                                <input class="vat form-control" id="vat" type="vat" name="vat" placeholder="公司統一編號">
                             </div>
                             <!--  ----------------捐贈碼載具------------------  -->
                             <label for="donate-e-invoice">捐贈碼載具</label>
@@ -135,7 +136,7 @@
                             <label for="e-invoice">手機載具</label>
                             <div class="form-content input-group-sm">
                                 <input class="form-control col-12" id="e-invoice" type="text" name="e-invoice"
-                                       placeholder="輸入手機載具">
+                                    placeholder="輸入手機載具">
                                 <span class="link">
                                     <p>此為與財政部電子發票平台申請的條碼，請勿填寫手機號碼</p>
                                     <a href="#">申請手機載具條碼</a>
@@ -156,7 +157,7 @@
             <div class="div-wrap">
                 <div class="btn-save">
                     <button type="button" class="btn"
-                            style="background-color:var(--main-green);color: white;border:none;">
+                        style="background-color:var(--main-green);color: white;border:none;">
                         儲存預填資料
                     </button>
                 </div>

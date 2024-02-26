@@ -1,0 +1,145 @@
+﻿@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@section topCSS {
+    <link href="~/css/reset.css" rel="stylesheet" />
+    <link href="~/css/events/selectarea.css" rel="stylesheet" />
+}
+
+<body>
+    <section class="section_wrap">
+        <div class="seat_area_header">
+            <div class="action-bar main_wrap">
+                <div class="action-bar-left d-flex">
+                    <div class="btn-cancel">
+
+                        <a href="#"><i class="fa-solid fa-xmark"></i>取消購票</a>
+                    </div>
+                    <div class="btn-user-guide">
+                        <!-- Button trigger modal -->
+                        <a href="#" data-bs-toggle="modal" data-bs-target="#exampleModal">操作說明</a>
+                    </div>
+                </div>
+                <div class="count-down-timer">
+                    您還有 10:00 可以選擇座位
+                </div>
+                <div class="btn-confirm">
+                    <a href="SelectSeats">確認座位</a>
+                </div>
+            </div>
+            <div class="seat-areas-and-showcases wrap d-flex">
+                <div class="confirm-wrap" style="display: none">
+                    <div class="display-total-amount">
+                        <div class="total-amount">
+                            <span>總金額</span>
+                            <p>TWD$3,800</p>
+                        </div>
+                        <div class="seats-selection-complete">
+                            <a href="">完成選位</a>
+                        </div>
+                    </div>
+                    <div class="selected-tickets">
+                        選購的票券
+                    </div>
+                    <div class="ticket-detail">
+                        <div class="price">TWD$3,800</div>
+                        <div class="ticket-with-seat-detail">
+                            <div class="seat-location">紫 2D 區 3 排 14 號</div>
+                            <div class="ticket-type">全票</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="info_modal_group">
+            <div class="info_modal modal fade" id="info_modal" tabindex="-1">
+                <div class="modal-dialog">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h2 class="modal-title" id="seatModalLabel">系統選位通知</h2>
+                        </div>
+                        <div class="modal-body">
+                            <p class="content">系統已經幫您選好了連號座位，您有 10 分鐘可以修改您想要的位置：</p>
+                            <table class="order_detail table">
+                                <thead class="ticket_thead">
+                                    <tr>
+                                        <th class="ticket">票券</th>
+                                        <th class="seat">座位</th>
+                                    </tr>
+                                </thead>
+                                <tbody class="ticket_tbody">
+                                    <tr>
+                                        <td class="ticket_type">全票</td>
+                                        <td>
+                                            <div class="seat_info">
+                                                A1 區 12 排 13 號
+                                            </div>
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn_Confirm btn"
+                                    data-bs-dismiss="modal">
+                                我知道了(選位時間剩下10:00)
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="main_stage_map">
+            <div class="map_area">
+                <img src="https://danichen12.github.io/00Project/booking/image/map.png" usemap="#image-map">
+                <map name="image-map" class="image-map" id="area_map">
+                    <area target="_blank" alt="floor1_a_area" title="floor1_a_area" href="SelectSeats"
+                          coords="381,129,505,129,507,290,418,288,333,230" shape="poly">
+                    <area target="_blank" alt="floor1_b_area" title="floor1_b_area" href="SelectSeats"
+                          coords="518,130,643,130,693,228,608,289,518,288" shape="poly">
+                    <area target="_blank" alt="floor2_a_area" title="floor2_a_area" href="SelectSeats"
+                          coords="313,265,367,299,337,356,287,312" shape="poly">
+                    <area target="_blank" alt="floor2_b_area" title="floor2_b_area" href="SelectSeats"
+                          coords="375,301,417,319,392,416,369,405,339,363" shape="poly">
+                    <area target="_blank" alt="floor2_c_area" title="floor2_c_area" href="SelectSeats"
+                          coords="425,318,469,329,463,424,400,413" shape="poly">
+                    <area target="_blank" alt="floor2_d_area" title="floor2_d_area" href="SelectSeats"
+                          coords="476,329,545,330,553,428,469,425" shape="poly">
+                    <area target="_blank" alt="floor2_e_area" title="floor2_e_area" href="SelectSeats"
+                          coords="553,329,600,320,623,417,559,427" shape="poly">
+                    <area target="_blank" alt="floor2_f_area" title="floor2_f_area" href="SelectSeats"
+                          coords="605,316,650,301,684,368,655,410,629,416" shape="poly">
+                    <area target="_blank" alt="floor2_g_area" title="floor2_g_area" href="SelectSeats"
+                          coords="656,298,711,264,738,317,689,361" shape="poly">
+                    <area target="_blank" alt="floor3_a_area" title="floor3_a_area" href="SelectSeats"
+                          coords="262,373,347,417,292,518,231,434" shape="poly">
+                    <area target="_blank" alt="floor3_b_area" title="floor3_b_area" href="SelectSeats"
+                          coords="353,420,409,444,367,582,301,524" shape="poly">
+                    <area target="_blank" alt="floor3_c_area" title="floor3_c_area" href="SelectSeats"
+                          coords="416,445,461,455,453,606,377,582" shape="poly">
+                    <area target="_blank" alt="floor3_d_area" title="floor3_d_area" href="SelectSeats"
+                          coords="467,454,557,456,561,608,461,608" shape="poly">
+                    <area target="_blank" alt="floor3_e_area" title="floor3_e_area" href="SelectSeats"
+                          coords="563,452,606,444,652,586,567,606" shape="poly">
+                    <area target="_blank" alt="floor3_f_area" title="floor3_f_area" href="SelectSeats"
+                          coords="614,442,673,420,725,522,660,582" shape="poly">
+                    <area target="_blank" alt="floor3_g_area" title="floor3_g_area" href="SelectSeats"
+                          coords="678,418,761,372,795,436,733,521" shape="poly">
+                </map>
+            </div>
+        </div>
+        <div class="rwd-fixed-btns">
+            <div class="btn-cancel">
+                <a href="#"><i class="fa-solid fa-circle-xmark"></i>取消購票</a>
+            </div>
+            <div class="btn-confirm" data-bs-toggle="modal" data-bs-target="#btn-confirm">
+                <a href="#">確認座位</a>
+            </div>
+
+        </div>
+
+
+    </section>
+
+
+</body>

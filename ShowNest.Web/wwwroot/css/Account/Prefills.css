@@ -63,6 +63,9 @@ ul.nav li.active a {
     line-height: 2;
     align-items: center;
 }
+#title {
+    text-align: left ;
+}
 
 h2 {
     font-size: 30px;
@@ -231,6 +234,9 @@ div.border {
         display: block;
         width: 100%;
         border-radius: 3px;
+        text-align: center;
+    }
+    #title {
         text-align: center;
     }
 }
