@@ -210,7 +210,7 @@ tbody td {
         display: none;
     }
 
-    .mobi-hide, .mobi-hide i, .mobi-hide a {
+    .mobi-hide {
         display: flex;
     }
 
