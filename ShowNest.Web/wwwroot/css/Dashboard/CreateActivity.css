@@ -3,7 +3,7 @@
     --main-color-hover: #77A88D;
     --second-color: #518f6d;
     --click-color: #1d5545;
-    --main-font-size: 15px;
+    --main-font-size: 16px;
     --common-border: 1px #ddd solid;
 }
 
@@ -21,7 +21,7 @@
 .ActivityContainer{
     display: flex;
     flex-direction: column;
-    min-height: 500px;
+    min-height: 520px;
     margin: 0 auto;
     padding: 10px;
     max-width: 800px; 
@@ -80,6 +80,7 @@ h3::after{
     width: 200px;
     margin-left: 10px;
     margin-bottom: 10px;
+    margin-top:10px;
 }
 
 .TOSzone a{
@@ -103,9 +104,31 @@ h3::after{
 }
 
 
-@media screen and (max-width: 768px) {
-
-    .wrap {
+/* MOBILE */
+@media (max-width:768px) {
+    .width {
         width: 90%;
+        margin: 0px auto;
+    }
+}
+
+/* DESKTOP */
+@media (min-width:769px) {
+
+    @media (min-width:769px) and (max-width:1200px) {
+        .width {
+            width: 90%;
+        }
+    }
+
+    @media (min-width:1201px) {
+        .width {
+            width: 75%;
+        }
+    }
+
+    .width {
+        max-width: 1200px;
+        margin: 0px auto;
     }
 }
