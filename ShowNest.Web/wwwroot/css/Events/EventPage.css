@@ -32,7 +32,6 @@ body {
 }
 
     .event-info i {
-        
         display: inline-flex;
         align-items: center;
     }
@@ -203,6 +202,23 @@ tbody td {
         display: none;
     }
 
+    .event-info .mobi-hide {
+        display: block;
+    }
+
+    .organizers {
+        background-color: #aaaaaa5e;
+        padding: 20px 30px;
+    }
+
+    .organizers a {
+        color: #64C06B;
+        text-decoration: none;
+    }       
+
+    .organizers a:hover {
+        color: #2c8b34;
+    }
 
     /* 地圖 */
 
@@ -242,10 +258,6 @@ tbody td {
     .tickets-wrapper th {
         padding: 10px;
     }
-
-
-
-    
 }
 
 @media (min-width:1000px) {
