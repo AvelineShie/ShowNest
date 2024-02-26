@@ -120,11 +120,18 @@ h3::after{
         .wrap {
             width: 90%;
         }
+
+        #header-functions a {
+            padding: 14px 20px;
+        }
     }
 
     @media (min-width:1201px) {
         .wrap {
             width: 75%;
+        }
+        #header-functions a {
+            padding: 14px 20px;
         }
     }
 
