@@ -113,6 +113,10 @@ td.color-label{
     color: #fff;
 }
 
+.btn-outline-secondary {
+    margin-right: 10px;
+}
+
 /* MOBILE */
 @media (max-width:768px) {
     body{
@@ -122,6 +126,8 @@ td.color-label{
     .wrap {
         margin: 0px auto;
     }
+
+
 }
 
 /* DESKTOP */
@@ -130,15 +136,15 @@ td.color-label{
     @media (min-width:769px) and (max-width:1200px) {
 
         body {
-            width: 1200px;
+            max-width: 1200px;
         }
 
         #header-functions a {
             padding: 14px 8px;
         }
 
-    @media (min-width:1201px) {
-        .wrap {
+        @media (min-width:1201px) {
+            .wrap {
             width: 75%;
         }
     }
