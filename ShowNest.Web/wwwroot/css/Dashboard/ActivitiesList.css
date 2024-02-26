@@ -3,6 +3,8 @@
     --main-color-hover: #77A88D;
     --second-color: #518f6d;
     --click-color: #1d5545;
+    --main-font-size: 16px;
+    --common-border: 1px #ddd solid;
 }
 
 @media screen and (max-width: 768px) {
