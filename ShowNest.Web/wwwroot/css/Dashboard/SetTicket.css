@@ -33,7 +33,7 @@
 
 /* 正式版面 */
 .wrap{
-    width: calc(100% - 200px);
+    width:75%;
     display: flex;
     flex-direction: column;
     margin: 0 auto;
@@ -43,7 +43,6 @@
     color: #333333;
     flex-direction: column;
     margin-bottom: 90px;
-    width: 75%;
 }
 
 /* 麵包屑 */
@@ -113,4 +112,11 @@ td.color-label{
     background-color: var(--main-color-hover);
     border-color: #fff;
     color: #fff;
+}
+
+@media screen and (max-width: 768px) {
+
+    .wrap {
+        width: 90%;
+    }
 }

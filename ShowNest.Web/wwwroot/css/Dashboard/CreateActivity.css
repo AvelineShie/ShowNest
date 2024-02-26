@@ -1,15 +1,3 @@
-@media screen and (min-width: 768px) {
-    .wrap{ 
-        min-width: 768px; 
-        max-width: 1280px;
-    }
-
-    .width {
-        width: 90%;
-    }
-
-}
-
 :root {
     --main-color: #3b7555;
     --main-color-hover: #77A88D;
@@ -114,3 +102,10 @@ h3::after{
     margin-top: 15px;
 }
 
+
+@media screen and (max-width: 768px) {
+
+    .wrap {
+        width: 90%;
+    }
+}
