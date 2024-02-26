@@ -32,7 +32,8 @@ body {
 }
 
     .event-info i {
-        
+        /* padding: auto ; */
+        /* height: 0.5em; */
         display: inline-flex;
         align-items: center;
     }
@@ -50,7 +51,10 @@ p .fa {
 }
 
 
+/* .container {
+    padding: 20px;
 
+} */
 
 img {
     width: 100%;
@@ -185,6 +189,9 @@ tbody td {
 }
 
 
+    
+
+
 
 @media (min-width:768px) {
     /* 共用 */
@@ -203,6 +210,23 @@ tbody td {
         display: none;
     }
 
+    .mobi-hide {
+        display: flex;
+    }
+
+    .organizers {
+        background-color: #aaaaaa5e;
+        padding: 20px 30px;
+    }
+
+        .organizers a {
+            color: #64C06B;
+            text-decoration: none;
+        }
+
+            .organizers a:hover {
+                color: #2c8b34;
+            }
 
     /* 地圖 */
 
@@ -245,7 +269,6 @@ tbody td {
 
 
 
-    
 }
 
 @media (min-width:1000px) {
