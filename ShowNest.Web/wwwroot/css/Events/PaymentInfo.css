@@ -47,6 +47,10 @@ body {
     width: 75%;
 }
 
+.btn:focus{
+    box-shadow:none !important;
+}
+
 h2 {
     font-weight: 500;
     font-size: 24px;
@@ -58,7 +62,9 @@ h3 {
     margin-top: 10px;
     margin-bottom: 10px;
 }
-
+h2,h3{
+    text-align:left;
+}
 p {
     display: inline-block;
     margin-top: 5px;
@@ -422,7 +428,9 @@ p.step_text {
     .submit_group {
         padding-top: 20px;
     }
-
+    h2, h3 {
+        text-align: center;
+    }
     /* -------progress bar--------- */
     .progress_container {
         margin: 0;
@@ -613,4 +621,5 @@ p.step_text {
         .seat_info_group td:last-child {
             border-bottom: none;
         }
+       
 }

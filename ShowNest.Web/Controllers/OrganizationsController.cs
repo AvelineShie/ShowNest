@@ -12,6 +12,10 @@ namespace ShowNest.Web.Controllers
         {
             return View();
         }
+        public IActionResult newOrg()
+        {
+            return View();
+        }
 
     }
 }

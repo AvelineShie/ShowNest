@@ -1,19 +1,8 @@
-﻿:root {
-    --light-green: #82b99b;
-    --main-green: #3b7555;
-    --dark-green: #1d5545;
-    --light-gray: #ddd;
-    --dark-gray: #888;
-    --main-font-size: 15px;
-    --common-border: 1px #ddd solid;
-    --dark-border: 1px #999EA2 solid;
-    --common-border-radius: 5px;
-}
-
+﻿
 body {
-    font-family: sans-serif;
-    font-size: var(--main-font-size);
-    background-color: #fafafa;
+    display: flex;
+    flex-direction: column;
+    height: 100vh
 }
 
 
@@ -52,17 +41,21 @@ ul.nav li.active a {
     width: 100%;
     max-width: 1200px;
     margin: auto;
+    flex-grow: 1;
+    display: flex;
+    align-items: start;
+    justify-content: center;
+    margin-top: 20px;
 }
 
 .main-wrap {
     width: 75%;
     margin: auto;
-    margin-top: 20px;
 }
 
 .title {
     display: block;
-    line-height: 2;
+    line-height: 1.5;
     align-items: center;
 }
 
@@ -72,6 +65,7 @@ ul.nav li.active a {
 
 h2 {
     font-size: 30px;
+    text-align: left;
 }
 
 .form_contaner {
@@ -173,7 +167,7 @@ div.border {
         max-width: 960px;
     }
 
-    .title {
+    .title{
         text-align: center;
     }
 
