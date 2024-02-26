@@ -1,19 +1,6 @@
-﻿:root {
-    --light-green: #82b99b;
-    --main-green: #3b7555;
-    --dark-green: #1d5545;
-    --light-gray: #ddd;
-    --dark-gray: #888;
-    --main-font-size: 15px;
-    --common-border: 1px #ddd solid;
-    --dark-border: 1px #999EA2 solid;
-    --common-border-radius: 5px;
-}
-
+﻿
 body {
-    font-family: sans-serif;
-    font-size: var(--main-font-size);
-    background-color: #fafafa;
+
 }
 
 
@@ -33,7 +20,7 @@ body {
     width: 75%;
     margin: auto;
     margin-top: 20px;
-    line-height: 1.5em;
+    line-height: 1.5;
 }
 
 .count_down_group {
@@ -55,12 +42,10 @@ body {
 
 h2 {
     font-weight: 500;
-    font-size: 24px;
     margin-bottom: 20px;
 }
 
 h3 {
-    font-size: 18px;
     margin-top: 10px;
     margin-bottom: 10px;
 }
@@ -71,7 +56,6 @@ p {
     margin-bottom: 10px;
     line-height: 1;
     color: #888;
-    font-size: 15px;
 }
 
 a {
@@ -125,7 +109,7 @@ button.btn_Confirm:hover {
 }
 
 .map_area {
-    padding-top: 50px;
+    padding: 20px 0;
     display: flex;
     justify-content: center;
     vertical-align: middle;
@@ -268,7 +252,6 @@ button.btn_Confirm:hover {
     .display-total-amount .total-amount span {
         display: inline-block;
         vertical-align: middle;
-        font-size: 13px;
         color: #888888;
         font-weight: normal;
         margin: 10px 0;
@@ -276,7 +259,6 @@ button.btn_Confirm:hover {
 
     .display-total-amount .total-amount p {
         display: inline-block;
-        font-size: 26px;
         font-weight: 900;
         margin: 10px 0;
     }
@@ -411,7 +393,6 @@ button.btn_Confirm:hover {
         background-color: transparent;
         margin-left: 0;
         font-weight: bold;
-        font-size: 20px;
     }
 
     .modal-body .ticket-detail {
@@ -425,7 +406,6 @@ button.btn_Confirm:hover {
         .modal-footer .total-amount span {
             display: inline-block;
             vertical-align: middle;
-            font-size: 13px;
             color: #888888;
             font-weight: normal;
             margin: 10px 0;
@@ -433,7 +413,6 @@ button.btn_Confirm:hover {
 
         .modal-footer .total-amount p {
             display: inline-block;
-            font-size: 26px;
             font-weight: 900;
             margin: 10px 0;
         }

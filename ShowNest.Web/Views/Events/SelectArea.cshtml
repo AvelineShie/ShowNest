@@ -2,55 +2,55 @@
     For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
 *@
 @section topCSS {
-    <link href="~/css/share/reset.css" rel="stylesheet" />
+    
     <link href="~/css/events/selectarea.css" rel="stylesheet" />
 }
 
-<body>
-    <section class="section_wrap">
-        <div class="seat_area_header">
-            <div class="action-bar main_wrap">
-                <div class="action-bar-left d-flex">
-                    <div class="btn-cancel">
+<div class="seat_area_header">
+    <div class="action-bar main_wrap">
+        <div class="action-bar-left d-flex">
+            <div class="btn-cancel">
 
-                        <a href="#"><i class="fa-solid fa-xmark"></i>取消購票</a>
-                    </div>
-                    <div class="btn-user-guide">
-                        <!-- Button trigger modal -->
-                        <a href="#" data-bs-toggle="modal" data-bs-target="#exampleModal">操作說明</a>
-                    </div>
+                <a href="#"><i class="fa-solid fa-xmark"></i>取消購票</a>
+            </div>
+            <div class="btn-user-guide">
+                <!-- Button trigger modal -->
+                <a href="#" data-bs-toggle="modal" data-bs-target="#exampleModal">操作說明</a>
+            </div>
+        </div>
+        <div class="count-down-timer">
+            您還有 10:00 可以選擇座位
+        </div>
+        <div class="btn-confirm">
+            <a href="SelectSeats">確認座位</a>
+        </div>
+    </div>
+    <div class="seat-areas-and-showcases wrap d-flex">
+        <div class="confirm-wrap" style="display: none">
+            <div class="display-total-amount">
+                <div class="total-amount">
+                    <span>總金額</span>
+                    <p>TWD$3,800</p>
                 </div>
-                <div class="count-down-timer">
-                    您還有 10:00 可以選擇座位
-                </div>
-                <div class="btn-confirm">
-                    <a href="SelectSeats">確認座位</a>
+                <div class="seats-selection-complete">
+                    <a href="">完成選位</a>
                 </div>
             </div>
-            <div class="seat-areas-and-showcases wrap d-flex">
-                <div class="confirm-wrap" style="display: none">
-                    <div class="display-total-amount">
-                        <div class="total-amount">
-                            <span>總金額</span>
-                            <p>TWD$3,800</p>
-                        </div>
-                        <div class="seats-selection-complete">
-                            <a href="">完成選位</a>
-                        </div>
-                    </div>
-                    <div class="selected-tickets">
-                        選購的票券
-                    </div>
-                    <div class="ticket-detail">
-                        <div class="price">TWD$3,800</div>
-                        <div class="ticket-with-seat-detail">
-                            <div class="seat-location">紫 2D 區 3 排 14 號</div>
-                            <div class="ticket-type">全票</div>
-                        </div>
-                    </div>
+            <div class="selected-tickets">
+                選購的票券
+            </div>
+            <div class="ticket-detail">
+                <div class="price">TWD$3,800</div>
+                <div class="ticket-with-seat-detail">
+                    <div class="seat-location">紫 2D 區 3 排 14 號</div>
+                    <div class="ticket-type">全票</div>
                 </div>
             </div>
         </div>
+    </div>
+</div>
+    <section class="section_wrap">
+       
         <div class="info_modal_group">
             <div class="info_modal modal fade" id="info_modal" tabindex="-1">
                 <div class="modal-dialog">
@@ -140,6 +140,3 @@
 
 
     </section>
-
-
-</body>

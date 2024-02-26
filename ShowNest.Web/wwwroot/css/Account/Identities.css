@@ -41,7 +41,7 @@ ul.nav li.active a {
     width: 100%;
     max-width: 1200px;
     margin: auto;
-    flex-grow: 1;
+    /*flex-grow: 1;*/
     display: flex;
     align-items: start;
     justify-content: center;
@@ -56,7 +56,7 @@ ul.nav li.active a {
 .title {
     display: block;
     line-height: 1.5;
-    align-items: center;
+    vertical-align: middle;
 }
 
 .btn {
@@ -64,7 +64,6 @@ ul.nav li.active a {
 }
 
 h2 {
-    font-size: 30px;
     text-align: left;
 }
 
@@ -109,7 +108,6 @@ label {
     display: inline-block;
     padding-top: 18px;
     margin-right: 20px;
-    font-size: 15px;
     font-weight: bold;
     text-align: right;
     color: #333333;
@@ -141,7 +139,6 @@ p {
     margin-bottom: 10px;
     line-height: 1.5;
     color: var(--dark-gray);
-    font-size: 15px;
 }
 
 div.border {
@@ -157,7 +154,7 @@ div.border {
 
 .div-wrap {
     display: grid;
-    grid-template-columns: 5.8fr 3fr;
+    grid-template-columns: 5.3fr 3fr;
 }
 
 
@@ -167,7 +164,7 @@ div.border {
         max-width: 960px;
     }
 
-    .title{
+    .title h2 {
         text-align: center;
     }
 

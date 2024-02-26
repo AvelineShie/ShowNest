@@ -35,12 +35,13 @@ ul.nav li.active a {
     width: 100%;
     max-width: 1200px;
     margin: auto;
+    padding-top: 20px;
 }
 
 .main-wrap {
     width: 75%;
     margin: auto;
-    margin-top: 20px;
+  
 }
 
 .main-form {
@@ -49,14 +50,14 @@ ul.nav li.active a {
 }
 
 .title {
-    display: inline-block;
-    line-height: 2;
-    align-items: center;
+    display: block;
+    line-height: 1.5;
     vertical-align: middle;
 }
 
-h1 {
-    font-size: 30px;
+h2 {
+
+    font-weight:bold;
 }
 
 .form-content {
@@ -79,7 +80,6 @@ label {
     display: inline-block;
     padding: 10px 0px;
     margin-right: 20px;
-    font-size: 14px;
     font-weight: bold;
 }
 
@@ -93,7 +93,6 @@ p {
     margin-bottom: 10px;
     line-height: 1.5;
     color: var(--dark-gray);
-    font-size: 14px;
 }
 
 .caption {
@@ -108,7 +107,7 @@ input {
 
 
 ul {
-    direction: none;
+    text-decoration:none;
 }
 
 .phone-num {
@@ -272,6 +271,9 @@ div.border {
     .form_contaner {
         display: flex;
         flex-direction: column;
+    }
+    .title{
+        text-align: center;
     }
 
     .main-wrap {

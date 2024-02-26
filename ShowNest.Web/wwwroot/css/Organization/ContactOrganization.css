@@ -54,9 +54,6 @@ ul.nav li.active a {
     vertical-align: middle;
 }
 
-h2 {
-    font-size: 30px;
-}
 
 .form-content {
     margin-bottom: 10px;
@@ -86,7 +83,6 @@ label {
     display: inline-block;
     padding: 10px 0px;
     margin-right: 20px;
-    font-size: 14px;
     font-weight: bold;
     text-align: right;
 }
@@ -98,7 +94,6 @@ p {
     margin-bottom: 10px;
     line-height: 1.5;
     color: var(--dark-gray);
-    font-size: 14px;
 }
 
 /* border */
@@ -121,7 +116,7 @@ div.border {
 
 .button_wrap {
     display: grid;
-    grid-template-columns: 6.8fr 2fr;
+    grid-template-columns: 7.8fr 2fr;
 }
 
 .btn-primary {
