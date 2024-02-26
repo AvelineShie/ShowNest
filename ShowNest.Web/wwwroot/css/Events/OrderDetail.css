@@ -80,6 +80,9 @@ p {
 .order_detail {
     background-color: white;
 }
+    .order_number{
+        line-height:1.5;
+    }
 
     .order_detail tbody + tbody,
     .order_detail tfoot tr,
@@ -103,7 +106,7 @@ td.price_total,
 }
 
 .seat {
-    padding-left: 82px;
+    padding-left: 74px;
 }
 
 td.price_count span {
@@ -681,11 +684,14 @@ hr {
 }
 
 @media screen and (max-width:768px) {
+    .main_wrap {
+        width: 90%
+    }
     td.price_total {
         display: flex;
         flex-direction: column;
         text-align: left;
-        padding-left: 12px;
+        /* padding-left: 12px; */ padding-left: 110px;
     }
 
     .order_canceled {
@@ -715,4 +721,5 @@ hr {
     .cart-ticket-list-subtable td {
         display: inline;
     }
+   
 }
