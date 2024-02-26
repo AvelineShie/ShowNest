@@ -1,19 +1,7 @@
-﻿:root {
-    --light-green: #82b99b;
-    --main-green: #3b7555;
-    --dark-green: #1d5545;
-    --light-gray: #ddd;
-    --dark-gray: #888;
-    --main-font-size: 15px;
-    --common-border: 1px #ddd solid;
-    --dark-border: 1px #999EA2 solid;
-    --common-border-radius: 5px;
-}
+﻿
 
 body {
-    font-family: sans-serif;
-    font-size: var(--main-font-size);
-    background-color: #f1f1f18b;
+  
 }
 
 
@@ -174,7 +162,11 @@ th {
         content: "▿";
         left: -5px;
     }
-
+    .event_detail_collapse:focus,
+    .btn:focus,
+    .btn:active:focus {
+        box-shadow: none;
+    }
 
 .pickup_caption a,
 .collapse a,
