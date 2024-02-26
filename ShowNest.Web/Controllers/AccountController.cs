@@ -36,5 +36,9 @@ namespace ShowNest.Web.Controllers
         {
             return View();
         }
+        public IActionResult MyTicketList()
+        {
+            return View();
+        }
     }
 }
