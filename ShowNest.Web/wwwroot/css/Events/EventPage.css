@@ -32,6 +32,8 @@ body {
 }
 
     .event-info i {
+        /* padding: auto ; */
+        /* height: 0.5em; */
         display: inline-flex;
         align-items: center;
     }
@@ -49,7 +51,10 @@ p .fa {
 }
 
 
+/* .container {
+    padding: 20px;
 
+} */
 
 img {
     width: 100%;
@@ -184,6 +189,9 @@ tbody td {
 }
 
 
+    
+
+
 
 @media (min-width:768px) {
     /* 共用 */
@@ -202,8 +210,8 @@ tbody td {
         display: none;
     }
 
-    .event-info .mobi-hide {
-        display: block;
+    .mobi-hide, .mobi-hide i, .mobi-hide a {
+        display: flex;
     }
 
     .organizers {
@@ -211,14 +219,14 @@ tbody td {
         padding: 20px 30px;
     }
 
-    .organizers a {
-        color: #64C06B;
-        text-decoration: none;
-    }       
+        .organizers a {
+            color: #64C06B;
+            text-decoration: none;
+        }
 
-    .organizers a:hover {
-        color: #2c8b34;
-    }
+            .organizers a:hover {
+                color: #2c8b34;
+            }
 
     /* 地圖 */
 
@@ -258,6 +266,9 @@ tbody td {
     .tickets-wrapper th {
         padding: 10px;
     }
+
+
+
 }
 
 @media (min-width:1000px) {
