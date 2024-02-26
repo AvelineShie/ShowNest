@@ -106,9 +106,10 @@ h3::after{
 
 /* MOBILE */
 @media (max-width:768px) {
-    .width {
+    .wrap {
         width: 90%;
         margin: 0px auto;
+        margin-bottom: 20px;
     }
 }
 
@@ -116,18 +117,18 @@ h3::after{
 @media (min-width:769px) {
 
     @media (min-width:769px) and (max-width:1200px) {
-        .width {
+        .wrap {
             width: 90%;
         }
     }
 
     @media (min-width:1201px) {
-        .width {
+        .wrap {
             width: 75%;
         }
     }
 
-    .width {
+    .wrap {
         max-width: 1200px;
         margin: 0px auto;
     }
