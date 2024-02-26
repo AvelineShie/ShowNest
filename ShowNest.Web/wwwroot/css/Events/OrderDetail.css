@@ -26,13 +26,11 @@ body {
 
 h2 {
     font-weight: 500;
-    font-size: 24px;
     margin-bottom: 10px;
 }
 
 h1,
 h3 {
-    font-size: 18px;
     margin-top: 10px;
     margin-bottom: 10px;
 }
@@ -43,7 +41,6 @@ p {
     margin-bottom: 10px;
     line-height: 1;
     color: var(--dark-gray);
-    font-size: 15px;
 }
 
 .title {
@@ -328,7 +325,6 @@ hr {
 }
 
 .contact_info_group label {
-    font-size: 15px;
     font-weight: bold;
 }
 

@@ -58,9 +58,7 @@ ul.nav li.active a {
     line-height: 2;
 }
 
-h2 {
-    font-size: 30px;
-}
+
 
 #reclaim_orders {
     display: flex;
@@ -86,7 +84,6 @@ label {
     display: inline-block;
     padding: 10px 0px;
     margin-right: 20px;
-    font-size: 15px;
     font-weight: bold;
     text-align: right;
 }
@@ -97,7 +94,6 @@ p {
     margin-bottom: 10px;
     line-height: 1.5;
     color: var(--dark-gray);
-    font-size: 15px;
 }
 
 input {

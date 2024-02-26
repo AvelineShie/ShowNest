@@ -35,12 +35,11 @@ body {
 
 h2 {
     font-weight: 500;
-    font-size: 24px;
     margin-bottom: 20px;
 }
 
 h3 {
-    font-size: 18px;
+    font-size: 20px;
     margin-top: 10px;
     margin-bottom: 10px;
 }
@@ -51,7 +50,6 @@ p {
     margin-bottom: 10px;
     line-height: 1;
     color: var(--dark-gray);
-    font-size: 15px;
 }
 
 label {
