@@ -1,6 +1,7 @@
 ﻿/* 共用 */
 body {
     font-family: sans-serif;
+    
 }
 
 .wrapper {
@@ -26,7 +27,10 @@ li {
     font-weight: bold;
     padding: 10px;
 }
-
+.btn-dark {
+    background-color: var(--main-green);
+    border: var(--main-green); 
+}
 /* main-content */
 .main-content a {
     color: #000;
@@ -58,7 +62,10 @@ li {
         padding: 5px 10px;
         line-height: 1.5em;
     }
-
+    /*行事曆*/
+#calendar {
+    
+}
 /* container-head近期公開活動 */
 .container-head {
     display: flex;
