@@ -33,13 +33,13 @@
 
 /* 正式版面 */
 .wrap{
-    width: calc(100% - 200px);
+    width:75%;
     display: flex;
     flex-direction: column;
     margin: 0 auto;
 }
 
-.container{
+.container {
     color: #333333;
     flex-direction: column;
     margin-bottom: 90px;
@@ -112,4 +112,11 @@ td.color-label{
     background-color: var(--main-color-hover);
     border-color: #fff;
     color: #fff;
+}
+
+@media screen and (max-width: 768px) {
+
+    .wrap {
+        width: 90%;
+    }
 }

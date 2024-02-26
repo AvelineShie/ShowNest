@@ -136,6 +136,7 @@ button.btn_Confirm:hover {
 /* action bar*/
 .seat_area_header {
     padding: 10px 20px;
+    border-radius:8px;
     position: sticky;
     top: 0px;
     height: 60px;

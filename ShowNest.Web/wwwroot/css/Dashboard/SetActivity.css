@@ -36,6 +36,11 @@
     flex-direction: column;
     margin: 0 auto;
     margin-bottom: 90px;
+    width:75%;
+}
+
+#tabs{
+    margin:auto;
 }
 
 .container {
@@ -44,6 +49,7 @@
     display: flex;
     flex-direction: row;
     justify-content: space-between;
+
 }
 
 /* 左半邊 */
@@ -58,6 +64,7 @@
     border-radius: 4px;
     font-size: 15px;
     line-height: 20px;
+    
 }
 
 .breadcrumb a{

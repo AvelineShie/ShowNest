@@ -71,7 +71,6 @@ nav p {
     color: #fff;
     padding: 12px 35px;
     font-weight: bold;
-    /* text-align: center; */
 }
 
 /* 未發佈按鈕置中 */
@@ -111,16 +110,6 @@ nav .fa-location-dot {
     flex: 1;
 }
 
-/* ----------header start--------- */
-header, .date-Place, .tickets-sales-status, .sales-method-statistics, .amount-statistics, .subscriber-data {
-    margin: 26px;
-}
-
-.header-h1 {
-    display: flex;
-    align-items: center;
-}
-
 .activitiesName {
     margin-right: 14px;
     margin-left: 14px;
@@ -146,10 +135,15 @@ header, .date-Place, .tickets-sales-status, .sales-method-statistics, .amount-st
     text-decoration: none;
     margin-left: 19px;
 }
-/* ----------header end---------- */
 
-/* ----------.subheader start------ */
-.subheader {
+h1.header-h1{
+    display: flex;
+    padding: 10px 0px;
+    line-height: 1.5;
+}
+    /*----------header end---------- */
+    /* ----------.subheader start------ */
+    .subheader {
     display: flex;
     justify-content: space-between;
     min-height: 20px;
@@ -388,3 +382,11 @@ footer a {
 }
 
 /* end ----- footer ----- */
+
+
+@media screen and (max-width: 768px) {
+
+    .wrap {
+        width: 90%;
+    }
+}
