@@ -54,7 +54,7 @@
     }
 
     #event-places a {
-        margin: 20px 20px;
+        margin: 40px 30px;
     }
 
     /* end ----- MOBILE-event-place ----- */
@@ -105,6 +105,10 @@
         }
 
         /* end ----- DESKTOP-769-cards ----- */
+
+        #event-places a {
+            margin: 0px 30px;
+        }
     }
 
     @media (min-width:1201px) {
@@ -117,6 +121,10 @@
         }
 
         /* end ----- DESKTOP-1200-cards ----- */
+
+        #event-places a {
+            margin: 0px 60px;
+        }
     }
 
     /* start ----- DESKTOP-categories ----- */
@@ -155,10 +163,6 @@
 
     #event-places {
         grid-template-columns: 1fr 1fr 1fr 1fr;
-    }
-
-    #event-places a {
-        margin: 0px 20px;
     }
 
     /* end ----- DESKTOP-event-place ----- */
@@ -234,7 +238,8 @@
 #categories i {
     font-size: 60px;
     color: var(--light-green);
-    padding-bottom: 15px;
+    padding-bottom: 20px;
+    transition: .25s ease;
 }
 
 #categories a {
@@ -247,6 +252,11 @@
     flex-grow: 1;
     padding: 15px 0px 10px;
     height: 100%;
+}
+
+#categories a:hover i{
+    color:var(--main-green);
+    transition: .25s ease;
 }
 
 #categories a:first-of-type,
@@ -274,6 +284,10 @@
 /* end ----- annoucement ----- */
 
 /* start ----- cards ----- */
+
+h2,h3{
+    text-align: center;
+}
 
 .cards-wrap {
     margin-top: 40px;
@@ -467,13 +481,26 @@ h3 {
 
 #event-place-section h3 {
     color: #999;
-    padding-bottom: 30px;
+    padding-bottom: 50px;
 }
 
 #event-places img {
     width: 100%;
     aspect-ratio: 1/1;
-    object-fit: cover;
+    object-fit: contain;
+    padding-bottom: 20px;
+}
+
+#event-places a{
+    text-align: center;
+    color: #fff;
+    opacity: .6;
+    transition: .25s ease;
+}
+
+#event-places a:hover{
+    opacity: 1;
+    transition: .25s ease;
 }
 
 /* end ----- event place ----- */
