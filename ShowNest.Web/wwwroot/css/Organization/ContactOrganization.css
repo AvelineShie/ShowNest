@@ -121,7 +121,7 @@ div.border {
 
 .button_wrap {
     display: grid;
-    grid-template-columns: 6.8fr 2fr;
+    grid-template-columns: 7.8fr 2fr;
 }
 
 .btn-primary {
