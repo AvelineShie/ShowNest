@@ -7,8 +7,8 @@
     --common-border: 1px #ddd solid;
 }
 
-#header-nav-logo-and-menu-button-wrap {
-    
+#header-nav-wrap {
+    height:46px;
 }
 
 .wrap {
@@ -325,6 +325,10 @@ table > tbody > tr > td, table > tfoot > tr > td {
         margin-bottom: 20px;
         margin: 0;
     }
+
+    #header-nav-wrap {
+        height: 90px;
+    }
 }
 
 /* DESKTOP */
@@ -344,6 +348,10 @@ table > tbody > tr > td, table > tfoot > tr > td {
             padding: 14px 6px;
         }
 
+        #header-nav-wrap {
+            height: 90px;
+        }
+
     }
 
     @media (min-width:1201px) {
@@ -354,7 +362,6 @@ table > tbody > tr > td, table > tfoot > tr > td {
 
     .wrap {
         max-width: 1200px;
-        /*margin: 0px auto;*/
     }
 
 
