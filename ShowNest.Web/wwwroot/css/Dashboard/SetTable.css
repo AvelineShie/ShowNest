@@ -52,18 +52,18 @@
     line-height: 20px;
 }
 
-    .breadcrumb a {
-        display: inline-block;
-        padding: 0;
-        color: #333333;
-        margin-left: 10px;
-    }
+.breadcrumb a {
+    display: inline-block;
+    padding: 0;
+    color: #333333;
+    margin-left: 10px;
+}
 
 a {
     text-decoration: none;
 }
 
-#set-table > a {
+#set-table{
     color: var(--main-color-hover);
 }
 
@@ -175,4 +175,63 @@ td > span {
 
 .pages-change{
     margin-top: 20px;
+    
+}
+
+#send{
+    margin-left: 8px;
+}
+
+/* MOBILE */
+@media (max-width:768px) {
+    body{
+        width:1000px;
+    }
+
+    .wrap {
+        width: 90%;
+        margin: 0px auto;
+        margin-bottom: 20px;
+    }
+
+}
+
+/* DESKTOP */
+@media (min-width:769px) {
+
+    @media (min-width:769px) and (max-width:1200px) {
+        body {
+            max-width: 1200px;
+        }
+
+        .wrap {
+            width: 90%;
+            margin-bottom: 20px;
+        }
+
+        #header-functions a {
+            padding: 14px 6px;
+        }
+
+        .input-group > .form-control {
+            width: 180px;
+            line-height: 15px;
+        }
+    }
+
+    @media (min-width:1201px) {
+        .wrap {
+            width: 80%;
+        }
+    }
+
+    .wrap {
+        max-width: 1200px;
+        margin: 0px auto;
+    }
+
+    .input-group > .form-control {
+        width: 180px;
+        line-height: 15px;
+    }
 }

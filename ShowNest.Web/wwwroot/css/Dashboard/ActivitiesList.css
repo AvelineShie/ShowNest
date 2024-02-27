@@ -7,19 +7,19 @@
     --common-border: 1px #ddd solid;
 }
 
-@media screen and (max-width: 768px) {
-    /* side menu start */
-    .sideBarMenu {
-        position: relative;
-    }
-
-    .main-content {
-        margin-left: -200px;
-    }
+body {
+    position: relative;
 }
 
+#header-nav-wrap {
+    height:46px;
+}
 
-/* RWD end */
+.wrap {
+    margin: 0;
+    width: 100%;
+    
+}
 
 .container {
     display: flex;
@@ -58,6 +58,7 @@ nav a {
 
     nav a:hover {
         background-color: #1d5545;
+        color:#fff;
     }
 
     nav a > i {
@@ -80,9 +81,9 @@ nav p {
     text-align: center;
 }
 
-.sideBarMenu a {
+/*.sideBarMenu a {
     padding-left: 20px;
-}
+}*/
 
 nav .fa-cart-arrow-down {
     margin-right: 16.75px;
@@ -108,6 +109,7 @@ nav .fa-location-dot {
     position: relative;
     color: #333333;
     margin-bottom: 80px;
+    margin-left: 20px;
     width: calc(100% - 200px);
     flex: 1;
 }
@@ -315,80 +317,61 @@ table > tbody > tr > td, table > tfoot > tr > td {
 
 /* ----- sales lists end ----- */
 
-/* start ----- desktop footer ----- */
-
-
-/* end ----- desktop footer ----- */
-
-/* 共用: start ----- footer ----- */
-#footer-section {
-    background-color: #323530;
-    padding: 50px 0px;
+#footer{
+    position: absolute;
+    width:100%;
 }
 
-
-footer,
-footer a {
-    color: #999;
-}
-
-
-    footer p {
-        font-size: 16px;
-        font-weight: 600;
+/* MOBILE */
+@media (max-width:768px) {
+    body {
+        width: 1000px;
     }
-
-
-    footer a {
-        font-size: 14px;
-    }
-
-
-.footer-icon-li span {
-    margin-left: 3px;
-}
-
-
-.footer-icon-a {
-    display: inline-block;
-    margin-top: 10px;
-}
-
-
-    .footer-icon-a + .footer-icon-a {
-        margin-left: 5px;
-    }
-
-
-#footer-links i {
-    color: #eee;
-    font-size: 18px;
-}
-
-#footer-links {
-    display: flex;
-}
-
-    #footer-links ul {
-        flex: 1;
-    }
-
-#footer-end a {
-    margin-left: 8px;
-}
-
-
-.footer-lang-active {
-    border-bottom: 1px var(--main-color) solid;
-    padding-bottom: 2px;
-}
-
-/* end ----- footer ----- */
-
-
-@media screen and (max-width: 768px) {
 
     .wrap {
-        width: 90%;
+        width: 95%;
+        margin: 0px auto;
+        margin-bottom: 20px;
+        margin: 0;
     }
+
+    #header-nav-wrap {
+        height: 90px;
+    }
+}
+
+/* DESKTOP */
+@media (min-width:769px) {
+
+    @media (min-width:769px) and (max-width:1200px) {
+        body {
+            max-width: 1200px;
+        }
+
+        .wrap {
+            width: 90%;
+            margin-bottom: 20px;
+        }
+
+        #header-functions a {
+            padding: 14px 6px;
+        }
+
+        #header-nav-wrap {
+            height: 90px;
+        }
+
+    }
+
+    @media (min-width:1201px) {
+        .wrap {
+            width: 100%;
+        }
+    }
+
+    .wrap {
+        max-width: 1200px;
+    }
+
+
 }
