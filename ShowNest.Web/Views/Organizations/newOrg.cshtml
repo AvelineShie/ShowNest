@@ -1,0 +1,182 @@
+﻿
+@section topCSS{
+    <link href="~/css/organization/newOrg.css" rel="stylesheet" />
+}
+
+<body>
+
+    <!-- NAV -->
+    <section class="wrap">
+
+
+
+        <!-- main Form-->
+
+        <form id="organize_edit" action="" class="width">
+            <header class="header">
+                <!-- 頂端說明 -->
+                <h1>
+                    <span class="name">組織名稱</span>
+                    <span class="top-title"></span>
+                </h1>
+                <hr>
+            </header>
+            <div class="main-form">
+
+                <div class="content-wrapper">
+                    <div class="form_contaner">
+                        <!-- 組織名稱 -->
+                        <div class="input_group">
+                            <label for="" class="form-label"><abbr title="required">*</abbr>組織名稱</label>
+                            <div class="input_text form-content input-group-sm">
+                                <input class="form-control col-12" id="" type="text" name="organizeName" placeholder="">
+                            </div>
+                        </div>
+                        <!-- 網址 -->
+                        <div class="input_group">
+                            <label>
+                                <abbr title="required">*</abbr>
+                                網址
+                            </label>
+                            <div class="website_input_group">
+                                <div class="input-group mb-1 input-group-sm ">
+                                    <input type="text" class="form-control" id="website" aria-label="Website Url"
+                                           aria-describedby="website">
+                                    <div class="input-group-text" id="website">shownest.cc</div>
+                                </div>
+                                <span class="form_text_underline" id="">3 到 16 個小寫英文或數字。</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- 網站 -->
+                    <div class="input_group">
+                        <label for="" class="form-label">網站</label>
+                        <div class="input_text form-content input-group-sm">
+                            <input class="form-control col-12" id="" type="text" name="netAddress" placeholder="">
+                        </div>
+                    </div>
+                    <!-- 描述 -->
+                    <div class="input_group">
+                        <label for="" class="form-label">描述</label>
+                        <div class="input_text form-content input-group-sm">
+                            <textarea class="form-control col-12" id="" type="text" rows="9" name="describe"
+                                      placeholder=""></textarea>
+                        </div>
+                    </div>
+                    <!-- Facebook 粉絲團網址 -->
+                    <div class="input_group">
+                        <label for="" class="form-label">Facebook 粉絲團網址</label>
+                        <div class="input_text form-content input-group-sm">
+                            <input class="form-control col-12" id="" type="text" name="FBNetAddress" placeholder="">
+                        </div>
+                    </div>
+
+                    <!-- Twitter 帳號 -->
+                    <div class="input_group">
+                        <label for="" class="form-label">Twitter 帳號</label>
+                        <div class="input_text form-content input-group-sm">
+                            <input class="form-control col-12" id="" type="text" name="twitterNetAddress"
+                                   placeholder="">
+                        </div>
+                    </div>
+                    <!-- Flickr 相簿網址 -->
+                    <div class="input_group">
+                        <label for="" class="form-label">Flickr 相簿網址</label>
+                        <div class="input_text form-content input-group-sm">
+                            <input class="form-control col-12" id="" type="text" name="flickrNetAddress" placeholder="">
+                        </div>
+                    </div>
+
+                    <!-- 回覆 E-mail 地址 -->
+                    <div class="input_group">
+                        <label for="" class="form-label">回覆 E-mail 地址</label>
+                        <div class="input_text form-content input-group-sm">
+                            <input class="form-control col-12" id="" type="text" name="netAddress" placeholder="">
+                        </div>
+                    </div>
+
+                    <!-- 隱私權政策 -->
+                    <div class="input_group">
+                        <label for="" class="form-label">隱私權政策</label>
+                        <div class="input-group mb-1 input-group-sm">
+                            <input type="text" class="form-control col-12 mb-1" id="">
+                        </div>
+                        <span class="form_text_underline mb-2" id="">設定後，所有活動將此採取此網址作為預設隱私權政策</span>
+                    </div>
+
+                    <!-- 顯示/隱藏 「聯絡主辦單位」 -->
+                    <div class="input_group contact_org_radio">
+                        <label><abbr title="required">*</abbr>顯示/隱藏 「聯絡主辦單位」</label>
+                        <div class="form-content input-group-sm">
+                            <label>
+                                <input type="radio" id="organizeShowContact" name="organizeShowContact" value="true"
+                                       checked> 顯示
+                            </label>
+                            <label>
+                                <input type="radio" id="organizeShowContact" name="organizeShowContact" value="false">
+                                隱藏
+                            </label>
+                        </div>
+                    </div>
+
+                    <!-- 閱讀條款、政策 -->
+                    <div class="input_text form-content input-group-sm"></div>
+                    <input type="checkbox" name="agree_terms" id="agree_consent_check" value="agree_consent_check">
+                    <label class="agree_check" for="agree_consent_check">我已經閱讀並同意</label>
+                    <a href="/org_terms.html" target="_blank">主辦單位服務條款</a>
+                    與
+                    <a href="/policy.html" target="_blank">隱私權政策</a>
+                </div>
+                <div class="main-form-r">
+
+                    <!-- 右邊起始點  -->
+                    <!-- 社群分享圖片 -->
+                    <div class="image-upload">
+                        <label for="" class="form-label">社群分享圖片</label>
+                        <div class="img-container mb-1">
+                            <img src="https://picsum.photos/200/150/?random=10">
+                        </div>
+                        <a class="file-input ">
+                            <input class="file-upload form-control form-control-sm" type="file" id="form-control-sm">
+                        </a>
+                    </div>
+
+                    <h2 class="lined">進階設定</h2>
+                    <!-- ↑修正完畢 ↓修正中 -->
+                    <div class="input_group">
+                        <div class="input_text form-content input-group-sm">
+                            <label class="typein mb-1">預設時區</label>
+                            <div class="controls">
+                                <select class="form-select" aria-label="Default select example">
+                                    <option value="Asia/Hong_Kong">(GMT+08:00) Asia/Hong_Kong</option>
+                                    <option selected="selected" value="Asia/Taipei">(GMT+08:00) Asia/Taipei</option>
+                                    <option value="Asia/Tokyo">(GMT+09:00) Asia/Tokyo</option>
+                                    <option value="Asia/Seoul">(GMT+09:00) Asia/Seoul</option>
+                                    <!-- 其他時區待補-->
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="input_group_undertext">
+                        <div class="input_text form-content input-group-sm">
+                            <label for="basic-url" class="form-label">Google Analytics 4 評估 ID</label>
+                            <input type="text" class="form-control mb-1" placeholder="請輸入網址" name="googleAnalytics4">
+                            <div class="form_text_underline" id="">
+                                系統會在您的組織/活動頁面安插 GA4 ID（評估 ID 格式為 G-XXXXXXXXXX）
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            </div>
+            <div class="button-submit">
+                <button class="btn btn-success" type="button" type="submit">送出</button>
+            </div>
+        </form>
+    </section>
+
+
+</body>
+
+

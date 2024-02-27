@@ -1,0 +1,105 @@
+﻿@*
+For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+
+@section topCSS {
+    <link href="~/css/account/identities.css" rel="stylesheet" />
+}
+
+
+
+    <section class="section_wrap">
+        <div id="" class="main-wrap ">
+
+            <!-- Insert Navigation -->
+            <!--  Account Navigation -->
+            <ul class="nav nav-tabs mt-3 mb-3">
+                <li class="nav-item">
+                    <a class="nav-link" aria-current="page" href="UserEdit">帳號設定</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="Prefills">報名預填資料</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="ChangePassword">修改密碼</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link active" href="#">身份認證</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="Orders">個人帳務清單</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="JoinedOrganizations">成為粉絲的組織</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="ReclaimOrders">訂單歸戶</a>
+                </li>
+            </ul>
+            <!-- Account Navigation End-->
+
+            <!----------- Title------------>
+            <div class="title">
+                <h2 id="title">身分認證</h2>
+            </div>
+
+            <!----------- Form------------>
+            <form id="identities" action="">
+                <div class="main-form">
+                    <div class="content-wrapper">
+                        <div class="form_contaner">
+                            <!-- ----------------------目前密碼----------------  -->
+                            <label for="collapse">身心障礙者身份認證 <br> (僅供台灣使用)</label>
+                            <div class="collapse-group">
+                                <p class="d-inline-flex gap-1">
+                                    <button class="ident-collapse btn" type="button" data-bs-toggle="collapse"
+                                        data-bs-target="#collapse-example" aria-expanded="false"
+                                        aria-controls="collapse-example" style="box-shadow:none;">
+                                        進行認證
+                                        <p>使用身心障礙者身份進行購票，請於購票前一日完成身份認證，入場時出示身心障礙證明，需與陪同者同時入場</p>
+                                    </button>
+                                </p>
+                                <div class="collapse" id="collapse-example">
+                                    <div class="id-contaner">
+                                        <label for="">身份證字號</label>
+                                        <div class="form-content input-group-sm">
+                                            <input class="form-control" id="id-number" type="text" name="id-number"
+                                                placeholder="請輸入身心障礙者身分證字號">
+                                            <div class="disabled-people-check mt-2">
+                                                <ul>
+                                                    <li>
+                                                        <div class="checkbox-group">
+                                                            <input class="disabled-check" id="wheelchair-seat"
+                                                                type="checkbox" name="wheelchair-seat"
+                                                                value="wheelchair-seat"><label
+                                                                for="wheelchair-seat">需購買輪椅席</label>
+                                                        </div>
+                                                    </li>
+                                                    <li>
+                                                        <div class="checkbox-group">
+                                                            <input class="disabled-check" id="consent" type="checkbox"
+                                                                name="consent" value="consent">
+                                                            <label for="consent">我瞭解並同意
+                                                                ShowNest利用本人之個人資料向主管機關進行線上身心障礙者身份認證</label>
+                                                        </div>
+                                                    </li>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+            </form>
+            <!-- ---------------界線-------------- -->
+            <div class="border"></div>
+            <!-- ---------------儲存個人資料按鈕-------------- -->
+            <div class="div-wrap">
+                <div class="btn-save">
+                    <button type="button" class="btn"
+                        style="background-color:var(--main-green);color: white;border:none;">認證
+                    </button>
+                </div>
+            </div>
+        </div>
+    </section>
