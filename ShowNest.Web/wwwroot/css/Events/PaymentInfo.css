@@ -403,7 +403,9 @@ p.step_text {
         width: 60%;
     }
     /* -------save button--------- */
-
+    .btn_submit.btn {
+        border: 5px solid var(--light-gray);
+    }
 
     a#btn_submit {
         width: 100%;
