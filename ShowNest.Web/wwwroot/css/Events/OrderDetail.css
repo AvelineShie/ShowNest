@@ -28,9 +28,12 @@ h2 {
     font-weight: 500;
     margin-bottom: 10px;
 }
+.ticket_wrap h2 {
+    font-size: 20px;
+    font-weight:bold;
+}
 
-h1,
-h3 {
+h3{
     margin-top: 10px;
     margin-bottom: 10px;
 }
@@ -398,7 +401,7 @@ hr {
 
 .ticket_wrap {
     width: 150px;
-    padding-top: 20px;
+    margin:auto 0;
 }
 
 .ticket-info {
@@ -548,7 +551,7 @@ hr {
     }
 
     .ticket_wrap {
-        padding-top: 40px;
+        padding-top: 10px;
     }
 
     /* -------------final Order details---------------- */
