@@ -62,16 +62,16 @@ https://cdn.jsdelivr.net/npm/fullcalendar@6.1.11/index.global.min.js
                     <ul class="org-event-list" id="eventList">
                         <!-- 第一個活動 -->
                         <li>
-                        <h2><a asp-controller="EventsController" asp-action="EventPage">黑客松週二夜</a></h2>
+                        <h2><a asp-controller="Events" asp-action="EventPage">黑客松週二夜</a></h2>
                             <div class="date">
                                 <i class="fa fa-calendar"></i>
                                 <span class="timezoneSuffix">2022/08/23 20:50(+0800)</span>
                             </div>
-                            <a href="EventPage" class="img-wrapper">
+                        <a asp-controller="Events" asp-action="EventPage" class="img-wrapper">
                                 <img src="https://picsum.photos/300/200/?random=8">
                                 <div class="img-btn">立即購票</div>
 
-                            </a>
+                            </>
                             <div class="description">
                             【黑客松週二夜】 每週二晚上在BS Plus和Ken and Kylie一起看首播、現場爆料幕後秘辛、不定期的神秘嘉賓演出及現場抽獎。 歡迎大家來玩👌
                                 ——————————————— ➤ 時間：週二晚上（19:30入場、20:00開始）#每月第一週休息一次 ➤ 地點：C
