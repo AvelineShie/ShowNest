@@ -399,6 +399,9 @@ a.btn_save {
     .btn_save {
         width: 100%;
     }
+    .btn_submit.btn {
+        border: 5px solid var(--light-gray);
+    }
 
     a#btn_save {
         width: 100%;
