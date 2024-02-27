@@ -92,11 +92,12 @@ p .fa {
 /* 活動內文 */
 .main {
     padding: 10px 10px;
-    line-height: 1.5em;
+    line-height: 2.2em;
 }
 
 .description {
     margin: 10px 20px;
+    
 }
 
     .description p {
@@ -277,18 +278,19 @@ tbody td {
 
 
 
-   
 
-@media (min-width:1000px) {
-    /* 地圖 */
-    .btn-wrapper {
-        width: 750px;
-        height: 350px;
-        margin-left: 0px;
-    }
 
-    .map-wrapper .address {
-        display: flex;
-        margin: 20px;
+    @media (min-width:1000px) {
+        /* 地圖 */
+        .btn-wrapper {
+            width: 750px;
+            height: 350px;
+            margin-left: 0px;
+        }
+
+        .map-wrapper .address {
+            display: flex;
+            margin: 20px;
+        }
     }
 }

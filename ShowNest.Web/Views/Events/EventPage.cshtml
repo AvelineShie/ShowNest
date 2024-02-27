@@ -78,7 +78,7 @@
         </div>
         <!-- --手機板 下一步--- -->
         <div class="attend-btn-wrapper d-grid gap-2 p-4 pc-hide">
-            <a href="SelectTicketTypes" class="btn btn-success "
+            <a asp-controller="Events" asp-action="SelectTicketTypes" class="btn btn-success "
                type="button">下一步</a>
         </div>
         <!-- 活動main 開始-->
@@ -115,7 +115,7 @@
 
                 <p>
                     您的ShowNest會員需完成"電子郵件地址及手機號碼驗證"才能進行購票流程，請至
-                    <a href="UserEdit" target="_blank">
+                    <a asp-controller="Account" asp-action="UserEdit" target="_blank">
                         ShowNest帳號設定
                     </a>確認是否您的電子郵件及手機號碼已經認證完畢。提醒您請勿使用Yahoo、Hotmail信箱註冊及驗證，以避免驗證信未能寄達。
                 </p>
@@ -124,9 +124,9 @@
                     <li>
                         本節目網站購票僅接受已完成手機號碼及電子郵件地址驗證之會員購買，購票前請先"<a href="#" target="_blank">加入會員</a>
                         "並盡早完成"
-                        <a href="UserEdit" target="_blank">手機號碼及電子郵件地址</a>
+                        <a asp-controller="Account" asp-action="UserEdit" target="_blank">手機號碼及電子郵件地址</a>
                         "驗證，以便進行購票流程，建議可於會員"設定"中的"
-                        <a href="Prefills" target="_blank">報名預填資料</a>"先行存檔「姓名」和「手機」，可減少購票時間快速進行下一步。
+                        <a asp-controller="Account" asp-action="Prefills" target="_blank">報名預填資料</a>"先行存檔「姓名」和「手機」，可減少購票時間快速進行下一步。
                     </li>
                     <li>為了確保您的權益，強烈建議您，在註冊會員或是結帳時填寫的聯絡人電子郵件，盡量不要使用Yahoo或Hotmail郵件信箱，以免因為擋信、漏信，甚至被視為垃圾郵件而無法收到『訂單成立通知信』。</li>
                     <li>
@@ -297,7 +297,7 @@
             </table>
 
             <div class="attend-btn-wrapper d-grid gap-2 p-4">
-                <a href="SelectTicketTypes" class="btn btn-success"
+                <a asp-controller="Events" asp-action="SelectTicketTypes" class="btn btn-success"
                    type="button">下一步</a>
             </div>
         </div>
