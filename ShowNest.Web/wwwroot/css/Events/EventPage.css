@@ -97,6 +97,7 @@ p .fa {
 
 .description {
     margin: 10px 20px;
+    line-height:2em;
 }
 
     .description p {
@@ -277,18 +278,19 @@ tbody td {
 
 
 
-   
 
-@media (min-width:1000px) {
-    /* 地圖 */
-    .btn-wrapper {
-        width: 750px;
-        height: 350px;
-        margin-left: 0px;
-    }
 
-    .map-wrapper .address {
-        display: flex;
-        margin: 20px;
+    @media (min-width:1000px) {
+        /* 地圖 */
+        .btn-wrapper {
+            width: 750px;
+            height: 350px;
+            margin-left: 0px;
+        }
+
+        .map-wrapper .address {
+            display: flex;
+            margin: 20px;
+        }
     }
 }
