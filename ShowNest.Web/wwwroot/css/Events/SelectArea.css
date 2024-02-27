@@ -113,7 +113,7 @@ button.btn_Confirm:hover {
     display: flex;
     justify-content: center;
     vertical-align: middle;
-    overflow-x: hidden;
+    overflow-x: auto;
 }
 
 
