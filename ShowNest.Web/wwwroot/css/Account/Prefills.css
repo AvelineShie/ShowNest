@@ -53,12 +53,8 @@ ul.nav li.active a {
     text-align: left ;
 }
 
-h2 {
-    font-size: 30px;
-}
 
 h3 {
-    font-size: 24px;
     display: block;
 }
 
@@ -99,7 +95,6 @@ label {
     display: inline-block;
     padding: 10px 0px;
     margin-right: 20px;
-    font-size: 14px;
     font-weight: bold;
     text-align: right;
 }
@@ -110,7 +105,6 @@ p {
     margin-bottom: 10px;
     line-height: 1.5;
     color: var(--dark-gray);
-    font-size: 14px;
 }
 
 .caption {
@@ -150,7 +144,7 @@ div.border {
 
 .div-wrap {
     display: grid;
-    grid-template-columns: 2.7fr 5fr;
+    grid-template-columns: 3.1fr 5fr;
 }
 
 .link {

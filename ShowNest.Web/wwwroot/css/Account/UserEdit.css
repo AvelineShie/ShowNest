@@ -55,8 +55,8 @@ ul.nav li.active a {
     vertical-align: middle;
 }
 
-h1 {
-    font-size: 30px;
+h2 {
+
     font-weight:bold;
 }
 
@@ -80,7 +80,6 @@ label {
     display: inline-block;
     padding: 10px 0px;
     margin-right: 20px;
-    font-size: 14px;
     font-weight: bold;
 }
 
@@ -94,7 +93,6 @@ p {
     margin-bottom: 10px;
     line-height: 1.5;
     color: var(--dark-gray);
-    font-size: 14px;
 }
 
 .caption {

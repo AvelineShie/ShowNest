@@ -26,13 +26,11 @@ body {
 
 h2 {
     font-weight: 500;
-    font-size: 24px;
     margin-bottom: 10px;
 }
 
 h1,
 h3 {
-    font-size: 18px;
     margin-top: 10px;
     margin-bottom: 10px;
 }
@@ -43,7 +41,6 @@ p {
     margin-bottom: 10px;
     line-height: 1;
     color: var(--dark-gray);
-    font-size: 15px;
 }
 
 .title {
@@ -83,6 +80,9 @@ p {
 .order_detail {
     background-color: white;
 }
+    .order_number{
+        line-height:1.5;
+    }
 
     .order_detail tbody + tbody,
     .order_detail tfoot tr,
@@ -106,7 +106,7 @@ td.price_total,
 }
 
 .seat {
-    padding-left: 82px;
+    padding-left: 74px;
 }
 
 td.price_count span {
@@ -328,7 +328,6 @@ hr {
 }
 
 .contact_info_group label {
-    font-size: 15px;
     font-weight: bold;
 }
 
@@ -685,11 +684,14 @@ hr {
 }
 
 @media screen and (max-width:768px) {
+    .main_wrap {
+        width: 90%
+    }
     td.price_total {
         display: flex;
         flex-direction: column;
         text-align: left;
-        padding-left: 12px;
+        /* padding-left: 12px; */ padding-left: 110px;
     }
 
     .order_canceled {
@@ -719,4 +721,5 @@ hr {
     .cart-ticket-list-subtable td {
         display: inline;
     }
+   
 }

@@ -94,13 +94,13 @@ td>button{
     color: var(--main-color);
 }
 
-.delete{
-    color:#b1564a;
+.delete {
+    color: #b1564a;
+    margin-left: 5px;
 }
 
 .table-log{
     margin-bottom: 30px;
-    
 }
 
 td.color-label{
@@ -114,9 +114,50 @@ td.color-label{
     color: #fff;
 }
 
-@media screen and (max-width: 768px) {
+.btn-outline-secondary {
+    margin-right: 10px;
+}
+
+/* MOBILE */
+@media (max-width:768px) {
+    body{
+        width:1200px;
+    }
 
     .wrap {
-        width: 90%;
+        margin: 0px auto;
     }
+
+
 }
+
+/* DESKTOP */
+@media (min-width:769px) {
+
+    @media (min-width:769px) and (max-width:1200px) {
+
+        body {
+            max-width: 1200px;
+        }
+
+        #header-functions a {
+            padding: 14px 8px;
+        }
+
+        @media (min-width:1201px) {
+            .wrap {
+            width: 75%;
+        }
+    }
+
+    body {
+        width: 1200px;
+    }
+
+    .wrap {
+        margin: 0px auto;
+    }
+
+    #header-functions a {
+        padding: 14px 15px;
+    }
