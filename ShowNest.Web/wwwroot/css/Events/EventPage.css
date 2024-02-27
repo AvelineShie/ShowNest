@@ -80,7 +80,7 @@ p .fa {
     box-shadow: 0 0 20px 0 #000;
 }
 
-.attend-btn-wrapper .btn-success {
+#pc-btn-success {
     text-decoration: none;
     color: #fff;
 }
@@ -275,8 +275,7 @@ tbody td {
     .tickets-wrapper th {
         padding: 10px;
     }
-
-
+    
 
 
 

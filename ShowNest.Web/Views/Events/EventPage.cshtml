@@ -77,8 +77,8 @@
             <!-- 活動header頁 結束-->
         </div>
         <!-- --手機板 下一步--- -->
-        <div class="attend-btn-wrapper d-grid gap-2 p-4 pc-hide">
-            <a asp-controller="Events" asp-action="SelectTicketTypes" class="btn btn-success "
+        <div id="pc-btn-success" class="p-3 d-flex justify-content-center pc-hide">
+            <a asp-controller="Events" asp-action="SelectTicketTypes" class="btn btn-success w-50"
                type="button">下一步</a>
         </div>
         <!-- 活動main 開始-->
@@ -296,8 +296,8 @@
                 </tbody>
             </table>
 
-            <div class="attend-btn-wrapper d-grid gap-2 p-4">
-                <a asp-controller="Events" asp-action="SelectTicketTypes" class="btn btn-success"
+            <div id="pc-btn-success" class="p-3 d-flex justify-content-center">
+                <a asp-controller="Events" asp-action="SelectTicketTypes" class="btn btn-success w-50"
                    type="button">下一步</a>
             </div>
         </div>
