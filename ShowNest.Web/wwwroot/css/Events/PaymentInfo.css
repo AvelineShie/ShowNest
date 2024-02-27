@@ -70,12 +70,12 @@ label {
     color: var(--main-green);
 }
 
-    .event_detail_collapse.btn::after {
+    .event_detail_collapse.btn.collapsed::after {
         content: "▵";
         left: -5px;
     }
 
-    .event_detail_collapse.btn.collapsed::after {
+    .event_detail_collapse.btn::after {
         content: "▿";
         left: -5px;
     }

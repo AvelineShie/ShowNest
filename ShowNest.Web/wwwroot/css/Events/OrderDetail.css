@@ -106,7 +106,7 @@ td.price_total,
 }
 
 .seat {
-    padding-left: 74px;
+    padding-left: 66px;
 }
 
 td.price_count span {
@@ -153,12 +153,12 @@ th {
     color: var(--main-green);
 }
 
-    .event_detail_collapse.btn::after {
+    .event_detail_collapse.btn.collapsed::after {
         content: "▵";
         left: -5px;
     }
 
-    .event_detail_collapse.btn.collapsed::after {
+    .event_detail_collapse.btn::after {
         content: "▿";
         left: -5px;
     }
