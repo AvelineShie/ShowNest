@@ -106,14 +106,14 @@ li {
     font-size: 15px;
 }
 
-    .org-event-list a {
-        text-decoration: none;
-        color: #000;
-    }
+.org-event-list a {
+ text-decoration: none;
+ color: #000;
+ }
 
-        .org-event-list a:hover {
-            color: #504f4ffd;
-        }
+.org-event-list a:hover {
+  color: #504f4ffd;
+ }
 
     .org-event-list .date {
         color: #aaa;
