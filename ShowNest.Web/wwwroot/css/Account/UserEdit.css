@@ -38,12 +38,6 @@ ul.nav li.active a {
     padding-top: 20px;
 }
 
-.main-wrap {
-    width: 75%;
-    margin: auto;
-  
-}
-
 .main-form {
     display: flex;
     gap: 40px;
@@ -63,6 +57,9 @@ h2 {
 .form-content {
     margin-bottom: 10px;
 }
+.checkbox-group{
+    padding-top:10px;
+}
 
 .form_contaner {
     display: grid;
@@ -76,7 +73,7 @@ h2 {
     flex-direction: row;
 }
 
-label {
+#UserEdit label {
     display: inline-block;
     padding: 10px 0px;
     margin-right: 20px;
@@ -289,7 +286,7 @@ div.border {
         min-width: 100%;
     }
 
-    label {
+    #UserEdit label {
         min-width: 90px;
     }
 

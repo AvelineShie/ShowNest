@@ -48,11 +48,6 @@ ul.nav li.active a {
     margin-top: 20px;
 }
 
-.main-wrap {
-    width: 75%;
-    margin: auto;
-}
-
 .title {
     display: block;
     line-height: 1.5;
@@ -104,15 +99,16 @@ h2 {
         cursor: pointer;
     }
 
-label {
+.label_name,
+.checkbox-group label{
     display: inline-block;
-    padding-top: 18px;
+    padding-top: 14px;
     margin-right: 20px;
     font-weight: bold;
     text-align: right;
     color: #333333;
     min-width: 80px;
-    line-height:1.5;
+    line-height: 1.5;
 }
 
 .collapse-group button {
@@ -123,12 +119,12 @@ label {
         color: var(--function-color-hover);
     }
 
-.ident-collapse.btn.collapsed::before {
+.ident-collapse.btn::before {
     content: "▿";
     left: -5px;
 }
 
-.ident-collapse.btn::before {
+.ident-collapse.btn.collapsed::before {
     content: "▵";
     left: -5px;
 }
@@ -160,9 +156,6 @@ div.border {
 
 
 @media screen and (max-width:768px) {
-    .wrap {
-        max-width: 960px;
-    }
 
     .title h2 {
         text-align: center;
@@ -179,11 +172,11 @@ div.border {
         text-align: left;
     }
 
-    .form_contaner input {
+    .id-contaner {
         width: 100%;
     }
 
-    label {
+    .label_name {
         min-width: 75px;
         text-align: center;
     }

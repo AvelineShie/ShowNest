@@ -47,11 +47,6 @@ ul.nav li.active a {
     margin-top: 20px;
 }
 
-.main-wrap {
-    width: 75%;
-    margin: auto;
- 
-}
 
 .title {
     display: block;
@@ -80,7 +75,7 @@ ul.nav li.active a {
     flex-direction: row;
 }
 
-label {
+#ReclaimOrders label {
     display: inline-block;
     padding: 10px 0px;
     margin-right: 20px;
@@ -119,8 +114,7 @@ div.border {
 }
 
 .caption {
-    padding-top: 17px;
-    width: 30%;
+    width: 40%;
     min-width: 180px;
 }
 
@@ -132,9 +126,6 @@ div.border {
 }
 
 @media screen and (max-width:768px) {
-    .wrap {
-        max-width: 960px;
-    }
 
     .title {
         text-align: center;
@@ -157,7 +148,7 @@ div.border {
         padding-bottom: 10px;
     }
 
-    label {
+    #ReclaimOrders label {
         min-width: 98px;
         display: flex;
         text-align: left;

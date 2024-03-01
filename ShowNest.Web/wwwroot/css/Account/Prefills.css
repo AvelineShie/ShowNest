@@ -39,23 +39,17 @@ ul.nav li.active a {
     padding-top: 20px;
 }
 
-.main-wrap {
-    width: 75%;
-    margin: auto;
-}
 
 .title {
     display: block;
     line-height: 2;
     align-items: center;
 }
-#title {
-    text-align: left ;
-}
 
 
 h3 {
     display: block;
+    padding:10px 0;
 }
 
 #account_prefills {
@@ -91,7 +85,7 @@ h3 {
     flex-direction: row;
 }
 
-label {
+#account_prefills label {
     display: inline-block;
     padding: 10px 0px;
     margin-right: 20px;
@@ -216,16 +210,21 @@ div.border {
         border-radius: 3px;
         text-align: center;
     }
-    #title {
-        text-align: center;
-    }
 }
 
 @media screen and (max-width:768px) {
-    #title {
+    #account_prefills{
+        gap:10px;
+    }
+    .content-wrapper:first-child{
+        padding-top:0px;
+    }
+    .title h2 {
         text-align: center;
     }
-
+    .main-form{
+        width:100%
+    }
     .form_contaner {
         display: flex;
         flex-direction: column;
@@ -238,7 +237,7 @@ div.border {
         padding-bottom: 10px;
     }
 
-    label {
+    #account_prefills label {
         min-width: 98px;
         display: flex;
         text-align: left;
