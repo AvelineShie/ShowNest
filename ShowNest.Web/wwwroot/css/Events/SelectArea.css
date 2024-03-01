@@ -1,6 +1,6 @@
 ﻿
 body {
-
+    position:relative;
 }
 
 
@@ -17,8 +17,6 @@ body {
 }
 
 .main_wrap {
-    width: 75%;
-    margin: auto;
     margin-top: 20px;
     line-height: 1.5;
 }
@@ -438,8 +436,13 @@ button.btn_Confirm:hover {
 }
 /* MOBILE */
 @media (max-width:768px) {
-    .width {
-        width: 90%;
-        margin: 0px auto;
+    .map_area img{
+        min-width:660px;
     }
 }
+@media (max-width:280px) {
+    .map_area img {
+        min-width: 495px;
+    }
+}
+

@@ -78,6 +78,7 @@ h2 {
     padding: 10px 0px;
     margin-right: 20px;
     font-weight: bold;
+    text-align:right;
 }
 
 .form-control {
@@ -132,7 +133,6 @@ select#sex {
 }
 
 .option-group {
-    padding: 10px;
     display: flex;
     flex-wrap: wrap;
     flex-direction: column;
@@ -189,7 +189,10 @@ li input {
     margin-top: -2px;
     margin-bottom: 15px;
 }
-
+.media_link,
+.media_link_group {
+    padding-top: 10px;
+}
 .name {
     font-size: 15px;
     color: #333333;
