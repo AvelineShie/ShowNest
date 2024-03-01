@@ -6,12 +6,11 @@
 .warp {
     padding: 60px 5px 60px 5px;
     width: 100%;
+    font-size: var(--main-font-size);
+    font-family: sans-serif;
 }
 
-.content-wrapper {
-    width: 100%;
-    font-family:sans-serif;
-}
+
 
 img {
     vertical-align: middle;
@@ -21,7 +20,7 @@ img {
 
 h1 {
     font-size: 28px;
-    font-weight: 200;
+    font-weight: 700;
 }
 
 h2 {
@@ -97,7 +96,6 @@ p .fa {
 
 .description {
     margin: 10px 20px;
-    
 }
 
     .description p {
@@ -132,6 +130,8 @@ p .fa {
 .tags-item {
     list-style: none;
     display: flex;
+    margin: 20px 30px;
+    padding-left: 10px;
 }
 
     .tags-item a {
@@ -222,11 +222,17 @@ tbody td {
     .organizers {
         background-color: #aaaaaa5e;
         padding: 20px 30px;
+        align-items: center;
     }
+
+        .organizers i {
+            padding: 10px;
+        }
 
         .organizers a {
             color: #64C06B;
             text-decoration: none;
+            padding: 10px;
         }
 
             .organizers a:hover {
@@ -241,6 +247,9 @@ tbody td {
         margin: auto;
     }
 
+    .map-wrapper .address {
+        margin: 20px;
+    }
 
 
 
@@ -275,7 +284,7 @@ tbody td {
     .tickets-wrapper th {
         padding: 10px;
     }
-    
+
 
 
 

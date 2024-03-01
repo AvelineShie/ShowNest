@@ -1,7 +1,6 @@
 ﻿/* 共用 */
 body {
     font-family: sans-serif;
-    
 }
 
 .wrapper {
@@ -12,6 +11,7 @@ body {
 li {
     list-style-type: none;
 }
+
 .org-avatar,
 .org-title {
     text-align: center
@@ -27,9 +27,10 @@ li {
     font-weight: bold;
     padding: 10px;
 }
+
 .btn-dark {
     background-color: var(--main-green);
-    border: var(--main-green); 
+    border: var(--main-green);
 }
 /* main-content */
 .main-content a {
@@ -41,30 +42,30 @@ li {
     color: #787575;
 }
 
-.info-org i {
-    padding: 10px;
+.info-org-webfb {
+    width: 180px;
 }
 
-.side-block .info-org a:hover {
+    .info-org-webfb i {
+        padding: 10px;
+    }
+
+.side-block .info-org-webfb a:hover {
     color: #787575;
 }
 
 /* description-block */
-.description-block {
-    margin-top: 40px;
-    margin-bottom: 40px;
-}
 
-    .description-block p {
-        font-size: 20px;
-        color: rgb(78, 86, 101);
-        font-family: helvetica, arial, sans-serif;
-        padding: 5px 10px;
-        line-height: 1.5em;
-    }
-    /*行事曆*/
+
+.description-block p {
+    font-size: 20px;
+    color: rgb(78, 86, 101);
+    font-family: helvetica, arial, sans-serif;
+    padding: 5px 10px;
+    line-height: 1.5em;
+}
+/*行事曆*/
 #calendar {
-    
 }
 /* container-head近期公開活動 */
 .container-head {
@@ -80,6 +81,10 @@ li {
         width: 100%;
     }
 
+    .container-head i {
+        margin-left: 10px;
+    }
+
 .fa-rss-square {
     color: #E3780F;
 }
@@ -89,6 +94,7 @@ li {
     width: 220px;
     padding: 5px;
     align-items: center;
+    justify-content: end;
 }
 
     .switch-block .fa-calendar {
@@ -106,14 +112,14 @@ li {
     font-size: 15px;
 }
 
-.org-event-list a {
- text-decoration: none;
- color: #000;
- }
+    .org-event-list a {
+        text-decoration: none;
+        color: #000;
+    }
 
-.org-event-list a:hover {
-  color: #504f4ffd;
- }
+        .org-event-list a:hover {
+            color: #504f4ffd;
+        }
 
     .org-event-list .date {
         color: #aaa;
@@ -264,7 +270,7 @@ li {
     .org-event-list .img-wrapper {
         grid-row-start: 1;
         grid-row-end: 5;
-        margin: 5px 20px 20px 20px;
+        margin-right: 15px;
         overflow: hidden;
     }
 
