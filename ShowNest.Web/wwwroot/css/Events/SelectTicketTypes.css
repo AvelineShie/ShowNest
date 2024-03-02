@@ -3,7 +3,6 @@ h2 {
 }
 
 .wrap {
-    width: 75%;
     max-width: 1200px;
     margin: 0 auto;
 }
@@ -17,7 +16,6 @@ h2 {
 .event-img {
     max-width: 1200px;
     margin: auto;
-    padding: 10px;
 }
 
 .event-img img {
@@ -333,43 +331,7 @@ input[type=button] {
     vertical-align: middle;
 }
 
-@media (min-width:769px) {
-
-    @media (min-width:769px) and (max-width:1200px) {
-        .wrap {
-            width: 90%;
-        }
-
-        .event-img {
-            width: 90%;
-        }
-    }
-
-    @media (min-width:1201px) {
-        .wrap {
-            width: 75%;
-        }
-
-        .event-img {
-            width: 75%;
-        }
-    }
-
-    .wrap {
-        max-width: 1200px;
-        margin: 0px auto;
-    }
-}
-
 @media only screen and (max-width:768px) {
-    .wrap {
-        width: 100%;
-        margin: 0 10px;
-    }
-
-    .event-img img {
-        max-width: 100%;
-    }
 
     /* start -------progress bar--------- */
     .progress_container {
@@ -445,7 +407,7 @@ input[type=button] {
     .ticket-data-row {
         flex-direction: column;
         flex-wrap: wrap;
-        height: 12em;
+        height: 13em;
         margin: auto 5px;
         align-items: normal;
         justify-content: center;
@@ -471,10 +433,10 @@ input[type=button] {
     }
 
     .amount {
-        width: 33%;
+        width: 35%;
         line-height: 3em;
         height: 3em;
-        margin-right: 5px;
+        padding-right: 5px;
         text-align: right;
     }
 
@@ -498,5 +460,28 @@ input[type=button] {
     .btn-next-step a {
         display: inline-block;
         width: 90%;
+    }
+}
+
+@media (min-width: 280px) and (max-width: 450px) {
+    .ticket-data-row {
+        flex-wrap: nowrap;
+        height: 15em;
+    }
+
+    .area {
+        padding: 5px 0px;
+        height: 5em;
+    }
+
+    .area span {
+        width: 100%;
+    }
+
+    .area,
+    .amount,
+    .select-type,
+    .ticket-price {
+        width: 100%;
     }
 }
