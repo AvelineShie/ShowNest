@@ -40,7 +40,7 @@ namespace ShowNest.Web.Controllers
             return View();
         }
 
-        public IActionResult SelectTicketTypes()
+        public IActionResult TicketTypeSelection()
         {
             return View();
         }

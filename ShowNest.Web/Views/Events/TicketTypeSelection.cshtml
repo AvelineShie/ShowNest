@@ -1,9 +1,9 @@
 @{
-    ViewData["Title"] = "SelectTicketTypes";
+    ViewData["Title"] = "TicketTypeSelection";
 }
 
 @section topCSS {
-    <link href="~/css/Events/SelectTicketTypes.css" rel="stylesheet" />
+    <link href="~/css/Events/TicketTypeSelection.css" rel="stylesheet" />
 }
 
 <div class="event-img-bgc">
@@ -43,24 +43,7 @@
         </table>
     </div>
     <div class="progress_container">
-        <div class="step_progress_bar" id="step_progress_bar">
-            <span class="step progressing">
-                <span class="number ">1</span>
-                <p class="step_text">選擇票種</p>
-            </span>
-            <span class="step">
-                <span class="number ">2</span>
-                <p class="step_text">劃位</p>
-            </span>
-            <span class="step">
-                <span class="number">3</span>
-                <p class="step_text">填寫表單</p>
-            </span>
-            <span class="step">
-                <span class="number">4</span>
-                <p class="step_text">取票繳費</p>
-            </span>
-        </div>
+        <partial name="_PurchaseStepsPartial" />
     </div>
     <div class="seats-areas-chart"><img src="https://picsum.photos/1200/1200/?random=10"></div>
     <div class="ticket-price-table">
@@ -68,7 +51,7 @@
             <div class="ticket-type">
                 <p>票種</p>
             </div>
-            <div class="seats-select-type">
+                        <div class="seats-select-type">
                 <p>座位</p>
             </div>
             <div class="the-price">
