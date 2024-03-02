@@ -91,6 +91,7 @@ h3 {
     margin-right: 20px;
     font-weight: bold;
     text-align: right;
+    min-width:112px;
 }
 
 p {
@@ -138,7 +139,7 @@ div.border {
 
 .div-wrap {
     display: grid;
-    grid-template-columns: 3.1fr 5fr;
+    grid-template-columns: 3.6fr 5fr;
 }
 
 .link {
