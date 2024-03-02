@@ -109,6 +109,7 @@ button.btn_Confirm:hover {
 .map_area {
     padding: 20px 0;
     display: flex;
+    justify-content:center;
     vertical-align: middle;
     overflow-x: auto;
 }
@@ -432,4 +433,10 @@ button.btn_Confirm:hover {
     .main_wrap {
         width: 100%;
     }
+}
+@media screen and (max-width: 768px){
+    .map_area {
+        justify-content: normal;
+    }
+
 }
