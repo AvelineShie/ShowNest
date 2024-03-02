@@ -109,7 +109,6 @@ button.btn_Confirm:hover {
 .map_area {
     padding: 20px 0;
     display: flex;
-    justify-content: center;
     vertical-align: middle;
     overflow-x: auto;
 }
@@ -434,15 +433,3 @@ button.btn_Confirm:hover {
         width: 100%;
     }
 }
-/* MOBILE */
-@media (max-width:768px) {
-    .map_area img{
-        min-width:660px;
-    }
-}
-@media (max-width:280px) {
-    .map_area img {
-        min-width: 495px;
-    }
-}
-
