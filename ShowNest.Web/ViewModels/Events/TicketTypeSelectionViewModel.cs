@@ -2,7 +2,7 @@ namespace ShowNest.Web.ViewModels.Events;
 
 public class TicketTypeSelectionViewModel
 {
-    public EventDetailsViewModel EventDetails { get; set; }
+    public EventDetailViewModel EventDetail { get; set; }
     public List<PaymentMethodViewModel> PaymentMethods { get; set; }
     public string PaymentMethodsForDisplay
     {

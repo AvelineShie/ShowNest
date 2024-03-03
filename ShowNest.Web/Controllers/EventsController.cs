@@ -43,7 +43,7 @@ namespace ShowNest.Web.Controllers
         {
             var model = new TicketTypeSelectionViewModel()
             {
-                EventDetails = new EventDetailsViewModel()
+                EventDetail = new EventDetailViewModel()
                 {
                     MainImage = "https://picsum.photos/1300/600/?random=10",
                     EventName = "NOT SUPER JUNIOR-L.S.S. THE SHOW : TH3EE GUYS",

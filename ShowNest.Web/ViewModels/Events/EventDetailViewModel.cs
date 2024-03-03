@@ -1,6 +1,6 @@
 ﻿namespace ShowNest.Web.ViewModels.Events
 {
-    public class EventDetailsViewModel
+    public class EventDetailViewModel
     {
         public string MainImage { get; set; }
         public string EventName { get; set; }

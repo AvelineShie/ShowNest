@@ -10,30 +10,30 @@
 }
 
 <div class="event-img-bgc">
-    <div class="event-img width"><img src="@Model.EventDetails.MainImage" alt="Event Main Image"></div>
+    <div class="event-img width"><img src="@Model.EventDetail.MainImage" alt="Event Main Image"></div>
 </div>
 
 <div class="wrap width">
     <div class="event-name">
-        <h2>@Model.EventDetails.EventName</h2>
+        <h2>@Model.EventDetail.EventName</h2>
     </div>
     <div class="event-detail">
         <table>
             <tr>
                 <th>開始時間</th>
-                <td>@Model.EventDetails.StartTime.ToString("yyyy-mm-dd HH:mm (zzz)")<a id="add-to-calendar" href="" alt="">加入行事曆</a></td>
+                <td>@Model.EventDetail.StartTime.ToString("yyyy-mm-dd HH:mm (zzz)")<a id="add-to-calendar" href="" alt="">加入行事曆</a></td>
             </tr>
             <tr>
                 <th>活動地點</th>
-                <td>@Model.EventDetails.EventLocation<a id="view-the-map" href="">檢視地圖</a></td>
+                <td>@Model.EventDetail.EventLocation<a id="view-the-map" href="">檢視地圖</a></td>
             </tr>
             <tr>
                 <th>主辦單位</th>
-                <td>@Model.EventDetails.EventHost</td>
+                <td>@Model.EventDetail.EventHost</td>
             </tr>
             <tr>
                 <th>票劵類型</th>
-                <td>@Model.EventDetails.TicketCollectionChannel</td>
+                <td>@Model.EventDetail.TicketCollectionChannel</td>
             </tr>
             <tr>
                 <th>付款方式</th>
@@ -53,7 +53,7 @@
             new StepStatusViewModel { InProgress = false, IsDisabled = false }
         })
     </div>
-    <div class="seats-areas-chart"><img src="@Model.EventDetails.SeatAreaImage" alt="Event Seat Area Image"></div>
+    <div class="seats-areas-chart"><img src="@Model.EventDetail.SeatAreaImage" alt="Event Seat Area Image"></div>
     <div class="ticket-price-table">
         <div class="ticket-price-title">
             <div class="ticket-type">

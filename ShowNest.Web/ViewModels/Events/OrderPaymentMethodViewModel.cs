@@ -2,7 +2,7 @@
 {
     public class OrderPaymentMethodViewModel
     {
-        public EventDetailsViewModel EventDetails { get; set; }
+        public EventDetailViewModel EventDetail { get; set; }
         public SeatsViewModel Seats { get; set; }
         public TicketsViewModel Tickets { get; set; }
         public PaymentMethodViewModel PaymentMethod { get; set; }
