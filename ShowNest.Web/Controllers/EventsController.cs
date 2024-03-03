@@ -5,7 +5,6 @@ namespace ShowNest.Web.Controllers
 {
     public class EventsController : Controller
     {
-
         /// <summary>
         /// 測試於網址列輸入的參數並查詢資料庫內容
         /// </summary>
@@ -30,7 +29,6 @@ namespace ShowNest.Web.Controllers
         //    return View();
         //}
         //以上測試中--------------------------------------------------------------
-
         public IActionResult Index()
         {
             return View();
@@ -43,10 +41,6 @@ namespace ShowNest.Web.Controllers
 
         public IActionResult TicketTypeSelection()
         {
-            var eventPayment = new PaymentMethodViewModel()
-            {
-                PaymentMethodName = "信用卡"
-            };
             var model = new TicketTypeSelectionViewModel()
             {
                 EventDetails = new EventDetailsViewModel()
@@ -57,14 +51,32 @@ namespace ShowNest.Web.Controllers
                     EventLocation = "亞洲國際博覽館 10號展館 / 國際機場亞洲國際博覽館",
                     EventHost = "ShowNest",
                     TicketCollectionChannel = "電子票券",
-                    // PaymentMethodViewModel.PaymentMethodName,
                     SeatAreaImage = "https://picsum.photos/1200/1200/?random=10"
+                },
+                PaymentMethods = new List<PaymentMethodViewModel>
+                {
+                    new PaymentMethodViewModel()
+                    {
+                        PaymentMethodName = "信用卡"
+                    },
+                    new PaymentMethodViewModel()
+                    {
+                        PaymentMethodName = "ATM"
+                    }
+                },
+                TicketPriceTable = new TicketPriceTableViewModel()
+                { 
+                    TicketTypeName =  "全票",
+                    SeatArea = "B1特一, B1特二",
+                    TicketPrice = 3000
                 }
+                
             };
-            
-            
+
+
             return View(model);
         }
+
         public IActionResult SelectArea()
         {
             return View();
@@ -74,14 +86,17 @@ namespace ShowNest.Web.Controllers
         {
             return View();
         }
+
         public IActionResult Registrations()
         {
             return View();
         }
+
         public IActionResult PaymentInfo()
         {
             return View();
         }
+
         public IActionResult OrderDetail()
         {
             return View();

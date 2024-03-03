@@ -37,7 +37,7 @@
             </tr>
             <tr>
                 <th>付款方式</th>
-                <td>@Model.EventDetails.PaymentMethodName</td>
+                <td>@Model.PaymentMethodsForDisplay</td>
             </tr>
             <tr>
                 <th>客戶服務</th>
@@ -68,7 +68,7 @@
         </div>
         <div class="ticket-data-row">
             <div class="area">
-                全票
+                @Model.TicketPriceTable.TicketTypeName
                 <span>B1特一, B1特二</span>
             </div>
             <div class="select-type">自行選位</div>
