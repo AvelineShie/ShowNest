@@ -483,15 +483,6 @@ h3 {
     gap: 10px;
 }
 
-.categories-tag {
-    color: inherit;
-    border: 1px #bbb solid;
-    padding: 4px 6px;
-    margin: 0px 2px;
-    border-radius: var(--common-border-radius);
-    box-shadow: 3px 0px 0px 0px #bbb;
-}
-
 /* end ----- categories-tags ----- */
 
 /* start ----- events-cards ----- */
