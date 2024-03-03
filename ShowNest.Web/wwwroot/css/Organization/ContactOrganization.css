@@ -42,8 +42,8 @@ ul.nav li.active a {
 }
 
 .main-wrap {
-    width: 75%;
-    margin: auto;
+    /*width: 75%;*/
+    /*margin: auto;*/
     margin-top: 20px;
 }
 
@@ -79,7 +79,7 @@ ul.nav li.active a {
     width: 340px;
 }
 
-label {
+.section_wrap label {
     display: inline-block;
     padding: 10px 0px;
     margin-right: 20px;
@@ -165,7 +165,7 @@ div.border {
         padding-bottom: 50px;
     }
 
-    label {
+    .section_wrap label {
         min-width: 98px;
         display: flex;
         text-align: left;
@@ -194,8 +194,8 @@ div.border {
         display: block;
         width: 100%;
         font-size: 1.2rem;
-        position: fixed;
-        bottom: 0%;
+        /*position: fixed;
+        bottom: 0%;*/
         border-radius: 0px;
     }
 
