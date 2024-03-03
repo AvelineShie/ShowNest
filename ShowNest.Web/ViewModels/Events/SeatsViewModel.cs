@@ -1,4 +1,6 @@
-﻿namespace ShowNest.Web.ViewModels.Events
+﻿using System.Runtime.Intrinsics.X86;
+
+namespace ShowNest.Web.ViewModels.Events
 {
     public class SeatsViewModel
     {

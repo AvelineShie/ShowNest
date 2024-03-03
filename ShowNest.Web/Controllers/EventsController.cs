@@ -64,13 +64,48 @@ namespace ShowNest.Web.Controllers
                         PaymentMethodName = "ATM"
                     }
                 },
-                TicketPriceTable = new TicketPriceTableViewModel()
-                { 
-                    TicketTypeName =  "全票",
-                    SeatArea = "B1特一, B1特二",
-                    TicketPrice = 3000
+                TicketPriceRow = new List<TicketPriceViewModel>{
+                    new TicketPriceViewModel()
+                    {
+                        SeatArea = "B1特一, B1特二",
+                        SeatSelectionMethod = "自行選位",
+                        Tickets = new TicketsViewModel()
+                        {
+                            TicketTypeName = "全票",
+                            TicketPrice = 3000
+                        }
+                    },
+                    new TicketPriceViewModel()
+                    {
+                        SeatArea = "紫1D, 紫1B, 黃2C, 紫1A, 紫1C, 紅1A, 紅1B, 紅1C, 紅1D",
+                        SeatSelectionMethod = "自行選位",
+                        Tickets = new TicketsViewModel()
+                        {
+                            TicketTypeName = "全票",
+                            TicketPrice = 2600
+                        }
+                    },
+                    new TicketPriceViewModel()
+                    {
+                        SeatArea = "紫2C, 紅2B, 紫1E, 紅2D, 紅2C, 紫2B, 紫2D, 黃2B, 紅1E, 黃2D",
+                        SeatSelectionMethod = "自行選位",
+                        Tickets = new TicketsViewModel()
+                        {
+                            TicketTypeName = "全票",
+                            TicketPrice = 2400
+                        }
+                    },
+                    new TicketPriceViewModel()
+                    {
+                        SeatArea = "紫2C, 紅2B, 紅2D, 紅2C, 紫2B, 紫2D, 紫2E, 紅2E, 黃2A, 黃2E",
+                        SeatSelectionMethod = "自行選位",
+                        Tickets = new TicketsViewModel()
+                        {
+                            TicketTypeName = "全票",
+                            TicketPrice = 2200
+                        }
+                    }
                 }
-                
             };
 
 
