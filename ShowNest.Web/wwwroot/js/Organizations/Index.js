@@ -24,7 +24,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
 
 //套用FullCalendar
-document.addEventListener('DOMContentLoaded', function () {
+document.addEventListener('click', function () {
     var calendarEl = document.getElementById('calendar');
     var calendar = new FullCalendar.Calendar(calendarEl, {
         initialView: 'dayGridMonth'
