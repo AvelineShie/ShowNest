@@ -1,4 +1,5 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using ShowNest.Web.ViewModels.Events;
 
 namespace ShowNest.Web.Controllers
 {
@@ -40,9 +41,29 @@ namespace ShowNest.Web.Controllers
             return View();
         }
 
-        public IActionResult SelectTicketTypes()
+        public IActionResult TicketTypeSelection()
         {
-            return View();
+            var eventPayment = new PaymentMethodViewModel()
+            {
+                PaymentMethodName = "信用卡"
+            };
+            var model = new TicketTypeSelectionViewModel()
+            {
+                EventDetails = new EventDetailsViewModel()
+                {
+                    MainImage = "https://picsum.photos/1300/600/?random=10",
+                    EventName = "NOT SUPER JUNIOR-L.S.S. THE SHOW : TH3EE GUYS",
+                    StartTime = DateTime.Now,
+                    EventLocation = "亞洲國際博覽館 10號展館 / 國際機場亞洲國際博覽館",
+                    EventHost = "ShowNest",
+                    TicketCollectionChannel = "電子票券",
+                    // PaymentMethodViewModel.PaymentMethodName,
+                    SeatAreaImage = "https://picsum.photos/1200/1200/?random=10"
+                }
+            };
+            
+            
+            return View(model);
         }
         public IActionResult SelectArea()
         {

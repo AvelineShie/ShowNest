@@ -1,6 +1,6 @@
 ﻿
 body {
-
+    position:relative;
 }
 
 
@@ -17,8 +17,6 @@ body {
 }
 
 .main_wrap {
-    width: 75%;
-    margin: auto;
     margin-top: 20px;
     line-height: 1.5;
 }
@@ -111,7 +109,7 @@ button.btn_Confirm:hover {
 .map_area {
     padding: 20px 0;
     display: flex;
-    justify-content: center;
+    justify-content:center;
     vertical-align: middle;
     overflow-x: auto;
 }
@@ -436,10 +434,9 @@ button.btn_Confirm:hover {
         width: 100%;
     }
 }
-/* MOBILE */
-@media (max-width:768px) {
-    .width {
-        width: 90%;
-        margin: 0px auto;
+@media screen and (max-width: 768px){
+    .map_area {
+        justify-content: normal;
     }
+
 }

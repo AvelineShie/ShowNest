@@ -2,14 +2,16 @@
 {
     public class EventDetailsViewModel
     {
-        public string EventName {  get; set; }
-        public DateTime DateTime { get; set; }
-        public string EventId { get; set; }
+        public string MainImage { get; set; }
+        public string EventName { get; set; }
+        public DateTime StartTime { get; set; }
+        public int EventId { get; set; }
         
-        public string Location {  get; set; }
-        public string Organizers {  get; set; }
-        public TicketTypeViewModel TicketType { get; set; }
-        public PaymentMethodViewModel PaymentMethod {  get; set; }
+        public string EventLocation { get; set; }
+        public string EventHost { get; set; }
+        public string TicketCollectionChannel { get; set; }
+        public PaymentMethodViewModel PaymentMethodName { get; set; }
+        public string SeatAreaImage { get; set; } 
         
     }
 }

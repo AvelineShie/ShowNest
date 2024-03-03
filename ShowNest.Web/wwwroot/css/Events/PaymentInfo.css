@@ -11,8 +11,6 @@ body {
 /* main Body */
 
 .main_wrap {
-    width: 75%;
-    margin: auto;
     margin-top: 20px;
     line-height: 1.5em;
 }
@@ -25,7 +23,6 @@ body {
 .count_down_timer {
     background-color: #DB4455;
     color: #fff;
-    height: 2.5em;
     line-height: 2.5em;
     border-radius: 4px;
     margin: auto;
@@ -353,18 +350,18 @@ p.step_text {
 .btn_submit {
     display: flex;
     justify-content: center;
-    padding: 11px 70px;
+    padding: 20px;
 }
 
     .btn_submit i,
     .confirm,
     a {
-        padding-right: 8px;
         letter-spacing: 1px;
     }
 
-        a.btn_submit {
-            min-width: 293px;
+a.btn_submit {
+ min-width: 293px;
+ padding: 10px 70px;
         }
 
 /* -------section_wrap---------- */
@@ -403,17 +400,13 @@ p.step_text {
         width: 60%;
     }
     /* -------save button--------- */
-    .btn_submit.btn {
-        border: 5px solid var(--light-gray);
-    }
+
 
     a#btn_submit {
         width: 100%;
-        display: inline-block;
+        display: block;
         font-size: 1.2rem;
-        position: fixed;
-        bottom: 0%;
-        border-radius: 0px;
+        border-radius: var(--common-border-radius);
     }
 
     .submit_group {

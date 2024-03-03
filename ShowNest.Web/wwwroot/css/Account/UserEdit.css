@@ -73,11 +73,16 @@ h2 {
     flex-direction: row;
 }
 
-#UserEdit label {
+.form_contaner label {
     display: inline-block;
     padding: 10px 0px;
-    margin-right: 20px;
+    margin: 0 20px 0 5px;
     font-weight: bold;
+    text-align: right;
+    min-width: 64px;
+}
+.option-group label{
+    text-align: left;
 }
 
 .form-control {
@@ -132,7 +137,6 @@ select#sex {
 }
 
 .option-group {
-    padding: 10px;
     display: flex;
     flex-wrap: wrap;
     flex-direction: column;
@@ -190,6 +194,9 @@ li input {
     margin-bottom: 15px;
 }
 
+.time_zone{
+    padding-bottom:10px;
+}
 .name {
     font-size: 15px;
     color: #333333;
@@ -269,6 +276,10 @@ div.border {
         display: flex;
         flex-direction: column;
     }
+    .form_contaner label{
+        text-align:left;
+        margin:0px;
+    }
     .title{
         text-align: center;
     }
@@ -304,13 +315,15 @@ div.border {
         border-radius: 5rem;
         margin: 5px;
     }
-
- .nav-tabs .nav-link.active {
-     color: #fff;
-     background-color: var(--main-green);
-     border: 1px solid var(--main-green);
-     border-radius: 5rem;
- }
+    .help-block p{
+        max-width:none;
+    }
+    .nav-tabs .nav-link.active {
+        color: #fff;
+        background-color: var(--main-green);
+        border: 1px solid var(--main-green);
+        border-radius: 5rem;
+    }
 
     .btn-save button {
         display: block;
