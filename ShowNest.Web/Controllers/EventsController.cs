@@ -107,8 +107,6 @@ namespace ShowNest.Web.Controllers
                     }
                 }
             };
-
-
             return View(model);
         }
 

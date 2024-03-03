@@ -19,8 +19,5 @@ public class TicketTypeSelectionViewModel
             new StepStatusViewModel() { InProgress = false, IsDisabled = false },
             new StepStatusViewModel() { InProgress = false, IsDisabled = false }
         };
-        
-        
-        
     }
 }
