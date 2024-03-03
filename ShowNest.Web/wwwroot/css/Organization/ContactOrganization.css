@@ -106,7 +106,7 @@ div.border {
 .submit_group {
     display: flex;
     justify-content: center;
-    padding: 20px 0px;
+    padding: 30px 0px;
 }
 
 .button_submit {
@@ -162,7 +162,7 @@ div.border {
         }
 
     .textarea {
-        padding-bottom: 50px;
+        padding-bottom: 16px;
     }
 
     .section_wrap label {
@@ -173,6 +173,7 @@ div.border {
 
     .button_wrap {
         display: block;
+        padding-bottom:10px;
     }
 
     .submit_group {
@@ -182,8 +183,12 @@ div.border {
     .button_submit,
     .button_back {
         width: 100%;
-        padding: 0px;
+        padding: 5px 0;
     }
+        .button_submit a,
+        .button_back a {
+            border-radius: var( --common-border-radius)
+        }
 
     .border {
         display: none;
