@@ -15,7 +15,7 @@
     text-align: center;
     background-color: rgb(240, 240, 240);
     display: flex;
-    align-items: center;
+    align-items: baseline;
     border-radius: 50px;
     position: relative;
     border: 3px solid rgb(218, 218, 218);
@@ -24,7 +24,7 @@
 p.step_text {
     margin: 10px 0;
     color: var(--main-green);
-    line-height: 2;
+    line-height: 2em;
     width: 150px;
     vertical-align: middle;
     text-align: left;
@@ -33,20 +33,20 @@ p.step_text {
 
 .number {
     margin-left: 10px;
-    border-radius: 100%;
-    line-height: 2;
-    min-width: 30px;
-    border: 1px solid var(--function-color-hover);
+    border-radius: 50%;
+    line-height: 2em;
+    min-height: 2em;
+    min-width: 2em;
+    border: 1px solid var(--light-green);
     background-color: white;
-    color: var(--button-clicked-color);
-    display: inline-block;
-    transition: background-color 500ms;
+    color: var(--dark-green);
+    box-sizing: border-box;
 }
 
 .step.progressing {
     color: var(--main-green);
     background-color: var(--main-green);
-    border: 3px solid var(--button-clicked-color);
+    border: 3px solid var(--dark-green);
 }
 
 .step.progressing p {
@@ -85,6 +85,32 @@ p.step_text {
     display: none;
 }
 
+.step.disabled::after {
+    content: '';
+    position: absolute;
+    height: 6px;
+    width: 67%;
+    background-color: hsla(0, 3%, 71%, 0.5);
+    left: 100%;
+    bottom: 43%;
+    z-index: -1;
+}
+
+.disabled {
+    color: var(--light-green);
+    border: 3px solid hsl(162, 17%, 50%);
+    background-color: hsl(148, 17%, 60%);
+}
+
+.disabled .number {
+    color: var(--light-green);
+}
+
+.disabled p {
+    color: white;
+    font-weight: 400;
+}
+
 @media only screen and (max-width:768px) {
 
     .progress_container {
@@ -94,17 +120,15 @@ p.step_text {
     }
 
     .step_progress_bar {
-        display: flex;
         flex-direction: column;
         justify-content: center;
-        gap: 0px;
+        gap: 0;
     }
 
     .step {
-        color: var(--button-clicked-color);
+        color: var(--dark-green);
         border: none;
-        padding: 10px 0px;
-        border-radius: 0px;
+        border-radius: 0;
     }
 
     .step:first-child {
@@ -116,19 +140,9 @@ p.step_text {
     }
 
     p.step_text {
+        height: 2em;
         margin-top: 15px;
-        line-height: 0;
         text-align: left;
-        padding-left: 8px;
-        font-weight: normal;
-    }
-
-    .number {
-        margin-left: 10px;
-        border-radius: 100%;
-        border: 1px solid var(--button-clicked-color);
-        background-color: white;
-        color: var(--button-clicked-color);
     }
 
     .step.progressing p {
