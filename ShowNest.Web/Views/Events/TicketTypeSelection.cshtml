@@ -1,3 +1,5 @@
+@using ShowNest.Web.ViewModels.Events;
+@model TicketTypeSelectionViewModel;
 @{
     ViewData["Title"] = "TicketTypeSelection";
 }
@@ -8,34 +10,34 @@
 }
 
 <div class="event-img-bgc">
-    <div class="event-img width"><img src="https://picsum.photos/1300/600/?random=10"></div>
+    <div class="event-img width"><img src="@Model.EventDetails.MainImage"></div>
 </div>
 
 <div class="wrap width">
     <div class="event-name">
-        <h2>NOT SUPER JUNIOR-L.S.S. THE SHOW : TH3EE GUYS</h2>
+        <h2>@Model.EventDetails.EventName</h2>
     </div>
     <div class="event-detail">
         <table>
             <tr>
                 <th>開始時間</th>
-                <td>2124/02/17 18:00 (+0800)<a id="add-to-calendar" href="" alt="">加入行事曆</a></td>
+                <td>@Model.EventDetails.StartTime.ToString("yyyy-mm-dd HH:mm (zzz)")<a id="add-to-calendar" href="" alt="">加入行事曆</a></td>
             </tr>
             <tr>
                 <th>活動地點</th>
-                <td>亞洲國際博覽館 10號展館 / 國際機場亞洲國際博覽館 <a id="view-the-map" href="">檢視地圖</a></td>
+                <td>@Model.EventDetails.EventLocation<a id="view-the-map" href="">檢視地圖</a></td>
             </tr>
             <tr>
                 <th>主辦單位</th>
-                <td>SHOWNEST</td>
+                <td>@Model.EventDetails.EventHost</td>
             </tr>
             <tr>
                 <th>票劵類型</th>
-                <td>電子票券</td>
+                <td>@Model.EventDetails.TicketCollectionChannel</td>
             </tr>
             <tr>
                 <th>付款方式</th>
-                <td>信用卡</td>
+                <td>@Model.EventDetails.PaymentMethodName</td>
             </tr>
             <tr>
                 <th>客戶服務</th>
@@ -44,9 +46,14 @@
         </table>
     </div>
     <div class="progress_container">
-        @await Html.PartialAsync("_PurchaseStepsPartial")
+        @await Html.PartialAsync("_PurchaseStepsPartial", new List<StepStatusViewModel> {
+            new StepStatusViewModel { InProgress = true, IsDisabled = false },
+            new StepStatusViewModel { InProgress = false, IsDisabled = false },
+            new StepStatusViewModel { InProgress = false, IsDisabled = false },
+            new StepStatusViewModel { InProgress = false, IsDisabled = false }
+        })
     </div>
-    <div class="seats-areas-chart"><img src="https://picsum.photos/1200/1200/?random=10"></div>
+    <div class="seats-areas-chart"><img src="@Model.EventDetails.SeatAreaImage"></div>
     <div class="ticket-price-table">
         <div class="ticket-price-title">
             <div class="ticket-type">
