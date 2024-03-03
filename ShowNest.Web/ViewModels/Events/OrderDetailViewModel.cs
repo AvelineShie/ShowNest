@@ -2,7 +2,7 @@
 
 namespace ShowNest.Web.ViewModels.Events
 {
-    public class OrderDeteailViewModel
+    public class OrderDetailViewModel
     {
         public EventDetailViewModel EventDetail { get; set; }
         public SeatsViewModel Seats { get; set; }
