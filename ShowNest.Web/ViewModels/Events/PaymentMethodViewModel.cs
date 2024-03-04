@@ -2,7 +2,7 @@
 {
     public class PaymentMethodViewModel
     {
-        public string MethodName { get; set; }
+        public string PaymentMethodName { get; set; }
 
         public string IconUrl { get; set; }
         public int BankID { get; set; }

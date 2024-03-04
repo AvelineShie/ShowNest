@@ -194,14 +194,6 @@ li {
     padding-left: 8px;
 }
 
-.card-type .mastercard {
-    background-image: url(https://t.kfs.io/assets/cards/mastercard-8e3bd2d7300c84ec68d979cba903738ad06a8a389a1d91eb5ec34368d3224554.png)
-}
-
-.card-type.visa {
-    background-image: url(https://t.kfs.io/assets/cards/visa-7df49b8101977f250a9b1ad20b6a303fd243943800ddd3d43fbdd4033418fe6f.png)
-}
-
 .fee_text {
     color: var(--dark-gray);
 }
@@ -231,6 +223,9 @@ th.ticket {
 }
 
 /* -------collapse---------- */
+.collapse_group{
+    padding-bottom:10px;
+}
 .collapse a {
     color: var(--main-green);
     text-decoration: none;
@@ -260,6 +255,11 @@ th.ticket {
 
 /* -------progress container---------- */
 .progress_container {
+    padding-bottom: 30px;
+}
+
+/* -------progress container---------- */
+/*.progress_container {
     margin: 20px auto 0 auto;
     padding: 40px;
 }
@@ -343,7 +343,7 @@ p.step_text {
     .disabled p {
         color: white;
         font-weight: 400;
-    }
+    }*/
 
 /* -------btn submit---------- */
 
@@ -384,7 +384,7 @@ a.btn_submit {
         line-height: 1.5;
         flex-wrap: wrap;
         align-content: center;
-        padding: 40px 20px;
+        padding: 20px 20px;
         min-width: 254px;
     }
 
@@ -416,7 +416,7 @@ a.btn_submit {
         text-align: center;
     }
     /* -------progress bar--------- */
-    .progress_container {
+    /*.progress_container {
         margin: 0;
         padding: 20px 0;
     }
@@ -473,7 +473,7 @@ a.btn_submit {
 
     .step.disabled::after {
         display: none;
-    }
+    }*/
 
     /* -------------final Order details---------------- */
 
@@ -606,4 +606,12 @@ a.btn_submit {
             border-bottom: none;
         }
        
+}
+@media screen and (max-width:768px){
+    .collapse td {
+        padding: 5px 0px;
+    }
+    .collapse th{
+        padding:5px 0 5px 5px;
+    }
 }

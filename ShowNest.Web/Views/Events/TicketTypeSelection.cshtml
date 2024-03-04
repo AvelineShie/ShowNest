@@ -1,3 +1,5 @@
+@using ShowNest.Web.ViewModels.Events;
+@model TicketTypeSelectionViewModel;
 @{
     ViewData["Title"] = "TicketTypeSelection";
 }
@@ -8,34 +10,34 @@
 }
 
 <div class="event-img-bgc">
-    <div class="event-img width"><img src="https://picsum.photos/1300/600/?random=10"></div>
+    <div class="event-img width"><img src="@Model.EventDetail.MainImage" alt="Event Main Image"></div>
 </div>
 
 <div class="wrap width">
     <div class="event-name">
-        <h2>NOT SUPER JUNIOR-L.S.S. THE SHOW : TH3EE GUYS</h2>
+        <h2>@Model.EventDetail.EventName</h2>
     </div>
     <div class="event-detail">
         <table>
             <tr>
                 <th>開始時間</th>
-                <td>2124/02/17 18:00 (+0800)<a id="add-to-calendar" href="" alt="">加入行事曆</a></td>
+                <td>@Model.EventDetail.StartTime.ToString("yyyy-mm-dd HH:mm (zzz)")<a id="add-to-calendar" href="" alt="">加入行事曆</a></td>
             </tr>
             <tr>
                 <th>活動地點</th>
-                <td>亞洲國際博覽館 10號展館 / 國際機場亞洲國際博覽館 <a id="view-the-map" href="">檢視地圖</a></td>
+                <td>@Model.EventDetail.EventLocation<a id="view-the-map" href="">檢視地圖</a></td>
             </tr>
             <tr>
                 <th>主辦單位</th>
-                <td>SHOWNEST</td>
+                <td>@Model.EventDetail.EventHost</td>
             </tr>
             <tr>
                 <th>票劵類型</th>
-                <td>電子票券</td>
+                <td>@Model.EventDetail.TicketCollectionChannel</td>
             </tr>
             <tr>
                 <th>付款方式</th>
-                <td>信用卡</td>
+                <td>@Model.PaymentMethodsForDisplay</td>
             </tr>
             <tr>
                 <th>客戶服務</th>
@@ -44,77 +46,46 @@
         </table>
     </div>
     <div class="progress_container">
-        @await Html.PartialAsync("_PurchaseStepsPartial")
+        @await Html.PartialAsync("_PurchaseStepsPartial", new List<StepStatusViewModel> {
+            new StepStatusViewModel { InProgress = true, IsDisabled = false },
+            new StepStatusViewModel { InProgress = false, IsDisabled = false },
+            new StepStatusViewModel { InProgress = false, IsDisabled = false },
+            new StepStatusViewModel { InProgress = false, IsDisabled = false }
+        })
     </div>
-    <div class="seats-areas-chart"><img src="https://picsum.photos/1200/1200/?random=10"></div>
+    <div class="seats-areas-chart"><img src="@Model.EventDetail.SeatAreaImage" alt="Event Seat Area Image"></div>
     <div class="ticket-price-table">
         <div class="ticket-price-title">
             <div class="ticket-type">
                 <p>票種</p>
             </div>
-                        <div class="seats-select-type">
+            <div class="seats-select-type">
                 <p>座位</p>
             </div>
             <div class="the-price">
                 <p>票價</p>
             </div>
         </div>
-        <div class="ticket-data-row">
-            <div class="area">
-                全票
-                <span>B1特一, B1特二</span>
+        @foreach (var ticketPriceRow in @Model.TicketPriceRow)
+        {
+            <div class="ticket-data-row">
+                <div class="area">
+                    @ticketPriceRow.Tickets.TicketTypeName
+                    <span>@ticketPriceRow.SeatArea</span>
+                </div>
+                <div class="select-type">@ticketPriceRow.SeatSelectionMethod</div>
+                <div class="ticket-price">@string.Format("TWD${0:N0}", ticketPriceRow.Tickets.TicketPrice)</div>
+                <div class="amount">
+                    <input id="btn-minus" type="button" value="-">
+                    <input type="number" name="ticket-amount" id="input-ticket-amount" placeholder="0">
+                    <input id="btn-plus" type="button" value="+">
+                </div>
             </div>
-            <div class="select-type">自行選位</div>
-            <div class="ticket-price">TWD$3,000</div>
-            <div class="amount">
-                <input id="btn-minus" type="button" value="-">
-                <input type="number" name="ticket-amount" id="input-ticket-amount" placeholder="0">
-                <input id="btn-plus" type="button" value="+">
-            </div>
-        </div>
-        <div class="ticket-data-row">
-            <div class="area">
-                全票
-                <span>紫1D, 紫1B, 黃2C, 紫1A, 紫1C, 紅1A, 紅1B, 紅1C, 紅1D</span>
-            </div>
-            <div class="select-type">自行選位</div>
-            <div class="ticket-price">TWD$2,600</div>
-            <div class="amount">
-                <input id="btn-minus" type="button" value="-">
-                <input type="number" name="ticket-amount" id="input-ticket-amount" placeholder="0">
-                <input id="btn-plus" type="button" value="+">
-            </div>
-        </div>
-        <div class="ticket-data-row">
-            <div class="area">
-                全票
-                <span>紫2C, 紅2B, 紫1E, 紅2D, 紅2C, 紫2B, 紫2D, 黃2B, 紅1E, 黃2D</span>
-            </div>
-            <div class="select-type">自行選位</div>
-            <div class="ticket-price">TWD$2,400</div>
-            <div class="amount">
-                <input id="btn-minus" type="button" value="-">
-                <input type="number" name="ticket-amount" id="input-ticket-amount" placeholder="0">
-                <input id="btn-plus" type="button" value="+">
-            </div>
-        </div>
-        <div class="ticket-data-row">
-            <div class="area">
-                全票
-                <span>紫2C, 紅2B, 紅2D, 紅2C, 紫2B, 紫2D, 紫2E, 紅2E, 黃2A, 黃2E</span>
-            </div>
-            <div class="select-type">自行選位</div>
-            <div class="ticket-price">TWD$3,200</div>
-            <div class="amount">
-                <input id="btn-minus" type="button" value="-">
-                <input type="number" name="ticket-amount" id="input-ticket-amount" placeholder="0">
-                <input id="btn-plus" type="button" value="+">
-            </div>
-        </div>
+        }
     </div>
     <div class="agreement">
         <input type="checkbox" name="service-and-privacy-agreement" id="">
-        我已經閱讀並同意<a href="http://"> 服務條款 </a>與<a href="http://"> 隱私權政策 </a>
+        我已經閱讀並同意<a href=""> 服務條款 </a>與<a href=""> 隱私權政策 </a>
     </div>
 
 </div>

@@ -36,5 +36,13 @@ namespace ShowNest.Web.Controllers
         {
             return View();
         }
+        public IActionResult LogIn()
+        {
+            return View();
+        }
+        public IActionResult SignUp()
+        {
+            return View();
+        }
     }
 }

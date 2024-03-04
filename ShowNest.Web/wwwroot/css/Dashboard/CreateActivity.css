@@ -1,16 +1,4 @@
-:root {
-    --main-color: #3b7555;
-    --main-color-hover: #77A88D;
-    --second-color: #518f6d;
-    --click-color: #1d5545;
-    --main-font-size: 16px;
-    --common-border: 1px #ddd solid;
-}
 
-*{
-    margin: 0; 
-    padding:0;
-}
 
 .empty{
     display:block;

@@ -42,8 +42,8 @@ ul.nav li.active a {
 }
 
 .main-wrap {
-    width: 75%;
-    margin: auto;
+    /*width: 75%;*/
+    /*margin: auto;*/
     margin-top: 20px;
 }
 
@@ -79,7 +79,7 @@ ul.nav li.active a {
     width: 340px;
 }
 
-label {
+.section_wrap label {
     display: inline-block;
     padding: 10px 0px;
     margin-right: 20px;
@@ -106,7 +106,7 @@ div.border {
 .submit_group {
     display: flex;
     justify-content: center;
-    padding: 20px 0px;
+    padding: 30px 0px;
 }
 
 .button_submit {
@@ -162,10 +162,10 @@ div.border {
         }
 
     .textarea {
-        padding-bottom: 50px;
+        padding-bottom: 16px;
     }
 
-    label {
+    .section_wrap label {
         min-width: 98px;
         display: flex;
         text-align: left;
@@ -173,6 +173,7 @@ div.border {
 
     .button_wrap {
         display: block;
+        padding-bottom:10px;
     }
 
     .submit_group {
@@ -182,8 +183,12 @@ div.border {
     .button_submit,
     .button_back {
         width: 100%;
-        padding: 0px;
+        padding: 5px 0;
     }
+        .button_submit a,
+        .button_back a {
+            border-radius: var( --common-border-radius)
+        }
 
     .border {
         display: none;
@@ -194,8 +199,8 @@ div.border {
         display: block;
         width: 100%;
         font-size: 1.2rem;
-        position: fixed;
-        bottom: 0%;
+        /*position: fixed;
+        bottom: 0%;*/
         border-radius: 0px;
     }
 

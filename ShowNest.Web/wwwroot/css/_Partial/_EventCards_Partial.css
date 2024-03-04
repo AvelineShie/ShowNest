@@ -52,14 +52,13 @@
     border-radius: var(--common-border-radius);
 }
 
-.selling .card-ticket-status {
+.green-status .card-ticket-status {
     background: linear-gradient(to right, transparent 50%, var(--main-green) 50%) left;
     background-size: 210%;
     transition: .3s ease-out;
 }
 
-.sold-out .card-ticket-status,
-.upcoming .card-ticket-status {
+.black-status .card-ticket-status {
     background: linear-gradient(to right, transparent 50%, #111 50%) left;
     background-size: 210%;
     transition: .3s ease-out;
@@ -81,12 +80,11 @@
     border-radius: 0px 5px 5px 0px;
 }
 
-.selling .card-ticket-status::after {
+.green-status .card-ticket-status::after {
     background-color: var(--main-green);
 }
 
-.sold-out .card-ticket-status::after,
-.upcoming .card-ticket-status::after {
+.black-status .card-ticket-status::after {
     background-color: #111;
 }
 

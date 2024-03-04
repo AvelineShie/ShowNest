@@ -12,7 +12,7 @@ namespace ShowNest.Web.ViewModels.UserAccount
         public string PhoneNumber { get; set; }
         public DateTime BirthDay { get; set; }
         public Gender Gender { get; set; }
-        public List<ActivityRegion> PreferredActivityRegions { get; set; }
+        public IEnumerable<ActivityRegion> PreferredActivityRegions { get; set; }
 
         public UserWebsiteViewModel Website { get; set; }
         public UserWebsiteViewModel Fb { get; set; }
