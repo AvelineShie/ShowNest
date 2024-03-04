@@ -20,7 +20,7 @@
         new TabStatusViewModel { IsActive = false},
         new TabStatusViewModel { IsActive = true},
         new TabStatusViewModel { IsActive = false},
-        new TabStatusViewModel { IsActive = false},
+        new TabStatusViewModel { IsActive = false}
     })
     </div>
     <h2>個人帳務清單</h2>
@@ -35,7 +35,7 @@
     <div class="order-detail">
         <div class="order-id-with-pic">
             <div class="order-id">#645920</div>
-            <div class="event-pic"><img src="https://picsum.photos/250/131/?random=10"></div>
+            <div class="event-pic"><img src="https://picsum.photos/250/131/?random=10" alt="event image"></div>
         </div>
         <div class="order-event-detail">
             <div class="event-title">
@@ -76,16 +76,16 @@
         </div>
         <div class="order-btns">
             <div class="btn-edit-order">
-                <a id="btn-edit-order" href="http://">查看/修改資料</a>
+                <a asp-controller="Events" asp-action="OrderDetail">查看/修改資料</a>
             </div>
             <div class="btn-contact-organizer">
-                <a href="http://">聯絡主辦單位</a>
+                <a asp-controller="Organizations" asp-action="ContactOrganization">聯絡主辦單位</a>
             </div>
             <div class="btn-contact-customer-service">
-                <a href="http://">聯絡客服</a>
+                <a href="#">聯絡客服</a>
             </div>
             <div class="btn-cancel-order">
-                <a href="http://">取消訂單</a>
+                <a href="#">取消訂單</a>
             </div>
         </div>
     </div>
