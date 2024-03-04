@@ -12,7 +12,7 @@ namespace ShowNest.Web.Controllers
         {
             return View();
         }
-        public IActionResult newOrg()
+        public IActionResult CreateOrganization()
         {
             return View();
         }

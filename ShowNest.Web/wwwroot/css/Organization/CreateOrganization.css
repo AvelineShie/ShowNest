@@ -19,7 +19,9 @@ h3 {
     font-size: 30px;
     
 }
-
+.log {
+    min-height: 300px;
+}
 .main-wrap {
     width: 75%;
     margin: auto;

@@ -47,5 +47,23 @@ namespace ShowNest.Web.Controllers
 
             return BadRequest("Invalid view type.");
         }
+
+        public IActionResult Organizations(string viewType)
+        {
+            switch (viewType)
+            {
+                case "Overview":
+                    return View("Overview");
+                case "Eventslist":
+                    return View("Eventslist");
+                case "info":
+                    return View("info");
+
+                default: 
+                    return BadRequest("Invalid view type.");
+
+            }
+
+        }
     }
 }

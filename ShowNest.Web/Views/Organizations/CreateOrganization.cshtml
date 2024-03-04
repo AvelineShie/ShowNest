@@ -1,6 +1,6 @@
-﻿
-@section topCSS{
-    <link href="~/css/organization/newOrg.css" rel="stylesheet" />
+﻿@section topCSS {
+    <link href="~/css/organization/CreateOrganization.css" rel="stylesheet" />
+    <script src="https://cdn.ckeditor.com/ckeditor5/41.1.0/classic/ckeditor.js"></script>
 }
 
 <body>
@@ -12,14 +12,14 @@
 
         <!-- main Form-->
 
-        <form id="organize_edit" action="" class="width">
+        <form id="organize_edit" class="width" action="/Dashboard/Organizations?viewType=Overview" method="post">
             <!-- <div class="orgHeader">-->
-                <!-- 頂端說明 -->
-                <h2>
-                    <span class="name">組織名稱</span>
-                    <span class="top-title"></span>
-                </h2>
-                <hr class="orgNameHr">
+            <!-- 頂端說明 -->
+            <h2>
+                <span class="name">組織名稱</span>
+                <span class="top-title"></span>
+            </h2>
+            <hr class="orgNameHr">
             <!-- </div>-->
             <div class="main-form">
 
@@ -44,7 +44,7 @@
                             <div class="website_input_group">
                                 <div class="input-group mb-1 input-group-sm ">
                                     <input type="text" class="form-control" id="website" aria-label="Website Url"
-                                           aria-describedby="website">
+                                        aria-describedby="website">
                                     <div class="input-group-text" id="website">shownest.cc</div>
                                 </div>
                                 <span class="form_text_underline" id="">3 到 16 個小寫英文或數字。</span>
@@ -59,14 +59,32 @@
                             <input class="form-control col-12" id="" type="text" name="netAddress" placeholder="">
                         </div>
                     </div>
-                    <!-- 描述 -->
-                    <div class="input_group">
-                        <label for="" class="form-label">描述</label>
-                        <div class="input_text form-content input-group-sm">
-                            <textarea class="form-control col-12" id="" type="text" rows="9" name="describe"
-                                      placeholder=""></textarea>
-                        </div>
+
+                <!-- 描述欄位（CKeditor） -->
+                <div class="log">
+                    <label for="" class="form-label">描述</label>
+                    <div id="editor"></div>
+                    <script>
+                            ClassicEditor
+                                    .create( document.querySelector( '#editor' ) )
+                                    .then( editor => {
+                                            console.log( editor );
+                                    } )
+                                    .catch( error => {
+                                            console.error( error );
+                                    } );
+                    </script>
+                </div>
+
+
+                    <!-- 描述 OLD-->
+                    @* <div class="input_group">
+                    <label for="" class="form-label">描述</label>
+                    <div class="input_text form-content input-group-sm">
+                    <textarea class="form-control col-12" id="" type="text" rows="9" name="describe"
+                    placeholder=""></textarea>
                     </div>
+                    </div> *@
                     <!-- Facebook 粉絲團網址 -->
                     <div class="input_group">
                         <label for="" class="form-label">Facebook 粉絲團網址</label>
@@ -80,7 +98,7 @@
                         <label for="" class="form-label">Twitter 帳號</label>
                         <div class="input_text form-content input-group-sm">
                             <input class="form-control col-12" id="" type="text" name="twitterNetAddress"
-                                   placeholder="">
+                                placeholder="">
                         </div>
                     </div>
                     <!-- Flickr 相簿網址 -->
@@ -114,7 +132,7 @@
                         <div class="form-content input-group-sm">
                             <label>
                                 <input type="radio" id="organizeShowContact" name="organizeShowContact" value="true"
-                                       checked> 顯示
+                                    checked> 顯示
                             </label>
                             <label>
                                 <input type="radio" id="organizeShowContact" name="organizeShowContact" value="false">
@@ -174,12 +192,14 @@
             </div>
             </div>
             <div class="button-submit">
-                <button class="btn btn-success" type="button" type="submit">送出</button>
+                <button class="btn btn-success" type="submit">送出</button>
             </div>
+
         </form>
     </section>
+    @section Scripts {
+        <script src="~/js/Dashboard/SetActivity.js"></script>
 
+    }
 
 </body>
-
-
