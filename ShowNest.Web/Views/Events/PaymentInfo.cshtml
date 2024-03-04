@@ -1,5 +1,7 @@
-﻿
+﻿@using ShowNest.Web.ViewModels.Events
+
 @section topCSS {
+    <link href="~/css/_Partial/_PurchaseStepsPartial.css" rel="stylesheet" />
     <link href="~/css/events/paymentinfo.css" rel="stylesheet" />
 }
 
@@ -68,6 +70,14 @@
                 </div>
             </div>
             <div class="progress_container">
+                @await Html.PartialAsync("_PurchaseStepsPartial", new List<StepStatusViewModel> {
+                new StepStatusViewModel { InProgress = false, IsDisabled = true },
+                new StepStatusViewModel { InProgress = false, IsDisabled = true },
+                new StepStatusViewModel { InProgress = false, IsDisabled = true },
+                new StepStatusViewModel { InProgress = true, IsDisabled = false }
+                })
+            </div>
+            @* <div class="progress_container">
                 <div class="step_progress_bar" id="step_progress_bar">
                     <div class="step disabled">
                         <span class="number ">1</span>
@@ -86,7 +96,7 @@
                         <p class="step_text">取票繳費</p>
                     </div>
                 </div>
-            </div>
+            </div> *@
 
             <form name="finalOrder" class="">
                 <div class="final_order_list_title">
