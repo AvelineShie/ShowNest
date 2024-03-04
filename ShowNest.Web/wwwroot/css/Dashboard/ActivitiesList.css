@@ -37,8 +37,8 @@ body {
 }
 
 .sideBarMenu a {
-    padding-left: 27px;
-    padding-bottom: 10px;
+    padding-left: 20px;
+    padding-bottom: 12px;
 }
 
 nav a {
@@ -74,10 +74,6 @@ nav p {
     text-align: center;
 }
 
-/*.sideBarMenu a {
-    padding-left: 20px;
-}*/
-
 nav .fa-cart-arrow-down {
     margin-right: 16.75px;
 }
@@ -102,7 +98,7 @@ nav .fa-location-dot {
     position: relative;
     color: #333333;
     margin-bottom: 80px;
-    margin-left: 20px;
+    margin-left: 35px;
     width: calc(100% - 200px);
     flex: 1;
 }
@@ -145,16 +141,22 @@ h2.header-h2{
     display: flex;
     justify-content: space-between;
     min-height: 20px;
-    padding: 19px;
+    padding: 20px 19px 19px 0;
     background-color: #f5f5f5;
     border: 1px solid #e3e3e3;
     box-shadow: inset 0 1px 1px rgba(0,0,0,0.05);
     position: absolute;
     width: 100%;
-}
+    }
+
+    .subheader.title {
+        padding-left:10px;
+    }
 
     .subheader .overview {
         flex-grow: 1; /* 讓 h2 元素能夠佔據剩餘的空間 */
+        margin-left:15px;
+        margin-top:10px;
             
     }
 
@@ -237,7 +239,6 @@ span .block-number {
 
 .date-place {
     margin-top: 100px;
-    margin-left: 20px;
 }
 
     .date-place p {
@@ -291,7 +292,6 @@ td, th {
 }
 
 .current-order > h3 {
-    margin-left: 23px;
     margin-bottom: -20px;
 }
 
