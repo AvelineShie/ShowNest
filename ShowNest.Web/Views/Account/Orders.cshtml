@@ -1,3 +1,5 @@
+@using ShowNest.Web.ViewModels.UserAccount;
+@model TabStatusViewModel;
 @{
     ViewData["Title"] = "Orders";
 }
@@ -10,7 +12,16 @@
 <div class="wrap width">
     <!-- account navigation -->
     <div class="account-navigation-wrap">
-    @await Html.PartialAsync("_AccountNavBarPartial")
+    @await Html.PartialAsync("_AccountNavBarPartial", new List<TabStatusViewModel>
+    {
+        new TabStatusViewModel { IsActive = false},
+        new TabStatusViewModel { IsActive = false},
+        new TabStatusViewModel { IsActive = false},
+        new TabStatusViewModel { IsActive = false},
+        new TabStatusViewModel { IsActive = true},
+        new TabStatusViewModel { IsActive = false},
+        new TabStatusViewModel { IsActive = false},
+    })
     </div>
     <h2>個人帳務清單</h2>
     <div class="orders-list-title">
