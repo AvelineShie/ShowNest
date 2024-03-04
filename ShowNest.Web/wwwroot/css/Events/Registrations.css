@@ -57,7 +57,10 @@ label {
 .control-group {
     margin-bottom: 15px;
 }
-
+/*-----collapse group-----*/
+.collapse_group {
+    padding-bottom: 10px;
+}
 .event_detail_collapse {
     color: var(--main-green);
 }
@@ -120,13 +123,21 @@ label {
     .btn:hover:first-child {
         background-color: none;
     }
+
 /*progress_container*/
 .progress_container {
+    padding-bottom: 20px;
+}
+
+
+/*progress_container*/
+
+/*
+    .progress_container {
     margin: 20px auto 0 auto;
     padding: 40px;
 }
-
-.step_progress_bar {
+    .step_progress_bar {
     display: flex;
     margin: 0 auto;
     margin-bottom: 40px;
@@ -216,7 +227,9 @@ p.step_text {
     .disabled p {
         color: white;
         font-weight: 400;
-    }
+    }*/
+/*progress_container end*/
+
 
 .order_details {
     padding-top: 20px;
@@ -409,12 +422,14 @@ a.btn_save {
         padding: 10px;
     }
 
+
+
     /* -------progress bar--------- */
+/*
     .progress_container {
         margin: 0;
         padding: 20px 0;
     }
-
     .registration_info {
         width: 100%;
         min-width: 210px;
@@ -467,7 +482,7 @@ a.btn_save {
 
     .step.disabled::after {
         display: none;
-    }
+    }*/
 
     /* -------------order details---------------- */
 
@@ -477,7 +492,6 @@ a.btn_save {
         padding-left: 20px;
         width: 100%;
         display: block;
-        background-color: hsla(0, 0%, 53%, 0.2);
     }
 
     td.price_count span {
@@ -501,9 +515,8 @@ a.btn_save {
     .collapse td{
         padding:0px;
     }
-    th, td {
-        display: block;
-        vertical-align: middle;
+    th {
+        min-width:80px;
         padding: 5px 0;
     }
 
@@ -530,8 +543,8 @@ a.btn_save {
         width: 50%;
     }
 
-    .ticket_name {
-        background: #eee;
+    td.ticket_name{
+        background-color: var(--light-gray: #ddd);
         width: 100%
     }
 
