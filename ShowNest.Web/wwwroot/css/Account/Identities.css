@@ -15,14 +15,10 @@ body {
 
 /* main Body */
 .section_wrap {
-    width: 100%;
-    max-width: 1200px;
-    margin: auto;
     /*flex-grow: 1;*/
     display: flex;
     align-items: start;
     justify-content: center;
-    margin-top: 20px;
 }
 
 .title {
@@ -127,7 +123,7 @@ div.border {
 
 .div-wrap {
     display: grid;
-    grid-template-columns: 5.3fr 3fr;
+    grid-template-columns: 4.9fr 3fr;
 }
 
 

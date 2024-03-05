@@ -9,12 +9,6 @@ body {
 
 
 /* main Body */
-.section_wrap {
-    width: 100%;
-    max-width: 1200px;
-    margin: auto;
-    padding-top: 20px;
-}
 
 
 .title {
@@ -116,7 +110,7 @@ div.border {
 
 .div-wrap {
     display: grid;
-    grid-template-columns: 3.6fr 5fr;
+    grid-template-columns: 3.2fr 5fr;
 }
 
 .link {

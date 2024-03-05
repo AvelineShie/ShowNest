@@ -13,14 +13,10 @@ body {
 
 /* main Body */
 .section_wrap {
-    width: 100%;
-    max-width: 1200px;
-    margin: auto;
     flex-grow: 1;
     display: flex;
     align-items: start;
     justify-content: center;
-    margin-top: 20px;
 }
 
 
@@ -86,7 +82,7 @@ div.border {
 
 .div-wrap {
     display: grid;
-    grid-template-columns: 3.8fr 9fr;
+    grid-template-columns: 3.3fr 9fr;
 }
 
 .caption {
