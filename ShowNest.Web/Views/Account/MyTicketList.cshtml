@@ -4,10 +4,18 @@
 
 @section topCSS {
     <link rel="stylesheet" href="~/css/Account/MyTicketList.css">
+    <link rel="stylesheet" href="~/css/_Partial/_MyTicketNavBarPartial.css">
 }
 
 <div class="wrap">
-    <h2>我的票券</h2>
+    <div class="progress_container">
+        @await Html.PartialAsync("_MyTicketNavBarPartial", new List<TabStatusViewModel>
+        {
+            new TabStatusViewModel { IsActive = true },
+            new TabStatusViewModel { IsActive = false }
+        })
+    </div>
+    <div class="title"><h2>我的票券</h2></div>
     <div class="events-tickets-list">
         <div class="header">
             <div class="event-name">活動名稱</div>
