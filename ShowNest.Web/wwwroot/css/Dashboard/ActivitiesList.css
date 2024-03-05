@@ -74,10 +74,21 @@ nav p {
     text-align: center;
 }
 
-/*下拉框按下的顏色*/
-.dropdown-item:active{
-    color:#333333;
-    background-color:#fff;
+/*change boostrap dropdown btn color*/
+#sidemenu-dropdown.dropdown-item:active, #sidemenu-dropdown a.dropdown-item:active {
+    color: #333333;
+    background-color: #fff;
+}
+
+#sidemenu-dropdown ul.dropdown-menu.show {
+    min-width: 8.8rem;
+    padding-left: 15px;
+    color:var(--main-green);
+}
+
+#publish-btn:focus {
+    border-color: transparent;
+    box-shadow: none;
 }
 
 .btn:focus {
