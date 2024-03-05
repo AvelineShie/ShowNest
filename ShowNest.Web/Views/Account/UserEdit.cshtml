@@ -2,38 +2,24 @@
     For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
 *@
 @section topCSS {
+    <link href="~/css/_partial/_accountnavbarpartial.css" rel="stylesheet" />
     <link href="~/css/account/useredit.css" rel="stylesheet" />
 }
 
     <section class="section_wrap">
     <div id="UserEdit" class="width">
-
-            <!-- Insert Navigation -->
-            <!--  Account Navigation -->
-            <ul class="nav nav-tabs mt-3 mb-3">
-                <li class="nav-item">
-                    <a class="nav-link active" aria-current="page" href="UserEdit">帳號設定</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="Prefills">報名預填資料</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="ChangePassword">修改密碼</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="Identities">身份認證</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="Orders">個人帳務清單</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="JoinedOrganizations">成為粉絲的組織</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="ReclaimOrders">訂單歸戶</a>
-                </li>
-            </ul>
-            <!-- Account Navigation End-->
+        <div class="account-navigation-wrap">
+            @await Html.PartialAsync("_AccountNavBarPartial", new List<TabStatusViewModel>
+            {
+            new TabStatusViewModel { IsActive = true},
+            new TabStatusViewModel { IsActive = false},
+            new TabStatusViewModel { IsActive = false},
+            new TabStatusViewModel { IsActive = false},
+            new TabStatusViewModel { IsActive = false},
+            new TabStatusViewModel { IsActive = false},
+            new TabStatusViewModel { IsActive = false}
+            })
+        </div>
             <!----------- Title------------>
             <div class="title">
                 <h2 id="title">修改帳號設定</h2>
