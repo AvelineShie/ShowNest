@@ -74,6 +74,16 @@ nav p {
     text-align: center;
 }
 
+/*下拉框按下的顏色*/
+.dropdown-item:active{
+    color:#333333;
+    background-color:#fff;
+}
+
+.btn:focus {
+    box-shadow: 0 0 0 0.1rem #ddd, 0 0 0 0.25rem transparent;
+}
+
 nav .fa-cart-arrow-down {
     margin-right: 16.75px;
 }
