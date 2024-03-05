@@ -1,6 +1,6 @@
-﻿@*
-    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
-*@
+﻿@using ShowNest.Web.ViewModels.Events;
+@model EventPageViewModel;
+
 @{
     Layout = null;
 }
@@ -26,7 +26,7 @@
         <div class="header-container">
             <div class="header">
                 <div class="header-title">
-                    <h1>Build School Demo Test Activity</h1>
+                    <h1>@Model.EventDetail.EventName</h1>
                 </div>
             </div>
             <!-- 活動資訊 -->
@@ -35,7 +35,8 @@
                     <li>
                         <p class="info-desc">
                             <i class="fa fa-solid fa-calendar-days"></i>
-                            2024/04/24(周三) 13:00(+0800)
+                            @Model.EventDetail.StartTime.ToString("yyyy/MM/dd HH:mm(+0800)")
+                            @* 2024/04/24(周三) 13:00(+0800) *@
                             (
                             <a href="#">iCal/Outlook</a>,
                             <a href="#" target="_blank">
@@ -47,26 +48,26 @@
                     <li>
                         <p class="info-desc">
                             <i class="fa fa-solid fa-location-dot"></i>
-                            Build School / 106台北市大安區忠孝東路三段96號11號樓之1
+                            @Model.EventDetail.EventLocation / @Model.EventDetail.EventAddress
                         </p>
                     </li>
                     <li>
                         <p class="info-count">
                             <i class="fa fa-solid fa-person"></i>
-                            0/50
+                            0/@Model.EventDetail.EventAttendance
                         </p>
                     </li>
                     <li class="pc-hide">
                         <p class="info-besiness">
                             <i class="fa fa-solid fa-sitemap mobi"></i>
-                            BS
+                            @Model.EventDetail.EventLocation
                         </p>
                     </li>
                 </ul>
             </div>
             <!-- --活動圖片-- -->
             <div class="og-banner">
-                <img src="https://picsum.photos/600/400/?random=10" alt="ActivityMainImg">
+                <img src="@Model.EventDetail.MainImage" alt="ActivityMainImg">
             </div>
             <div class="organizers mobi-hide">
                 <i class="fa-solid fa-sitemap"></i>
@@ -221,6 +222,8 @@
                 <li><a href="#">美食</a></li>
                 <li><a href="#">動漫</a></li>
                 <li><a href="#">測試</a></li>
+
+
             </ul>
         </div>
         <!-- 地圖   開始 -->
@@ -230,7 +233,7 @@
                 <div class="btn-wrapper" id="map">
                 </div>
                 <div class="address mobi-hide">
-                    ShowNest Live / 106台北市大安區忠孝東路三段96號11號樓之1
+                    ShowNest Live / @Model.EventDetail.EventAddress
                 </div>
             </div>
             <div class="side-content">
@@ -257,7 +260,22 @@
                     </tr>
                 </thead>
                 <tbody>
-                    <tr>
+                    @foreach (var ticket in @Model.AllTickets)
+                    {
+                        <tr>
+                            <td>@ticket.TicketTypeName</td>
+                            <td class="period-time">
+                                <span class="timezoneSuffix">@ticket.TicketSalseBegin.ToString("yyyy/MM/dd HH:mm(+0800)")</span>
+                                ~
+                                <span class="timezoneSuffix">@ticket.TicketSalseEnd.ToString("yyyy/MM/dd HH:mm(+0800)")</span>
+                            </td>
+                            <td class="price">
+                                <span class="currency">TWD$</span>
+                                <span class="currency-value">@ticket.TicketPrice.ToString("N0")</span>
+                            </td>
+                        </tr>
+                    }
+                    @* <tr>
                         <td>搖滾區</td>
                         <td class="period-time">
                             <span class="timezoneSuffix">2024/02/08 00:40(+0800)</span>
@@ -292,7 +310,7 @@
                             <span class="currency">TWD$</span>
                             <span class="currency-value">200</span>
                         </td>
-                    </tr>
+                    </tr> *@
                 </tbody>
             </table>
 
