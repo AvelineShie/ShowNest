@@ -1,3 +1,9 @@
+body {
+    font-family: sans-serif;
+    font-size: var(--main-font-size);
+    color: #333333;
+}
+
 a {
     text-decoration: none;
 }
@@ -22,8 +28,8 @@ a {
     display: flex;
 }
 
-.log-in,
-.sign-up a {
+.log-in a,
+.sign-up {
     display: block;
     padding: 13px 30px;
     border-top: var(--common-border);
@@ -32,7 +38,7 @@ a {
     border-radius: 4px;
 }
 
-.log-in {
+.sign-up {
     color: var(--main-green);
     background-color: #fff;
     border-bottom: 1px solid #fff;
@@ -40,14 +46,14 @@ a {
     margin-right: -1px;
 }
 
-.sign-up {
-    color: #fff;
+.log-in {
     background-color: var(--main-green);
 }
 
-.sign-up a {
+.log-in a {
     color: #fff;
 }
+
 
 .input-area {
     width: 650px;
@@ -58,8 +64,17 @@ a {
     text-align: center;
 }
 
-.user-name-or-email input,
-.passwords input {
+h2 {
+    font-size: 24px;
+    font-weight: bold;
+    color: var(--main-green);
+    margin: 30px auto 0px auto;
+}
+
+.user-name input,
+.passwords input,
+.email input,
+.birthday input {
     display: inline-block;
     width: 300px;
     height: 3em;
@@ -69,11 +84,27 @@ a {
     text-indent: 10px;
 }
 
-.user-name-or-email input {
-    margin: 50px auto 15px auto
+.birthday input {
+    text-indent: 5px;
+}
+
+::-webkit-calendar-picker-indicator {
+    margin-right: 5px;
+}
+
+.user-name input {
+    margin: 20px auto 15px auto
+}
+
+.email input {
+    margin-bottom: 15px;
 }
 
 .passwords input {
+    margin-bottom: 15px;
+}
+
+.birthday input {
     margin-bottom: 15px;
 }
 
@@ -92,13 +123,8 @@ a {
     border-radius: 4px;
 }
 
-.forget-passwords a {
-    display: inline-block;
-    margin: 20px;
-    color: var(--main-green);
-}
-
 .other-log-in-methods {
+    margin-top: 20px;
     display: flex;
     flex-direction: row;
 }
@@ -131,21 +157,27 @@ a {
 
     .wrap {
         width: 300px;
-        padding-top: 80px;
-        min-height: 600px;
+        padding-top: 100px;
+        padding-bottom: 200px;
     }
 
     .input-area {
         width: 300px;
     }
 
-    .user-name-or-email input,
-    .passwords input {
+    .user-name input,
+    .passwords input,
+    .email input,
+    .birthday input {
         width: 280px;
     }
 
     .submit a {
         padding: 10px 125px;
+    }
+
+    .submit a:hover {
+        background-color: var(--function-color-hover);
     }
 }
 
@@ -153,17 +185,20 @@ a {
     .wrap {
         width: 260px;
     }
-    
     .input-area {
         width: 260px;
     }
-    
-    .user-name-or-email input,
-    .passwords input {
+    .user-name input,
+    .passwords input,
+    .email input,
+    .birthday input {
         width: 240px;
     }
-
     .submit a {
         padding: 10px 105px;
     }
+    
 }
+
+
+    

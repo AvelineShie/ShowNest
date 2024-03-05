@@ -1,5 +1,6 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using ShowNest.Web.Models;
+using ShowNest.Web.Services;
 using System.Diagnostics;
 
 namespace ShowNest.Web.Controllers
@@ -15,7 +16,10 @@ namespace ShowNest.Web.Controllers
 
         public IActionResult Index()
         {
-            return View();
+            var eventCardService = new EventCardService();
+            var eventCardsVM = eventCardService.SetEventCards();
+
+			return View(eventCardsVM);
         }
 
         public IActionResult Privacy()

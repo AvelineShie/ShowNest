@@ -2,14 +2,26 @@
     font-size: 15px;
 }
 
-h1 {
+.name {
+    margin-top: 60px;
+    margin-bottom: 20px;
+    margin-right: 10px;
+    font-size: 20.4px;
+    color: #999;
+}
+.orgNameHr {
+    margin-top: 7px;
+    margin-bottom:14px;
+    border-width: 1px;
+}
+h3 {
+    margin: 20px 0px 10px;
     font-size: 30px;
+    
 }
-
-h2 {
-    font-size: 18px;
+.log {
+    min-height: 300px;
 }
-
 .main-wrap {
     width: 75%;
     margin: auto;
@@ -49,6 +61,7 @@ h2 {
 
 label {
     font-weight: bold;
+    padding-left: 4px;
 }
 
 .button-submit button {
