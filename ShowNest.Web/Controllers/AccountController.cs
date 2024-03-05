@@ -36,11 +36,24 @@ namespace ShowNest.Web.Controllers
         {
             return View();
         }
+        public IActionResult PastTicketList()
+        {
+            return View();
+        }
+        public IActionResult MyTickets()
+        {
+            return View();
+        }
         public IActionResult LogIn()
         {
             return View();
         }
         public IActionResult SignUp()
+        {
+            return View();
+        }
+
+        public IActionResult ForgetPassword()
         {
             return View();
         }

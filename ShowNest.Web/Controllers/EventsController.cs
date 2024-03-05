@@ -1,5 +1,8 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using System.Collections.Generic;
+using System.Globalization;
+using Microsoft.AspNetCore.Mvc;
 using ShowNest.Web.ViewModels.Events;
+using ShowNest.Web.ViewModels.Organization;
 
 namespace ShowNest.Web.Controllers
 {
@@ -36,8 +39,74 @@ namespace ShowNest.Web.Controllers
 
         public IActionResult EventPage()
         {
-            return View();
+            var model = new EventPageViewModel()
+            {
+                EventDetail = new EventDetailViewModel()
+                {
+                    MainImage = "https://picsum.photos/1300/600/?random=10",
+                    EventName = "Build School Demo Test Activity",
+                    StartTime = DateTime.Now,
+                    EventLocation = "Build School",
+                    Content="12",
+                    EventAddress= "106台北市大安區忠孝東路三段96號11號樓之1",
+                    EventAttendance = "500"
+                 },
+                AllTickets = new List<TicketsViewModel>{
+                new TicketsViewModel {
+                    TicketTypeName="搖滾票",
+                    TicketSalseBegin= DateTime.Now,
+                    TicketSalseEnd= DateTime.Now,
+                    TicketPrice =3600
+                },new TicketsViewModel {
+                    TicketTypeName="一般票",
+                    TicketSalseBegin= DateTime.Now,
+                    TicketSalseEnd= DateTime.Now,
+                    TicketPrice =2800
+                },new TicketsViewModel {
+                    TicketTypeName="優待票",
+                    TicketSalseBegin= DateTime.Now,
+                    TicketSalseEnd= DateTime.Now,
+                    TicketPrice =1200
+                },new TicketsViewModel {
+                    TicketTypeName="站票",
+                    TicketSalseBegin= DateTime.Now,
+                    TicketSalseEnd= DateTime.Now,
+                    TicketPrice =800
+                }
+                },
+                OrganizationDetail=new OrganizationDetailViewModel()
+                {
+
+                },
+                
+            };
+            return View(model);
         }
+
+
+        //private static DateTime Function(string dateTimeStr)
+        //{
+        //    // 确保日期字符串符合 ISO 8601 标准
+        //    string iso8601FormattedStr = dateTimeStr.Replace("/", "-").Replace(" ", "T") + ":00";  // 添加秒和时区信息
+
+        //    // 解析日期时间（考虑时区）
+        //    DateTimeOffset dateTimeOffset;
+
+        //    // 如果字符串已经包含时区信息，则使用 DateTimeOffset.Parse
+        //    if (iso8601FormattedStr.Contains("+"))
+        //    {
+        //        dateTimeOffset = DateTimeOffset.Parse(iso8601FormattedStr, CultureInfo.InvariantCulture, DateTimeStyles.AssumeUniversal);
+        //    }
+        //    else
+        //    {
+        //        // 如果字符串不包含时区信息，需要添加它
+        //        iso8601FormattedStr += "+08:00"; // 假设要解析的时间是 UTC+8
+        //        dateTimeOffset = DateTimeOffset.ParseExact(iso8601FormattedStr, "yyyy-MM-ddTHH:mm:sszzz", CultureInfo.InvariantCulture, DateTimeStyles.AssumeUniversal);
+        //    }
+
+        //    // 返回 UTC+8 时区的 DateTime
+        //    return dateTimeOffset.LocalDateTime;
+        //}
 
         public IActionResult TicketTypeSelection()
         {
