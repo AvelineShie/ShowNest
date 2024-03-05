@@ -24,10 +24,11 @@
     font-size: var(--main-font-size);
 }
 
-.ActivityContainer>h1{
+.ActivityContainer>h2{
     font-size: 30px;
     margin-bottom: -5px;
 }
+
 
 .select-organizer{
     font-size: 24px;
