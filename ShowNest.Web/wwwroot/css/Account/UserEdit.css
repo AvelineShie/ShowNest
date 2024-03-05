@@ -209,7 +209,7 @@ div.border {
 
 .div-wrap {
     display: grid;
-    grid-template-columns: 2.7fr 3fr;
+    grid-template-columns: 2.5fr 3fr;
     padding-bottom: 20px;
 }
 
