@@ -90,7 +90,12 @@ span.note, .map-note{
     padding: 3px;
     color: #737373;
 }
-
+span.org-note{
+    display: inline-block;
+    margin-top: 5px;
+    padding: 3px;
+    color: #737373;
+}
 /* 所有必填欄位 */
 .essential-input::before{
     content: "*";
@@ -192,6 +197,12 @@ span.note, .map-note{
 .btn-outline-secondary{
     margin-right: 10px;
 }
+.advanced-settings{
+
+    border-bottom: 3px solid  var(--dark-gray); 
+    display: block;
+    padding: 5px;
+}
 
 .tag-pool{
     margin-top: 15px;
@@ -262,7 +273,7 @@ span.note, .map-note{
         .container {
             display: flex;
             flex-direction: row;
-            margin-bottom: 30px;
+            margin-bottom: 10px;
         }
     }
 
