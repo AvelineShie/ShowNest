@@ -8,8 +8,14 @@ a {
     text-decoration: none;
 }
 
+.title {
+    display: block;
+    line-height: 2;
+}
+
 h2 {
     margin: 25px 0;
+    line-height: 1.5;
 }
 
 hr {

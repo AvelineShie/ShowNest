@@ -2,39 +2,26 @@
 For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
 *@
 @section topCSS {
+    <link href="~/css/_partial/_accountnavbarpartial.css" rel="stylesheet" />
     <link href="~/css/account/reclaimorders.css" rel="stylesheet" />
 }
 
 
     <section class="section_wrap">
     <div id="ReclaimOrders" class="width">
+        <div class="account-navigation-wrap">
+            @await Html.PartialAsync("_AccountNavBarPartial", new List<TabStatusViewModel>
+            {
+            new TabStatusViewModel { IsActive = false},
+            new TabStatusViewModel { IsActive = false},
+            new TabStatusViewModel { IsActive = false},
+            new TabStatusViewModel { IsActive = false},
+            new TabStatusViewModel { IsActive = false},
+            new TabStatusViewModel { IsActive = false},
+            new TabStatusViewModel { IsActive = true}
+            })
+        </div>
 
-            <!-- Insert Navigation -->
-            <!--  Account Navigation -->
-            <ul class="nav nav-tabs mt-3 mb-3">
-                <li class="nav-item">
-                    <a class="nav-link" aria-current="page" href="UserEdit">帳號設定</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="Prefills">報名預填資料</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="ChangePassword">修改密碼</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="Identities">身份認證</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="Orders">個人帳務清單</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="JoinedOrganizations">成為粉絲的組織</a>
-                </li>
-                <li class="nav-item ">
-                    <a class="nav-link active" href="#">訂單歸戶</a>
-                </li>
-            </ul>
-            <!-- Account Navigation End-->
             <!----------- Title------------>
             <div class="title">
                 <h2 id="title">訂單歸戶</h2>
@@ -44,11 +31,11 @@ For more information on enabling MVC for empty projects, visit https://go.micros
             <form id="reclaim_orders" action="">
                 <div class="content-wrapper">
                     <div class="form_contaner">
-                        <div class="form-content input-group-sm">
+                    <div class="form-content input-group-sm">
                             <input class="order-num form-control" type="number" id="order-num" name="order-num"
                                 placeholder="訂單編號">
                         </div>
-                        <div class="form-content input-group-sm">
+                    <div class="form-content input-group-sm">
                             <input class="order-num form-control" type="text" id="search-num" name="search-num"
                                 placeholder="查詢碼">
                         </div>

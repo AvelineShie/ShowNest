@@ -1,3 +1,5 @@
+@model IEnumerable<EventCardViewModel>
+
 @{
 	ViewData["Title"] = "Index";
 }
@@ -78,10 +80,10 @@
 <section>
 	<div class="cards-wrap width">
 		<div class="cards">
-			@for (int i = 0; i < 6; i++)
-            {
-                @await Html.PartialAsync("~/PartialViews/_EventCards_Partial.cshtml");
-            }
+			@foreach (var card in Model)
+			{
+				@await Html.PartialAsync("~/PartialViews/_EventCards_Partial.cshtml", card);
+			}
 		</div>
 	</div>
 	<div id="page-index" class="width">

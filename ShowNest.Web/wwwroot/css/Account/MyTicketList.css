@@ -2,8 +2,10 @@
     --function-color-hover: #518f6d;
 }
 
+.title {
+    line-height: 1.5;
+}
 h2 {
-    text-align: left;
     color: var(--main-green);
     margin: 50px auto;
 }

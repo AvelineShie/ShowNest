@@ -1,5 +1,4 @@
 
-
 .empty{
     display:block;
     height:60px;
@@ -25,10 +24,11 @@
     font-size: var(--main-font-size);
 }
 
-.ActivityContainer>h1{
+.ActivityContainer>h2{
     font-size: 30px;
     margin-bottom: -5px;
 }
+
 
 .select-organizer{
     font-size: 24px;
@@ -55,9 +55,9 @@ h3::after{
 
 .lined {
     font-size: 18px;
-    border-bottom: #666 2px solid;
+    border-bottom: #666 1px solid;
     padding-bottom: 3px;
-    margin: 15px 0 15px;
+    margin: 20px 0 20px 0;
     font-weight: 400;
     text-align:left;
 }
@@ -72,7 +72,7 @@ h3::after{
 }
 
 .TOSzone a{
-    color: var(--main-color-hover);
+    color: var(--light-green);
     display: inline-block;
     margin-bottom: 5px;
     margin-top: 5px;
@@ -82,8 +82,8 @@ h3::after{
 .establishBtn{
     width: 70px;
     height: 35px;
-    line-height: 20px;
-    background-color:var(--main-color);
+    line-height: 10px;
+    background-color:var(--main-green);
     color:white;
     border:none;
     border-radius:5px;
@@ -91,40 +91,3 @@ h3::after{
     margin-top: 15px;
 }
 
-
-/* MOBILE */
-@media (max-width:768px) {
-    .wrap {
-        width: 90%;
-        margin: 0px auto;
-        margin-bottom: 20px;
-    }
-}
-
-/* DESKTOP */
-@media (min-width:769px) {
-
-    @media (min-width:769px) and (max-width:1200px) {
-        .wrap {
-            width: 90%;
-        }
-
-        #header-functions a {
-            padding: 14px 16px;
-        }
-    }
-
-    @media (min-width:1201px) {
-        .wrap {
-            width: 75%;
-        }
-        #header-functions a {
-            padding: 14px 20px;
-        }
-    }
-
-    .wrap {
-        max-width: 1200px;
-        margin: 0px auto;
-    }
-}
