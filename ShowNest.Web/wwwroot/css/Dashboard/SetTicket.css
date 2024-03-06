@@ -1,11 +1,4 @@
-:root {
-    --main-color: #3b7555;
-    --main-color-hover: #77A88D;
-    --second-color: #518f6d;
-    --click-color: #1d5545;
-    --main-font-size: 16px;
-    --common-border: 1px #ddd solid;
-}
+
 
 /* 組織名稱欄 */
 .header-title {
@@ -135,28 +128,28 @@ td.color-label{
 @media (min-width:769px) {
 
     @media (min-width:769px) and (max-width:1200px) {
-
+/*
         body {
             max-width: 1200px;
-        }
+        }*/
 
         #header-functions a {
             padding: 14px 8px;
         }
 
         @media (min-width:1201px) {
-            .wrap {
-            width: 75%;
+          /*  .wrap {
+            width: 75%;*/
         }
     }
-
+/*
     body {
         width: 1200px;
     }
 
     .wrap {
         margin: 0px auto;
-    }
+    }*/
 
     #header-functions a {
         padding: 14px 15px;

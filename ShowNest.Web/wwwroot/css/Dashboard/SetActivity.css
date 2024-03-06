@@ -1,11 +1,4 @@
-:root {
-    --main-color: #3b7555;
-    --main-color-hover: #77A88D;
-    --second-color: #518f6d;
-    --click-color: #1d5545;
-    --main-font-size: 16px;
-    --common-border: 1px #ddd solid;
-}
+
 
 
 /* 組織名稱欄 */
@@ -27,7 +20,7 @@
 .name{
     line-height: 37px;
     font-size: 22px;
-    color: var(--main-color);
+    color: var(--main-green);
 }
 
 
@@ -60,11 +53,12 @@
 /* 麵包屑 */
 .breadcrumb {
     background-color: #edecec;
-    padding: 10px 8px; 
+    padding: 10px 8px;
     border-radius: 4px;
     font-size: 15px;
     line-height: 20px;
-    
+    max-width: 1120px;
+    margin: 0 auto;
 }
 
 .breadcrumb a{
@@ -79,7 +73,7 @@ a {
 }
 
 li:first-child>a{
-    color: var(--main-color-hover);
+    color: var(--light-green);
 }
 
 /* 所有小標 */
@@ -133,33 +127,44 @@ span.note, .map-note{
 }
 
 .input-group > .form-control {
-    width:180px;
-    line-height:15px;
+    width: 180px;
+    line-height: 15px;
+
+}
+
+/*Boostrap change*/
+.input-group:not(.has-validation) > :not(:last-child):not(.dropdown-toggle):not(.dropdown-menu) {
+    border-top-right-radius: 5px;
+    border-bottom-right-radius: 5px;
 }
 
 .OK {
-    color: var(--main-color-hover);
-    padding-top: 5px;
-    
+color: var(--light-green);
+padding-top: 5px;  
 }
 
 
-.date-time{
+.date-time {
     font-size: 15px;
-    margin: 10px;
-    line-height: 24px;
-    color:#555555;
+    line-height: 34px;
+    border: solid #ced4da 1px;
+    color: #555555;
     width: 200px;
+    border-radius: 5px;
+}
 
+.space {
+    display:inline-block;
+    margin: 8px;
 }
 
 .end-time{
     margin-top: 10px;
     margin-bottom: 10px;
 }
-.number-of-people{
+.number-of-people {
     height: 30px;
-    border: #999 1px solid;
+    border: #ced4da 1px solid;
     border-radius: 5px;
 }
 .unlimited{
@@ -184,9 +189,16 @@ span.note, .map-note{
     min-height: 300px;
 }
 
-.pages-change{
+/*#ckeditor-area {
+    background-color:red;
+    border-bottom: 1px solid #dee2e6
+}*/
+
+.pages-change {
     display: flex;
-    
+    margin-bottom: 20px;
+    margin-top: 20px;
+
 }
 
 
@@ -204,10 +216,10 @@ span.note, .map-note{
     margin-top: 15px;
 }
 
-.tag{
+.tag {
     display: inline-block;
     border-radius: 5px;
-    background-color: var(--second-color);
+    background-color: var(--light-green);
     line-height: 20px;
     font-size: 15px;
     padding: 3px;
@@ -217,7 +229,7 @@ span.note, .map-note{
 
 .tag:hover{
     box-shadow: 0 1px 1px rgba(0,0,0,0.06);
-    background-color: var(--main-color-hover);
+    background-color: var(--light-green);
     cursor: pointer;
 }
 
@@ -240,15 +252,6 @@ span.note, .map-note{
 @media (min-width:769px) {
 
     @media (min-width:769px) and (max-width:1200px) {
-        body{
-            width:1200px;
-        }
-
-        .wrap {
-            width: 90%;
-            margin-bottom: 20px;
-        }
-
         .container {
             display: flex;
             flex-direction: row;
@@ -261,16 +264,6 @@ span.note, .map-note{
         }
     }
 
-    @media (min-width:1201px) {
-        .wrap {
-            width: 80%;
-        }
-
-        .container {
-            display: flex;
-            flex-direction: row;
-            margin-bottom: 30px;
-        }
     }
 
     .wrap {

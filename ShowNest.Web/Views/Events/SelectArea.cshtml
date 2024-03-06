@@ -2,94 +2,20 @@
     For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
 *@
 @section topCSS {
-    
+    <link href="~/css/_Partial/_SeatSelectionActionBarPartial.css" rel="stylesheet" />
     <link href="~/css/events/selectarea.css" rel="stylesheet" />
 }
 
-<div class="seat_area_header">
-    <div class="action-bar main_wrap">
-        <div class="action-bar-left d-flex">
-            <div class="btn-cancel">
+@section Scripts {
+    <script src="~/js/Events/_SeatSelectionActionBarPartial.js"></script>
+}
 
-                <a href="#"><i class="fa-solid fa-xmark"></i>取消購票</a>
-            </div>
-            <div class="btn-user-guide">
-                <!-- Button trigger modal -->
-                <a href="#" data-bs-toggle="modal" data-bs-target="#exampleModal">操作說明</a>
-            </div>
-        </div>
-        <div class="count-down-timer">
-            您還有 10:00 可以選擇座位
-        </div>
-        <div class="btn-confirm">
-            <a href="SelectSeats">確認座位</a>
-        </div>
-    </div>
-    <div class="seat-areas-and-showcases wrap d-flex">
-        <div class="confirm-wrap" style="display: none">
-            <div class="display-total-amount">
-                <div class="total-amount">
-                    <span>總金額</span>
-                    <p>TWD$3,800</p>
-                </div>
-                <div class="seats-selection-complete">
-                    <a href="">完成選位</a>
-                </div>
-            </div>
-            <div class="selected-tickets">
-                選購的票券
-            </div>
-            <div class="ticket-detail">
-                <div class="price">TWD$3,800</div>
-                <div class="ticket-with-seat-detail">
-                    <div class="seat-location">紫 2D 區 3 排 14 號</div>
-                    <div class="ticket-type">全票</div>
-                </div>
-            </div>
-        </div>
-    </div>
-</div>
-    <section class="section_wrap">
+
+@await Html.PartialAsync("_SeatSelectionActionBarPartial")
+<section class="section_wrap width">
        
-        <div class="info_modal_group">
-            <div class="info_modal modal fade" id="info_modal" tabindex="-1">
-                <div class="modal-dialog">
-                    <div class="modal-content">
-                        <div class="modal-header">
-                            <h2 class="modal-title" id="seatModalLabel">系統選位通知</h2>
-                        </div>
-                        <div class="modal-body">
-                            <p class="content">系統已經幫您選好了連號座位，您有 10 分鐘可以修改您想要的位置：</p>
-                            <table class="order_detail table">
-                                <thead class="ticket_thead">
-                                    <tr>
-                                        <th class="ticket">票券</th>
-                                        <th class="seat">座位</th>
-                                    </tr>
-                                </thead>
-                                <tbody class="ticket_tbody">
-                                    <tr>
-                                        <td class="ticket_type">全票</td>
-                                        <td>
-                                            <div class="seat_info">
-                                                A1 區 12 排 13 號
-                                            </div>
-                                        </td>
-                                    </tr>
-                                </tbody>
-                            </table>
-                        </div>
-                        <div class="modal-footer">
-                            <button type="button" class="btn_Confirm btn"
-                                    data-bs-dismiss="modal">
-                                我知道了(選位時間剩下10:00)
-                            </button>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div class="main_stage_map">
+      
+    <div class="main_stage_map">
             <div class="map_area">
                 <img src="https://danichen12.github.io/00Project/booking/image/map.png" usemap="#image-map">
                 <map name="image-map" class="image-map" id="area_map">

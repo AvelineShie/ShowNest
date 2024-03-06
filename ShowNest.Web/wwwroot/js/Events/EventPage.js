@@ -6,7 +6,7 @@ let map;
 
 async function initMap() {
     // The location of BS
-    const position = { lat: 25.0415940, lng: 121.5337079 };
+    const position = { lat: 25.04169, lng: 121.536355 };
     // Request needed libraries.
     //@ts-ignore
     const { Map } = await google.maps.importLibrary("maps");

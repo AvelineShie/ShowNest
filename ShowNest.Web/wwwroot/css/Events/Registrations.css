@@ -15,8 +15,6 @@ body {
 }
 
 .main_wrap {
-    width: 75%;
-    margin: auto;
     margin-top: 20px;
     line-height: 1.5em;
 }
@@ -24,7 +22,6 @@ body {
 .count_down_timer {
     background-color: #DB4455;
     color: #fff;
-    height: 2.5em;
     line-height: 2.5em;
     border-radius: 4px;
     margin: auto;
@@ -60,7 +57,10 @@ label {
 .control-group {
     margin-bottom: 15px;
 }
-
+/*-----collapse group-----*/
+.collapse_group {
+    padding-bottom: 10px;
+}
 .event_detail_collapse {
     color: var(--main-green);
 }
@@ -124,12 +124,20 @@ label {
         background-color: none;
     }
 
+/*progress_container*/
 .progress_container {
+    padding-bottom: 20px;
+}
+
+
+/*progress_container*/
+
+/*
+    .progress_container {
     margin: 20px auto 0 auto;
     padding: 40px;
 }
-
-.step_progress_bar {
+    .step_progress_bar {
     display: flex;
     margin: 0 auto;
     margin-bottom: 40px;
@@ -219,7 +227,9 @@ p.step_text {
     .disabled p {
         color: white;
         font-weight: 400;
-    }
+    }*/
+/*progress_container end*/
+
 
 .order_details {
     padding-top: 20px;
@@ -253,9 +263,7 @@ tr.gray_block th {
     color: white;
 }
 
-th.seat {
-    padding-left: 100px;
-}
+
 
 th.ticket_type {
     padding-left: 20px;
@@ -283,13 +291,11 @@ td.price_count span {
 }
 
 .seat_detail_group {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
+    display: flex;
+   justify-content:space-between;
 }
 
-li.seat-info {
-    padding-left: 90px;
-}
+
 
 th.price {
     text-align: right;
@@ -304,6 +310,7 @@ th.total {
 td.tfoot_price_total {
     text-align: right;
     padding-right: 20px;
+    min-width:76px
 }
 
 .contact_info input {
@@ -360,11 +367,12 @@ span.formError {
 .btn_save {
     display: flex;
     justify-content: center;
-    padding: 11px 70px;
+    padding:20px;
 }
 
 a.btn_save {
     min-width: 293px;
+    padding:10px 70px;
 }
 
 .section_wrap {
@@ -391,13 +399,13 @@ a.btn_save {
         line-height: 1.5;
         flex-wrap: wrap;
         align-content: center;
-        padding: 40px 20px;
+        padding: 10px;
         min-width: 254px;
     }
 
     /* -------save button--------- */
     .btn_save {
-        width: 100%;
+     width:100%
     }
     .btn_submit.btn {
         border: 5px solid var(--light-gray);
@@ -405,23 +413,23 @@ a.btn_save {
 
     a#btn_save {
         width: 100%;
-        display: inline-block;
+        display: block;
         font-size: 1.2rem;
-        position: fixed;
-        bottom: 0%;
-        border-radius: 0px;
+        border-radius: var(--common-border-radius);
     }
 
     .save_group {
-        padding-top: 20px;
+        padding: 10px;
     }
 
+
+
     /* -------progress bar--------- */
+/*
     .progress_container {
         margin: 0;
         padding: 20px 0;
     }
-
     .registration_info {
         width: 100%;
         min-width: 210px;
@@ -474,19 +482,16 @@ a.btn_save {
 
     .step.disabled::after {
         display: none;
-    }
+    }*/
 
     /* -------------order details---------------- */
-    th.seat {
-        padding-left: 55px;
-    }
+
 
 
     td.ticket_name {
         padding-left: 20px;
         width: 100%;
         display: block;
-        background-color: hsla(0, 0%, 53%, 0.2);
     }
 
     td.price_count span {
@@ -497,9 +502,6 @@ a.btn_save {
         display: flex;
     }
 
-    li.seat-info {
-        padding-left: 50px;
-    }
 }
 
 @media screen and (max-width:768px) {
@@ -510,11 +512,12 @@ a.btn_save {
     .section_wrap {
         max-width: 960px;
     }
-
-    th, td {
-        display: table-cell;
-        vertical-align: middle;
-        padding: 8px
+    .collapse td{
+        padding:0px;
+    }
+    th {
+        min-width:80px;
+        padding: 5px 0;
     }
 
         th.seat {
@@ -540,8 +543,8 @@ a.btn_save {
         width: 50%;
     }
 
-    .ticket_name {
-        background: #eee;
+    td.ticket_name{
+        background-color: var(--light-gray: #ddd);
         width: 100%
     }
 
@@ -583,6 +586,9 @@ a.btn_save {
         width: 10%;
         display: table-cell;
     }
+    th.total {
+        min-width: 80px;
+    }
 
     .seat_detail_group {
         display: flex;
@@ -590,7 +596,16 @@ a.btn_save {
     }
 
     th.price, th.ticket_type {
-        width: 10%;
+        width: 7%;
         display: table-cell;
+    }
+}
+@media screen and (max-width:290px) {
+    a.btn_save {
+        min-width:none;
+        display:inline-block;
+    }
+    .btn_save{
+        padding:0px;
     }
 }

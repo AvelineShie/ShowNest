@@ -4,10 +4,6 @@ namespace ShowNest.Web.Controllers
 {
     public class AccountController : Controller
     {
-        public IActionResult Index()
-        {
-            return View();
-        }
         public IActionResult UserEdit()
         {
             return View();
@@ -37,6 +33,27 @@ namespace ShowNest.Web.Controllers
             return View();
         }
         public IActionResult MyTicketList()
+        {
+            return View();
+        }
+        public IActionResult PastTicketList()
+        {
+            return View();
+        }
+        public IActionResult MyTickets()
+        {
+            return View();
+        }
+        public IActionResult LogIn()
+        {
+            return View();
+        }
+        public IActionResult SignUp()
+        {
+            return View();
+        }
+
+        public IActionResult ForgetPassword()
         {
             return View();
         }

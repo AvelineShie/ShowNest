@@ -6,56 +6,21 @@ body {
     box-sizing: border-box;
 }
 
-/* change bootstrap nav color start */
-.nav-tabs {
-    --bs-nav-tabs-link-active-color: var(--bs-emphasis-color);
-    --bs-emphasis-color: #333333
-}
-
-ul.nav li a,
-ul.nav li a:visited {
-    color: var(--main-green);
-}
-
-    ul.nav li a:hover,
-    ul.nav li a:active {
-        color: var(--main-green);
-        background-color: var(--light-gray);
-        text-decoration: none;
-    }
-
-ul.nav li.active a {
-    color: var(--main-green);
-}
-
-/* change bootstrap nav color end */
 
 
 /* main Body */
-.section_wrap {
-    width: 100%;
-    max-width: 1200px;
-    margin: auto;
-    padding-top: 20px;
-}
 
-.main-wrap {
-    width: 75%;
-    margin: auto;
-}
 
 .title {
     display: block;
-    line-height: 2;
+    line-height: 1.5;
     align-items: center;
-}
-#title {
-    text-align: left ;
 }
 
 
 h3 {
     display: block;
+    padding:10px 0;
 }
 
 #account_prefills {
@@ -91,12 +56,13 @@ h3 {
     flex-direction: row;
 }
 
-label {
+#account_prefills label {
     display: inline-block;
     padding: 10px 0px;
     margin-right: 20px;
     font-weight: bold;
     text-align: right;
+    min-width:112px;
 }
 
 p {
@@ -144,7 +110,7 @@ div.border {
 
 .div-wrap {
     display: grid;
-    grid-template-columns: 3.1fr 5fr;
+    grid-template-columns: 3.2fr 5fr;
 }
 
 .link {
@@ -192,20 +158,6 @@ div.border {
         text-align: left;
     }
 
-    .nav-tabs .nav-link {
-        background-color: none;
-        border: 1px solid transparent;
-        border-radius: 5rem;
-        margin: 5px;
-    }
-
-        .nav-tabs .nav-link.active {
-            color: #fff;
-            background-color: var(--main-green);
-            border: 1px solid var(--main-green);
-            border-radius: 5rem;
-        }
-
     .div-wrap {
         display: block;
     }
@@ -216,16 +168,21 @@ div.border {
         border-radius: 3px;
         text-align: center;
     }
-    #title {
-        text-align: center;
-    }
 }
 
 @media screen and (max-width:768px) {
-    #title {
+    #account_prefills{
+        gap:10px;
+    }
+    .content-wrapper:first-child{
+        padding-top:0px;
+    }
+    .title h2 {
         text-align: center;
     }
-
+    .main-form{
+        width:100%
+    }
     .form_contaner {
         display: flex;
         flex-direction: column;
@@ -238,7 +195,7 @@ div.border {
         padding-bottom: 10px;
     }
 
-    label {
+    #account_prefills label {
         min-width: 98px;
         display: flex;
         text-align: left;

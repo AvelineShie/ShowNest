@@ -1,4 +1,6 @@
-﻿@{
+﻿@model IEnumerable<EventCardViewModel>
+
+@{
     ViewData["Title"] = "Home";
 }
 
@@ -68,9 +70,9 @@
             <a href="">特色活動</a>
         </div>
         <div class="cards">
-            @for (int i = 0; i < 6; i++)
+            @foreach(var card in Model)
             {
-                @await Html.PartialAsync("~/PartialViews/_EventCards_Partial.cshtml");
+                @await Html.PartialAsync("~/PartialViews/_EventCards_Partial.cshtml", card);
             }
         </div>
     </div>
@@ -87,16 +89,16 @@
             <a href="">特色活動</a>
         </div>
         <div class="cards">
-            @for (int i = 0; i < 3; i++)
+            @foreach (var card in Model)
             {
-                @await Html.PartialAsync("~/PartialViews/_EventCards_Partial.cshtml");
+                @await Html.PartialAsync("~/PartialViews/_EventCards_Partial.cshtml", card);
             }
         </div>
     </div>
 </section>
 <!-- more events button -->
 <section class="d-flex flex-column">
-    <a href="" id="more-events-button">探索更多活動<span>>></span></a>
+    <a asp-controller="Events" asp-action="Index" id="more-events-button">探索更多活動<span>>></span></a>
 </section>
 <!-- event place -->
 <section id="event-place-section">

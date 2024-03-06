@@ -1,15 +1,10 @@
 :root {
-    --main-color: #3b7555;
-    --main-color-hover: #3b7555;
     --function-color-hover: #518f6d;
-    --main-font-size: 15px;
-    --common-border: 1px #ddd solid;
-    --dark-gray-border: 1px solid #999EA2;
 }
 
 body {
     font-family: sans-serif;
-    font-size: var(--main-font-size);
+    /*font-size: 15px;*/
     color: #333333;
     display: flex;
     flex-direction: column;
@@ -20,227 +15,10 @@ a {
     text-decoration: none;
 }
 
-h2,
-h6 {
-    color: var(--main-green);
-    font-weight: bold;
-}
-
-h6 {
-    font-size: 20px;
-    padding: 10px 0;
-}
-
 .wrap {
-    width: 75%;
-    min-width: auto;
-    max-width: 1200px;
-    margin: 0px auto;
     position: relative;
 }
 
-/* action bar*/
-.action-bar {
-    background-color: #EEE;
-    padding: 0.5em 0;
-    margin: 0 auto;
-    display: grid;
-    grid-template-columns: 1fr 4fr 1fr;
-}
-
-/* cancel & user guide button */
-.action-bar-left a {
-    display: inline-block;
-    color: #333333;
-    height: 2.5em;
-    line-height: 1em;
-    width: 100px;
-    border: var(--common-border);
-    border-radius: 4px;
-    padding: 10px 5px;
-    text-align: center;
-    vertical-align: text-top;
-}
-
-.action-bar-left .btn-cancel a {
-    margin: 0 10px;
-}
-
-.action-bar-left .btn-user-guide a {
-    margin-right: 10px;
-}
-
-.action-bar-left .btn-cancel a::before {
-    content: url(https://res.cloudinary.com/dwn2iafcc/image/upload/v1708682220/circle-xmark-solid_filbbn.svg);
-    height: 100%;
-    display: inline-block;
-    vertical-align: middle;
-    padding-right: 10px;
-}
-
-.action-bar-left .btn-cancel a:hover {
-    background-color: #ddd;
-}
-
-.action-bar-left .btn-user-guide a::before {
-    content: url(https://res.cloudinary.com/dwn2iafcc/image/upload/v1708682220/book-open-solid_wwfo5s.svg);
-    height: 100%;
-    display: inline-block;
-    vertical-align: middle;
-    padding-right: 10px;
-}
-
-.action-bar-left .btn-user-guide a:hover {
-    background-color: #ddd;
-}
-
-/* timer */
-.count-down-timer {
-    background-color: #DB4455;
-    color: #fff;
-    height: 2.5em;
-    line-height: 2.5em;
-    width: 100%;
-    min-width: 200px;
-    border-radius: 4px;
-    margin: auto;
-    text-align: center;
-}
-
-/* confirm button */
-.btn-confirm a {
-    display: inline-block;
-    /* box-sizing: border-box; */
-    background-color: var(--main-color);
-    color: #fff;
-    height: 2.5em;
-    line-height: 1em;
-    width: 220px;
-    border: var(--common-border);
-    border-radius: 4px;
-    padding: 10px 10px;
-    margin: 0 10px;
-    text-align: center;
-    vertical-align: middle;
-}
-
-.btn-confirm a:hover {
-    background-color: var(--function-color-hover);
-}
-
-.btn-confirm a::after {
-    position: relative;
-    top: -1px;
-    left: 5px;
-    display: inline-block;
-    color: var(--main-color);
-    font-weight: bold;
-    content: counter(name);
-    border: 1px #fff solid;
-    background-color: #fff;
-    height: 18px;
-    vertical-align: -webkit-baseline-top;
-    width: 18px;
-    border-radius: 4px;
-}
-
-/* start ---- btn-confirm clicked ---- */
-.confirm-wrap {
-    position: absolute;
-    top: -5px;
-    left: 78.333334%;
-    right: -10px;
-    width: 250px;
-    height: 640px;
-    background-color: #FFFFFF;
-    z-index: 2;
-    border: var(--common-border);
-    border-radius: 4px;
-}
-
-.confirm-wrap {
-    display: "";
-}
-
-.display-total-amount .total-amount {
-    display: flex;
-    align-items: center;
-    justify-content: space-around;
-}
-
-.display-total-amount .total-amount span {
-    display: inline-block;
-    vertical-align: middle;
-    font-size: 13px;
-    color: #888888;
-    font-weight: normal;
-    margin: 10px 0;
-}
-
-.display-total-amount .total-amount p {
-    display: inline-block;
-    font-size: 26px;
-    font-weight: 900;
-    margin: 10px 0;
-}
-
-.seats-selection-complete {
-    margin-bottom: 20px;
-}
-
-.seats-selection-complete a {
-    display: block;
-    background-color: var(--main-color);
-    color: #fff;
-    height: 3em;
-    line-height: 1.5em;
-    width: 220px;
-    border: var(--common-border);
-    border-radius: 4px;
-    padding: 10px 10px;
-    margin: 0 auto;
-    text-align: center;
-}
-
-.seats-selection-complete a:hover {
-    background-color: var(--function-color-hover);
-}
-
-.selected-tickets {
-    border-top: var(--common-border);
-    border-bottom: var(--common-border);
-    background-color: #e5e5e5;
-    padding: 10px;
-    margin: auto;
-}
-
-.ticket-detail {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-}
-
-.ticket-detail .price {
-    display: inline-block;
-    color: #fff;
-    font-weight: bold;
-    background-color: var(--main-color);
-    padding: 20px 10px;
-    margin-left: -1px;
-}
-
-.ticket-with-seat-detail {
-    margin-right: 5px;
-}
-
-.ticket-with-seat-detail .ticket-type {
-    /* display: inline-block; */
-    color: #888888;
-    text-align: right;
-}
-
-
-/* end ---- btn-confirm clicked---- */
 /* seat areas btns and showcase */
 .seat-areas-and-showcases {
     background-color: #ddd;
@@ -258,7 +36,7 @@ h6 {
 
 .display-seat-area a {
     display: inline-block;
-    background-color: var(--main-color);
+    background-color: var(--main-green);
     color: #fff;
     height: 2.5em;
     line-height: 1em;
@@ -311,7 +89,7 @@ h6 {
 
 .showcase-selected::before {
     content: "●";
-    color: var(--main-color);
+    color: var(--main-green);
     margin-right: 1px;
     display: inline-block;
     height: 100%;
@@ -395,11 +173,10 @@ h6 {
     box-sizing: content-box;
     background-color: #FFFFFF;
     width: 20px;
-    border: 1px solid #333333;
+    border: var(--dark-border);
     margin-top: -1px;
     padding: 10px;
     border-radius: 4px;
-    margin: 0px;
     opacity: 0.9;
 }
 
@@ -454,163 +231,10 @@ h6 {
     background: local;
 }
 
-.rwd-fixed-btns {
-    display: none;
-}
-
-.modal-body p {
-    line-height: 1.5em;
-}
-
-.modal-body ol>li {
-    line-height: 1.5em;
-    margin-left: 10px;
-    list-style: auto;
-}
-
-.modal-body ol>img {
-    vertical-align: top;
-    width: 100%;
-    margin: 10px auto;
-}
-
-.modal-footer button {
-    --bs-btn-bg: var(--main-color);
-    --bs-btn-border-color: var(--main-color);
-}
-
-@media screen and (max-width: 1599px) {
-    .confirm-wrap {
-        transform: translateX(0%);
-        z-index: 2;
-    }
-}
-
-
-@media screen and (max-width: 1440px) {
-    .confirm-wrap {
-        transform: translateX(-10%);
-        z-index: 2;
-    }
-}
-
-@media screen and (max-width: 900px) {
-    .btn-confirm a {
-        width: 150px;
-    }
-}
-
 /* mobile */
 @media screen and (max-width: 768px) {
-    /* MOBILE */
-    @media (max-width:768px) {
-
-        /* start-li0 */
-        .wrap {
-            width: 90%;
-        }
-
-        /* end-li0 */
-
-        .width {
-            width: 90%;
-            margin: 0px auto;
-        }
-    }
-
-    /* li0 */
     .wrap {
         width: 100%;
-        min-width: 100%;
-    }
-
-    .action-bar {
-        display: inline-block;
-        padding: 0;
-    }
-
-    .count-down-timer {
-        width: 100%;
-    }
-
-    .action-bar-left {
-        display: none;
-    }
-
-    .action-bar-left .btn-cancel {
-        display: none;
-    }
-
-    .action-bar .btn-confirm {
-        display: none;
-    }
-
-    .confirm-wrap {
-        display: none;
-    }
-
-    .modal-header .selected-tickets {
-        display: inline-block;
-        color: var(--main-color);
-        border: none;
-        background-color: transparent;
-        margin-left: 0;
-        font-weight: bold;
-        font-size: 20px;
-    }
-
-    .modal-body .ticket-detail {
-        justify-content: space-evenly;
-    }
-
-    .modal-footer .total-amount {
-        margin-right: 80px;
-    }
-
-    .modal-footer .total-amount span {
-        display: inline-block;
-        vertical-align: middle;
-        font-size: 13px;
-        color: #888888;
-        font-weight: normal;
-        margin: 10px 0;
-    }
-
-    .modal-footer .total-amount p {
-        display: inline-block;
-        font-size: 26px;
-        font-weight: 900;
-        margin: 10px 0;
-    }
-
-    .modal-footer .seats-selection-complete {
-        margin: auto;
-    }
-
-    .rwd-fixed-btns .btn-cancel a {
-        display: inline-block;
-        color: #333333;
-        height: 2.5em;
-        line-height: 1em;
-        width: 100px;
-        border: var(--common-border);
-        border-radius: 4px;
-        padding: 10px 5px;
-        text-align: center;
-        vertical-align: text-top;
-        margin: 0 10px;
-    }
-
-    .rwd-fixed-btns .btn-cancel a::before {
-        content: url(https://res.cloudinary.com/dwn2iafcc/image/upload/v1708682220/circle-xmark-solid_filbbn.svg);
-        height: 100%;
-        display: inline-block;
-        vertical-align: middle;
-        padding-right: 10px;
-    }
-
-    .rwd-fixed-btns .btn-cancel a:hover {
-        background-color: #ddd;
     }
 
     .display-seat-area {
@@ -623,7 +247,6 @@ h6 {
     }
 
     .showcases div {
-        visibility: none;
         display: none;
     }
 
@@ -650,59 +273,12 @@ h6 {
         top: 4em;
         left: -2em;
         right: -2em;
-        /* left: 0; */
     }
 
     .seat {
         height: 30px;
         width: 30px;
         background-repeat: no-repeat;
-    }
-
-    .btn-user-guide {
-        display: none;
-    }
-
-    .rwd-fixed-btns {
-        position: fixed;
-        bottom: 0;
-        background-color: #eee;
-        width: 100%;
-        height: 5em;
-        display: flex;
-        align-items: center;
-        justify-content: space-around;
-    }
+    }    
 }
 
-/* ipad */
-@media (min-width:769px) {
-
-    @media (min-width:769px) and (max-width:1150px) {
-
-        /* start-li0 */
-        .wrap {
-            width: 95%;
-        }
-
-        .confirm-wrap {
-            transform: translateX(-20%);
-            z-index: 2;
-        }
-
-        /* end-li0 */
-    }
-
-
-
-    @media (min-width:1151px) {
-
-        /* start-li0 */
-        .wrap {
-            width: 75%;
-        }
-
-        /* end-li0 */
-    }
-
-}

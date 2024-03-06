@@ -6,43 +6,8 @@ body {
     box-sizing: border-box;
 }
 
-/* change bootstrap nav color start */
-.nav-tabs {
-    --bs-nav-tabs-link-active-color: var(--bs-emphasis-color);
-    --bs-emphasis-color: #333333
-}
-
-ul.nav li a,
-ul.nav li a:visited {
-    color: var(--main-green);
-}
-
-    ul.nav li a:hover,
-    ul.nav li a:active {
-        color: var(--main-green);
-        background-color: #FAFAFA;
-        text-decoration: none;
-    }
-
-ul.nav li.active a {
-    color: var(--main-green);
-}
-
-/* change bootstrap nav color end */
 
 /* main Body */
-.section_wrap {
-    width: 100%;
-    max-width: 1200px;
-    margin: auto;
-    padding-top: 20px;
-}
-
-.main-wrap {
-    width: 75%;
-    margin: auto;
-  
-}
 
 .main-form {
     display: flex;
@@ -63,6 +28,9 @@ h2 {
 .form-content {
     margin-bottom: 10px;
 }
+.checkbox-group{
+    padding-top:10px;
+}
 
 .form_contaner {
     display: grid;
@@ -76,11 +44,16 @@ h2 {
     flex-direction: row;
 }
 
-label {
+.form_contaner label {
     display: inline-block;
     padding: 10px 0px;
-    margin-right: 20px;
+    margin: 0 20px 0 5px;
     font-weight: bold;
+    text-align: right;
+    min-width: 64px;
+}
+.option-group label{
+    text-align: left;
 }
 
 .form-control {
@@ -119,7 +92,6 @@ ul {
 .form-floating label {
     font-weight: 400;
     color: var(--dark-gray);
-    ;
 }
 
 select#sex {
@@ -135,7 +107,6 @@ select#sex {
 }
 
 .option-group {
-    padding: 10px;
     display: flex;
     flex-wrap: wrap;
     flex-direction: column;
@@ -192,7 +163,12 @@ li input {
     margin-top: -2px;
     margin-bottom: 15px;
 }
-
+.media_link_group{
+    margin-top:2px;
+}
+.time_zone {
+    padding-bottom: 10px;
+}
 .name {
     font-size: 15px;
     color: #333333;
@@ -212,10 +188,10 @@ a {
     color: var(--main-green);
 }
 
-    a:hover {
-        color: var(--light-green);
-        text-decoration: underline solid var(--light-green);
-    }
+.checkbox-group a:hover {
+    color: var(--light-green);
+    text-decoration: underline solid var(--light-green);
+}
 
 .link-oauth a:hover {
     text-decoration: none;
@@ -233,7 +209,7 @@ div.border {
 
 .div-wrap {
     display: grid;
-    grid-template-columns: 2.7fr 3fr;
+    grid-template-columns: 2.5fr 3fr;
     padding-bottom: 20px;
 }
 
@@ -272,6 +248,10 @@ div.border {
         display: flex;
         flex-direction: column;
     }
+    .form_contaner label{
+        text-align:left;
+        margin:0px;
+    }
     .title{
         text-align: center;
     }
@@ -289,7 +269,7 @@ div.border {
         min-width: 100%;
     }
 
-    label {
+    #UserEdit label {
         min-width: 90px;
     }
 
@@ -301,19 +281,9 @@ div.border {
         display: block;
     }
 
-    .nav-tabs .nav-link {
-        background-color: none;
-        border: 1px solid transparent;
-        border-radius: 5rem;
-        margin: 5px;
+    .help-block p{
+        max-width:none;
     }
-
- .nav-tabs .nav-link.active {
-     color: #fff;
-     background-color: var(--main-green);
-     border: 1px solid var(--main-green);
-     border-radius: 5rem;
- }
 
     .btn-save button {
         display: block;

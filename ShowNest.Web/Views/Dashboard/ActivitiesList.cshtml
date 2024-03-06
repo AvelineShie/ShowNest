@@ -7,7 +7,6 @@
     <link href="~/css/Dashboard/ActivitiesList.css" rel="stylesheet" />
 }
 
-
 <body>
 
     <div class="wrap">
@@ -16,12 +15,12 @@
             <input type="checkbox" name="" id="sideMenu-active" />
             <div class="sideBarMenu">
                 <nav>
-                    <div class="dropdown">
+                    <div class="dropdown" id="sidemenu-dropdown">
                         <button class="btn btn-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown"
                                 aria-expanded="false" id="publish-btn">
                             未發佈
                         </button>
-                        <ul class="dropdown-menu">
+                        <ul class="dropdown-menu" >
                             <li><a class="dropdown-item" href="#">發佈活動</a></li>
                         </ul>
                     </div>
@@ -47,11 +46,11 @@
             <div class="main-content">
                 <!----- header and subheader start ----->
                 <header>
-                    <h1 class="header-h1">
+                    <h2 class="header-h2">
                         <a href="" class="back-Btn" title="回到組織頁面"><i class="fa-solid fa-arrow-left"></i></a>
                         <span class="activitiesName">活動名稱</span>
                         <span class="activitiesTitle">半暝三點半搶銀行 (暫)</span>
-                    </h1>
+                    </h2>
                 </header>
                 <div class="subheader">
                     <div class="overview">

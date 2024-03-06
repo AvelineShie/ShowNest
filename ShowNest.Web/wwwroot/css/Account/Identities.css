@@ -11,46 +11,14 @@ body {
 }
 
 
-/* change bootstrap nav color start */
-.nav-tabs {
-    --bs-nav-tabs-link-active-color: var(--bs-emphasis-color);
-    --bs-emphasis-color: #333333
-}
-
-ul.nav li a,
-ul.nav li a:visited {
-    color: var(--main-green);
-}
-
-    ul.nav li a:hover,
-    ul.nav li a:active {
-        color: var(--main-green);
-        background-color: #FAFAFA;
-        text-decoration: none;
-    }
-
-ul.nav li.active a {
-    color: var(--main-green);
-}
-
-/* change bootstrap nav color end */
 
 
 /* main Body */
 .section_wrap {
-    width: 100%;
-    max-width: 1200px;
-    margin: auto;
     /*flex-grow: 1;*/
     display: flex;
     align-items: start;
     justify-content: center;
-    margin-top: 20px;
-}
-
-.main-wrap {
-    width: 75%;
-    margin: auto;
 }
 
 .title {
@@ -104,15 +72,16 @@ h2 {
         cursor: pointer;
     }
 
-label {
+.label_name,
+.checkbox-group label{
     display: inline-block;
-    padding-top: 18px;
+    padding-top: 14px;
     margin-right: 20px;
     font-weight: bold;
     text-align: right;
     color: #333333;
     min-width: 80px;
-    line-height:1.5;
+    line-height: 1.5;
 }
 
 .collapse-group button {
@@ -123,12 +92,12 @@ label {
         color: var(--function-color-hover);
     }
 
-.ident-collapse.btn.collapsed::before {
+.ident-collapse.btn::before {
     content: "▿";
     left: -5px;
 }
 
-.ident-collapse.btn::before {
+.ident-collapse.btn.collapsed::before {
     content: "▵";
     left: -5px;
 }
@@ -154,15 +123,12 @@ div.border {
 
 .div-wrap {
     display: grid;
-    grid-template-columns: 5.3fr 3fr;
+    grid-template-columns: 4.9fr 3fr;
 }
 
 
 
 @media screen and (max-width:768px) {
-    .wrap {
-        max-width: 960px;
-    }
 
     .title h2 {
         text-align: center;
@@ -179,11 +145,11 @@ div.border {
         text-align: left;
     }
 
-    .form_contaner input {
+    .id-contaner {
         width: 100%;
     }
 
-    label {
+    .label_name {
         min-width: 75px;
         text-align: center;
     }
@@ -195,20 +161,6 @@ div.border {
     .div-wrap {
         display: block;
     }
-
-    .nav-tabs .nav-link {
-        background-color: none;
-        border: 1px solid transparent;
-        border-radius: 5rem;
-        margin: 5px;
-    }
-
-        .nav-tabs .nav-link.active {
-            color: #fff;
-            background-color: var(--main-green);
-            border: 1px solid var(--main-green);
-            border-radius: 5rem;
-        }
 
     .btn-save button {
         display: block;
