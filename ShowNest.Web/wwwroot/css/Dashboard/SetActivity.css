@@ -53,11 +53,12 @@
 /* 麵包屑 */
 .breadcrumb {
     background-color: #edecec;
-    padding: 10px 8px; 
+    padding: 10px 8px;
     border-radius: 4px;
     font-size: 15px;
     line-height: 20px;
-    
+    max-width: 1120px;
+    margin: 0 auto;
 }
 
 .breadcrumb a{
@@ -145,12 +146,16 @@ padding-top: 5px;
 
 .date-time {
     font-size: 15px;
-    margin: 10px;
     line-height: 34px;
     border: solid #ced4da 1px;
     color: #555555;
     width: 200px;
     border-radius: 5px;
+}
+
+.space {
+    display:inline-block;
+    margin: 8px;
 }
 
 .end-time{
