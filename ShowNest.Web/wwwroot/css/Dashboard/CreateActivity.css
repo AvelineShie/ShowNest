@@ -1,8 +1,8 @@
 
-.empty{
+/*.empty{
     display:block;
     height:60px;
-}
+}*/
 
 /* Activity Container */
 .ActivityContainer{
@@ -11,7 +11,8 @@
     min-height: 520px;
     margin: 0 auto;
     padding: 10px;
-    max-width: 800px; 
+    max-width: 800px;
+    margin-top:80px;
 }
 
 .ActivityContainer>*{
@@ -68,7 +69,8 @@ h3::after{
     width: 200px;
     margin-left: 10px;
     margin-bottom: 10px;
-    margin-top:10px;
+    margin-top: 10px;
+/*    border: solid #ced4da 1px;*/
 }
 
 .TOSzone a{
