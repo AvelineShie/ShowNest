@@ -1,6 +1,7 @@
 ﻿using System.Collections.Generic;
 using System.Globalization;
 using Microsoft.AspNetCore.Mvc;
+using ShowNest.Web.Services;
 using ShowNest.Web.ViewModels.Events;
 using ShowNest.Web.ViewModels.Organization;
 
@@ -34,7 +35,10 @@ namespace ShowNest.Web.Controllers
         //以上測試中--------------------------------------------------------------
         public IActionResult Index()
         {
-            return View();
+			var eventCardService = new EventCardService();
+			var eventCardsVM = eventCardService.SetEventCards();
+
+			return View(eventCardsVM);
         }
 
         public IActionResult EventPage()
