@@ -29,10 +29,10 @@
     }
 }
 
-@* <a asp-controller="Events" asp-action="EventPage" class="single-card selling"> *@<a href="./Events/EventPage"
-    class="single-card @SetStatus()">
+@* <a asp-controller="Events" asp-action="EventPage" class="single-card selling"> *@
+<a href="@Model.EventLink" class="single-card @SetStatus()">
     <div class="card-name">
-        <img src="https://picsum.photos/300/200/?random=9" alt="">
+        <img src="@Model.EventImgUrl" alt="">
         <p>@Model.EventName</p>
     </div>
     <div class="card-info">
