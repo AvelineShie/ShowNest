@@ -1,13 +1,14 @@
 ﻿using ShowNest.Web.Interfaces;
 using ShowNest.Web.ViewModels.General;
+using System.Linq.Expressions;
 
 namespace ShowNest.Web.Services
 {
-    public class EventCardService : IEventCardService
+    public class EventCardService_TAExample : IEventCardService
     {
         public IEnumerable<EventCardViewModel> EventCards { get; }
 
-        public EventCardService()
+        public EventCardService_TAExample()
         {
             EventCards = new List<EventCardViewModel>
             {
@@ -54,17 +55,64 @@ namespace ShowNest.Web.Services
                     EventStatus = EventStatus.Selling
                 }
             };
+
         }
-        public EventCardViewModel GetEventCard(string name, string link, string imgUrl, string eventTime, EventStatus status)
+
+
+        public IEnumerable<EventCardViewModel> GetHomePageEvents()
+        {
+            //從Service取得之後，組ViewModel
+            //return EventCards.Select(x => GetEventCard(x.EventName, x.EventImgUrl,new DateTime(),x.EventLink, EventStatus.ViewEvent));
+            //return EventCards.Select(x => new EventCardViewModel
+            //{
+            //     EventStatus = x.EventStatus,
+            //      EventName = x.EventName,
+            //});
+
+            foreach (var item in EventCards)
+            {
+
+                yield return new EventCardViewModel { };
+            }
+        }
+        public EventCardViewModel GetProductById(int id)
+        {
+            //從資料庫拿
+            //連資料庫
+            //離開資料庫
+            return new EventCardViewModel { };
+        }
+
+        public EventCardViewModel GetEventCard(string name, string imgUrl, DateTime eventTime, string link, EventStatus status)
         {
             return new EventCardViewModel
             {
                 EventName = name,
                 EventLink = link,
                 EventImgUrl = imgUrl,
-                EventTime = eventTime,
-                EventStatus = status
+                EventStatus = status,
+                EventTime = eventTime.ToString("yyyy/MM/dd(ddd)")
             };
         }
+
+        public EventCardViewModel GetEventCard(string name, string link, string imgUrl, DateTime eventTime, EventStatus status)
+        {
+            throw new NotImplementedException();
+        }
+
+        public EventCardViewModel GetEventCard(string name, string link, string imgUrl, string eventTime, EventStatus status)
+        {
+            throw new NotImplementedException();
+        }
+    }
+
+    public class HomePageEvent
+    {
+        public string MyProperty { get; set; }
+        public string MyProperty1 { get; set; }
+        public string MyProperty2 { get; set; }
+
+        public IEnumerable<EventCardViewModel> EventCards { get; set; }
     }
 }
+

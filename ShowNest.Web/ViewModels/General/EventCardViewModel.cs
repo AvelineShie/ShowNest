@@ -1,4 +1,4 @@
-﻿namespace ShowNest.Web.ViewModels
+﻿namespace ShowNest.Web.ViewModels.General
 {
     public class EventCardViewModel
     {

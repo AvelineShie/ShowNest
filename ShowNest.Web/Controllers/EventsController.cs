@@ -35,10 +35,8 @@ namespace ShowNest.Web.Controllers
         //以上測試中--------------------------------------------------------------
         public IActionResult Index()
         {
-			var eventCardService = new EventCardService();
-			var eventCardsVM = eventCardService.SetEventCards();
 
-			return View(eventCardsVM);
+			return View();
         }
 
         public IActionResult EventPage()
