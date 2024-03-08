@@ -8,23 +8,23 @@ namespace ShowNest.Web.ViewModels.UserAccount
         public string UserName { get; set; }
         public string NickName { get; set; }
         public string Email { get; set; }
-        public int PhoneNumberCode { get; set; }
-        public string PhoneNumber { get; set; }
+        //public int PhoneNumberCode { get; set; }
+        public int PhoneNumber { get; set; }
         public DateTime BirthDay { get; set; }
         public Gender Gender { get; set; }
-        public IEnumerable<ActivityRegion> PreferredActivityRegions { get; set; }
+        public List<ActivityRegion> PreferredActivityRegions { get; set; }
 
-        public UserWebsiteViewModel Website { get; set; }
-        public UserWebsiteViewModel Fb { get; set; }
-        public UserWebsiteViewModel IG { get; set; }
+        public string WebsiteUrl { get; set; }
+        public ThirdPartyLink Fb { get; set; }
+        public ThirdPartyLink Google { get; set; }
 
-        public string Biography { get; set; }
-        public string Country { get; set; }
+        public string Bio { get; set; }
+        //public string Country { get; set; }
         //public TimeZone TimeZone { get; set; }
         public bool IsSubscribed { get; set; }
-        public bool RestrictedLevel { get; set; }
-        public bool OpenPersonalPage { get; set; }
-        public UserImageViewModel Image { get; set; }
+        //public bool RestrictedLevel { get; set; }
+        //public bool OpenPersonalPage { get; set; }
+        public string ImageUrl { get; set; }
     }
     public enum Gender
     {
@@ -39,4 +39,10 @@ namespace ShowNest.Web.ViewModels.UserAccount
         Region2=1,
         Region3=2
     }
+    public class ThirdPartyLink
+    {
+        public string Title { get; set; }
+        public string Url { get; set; }
+    }
+
 }

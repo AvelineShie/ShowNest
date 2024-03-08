@@ -14,8 +14,15 @@
         public int CompanyZipCode { get; set; }
         public string CompanyAddress { get; set; }
         public int CompanyVAT { get; set; }
-        public string DonateEInvoice { get; set; }
-        public string MobileCloudInvoice { get; set; }
+        public List<DonateOrg> DonateEInvoice { get; set; }
+        public string MobileEInvoice { get; set; }
 
     }
+    public enum DonateOrg
+    {
+        DonateOrg1=0,
+        DonateOrg2=1
+    }
+
+
 }
