@@ -1,4 +1,5 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using ShowNest.Web.Interfaces;
 using ShowNest.Web.Models;
 using ShowNest.Web.Services;
 using System.Diagnostics;
@@ -7,6 +8,12 @@ namespace ShowNest.Web.Controllers
 {
     public class HomeController : Controller
     {
+        private readonly IEventCardService _eventCardService;
+        public HomeController(IEventCardService eventCardService)
+        {
+            _eventCardService = eventCardService;
+        }
+
         private readonly ILogger<HomeController> _logger;
 
         public HomeController(ILogger<HomeController> logger)
@@ -16,10 +23,10 @@ namespace ShowNest.Web.Controllers
 
         public IActionResult Index()
         {
-            var eventCardService = new EventCardService();
-            var eventCardsVM = eventCardService.SetEventCards();
+            //var eventCardService = new EventCardService();
+            //var eventCardsVM = eventCardService.SetEventCards();
 
-			return View(eventCardsVM);
+			return View(_eventCardService);
         }
 
         public IActionResult Privacy()
