@@ -8,11 +8,11 @@ namespace ShowNest.Web.Controllers
 {
     public class HomeController : Controller
     {
-        private readonly IEventCardService _eventCardService;
-        public HomeController(IEventCardService eventCardService)
-        {
-            _eventCardService = eventCardService;
-        }
+        // private readonly IEventCardService _eventCardService;
+        // public HomeController(IEventCardService eventCardService)
+        // {
+        //     _eventCardService = eventCardService;
+        // }
 
         private readonly ILogger<HomeController> _logger;
 
@@ -23,10 +23,11 @@ namespace ShowNest.Web.Controllers
 
         public IActionResult Index()
         {
-            //var eventCardService = new EventCardService();
+            // var eventCardService = new EventCardService();
             //var eventCardsVM = eventCardService.SetEventCards();
+            //return View(_eventCardService);
 
-			return View(_eventCardService);
+			return View();
         }
 
         public IActionResult Privacy()
