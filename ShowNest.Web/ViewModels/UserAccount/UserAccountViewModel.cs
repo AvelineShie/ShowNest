@@ -41,8 +41,11 @@ namespace ShowNest.Web.ViewModels.UserAccount
     }
     public class ThirdPartyLink
     {
-        public string Title { get; set; }
+        public string Id { get; set; }
         public string Url { get; set; }
+        public string Scope { get; set; }
+        public string  Redirect_uri_encode { get; set; }
+        public string  State { get; set; }
     }
 
 }
