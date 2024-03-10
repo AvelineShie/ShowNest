@@ -7,7 +7,8 @@ namespace ShowNest.Web.ViewModels.Dashboard
 {
     public class SetActivityViewModel
     {
-        public int EventId { get; set; }
+        //照mobile RWD順序
+        public string OrganizationName { get; set; }
         public string MainImage { get; set; }
         public string EventName { get; set; }
         public bool PrivacyStatus { get; set; } //隱私狀態
