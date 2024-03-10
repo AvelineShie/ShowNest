@@ -102,7 +102,7 @@ td.color-label{
 }
 
 #add-ticket{
-    background-color: var(--main-color-hover);
+    background-color: var(--light-green);
     border-color: #fff;
     color: #fff;
 }
@@ -111,16 +111,14 @@ td.color-label{
     margin-right: 10px;
 }
 
+button.btn-outline-secondary {
+    margin-right: 10px;
+    background-color: var(--main-green);
+    color: #fff;
+}
+
 /* MOBILE */
 @media (max-width:768px) {
-    body{
-        width:1200px;
-    }
-
-    .wrap {
-        margin: 0px auto;
-    }
-
 
 }
 
@@ -128,28 +126,15 @@ td.color-label{
 @media (min-width:769px) {
 
     @media (min-width:769px) and (max-width:1200px) {
-/*
-        body {
-            max-width: 1200px;
-        }*/
 
         #header-functions a {
             padding: 14px 8px;
         }
 
         @media (min-width:1201px) {
-          /*  .wrap {
-            width: 75%;*/
+
         }
     }
-/*
-    body {
-        width: 1200px;
-    }
-
-    .wrap {
-        margin: 0px auto;
-    }*/
 
     #header-functions a {
         padding: 14px 15px;
