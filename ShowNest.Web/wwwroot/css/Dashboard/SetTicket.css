@@ -20,7 +20,7 @@
 .name{
     line-height: 37px;
     font-size: 22px;
-    color: var(--main-color);
+    color: var(--main-green);
 }
 
 
@@ -61,7 +61,7 @@ a {
 
 
 .breadcrumb-item:nth-child(2) a {
-    color: var(--main-color-hover)
+    color: var(--light-green)
 }
 
 
@@ -84,7 +84,7 @@ td>button{
     font-size: 15px;
     line-height: 1.33333333;
     border-radius: 2px;
-    color: var(--main-color);
+    color: var(--main-green);
 }
 
 .delete {
