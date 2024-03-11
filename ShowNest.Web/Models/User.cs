@@ -8,7 +8,9 @@ namespace ShowNest.Web.Models
     {
         // [Key]
         [Required]
-        public int UserId { get; set; }
+        [Description("會員ID")]
+        [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
+        public int Id { get; set; }
 
         [Required]
         [StringLength(100)]
@@ -32,7 +34,8 @@ namespace ShowNest.Web.Models
 
         public DateTime? Birthday { get; set; }
 
-        public int? Gender { get; set; }
+        [Column(TypeName = "tinyint")]
+        public int Gender { get; set; }
 
         public int? AreaPreffered { get; set; }
 
@@ -50,10 +53,16 @@ namespace ShowNest.Web.Models
 
         [Required]
         [DefaultValue(1)]
-        public int AccountStatus { get; set; }
+        public int Status { get; set; }
 
         [Required]
-        public DateTime AccountCreateTime { get; set; }
+        public DateTime CreateAt { get; set; }
+
+        [Required]
+        public DateTime EditAt { get; set; }
+
+        [Required]
+        public DateTime IsDelete { get; set; }
 
         [Required]
         public DateTime AccountLastLoginTime { get; set; }
