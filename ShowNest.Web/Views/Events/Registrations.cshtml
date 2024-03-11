@@ -1,4 +1,5 @@
 ﻿@using ShowNest.Web.ViewModels.Events
+@model RegistrationViewModel;
 @*
     For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
 *@
@@ -35,7 +36,7 @@
                             <tr class="">
                                 <th class="start_time">開始時間</th>
                                 <td class="time">
-                                    2024/02/16 22:30 (+0800)
+                                    @Model.StartTime
                                     <a class="is_following binding" href="#" target="_blank" >
                                         <i class="fa fa-calendar fa-front"></i>
                                         加入行事曆

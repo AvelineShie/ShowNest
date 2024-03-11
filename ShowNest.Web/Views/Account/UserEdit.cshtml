@@ -1,10 +1,11 @@
-﻿@*
-    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
-*@
+﻿
 @section topCSS {
     <link href="~/css/_partial/_accountnavbarpartial.css" rel="stylesheet" />
     <link href="~/css/account/useredit.css" rel="stylesheet" />
 }
+@* @section endJS{
+<script src="~/js/account/useredit_facebooklink.js"></script>
+} *@
 
     <section class="section_wrap">
     <div id="UserEdit" class="width">
@@ -48,7 +49,7 @@
                             <div class="form-content">
                                 <div class="contect-group input-group-sm">
                                     <label class="email" for="Email">Email</label>
-                                    <input type="email" class="form-control mb-4" id="" type="text" name=""
+                                    <input type="email" class="form-control mb-4" id="" name=""
                                            placeholder="Email">
                                     <p></p>
                                 </div>
@@ -62,7 +63,7 @@
                                                 </select>
                                             </span> *@
                                             <span class="numbers input-group-sm">
-                                                <input class="form-control" type="tel" id="" type="text" name=""
+                                                <input class="form-control" type="tel" id=""  name=""
                                                        placeholder="phone number">
                                             </span>
                                         </div>
@@ -162,7 +163,7 @@
                         <div class="form-content input-group-sm media_link_group">
                                 <div class="link-oauth link-fb">
                                     <span class="name">Facebook</span>
-                                    <a href="#" type="button" class="btn btn-primary">連結</a>
+                                <a href="@ViewBag.Url" class="btn btn-primary fb-login-button" data-auto-logout-link="false" data-use-continue-as="false">連結</a>
                                 </div>
                             <div class="link-oauth link-google">
                                     <span class="name">Google</span>
@@ -173,15 +174,15 @@
                             <label for="">進階帳號管理</label>
                             <div class="form-content input-group-sm">
                                 <div class="checkbox-group">
-                                    <a class="delete-acc" href="#">我要刪除帳號</a>
-                                    <div class="subscribe-group mt-2">
+                                    <a class="delete-acc mt-2" href="#">我要刪除帳號</a>
+                                    @* <div class="subscribe-group mt-2">
                                         <ul>
                                             <li>
                                                 <input class="sub-option" id="sub-news" type="checkbox"
                                                        name="subscribe-option" value="sub-news"><label class=""
                                                        for="sub-news">訂閱 ShowNest 的最新消息</label>
                                             </li>
-                                           @*  <li>
+                                            <li>
                                                 <input class="sub-option" id="restric-opt" type="checkbox"
                                                        name="Search-restric-option" value="restric-opt"><label class=""
                                                        for="restric-opt">搜尋時，排除限制級活動</label>
@@ -190,9 +191,9 @@
                                                 <input class="sub-option" id="pers-page" type="checkbox"
                                                        name="personal-page" value="pers-page"><label class=""
                                                        for="pers-page">啟用個人頁面</label>
-                                            </li> *@
+                                            </li> 
                                         </ul>
-                                    </div>
+                                    </div> *@
                                 </div>
                             </div>
                         </div>

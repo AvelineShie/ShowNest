@@ -168,6 +168,27 @@ namespace ShowNest.Web.Controllers
 
         public IActionResult Registrations()
         {
+            var model = new RegistrationViewModel()
+            {
+                EventName = "【ALTA】theLOOP presents : PSY.P 臺灣個人巡演預熱戰",
+                StartTime = DateTime.Now,
+                EventLocation = "ALTA NIGHTCLUB",
+                EventAddress = "台中市西屯區青海南街59號",
+                EventHost = "歐達休閒娛樂有限公司",
+                TicketCollectionChannel = "台灣全家 FamiPort 取票",
+                PaymentMethodName = "ATM 虛擬帳號、信用卡",
+            };
+             //AllTickets = new List<Tickets>
+             //{
+             //    new Tickets()
+             //    {
+             //        SeatArea="B2 區",
+             //        SeatRow="17 排",
+             //        SeatNumber="8 號"
+             //    }
+             //},
+
+
             return View();
         }
 
