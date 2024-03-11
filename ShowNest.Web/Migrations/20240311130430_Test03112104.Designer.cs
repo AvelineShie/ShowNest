@@ -3,6 +3,7 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using ShowNest.Web.Data;
 
@@ -11,9 +12,11 @@ using ShowNest.Web.Data;
 namespace ShowNest.Web.Migrations
 {
     [DbContext(typeof(DataBaseContext))]
-    partial class DataBaseContextModelSnapshot : ModelSnapshot
+    [Migration("20240311130430_Test03112104")]
+    partial class Test03112104
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -24,92 +27,84 @@ namespace ShowNest.Web.Migrations
 
             modelBuilder.Entity("ShowNest.Web.Models.Area", b =>
                 {
-                    b.Property<int>("Id")
+                    b.Property<int>("AreaId")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int");
 
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("AreaId"));
 
                     b.Property<string>("AreaName")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.HasKey("Id");
+                    b.HasKey("AreaId");
 
                     b.ToTable("Areas");
 
                     b.HasData(
                         new
                         {
-                            Id = 1,
+                            AreaId = 1,
                             AreaName = "北北基宜地區"
                         },
                         new
                         {
-                            Id = 2,
+                            AreaId = 2,
                             AreaName = "桃竹苗地區"
                         },
                         new
                         {
-                            Id = 3,
+                            AreaId = 3,
                             AreaName = "雲嘉南地區"
                         },
                         new
                         {
-                            Id = 4,
+                            AreaId = 4,
                             AreaName = "高屏地區"
                         },
                         new
                         {
-                            Id = 5,
+                            AreaId = 5,
                             AreaName = "中彰投地區"
                         },
                         new
                         {
-                            Id = 6,
+                            AreaId = 6,
                             AreaName = "花東地區"
                         },
                         new
                         {
-                            Id = 7,
+                            AreaId = 7,
                             AreaName = "澎金馬地區"
                         },
                         new
                         {
-                            Id = 8,
+                            AreaId = 8,
                             AreaName = "香港"
                         },
                         new
                         {
-                            Id = 9,
+                            AreaId = 9,
                             AreaName = "澳門"
                         },
                         new
                         {
-                            Id = 10,
+                            AreaId = 10,
                             AreaName = "其他地區"
                         });
                 });
 
             modelBuilder.Entity("ShowNest.Web.Models.AreaPreference", b =>
                 {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
+                    b.Property<int>("UserId")
                         .HasColumnType("int");
-
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
 
                     b.Property<int>("AreaId")
                         .HasColumnType("int");
 
-                    b.Property<int>("UserId")
-                        .HasColumnType("int");
-
-                    b.HasKey("Id");
+                    b.HasKey("UserId", "AreaId");
 
                     b.HasIndex("AreaId");
-
-                    b.HasIndex("UserId");
 
                     b.ToTable("AreaPreferences");
                 });
@@ -139,6 +134,9 @@ namespace ShowNest.Web.Migrations
                     b.Property<string>("Address")
                         .HasColumnType("nvarchar(max)");
 
+                    b.Property<string>("City")
+                        .HasColumnType("nvarchar(max)");
+
                     b.Property<string>("CompanyAddress")
                         .HasColumnType("nvarchar(max)");
 
@@ -148,20 +146,14 @@ namespace ShowNest.Web.Migrations
                     b.Property<int?>("CompanyZipCode")
                         .HasColumnType("int");
 
-                    b.Property<string>("County")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("District")
+                    b.Property<string>("Country")
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<int?>("DonateEInvoice")
                         .HasColumnType("int");
 
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
-
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+                    b.Property<string>("JobTitle")
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("MobileEInvoice")
                         .HasColumnType("nvarchar(max)");
@@ -175,7 +167,7 @@ namespace ShowNest.Web.Migrations
                     b.Property<int?>("PostalCode")
                         .HasColumnType("int");
 
-                    b.Property<string>("Title")
+                    b.Property<string>("Region")
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("UserName")
@@ -188,14 +180,20 @@ namespace ShowNest.Web.Migrations
 
             modelBuilder.Entity("ShowNest.Web.Models.User", b =>
                 {
-                    b.Property<int>("Id")
+                    b.Property<int>("UserId")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int");
 
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("UserId"));
+
+                    b.Property<DateTime>("AccountCreateTime")
+                        .HasColumnType("datetime2");
 
                     b.Property<DateTime>("AccountLastLoginTime")
                         .HasColumnType("datetime2");
+
+                    b.Property<int>("AccountStatus")
+                        .HasColumnType("int");
 
                     b.Property<int?>("AreaPreffered")
                         .HasColumnType("int");
@@ -203,24 +201,15 @@ namespace ShowNest.Web.Migrations
                     b.Property<DateTime?>("Birthday")
                         .HasColumnType("datetime2");
 
-                    b.Property<DateTime>("CreateAt")
-                        .HasColumnType("datetime2");
-
                     b.Property<bool>("DMSubscription")
                         .HasColumnType("bit");
-
-                    b.Property<DateTime>("EditAt")
-                        .HasColumnType("datetime2");
 
                     b.Property<string>("Email")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<byte>("Gender")
-                        .HasColumnType("tinyint");
-
-                    b.Property<DateTime>("IsDelete")
-                        .HasColumnType("datetime2");
+                    b.Property<int?>("Gender")
+                        .HasColumnType("int");
 
                     b.Property<string>("Mobile")
                         .IsRequired()
@@ -240,9 +229,6 @@ namespace ShowNest.Web.Migrations
                     b.Property<string>("ProfileImage")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<int>("Status")
-                        .HasColumnType("int");
-
                     b.Property<string>("UserAccount")
                         .IsRequired()
                         .HasMaxLength(100)
@@ -252,7 +238,7 @@ namespace ShowNest.Web.Migrations
                         .HasMaxLength(50)
                         .HasColumnType("nvarchar(50)");
 
-                    b.HasKey("Id");
+                    b.HasKey("UserId");
 
                     b.ToTable("Users");
                 });

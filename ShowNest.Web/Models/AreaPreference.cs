@@ -3,10 +3,13 @@
     public class AreaPreference
     {
         [Key]
+        [Required]
+        [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
+        public int Id { get; set; }
+
         [ForeignKey("User")]
         public int UserId { get; set; }
 
-        [Key]
         [ForeignKey("Area")]
         public int AreaId { get; set; }
 

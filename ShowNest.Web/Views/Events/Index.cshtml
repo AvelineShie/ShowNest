@@ -1,4 +1,4 @@
-@model IEnumerable<EventCardViewModel>
+@model EventIndexViewModel
 
 @{
 	ViewData["Title"] = "Index";
@@ -69,9 +69,9 @@
 	<div id="categories-tags-wrap" class="width d-flex">
 		<p class="">活動類別</p>
 		<div id="categories-tags-div" class="d-flex">
-			@for(int i = 0; i < 15; i++)
+			@foreach (var tag in Model.EventCategoryTags)
 			{
-				@await Html.PartialAsync("~/PartialViews/_CategoryTags_Partial.cshtml");
+				@await Html.PartialAsync("~/PartialViews/_CategoryTags_Partial.cshtml", tag);
 			}
 		</div>
 	</div>
@@ -80,7 +80,7 @@
 <section>
 	<div class="cards-wrap width">
 		<div class="cards">
-			@foreach (var card in Model)
+			@foreach (var card in Model.EventEventCards)
 			{
 				@await Html.PartialAsync("~/PartialViews/_EventCards_Partial.cshtml", card);
 			}

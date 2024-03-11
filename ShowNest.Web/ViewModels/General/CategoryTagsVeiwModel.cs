@@ -2,6 +2,8 @@
 {
     public class CategoryTagsVeiwModel
     {
-        public string Category { get; set; }
+        public int Id { get; set; }
+        public string CategoryNameEng { get; set; }
+        public string CategoryNameZh { get; set; }
     }
 }
