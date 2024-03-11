@@ -3,6 +3,7 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using ShowNest.Web.Data;
 
@@ -11,9 +12,11 @@ using ShowNest.Web.Data;
 namespace ShowNest.Web.Migrations
 {
     [DbContext(typeof(DataBaseContext))]
-    partial class DataBaseContextModelSnapshot : ModelSnapshot
+    [Migration("20240311130430_Test03112104")]
+    partial class Test03112104
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -88,11 +91,6 @@ namespace ShowNest.Web.Migrations
                         {
                             AreaId = 10,
                             AreaName = "其他地區"
-                        },
-                        new
-                        {
-                            AreaId = 11,
-                            AreaName = "TEST"
                         });
                 });
 
