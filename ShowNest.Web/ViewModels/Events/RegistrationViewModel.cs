@@ -18,13 +18,8 @@ namespace ShowNest.Web.ViewModels.Events
         public string PaymentMethodName { get; set; }
 
         // Ticket Information
-        public string SeatArea { get; set; }
-        public string SeatRow { get; set; }
-        public int SeatNumber { get; set; }
-        public string TicketTypeName { get; set; }
-        public decimal TicketPrice { get; set; }
-        public int PurchaseAmount { get; set; }
-        public decimal TotalPrice { get; set; }
+        public List<Tickets> TicketSeats { get; set; }
+       
 
         // Attendee Information
         public string Name { get; set; }
@@ -35,6 +30,18 @@ namespace ShowNest.Web.ViewModels.Events
         public bool ShownParticipatedCampaign { get; set; }
 
     }
- 
+    public class Tickets
+    { 
+        public string SeatArea { get; set; }
+        public string SeatRow { get; set; }
+        public int SeatNumber { get; set; }
+        public string TicketTypeName { get; set; }
+        public decimal TicketPrice { get; set; }
+        public int PurchaseAmount { get; set; }
+        public decimal TotalPrice { get; set; }
+
+    }
+
+
 
 }
