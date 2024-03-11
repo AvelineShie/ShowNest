@@ -1,33 +1,31 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using ShowNest.Web.Interfaces;
 using ShowNest.Web.Models;
-using ShowNest.Web.Services;
+using ShowNest.Web.Services.General;
+using ShowNest.Web.Services.Home;
 using System.Diagnostics;
 
 namespace ShowNest.Web.Controllers
 {
     public class HomeController : Controller
     {
-        // private readonly IEventCardService _eventCardService;
-        // public HomeController(IEventCardService eventCardService)
-        // {
-        //     _eventCardService = eventCardService;
-        // }
-
+        private readonly EventCardService _eventCardService;
+        private readonly HomeService _homeService;
         private readonly ILogger<HomeController> _logger;
 
-        public HomeController(ILogger<HomeController> logger)
+        public HomeController(EventCardService eventCardService, HomeService homeService, ILogger<HomeController> logger)
         {
+            _eventCardService = eventCardService;
+            _homeService = homeService;
             _logger = logger;
         }
 
         public IActionResult Index()
         {
-            // var eventCardService = new EventCardService();
-            //var eventCardsVM = eventCardService.SetEventCards();
-            //return View(_eventCardService);
-
-			return View();
+            var homeViewModel = _homeService.HomeViewModel;
+            _homeService.GetHomeCards();
+            
+            return View(homeViewModel);
         }
 
         public IActionResult Privacy()

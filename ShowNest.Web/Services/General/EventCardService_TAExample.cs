@@ -2,7 +2,7 @@
 using ShowNest.Web.ViewModels.General;
 using System.Linq.Expressions;
 
-namespace ShowNest.Web.Services
+namespace ShowNest.Web.Services.General
 {
     public class EventCardService_TAExample : IEventCardService
     {
@@ -75,7 +75,7 @@ namespace ShowNest.Web.Services
                 yield return new EventCardViewModel { };
             }
         }
-        public EventCardViewModel GetProductById(int id)
+        public EventCardViewModel GetProductById(int id) // 不好的寫法，每拿一張卡就要連一次關閉一次資料庫
         {
             //從資料庫拿
             //連資料庫
