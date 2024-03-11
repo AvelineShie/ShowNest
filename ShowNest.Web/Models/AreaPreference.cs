@@ -3,10 +3,12 @@
     public class AreaPreference
     {
         [Key]
+        [Required]
+        public int Id { get; set; }
+
         [ForeignKey("User")]
         public int UserId { get; set; }
 
-        [Key]
         [ForeignKey("Area")]
         public int AreaId { get; set; }
 
