@@ -1,11 +1,11 @@
 ﻿using ShowNest.Web.Interfaces;
 using ShowNest.Web.ViewModels.General;
 
-namespace ShowNest.Web.Services
+namespace ShowNest.Web.Services.General
 {
-    public class EventCardService : IEventCardService
+    public class EventCardService
     {
-        public IEnumerable<EventCardViewModel> EventCards { get; }
+        public List<EventCardViewModel> EventCards { get; }
 
         public EventCardService()
         {
@@ -55,6 +55,7 @@ namespace ShowNest.Web.Services
                 }
             };
         }
+
         public EventCardViewModel GetEventCard(string name, string link, string imgUrl, string eventTime, EventStatus status)
         {
             return new EventCardViewModel
@@ -65,6 +66,11 @@ namespace ShowNest.Web.Services
                 EventTime = eventTime,
                 EventStatus = status
             };
+        }
+
+        public IEnumerable<EventCardViewModel> GetSixEventCards()
+        {
+            return EventCards.Take(6);
         }
     }
 }

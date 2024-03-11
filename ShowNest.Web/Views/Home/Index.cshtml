@@ -1,4 +1,4 @@
-﻿@model IEnumerable<EventCardViewModel>
+﻿@model HomeViewModel
 
 @{
     ViewData["Title"] = "Home";
@@ -70,7 +70,7 @@
             <a href="">特色活動</a>
         </div>
         <div class="cards">
-            @foreach(var card in Model)
+            @foreach(var card in Model.HomeEventCards)
             {
                 @await Html.PartialAsync("~/PartialViews/_EventCards_Partial.cshtml", card);
             }
@@ -89,7 +89,7 @@
             <a href="">特色活動</a>
         </div>
         <div class="cards">
-            @foreach (var card in Model)
+            @foreach (var card in Model.HomeEventCards)
             {
                 @await Html.PartialAsync("~/PartialViews/_EventCards_Partial.cshtml", card);
             }

@@ -2,6 +2,8 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.FileSystemGlobbing.Internal.Patterns;
 using Microsoft.Extensions.Logging;
 using ShowNest.Web.Interfaces;
+using ShowNest.Web.Services.General;
+using ShowNest.Web.Services.Home;
 
 namespace ShowNest.Web
 {
@@ -14,7 +16,9 @@ namespace ShowNest.Web
             // Add services to the container.
             builder.Services.AddControllersWithViews();
 
-            builder.Services.AddScoped<IEventCardService, EventCardService>();
+            builder.Services.AddScoped<EventCardService>();
+            builder.Services.AddScoped<CategoryTagService>();
+            builder.Services.AddScoped<HomeService>();
 
             var app = builder.Build();
 
