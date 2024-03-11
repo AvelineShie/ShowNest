@@ -62,7 +62,7 @@ namespace ShowNest.Web.Controllers
                         TicketName = "一般票",
                         StartTime = new DateTime(2024, 2, 2, 5, 0, 0), // 使用 DateTime 型別
                         EndTime = new DateTime(2024, 2, 6, 8, 0, 0),   
-                        Price  = 350,
+                        Price  = 750,
                         Quantity = "不限數量",
                         SalesUnit = 2,
                     },
@@ -70,8 +70,16 @@ namespace ShowNest.Web.Controllers
                         TicketName = "搖滾區",
                         StartTime = new DateTime(2024, 2, 2, 5, 0, 0), 
                         EndTime = new DateTime(2024, 2, 6, 8, 0, 0),   
-                        Price  = 3000,
+                        Price  = 8000,
                         Quantity = "100",
+                        SalesUnit = 1,
+                    },
+                    new SetTicketViewModel {
+                        TicketName = "包廂區",
+                        StartTime = new DateTime(2024, 2, 2, 5, 0, 0),
+                        EndTime = new DateTime(2024, 2, 6, 8, 0, 0),
+                        Price  = 10000,
+                        Quantity = "300",
                         SalesUnit = 1,
                     }
                 }
