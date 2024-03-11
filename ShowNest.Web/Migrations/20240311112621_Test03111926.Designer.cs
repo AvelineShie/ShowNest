@@ -3,6 +3,7 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using ShowNest.Web.Data;
 
@@ -11,9 +12,11 @@ using ShowNest.Web.Data;
 namespace ShowNest.Web.Migrations
 {
     [DbContext(typeof(DataBaseContext))]
-    partial class DataBaseContextModelSnapshot : ModelSnapshot
+    [Migration("20240311112621_Test03111926")]
+    partial class Test03111926
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -88,11 +91,6 @@ namespace ShowNest.Web.Migrations
                         {
                             AreaId = 10,
                             AreaName = "其他地區"
-                        },
-                        new
-                        {
-                            AreaId = 11,
-                            AreaName = "TEST"
                         });
                 });
 
@@ -219,11 +217,10 @@ namespace ShowNest.Web.Migrations
 
                     b.Property<string>("Password")
                         .IsRequired()
-                        .HasColumnType("char(255)");
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("PersonalDescription")
-                        .HasMaxLength(300)
-                        .HasColumnType("nvarchar(300)");
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("PersonalUrl")
                         .HasColumnType("nvarchar(max)");
@@ -233,12 +230,10 @@ namespace ShowNest.Web.Migrations
 
                     b.Property<string>("UserAccount")
                         .IsRequired()
-                        .HasMaxLength(100)
-                        .HasColumnType("nvarchar(100)");
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("UserNickName")
-                        .HasMaxLength(50)
-                        .HasColumnType("nvarchar(50)");
+                        .HasColumnType("nvarchar(max)");
 
                     b.HasKey("UserId");
 
