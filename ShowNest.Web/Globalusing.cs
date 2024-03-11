@@ -6,3 +6,4 @@ global using Microsoft.EntityFrameworkCore;
 global using ShowNest.Web.ViewModels.UserAccount;
 global using ShowNest.Web.ViewModels.General;
 global using ShowNest.Web.ViewModels.Home;
+global using ShowNest.Web.ViewModels.Events;
