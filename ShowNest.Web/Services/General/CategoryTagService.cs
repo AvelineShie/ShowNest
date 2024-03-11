@@ -81,5 +81,17 @@
         {
             return CategoryTags.ToList();
         }
-    }
+
+		public List<CategoryTagsVeiwModel> GetCategoryTagsById(List<int> inputList)
+		{
+			var result = new List<CategoryTagsVeiwModel>();
+
+			foreach (var id in inputList)
+			{
+				result.AddRange(CategoryTags.Where(item => item.Id == id));
+			}
+
+			return result;
+		}
+	}
 }
