@@ -32,8 +32,9 @@
     margin-bottom: 90px;
 }
 
-#tabs{
-    margin:auto;
+#tabs {
+    margin: auto;
+    max-width: 1120px;
 }
 
 .container {
@@ -42,12 +43,12 @@
     display: flex;
     flex-direction: row;
     justify-content: space-between;
-
+    max-width: 1100px;
 }
 
 /* 左半邊 */
 .main-content{
-    padding-right: 30px;
+    padding-right: 35px;
 }
 
 /* 麵包屑 */
@@ -153,9 +154,11 @@ padding-top: 5px;
 .date-time {
     font-size: 15px;
     line-height: 34px;
+    margin-top:10px;
+    margin-bottom:10px;
     border: solid #ced4da 1px;
     color: #555555;
-    width: 200px;
+    width: 150px;
     border-radius: 5px;
 }
 
