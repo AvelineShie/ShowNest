@@ -15,7 +15,7 @@ namespace ShowNest.Web.Models
         [Required]
         public string Password { get; set; }
 
-        public string? UserNickName { get; set; }
+        public string UserNickName { get; set; }
 
         [Required]
         public string Email { get; set; }
@@ -29,14 +29,14 @@ namespace ShowNest.Web.Models
 
         public int? AreaPreffered { get; set; }
 
-        public string? PersonalUrl { get; set; }
+        public string PersonalUrl { get; set; }
 
-        public string? PersonalDescription { get; set; }
+        public string PersonalDescription { get; set; }
 
         [Required]
         public bool DMSubscription { get; set; }
 
-        public string? ProfileImage { get; set; }
+        public string ProfileImage { get; set; }
 
         [Required]
         public int AccountStatus { get; set; }
