@@ -181,6 +181,8 @@ li input {
 
 .btn-info {
     color: white;
+    background-color: orangered;
+    border-color: orangered;
 }
 
 a {
