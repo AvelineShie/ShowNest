@@ -16,6 +16,7 @@ namespace ShowNest.Web
             // Add services to the container.
             builder.Services.AddControllersWithViews();
 
+            builder.Services.AddScoped<HomeCarouselService>();
             builder.Services.AddScoped<EventCardService>();
             builder.Services.AddScoped<CategoryTagService>();
             builder.Services.AddScoped<HomeService>();
