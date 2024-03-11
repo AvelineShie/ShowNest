@@ -9,13 +9,11 @@ namespace ShowNest.Web.Controllers
 {
     public class HomeController : Controller
     {
-        private readonly EventCardService _eventCardService;
         private readonly HomeService _homeService;
         private readonly ILogger<HomeController> _logger;
 
-        public HomeController(EventCardService eventCardService, HomeService homeService, ILogger<HomeController> logger)
+        public HomeController(HomeService homeService, ILogger<HomeController> logger)
         {
-            _eventCardService = eventCardService;
             _homeService = homeService;
             _logger = logger;
         }
@@ -23,8 +21,9 @@ namespace ShowNest.Web.Controllers
         public IActionResult Index()
         {
             var homeViewModel = _homeService.HomeViewModel;
-            _homeService.GetHomeCards();
-            
+            _homeService.GetHomeCarouselImg(homeViewModel.HomeCarousels);
+            _homeService.GetHomeCards(homeViewModel.HomeEventCards);
+
             return View(homeViewModel);
         }
 
