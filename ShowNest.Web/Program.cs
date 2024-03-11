@@ -1,6 +1,7 @@
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.FileSystemGlobbing.Internal.Patterns;
 using Microsoft.Extensions.Logging;
+using ShowNest.Web.Data;
 using ShowNest.Web.Interfaces;
 using ShowNest.Web.Services.General;
 using ShowNest.Web.Services.Home;
@@ -12,6 +13,12 @@ namespace ShowNest.Web
         public static void Main(string[] args)
         {
             var builder = WebApplication.CreateBuilder(args);
+
+            // 取得組態中資料庫連線設定
+            string connectionString = builder.Configuration.GetConnectionString("DatabaseContext");
+            //在DI Container註冊EF Core的DbContext
+            builder.Services.AddDbContext<DataBaseContext>(options => options.UseSqlServer(connectionString));
+
 
             // Add services to the container.
             builder.Services.AddControllersWithViews();
