@@ -2,6 +2,10 @@
 {
     public partial class DataBaseContext
     {
+        /// <summary>
+        /// Prefill the data
+        /// </summary>
+        /// <param name="modelBuilder"></param>
         private void DataPrefilling(ModelBuilder modelBuilder)
         {
             modelBuilder.Entity<Area>().HasData(
