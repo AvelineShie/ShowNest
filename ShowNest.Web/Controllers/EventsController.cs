@@ -11,44 +11,42 @@ namespace ShowNest.Web.Controllers
 {
     public class EventsController : Controller
     {
-        private readonly EventIndexService _eventIndexService;
 
-        public EventsController(EventIndexService eventIndexService)
-        {
-            _eventIndexService = eventIndexService;
-        }
-        /// <summary>
-        /// 測試於網址列輸入的參數並查詢資料庫內容
-        /// </summary>
-        /// <param name="OrganizationId"></param>
-        /// <param name="EventId"></param>
-        /// <returns></returns>
-        //private readonly ShowNestContext _context;
-        //public EventsController(ShowNestContext context)
-        //{
-        //    _context = context;
-        //}
-        //public IActionResult Index(string OrganizationId, string EventId)
-        //{
-        //    var organization = _context.Organizations.FirstOrDefault(x => x.OrganizationId == OrganizationId);
-        //    if (organization == null)
-        //    {
-        //        // 組織不存在，返回相應的頁面或錯誤訊息
-        //        return NotFound(); // 或者其他適當的處理
-        //    }
+		/// <summary>
+		/// 測試於網址列輸入的參數並查詢資料庫內容
+		/// </summary>
+		/// <param name="OrganizationId"></param>
+		/// <param name="EventId"></param>
+		/// <returns></returns>
+		//private readonly ShowNestContext _context;
+		//public EventsController(ShowNestContext context)
+		//{
+		//    _context = context;
+		//}
+		//public IActionResult Index(string OrganizationId, string EventId)
+		//{
+		//    var organization = _context.Organizations.FirstOrDefault(x => x.OrganizationId == OrganizationId);
+		//    if (organization == null)
+		//    {
+		//        // 組織不存在，返回相應的頁面或錯誤訊息
+		//        return NotFound(); // 或者其他適當的處理
+		//    }
 
-        //    // 組織存在，繼續執行其他操作
-        //    return View();
-        //}
-        //以上測試中--------------------------------------------------------------
+		//    // 組織存在，繼續執行其他操作
+		//    return View();
+		//}
+		//以上測試中--------------------------------------------------------------
 
-        private readonly RegistrationService _registrationService;
-        public EventsController (RegistrationService registrationService)
-        {
-            _registrationService = registrationService;
-        }
+		private readonly EventIndexService _eventIndexService;
+		private readonly RegistrationService _registrationService;
 
-        public IActionResult Index()
+		public EventsController(EventIndexService eventIndexService, RegistrationService registrationService)
+		{
+			_eventIndexService = eventIndexService;
+			_registrationService = registrationService;
+		}
+
+		public IActionResult Index()
         {
             var eventIndexViewModel = _eventIndexService.GetEventIndexViewModel();
 
