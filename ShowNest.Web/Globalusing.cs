@@ -11,4 +11,3 @@ global using ShowNest.Web.ViewModels.Home;
 global using ShowNest.Web.ViewModels.Events;
 global using ShowNest.Web.Services.Events;
 global using ShowNest.Web.Services.Home;
-global using ShowNest.Web.Services.Event;
