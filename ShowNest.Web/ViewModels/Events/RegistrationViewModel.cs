@@ -19,7 +19,8 @@ namespace ShowNest.Web.ViewModels.Events
 
         // Ticket Information
         public List<Tickets> TicketSeats { get; set; }
-       
+        public decimal TotalPrice { get; set; }
+
 
         // Attendee Information
         public string Name { get; set; }
@@ -34,11 +35,11 @@ namespace ShowNest.Web.ViewModels.Events
     { 
         public string SeatArea { get; set; }
         public string SeatRow { get; set; }
-        public int SeatNumber { get; set; }
+        public string SeatNumber { get; set; }
         public string TicketTypeName { get; set; }
         public decimal TicketPrice { get; set; }
         public int PurchaseAmount { get; set; }
-        public decimal TotalPrice { get; set; }
+       
 
     }
 
