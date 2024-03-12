@@ -17,9 +17,9 @@ namespace ShowNest.Web.Services.Events
             {
                 //EventIndexViewModel.EventCategoryTags = new List<CategoryTagsVeiwModel>();
                 EventCategoryTags = _categoryTagService.GetAllCategoryTags(),
-                //EventCategoryTags = _categoryTagService.GetCategoryTagsById(new List<int> {1,2,3 }),
-				//EventIndexViewModel.EventEventCards = new List<EventCardViewModel>();
-				EventEventCards = _eventCardService.GetSixEventCards().ToList()
+                //EventCategoryTags = _categoryTagService.GetCategoryTagsById(new List<int> { 1, 2, 3 }),
+                //EventIndexViewModel.EventEventCards = new List<EventCardViewModel>();
+                EventEventCards = _eventCardService.GetSixEventCards().ToList()
             };
         }
 

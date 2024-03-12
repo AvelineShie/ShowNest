@@ -2,73 +2,73 @@
 {
     public class CategoryTagService
     {
-        public List<CategoryTagsVeiwModel> CategoryTags { get; }
+        public List<CategoryTagsViewModel> CategoryTags { get; }
 
         public CategoryTagService()
         {
-            CategoryTags = new List<CategoryTagsVeiwModel>
+            CategoryTags = new List<CategoryTagsViewModel>
             {
-                new CategoryTagsVeiwModel
+                new CategoryTagsViewModel
                 {
                     Id = 1,
                     CategoryNameEng = "Music",
                     CategoryNameZh = "音樂"
                 },
-                new CategoryTagsVeiwModel
+                new CategoryTagsViewModel
                 {
 					Id = 2,
 					CategoryNameEng = "Drama",
 					CategoryNameZh = "戲劇"
 				},
-                new CategoryTagsVeiwModel
+                new CategoryTagsViewModel
                 {
 					Id = 3,
 					CategoryNameEng = "Exhibition",
 					CategoryNameZh = "展覽"
 				},
-                new CategoryTagsVeiwModel
+                new CategoryTagsViewModel
                 {
 					Id = 4,
 					CategoryNameEng = "Concert",
 					CategoryNameZh = "演唱會"
 				},
-                new CategoryTagsVeiwModel
+                new CategoryTagsViewModel
                 {
 					Id = 5,
 					CategoryNameEng = "Seminar",
 					CategoryNameZh = "講座"
 				},
-                new CategoryTagsVeiwModel
+                new CategoryTagsViewModel
                 {
 					Id = 6,
 					CategoryNameEng = "Movie",
 					CategoryNameZh = "電影"
 				},
-                new CategoryTagsVeiwModel
+                new CategoryTagsViewModel
                 {
 					Id = 7,
 					CategoryNameEng = "Art",
 					CategoryNameZh = "藝術"
 				},
-                new CategoryTagsVeiwModel
+                new CategoryTagsViewModel
                 {
                     Id = 8,
 					CategoryNameEng = "Sport",
 					CategoryNameZh = "運動"
 				},
-                new CategoryTagsVeiwModel
+                new CategoryTagsViewModel
                 {
 					Id = 9,
 					CategoryNameEng = "Technology",
 					CategoryNameZh = "科技"
 				},
-                new CategoryTagsVeiwModel
+                new CategoryTagsViewModel
                 {
 					Id = 10,
 					CategoryNameEng = "Travel",
 					CategoryNameZh = "旅遊"
 				},
-                new CategoryTagsVeiwModel
+                new CategoryTagsViewModel
                 {
 					Id = 11,
 					CategoryNameEng = "Online Event",
@@ -77,19 +77,19 @@
             };
         }
 
-        public List<CategoryTagsVeiwModel> GetAllCategoryTags()
+        public List<CategoryTagsViewModel> GetAllCategoryTags()
         {
             return CategoryTags.ToList();
         }
 
-		public List<CategoryTagsVeiwModel> GetCategoryTagsById(List<int> inputList)
+		public List<CategoryTagsViewModel> GetCategoryTagsById(List<int> inputList)
 		{
-			var result = new List<CategoryTagsVeiwModel>();
+			//foreach (var id in inputList)
+			//{
+			//	result.AddRange(CategoryTags.Where(item => item.Id == id));
+			//}
 
-			foreach (var id in inputList)
-			{
-				result.AddRange(CategoryTags.Where(item => item.Id == id));
-			}
+			var result = inputList.SelectMany(id => CategoryTags.Where(tag => tag.Id == id)).ToList();
 
 			return result;
 		}
