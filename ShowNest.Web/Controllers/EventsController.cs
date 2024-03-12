@@ -3,7 +3,6 @@ using System.Globalization;
 using Microsoft.AspNetCore.Mvc;
 using ShowNest.Web.Services;
 using ShowNest.Web.Services.Events;
-using ShowNest.Web.Services.Event;
 using ShowNest.Web.ViewModels.Events;
 using ShowNest.Web.ViewModels.Organization;
 
