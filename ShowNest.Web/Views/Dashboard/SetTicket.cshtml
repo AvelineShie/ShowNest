@@ -1,4 +1,7 @@
-﻿@{
+﻿@using ShowNest.Web.ViewModels.Dashboard;
+@model ShowNest.Web.ViewModels.Dashboard.SetTicketPageViewModel
+
+@{
     ViewData["Title"] = "SetTicket";
 }
 
@@ -12,7 +15,7 @@
             組織名稱
         </div>
         <div class="name">
-            Mafia
+            @Model.OrganizationName
         </div>
     </div>
     <div class="wrap">
@@ -40,36 +43,24 @@
                         </tr>
                     </thead>
                     <tbody>
-                        <tr>
-                            <td class="color-label"></td>
-                            <td>一般票</td>
-                            <td>2024/02/02 00:00 (+0800) ~ 2024/02/06 00:00 (+0800)</td>
-                            <td>TWD$350</td>
-                            <td>不限定數量</td>
-                            <td>
-                                <button>編輯</button>
-                                <button class="delete">刪除</button>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td class="color-label"></td>
-                            <td colspan="5" id="sale-note"><span class="note">販售數量 1 ~ 1張。 販售單位 1張。</span></td>
-                        </tr>
-                        <tr>
-                            <td class="color-label"></td>
-                            <td>搖滾區</td>
-                            <td>2024/02/05 00:00 (+0800) ~ 2024/02/07 00:00 (+0800)</td>
-                            <td>TWD$3000</td>
-                            <td>100</td>
-                            <td>
-                                <button>編輯</button>
-                                <button class="delete">刪除</button>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td class="color-label"></td>
-                            <td colspan="5" id="sale-note"><span class="note">販售數量 1 ~ 1張。 販售單位 1張。</span></td>
-                        </tr>
+                        @foreach (var ticket in Model.SetTickets)
+                        {
+                            <tr>
+                                <td class="color-label"></td>
+                                <td>@ticket.TicketName</td>
+                                <td>@ticket.StartTime.ToString("yyyy/MM/dd HH:mm (+0800)") ~
+                                @ticket.EndTime.ToString("yyyy/MM/dd HH:mm (+0800)")</td>
+                               @*  2024/02/02 00:00 (+0800) ~ 2024/02/06 00:00 (+0800) *@
+                                <td>TWD$@ticket.Price</td>
+                                <td>@ticket.Quantity</td>
+                                <td>
+                                    <button>編輯</button>
+                                    <button class="delete">刪除</button>
+                                </td>
+                            </tr>
+           
+                        }
+
                     </tbody>
                 </table>
                 <button type="button" class="btn btn-outline-secondary btn-sm" id="add-ticket">新增票種</button>

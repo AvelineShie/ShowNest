@@ -4,8 +4,8 @@
     {
         public string UserName { get; set; }
         public string PhoneNumber { get; set; }
-        public string Country { get; set; }
-        public string City { get; set; }
+        public List<Country> Country { get; set; }
+        public List<City> City { get; set; }
         public string Region { get; set; }
         public int PostalCode { get; set; }
         public string Address { get; set; }
@@ -14,8 +14,26 @@
         public int CompanyZipCode { get; set; }
         public string CompanyAddress { get; set; }
         public int CompanyVAT { get; set; }
-        public string DonateEInvoice { get; set; }
-        public string MobileCloudInvoice { get; set; }
+        public List<DonateOrg> DonateEInvoice { get; set; }
+        public string MobileEInvoice { get; set; }
 
     }
+    public enum DonateOrg
+    {
+        DonateOrg1=0,
+        DonateOrg2=1
+    }
+    public enum Country
+    {
+        Region1 = 0,
+        Region2 = 1,
+        Region3 = 2
+    }
+    public enum City
+    {
+        Region1 = 0,
+        Region2 = 1,
+        Region3 = 2
+    }
+
 }
