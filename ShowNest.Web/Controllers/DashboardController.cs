@@ -64,7 +64,6 @@ namespace ShowNest.Web.Controllers
                         EndTime = new DateTime(2024, 2, 6, 8, 0, 0),
                         Price  = 750,
                         Quantity = "300",
-                        SalesUnit = 2,
                     },
                     new SetTicketViewModel {
                         TicketName = "搖滾區",
@@ -72,7 +71,6 @@ namespace ShowNest.Web.Controllers
                         EndTime = new DateTime(2024, 2, 6, 8, 0, 0),
                         Price  = 8000,
                         Quantity = "100",
-                        SalesUnit = 1,
                     },
                     new SetTicketViewModel {
                         TicketName = "包廂區",
@@ -80,7 +78,6 @@ namespace ShowNest.Web.Controllers
                         EndTime = new DateTime(2024, 2, 6, 8, 0, 0),
                         Price  = 10000,
                         Quantity = "300",
-                        SalesUnit = 1,
                     }
                 }
 

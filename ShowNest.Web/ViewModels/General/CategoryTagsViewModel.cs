@@ -1,6 +1,6 @@
 ﻿namespace ShowNest.Web.ViewModels.General
 {
-    public class CategoryTagsVeiwModel
+    public class CategoryTagsViewModel
     {
         public int Id { get; set; }
         public string CategoryNameEng { get; set; }
