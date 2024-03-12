@@ -1,10 +1,9 @@
-﻿using ShowNest.Web.ViewModels.Events;
-
-namespace ShowNest.Web.Services.Event
+﻿
+namespace ShowNest.Web.Services.Events
 {
     public class RegistrationService
     {
-        public RegistrationViewModel GetRegistrationInfo() 
+        public RegistrationViewModel GetRegistrationInfo()
         {
             return new RegistrationViewModel()
             {
@@ -35,12 +34,12 @@ namespace ShowNest.Web.Services.Event
                     }
                 },
                 TotalPrice = 3680,
-                Name ="志明與春嬌",
-                PhoneNumber="+88697812345",
-                Email="1234@gmail.com"
+                Name = "志明與春嬌",
+                PhoneNumber = "+88697812345",
+                Email = "1234@gmail.com"
 
             };
-        
+
         }
     }
 }
