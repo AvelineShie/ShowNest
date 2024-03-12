@@ -1,6 +1,7 @@
-﻿namespace ShowNest.Web.Services
+﻿namespace ShowNest.Web.Services.Dashboard
 {
     public class SetTicketService
     {
+
     }
 }

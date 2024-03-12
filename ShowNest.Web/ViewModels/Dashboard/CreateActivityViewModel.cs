@@ -5,10 +5,18 @@ namespace ShowNest.Web.ViewModels.Dashboard
 {
     public class CreateActivityViewModel
     {
-        public string OrganizationName { get; set; }
-        public string EventName { get; set; }
+        public List <OrganizationList> OrgName { get; set; }
+        public List <EventList> EventName { get; set; }
     }
 
+    public class EventList
+    {
+
+    }
+
+    public class OrganizationList
+    {
+    }
 }
 
 
