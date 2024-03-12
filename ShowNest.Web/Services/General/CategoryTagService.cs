@@ -2,7 +2,7 @@
 {
     public class CategoryTagService
     {
-        public IEnumerable<CategoryTagsVeiwModel> CategoryTags { get; }
+        public List<CategoryTagsVeiwModel> CategoryTags { get; }
 
         public CategoryTagService()
         {
@@ -10,49 +10,88 @@
             {
                 new CategoryTagsVeiwModel
                 {
-                    Category = "Music"
+                    Id = 1,
+                    CategoryNameEng = "Music",
+                    CategoryNameZh = "音樂"
                 },
                 new CategoryTagsVeiwModel
                 {
-                    Category = "Drama"
-                },
+					Id = 2,
+					CategoryNameEng = "Drama",
+					CategoryNameZh = "戲劇"
+				},
                 new CategoryTagsVeiwModel
                 {
-                    Category = "Exhibition"
-                },
+					Id = 3,
+					CategoryNameEng = "Exhibition",
+					CategoryNameZh = "展覽"
+				},
                 new CategoryTagsVeiwModel
                 {
-                    Category = "Concert"
-                },
+					Id = 4,
+					CategoryNameEng = "Concert",
+					CategoryNameZh = "演唱會"
+				},
                 new CategoryTagsVeiwModel
                 {
-                    Category = "Drama"
-                },
+					Id = 5,
+					CategoryNameEng = "Seminar",
+					CategoryNameZh = "講座"
+				},
                 new CategoryTagsVeiwModel
                 {
-                    Category = "Movie"
-                },
+					Id = 6,
+					CategoryNameEng = "Movie",
+					CategoryNameZh = "電影"
+				},
                 new CategoryTagsVeiwModel
                 {
-                    Category = "Art"
-                },
+					Id = 7,
+					CategoryNameEng = "Art",
+					CategoryNameZh = "藝術"
+				},
                 new CategoryTagsVeiwModel
                 {
-                    Category = "Sport"
-                },
+                    Id = 8,
+					CategoryNameEng = "Sport",
+					CategoryNameZh = "運動"
+				},
                 new CategoryTagsVeiwModel
                 {
-                    Category = "Technology"
-                },
+					Id = 9,
+					CategoryNameEng = "Technology",
+					CategoryNameZh = "科技"
+				},
                 new CategoryTagsVeiwModel
                 {
-                    Category = "Travel"
-                },
+					Id = 10,
+					CategoryNameEng = "Travel",
+					CategoryNameZh = "旅遊"
+				},
                 new CategoryTagsVeiwModel
                 {
-                    Category = "Online Event"
-                },
+					Id = 11,
+					CategoryNameEng = "Online Event",
+					CategoryNameZh = "線上活動"
+				},
             };
         }
-    }
+
+        public List<CategoryTagsVeiwModel> GetAllCategoryTags()
+        {
+            return CategoryTags.ToList();
+        }
+
+		public List<CategoryTagsVeiwModel> GetCategoryTagsById(List<int> inputList)
+		{
+			var result = new List<CategoryTagsVeiwModel>();
+
+			foreach (var id in inputList)
+			{
+				result.AddRange(CategoryTags.Where(item => item.Id == id));
+			}
+
+			return result;
+		}
+	}
 }

@@ -30,6 +30,7 @@ h2 {
 }
 .checkbox-group{
     padding-top:10px;
+    padding-bottom:10px;
 }
 
 .form_contaner {
@@ -181,6 +182,8 @@ li input {
 
 .btn-info {
     color: white;
+    background-color: orangered;
+    border-color: orangered;
 }
 
 a {

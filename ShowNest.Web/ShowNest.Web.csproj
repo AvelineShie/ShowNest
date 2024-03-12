@@ -7,10 +7,18 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Compile Remove="Services\Dashboard\**" />
+    <Content Remove="Services\Dashboard\**" />
+    <EmbeddedResource Remove="Services\Dashboard\**" />
+    <None Remove="Services\Dashboard\**" />
+  </ItemGroup>
+
+  <ItemGroup>
     <Content Remove="wwwroot\img\Events\LINE_ALBUM_課程紀錄_240216_1.jpg" />
   </ItemGroup>
 
   <ItemGroup>
+    <PackageReference Include="Facebook" Version="7.0.6" />
     <PackageReference Include="Microsoft.EntityFrameworkCore" Version="7.0.15" />
     <PackageReference Include="Microsoft.EntityFrameworkCore.Design" Version="7.0.15">
       <PrivateAssets>all</PrivateAssets>
