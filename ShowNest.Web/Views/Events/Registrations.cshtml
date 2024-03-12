@@ -1,8 +1,9 @@
 ﻿@using ShowNest.Web.ViewModels.Events
 @model RegistrationViewModel;
-@*
-    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
-*@
+@{
+    var registration = Model;
+    var tickets = Model.TicketSeats;
+}
 @section topCSS {
     <link href="~/css/_Partial/_PurchaseStepsPartial.css" rel="stylesheet" />
     <link href="~/css/events/registrations.css" rel="stylesheet" />
@@ -36,7 +37,7 @@
                             <tr class="">
                                 <th class="start_time">開始時間</th>
                                 <td class="time">
-                                    @Model.StartTime
+                                    @registration.StartTime
                                     <a class="is_following binding" href="#" target="_blank" >
                                         <i class="fa fa-calendar fa-front"></i>
                                         加入行事曆
@@ -47,7 +48,7 @@
                             <tr class="">
                                 <th class="event_location">活動地點</th>
                                 <td class="location">
-                                    ALTA NIGHTCLUB / 台中市西屯區青海南街59號
+                                    @registration.EventLocation / @registration.EventAddress
                                     <a class="is_following binding " target="_blank" href="#">
                                         <i class="fa fa-map-marker fa-front"></i>
                                         檢視地圖
@@ -57,18 +58,21 @@
                             <!-- event.co_organizer -->
                             <tr>
                                 <th class="co_organizer">主辦單位</th>
-                                <td class="co_organizer_name">歐達休閒娛樂有限公司</td>
+                                <td class="co_organizer_name">@registration.EventHost</td>
                             </tr>
                             <!--  pickup_types -->
                             <tr class="pickup_types_group">
                                 <th class="pickup_types">票券種類</th>
-                                <td class="type_names">台灣全家 FamiPort 取票</td>
+                                <td class="type_names">
+                                    @registration.TicketCollectionChannel
+                                </td>
+
                             </tr>
                             <!--payment_terms -->
                             <tr class="payment_terms_group">
                                 <th class="payment_terms">付款方式</th>
                                 <td class="payment_names">
-                                    ATM 虛擬帳號、信用卡
+                                    @registration.PaymentMethodName
                                 </td>
                             </tr>
                         </tbody>
@@ -95,15 +99,19 @@
                         </tr>
                     </thead>
                     <tbody class="item_in_order">
+                        @foreach(var ticket in tickets)
+                    {
                         <tr>
-                            <td class="ticket_name">全票</td>
+                            <td class="ticket_name">@ticket.TicketTypeName</td>
                             <td class="ticket-data">
                                 <table class="seat_detail_group cart_ticket_list_subtable_with_seat">
                                     <tbody class="seat_detail_group">
                                         <tr>
                                             <td class="seat_details">
                                                 <ul>
-                                                    <li class="seat-info">B2 區 17 排 8 號</li>
+                                                    <li class="seat-info">
+                                                        @ticket.SeatArea @ticket.SeatRow @ticket.SeatNumber
+                                                    </li>
                                                 </ul>
                                             </td>
                                         </tr>
@@ -111,20 +119,21 @@
                                     <tbody class="price_group">
                                         <tr>
                                             <td class="price_count">
-                                                <span class="seat_price">TWD $3,680</span> x 1
+                                                <span class="seat_price">TWD $@ticket.TicketPrice</span> @ticket.PurchaseAmount
                                             </td>
                                         </tr>
                                     </tbody>
                                 </table>
                             </td>
-                            <td class="price_total ">TWD $3,680</td>
+                            <td class="price_total ">TWD $@ticket.TicketPrice</td>
                         </tr>
-                    </tbody>
+                    }
+                </tbody>
                     <tfoot>
                         <tr class="highlight">
                             <th class="total">總金額</th>
                             <td></td>
-                            <td class="tfoot_price_total">TWD$3,680</td>
+                        <td class="tfoot_price_total">TWD$@registration.TotalPrice</td>
                         </tr>
                     </tfoot>
                 </table>
@@ -135,7 +144,7 @@
                         <h3 class="contact_title">聯絡人資料</h3>
                         <div id="label_name" class="control-group name">
                             <label class="control-label ">
-                                <abbr title="required">*</abbr>
+                                <abbr title="必填">*</abbr>
                                 姓名
                             </label>
                             <div class="controls form-inline">
@@ -148,7 +157,7 @@
                         </div>
                         <div id="label_email" class="control-group email">
                             <label class="control-label">
-                                <abbr title="required">*</abbr>
+                            <abbr title="必填">*</abbr>
                                 Email
                             </label>
                             <div class="controls form-inline">
@@ -161,7 +170,7 @@
                         </div>
                         <div id="label_tel" class="control-group">
                             <label class="control-label">
-                                <abbr title="required">*</abbr>
+                            <abbr title="必填">*</abbr>
                                 手機
                             </label>
                             <div class="controls form-inline">
