@@ -17,15 +17,15 @@ namespace ShowNest.Web.Data
         {
             ///設定主鍵及關聯
             modelBuilder.Entity<Area>()
-                .HasKey(e => new { e.AreaId });
+                .HasKey(e => new { e.Id });
             modelBuilder.Entity<AreaPreference>()
-                .HasKey(e => new { e.UserId, e.AreaId });
+                .HasKey(e => new { e.Id });
             modelBuilder.Entity<PasswordHistory>()
                 .HasKey(e => new { e.UserId });
             modelBuilder.Entity<PrefillsInfo>()
                 .HasKey(e => new { e.UserId });
             modelBuilder.Entity<User>()
-                .HasKey(e => new { e.UserId });
+                .HasKey(e => new { e.Id });
 
             DataPrefilling(modelBuilder);
         }

@@ -2,6 +2,7 @@
 using System.Globalization;
 using Microsoft.AspNetCore.Mvc;
 using ShowNest.Web.Services;
+using ShowNest.Web.Services.Events;
 using ShowNest.Web.Services.Event;
 using ShowNest.Web.ViewModels.Events;
 using ShowNest.Web.ViewModels.Organization;
@@ -10,6 +11,12 @@ namespace ShowNest.Web.Controllers
 {
     public class EventsController : Controller
     {
+        private readonly EventIndexService _eventIndexService;
+
+        public EventsController(EventIndexService eventIndexService)
+        {
+            _eventIndexService = eventIndexService;
+        }
         /// <summary>
         /// 測試於網址列輸入的參數並查詢資料庫內容
         /// </summary>
@@ -43,8 +50,9 @@ namespace ShowNest.Web.Controllers
 
         public IActionResult Index()
         {
+            var eventIndexViewModel = _eventIndexService.GetEventIndexViewModel();
 
-			return View();
+			return View(eventIndexViewModel);
         }
 
         public IActionResult EventPage()

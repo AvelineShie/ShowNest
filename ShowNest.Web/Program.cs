@@ -3,7 +3,6 @@ using Microsoft.Extensions.FileSystemGlobbing.Internal.Patterns;
 using Microsoft.Extensions.Logging;
 using ShowNest.Web.Data;
 using ShowNest.Web.Interfaces;
-using ShowNest.Web.Services.Event;
 using ShowNest.Web.Services.General;
 using ShowNest.Web.Services.Home;
 
@@ -30,6 +29,8 @@ namespace ShowNest.Web
             builder.Services.AddScoped<EventCardService>();
             builder.Services.AddScoped<CategoryTagService>();
             builder.Services.AddScoped<HomeService>();
+            builder.Services.AddScoped<EventIndexService>();
+            
 
             var app = builder.Build();
 
