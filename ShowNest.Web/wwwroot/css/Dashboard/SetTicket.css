@@ -26,7 +26,7 @@
 
 /* 正式版面 */
 .wrap{
-    width:75%;
+    /*width:75%;*/
     display: flex;
     flex-direction: column;
     margin: 0 auto;
@@ -99,6 +99,11 @@ td>button{
 td.color-label{
     background-color: #3dbad6;
     border-bottom: #3dbad6;
+    height:70px;
+}
+
+td {
+    vertical-align: middle;
 }
 
 #add-ticket{

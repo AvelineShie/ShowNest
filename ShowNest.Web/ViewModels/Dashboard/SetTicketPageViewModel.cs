@@ -16,7 +16,6 @@
         public int Price { get; set; }
         public string Quantity { get; set; }
 
-        public int SalesUnit { get; set; }
     }
 }
 
