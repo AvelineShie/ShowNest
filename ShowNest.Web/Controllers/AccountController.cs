@@ -1,15 +1,10 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using Newtonsoft.Json;
 
 namespace ShowNest.Web.Controllers
 {
     public class AccountController : Controller
     {
-        //private readonly ILogger<AccountController> _logger;
-
-        //public AccountController(ILogger<AccountController> logger)
-        //{
-        //    _logger = logger;
-        //}
         public IActionResult UserEdit()
         {
             var fb = new FacebookClient();
@@ -41,6 +36,13 @@ namespace ShowNest.Web.Controllers
             dynamic me = fb.Get("/me?fields=name,email");
             string name = me.name;
             string email = me.email;
+            var userData = new Dictionary<string, string>
+            {
+                {"Name",name },
+                {"Email",email}
+            };
+            string UserDataJson =JsonConvert.SerializeObject(userData,Formatting.Indented);
+            string filePath = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "UserData.json");
             return RedirectToAction("UserEdit");
         }
         public IActionResult Prefills()
