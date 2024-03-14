@@ -196,6 +196,46 @@ tbody td {
     margin: 10px;
 }
 
+/*報名人區塊 */
+.event-attendees {
+    background-color: #000;
+    color: #fff;
+    position: relative;
+    padding: 30px 0 60px 0;
+}
+
+.event-attendees span {
+    color: rgb(213, 145, 9);
+}
+
+.event-attendees h2 {
+    margin: 0px 10px 10px 40px;
+    color: #fff;
+}
+
+.show-attendees {
+    display: flex;
+}
+
+ul.attendees {
+    margin-top: 50PX;
+    margin: 40px;
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(30%, 1fr));
+    grid-gap: 10px;
+    grid-row-gap: 20px;
+}
+
+.attendees {
+    display: none;
+}
+
+    .attendees img {
+        width: 40px;
+        margin: 10px;
+        border-radius: 50%;
+    }
+
 
 
 @media (min-width:768px) {
@@ -285,8 +325,35 @@ tbody td {
         padding: 10px;
     }
 
+    /* 報名人區塊 */
+
+    ul.attendees {
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(18%, 1fr));
+        grid-gap: 10px;
+        grid-row-gap: 20px;
+    }
 
 
+    .attendees-btn {
+        position: absolute;
+        top: 50px;
+        width: 100%;
+    }
+
+    .show-attendees {
+        display: none;
+    }
+
+    .attendees {
+        padding: 0 20px;
+        display: grid !important;
+    }
+
+        .attendees a {
+            padding: 20px 0;
+        }
+}
 
     @media (min-width:1000px) {
         /* 地圖 */
@@ -301,4 +368,4 @@ tbody td {
             margin: 20px;
         }
     }
-}
+

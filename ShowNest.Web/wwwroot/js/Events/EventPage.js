@@ -28,3 +28,14 @@ async function initMap() {
 }
 
 initMap();
+
+
+//--報名人顯示區塊--
+const toggleAttendeesBtn = document.getElementById('toggleAttendeesBtn');
+const attendeesList = document.querySelector('.attendees');
+
+toggleAttendeesBtn.addEventListener('click', function () {
+    const isListVisible = attendeesList.style.display !== 'none';
+    attendeesList.style.display = isListVisible ? 'none' : '';
+    toggleAttendeesBtn.textContent = isListVisible ? '顯示報名人' : '隱藏報名人';
+});
