@@ -51,10 +51,10 @@ a {
     padding: 10px 30px;
 }
 
-    .event-info i {
-        display: inline-flex;
-        align-items: center;
-    }
+.event-info i {
+    display: inline-flex;
+    align-items: center;
+}
 
 .info p {
     text-indent: -1em;
@@ -98,26 +98,26 @@ p .fa {
     margin: 10px 20px;
 }
 
-    .description p {
-        padding-left: 30px;
-    }
+.description p {
+    padding-left: 30px;
+}
 
 
-    .description ol {
-        list-style-type: decimal;
-        list-style-position: outside;
-        text-indent: 0.1em;
-        padding-left: 45px;
-    }
+.description ol {
+    list-style-type: decimal;
+    list-style-position: outside;
+    text-indent: 0.1em;
+    padding-left: 45px;
+}
 
-    .description ul {
-        list-style-type: disc;
-        list-style-position: outside;
-    }
+.description ul {
+    list-style-type: disc;
+    list-style-position: outside;
+}
 
-    .description li {
-        margin-left: 20px;
-    }
+.description li {
+    margin-left: 20px;
+}
 
 
 /* 手機板隱藏*/
@@ -134,15 +134,15 @@ p .fa {
     padding-left: 10px;
 }
 
-    .tags-item a {
-        padding: 2px 10px;
-        color: #FFF;
-        margin-right: 15px;
-    }
+.tags-item a {
+    padding: 2px 10px;
+    color: #FFF;
+    margin-right: 15px;
+}
 
-    .tags-item a {
-        background-color: var(--main-green);
-    }
+.tags-item a {
+    background-color: var(--main-green);
+}
 
 /* 地圖 */
 .location {
@@ -166,9 +166,9 @@ p .fa {
     bottom: 20px;
 }
 
-    .btn-group .btn {
-        margin: 0px;
-    }
+.btn-group .btn {
+    margin: 0px;
+}
 
 /* 活動票券 */
 
@@ -230,11 +230,15 @@ ul.attendees {
     display: none;
 }
 
-    .attendees img {
+.attendees img {
         width: 40px;
         margin: 10px;
         border-radius: 50%;
-    }
+}
+
+.more{
+    margin:auto;
+}
 
 
 
@@ -265,19 +269,19 @@ ul.attendees {
         align-items: center;
     }
 
-        .organizers i {
-            padding: 10px;
-        }
+    .organizers i {
+        padding: 10px;
+    }
 
-        .organizers a {
-            color: #64C06B;
-            text-decoration: none;
-            padding: 10px;
-        }
+    .organizers a {
+        color: #64C06B;
+        text-decoration: none;
+        padding: 10px;
+    }
 
-            .organizers a:hover {
-                color: #2c8b34;
-            }
+    .organizers a:hover {
+        color: #2c8b34;
+    }
 
     /* 地圖 */
 
@@ -291,18 +295,14 @@ ul.attendees {
         margin: 20px;
     }
 
-
-
-
-
     /* 活動票券 */
     .tickets {
         padding: 10px;
     }
 
-        .tickets h2 {
-            padding-left: 40px;
-        }
+    .tickets h2 {
+        padding-left: 40px;
+    }
 
     .tickets-wrapper .mobi-hide {
         display: flex;
@@ -319,8 +319,6 @@ ul.attendees {
         margin: auto;
     }
 
-
-
     .tickets-wrapper th {
         padding: 10px;
     }
@@ -333,7 +331,6 @@ ul.attendees {
         grid-gap: 10px;
         grid-row-gap: 20px;
     }
-
 
     .attendees-btn {
         position: absolute;
@@ -350,22 +347,22 @@ ul.attendees {
         display: grid !important;
     }
 
-        .attendees a {
-            padding: 20px 0;
-        }
+    .attendees a {
+        padding: 20px 0;
+    }
 }
 
-    @media (min-width:1000px) {
-        /* 地圖 */
-        .btn-wrapper {
-            width: 750px;
-            height: 350px;
-            margin-left: 0px;
-        }
-
-        .map-wrapper .address {
-            display: flex;
-            margin: 20px;
-        }
+@media (min-width:1000px) {
+    /* 地圖 */
+    .btn-wrapper {
+        width: 750px;
+        height: 350px;
+        margin-left: 0px;
     }
+
+    .map-wrapper .address {
+        display: flex;
+        margin: 20px;
+    }
+}
 
