@@ -19,12 +19,12 @@
 .name {
     line-height: 37px;
     font-size: 22px;
-    color: var(--main-color);
+    color: var(--main-green);
 }
 
 /* 正式版面 */
 .wrap {
-    width: 75%;
+    /*width: 75%;*/
     display: flex;
     flex-direction: column;
     margin: 0 auto;
@@ -57,7 +57,7 @@ a {
 }
 
 #set-table{
-    color: var(--main-color-hover);
+    color: var(--light-green);
 }
 
 /* 麵包屑吃完 */
@@ -146,7 +146,7 @@ td > span {
 
 
 .note {
-    color: var(--main-color);
+    color: var(--main-green);
 }
 
 .form-check-input[type=checkbox] {
@@ -155,7 +155,7 @@ td > span {
 }
 
 .form-check {
-    vertical-align: center;
+    /*vertical-align:central;*/
     height: 1.5em;
     line-height: 1.5em;
     margin: 5px;
