@@ -47,16 +47,9 @@ p.content {
     border-bottom: 2px solid #efefef
 }
 
-/*.btn_Confirm {
-    background-color: var(--main-green);
-    color: white;
-    vertical-align: middle;
+.btn-confirm a:hover {
+    background-color: var(--function-color-hover);
 }
-
-button.btn_Confirm:hover {
-    background-color: var(--light-green);
-    color: white;
-}*/
 
 .button_modal {
     padding-top: 100px;
