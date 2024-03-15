@@ -240,6 +240,20 @@ ul.attendees {
     margin:auto;
 }
 
+/*  聯絡主辦單位按鈕 */
+#btn-Contact-organization {
+    color: #fff;
+    display: inline;
+    float: right;
+    border-radius: 0;
+    box-shadow: #59ab21 0 -4px 0 inset;
+    padding: 0 40px;
+    height: 50px;
+    background: #64c025;
+    line-height: 50px;
+    position: absolute;
+    right: 0px;
+}
 
 
 @media (min-width:768px) {
@@ -265,8 +279,10 @@ ul.attendees {
 
     .organizers {
         background-color: #aaaaaa5e;
-        padding: 20px 30px;
+        padding: 0 0 0 30px;
         align-items: center;
+        position: relative;
+        height: 50px;
     }
 
     .organizers i {
@@ -349,6 +365,10 @@ ul.attendees {
 
     .attendees a {
         padding: 20px 0;
+    }
+    /*  聯絡主辦單位按鈕 */
+    .a-Contact-organization {
+        display: none;
     }
 }
 
