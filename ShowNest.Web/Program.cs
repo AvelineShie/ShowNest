@@ -5,6 +5,8 @@ using ShowNest.Web.Data;
 using ShowNest.Web.Interfaces;
 using ShowNest.Web.Services.General;
 using ShowNest.Web.Services.Home;
+using Microsoft.AspNetCore.Identity;
+
 
 namespace ShowNest.Web
 {
@@ -30,7 +32,14 @@ namespace ShowNest.Web
             builder.Services.AddScoped<CategoryTagService>();
             builder.Services.AddScoped<HomeService>();
             builder.Services.AddScoped<EventIndexService>();
-            
+
+
+            //// Facebook Data ´ú¸Õ¤¤
+            //builder.Services.AddAuthentication().AddFacebook(opt =>
+            //{
+            //    opt.ClientId = "";
+            //    opt.ClientSecret = "";
+            //});
 
             var app = builder.Build();
 
