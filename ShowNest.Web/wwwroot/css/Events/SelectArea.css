@@ -48,7 +48,10 @@ p.content {
 }
 
 .btn-confirm a:hover {
-    background-color: #82b99b;
+    background-color: var(--light-green);
+}
+.seats-selection-complete a:hover {
+    background-color: var(--light-green);
 }
 
 .button_modal {
