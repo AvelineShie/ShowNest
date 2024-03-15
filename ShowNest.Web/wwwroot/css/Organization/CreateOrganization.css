@@ -1,113 +1,249 @@
-﻿body {
-    font-size: 15px;
-}
+﻿
 
-.name {
-    margin-top: 60px;
-    margin-bottom: 20px;
-    margin-right: 10px;
-    font-size: 20.4px;
-    color: #999;
-}
-.orgNameHr {
-    margin-top: 7px;
-    margin-bottom:14px;
-    border-width: 1px;
-}
-h3 {
-    margin: 20px 0px 10px;
-    font-size: 30px;
-    
-}
-.log {
-    min-height: 300px;
-}
-.main-wrap {
-    width: 75%;
-    margin: auto;
-    margin-top: 20px;
-}
 
-.main-form {
+/* 組織名稱欄 */
+.header-title {
     display: flex;
-    gap: 40px;
+    margin-top: 20px;
+    margin-bottom: 20px;
+    border-bottom: 1px #ccc solid;
 }
 
-.lined {
-    border-bottom: #666 2px solid;
-    padding-bottom: 3px;
-    margin: 30px 0 15px;
+.organize{
+    color: #999;
+    line-height: 40px;
+    font-size: 22px;
+    margin-right: 20px;
+    margin-left: 30px;
 }
 
-.input_group {
-    padding-bottom: 15px;
+.name{
+    line-height: 37px;
+    font-size: 22px;
+    color: var(--main-green);
 }
 
-.contact_org_radio label {
+
+/* 正式版面 */
+.wrap{
+    margin: 0 auto;
+    margin-bottom: 50px;
+}
+
+.container {
+    color: #333333;
+    margin-top: 5px;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    max-width: 1100px;
+}
+
+/* 左半邊 */
+.main-content{
+    padding-right: 35px;
+}
+
+.contact-settings{
+    border-bottom:2px solid var(--dark-gray);
+    display: block;
     padding-bottom: 8px;
 }
 
-.contact_org_radio label,
-.agree_check {
-    cursor: pointer;
-    line-height: 1.5;
+
+a {
+    text-decoration: none;
 }
 
-.form_text_underline {
-    line-height: 1.5;
-    font-size: 15px;
-    color: #666;
+li:first-child>a{
+    color: var(--light-green);
 }
 
-label {
+/* 所有小標 */
+.essential-input, h4{
+    margin-bottom: 5px;
     font-weight: bold;
-    padding-left: 4px;
 }
 
-.button-submit button {
-    margin-top: 20px;
+/* 所有附註說明 */
+span.note, .map-note{
+    display: inline-block;
+    margin-top: 5px;
+    margin-bottom: 5px;
+    padding: 3px;
+    color: #737373;
+}
+
+/* 所有必填欄位 */
+.essential-input::before{
+    content: "*";
+    display: inline-block;
+    color: #c07525;
+    margin-right: 5px;
+
+}
+
+/* 所有小區塊 */
+.online-log, .log{
+    display: block;
+    margin-bottom: 15px;
+    margin-top: 15px;
+    line-height: 1.5;
+}
+
+/* 所有radio */
+.form-check-label{
+    display: contents;
+}
+
+/*所有按鍵*/
+.main-content>button{
+    background-color:var(--main-green);
+    color: #FFF;
+}
+
+
+/*網址長度*/
+
+.input-group-text {
+    font-size: 15px;
+    padding: 6px;
+
+}
+
+.input-group > .form-control {
+    width: 180px;
+    line-height: 15px;
+
+}
+
+/*Boostrap change*/
+.input-group:not(.has-validation) > :not(:last-child):not(.dropdown-toggle):not(.dropdown-menu) {
+    border-top-right-radius: 5px;
+    border-bottom-right-radius: 5px;
+}
+
+.OK {
+color: var(--light-green);
+padding-top: 5px;  
+}
+
+
+.form-control {
+    display: inline-block;
+    margin-right: 10px;
+}
+
+
+.btn-success{
+    background-color: var(--main-green);
+    }
+.btn-success:hover{
+        background-color: var(--light-green);
+        }
+
+.ck-editor__editable_inline {
+    min-height: 300px;
+}
+
+/*#ckeditor-area {
+    background-color:red;
+    border-bottom: 1px solid #dee2e6
+}*/
+
+.pages-change {
+    display: flex;
     margin-bottom: 20px;
+    margin-top: 20px;
+
 }
-/* 手機版 */
-@media screen and (max-width:768px) {
-    .wrap {
-        max-width: 768px;
-    }
 
-    .main-form {
+
+/* 右欄 */
+
+.log > img {
+    margin-bottom: 18px;
+}
+
+button.btn-outline-secondary{
+    margin-right: 10px;
+    background-color:var(--main-green);
+    color:#fff;
+}
+
+/*.btn-outline-secondary:hover{
+
+}*/
+
+.tag-pool{
+    margin-top: 15px;
+}
+
+.tag {
+    display: inline-block;
+    border-radius: 5px;
+    background-color: var(--light-green);
+    line-height: 20px;
+    font-size: 15px;
+    padding: 3px;
+    color: #f5f5f5;
+    margin: 3px;
+}
+
+.tag:hover{
+    box-shadow: 0 1px 1px rgba(0,0,0,0.06);
+    background-color: var(--light-green);
+    cursor: pointer;
+}
+
+/* IPAD */
+@media (max-width:1041px){
+ .container {
         display: flex;
-        flex-direction: column;
-        margin: auto;
+        flex-direction: column-reverse;
     }
-
-    .form_contaner {
-        display: flex;
-        flex-direction: column;
+    .main-content{
+        padding-right: 0px;
     }
-
-    .main-wrap {
-        width: 90%;
+    .imageUpload,
+    .contact-info,
+    .title {
+        text-align: center;
     }
-
-    .image-upload {
-        max-width: 33.333%;
-        justify-content: center;
+    .imageUpload h4{
+        font-size:26px;
     }
+}
 
-    #form-control-sm {
-        min-width: 100%;
+/* MOBILE */
+@media (max-width:768px) {
+
+    
+    .button-submit{
+    padding-top: 20px;
     }
-
-    .img-container {
-        max-width: 50%;
-    }
-
-    label {
-        min-width: 90px;
-    }
-
-    .button-submit button {
+    .btn-success{
         width: 100%;
-        padding: 0px;
     }
+
 }
+
+/* DESKTOP
+@media (min-width:769px) {
+
+    @media (min-width:769px) and (max-width:1200px) {
+
+        .input-group > .form-control {
+            width: 180px;
+            line-height: 15px;
+        }
+    }
+
+    }
+
+
+
+    .input-group > .form-control {
+        width: 180px;
+        line-height: 15px;
+    } */
