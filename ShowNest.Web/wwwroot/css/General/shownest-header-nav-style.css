@@ -168,10 +168,6 @@
             transition: .25s ease;
         }
 
-#header-functions #user-account-wrap a:first-of-type {
-    padding-right: 0;
-}
-
 h1 {
     display: inline-block;
     padding: 10px 0px;

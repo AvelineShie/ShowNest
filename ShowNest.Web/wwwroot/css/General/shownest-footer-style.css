@@ -24,18 +24,14 @@
         margin-top: 60px;
     }
 
-    #footer-end div:first-of-type {
+    /* #footer-end div:first-of-type {
         display: flex;
         flex-direction: column;
         align-items: center;
-    }
+    } */
 
     #footer-end div:first-of-type span+span {
         margin-top: 10px;
-    }
-
-    #footer-end>div+div {
-        margin-top: 30px;
     }
 
     #footer-logo {
@@ -129,7 +125,6 @@ footer a {
     margin-left: 8px;
 }
 
-.footer-lang-active {
-    border-bottom: 1px var(--main-green) solid;
-    padding-bottom: 2px;
+#footer-end span{
+    font-size: 14px;
 }
