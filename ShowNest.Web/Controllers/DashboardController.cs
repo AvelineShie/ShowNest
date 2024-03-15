@@ -18,14 +18,14 @@ namespace ShowNest.Web.Controllers
 
         public IActionResult Events(string viewType)
         {
-            if (viewType == "CreateActivity")
+            if (viewType == "CreateEvent")
             {
-                return View("CreateActivity");
+                return View("CreateEvent");
             }
 
-            if (viewType == "SetActivity")
+            if (viewType == "SetEvent")
             {
-                return View("SetActivity");
+                return View("SetEvent");
             }
 
             if (viewType == "SetTicket")

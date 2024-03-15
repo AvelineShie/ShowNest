@@ -47,15 +47,11 @@ p.content {
     border-bottom: 2px solid #efefef
 }
 
-.btn_Confirm {
-    background-color: var(--main-green);
-    color: white;
-    vertical-align: middle;
-}
-
-button.btn_Confirm:hover {
+.btn-confirm a:hover {
     background-color: var(--light-green);
-    color: white;
+}
+.seats-selection-complete a:hover {
+    background-color: var(--light-green);
 }
 
 .button_modal {
