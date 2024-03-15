@@ -27,7 +27,8 @@ namespace ShowNest.Web.Data
             modelBuilder.Entity<User>()
                 .HasKey(e => new { e.Id });
 
-            DataPrefilling(modelBuilder);
+            DataFilling(modelBuilder);
+            FakeDataFilling(modelBuilder);
         }
 
 

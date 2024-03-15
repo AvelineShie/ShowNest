@@ -10,7 +10,8 @@ namespace ShowNest.Web.ViewModels.Events
             public string EventLocationName { get; set; }
             public string EventDescription { get; set; } // 與 CKEditor 綁定的屬性
             public string EventLocationAddress { get; set; } // 活動地址
-            public string EventAttendance { get; set; } // 活動人數
+        public string EventRegistered { get; set; } // 參與人數
+        public string EventCapacity { get; set; } // 活動人數
             public string OrganizationName { get; set; }
 
             public List<EventTicket> AllTickets { get; set; }

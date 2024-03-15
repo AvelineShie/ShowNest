@@ -4,9 +4,10 @@
     {
         /// <summary>
         /// Prefill the data
+        /// Only for the first time
         /// </summary>
         /// <param name="modelBuilder"></param>
-        private void DataPrefilling(ModelBuilder modelBuilder)
+        private void DataFilling(ModelBuilder modelBuilder)
         {
             modelBuilder.Entity<Area>().HasData(
              new Area { Id = 1, AreaName = "北北基宜地區" },
