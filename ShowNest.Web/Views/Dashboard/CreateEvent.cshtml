@@ -1,19 +1,16 @@
 ﻿
 @{
-    ViewData["Title"] = "CreateActivity";
+    ViewData["Title"] = "CreateEvent";
 }
 
 @section topCSS {
-    <link href="~/css/Dashboard/CreateActivity.css" rel="stylesheet" />
+    <link href="~/css/Dashboard/CreateEvent.css" rel="stylesheet" />
 }
 
 <body>
     <div class="wrap">
         <div class="container">
             <!-- 從首頁導覽列進入的建立活動 -->
-            <div class="empty">
-                <!-- 留白:從組織進去會多出一排組織名稱 -->
-            </div>
             <div class="ActivityContainer">
                 <h2>建立活動</h2>
                 <h3 class="select-organizer">選擇活動舉辦單位</h3>
@@ -44,13 +41,13 @@
                         <a href="">主辦單位服務條款</a> 與 <a href="">隱私權政策</a>
                     </label>
                 </div>
-                <input class="establishBtn" type="button" value="建立" onclick="window.location.href='https://localhost:7156/Dashboard/Events?viewType=SetActivity'" />
+                <input class="establishBtn" type="button" value="建立" onclick="window.location.href='https://localhost:7156/Dashboard/Events?viewType=SetEvent'" />
             </div>
         </div>
     </div>
 
     @section Scripts {
-        <script src="~/js/Dashboard/CreateActivity.js"></script>
+        <script src="~/js/Dashboard/CreateEvent.js"></script>
 
     }
 </body>
