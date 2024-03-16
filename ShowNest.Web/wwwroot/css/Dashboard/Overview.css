@@ -189,9 +189,6 @@ header.org_header {
     .btn-primary{
         width: 100%;
     }
-
-}
-@media screen and (max-width:580px) {
     .button-group button{
         width: 100%;
         line-height: 1.5;
@@ -200,5 +197,9 @@ header.org_header {
         padding: 10px 0;
         display: block;
     }
+
+}
+@media screen and (max-width:580px) {
+    
 
 }
