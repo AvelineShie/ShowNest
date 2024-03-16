@@ -262,9 +262,9 @@ span .block-number {
     margin-top: 100px;
 }
 
-    .date-place p {
-        margin: 10px;
-    }
+.date-place p {
+    margin: 10px;
+}
 
 /* ----- sales lists start ----- */
 .sales-list {
@@ -275,11 +275,11 @@ span .block-number {
     margin-top: 20px;
 }
 
-    .tickets-sales-status > table, .sales-method-statistics > table, .amount-statistics > table, .subscriber-data > table {
-        width: 100%;
-        ;
-        text-align: end;
-    }
+.tickets-sales-status > table, .sales-method-statistics > table, .amount-statistics > table, .subscriber-data > table {
+    width: 100%;
+    ;
+    text-align: end;
+}
 
 table > thead > tr > th {
     border-bottom: #ccc 1px solid;
@@ -340,9 +340,3 @@ td, th {
 
 /* ----- sales lists end ----- */
 
-#footer{
-    position: absolute;
-    width:100%;
-}
-
-}

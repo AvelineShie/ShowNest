@@ -8,9 +8,13 @@
 
   <ItemGroup>
     <Compile Remove="Services\Dashboard\**" />
+    <Compile Remove="Services\NewFolder\**" />
     <Content Remove="Services\Dashboard\**" />
+    <Content Remove="Services\NewFolder\**" />
     <EmbeddedResource Remove="Services\Dashboard\**" />
+    <EmbeddedResource Remove="Services\NewFolder\**" />
     <None Remove="Services\Dashboard\**" />
+    <None Remove="Services\NewFolder\**" />
   </ItemGroup>
 
   <ItemGroup>
@@ -31,10 +35,6 @@
     </PackageReference>
     <PackageReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Design" Version="7.0.12" />
     <PackageReference Include="Newtonsoft.Json" Version="13.0.3" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <Folder Include="Services\NewFolder\" />
   </ItemGroup>
 
 </Project>

@@ -1,9 +1,9 @@
 document.addEventListener("DOMContentLoaded", function () {
     const activityFormSelect = document.querySelector('.form-select');
-    const onlineActivityElement = document.querySelector('.online-log');
+    const onlineActivityElement = document.querySelector('.online-section');
     const mapElement = document.querySelector('#map').closest('div');
     const mapNote = document.querySelector('.map-note');
-    const placeLog = document.querySelector('.place-log');
+    const placeLog = document.querySelector('.place-section');
     hideOnlineElements();
 
     function hideOnlineElements() {
