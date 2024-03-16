@@ -39,9 +39,9 @@ namespace ShowNest.Web.Controllers
                 return View("SetTable");
             }
 
-            if (viewType == "ActivitiesList")
+            if (viewType == "EventHub")
             {
-                return View("ActivitiesList");
+                return View("EventHub");
             }
             if (viewType == "RegistrationList")
             {

@@ -5,7 +5,7 @@ using System.ComponentModel;
 
 namespace ShowNest.Web.ViewModels.Dashboard
 {
-    public class SetActivityViewModel
+    public class SetEventViewModel
     {
         //照mobile RWD順序
         public string OrganizationName { get; set; }

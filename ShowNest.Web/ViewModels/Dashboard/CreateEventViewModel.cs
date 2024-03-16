@@ -3,7 +3,7 @@ using ShowNest.Web.ViewModels.UserAccount;
 
 namespace ShowNest.Web.ViewModels.Dashboard
 {
-    public class CreateActivityViewModel
+    public class CreateEventViewModel
     {
         public List <OrganizationList> OrgName { get; set; }
         public List <EventList> EventName { get; set; }
