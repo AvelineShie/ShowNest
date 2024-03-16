@@ -120,7 +120,7 @@ span.note, .map-note{
 
 .form-check-label {
     display: inline-block;
-    line-height: 1.5; /* 調整 line-height */
+    line-height: 1.5; 
     vertical-align: middle;
 }
 
