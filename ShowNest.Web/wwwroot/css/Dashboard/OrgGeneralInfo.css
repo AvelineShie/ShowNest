@@ -1,12 +1,24 @@
-.main-content {
+
+body {
+    display: flex;
+    flex-direction: column;
+    height: 100vh
+}
+
+
+* {
+    box-sizing: border-box;
+}
+
+/* main Body */
+.section_wrap {
     flex-grow: 1;
-    padding-left: 20px;
 }
 
-header {
-    border-bottom: var(--common-border);
-
+.main-content {
+    width: 100%;
 }
+
 
 .header-h1 {
 
@@ -37,12 +49,12 @@ header {
     margin-bottom: 20px;
 }
 
-h2 {
+#OrgGeneralInfo h2 {
     margin-bottom: -10px;
     margin-top:20px;
 }
 
-button {
+#OrgGeneralInfo button {
     margin-left: 10px;
 }
 
