@@ -17,3 +17,191 @@
 .main-content {
     width: 100%;
 }
+.gap {
+    padding: 10px 0;
+}
+.border{
+    border-bottom: 1px solid var(--dark-gray);
+}
+.bold{
+    font-weight: bold;
+}
+.pad{
+    padding: 0 10px;
+}
+.text-center{
+    text-align: center;
+}
+.flex{
+    display: flex;
+    justify-content: space-between;
+}
+.light-border{
+    border-bottom: 1px solid var(--light-gray);
+}
+.space{
+    display: flex;
+    justify-content: space-between;
+    width: 60%;
+}
+
+/* --------org_header----------- */
+
+header.org_header {
+    padding: 20px 32px 20px 20px;
+    min-height: 36px;
+    border-bottom: 1px solid var(--light-gray)
+}
+
+.org_header span {
+    font-size: 22px;
+    padding-right: 12px;
+}
+
+.org-name {
+    color: var(--dark-gray);
+}
+
+.org-title {
+    color: var(--main-green);
+    font-weight: bold;
+
+}
+
+.org-title{
+    font-size: 20px;
+    font-weight: bold;
+}
+/* --------event-list-title----------- */
+
+.event-list-title {
+    padding: 40px 0px 8px 20px;
+    display: flex;
+    align-items: center;
+}
+.content-title{
+    padding-left: 10px;
+}
+/* --------org-name-title----------- */
+.org-name h2 {
+    font-weight: normal;
+    color: var(--dark-gray);
+    padding: 10px 0px 8px 20px;
+}
+
+/* --------Price Container----------- */
+.AmountPrice{
+    width: 50%;
+    padding: 10px 0px 8px 20px;
+}
+
+.redMark{
+    color:#DB4455 ;
+}
+.priceContainer{
+    display: flex;
+    gap: 40px;
+    padding-bottom: 55px;
+}
+.amount-posted{
+    padding-bottom: 60px;
+}
+/* --------atm-account----------- */
+.atm-account{
+    line-height: 1.5;
+    background-color: var(--light-gray);
+    border-radius: var(--common-border-radius);
+}
+.atm-account p{
+    padding: 0 10px;
+}
+.bank-branch {
+    padding-bottom: 30px;
+}
+/* -------button setting----------- */
+.btn-primary {
+    color: white;
+    background-color: var(--main-green);
+    border: none;
+}
+.btn-success {
+    color: var(--main-green);
+    border: 1px solid var(--dark-gray);
+    background-color: white;
+}
+.btn-success:hover {
+    background-color: var(--main-green);
+}
+
+.btn-primary:hover {
+    background-color: var(--light-green);
+}
+/* -------caption----------- */
+.caption{
+    padding-top: 17px;
+    width: 20%;
+    min-width: 180px;
+    line-height: 1.5;
+}
+.blue-wrap{
+    background-color:#dcf4f8;
+    border: 1px solid #b5e7f0;
+    color:#105e6b;
+    padding: 20px;
+    border-radius: 5px;
+}
+/* -------content-title----------- */
+.content-title{
+    padding: 20px 0px 8px 20px;
+}
+/* ----------payment-list-------------- */
+.payment-list{
+    padding: 20px 0px 55px 20px;
+}
+.list{
+    padding: 20px 0;
+    line-height: 1.5;
+}
+.org-list-title {
+    display: flex;
+    flex-direction: row;
+    border-bottom: 1px solid var(--dark-gray);
+}
+
+.title-container,
+.paymentInfo {
+    display: flex;
+    flex-direction: row;
+    width: 80%;
+}
+.w-90{
+    width: 90%;
+}
+@media screen and (max-width:900px) {
+    .priceContainer{
+        flex-direction: column-reverse;
+    }
+    .col-1,.col-2{
+        width:auto ;
+    }
+
+    .w-90{
+       display: none;
+    }
+    .title-container, .paymentInfo{
+        display: table-cell;
+    }
+    .list{
+        display: flex;
+    }
+    .caption{
+        padding-left: 20px;
+        width:50%
+    }
+}
+@media screen and (max-width:500px){
+    .caption{
+        width:80%
+    }
+}
+
