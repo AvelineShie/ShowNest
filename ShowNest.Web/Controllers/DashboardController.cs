@@ -92,10 +92,12 @@ namespace ShowNest.Web.Controllers
             {
                 case "Overview":
                     return View("Overview");
-                case "Eventslist":
-                    return View("Eventslist");
-                case "info":
-                    return View("info");
+                case "OrgAccount":
+                    return View("OrgAccount");
+                case "OrgGeneralInfo":
+                    return View("OrgGeneralInfo");
+                case "OrgPermission":
+                    return View("OrgPermission");
 
                 default: 
                     return BadRequest("Invalid view type.");
