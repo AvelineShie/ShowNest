@@ -22,6 +22,8 @@ body {
     padding: 20px 0;
 }
 
+/* --------org_header----------- */
+
 header.org_header {
     padding: 20px 32px 20px 20px;
     min-height: 36px;
@@ -49,9 +51,12 @@ header.org_header {
     font-weight: bold;
 }
 
+/* --------event-list-title----------- */
+
 .event-list-title {
     padding: 30px 32px 8px 20px;
 }
+/* -------ongoing-event-list----------- */
 
 .ongoing-event-list {
     padding: 0px 32px 8px 20px;
@@ -65,7 +70,7 @@ header.org_header {
     padding-right: 10px;
     font-size: 24px;
 }
-
+/* -------button setting----------- */
 .btn-light {
     color: #333333;
     border: 1px solid var(--dark-gray);
