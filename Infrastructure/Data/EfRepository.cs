@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace Infrastructure.Data
 {
-    public class EfRepository : IRepository
+    public class EfRepository<TEntity> : IRepository<TEntity> where TEntity : class
     {
     }
 }

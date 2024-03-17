@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace ApplicationCore.Interfaces
 {
-    public interface IRepository
+    public interface IRepository<TEntity> where TEntity : class
     {
     }
 }
