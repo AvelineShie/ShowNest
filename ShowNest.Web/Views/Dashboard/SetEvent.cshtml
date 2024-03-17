@@ -53,16 +53,16 @@
                             </span>
                         </div>
                         <span class="note">
-                            3 到 16 個小寫英文或數字。
+                            請輸入3 到 16 個小寫英文或數字。
                         </span>
                     </div>
 
                     <!-- 活動時間 -->
                     <div class="section">
                         <h4 class="essential-input">活動舉辦時間</h4>
-                        <input type="datetime-local" value="2024-02-21 7:30" class="date-time">
+                        <input type="datetime-local"  class="date-time">
                         <div class="space">至</div>
-                        <input type="datetime-local" value="2024-03-02 7:30" class="date-time">
+                        <input type="datetime-local" class="date-time">
                         <div>
                             <!-- 勾選後時間截止日與預計時間長度會隱藏 -->
                             <div class="end-time">
@@ -73,6 +73,19 @@
                         </div>
                     </div>
 
+                    <!-- 主辦與協辦單位 -->
+                    <div class="section">
+                        <div class="mb-3">
+                            <h4 class="essential-input">主辦單位</h4>
+                            <input type="text" class="form-control h-50" id="formGroupExampleInput" placeholder="請輸入主辦單位名稱">
+                        </div>
+                    </div>
+                    <div class="section">
+                        <div class="mb-3">
+                            <h4 class="essential-input">協辦單位</h4>
+                            <input type="text" class="form-control h-50" id="formGroupExampleInput" placeholder="若您的活動需告知協辦單位，請在此填寫">
+                        </div>
+                    </div>
                     <!-- 活動人數 -->
                     <div class="section">
                         <h4>活動人數</h4>
@@ -92,11 +105,11 @@
                     <!-- 實體活動＆地址欄（有地圖） -->
                     <div class="place-section">
                         <div class="section">
-                            <h4>場地名稱</h4>
+                            <h4 class="essential-input">場地名稱</h4>
                             <input type="text" class="form-control h-50" id="formGroupExampleInput" placeholder=" ">
                         </div>
                         <div class="section">
-                            <h4>活動地址</h4>
+                            <h4 class="essential-input">活動地址</h4>
                             <input type="text" class="form-control w-50 h-50" id="formGroupExampleInput" placeholder=" ">
                             <button type="button" class="h-25 btn btn-outline-secondary " id="upadte-map">更新地圖</button>
                             <!-- <button type="button" class="update-map">更新地圖</button> -->
