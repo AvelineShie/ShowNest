@@ -1,3 +1,7 @@
+:root {
+    --function-color-hover: #518f6d;
+}
+
 h2,
 h6 {
     color: var(--main-green);
