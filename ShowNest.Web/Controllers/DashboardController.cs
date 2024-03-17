@@ -96,8 +96,8 @@ namespace ShowNest.Web.Controllers
                     return View("OrgAccount");
                 case "OrgGeneralInfo":
                     return View("OrgGeneralInfo");
-                case "OrgPermission":
-                    return View("OrgPermission");
+                case "OrgAuthority":
+                    return View("OrgAuthority");
 
                 default: 
                     return BadRequest("Invalid view type.");

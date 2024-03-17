@@ -17,52 +17,137 @@ body {
 
 .main-content {
     width: 100%;
+    max-width: 1200px;
+}
+.gap {
+    padding: 10px 0;
 }
 
 
-.header-h1 {
+/* --------org_header----------- */
 
-    color: #999;
-    font-size: 24px;
+header.org_header {
+    padding: 20px 32px 20px 20px;
+    min-height: 36px;
+    border-bottom: 1px solid var(--light-gray)
+}
+
+.org_header span {
+    font-size: 22px;
+    font-weight: normal;
+    padding-right: 12px;
+}
+
+.org-name {
+    color: var(--dark-gray);
 }
 
 .org-title {
     color: var(--main-green);
-    font-size: 26px;
+    font-weight: bold;
+
 }
 
-.subheader {
+.org-title{
+    font-size: 20px;
+    font-weight: bold;
+}
+/* --------event-list-title----------- */
+.org-info-title {
+    padding: 30px 32px 8px 20px;
     display: flex;
-    justify-content: space-between;
-    min-height: 20px;
-    padding: 19px;
-    margin-bottom: 20px;
-    background-color: #f5f5f5;
-    border: 1px solid #e3e3e3;
-    box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.05);
-    /* position: absolute; */
+    align-items: center;
+}
+.general-title{
+    padding-right: 10px; 
+    font-weight: 500;
+}
+
+/* -------button setting----------- */
+
+.btn-primary {
+    color: white;
+    background-color: var(--main-green);
+    border: none;
+}
+.btn-primary:hover {
+    background-color: var(--light-green);
+}
+.btn i {
+    padding-right: 5px;
+}
+/* -------information Setting----------- */
+.info-container{
+    display: flex;
+    gap: 20px;
+    line-height: 1.5;
+    padding-bottom: 40px;
+}
+
+.information{
+    padding: 10px 32px 8px 20px;
+    margin-bottom: 10px;
+    width: 40%;
+}
+.info-title {
+    font-size: 18px;
+    font-weight: bold;
+}
+.websiteURL a{
+    font-size: 15px;
+    color: var(--main-green);
+}
+.websiteURL a:hover{
+    color: var(--light-green);
+    
+}
+.desc {
+    width:100%;
+}
+.img-container img{
+    object-fit:cover;
     width: 100%;
 }
+/* -------Advanced Setting----------- */
 
-
-.section {
-    margin-bottom: 20px;
-}
-
-#OrgGeneralInfo h2 {
-    margin-bottom: -10px;
-    margin-top:20px;
-}
-
-#OrgGeneralInfo button {
-    margin-left: 10px;
-}
-
-.subheader {
-    margin-top: 10px;
-}
-
-.section,.content{
+.contact-settings{
+    border-bottom:2px solid var(--dark-gray);
     display: block;
-    padding: 10px;
+    padding-bottom: 8px;
+    line-height: 1;
+}
+.advancedSetting{
+    margin-bottom: 10px;
+}
+
+@media screen and (max-width:768px) {
+
+    .info-container{
+        flex-direction: column-reverse;
+    }
+    .col-4 {
+        min-width: 90px;
+    }
+    .information,
+    .advancedSetting{
+        padding: 10px 0px 8px 20px;
+        width: 90%;
+    }
+    .org-info-title{
+        padding: 30px 0px 8px 20px;
+        min-width: 302px;
+        flex-direction: column;
+    }
+    .contact-info{
+        width: 50%;
+    }
+    .general-title{
+        padding: 14px 0;
+        padding-right: 0px;
+    }
+    .orgName{
+        border-top: 1px solid var(--dark-gray);
+        padding-top: 30px;
+    }
+
 }
