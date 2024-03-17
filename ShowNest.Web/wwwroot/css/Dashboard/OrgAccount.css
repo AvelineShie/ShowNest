@@ -160,6 +160,7 @@ header.org_header {
 }
 .list{
     padding: 20px 0;
+    line-height: 1.5;
 }
 .org-list-title {
     display: flex;
@@ -183,11 +184,9 @@ header.org_header {
     .col-1,.col-2{
         width:auto ;
     }
-    .priceContainer.border{
-        display: none;
-    }
-    .priceContainer.w-90{
-        width: 0px;
+
+    .w-90{
+       display: none;
     }
     .title-container, .paymentInfo{
         display: table-cell;
