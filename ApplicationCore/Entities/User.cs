@@ -70,9 +70,7 @@ public partial class User
     /// </summary>
     public DateTime? EditedAt { get; set; }
 
-    public virtual HistoryPassword? HistoryPassword { get; set; }
-
-    public virtual PreFill IdNavigation { get; set; } = null!;
+    public virtual ICollection<HistoryPassword> HistoryPasswords { get; set; } = new List<HistoryPassword>();
 
     public virtual LogInInfo? LogInInfo { get; set; }
 
@@ -83,6 +81,8 @@ public partial class User
     public virtual ICollection<OrganizationAndUserMapping> OrganizationAndUserMappings { get; set; } = new List<OrganizationAndUserMapping>();
 
     public virtual ICollection<Organization> Organizations { get; set; } = new List<Organization>();
+
+    public virtual ICollection<PreFill> PreFills { get; set; } = new List<PreFill>();
 
     public virtual ICollection<PreferredActivityArea> PreferredActivityAreas { get; set; } = new List<PreferredActivityArea>();
 }

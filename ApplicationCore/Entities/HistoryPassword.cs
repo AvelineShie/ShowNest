@@ -5,6 +5,8 @@ namespace ApplicationCore.Entities;
 
 public partial class HistoryPassword
 {
+    public int Id { get; set; }
+
     /// <summary>
     /// 使用者ID
     /// </summary>

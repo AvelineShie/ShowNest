@@ -232,13 +232,8 @@ public partial class DatabaseContext : DbContext
 
         modelBuilder.Entity<HistoryPassword>(entity =>
         {
-            entity.HasKey(e => e.UserId);
-
             entity.ToTable("HistoryPassword");
 
-            entity.Property(e => e.UserId)
-                .ValueGeneratedNever()
-                .HasComment("使用者ID");
             entity.Property(e => e.CreatedAt)
                 .HasComment("新增時間")
                 .HasColumnType("datetime");
@@ -246,11 +241,12 @@ public partial class DatabaseContext : DbContext
                 .HasComment("修改時間")
                 .HasColumnType("datetime");
             entity.Property(e => e.UsedPassword).HasComment("使用過的密碼");
+            entity.Property(e => e.UserId).HasComment("使用者ID");
 
-            entity.HasOne(d => d.User).WithOne(p => p.HistoryPassword)
-                .HasForeignKey<HistoryPassword>(d => d.UserId)
+            entity.HasOne(d => d.User).WithMany(p => p.HistoryPasswords)
+                .HasForeignKey(d => d.UserId)
                 .OnDelete(DeleteBehavior.ClientSetNull)
-                .HasConstraintName("FK_HistoryPassword_Users");
+                .HasConstraintName("FK_HistoryPassword_Users1");
         });
 
         modelBuilder.Entity<IsPaidRecord>(entity =>
@@ -296,6 +292,8 @@ public partial class DatabaseContext : DbContext
         modelBuilder.Entity<Order>(entity =>
         {
             entity.ToTable(tb => tb.HasComment("訂單"));
+
+            entity.HasIndex(e => e.UserId, "IX_Orders_UserId");
 
             entity.Property(e => e.Id).HasComment("訂單ID");
             entity.Property(e => e.ContactPerson).HasComment("聯絡人資料JSON");
@@ -432,13 +430,11 @@ public partial class DatabaseContext : DbContext
 
         modelBuilder.Entity<PreFill>(entity =>
         {
-            entity.HasKey(e => e.UserId).HasName("PK_Prefill_1");
+            entity.HasKey(e => e.Id).HasName("PK_Prefill_1");
 
             entity.ToTable("PreFill", tb => tb.HasComment("報名預填資料"));
 
-            entity.Property(e => e.UserId)
-                .ValueGeneratedNever()
-                .HasComment("使用者ID");
+            entity.Property(e => e.Id).HasComment("預填資料ID");
             entity.Property(e => e.Address)
                 .HasMaxLength(100)
                 .HasComment("聯絡地址");
@@ -471,6 +467,12 @@ public partial class DatabaseContext : DbContext
             entity.Property(e => e.Title)
                 .HasMaxLength(50)
                 .HasComment("職稱");
+            entity.Property(e => e.UserId).HasComment("使用者ID");
+
+            entity.HasOne(d => d.User).WithMany(p => p.PreFills)
+                .HasForeignKey(d => d.UserId)
+                .OnDelete(DeleteBehavior.ClientSetNull)
+                .HasConstraintName("FK_PreFill_Users");
         });
 
         modelBuilder.Entity<PreferredActivityArea>(entity =>
@@ -539,6 +541,12 @@ public partial class DatabaseContext : DbContext
 
         modelBuilder.Entity<Ticket>(entity =>
         {
+            entity.HasIndex(e => e.OrderId, "IX_Tickets_OrderId");
+
+            entity.HasIndex(e => e.SeatId, "IX_Tickets_SeatId");
+
+            entity.HasIndex(e => e.TicketTypeId, "IX_Tickets_TicketTypeId");
+
             entity.Property(e => e.Id).HasComment("票券ID");
             entity.Property(e => e.CheckCode)
                 .HasMaxLength(10)
@@ -640,11 +648,6 @@ public partial class DatabaseContext : DbContext
                 .HasComment("個人網址")
                 .HasColumnName("PersonalURL");
             entity.Property(e => e.Status).HasComment("0未驗證EMAIL1已驗證EMAIL");
-
-            entity.HasOne(d => d.IdNavigation).WithOne(p => p.User)
-                .HasForeignKey<User>(d => d.Id)
-                .OnDelete(DeleteBehavior.ClientSetNull)
-                .HasConstraintName("FK_Users_Prefill");
         });
 
         OnModelCreatingPartial(modelBuilder);

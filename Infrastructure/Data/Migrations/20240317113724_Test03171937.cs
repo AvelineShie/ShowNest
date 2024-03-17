@@ -3,10 +3,12 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 #nullable disable
 
+#pragma warning disable CA1814 // Prefer jagged arrays over multidimensional
+
 namespace Infrastructure.Data.Migrations
 {
     /// <inheritdoc />
-    public partial class Test03171600 : Migration
+    public partial class Test03171937 : Migration
     {
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)
@@ -58,30 +60,6 @@ namespace Infrastructure.Data.Migrations
                 comment: "付款紀錄");
 
             migrationBuilder.CreateTable(
-                name: "PreFill",
-                columns: table => new
-                {
-                    UserId = table.Column<int>(type: "int", nullable: false, comment: "使用者ID"),
-                    Name = table.Column<string>(type: "nvarchar(50)", maxLength: 50, nullable: true, comment: "姓名"),
-                    Mobile = table.Column<string>(type: "nvarchar(50)", maxLength: 50, nullable: true, comment: "手機號碼"),
-                    PostalCode = table.Column<int>(type: "int", nullable: true, comment: "郵遞區號"),
-                    County = table.Column<string>(type: "nvarchar(50)", maxLength: 50, nullable: true, comment: "縣市"),
-                    District = table.Column<string>(type: "nvarchar(50)", maxLength: 50, nullable: true, comment: "鄉鎮區域"),
-                    Address = table.Column<string>(type: "nvarchar(100)", maxLength: 100, nullable: true, comment: "聯絡地址"),
-                    CompanyName = table.Column<string>(type: "nvarchar(50)", maxLength: 50, nullable: true, comment: "公司名稱"),
-                    Title = table.Column<string>(type: "nvarchar(50)", maxLength: 50, nullable: true, comment: "職稱"),
-                    CompanyPostalCode = table.Column<int>(type: "int", nullable: true, comment: "公司郵遞區號"),
-                    CompanyAddress = table.Column<string>(type: "nvarchar(50)", maxLength: 50, nullable: true, comment: "公司地址"),
-                    CreatedAt = table.Column<DateTime>(type: "datetime", nullable: false, comment: "新增時間"),
-                    EditedAt = table.Column<DateTime>(type: "datetime", nullable: true, comment: "修改時間")
-                },
-                constraints: table =>
-                {
-                    table.PrimaryKey("PK_Prefill_1", x => x.UserId);
-                },
-                comment: "報名預填資料");
-
-            migrationBuilder.CreateTable(
                 name: "SeatAreas",
                 columns: table => new
                 {
@@ -118,11 +96,6 @@ namespace Infrastructure.Data.Migrations
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_Users", x => x.Id);
-                    table.ForeignKey(
-                        name: "FK_Users_Prefill",
-                        column: x => x.Id,
-                        principalTable: "PreFill",
-                        principalColumn: "UserId");
                 });
 
             migrationBuilder.CreateTable(
@@ -152,6 +125,8 @@ namespace Infrastructure.Data.Migrations
                 name: "HistoryPassword",
                 columns: table => new
                 {
+                    Id = table.Column<int>(type: "int", nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
                     UserId = table.Column<int>(type: "int", nullable: false, comment: "使用者ID"),
                     UsedPassword = table.Column<string>(type: "nvarchar(max)", nullable: false, comment: "使用過的密碼"),
                     CreatedAt = table.Column<DateTime>(type: "datetime", nullable: false, comment: "新增時間"),
@@ -159,9 +134,9 @@ namespace Infrastructure.Data.Migrations
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_HistoryPassword", x => x.UserId);
+                    table.PrimaryKey("PK_HistoryPassword", x => x.Id);
                     table.ForeignKey(
-                        name: "FK_HistoryPassword_Users",
+                        name: "FK_HistoryPassword_Users1",
                         column: x => x.UserId,
                         principalTable: "Users",
                         principalColumn: "Id");
@@ -274,6 +249,37 @@ namespace Infrastructure.Data.Migrations
                         principalColumn: "Id");
                 },
                 comment: "使用者偏好活動區域");
+
+            migrationBuilder.CreateTable(
+                name: "PreFill",
+                columns: table => new
+                {
+                    Id = table.Column<int>(type: "int", nullable: false, comment: "預填資料ID")
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    UserId = table.Column<int>(type: "int", nullable: false, comment: "使用者ID"),
+                    Name = table.Column<string>(type: "nvarchar(50)", maxLength: 50, nullable: true, comment: "姓名"),
+                    Mobile = table.Column<string>(type: "nvarchar(50)", maxLength: 50, nullable: true, comment: "手機號碼"),
+                    PostalCode = table.Column<int>(type: "int", nullable: true, comment: "郵遞區號"),
+                    County = table.Column<string>(type: "nvarchar(50)", maxLength: 50, nullable: true, comment: "縣市"),
+                    District = table.Column<string>(type: "nvarchar(50)", maxLength: 50, nullable: true, comment: "鄉鎮區域"),
+                    Address = table.Column<string>(type: "nvarchar(100)", maxLength: 100, nullable: true, comment: "聯絡地址"),
+                    CompanyName = table.Column<string>(type: "nvarchar(50)", maxLength: 50, nullable: true, comment: "公司名稱"),
+                    Title = table.Column<string>(type: "nvarchar(50)", maxLength: 50, nullable: true, comment: "職稱"),
+                    CompanyPostalCode = table.Column<int>(type: "int", nullable: true, comment: "公司郵遞區號"),
+                    CompanyAddress = table.Column<string>(type: "nvarchar(50)", maxLength: 50, nullable: true, comment: "公司地址"),
+                    CreatedAt = table.Column<DateTime>(type: "datetime", nullable: false, comment: "新增時間"),
+                    EditedAt = table.Column<DateTime>(type: "datetime", nullable: true, comment: "修改時間")
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Prefill_1", x => x.Id);
+                    table.ForeignKey(
+                        name: "FK_PreFill_Users",
+                        column: x => x.UserId,
+                        principalTable: "Users",
+                        principalColumn: "Id");
+                },
+                comment: "報名預填資料");
 
             migrationBuilder.CreateTable(
                 name: "ArchiveOrders",
@@ -489,6 +495,33 @@ namespace Infrastructure.Data.Migrations
                         principalColumn: "Id");
                 });
 
+            migrationBuilder.InsertData(
+                table: "Area",
+                columns: new[] { "Id", "Name" },
+                values: new object[,]
+                {
+                    { 1, "北北基宜地區" },
+                    { 2, "桃竹苗地區" },
+                    { 3, "雲嘉南地區" },
+                    { 4, "高屏地區" },
+                    { 5, "中彰投地區" },
+                    { 6, "花東地區" },
+                    { 7, "澎金馬地區" },
+                    { 8, "香港" },
+                    { 9, "澳門" },
+                    { 10, "其他地區" }
+                });
+
+            migrationBuilder.InsertData(
+                table: "Users",
+                columns: new[] { "Id", "Birthday", "CreatedAt", "EditedAt", "EdmSubscription", "Gender", "Image", "LastLogInAt", "Mobile", "Nickname", "PersonalProfile", "PersonalURL", "Status" },
+                values: new object[,]
+                {
+                    { 1, new DateTime(1990, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), new DateTime(2024, 3, 17, 19, 37, 24, 144, DateTimeKind.Local).AddTicks(3123), new DateTime(2024, 3, 17, 19, 37, 24, 144, DateTimeKind.Local).AddTicks(3123), true, (byte)1, "https://image.com/alice.jpg", new DateTime(2024, 3, 17, 19, 37, 24, 144, DateTimeKind.Local).AddTicks(3109), "0912345678", "Alice", "I'm Alice!", "https://alice.com", (byte)1 },
+                    { 2, new DateTime(1985, 7, 25, 0, 0, 0, 0, DateTimeKind.Unspecified), new DateTime(2024, 3, 17, 19, 37, 24, 144, DateTimeKind.Local).AddTicks(3127), null, false, (byte)2, null, null, "0987654321", "Bob", null, null, (byte)0 },
+                    { 3, new DateTime(1995, 10, 12, 0, 0, 0, 0, DateTimeKind.Unspecified), new DateTime(2024, 3, 7, 19, 37, 24, 144, DateTimeKind.Local).AddTicks(3134), new DateTime(2024, 3, 15, 19, 37, 24, 144, DateTimeKind.Local).AddTicks(3135), true, (byte)2, "https://image.com/charlie.png", new DateTime(2024, 3, 12, 19, 37, 24, 144, DateTimeKind.Local).AddTicks(3130), "0955555555", "Charlie", "Hello world!", "https://charlie.com", (byte)1 }
+                });
+
             migrationBuilder.CreateIndex(
                 name: "IX_EventAndTagMapping_CategoryTagId",
                 table: "EventAndTagMapping",
@@ -503,6 +536,11 @@ namespace Infrastructure.Data.Migrations
                 name: "IX_Events_OrganizationId",
                 table: "Events",
                 column: "OrganizationId");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_HistoryPassword_UserId",
+                table: "HistoryPassword",
+                column: "UserId");
 
             migrationBuilder.CreateIndex(
                 name: "IX_Orders_UserId",
@@ -542,6 +580,11 @@ namespace Infrastructure.Data.Migrations
             migrationBuilder.CreateIndex(
                 name: "IX_PreferredActivityArea_UserId",
                 table: "PreferredActivityArea",
+                column: "UserId");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_PreFill_UserId",
+                table: "PreFill",
                 column: "UserId");
 
             migrationBuilder.CreateIndex(
@@ -598,6 +641,9 @@ namespace Infrastructure.Data.Migrations
                 name: "PreferredActivityArea");
 
             migrationBuilder.DropTable(
+                name: "PreFill");
+
+            migrationBuilder.DropTable(
                 name: "Tickets");
 
             migrationBuilder.DropTable(
@@ -626,9 +672,6 @@ namespace Infrastructure.Data.Migrations
 
             migrationBuilder.DropTable(
                 name: "Users");
-
-            migrationBuilder.DropTable(
-                name: "PreFill");
         }
     }
 }

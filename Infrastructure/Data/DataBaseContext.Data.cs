@@ -1,10 +1,5 @@
 ﻿using ApplicationCore.Entities;
 using Microsoft.EntityFrameworkCore;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Infrastructure.Data
 {
@@ -24,6 +19,8 @@ namespace Infrastructure.Data
              new Area { Id = 9, Name = "澳門" },
              new Area { Id = 10, Name = "其他地區" }
              );
+
+            FakeDataFilling(modelBuilder);
         }
     }
 }

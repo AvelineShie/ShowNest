@@ -12,8 +12,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace Infrastructure.Data.Migrations
 {
     [DbContext(typeof(DatabaseContext))]
-    [Migration("20240317080044_Test03171600")]
-    partial class Test03171600
+    [Migration("20240317113724_Test03171937")]
+    partial class Test03171937
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -123,6 +123,58 @@ namespace Infrastructure.Data.Migrations
                     b.ToTable("Area", null, t =>
                         {
                             t.HasComment("偏好地區列表");
+                        });
+
+                    b.HasData(
+                        new
+                        {
+                            Id = 1,
+                            Name = "北北基宜地區"
+                        },
+                        new
+                        {
+                            Id = 2,
+                            Name = "桃竹苗地區"
+                        },
+                        new
+                        {
+                            Id = 3,
+                            Name = "雲嘉南地區"
+                        },
+                        new
+                        {
+                            Id = 4,
+                            Name = "高屏地區"
+                        },
+                        new
+                        {
+                            Id = 5,
+                            Name = "中彰投地區"
+                        },
+                        new
+                        {
+                            Id = 6,
+                            Name = "花東地區"
+                        },
+                        new
+                        {
+                            Id = 7,
+                            Name = "澎金馬地區"
+                        },
+                        new
+                        {
+                            Id = 8,
+                            Name = "香港"
+                        },
+                        new
+                        {
+                            Id = 9,
+                            Name = "澳門"
+                        },
+                        new
+                        {
+                            Id = 10,
+                            Name = "其他地區"
                         });
                 });
 
@@ -330,9 +382,11 @@ namespace Infrastructure.Data.Migrations
 
             modelBuilder.Entity("ApplicationCore.Entities.HistoryPassword", b =>
                 {
-                    b.Property<int>("UserId")
-                        .HasColumnType("int")
-                        .HasComment("使用者ID");
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
 
                     b.Property<DateTime>("CreatedAt")
                         .HasColumnType("datetime")
@@ -347,7 +401,13 @@ namespace Infrastructure.Data.Migrations
                         .HasColumnType("nvarchar(max)")
                         .HasComment("使用過的密碼");
 
-                    b.HasKey("UserId");
+                    b.Property<int>("UserId")
+                        .HasColumnType("int")
+                        .HasComment("使用者ID");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("UserId");
 
                     b.ToTable("HistoryPassword", (string)null);
                 });
@@ -471,7 +531,7 @@ namespace Infrastructure.Data.Migrations
 
                     b.HasKey("Id");
 
-                    b.HasIndex("UserId");
+                    b.HasIndex(new[] { "UserId" }, "IX_Orders_UserId");
 
                     b.ToTable("Orders", t =>
                         {
@@ -640,9 +700,12 @@ namespace Infrastructure.Data.Migrations
 
             modelBuilder.Entity("ApplicationCore.Entities.PreFill", b =>
                 {
-                    b.Property<int>("UserId")
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
                         .HasColumnType("int")
-                        .HasComment("使用者ID");
+                        .HasComment("預填資料ID");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
 
                     b.Property<string>("Address")
                         .HasMaxLength(100)
@@ -700,8 +763,14 @@ namespace Infrastructure.Data.Migrations
                         .HasColumnType("nvarchar(50)")
                         .HasComment("職稱");
 
-                    b.HasKey("UserId")
+                    b.Property<int>("UserId")
+                        .HasColumnType("int")
+                        .HasComment("使用者ID");
+
+                    b.HasKey("Id")
                         .HasName("PK_Prefill_1");
+
+                    b.HasIndex("UserId");
 
                     b.ToTable("PreFill", null, t =>
                         {
@@ -863,11 +932,11 @@ namespace Infrastructure.Data.Migrations
 
                     b.HasKey("Id");
 
-                    b.HasIndex("OrderId");
+                    b.HasIndex(new[] { "OrderId" }, "IX_Tickets_OrderId");
 
-                    b.HasIndex("SeatId");
+                    b.HasIndex(new[] { "SeatId" }, "IX_Tickets_SeatId");
 
-                    b.HasIndex("TicketTypeId");
+                    b.HasIndex(new[] { "TicketTypeId" }, "IX_Tickets_TicketTypeId");
 
                     b.ToTable("Tickets");
                 });
@@ -995,6 +1064,51 @@ namespace Infrastructure.Data.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("Users");
+
+                    b.HasData(
+                        new
+                        {
+                            Id = 1,
+                            Birthday = new DateTime(1990, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            CreatedAt = new DateTime(2024, 3, 17, 19, 37, 24, 144, DateTimeKind.Local).AddTicks(3123),
+                            EditedAt = new DateTime(2024, 3, 17, 19, 37, 24, 144, DateTimeKind.Local).AddTicks(3123),
+                            EdmSubscription = true,
+                            Gender = (byte)1,
+                            Image = "https://image.com/alice.jpg",
+                            LastLogInAt = new DateTime(2024, 3, 17, 19, 37, 24, 144, DateTimeKind.Local).AddTicks(3109),
+                            Mobile = "0912345678",
+                            Nickname = "Alice",
+                            PersonalProfile = "I'm Alice!",
+                            PersonalUrl = "https://alice.com",
+                            Status = (byte)1
+                        },
+                        new
+                        {
+                            Id = 2,
+                            Birthday = new DateTime(1985, 7, 25, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            CreatedAt = new DateTime(2024, 3, 17, 19, 37, 24, 144, DateTimeKind.Local).AddTicks(3127),
+                            EdmSubscription = false,
+                            Gender = (byte)2,
+                            Mobile = "0987654321",
+                            Nickname = "Bob",
+                            Status = (byte)0
+                        },
+                        new
+                        {
+                            Id = 3,
+                            Birthday = new DateTime(1995, 10, 12, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            CreatedAt = new DateTime(2024, 3, 7, 19, 37, 24, 144, DateTimeKind.Local).AddTicks(3134),
+                            EditedAt = new DateTime(2024, 3, 15, 19, 37, 24, 144, DateTimeKind.Local).AddTicks(3135),
+                            EdmSubscription = true,
+                            Gender = (byte)2,
+                            Image = "https://image.com/charlie.png",
+                            LastLogInAt = new DateTime(2024, 3, 12, 19, 37, 24, 144, DateTimeKind.Local).AddTicks(3130),
+                            Mobile = "0955555555",
+                            Nickname = "Charlie",
+                            PersonalProfile = "Hello world!",
+                            PersonalUrl = "https://charlie.com",
+                            Status = (byte)1
+                        });
                 });
 
             modelBuilder.Entity("ApplicationCore.Entities.ArchiveOrder", b =>
@@ -1041,10 +1155,10 @@ namespace Infrastructure.Data.Migrations
             modelBuilder.Entity("ApplicationCore.Entities.HistoryPassword", b =>
                 {
                     b.HasOne("ApplicationCore.Entities.User", "User")
-                        .WithOne("HistoryPassword")
-                        .HasForeignKey("ApplicationCore.Entities.HistoryPassword", "UserId")
+                        .WithMany("HistoryPasswords")
+                        .HasForeignKey("UserId")
                         .IsRequired()
-                        .HasConstraintName("FK_HistoryPassword_Users");
+                        .HasConstraintName("FK_HistoryPassword_Users1");
 
                     b.Navigation("User");
                 });
@@ -1120,6 +1234,17 @@ namespace Infrastructure.Data.Migrations
                     b.Navigation("User");
                 });
 
+            modelBuilder.Entity("ApplicationCore.Entities.PreFill", b =>
+                {
+                    b.HasOne("ApplicationCore.Entities.User", "User")
+                        .WithMany("PreFills")
+                        .HasForeignKey("UserId")
+                        .IsRequired()
+                        .HasConstraintName("FK_PreFill_Users");
+
+                    b.Navigation("User");
+                });
+
             modelBuilder.Entity("ApplicationCore.Entities.PreferredActivityArea", b =>
                 {
                     b.HasOne("ApplicationCore.Entities.Area", "Area")
@@ -1186,17 +1311,6 @@ namespace Infrastructure.Data.Migrations
                     b.Navigation("Event");
                 });
 
-            modelBuilder.Entity("ApplicationCore.Entities.User", b =>
-                {
-                    b.HasOne("ApplicationCore.Entities.PreFill", "IdNavigation")
-                        .WithOne("User")
-                        .HasForeignKey("ApplicationCore.Entities.User", "Id")
-                        .IsRequired()
-                        .HasConstraintName("FK_Users_Prefill");
-
-                    b.Navigation("IdNavigation");
-                });
-
             modelBuilder.Entity("ApplicationCore.Entities.Area", b =>
                 {
                     b.Navigation("PreferredActivityAreas");
@@ -1230,11 +1344,6 @@ namespace Infrastructure.Data.Migrations
                     b.Navigation("OrganizationAndUserMappings");
                 });
 
-            modelBuilder.Entity("ApplicationCore.Entities.PreFill", b =>
-                {
-                    b.Navigation("User");
-                });
-
             modelBuilder.Entity("ApplicationCore.Entities.Seat", b =>
                 {
                     b.Navigation("Tickets");
@@ -1252,7 +1361,7 @@ namespace Infrastructure.Data.Migrations
 
             modelBuilder.Entity("ApplicationCore.Entities.User", b =>
                 {
-                    b.Navigation("HistoryPassword");
+                    b.Navigation("HistoryPasswords");
 
                     b.Navigation("LogInInfo");
 
@@ -1263,6 +1372,8 @@ namespace Infrastructure.Data.Migrations
                     b.Navigation("OrganizationAndUserMappings");
 
                     b.Navigation("Organizations");
+
+                    b.Navigation("PreFills");
 
                     b.Navigation("PreferredActivityAreas");
                 });

@@ -9,6 +9,11 @@ namespace ApplicationCore.Entities;
 public partial class PreFill
 {
     /// <summary>
+    /// 預填資料ID
+    /// </summary>
+    public int Id { get; set; }
+
+    /// <summary>
     /// 使用者ID
     /// </summary>
     public int UserId { get; set; }
@@ -73,5 +78,5 @@ public partial class PreFill
     /// </summary>
     public DateTime? EditedAt { get; set; }
 
-    public virtual User? User { get; set; }
+    public virtual User User { get; set; } = null!;
 }
