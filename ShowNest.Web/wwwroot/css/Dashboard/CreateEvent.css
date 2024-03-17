@@ -1,7 +1,6 @@
 
-/* Activity Container */
+
 .ActivityContainer{
-/*    display: flex;*/
     flex-direction: column;
     min-height: 520px;
     margin: 0 auto;
@@ -65,7 +64,6 @@ h3::after{
     margin-left: 10px;
     margin-bottom: 10px;
     margin-top: 10px;
-/*    border: solid #ced4da 1px;*/
 }
 
 .TOSzone a{
@@ -80,7 +78,7 @@ h3::after{
     width: 70px;
     height: 35px;
     line-height: 10px;
-    background-color:var(--main-green);
+    background-color:var(--light-green);
     color:white;
     border:none;
     border-radius:5px;
