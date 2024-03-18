@@ -186,7 +186,7 @@ header.org_header {
     }
 
     .w-90{
-       display: none;
+    display: none;
     }
     .title-container, .paymentInfo{
         display: table-cell;
