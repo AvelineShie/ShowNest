@@ -1,6 +1,9 @@
 ﻿using System.Collections.Generic;
 using System.Globalization;
+using Elfie.Serialization;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.Extensions.Logging;
+using ShowNest.Web.Models;
 using ShowNest.Web.Services;
 using ShowNest.Web.Services.Events;
 using ShowNest.Web.ViewModels.Events;
@@ -85,8 +88,37 @@ namespace ShowNest.Web.Controllers
                         TicketSalseEnd = DateTime.Now,
                         TicketPrice = 1200
                     }, 
-                    
-    }
+                },
+                AllParticipantPeoples=new List<ParticipantPeople> { 
+                    new ParticipantPeople {
+                        ParticipantPeopleImage="https://picsum.photos/200/200/?random=02",
+                        ParticipantPeopleId="AAAA"
+                    },
+                    new ParticipantPeople {
+                        ParticipantPeopleImage="https://picsum.photos/200/200/?random=08",
+                        ParticipantPeopleId="BBBB"
+                    },
+                    new ParticipantPeople {
+                        ParticipantPeopleImage="https://picsum.photos/200/200/?random=06",
+                        ParticipantPeopleId="CCCC"
+                    },
+                    new ParticipantPeople {
+                        ParticipantPeopleImage="https://picsum.photos/200/200/?random=01",
+                        ParticipantPeopleId="DDDD"
+                    },
+                    new ParticipantPeople {
+                        ParticipantPeopleImage="https://picsum.photos/200/200/?random=19",
+                        ParticipantPeopleId="EEEE"
+                    },
+                    new ParticipantPeople {
+                        ParticipantPeopleImage="https://picsum.photos/200/200/?random=16",
+                        ParticipantPeopleId="FFFF"
+                    },
+                    new ParticipantPeople {
+                        ParticipantPeopleImage="https://picsum.photos/200/200/?random=15",
+                        ParticipantPeopleId="GGGG"
+                    },
+                }
             };
             return View(model);
         }
