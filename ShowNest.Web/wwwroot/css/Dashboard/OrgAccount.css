@@ -44,6 +44,9 @@
     justify-content: space-between;
     width: 60%;
 }
+.col-1{
+    width: 12%;
+}
 
 /* --------org_header----------- */
 
@@ -150,10 +153,7 @@ header.org_header {
     padding: 20px;
     border-radius: 5px;
 }
-/* -------content-title----------- */
-.content-title{
-    padding: 20px 0px 8px 20px;
-}
+
 /* ----------payment-list-------------- */
 .payment-list{
     padding: 20px 0px 55px 20px;
