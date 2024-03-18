@@ -1,6 +1,3 @@
-
-
-
 /* 組織名稱欄 */
 .header-title {
     display: flex;
@@ -228,9 +225,10 @@ span.note, .map-note{
 }
 
 .section img {
-    max-width: 300px;
-    max-height: 200px;
-    object-fit: cover; /* 裁切圖片以填滿指定的大小 */
+    width: 250px;
+    height: 250px;
+    object-fit: cover; 
+    /* 裁切圖片以填滿指定的大小 */
 }
 
 button.btn-outline-secondary{
