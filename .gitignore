@@ -364,3 +364,4 @@ FodyWeavers.xsd
 
 .DS_Store
 
+/ShowNest.Web/appsettings.json
