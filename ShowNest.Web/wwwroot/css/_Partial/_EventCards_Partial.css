@@ -14,6 +14,7 @@
     width: 100%;
     height: 190px;
     object-fit: cover;
+    border-radius: var(--common-border-radius);
 }
 
 .card-name p {
@@ -33,6 +34,29 @@
     height: 90%;
     padding-bottom: 13%;
     transition: .3s ease-out;
+}
+
+.card-name span{
+    display: inline-block;
+    color: #fff;
+    background-color: var(--main-green);
+    border-radius: var(--common-border-radius);
+    padding: 8px 10px;
+    position: absolute;
+    overflow: hidden;
+    top: 7%;
+    left: -1%;
+    transform: translateX(-35%) rotateY(90deg);
+    z-index: -1;
+    opacity: 0;
+    transition: .2s ease-out;
+}
+
+.single-card:hover .card-name span {
+    transform: translateX(0%);
+    z-index: 0;
+    opacity: 100%;
+    transition: .2s ease-out;
 }
 
 .card-info {

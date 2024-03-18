@@ -78,8 +78,9 @@ document.getElementById('uploadInput')
 });
 
 // 還原原圖
-document.getElementById('restoreBtn').addEventListener('click', function () {
-    const uploadedImage = document.getElementById('uploadedImage');
-    uploadedImage.src = "https://picsum.photos/300/200/?random=10";
+document.getElementById('restoreBtn')
+    .addEventListener('click', function () {
+        const uploadedImage = document.getElementById('uploadedImage');
+        uploadedImage.src = '/img/Dashboard/upload-img.png';
 });
 
