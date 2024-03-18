@@ -174,13 +174,15 @@
                     <!-- (右邊)圖片上傳區 -->
                     <div class="section">
                         <h4>社群分享圖片</h4>
-                        <img src="https://picsum.photos/300/200/?random=10">
+                        <img id="uploadedImage" src="https://picsum.photos/300/200/?random=10">
                         <div>
-                            <button type="button" class="btn btn-outline-secondary">選擇圖片</button>
-                            <button type="button" class="btn btn-outline-secondary">還原原圖</button>
+                            <!-- 添加文件上傳元素 -->
+                            <input type="file" id="uploadInput" accept="image/*" style="display: none;">
+                            <button type="button" class="btn btn-outline-secondary" onclick="document.getElementById('uploadInput').click()">選擇圖片</button>
+                            <button type="button" class="btn btn-outline-secondary" id="restoreBtn">還原原圖</button>
                         </div>
                     </div>
-                    <span class="note">請提供尺寸為 1200 x 630 px 且 檔案格式為 png.、jpg. 之圖片。</span>
+                    <span class="note">請提供尺寸為600x400px以內 且 檔案格式為 png.、jpg. 之圖片。</span>
 
                     <!-- 隱私設定區 -->
                     <div class="section">

@@ -227,8 +227,14 @@ span.note, .map-note{
     margin-bottom: 18px;
 }
 
+.section img {
+    max-width: 300px;
+    max-height: 200px;
+    object-fit: cover; /* 裁切圖片以填滿指定的大小 */
+}
+
 button.btn-outline-secondary{
-    margin-right: 10px;
+    margin-right: 13px;
     background-color:var(--main-green);
     color:#fff;
 }
