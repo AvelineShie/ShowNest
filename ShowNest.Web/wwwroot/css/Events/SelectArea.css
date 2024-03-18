@@ -6,11 +6,12 @@
 
 .main_stage_map {
     flex-grow: 1;
+    background-color: #FFFFFF;
+    overflow-x: auto;
 }
 
 .map_area {
     display: flex;
-    overflow-x: auto;
 }
 
 .map_area img {
