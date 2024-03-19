@@ -1,5 +1,6 @@
 ﻿/* ==============side menu start============== */
 .sideBarMenu {
+    min-width: 157px;
     width: 200px;
     background-color: #518f6d;
     flex-direction: column;
@@ -91,3 +92,7 @@
 }
 
 /* ----------side menu end----------- */
+@media screen and (max-width:768px){
+
+
+}
