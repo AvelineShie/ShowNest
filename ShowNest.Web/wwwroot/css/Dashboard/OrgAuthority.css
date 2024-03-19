@@ -16,6 +16,7 @@
 
 .main-content {
     width: 100%;
+    overflow: auto;
 }
 .gap {
     padding: 10px 0;

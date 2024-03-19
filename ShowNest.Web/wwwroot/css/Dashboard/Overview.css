@@ -16,8 +16,11 @@ body {
 
 .main-content {
     width: 100%;
+    overflow: auto;
 }
-
+.bold{
+    font-weight: bold;
+}
 .gap {
     padding: 20px 0;
 }
