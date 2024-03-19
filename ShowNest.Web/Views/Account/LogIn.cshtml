@@ -18,12 +18,12 @@
 
                 <form method="post" asp-controller="Account" asp-action="Login">
                     <div class="user-name-or-email">
-                        <input id="username" type="text" name="Username" placeholder="使用者名稱或 email" required>
+                        <input id="accountOrEmail" type="text" name="Account" placeholder="使用者名稱或 email" required>
                     </div>
                     <div class="passwords">
                         <input id="password" type="password" name="Password" minlength="8" required placeholder="密碼" />
                     </div>
-                    <div class="submit"><a href="">登入</a></div>
+                    <div class="submit"><input type="submit" value="登入" /></div>
                 </form>
                     <div class="forget-passwords"><a asp-controller="Account" asp-action="ForgetPassword">忘記密碼</a></div>
                     <div class="other-log-in-methods">使用第三方帳號進行登入</div>
