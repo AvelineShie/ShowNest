@@ -31,44 +31,58 @@
         </div>
         <div class="authority-list-group">
             <h3 class="subTitle bold">組織成員列表</h3>
-            <div class="list-title gap">
-                <div class="title-names pad col-1">
-                    <p class="center col-1 bold ">使用者暱稱</p>
-                </div>
-                <div class="title-names pad col-1">
-                    <p class="center col-1 bold">角色</p>
-                </div>
-                <div class="btn-group">
-                </div>
-            </div>
-            <div class="border"></div>
-            <div class="owner-authority-group ">
-                <div class="owner">
-                    <p class="owner-names col-1"> <img src="https://picsum.photos/32/32/?random=10" alt="頭貼">Big Head</p>
+            <div class="authority-list-container">
+                <div class="list-title gap">
                     <div class="title-names pad col-1">
-                        <p class="center authority col-1 ">擁有者者 Owner</p>
+                        <p class="center col-1 bold ">使用者暱稱</p>
+                    </div>
+                    <div class="title-names pad col-1">
+                        <p class="center col-1 bold">角色</p>
                     </div>
                     <div class="btn-group">
-                        <button class="btn btn-success">編輯</button>
-                        <button class="btn btn-secondary">刪除</button>
+                    </div>
+                </div>
+                <div class="border"></div>
+                <div class="owner-container authority-group ">
+                    <div class="owner">
+                        <p class="owner-names col-1"> <img src="https://picsum.photos/32/32/?random=10" alt="頭貼">Big Head</p>
+                        <div class="title-names pad col-1">
+                            <p class="center authority col-1 ">擁有者者 Owner</p>
+                        </div>
+                        <div class="btn-group">
+                            <button class="btn btn-success">編輯</button>
+                            <button class="btn btn-danger" disabled>刪除</button>
+                        </div>
+                    </div>
+                </div>
+                <div class="authority-group ">
+                    <div class="owner">
+                        <p class="owner-names col-1"> <img src="https://picsum.photos/32/31/?random=10" alt="頭貼">小弟</p>
+                        <div class="title-names pad col-1">
+                            <p class="center authority col-1 ">管理者 Admin</p>
+                        </div>
+                        <div class="btn-group">
+                            <button class="btn btn-success">編輯</button>
+                            <button class="btn btn-danger" >刪除</button>
+                        </div>
+                    </div>
+                </div>
+                <div class="invite-authority-group">
+                    <div class="invite-box input-group-sm">
+                        <input class="form-control" type="text" placeholder="請輸入Email">
+                        <div class="title-names pad col-1">
+                            <p class="center invite-names col-1 ">管理者 Admin</p>
+                        </div>
+                        <div class="btn-group">
+                            <button class="btn btn-success">邀請</button>
+                            <button class="btn btn-danger">取消</button>
+                        </div>
                     </div>
                 </div>
             </div>
-            <div class="invite-authority-group">
-                <div class="invite-box input-group-sm">
-                    <input class="form-control" type="text" placeholder="請輸入Email">
-                    <div class="title-names pad col-1">
-                        <p class="center invite-names col-1 ">管理者 Admin</p>
-                    </div>
-                    <div class="btn-group">
-                        <button class="btn btn-success">邀請</button>
-                        <button class="btn btn-danger">取消</button>
-                    </div>
+                <div class="btn-invite-group">
+                    <button class="btn-invite btn btn-success">邀請用戶</button>
                 </div>
-            </div>
-            <div class="btn-invite-group">
-                <button class="btn-invite btn btn-success">邀請用戶</button>
-            </div>
         </div>
     </div> 
 </section>
