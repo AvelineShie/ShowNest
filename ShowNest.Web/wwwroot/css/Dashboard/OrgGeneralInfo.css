@@ -18,9 +18,13 @@ body {
 .main-content {
     width: 100%;
     max-width: 1200px;
+    overflow: auto;
 }
 .gap {
     padding: 10px 0;
+}
+.bold{
+    font-weight: bold;
 }
 
 
