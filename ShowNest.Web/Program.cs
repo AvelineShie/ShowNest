@@ -1,10 +1,11 @@
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.FileSystemGlobbing.Internal.Patterns;
 using Microsoft.Extensions.Logging;
-using ShowNest.Web.Data;
 using ShowNest.Web.Interfaces;
 using ShowNest.Web.Services.General;
 using ShowNest.Web.Services.Home;
+using Microsoft.AspNetCore.Identity;
+using Infrastructure.Data;
 
 namespace ShowNest.Web
 {
@@ -17,7 +18,7 @@ namespace ShowNest.Web
             // 取得組態中資料庫連線設定
             string connectionString = builder.Configuration.GetConnectionString("DatabaseContext");
             //在DI Container註冊EF Core的DbContext
-            builder.Services.AddDbContext<DataBaseContext>(options => options.UseSqlServer(connectionString));
+            builder.Services.AddDbContext<DatabaseContext>(options => options.UseSqlServer(connectionString));
 
             // Registration Service
             builder.Services.AddScoped<RegistrationService, RegistrationService>();
@@ -30,7 +31,14 @@ namespace ShowNest.Web
             builder.Services.AddScoped<CategoryTagService>();
             builder.Services.AddScoped<HomeService>();
             builder.Services.AddScoped<EventIndexService>();
-            
+
+
+            //// Facebook Data 測試中
+            //builder.Services.AddAuthentication().AddFacebook(opt =>
+            //{
+            //    opt.ClientId = "";
+            //    opt.ClientSecret = "";
+            //});
 
             var app = builder.Build();
 

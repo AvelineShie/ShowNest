@@ -15,13 +15,16 @@
                     <div class="sign-up"><a asp-controller="Account" asp-action="SignUp">註冊</a></div>
                 </div>
                 <div class="input-area">
+
+                <form method="post" asp-controller="Account" asp-action="Login">
                     <div class="user-name-or-email">
-                        <input type="text" placeholder="使用者名稱或 email" required>
+                        <input id="accountOrEmail" type="text" name="Account" placeholder="使用者名稱或 email" required>
                     </div>
                     <div class="passwords">
-                        <input type="password" id="pass" name="password" minlength="8" required placeholder="密碼" />
+                        <input id="password" type="password" name="Password" minlength="8" required placeholder="密碼" />
                     </div>
-                    <div class="submit"><a href="">登入</a></div>
+                    <div class="submit"><input type="submit" value="登入" /></div>
+                </form>
                     <div class="forget-passwords"><a asp-controller="Account" asp-action="ForgetPassword">忘記密碼</a></div>
                     <div class="other-log-in-methods">使用第三方帳號進行登入</div>
                     <div class="third-party-log-in">

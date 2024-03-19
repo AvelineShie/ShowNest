@@ -106,7 +106,49 @@ td {
     vertical-align: middle;
 }
 
-#add-ticket{
+/*新增修改票種欄位*/
+.changeTicketSection{
+    background-color: lightgoldenrodyellow;
+    padding: 15px;
+    margin-bottom: 15px;
+}
+
+.section{
+    display:inline-block;
+    max-width: 150px;
+    margin: 15px;
+}
+
+.timeSection {
+    display:flex;
+    flex-direction: row;
+    margin-left: 15px;
+}
+
+.date-time{
+    height: 30px;
+    width: 200px;
+    margin-left: 15px;
+    margin-right: 15px;
+}
+
+.sectionTitle {
+    font-weight: bold;
+}
+
+#submit, #cancel {
+    border: #ccc 1px solid;
+    box-shadow: #f2f2f2 0 -3px 0 inset;
+    background-color: #fff;
+    padding: 6px 12px;
+    font-size: 15px;
+    line-height: 1.33333333;
+    border-radius: 2px;
+    color: var(--main-green);
+}
+
+
+#add-ticket {
     background-color: var(--light-green);
     border-color: #fff;
     color: #fff;

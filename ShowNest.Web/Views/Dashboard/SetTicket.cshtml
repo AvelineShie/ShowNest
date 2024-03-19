@@ -23,7 +23,7 @@
             <div>
                 <nav aria-label="breadcrumb">
                     <ol class="breadcrumb">
-                        <li class="breadcrumb-item"><a href="https://localhost:7156/Dashboard/Events?viewType=SetActivity">設定資料活動</a></li>
+                        <li class="breadcrumb-item"><a href="https://localhost:7156/Dashboard/Events?viewType=SetEvent">設定資料活動</a></li>
                         <li class="breadcrumb-item"><a href="https://localhost:7156/Dashboard/Events?viewType=SetTicket">設定票種</a></li>
                         <li class="breadcrumb-item" aria-current="page"><a href="https://localhost:7156/Dashboard/Events?viewType=SetTable">設定表單</a></li>
                     </ol>
@@ -48,10 +48,10 @@
                             <tr>
                                 <td class="color-label"></td>
                                 <td>@ticket.TicketName</td>
-                                <td>@ticket.StartTime.ToString("yyyy/MM/dd HH:mm (+0800)") ~
-                                @ticket.EndTime.ToString("yyyy/MM/dd HH:mm (+0800)")</td>
-                               @*  2024/02/02 00:00 (+0800) ~ 2024/02/06 00:00 (+0800) *@
-                                <td>TWD$@ticket.Price</td>
+                                <td>@ticket.StartTime.ToString("yyyy/MM/dd HH:mm") ~
+                                @ticket.EndTime.ToString("yyyy/MM/dd HH:mm")</td>
+                               @*  2024/02/02 00:00  ~ 2024/02/06 00:00  *@
+                                <td>TWD$ @ticket.Price</td>
                                 <td>@ticket.Quantity</td>
                                 <td>
                                     <button>編輯</button>
@@ -60,13 +60,46 @@
                             </tr>
            
                         }
-
                     </tbody>
                 </table>
+                <div class="changeTicketSection">
+                    <div class="section">
+                        <div class="mb-3">
+                            <h4 class="sectionTitle">票種名稱</h4>
+                            <input type="text" class="form-control h-50" id="formGroupExampleInput" placeholder=" ">
+                        </div>
+                    </div>
+                    <div class="section">
+                        <div class="mb-3">
+                            <h4 class="sectionTitle">價格</h4>
+                            <input type="text" class="form-control h-50" id="formGroupExampleInput" placeholder=" ">
+                        </div>
+                    </div>
+                    <div class="section">
+                        <div class="mb-3">
+                            <h4 class="sectionTitle">數量</h4>
+                            <input type="text" class="form-control h-50" id="formGroupExampleInput" placeholder=" ">
+                        </div>
+
+                    </div>
+
+                    <div class="timeSection">
+                        <h4 class="sectionTitle">販售時間</h4>
+                        <input type="datetime-local" class="date-time">
+                        <div class="space">至</div>
+                        <input type="datetime-local" class="date-time">
+                    </div>
+
+                    <div class="section">
+                        <button type="button" class="btn btn-outline-secondary btn-sm" id="submit">新增</button>
+                        <button type="button" class="btn btn-outline-secondary btn-sm" id="cancel">取消</button>
+                    </div>
+                    
+                </div>
                 <button type="button" class="btn btn-outline-secondary btn-sm" id="add-ticket">新增票種</button>
             </div>
             <div class="pages-change">
-                <button type="button" class="btn btn-outline-secondary" onclick="window.location.href='https://localhost:7156/Dashboard/Events?viewType=SetActivity'">上一頁</button>
+                <button type="button" class="btn btn-outline-secondary" onclick="window.location.href='https://localhost:7156/Dashboard/Events?viewType=SetEvent'">上一頁</button>
                 <button type="button" class="btn btn-outline-secondary" onclick="window.location.href='https://localhost:7156/Dashboard/Events?viewType=SetTable'">下一頁</button>
             </div>
         </div>

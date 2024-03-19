@@ -18,14 +18,14 @@ namespace ShowNest.Web.Controllers
 
         public IActionResult Events(string viewType)
         {
-            if (viewType == "CreateActivity")
+            if (viewType == "CreateEvent")
             {
-                return View("CreateActivity");
+                return View("CreateEvent");
             }
 
-            if (viewType == "SetActivity")
+            if (viewType == "SetEvent")
             {
-                return View("SetActivity");
+                return View("SetEvent");
             }
 
             if (viewType == "SetTicket")
@@ -39,9 +39,9 @@ namespace ShowNest.Web.Controllers
                 return View("SetTable");
             }
 
-            if (viewType == "ActivitiesList")
+            if (viewType == "EventHub")
             {
-                return View("ActivitiesList");
+                return View("EventHub");
             }
             if (viewType == "RegistrationList")
             {
@@ -92,10 +92,12 @@ namespace ShowNest.Web.Controllers
             {
                 case "Overview":
                     return View("Overview");
-                case "Eventslist":
-                    return View("Eventslist");
-                case "info":
-                    return View("info");
+                case "OrgAccount":
+                    return View("OrgAccount");
+                case "OrgGeneralInfo":
+                    return View("OrgGeneralInfo");
+                case "OrgAuthority":
+                    return View("OrgAuthority");
 
                 default: 
                     return BadRequest("Invalid view type.");

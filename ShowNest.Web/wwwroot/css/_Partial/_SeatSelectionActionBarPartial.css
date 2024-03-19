@@ -1,3 +1,7 @@
+:root {
+    --function-color-hover: #518f6d;
+}
+
 h2,
 h6 {
     color: var(--main-green);
@@ -113,6 +117,9 @@ h6 {
 }
 
 /* start ---- btn-confirm clicked ---- */
+.seat-areas-and-showcases {
+    position: relative;
+}
 .confirm-wrap {
     position: absolute;
     top: -5px;
