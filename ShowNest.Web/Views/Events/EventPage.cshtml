@@ -163,19 +163,17 @@
             <h2><span>26</span> 報名人</h2>
             <div class="attendees-btn">
                 <div class="p-3 justify-content-center show-attendees">
-                    <a class="btn btn-outline-success attendee-display-switch  w-50" type="button" id="toggleAttendeesBtn">
+                    <div class="btn btn-outline-success attendee-display-switch  w-50" type="button" id="toggleAttendeesBtn">
                         顯示報名人
-                    </a>
+                    </div>
                 </div>
             </div>
             <ul class="attendees">
                 @foreach (var ParticipantPeople in @Model.AllParticipantPeoples)
                     {
                         <li>
-                             <a>
                                  <img src="@ParticipantPeople.ParticipantPeopleImage" alt="">@ParticipantPeople.ParticipantPeopleId
-					         </a>
-                         </li>
+                        </li>
                     }
                 <div class="more">
                     ...以及其他 19 人
