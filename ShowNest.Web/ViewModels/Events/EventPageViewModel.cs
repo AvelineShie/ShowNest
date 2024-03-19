@@ -16,6 +16,7 @@ namespace ShowNest.Web.ViewModels.Events
 
         public List<EventTicket> AllTickets { get; set; }
         public List<ParticipantPeople> AllParticipantPeoples { get; set; }
+        public List<CategoryTagsViewModel> EventCategoryTags { get; set; }
     }
 
     public class EventTicket

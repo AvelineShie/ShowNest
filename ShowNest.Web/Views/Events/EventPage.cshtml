@@ -1,4 +1,6 @@
-﻿@using ShowNest.Web.ViewModels.Events;
+﻿
+
+@model EventPageViewModel
 
 
 @{
@@ -11,6 +13,7 @@
 @section topCSS {
     <link href="~/css/share/reset.css" rel="stylesheet" />
     <link href="~/css/events/eventpage.css" rel="stylesheet" />
+    <link href="~/css/_partial/_categorytags_partial.css" rel="stylesheet" />
 
 }
 @section endJS {
@@ -90,11 +93,12 @@
 
             </div>
             <ul class="tags-item ">
-                <li><a href="#">美食</a></li>
-                <li><a href="#">動漫</a></li>
-                <li><a href="#">測試</a></li>
-
-
+                <li>
+                    @foreach (var tag in Model.EventCategoryTags)
+                    {
+                        @await Html.PartialAsync("~/PartialViews/_CategoryTags_Partial.cshtml", tag);
+                    }
+                </li>
             </ul>
         </div>
         <!-- 地圖   開始 -->

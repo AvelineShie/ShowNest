@@ -89,7 +89,18 @@ namespace ShowNest.Web.Controllers
                         TicketPrice = 1200
                     }, 
                 },
-                AllParticipantPeoples=new List<ParticipantPeople> { 
+                EventCategoryTags=new List<CategoryTagsViewModel>
+                {
+                    new CategoryTagsViewModel
+                    {
+                        CategoryNameZh="藝文"
+                    },
+                    new CategoryTagsViewModel
+                    {
+                        CategoryNameZh="展覽"
+                    }
+                },
+                AllParticipantPeoples =new List<ParticipantPeople> { 
                     new ParticipantPeople {
                         ParticipantPeopleImage="https://picsum.photos/200/200/?random=02",
                         ParticipantPeopleId="AAAA"
