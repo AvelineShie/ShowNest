@@ -283,10 +283,10 @@ public partial class DatabaseContext : DbContext
                 .HasComment("電子郵件");
             entity.Property(e => e.Password).HasComment("密碼");
 
-            entity.HasOne(d => d.User).WithOne(p => p.LogInInfo)
-                .HasForeignKey<LogInInfo>(d => d.UserId)
-                .OnDelete(DeleteBehavior.ClientSetNull)
-                .HasConstraintName("FK_LogInInfo_Users");
+            //entity.HasOne(d => d.User).WithOne(p => p.LogInInfo)
+            //    .HasForeignKey<LogInInfo>(d => d.UserId)
+            //    .OnDelete(DeleteBehavior.ClientSetNull)
+            //    .HasConstraintName("FK_LogInInfo_Users");
         });
 
         modelBuilder.Entity<Order>(entity =>

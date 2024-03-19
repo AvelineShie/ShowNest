@@ -45,9 +45,9 @@ a {
     background-color: var(--main-green);
 }
 
-.sign-up a {
-    color: #fff;
-}
+    .sign-up a {
+        color: #fff;
+    }
 
 .input-area {
     width: 650px;
@@ -77,14 +77,14 @@ a {
     margin-bottom: 15px;
 }
 
-.submit {
+.submit input {
     display: inline-block;
     box-sizing: border-box;
     margin-top: 13px;
     margin-bottom: 15px;
 }
 
-.submit a {
+.submit input {
     color: #fff;
     background-color: var(--main-green);
     padding: 10px 135px;
@@ -103,25 +103,25 @@ a {
     flex-direction: row;
 }
 
-.other-log-in-methods::before,
-.other-log-in-methods::after {
-    content: '';
-    flex: 1 1;
-    border-bottom: var(--common-border);
-    margin: auto;
-    width: 100px;
-}
+    .other-log-in-methods::before,
+    .other-log-in-methods::after {
+        content: '';
+        flex: 1 1;
+        border-bottom: var(--common-border);
+        margin: auto;
+        width: 100px;
+    }
 
 .third-party-log-in {
     display: flex;
     justify-content: center;
 }
 
-.third-party-log-in img {
-    width: 3em;
-    height: 3em;
-    margin: 20px;
-}
+    .third-party-log-in img {
+        width: 3em;
+        height: 3em;
+        margin: 20px;
+    }
 
 @media screen and (max-width: 768px) {
 
@@ -144,7 +144,7 @@ a {
         width: 280px;
     }
 
-    .submit a {
+    .submit input {
         padding: 10px 125px;
     }
 }
@@ -153,17 +153,17 @@ a {
     .wrap {
         width: 260px;
     }
-    
+
     .input-area {
         width: 260px;
     }
-    
+
     .user-name-or-email input,
     .passwords input {
         width: 240px;
     }
 
-    .submit a {
+    .submit input {
         padding: 10px 105px;
     }
 }
