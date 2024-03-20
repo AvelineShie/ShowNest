@@ -15,7 +15,6 @@
 }
 
 .main-content {
-    /* width: 100%; */
     overflow: auto;
 }
 .gap {
@@ -41,12 +40,13 @@
     border-bottom: 1px solid var(--light-gray);
 }
 .space{
-    display: flex;
-    justify-content: space-between;
-    width: 60%;
+    display: grid;
+    grid-template-columns:1fr 1fr 1fr;
 }
+
 .col-1,.col-2{
     width:100% ;
+    min-width:165px;
 }
 
 /* --------org_header----------- */
@@ -177,7 +177,7 @@ header.org_header {
     /* width: 90%; */
 }
 .w-90{
-    width: 90%;
+    width: 130%;
 }
 .list{
     max-width: 80%;
@@ -189,10 +189,10 @@ header.org_header {
     .priceContainer{
         flex-direction: column-reverse;
     }
-    .col-1,.col-2{
+    /* .col-1,.col-2{
         min-width:165px;
         width: auto;
-    }
+    } */
     .AmountPrice{
         width: 90%;
     }
