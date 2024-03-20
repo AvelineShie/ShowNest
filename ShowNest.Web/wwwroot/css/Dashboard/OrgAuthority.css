@@ -181,13 +181,10 @@ header.org_header {
         flex-direction: column;
         width: 90%;
     }
+
+    .form-control,
+    .invite-authority-group,
     .authority-group{
-        width: 100%;
-    }
-    .invite-authority-group{
-        width: 100%;
-    }
-    .form-control{
         width: 100%;
     }
     .pad{
