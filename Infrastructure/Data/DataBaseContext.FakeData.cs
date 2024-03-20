@@ -766,6 +766,97 @@ namespace Infrastructure.Data
                     EditeAt = DateTime.Now,
                 }
             );
+            modelBuilder.Entity<Organization>().HasData(
+              new Organization
+              {
+                  Id = 1,
+                  Name = "Build School",
+                  OrganizationUrl = "HTTP",
+                  Description = "組織簡介內容區",
+                  ContactName = "Alice",
+                  ContactMobile = "0123456789",
+                  ContactTelephone = "02-2123-45678",
+                  CreatedAt = DateTime.Now,
+                  EditedAt = DateTime.Now
+              },
+              new Organization
+              {
+                  Id = 2,
+                  OwnerId = 2,
+                  Name = "卡米地",
+                  OrganizationUrl = "HTTP",
+                  Description = "組織簡介內容區",
+                  ContactName = "Bob",
+                  ContactMobile = "0123456789",
+                  ContactTelephone = "02-2123-45678",
+                  CreatedAt = DateTime.Now,
+                  EditedAt = DateTime.Now
+              },
+              new Organization
+              {
+                  Id = 3,
+                  OwnerId = 3,
+                  Name = "海邊的卡夫卡",
+                  OrganizationUrl = "HTTP",
+                  Description = "組織簡介內容區",
+                  ContactName = "Charlie",
+                  ContactMobile = "0123456789",
+                  ContactTelephone = "02-2123-45678",
+                  CreatedAt = DateTime.Now,
+                  EditedAt = DateTime.Now
+              }
+           );
+
+            modelBuilder.Entity<TicketType>().HasData(
+             new TicketType
+             {
+                 Id = 1,
+                 EventId = 1,
+                 Name = "Free",
+                 StartSaleTime = DateTime.Now,
+                 EndSaleTime = DateTime.Now,
+                 CapacityAmount = 300,
+                 Price = 0,
+                 CreatedAt = DateTime.Now,
+                 EditedAt = DateTime.Now
+             },
+             new TicketType
+             {
+                 Id = 2,
+                 EventId = 2,
+                 Name = "搖滾票",
+                 StartSaleTime = DateTime.Now,
+                 EndSaleTime = DateTime.Now,
+                 CapacityAmount = 50,
+                 Price = 6800,
+                 CreatedAt = DateTime.Now,
+                 EditedAt = DateTime.Now
+             },
+             new TicketType
+             {
+                 Id = 3,
+                 EventId = 2,
+                 Name = "一般票",
+                 StartSaleTime = DateTime.Now,
+                 EndSaleTime = DateTime.Now,
+                 CapacityAmount = 200,
+                 Price = 2800,
+                 CreatedAt = DateTime.Now,
+                 EditedAt = DateTime.Now
+             },
+             new TicketType
+             {
+                 Id = 4,
+                 EventId = 2,
+                 Name = "站票",
+                 StartSaleTime = DateTime.Now,
+                 EndSaleTime = DateTime.Now,
+                 CapacityAmount = 400,
+                 Price = 800,
+                 CreatedAt = DateTime.Now,
+                 EditedAt = DateTime.Now
+             }
+            );
         }
     }
 }
