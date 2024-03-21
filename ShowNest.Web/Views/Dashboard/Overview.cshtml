@@ -14,10 +14,9 @@
 <section id="overview" class="d-flex section_wrap">
     <div class="sideBarMenu">
         <nav>
-            <div><a href="#"><i class="fa-solid fa-arrow-up-right-from-square fa-sm"></i>組織公開頁面</a></div>
+            <div><a asp-controller="Organizations" asp-action="Index"><i class="fa-solid fa-arrow-up-right-from-square fa-sm"></i>組織公開頁面</a></div>
             <div><a href="?viewType=Overview"><i class="fa-solid fa-users fa-sm"></i>活動列表</a></div>
             <div><a href="?viewType=OrgAccount"><i class="fa-solid fa-cart-arrow-down fa-sm"></i>組織帳務</a></div>
-            <p>組織設定</p>
             <div><a href="?viewType=OrgGeneralInfo"><i class="fa-solid fa-circle-info fa-sm"></i>一般資訊</a></div>
             <div><a href="?viewType=OrgAuthority"><i class="fa-solid fa-tags fa-sm"></i>權限管理</a></div>
         </nav>
@@ -27,7 +26,7 @@
         <div class="event-list">
             <header class="org_header">
                 <span class="org-name">組織名稱</span>
-                <span class="org-title">深夜九點半搶銀行</span>
+                <span class="org-title bold">深夜九點半搶銀行</span>
             </header>
             <div class="event-list-title">
                 <h2 class="list-title">活動列表</h2>
@@ -76,10 +75,10 @@
                                     </div>
                             </div>
                             <div class="button-group mt-2 mb-4">
-                                    <button class="btn btn-primary">活動主  控台</button>
-                                    <button class="btn btn-light">訂單</button>
-                                    <button class="btn btn-light">簽到簿</button>
-                                    <button class="btn btn-success"><i  class="fa-solid  fa-arrow-up-right-from-square"></i>活動頁面</button>
+                                <a asp-controller="Dashboard" asp-action="Events" asp-route-viewType="EventHub"><button class="btn btn-primary">活動主控台</button></a>
+                                <a asp-controller="Dashboard" asp-action="Events" asp-route-viewType="#"><button class="btn btn-light">訂單</button></a>
+                                <a asp-controller="Dashboard" asp-action="Events" asp-route-viewType="#"><button class="btn btn-light">簽到簿</button></a>
+                                <a asp-controller="Events" asp-action="EventPage"><button class="btn btn-success"><i class="fa-solid  fa-arrow-up-right-from-square"></i>活動頁面</button></a>
                             </div>
                         </div>
                         </div>

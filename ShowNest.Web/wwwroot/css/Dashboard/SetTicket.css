@@ -107,8 +107,9 @@ td {
 }
 
 /*新增修改票種欄位*/
-.changeTicketSection{
+.changeTicketSection {
     background-color: lightgoldenrodyellow;
+    border-radius: 5px;
     padding: 15px;
     margin-bottom: 15px;
 }
@@ -125,15 +126,19 @@ td {
     margin-left: 15px;
 }
 
-.date-time{
-    height: 30px;
+.date-time {
+    height: 35px;
     width: 200px;
     margin-left: 15px;
     margin-right: 15px;
+    border: 1px solid #ced4da;
+    border-radius:5px;
 }
 
-.sectionTitle {
+.space, .sectionTitle {
     font-weight: bold;
+    line-height:44px;
+    align-items:center;
 }
 
 #submit, #cancel {
@@ -166,23 +171,32 @@ button.btn-outline-secondary {
 
 /* MOBILE */
 @media (max-width:768px) {
+    th {
+        text-align: center;
+    }
 
+    .delete {
+        margin-left: 0px;
+        margin-top: 10px;
+    }
+
+    .timeSection {
+        display: flex;
+        flex-wrap: wrap;
+    }
+
+    input.date-time {
+        margin-bottom: 10px;
+        margin-left: auto;
+    }
 }
 
 /* DESKTOP */
-@media (min-width:769px) {
+/*@media (min-width:769px) {
 
     @media (min-width:769px) and (max-width:1200px) {
 
-        #header-functions a {
-            padding: 14px 8px;
-        }
-
         @media (min-width:1201px) {
-
         }
     }
-
-    #header-functions a {
-        padding: 14px 15px;
-    }
+}*/
