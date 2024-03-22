@@ -1,7 +1,7 @@
 ﻿body {
     display: flex;
     flex-direction: column;
-    height: 100vh
+    height: 100vh;
 }
 
 
@@ -20,12 +20,16 @@
 }
 .gap {
     padding: 10px 0;
+    line-height: 1.5;
 }
 .border{
     border-bottom: 1px solid var(--dark-gray);
 }
 .bold{
     font-weight: bold;
+}
+.m-tb{
+    margin: 10px 0px;
 }
 .pad{
     padding: 0 10px;
@@ -44,8 +48,12 @@
     text-align: center;
     justify-content: center;
 }
-
-
+.left{
+    text-align: left;
+}
+.right{
+    text-align: right;
+}
 /* --------org_header----------- */
 
 header.org_header {
@@ -58,6 +66,7 @@ header.org_header {
     font-size: 22px;
     font-weight: normal;
     padding-right: 12px;
+    line-height:1.5;
 }
 
 .org-name {
@@ -130,10 +139,27 @@ header.org_header {
 }
 .form-control{
     width: 200px;
+    max-height: 35px;
 }
 .invite-authority-group{
     padding: 10px 0px 10px 10px;
     width: 80.6%;
+}
+.radio li{
+    display: flex;
+    padding: 5px 0;
+}
+.radio label,
+.radio input{
+    cursor: pointer;
+}
+.radio input{
+    margin-right: 5px;
+}
+.radio{
+    display: flex;
+    justify-content: center;
+    width: 300px;
 }
 
 /* -------button setting----------- */
@@ -159,12 +185,44 @@ header.org_header {
     color: white;
 }
 .btn-invite-group{
-    padding: 10px 0px 200px 12px;
+    padding: 10px 0px 20px 12px;
 }
 .authority-list-container{
     overflow: auto;
     overflow-y: scroll;
 }
+.btn-group{
+    max-height: 40px;
+}
+/* -------authorization Role----------- */
+.authorization_role{
+    margin: 20px 0;
+}
+.table{
+    line-height: 1.5;
+}
+.table-bordered,
+.table-bordered th,
+.table-bordered td,
+.table-bordered tr{
+    border: 1px solid var(--light-gray);
+}
+.table-bordered th{
+    min-width: 145px;
+}
+.center,
+.left{
+    vertical-align: middle;
+    align-items: center;
+}
+.role-table{
+    overflow: auto;
+    max-width: 90%;
+}
+.right{
+    min-width: 200px;
+}
+
 
 
 @media screen and (max-width:852px){
@@ -172,6 +230,10 @@ header.org_header {
         display: flex;
         flex-direction: column;
         width: 100%;
+    }
+    .btn-group>.btn-group:not(:last-child)>.btn, .btn-group>.btn:not(:last-child):not(.dropdown-toggle) {
+        border-top-right-radius:5px;
+        border-bottom-right-radius:5px;
     }
 }
 @media screen and (max-width:768px){
@@ -181,11 +243,19 @@ header.org_header {
         flex-direction: column;
         width: 90%;
     }
-
+    .invite-box{
+        padding:25px 10px 60px 10px;
+    }
     .form-control,
     .invite-authority-group,
     .authority-group{
         width: 100%;
+    }
+    .invite-authority-group{
+        padding:25px 0px 10px 10px;
+    }
+    .authority-group{
+        padding: 30px 0px 30px 20px;
     }
     .pad{
         padding: 10px 10px;
@@ -196,14 +266,22 @@ header.org_header {
     .owner-names{
         display: flex;
         justify-content: center;
-        font-size: 3vw;
-
+        font-size: 4vw;
+    }
+    .radio{
+        width: 100%;
     }
     .list-title{
         display: none;
     }
     .owner-names img{
         display: none;
+    }
+    .btn-invite{
+        width: 90%;
+    }
+    .right{
+        min-width: 200px;
     }
 }
 
