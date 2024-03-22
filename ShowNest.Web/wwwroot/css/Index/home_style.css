@@ -295,9 +295,10 @@ h2,h3{
 
 .cards-type-tags {
     margin-top: 40px;
+    border-bottom: none;
 }
 
-.cards-type-tags a {
+.cards-type-tags .nav-link {
     color: #000;
     flex-grow: 1;
     text-align: center;
@@ -305,7 +306,8 @@ h2,h3{
     border-bottom: var(--common-border);
 }
 
-.cards-type-tags .cards-type-tags-active {
+#main-card-group .cards-type-tags .active{
+    background-color: inherit;
     border: var(--common-border);
     border-bottom: none;
     box-shadow: 0 -4px var(--main-green);
@@ -322,7 +324,7 @@ h2,h3{
     position: relative;
     display: flex;
     flex-direction: column;
-    margin-top:50px;
+    margin:80px 0px 20px;
 }
 
 .h3-wrap::before {

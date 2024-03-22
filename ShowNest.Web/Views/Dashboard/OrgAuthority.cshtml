@@ -45,7 +45,7 @@
                     <div class="owner">
                         <p class="owner-names col-1"> <img src="https://picsum.photos/32/32/?random=10" alt="頭貼">Big Head</p>
                         <div class="title-names pad col-1">
-                            <p class="center authority col-1 ">擁有者者 Owner</p>
+                            <p class="center authority col-1 ">管理者 Admin</p>
                         </div>
                         <div class="btn-group">
                             <button class="btn btn-success">編輯</button>
@@ -57,7 +57,7 @@
                     <div class="owner">
                         <p class="owner-names col-1"> <img src="https://picsum.photos/32/31/?random=10" alt="頭貼">小弟</p>
                         <div class="title-names pad col-1">
-                            <p class="center authority col-1 ">管理者 Admin</p>
+                            <p class="center authority col-1 ">會計 Accountant</p>
                         </div>
                         <div class="btn-group">
                             <button class="btn btn-success">編輯</button>
@@ -68,8 +68,36 @@
                 <div class="invite-authority-group">
                     <div class="invite-box input-group-sm">
                         <input class="form-control" type="text" placeholder="請輸入Email">
-                        <div class="title-names pad col-1">
-                            <p class="center invite-names col-1 ">管理者 Admin</p>
+
+                <!-- -------------邀請管理權限List------------------ -->
+                        <div class="radio pad">
+                            <ul>
+                            <!-- --------管理者 Admin------ -->
+                                <li class="pad ">
+                                    <input type="radio" class="" name="authority_option" id="admin" value="Admin">
+                                    <label for="admin" class="Admin">管理者 Admin</label>
+                                </li>
+                                <!-- --------會計 Accountant------ -->
+                                <li class="pad ">
+                                    <input type="radio" class="" name="authority_option" id="Accountant" value="Accountant">
+                                    <label for="Accountant" class="Accountant">會計 Accountant</label>
+                                </li>
+                                <!-- ------活動管理者 Event Manager------ -->
+                                <li class="pad ">
+                                    <input type="radio" class="" name="authority_option" id="eventManager" value="eventManager">
+                                    <label for="eventManager" class="eventManager">活動管理者 Event Manager</label>
+                                </li>
+                                <!-- ------活動工讀生 Event Intern------ -->
+                                <li class="pad ">
+                                    <input type="radio" class="" name="authority_option" id="Intern" value="intern">
+                                    <label for="Intern" class="Intern">活動工讀生 Intern</label>
+                                </li>
+                                <!-- ------活動行銷 Event Marketing------ -->
+                                <li class="pad ">
+                                    <input type="radio" class="" name="authority_option" id="marketing" value="marketing">
+                                    <label for="marketing" class="marketing">活動行銷 Marketing</label>
+                                </li>
+                            </ul>
                         </div>
                         <div class="btn-group">
                             <button class="btn btn-success">邀請</button>
@@ -81,6 +109,94 @@
                 <div class="btn-invite-group">
                     <button class="btn-invite btn btn-success">邀請用戶</button>
                 </div>
+            </div>
+        <div class="authorization_role org-authority-title">
+            <h2 class="authorization_role general-title">角色管理</h2>
+            <div class="role-table">
+                <table class="table table-bordered overflow-auto">
+                    <thead>
+                        <tr>
+                            <th class="left bold">角色</th>
+                            <th class="center bold">組織資料</th>
+                            <th class="center bold">權限管理</th>
+                            <th class="center bold">組織粉絲管理
+                            <i class="fa fa-info-circle" rel="tooltip" title="可於組織主控台管理與查看組織粉絲資訊，如：粉絲列表等。"></i></th>
+                            <th class="center bold">活動建立</th>
+                            <th class="center bold">活動報表</th>
+                            <th class="center bold">活動主控台</th>
+                            <th class="center bold">簽到簿</th>
+                            <th class="center bold">報名人列表</th>
+                            <th class="center bold">信件通知</th>
+                        <tr>
+                    </thead>
+                    <tbody>
+                        <tr class="role">
+                            <td class="left">管理者 Admin</td>
+                            <td class="center"><i class="fa fa-check-circle fa-lg"></i></td>
+                            <td class="center"><i class="fa fa-check-circle fa-lg"></i></td>
+                            <td class="center"><i class="fa fa-check-circle fa-lg"></i></td>
+                            <td class="center"><i class="fa fa-check-circle fa-lg"></i></td>
+                            <td class="center"><i class="fa fa-check-circle fa-lg"></i></td>
+                            <td class="center"><i class="fa fa-check-circle fa-lg"></i></td>
+                            <td class="center"></td>
+                            <td class="center"></td>
+                            <td class="center"></td>
+                            <td class="right"><span>（不能修改擁有者角色）</span></td>
+                        </tr>
+                        <tr class="role">
+                            <td class="left">會計 Accountant</td>
+                            <td class="center"></td>
+                            <td class="center"><i class="fa fa-check-circle fa-lg"></i></td>
+                            <td class="center"></td>
+                            <td class="center"></td>
+                            <td class="center"></td>
+                            <td class="center"></td>
+                            <td class="center"></td>
+                            <td class="center"></td>
+                            <td class="center"></td>
+                        </tr>
+                        <tr class="role">
+                            <td class="left">活動管理者 Event Manager</td>
+                            <td class="center"><i class="fa fa-check-circle fa-lg"></i></td>
+                            <td class="center"></td>
+                            <td class="center"></td>
+                            <td class="center"><i class="fa fa-check-circle fa-lg"></i></td>
+                            <td class="center"><i class="fa fa-check-circle fa-lg"></i></td>
+                            <td class="center"><i class="fa fa-check-circle fa-lg"></i></td>
+                            <td class="center"></td>
+                            <td class="center"></td>
+                            <td class="center"></td>
+                            <td class=""></td>
+                        </tr>
+                        <tr class="role">
+                            <td class="">活動工讀生 Intern</i></td>
+                            <td class=""></td>
+                            <td class=""></td>
+                            <td class=""></td>
+                            <td class=""></td>
+                            <td class=""></td>
+                            <td class=""></td>
+                            <td class=""></td>
+                            <td class="center"><i class="fa fa-check-circle fa-lg"></i></td>
+                            <td class=""></td>
+                            <td class=""></td>
+                        </tr>
+                        <tr class="role">
+                            <td class="left">活動行銷 Marketing</td>
+                            <td class=""></td>
+                            <td class=""></td>
+                            <td class=""></td>
+                            <td class=""></td>
+                            <td class=""></td>
+                            <td class=""></td>
+                            <td class=""></td>
+                            <td class="center"><i class="fa fa-check-circle fa-lg"></i></td>
+                            <td class="center"><i class="fa fa-check-circle fa-lg"></i></td>
+                            <td class=""></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
         </div>
     </div> 
 </section>

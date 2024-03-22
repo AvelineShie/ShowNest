@@ -67,6 +67,10 @@
     align-items: center;
 }
 
+.card-event-date i{
+    margin-right: 5px;
+}
+
 /* start - ticket status tag - */
 
 .card-ticket-status {
