@@ -170,9 +170,19 @@ namespace ShowNest.Web.Services.General
             };
         }
 
+        public IEnumerable<EventCardViewModel> GetAllEventCards()
+        {
+            return EventCards;
+        }
+
         public IEnumerable<EventCardViewModel> GetSixEventCards()
         {
             return EventCards.Take(6);
+        }
+
+        public IEnumerable<EventCardViewModel> GetSixEventCards(int start)
+        {
+            return EventCards.Skip(start - 1).Take(6);
         }
     }
 }

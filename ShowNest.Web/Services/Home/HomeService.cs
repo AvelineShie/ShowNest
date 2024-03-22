@@ -33,7 +33,7 @@ namespace ShowNest.Web.Services.Home
 
         public List<EventCardViewModel> GetHomeCards(List<EventCardViewModel> input)
         {
-            var cardsToAdd = _eventCardService.GetSixEventCards();
+            var cardsToAdd = _eventCardService.GetAllEventCards();
             foreach (var card in cardsToAdd)
             {
                 input.Add(card);
