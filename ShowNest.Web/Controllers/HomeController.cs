@@ -24,6 +24,8 @@ namespace ShowNest.Web.Controllers
             _homeService.GetHomeCarouselImg(homeViewModel.HomeCarousels);
             _homeService.GetHomeCards(homeViewModel.HomeEventCards);
 
+            int cardsPerPage = 6;
+
             return View(homeViewModel);
         }
 
