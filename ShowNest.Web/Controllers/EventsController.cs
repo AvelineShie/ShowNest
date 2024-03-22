@@ -40,9 +40,9 @@ namespace ShowNest.Web.Controllers
 		//以上測試中--------------------------------------------------------------
 
 		private readonly EventIndexService _eventIndexService;
-		private readonly RegistrationService _registrationService;
+		private readonly OrderTicketService _registrationService;
 
-		public EventsController(EventIndexService eventIndexService, RegistrationService registrationService)
+		public EventsController(EventIndexService eventIndexService, OrderTicketService registrationService)
 		{
 			_eventIndexService = eventIndexService;
 			_registrationService = registrationService;

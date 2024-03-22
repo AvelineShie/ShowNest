@@ -13,3 +13,4 @@ global using ShowNest.Web.Services.Events;
 global using ShowNest.Web.Services.Home;
 global using Newtonsoft.Json;
 global using Microsoft.AspNetCore.Authentication.OAuth;
+global using Infrastructure.Data;

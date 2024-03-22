@@ -21,7 +21,7 @@ namespace ShowNest.Web
             builder.Services.AddDbContext<DatabaseContext>(options => options.UseSqlServer(connectionString));
 
             // Registration Service
-            builder.Services.AddScoped<RegistrationService, RegistrationService>();
+            builder.Services.AddScoped<OrderTicketService, OrderTicketService>();
 
             // Add services to the container.
             builder.Services.AddControllersWithViews();

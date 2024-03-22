@@ -17,7 +17,7 @@ namespace Infrastructure.Data.Migrations
         {
 #pragma warning disable 612, 618
             modelBuilder
-                .HasAnnotation("ProductVersion", "7.0.15")
+                .HasAnnotation("ProductVersion", "7.0.16")
                 .HasAnnotation("Relational:MaxIdentifierLength", 128);
 
             SqlServerModelBuilderExtensions.UseIdentityColumns(modelBuilder);
@@ -210,6 +210,35 @@ namespace Infrastructure.Data.Migrations
                         .HasName("PK_Tags");
 
                     b.ToTable("CategoryTags");
+
+                    b.HasData(
+                        new
+                        {
+                            Id = 1,
+                            CreatedAt = new DateTime(2024, 3, 22, 17, 27, 31, 686, DateTimeKind.Local).AddTicks(7775),
+                            EditeAt = new DateTime(2024, 3, 22, 17, 27, 31, 686, DateTimeKind.Local).AddTicks(7776),
+                            IsDeleted = false,
+                            Name = "音樂",
+                            Sort = 0
+                        },
+                        new
+                        {
+                            Id = 2,
+                            CreatedAt = new DateTime(2024, 3, 22, 17, 27, 31, 686, DateTimeKind.Local).AddTicks(7778),
+                            EditeAt = new DateTime(2024, 3, 22, 17, 27, 31, 686, DateTimeKind.Local).AddTicks(7778),
+                            IsDeleted = false,
+                            Name = "戲劇",
+                            Sort = 0
+                        },
+                        new
+                        {
+                            Id = 3,
+                            CreatedAt = new DateTime(2024, 3, 22, 17, 27, 31, 686, DateTimeKind.Local).AddTicks(7780),
+                            EditeAt = new DateTime(2024, 3, 22, 17, 27, 31, 686, DateTimeKind.Local).AddTicks(7780),
+                            IsDeleted = false,
+                            Name = "展覽",
+                            Sort = 0
+                        });
                 });
 
             modelBuilder.Entity("ApplicationCore.Entities.Event", b =>
@@ -344,6 +373,60 @@ namespace Infrastructure.Data.Migrations
                     b.HasIndex(new[] { "OrganizationId" }, "IX_Events_OrganizationId");
 
                     b.ToTable("Events");
+
+                    b.HasData(
+                        new
+                        {
+                            Id = 1,
+                            Capacity = 500,
+                            ContactPerson = "",
+                            CreatedAt = new DateTime(2024, 3, 22, 17, 27, 31, 686, DateTimeKind.Local).AddTicks(7749),
+                            Description = "線上活動描述內容區",
+                            EditedAt = new DateTime(2024, 3, 22, 17, 27, 31, 686, DateTimeKind.Local).AddTicks(7750),
+                            EndTime = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            EventImage = "https://picsum.photos/1300/600/?random=11",
+                            Introduction = "線上活動簡介內容區",
+                            IsDeleted = false,
+                            IsFree = true,
+                            IsPrivateEvent = false,
+                            MainOrganizer = "Build School",
+                            Name = "【線上直播課】掌握網路三大流量，讓你在同行中脫穎而出",
+                            OrganizationId = 1,
+                            ParticipantPeople = "[\r\n  {\r\n    \"ParticipantPeopleImage\": \"https://picsum.photos/200/200/?random=10\",\r\n    \"ParticipantPeopleId\": \"DDDD\"\r\n  },\r\n  {\r\n    \"ParticipantPeopleImage\": \"https://picsum.photos/200/200/?random=14\",\r\n    \"ParticipantPeopleId\": \"EEEE\"\r\n  },\r\n  {\r\n    \"ParticipantPeopleImage\": \"https://picsum.photos/200/200/?random=18\",\r\n    \"ParticipantPeopleId\": \"FFFF\"\r\n  }\r\n]\r\n",
+                            Sort = 0,
+                            StartTime = new DateTime(2024, 4, 5, 17, 27, 31, 686, DateTimeKind.Local).AddTicks(7744),
+                            Status = (byte)1,
+                            StreamingPlatform = "http;",
+                            StreamingUrl = "http;",
+                            Type = (byte)0
+                        },
+                        new
+                        {
+                            Id = 2,
+                            Capacity = 1000,
+                            ContactPerson = "",
+                            CreatedAt = new DateTime(2024, 3, 22, 17, 27, 31, 686, DateTimeKind.Local).AddTicks(7758),
+                            Description = "實體活動描述內容區",
+                            EditedAt = new DateTime(2024, 3, 22, 17, 27, 31, 686, DateTimeKind.Local).AddTicks(7759),
+                            EndTime = new DateTime(2024, 4, 5, 17, 27, 31, 686, DateTimeKind.Local).AddTicks(7753),
+                            EventImage = "https://picsum.photos/1300/600/?random=15",
+                            Introduction = "實體活動簡介內容區",
+                            IsDeleted = false,
+                            IsFree = false,
+                            IsPrivateEvent = false,
+                            Latitude = "120.33333",
+                            LocationAddress = "",
+                            LocationName = "大巨蛋",
+                            Longitude = "120.33333",
+                            MainOrganizer = "卡米地",
+                            Name = "【演唱會】五月天",
+                            OrganizationId = 2,
+                            ParticipantPeople = "[\r\n  {\r\n    \"ParticipantPeopleImage\": \"https://picsum.photos/200/200/?random=10\",\r\n    \"ParticipantPeopleId\": \"DDDD\"\r\n  },\r\n  {\r\n    \"ParticipantPeopleImage\": \"https://picsum.photos/200/200/?random=14\",\r\n    \"ParticipantPeopleId\": \"EEEE\"\r\n  },\r\n  {\r\n    \"ParticipantPeopleImage\": \"https://picsum.photos/200/200/?random=18\",\r\n    \"ParticipantPeopleId\": \"FFFF\"\r\n  }\r\n]\r\n",
+                            Sort = 0,
+                            StartTime = new DateTime(2024, 3, 22, 17, 27, 31, 686, DateTimeKind.Local).AddTicks(7752),
+                            Status = (byte)1,
+                            Type = (byte)1
+                        });
                 });
 
             modelBuilder.Entity("ApplicationCore.Entities.EventAndTagMapping", b =>
@@ -663,6 +746,50 @@ namespace Infrastructure.Data.Migrations
                         {
                             t.HasComment("組織");
                         });
+
+                    b.HasData(
+                        new
+                        {
+                            Id = 1,
+                            ContactMobile = "0123456789",
+                            ContactName = "Alice",
+                            ContactTelephone = "02-2123-45678",
+                            CreatedAt = new DateTime(2024, 3, 22, 17, 27, 31, 686, DateTimeKind.Local).AddTicks(7800),
+                            Description = "組織簡介內容區",
+                            EditedAt = new DateTime(2024, 3, 22, 17, 27, 31, 686, DateTimeKind.Local).AddTicks(7801),
+                            IsDeleted = false,
+                            Name = "Build School",
+                            OrganizationUrl = "HTTP",
+                            OwnerId = 0
+                        },
+                        new
+                        {
+                            Id = 2,
+                            ContactMobile = "0123456789",
+                            ContactName = "Bob",
+                            ContactTelephone = "02-2123-45678",
+                            CreatedAt = new DateTime(2024, 3, 22, 17, 27, 31, 686, DateTimeKind.Local).AddTicks(7805),
+                            Description = "組織簡介內容區",
+                            EditedAt = new DateTime(2024, 3, 22, 17, 27, 31, 686, DateTimeKind.Local).AddTicks(7805),
+                            IsDeleted = false,
+                            Name = "卡米地",
+                            OrganizationUrl = "HTTP",
+                            OwnerId = 2
+                        },
+                        new
+                        {
+                            Id = 3,
+                            ContactMobile = "0123456789",
+                            ContactName = "Charlie",
+                            ContactTelephone = "02-2123-45678",
+                            CreatedAt = new DateTime(2024, 3, 22, 17, 27, 31, 686, DateTimeKind.Local).AddTicks(7808),
+                            Description = "組織簡介內容區",
+                            EditedAt = new DateTime(2024, 3, 22, 17, 27, 31, 686, DateTimeKind.Local).AddTicks(7808),
+                            IsDeleted = false,
+                            Name = "海邊的卡夫卡",
+                            OrganizationUrl = "HTTP",
+                            OwnerId = 3
+                        });
                 });
 
             modelBuilder.Entity("ApplicationCore.Entities.OrganizationAndUserMapping", b =>
@@ -845,6 +972,638 @@ namespace Infrastructure.Data.Migrations
                     b.HasIndex(new[] { "SeatAreaId" }, "IX_Seats_SeatAreaId");
 
                     b.ToTable("Seats");
+
+                    b.HasData(
+                        new
+                        {
+                            Id = 1,
+                            CreatedAt = new DateTime(2024, 3, 22, 17, 27, 31, 686, DateTimeKind.Local).AddTicks(7536),
+                            EditedAt = new DateTime(2024, 3, 22, 17, 27, 31, 686, DateTimeKind.Local).AddTicks(7537),
+                            IsDeleted = false,
+                            Number = "1排1號",
+                            SeatAreaId = 1,
+                            Status = (byte)1
+                        },
+                        new
+                        {
+                            Id = 2,
+                            CreatedAt = new DateTime(2024, 3, 22, 17, 27, 31, 686, DateTimeKind.Local).AddTicks(7540),
+                            EditedAt = new DateTime(2024, 3, 22, 17, 27, 31, 686, DateTimeKind.Local).AddTicks(7540),
+                            IsDeleted = false,
+                            Number = "1排2號",
+                            SeatAreaId = 1,
+                            Status = (byte)1
+                        },
+                        new
+                        {
+                            Id = 3,
+                            CreatedAt = new DateTime(2024, 3, 22, 17, 27, 31, 686, DateTimeKind.Local).AddTicks(7543),
+                            EditedAt = new DateTime(2024, 3, 22, 17, 27, 31, 686, DateTimeKind.Local).AddTicks(7543),
+                            IsDeleted = false,
+                            Number = "1排3號",
+                            SeatAreaId = 1,
+                            Status = (byte)1
+                        },
+                        new
+                        {
+                            Id = 4,
+                            CreatedAt = new DateTime(2024, 3, 22, 17, 27, 31, 686, DateTimeKind.Local).AddTicks(7545),
+                            EditedAt = new DateTime(2024, 3, 22, 17, 27, 31, 686, DateTimeKind.Local).AddTicks(7546),
+                            IsDeleted = false,
+                            Number = "1排4號",
+                            SeatAreaId = 1,
+                            Status = (byte)1
+                        },
+                        new
+                        {
+                            Id = 5,
+                            CreatedAt = new DateTime(2024, 3, 22, 17, 27, 31, 686, DateTimeKind.Local).AddTicks(7547),
+                            EditedAt = new DateTime(2024, 3, 22, 17, 27, 31, 686, DateTimeKind.Local).AddTicks(7548),
+                            IsDeleted = false,
+                            Number = "1排5號",
+                            SeatAreaId = 1,
+                            Status = (byte)1
+                        },
+                        new
+                        {
+                            Id = 6,
+                            CreatedAt = new DateTime(2024, 3, 22, 17, 27, 31, 686, DateTimeKind.Local).AddTicks(7550),
+                            EditedAt = new DateTime(2024, 3, 22, 17, 27, 31, 686, DateTimeKind.Local).AddTicks(7550),
+                            IsDeleted = false,
+                            Number = "1排6號",
+                            SeatAreaId = 1,
+                            Status = (byte)1
+                        },
+                        new
+                        {
+                            Id = 7,
+                            CreatedAt = new DateTime(2024, 3, 22, 17, 27, 31, 686, DateTimeKind.Local).AddTicks(7552),
+                            EditedAt = new DateTime(2024, 3, 22, 17, 27, 31, 686, DateTimeKind.Local).AddTicks(7553),
+                            IsDeleted = false,
+                            Number = "1排7號",
+                            SeatAreaId = 1,
+                            Status = (byte)1
+                        },
+                        new
+                        {
+                            Id = 8,
+                            CreatedAt = new DateTime(2024, 3, 22, 17, 27, 31, 686, DateTimeKind.Local).AddTicks(7555),
+                            EditedAt = new DateTime(2024, 3, 22, 17, 27, 31, 686, DateTimeKind.Local).AddTicks(7555),
+                            IsDeleted = false,
+                            Number = "1排8號",
+                            SeatAreaId = 1,
+                            Status = (byte)1
+                        },
+                        new
+                        {
+                            Id = 9,
+                            CreatedAt = new DateTime(2024, 3, 22, 17, 27, 31, 686, DateTimeKind.Local).AddTicks(7557),
+                            EditedAt = new DateTime(2024, 3, 22, 17, 27, 31, 686, DateTimeKind.Local).AddTicks(7558),
+                            IsDeleted = false,
+                            Number = "1排9號",
+                            SeatAreaId = 1,
+                            Status = (byte)1
+                        },
+                        new
+                        {
+                            Id = 10,
+                            CreatedAt = new DateTime(2024, 3, 22, 17, 27, 31, 686, DateTimeKind.Local).AddTicks(7559),
+                            EditedAt = new DateTime(2024, 3, 22, 17, 27, 31, 686, DateTimeKind.Local).AddTicks(7560),
+                            IsDeleted = false,
+                            Number = "1排10號",
+                            SeatAreaId = 1,
+                            Status = (byte)1
+                        },
+                        new
+                        {
+                            Id = 11,
+                            CreatedAt = new DateTime(2024, 3, 22, 17, 27, 31, 686, DateTimeKind.Local).AddTicks(7562),
+                            EditedAt = new DateTime(2024, 3, 22, 17, 27, 31, 686, DateTimeKind.Local).AddTicks(7562),
+                            IsDeleted = false,
+                            Number = "1排11號",
+                            SeatAreaId = 1,
+                            Status = (byte)1
+                        },
+                        new
+                        {
+                            Id = 12,
+                            CreatedAt = new DateTime(2024, 3, 22, 17, 27, 31, 686, DateTimeKind.Local).AddTicks(7564),
+                            EditedAt = new DateTime(2024, 3, 22, 17, 27, 31, 686, DateTimeKind.Local).AddTicks(7565),
+                            IsDeleted = false,
+                            Number = "1排12號",
+                            SeatAreaId = 1,
+                            Status = (byte)1
+                        },
+                        new
+                        {
+                            Id = 13,
+                            CreatedAt = new DateTime(2024, 3, 22, 17, 27, 31, 686, DateTimeKind.Local).AddTicks(7567),
+                            EditedAt = new DateTime(2024, 3, 22, 17, 27, 31, 686, DateTimeKind.Local).AddTicks(7567),
+                            IsDeleted = false,
+                            Number = "1排13號",
+                            SeatAreaId = 1,
+                            Status = (byte)1
+                        },
+                        new
+                        {
+                            Id = 14,
+                            CreatedAt = new DateTime(2024, 3, 22, 17, 27, 31, 686, DateTimeKind.Local).AddTicks(7569),
+                            EditedAt = new DateTime(2024, 3, 22, 17, 27, 31, 686, DateTimeKind.Local).AddTicks(7570),
+                            IsDeleted = false,
+                            Number = "1排14號",
+                            SeatAreaId = 1,
+                            Status = (byte)1
+                        },
+                        new
+                        {
+                            Id = 15,
+                            CreatedAt = new DateTime(2024, 3, 22, 17, 27, 31, 686, DateTimeKind.Local).AddTicks(7571),
+                            EditedAt = new DateTime(2024, 3, 22, 17, 27, 31, 686, DateTimeKind.Local).AddTicks(7572),
+                            IsDeleted = false,
+                            Number = "1排15號",
+                            SeatAreaId = 1,
+                            Status = (byte)1
+                        },
+                        new
+                        {
+                            Id = 16,
+                            CreatedAt = new DateTime(2024, 3, 22, 17, 27, 31, 686, DateTimeKind.Local).AddTicks(7574),
+                            EditedAt = new DateTime(2024, 3, 22, 17, 27, 31, 686, DateTimeKind.Local).AddTicks(7574),
+                            IsDeleted = false,
+                            Number = "1排16號",
+                            SeatAreaId = 1,
+                            Status = (byte)1
+                        },
+                        new
+                        {
+                            Id = 17,
+                            CreatedAt = new DateTime(2024, 3, 22, 17, 27, 31, 686, DateTimeKind.Local).AddTicks(7576),
+                            EditedAt = new DateTime(2024, 3, 22, 17, 27, 31, 686, DateTimeKind.Local).AddTicks(7576),
+                            IsDeleted = false,
+                            Number = "1排17號",
+                            SeatAreaId = 1,
+                            Status = (byte)1
+                        },
+                        new
+                        {
+                            Id = 18,
+                            CreatedAt = new DateTime(2024, 3, 22, 17, 27, 31, 686, DateTimeKind.Local).AddTicks(7578),
+                            EditedAt = new DateTime(2024, 3, 22, 17, 27, 31, 686, DateTimeKind.Local).AddTicks(7579),
+                            IsDeleted = false,
+                            Number = "2排1號",
+                            SeatAreaId = 1,
+                            Status = (byte)1
+                        },
+                        new
+                        {
+                            Id = 19,
+                            CreatedAt = new DateTime(2024, 3, 22, 17, 27, 31, 686, DateTimeKind.Local).AddTicks(7581),
+                            EditedAt = new DateTime(2024, 3, 22, 17, 27, 31, 686, DateTimeKind.Local).AddTicks(7581),
+                            IsDeleted = false,
+                            Number = "2排2號",
+                            SeatAreaId = 1,
+                            Status = (byte)1
+                        },
+                        new
+                        {
+                            Id = 20,
+                            CreatedAt = new DateTime(2024, 3, 22, 17, 27, 31, 686, DateTimeKind.Local).AddTicks(7583),
+                            EditedAt = new DateTime(2024, 3, 22, 17, 27, 31, 686, DateTimeKind.Local).AddTicks(7583),
+                            IsDeleted = false,
+                            Number = "2排3號",
+                            SeatAreaId = 1,
+                            Status = (byte)1
+                        },
+                        new
+                        {
+                            Id = 21,
+                            CreatedAt = new DateTime(2024, 3, 22, 17, 27, 31, 686, DateTimeKind.Local).AddTicks(7585),
+                            EditedAt = new DateTime(2024, 3, 22, 17, 27, 31, 686, DateTimeKind.Local).AddTicks(7586),
+                            IsDeleted = false,
+                            Number = "2排4號",
+                            SeatAreaId = 1,
+                            Status = (byte)1
+                        },
+                        new
+                        {
+                            Id = 22,
+                            CreatedAt = new DateTime(2024, 3, 22, 17, 27, 31, 686, DateTimeKind.Local).AddTicks(7587),
+                            EditedAt = new DateTime(2024, 3, 22, 17, 27, 31, 686, DateTimeKind.Local).AddTicks(7588),
+                            IsDeleted = false,
+                            Number = "2排5號",
+                            SeatAreaId = 1,
+                            Status = (byte)1
+                        },
+                        new
+                        {
+                            Id = 23,
+                            CreatedAt = new DateTime(2024, 3, 22, 17, 27, 31, 686, DateTimeKind.Local).AddTicks(7590),
+                            EditedAt = new DateTime(2024, 3, 22, 17, 27, 31, 686, DateTimeKind.Local).AddTicks(7590),
+                            IsDeleted = false,
+                            Number = "2排6號",
+                            SeatAreaId = 1,
+                            Status = (byte)1
+                        },
+                        new
+                        {
+                            Id = 24,
+                            CreatedAt = new DateTime(2024, 3, 22, 17, 27, 31, 686, DateTimeKind.Local).AddTicks(7592),
+                            EditedAt = new DateTime(2024, 3, 22, 17, 27, 31, 686, DateTimeKind.Local).AddTicks(7593),
+                            IsDeleted = false,
+                            Number = "2排7號",
+                            SeatAreaId = 1,
+                            Status = (byte)1
+                        },
+                        new
+                        {
+                            Id = 25,
+                            CreatedAt = new DateTime(2024, 3, 22, 17, 27, 31, 686, DateTimeKind.Local).AddTicks(7595),
+                            EditedAt = new DateTime(2024, 3, 22, 17, 27, 31, 686, DateTimeKind.Local).AddTicks(7595),
+                            IsDeleted = false,
+                            Number = "2排8號",
+                            SeatAreaId = 1,
+                            Status = (byte)1
+                        },
+                        new
+                        {
+                            Id = 26,
+                            CreatedAt = new DateTime(2024, 3, 22, 17, 27, 31, 686, DateTimeKind.Local).AddTicks(7597),
+                            EditedAt = new DateTime(2024, 3, 22, 17, 27, 31, 686, DateTimeKind.Local).AddTicks(7597),
+                            IsDeleted = false,
+                            Number = "2排9號",
+                            SeatAreaId = 1,
+                            Status = (byte)1
+                        },
+                        new
+                        {
+                            Id = 27,
+                            CreatedAt = new DateTime(2024, 3, 22, 17, 27, 31, 686, DateTimeKind.Local).AddTicks(7599),
+                            EditedAt = new DateTime(2024, 3, 22, 17, 27, 31, 686, DateTimeKind.Local).AddTicks(7600),
+                            IsDeleted = false,
+                            Number = "2排10號",
+                            SeatAreaId = 1,
+                            Status = (byte)1
+                        },
+                        new
+                        {
+                            Id = 28,
+                            CreatedAt = new DateTime(2024, 3, 22, 17, 27, 31, 686, DateTimeKind.Local).AddTicks(7602),
+                            EditedAt = new DateTime(2024, 3, 22, 17, 27, 31, 686, DateTimeKind.Local).AddTicks(7602),
+                            IsDeleted = false,
+                            Number = "2排11號",
+                            SeatAreaId = 1,
+                            Status = (byte)1
+                        },
+                        new
+                        {
+                            Id = 29,
+                            CreatedAt = new DateTime(2024, 3, 22, 17, 27, 31, 686, DateTimeKind.Local).AddTicks(7604),
+                            EditedAt = new DateTime(2024, 3, 22, 17, 27, 31, 686, DateTimeKind.Local).AddTicks(7604),
+                            IsDeleted = false,
+                            Number = "2排12號",
+                            SeatAreaId = 1,
+                            Status = (byte)1
+                        },
+                        new
+                        {
+                            Id = 30,
+                            CreatedAt = new DateTime(2024, 3, 22, 17, 27, 31, 686, DateTimeKind.Local).AddTicks(7606),
+                            EditedAt = new DateTime(2024, 3, 22, 17, 27, 31, 686, DateTimeKind.Local).AddTicks(7607),
+                            IsDeleted = false,
+                            Number = "2排13號",
+                            SeatAreaId = 1,
+                            Status = (byte)1
+                        },
+                        new
+                        {
+                            Id = 31,
+                            CreatedAt = new DateTime(2024, 3, 22, 17, 27, 31, 686, DateTimeKind.Local).AddTicks(7608),
+                            EditedAt = new DateTime(2024, 3, 22, 17, 27, 31, 686, DateTimeKind.Local).AddTicks(7609),
+                            IsDeleted = false,
+                            Number = "2排14號",
+                            SeatAreaId = 1,
+                            Status = (byte)1
+                        },
+                        new
+                        {
+                            Id = 32,
+                            CreatedAt = new DateTime(2024, 3, 22, 17, 27, 31, 686, DateTimeKind.Local).AddTicks(7611),
+                            EditedAt = new DateTime(2024, 3, 22, 17, 27, 31, 686, DateTimeKind.Local).AddTicks(7611),
+                            IsDeleted = false,
+                            Number = "2排15號",
+                            SeatAreaId = 1,
+                            Status = (byte)1
+                        },
+                        new
+                        {
+                            Id = 33,
+                            CreatedAt = new DateTime(2024, 3, 22, 17, 27, 31, 686, DateTimeKind.Local).AddTicks(7613),
+                            EditedAt = new DateTime(2024, 3, 22, 17, 27, 31, 686, DateTimeKind.Local).AddTicks(7614),
+                            IsDeleted = false,
+                            Number = "2排16號",
+                            SeatAreaId = 1,
+                            Status = (byte)1
+                        },
+                        new
+                        {
+                            Id = 34,
+                            CreatedAt = new DateTime(2024, 3, 22, 17, 27, 31, 686, DateTimeKind.Local).AddTicks(7615),
+                            EditedAt = new DateTime(2024, 3, 22, 17, 27, 31, 686, DateTimeKind.Local).AddTicks(7616),
+                            IsDeleted = false,
+                            Number = "2排17號",
+                            SeatAreaId = 1,
+                            Status = (byte)1
+                        },
+                        new
+                        {
+                            Id = 35,
+                            CreatedAt = new DateTime(2024, 3, 22, 17, 27, 31, 686, DateTimeKind.Local).AddTicks(7618),
+                            EditedAt = new DateTime(2024, 3, 22, 17, 27, 31, 686, DateTimeKind.Local).AddTicks(7619),
+                            IsDeleted = false,
+                            Number = "3排1號",
+                            SeatAreaId = 1,
+                            Status = (byte)1
+                        },
+                        new
+                        {
+                            Id = 36,
+                            CreatedAt = new DateTime(2024, 3, 22, 17, 27, 31, 686, DateTimeKind.Local).AddTicks(7620),
+                            EditedAt = new DateTime(2024, 3, 22, 17, 27, 31, 686, DateTimeKind.Local).AddTicks(7621),
+                            IsDeleted = false,
+                            Number = "3排2號",
+                            SeatAreaId = 1,
+                            Status = (byte)1
+                        },
+                        new
+                        {
+                            Id = 37,
+                            CreatedAt = new DateTime(2024, 3, 22, 17, 27, 31, 686, DateTimeKind.Local).AddTicks(7623),
+                            EditedAt = new DateTime(2024, 3, 22, 17, 27, 31, 686, DateTimeKind.Local).AddTicks(7623),
+                            IsDeleted = false,
+                            Number = "3排3號",
+                            SeatAreaId = 1,
+                            Status = (byte)1
+                        },
+                        new
+                        {
+                            Id = 38,
+                            CreatedAt = new DateTime(2024, 3, 22, 17, 27, 31, 686, DateTimeKind.Local).AddTicks(7625),
+                            EditedAt = new DateTime(2024, 3, 22, 17, 27, 31, 686, DateTimeKind.Local).AddTicks(7625),
+                            IsDeleted = false,
+                            Number = "3排4號",
+                            SeatAreaId = 1,
+                            Status = (byte)1
+                        },
+                        new
+                        {
+                            Id = 39,
+                            CreatedAt = new DateTime(2024, 3, 22, 17, 27, 31, 686, DateTimeKind.Local).AddTicks(7627),
+                            EditedAt = new DateTime(2024, 3, 22, 17, 27, 31, 686, DateTimeKind.Local).AddTicks(7628),
+                            IsDeleted = false,
+                            Number = "3排5號",
+                            SeatAreaId = 1,
+                            Status = (byte)1
+                        },
+                        new
+                        {
+                            Id = 40,
+                            CreatedAt = new DateTime(2024, 3, 22, 17, 27, 31, 686, DateTimeKind.Local).AddTicks(7629),
+                            EditedAt = new DateTime(2024, 3, 22, 17, 27, 31, 686, DateTimeKind.Local).AddTicks(7630),
+                            IsDeleted = false,
+                            Number = "3排6號",
+                            SeatAreaId = 1,
+                            Status = (byte)1
+                        },
+                        new
+                        {
+                            Id = 41,
+                            CreatedAt = new DateTime(2024, 3, 22, 17, 27, 31, 686, DateTimeKind.Local).AddTicks(7632),
+                            EditedAt = new DateTime(2024, 3, 22, 17, 27, 31, 686, DateTimeKind.Local).AddTicks(7632),
+                            IsDeleted = false,
+                            Number = "3排7號",
+                            SeatAreaId = 1,
+                            Status = (byte)1
+                        },
+                        new
+                        {
+                            Id = 42,
+                            CreatedAt = new DateTime(2024, 3, 22, 17, 27, 31, 686, DateTimeKind.Local).AddTicks(7634),
+                            EditedAt = new DateTime(2024, 3, 22, 17, 27, 31, 686, DateTimeKind.Local).AddTicks(7634),
+                            IsDeleted = false,
+                            Number = "3排8號",
+                            SeatAreaId = 1,
+                            Status = (byte)1
+                        },
+                        new
+                        {
+                            Id = 43,
+                            CreatedAt = new DateTime(2024, 3, 22, 17, 27, 31, 686, DateTimeKind.Local).AddTicks(7636),
+                            EditedAt = new DateTime(2024, 3, 22, 17, 27, 31, 686, DateTimeKind.Local).AddTicks(7637),
+                            IsDeleted = false,
+                            Number = "3排9號",
+                            SeatAreaId = 1,
+                            Status = (byte)1
+                        },
+                        new
+                        {
+                            Id = 44,
+                            CreatedAt = new DateTime(2024, 3, 22, 17, 27, 31, 686, DateTimeKind.Local).AddTicks(7638),
+                            EditedAt = new DateTime(2024, 3, 22, 17, 27, 31, 686, DateTimeKind.Local).AddTicks(7639),
+                            IsDeleted = false,
+                            Number = "3排10號",
+                            SeatAreaId = 1,
+                            Status = (byte)1
+                        },
+                        new
+                        {
+                            Id = 45,
+                            CreatedAt = new DateTime(2024, 3, 22, 17, 27, 31, 686, DateTimeKind.Local).AddTicks(7641),
+                            EditedAt = new DateTime(2024, 3, 22, 17, 27, 31, 686, DateTimeKind.Local).AddTicks(7641),
+                            IsDeleted = false,
+                            Number = "3排11號",
+                            SeatAreaId = 1,
+                            Status = (byte)1
+                        },
+                        new
+                        {
+                            Id = 46,
+                            CreatedAt = new DateTime(2024, 3, 22, 17, 27, 31, 686, DateTimeKind.Local).AddTicks(7643),
+                            EditedAt = new DateTime(2024, 3, 22, 17, 27, 31, 686, DateTimeKind.Local).AddTicks(7643),
+                            IsDeleted = false,
+                            Number = "3排12號",
+                            SeatAreaId = 1,
+                            Status = (byte)1
+                        },
+                        new
+                        {
+                            Id = 47,
+                            CreatedAt = new DateTime(2024, 3, 22, 17, 27, 31, 686, DateTimeKind.Local).AddTicks(7645),
+                            EditedAt = new DateTime(2024, 3, 22, 17, 27, 31, 686, DateTimeKind.Local).AddTicks(7646),
+                            IsDeleted = false,
+                            Number = "3排13號",
+                            SeatAreaId = 1,
+                            Status = (byte)1
+                        },
+                        new
+                        {
+                            Id = 48,
+                            CreatedAt = new DateTime(2024, 3, 22, 17, 27, 31, 686, DateTimeKind.Local).AddTicks(7647),
+                            EditedAt = new DateTime(2024, 3, 22, 17, 27, 31, 686, DateTimeKind.Local).AddTicks(7648),
+                            IsDeleted = false,
+                            Number = "3排14號",
+                            SeatAreaId = 1,
+                            Status = (byte)1
+                        },
+                        new
+                        {
+                            Id = 49,
+                            CreatedAt = new DateTime(2024, 3, 22, 17, 27, 31, 686, DateTimeKind.Local).AddTicks(7649),
+                            EditedAt = new DateTime(2024, 3, 22, 17, 27, 31, 686, DateTimeKind.Local).AddTicks(7650),
+                            IsDeleted = false,
+                            Number = "3排16號",
+                            SeatAreaId = 1,
+                            Status = (byte)0
+                        },
+                        new
+                        {
+                            Id = 50,
+                            CreatedAt = new DateTime(2024, 3, 22, 17, 27, 31, 686, DateTimeKind.Local).AddTicks(7652),
+                            EditedAt = new DateTime(2024, 3, 22, 17, 27, 31, 686, DateTimeKind.Local).AddTicks(7652),
+                            IsDeleted = false,
+                            Number = "3排17號",
+                            SeatAreaId = 1,
+                            Status = (byte)0
+                        },
+                        new
+                        {
+                            Id = 51,
+                            CreatedAt = new DateTime(2024, 3, 22, 17, 27, 31, 686, DateTimeKind.Local).AddTicks(7654),
+                            EditedAt = new DateTime(2024, 3, 22, 17, 27, 31, 686, DateTimeKind.Local).AddTicks(7654),
+                            IsDeleted = false,
+                            Number = "4排1號",
+                            SeatAreaId = 1,
+                            Status = (byte)0
+                        },
+                        new
+                        {
+                            Id = 52,
+                            CreatedAt = new DateTime(2024, 3, 22, 17, 27, 31, 686, DateTimeKind.Local).AddTicks(7656),
+                            EditedAt = new DateTime(2024, 3, 22, 17, 27, 31, 686, DateTimeKind.Local).AddTicks(7657),
+                            IsDeleted = false,
+                            Number = "4排2號",
+                            SeatAreaId = 1,
+                            Status = (byte)0
+                        },
+                        new
+                        {
+                            Id = 53,
+                            CreatedAt = new DateTime(2024, 3, 22, 17, 27, 31, 686, DateTimeKind.Local).AddTicks(7658),
+                            EditedAt = new DateTime(2024, 3, 22, 17, 27, 31, 686, DateTimeKind.Local).AddTicks(7659),
+                            IsDeleted = false,
+                            Number = "4排3號",
+                            SeatAreaId = 1,
+                            Status = (byte)0
+                        },
+                        new
+                        {
+                            Id = 54,
+                            CreatedAt = new DateTime(2024, 3, 22, 17, 27, 31, 686, DateTimeKind.Local).AddTicks(7660),
+                            EditedAt = new DateTime(2024, 3, 22, 17, 27, 31, 686, DateTimeKind.Local).AddTicks(7661),
+                            IsDeleted = false,
+                            Number = "4排4號",
+                            SeatAreaId = 1,
+                            Status = (byte)0
+                        },
+                        new
+                        {
+                            Id = 55,
+                            CreatedAt = new DateTime(2024, 3, 22, 17, 27, 31, 686, DateTimeKind.Local).AddTicks(7663),
+                            EditedAt = new DateTime(2024, 3, 22, 17, 27, 31, 686, DateTimeKind.Local).AddTicks(7663),
+                            IsDeleted = false,
+                            Number = "4排5號",
+                            SeatAreaId = 1,
+                            Status = (byte)0
+                        },
+                        new
+                        {
+                            Id = 56,
+                            CreatedAt = new DateTime(2024, 3, 22, 17, 27, 31, 686, DateTimeKind.Local).AddTicks(7665),
+                            EditedAt = new DateTime(2024, 3, 22, 17, 27, 31, 686, DateTimeKind.Local).AddTicks(7665),
+                            IsDeleted = false,
+                            Number = "4排6號",
+                            SeatAreaId = 1,
+                            Status = (byte)0
+                        },
+                        new
+                        {
+                            Id = 57,
+                            CreatedAt = new DateTime(2024, 3, 22, 17, 27, 31, 686, DateTimeKind.Local).AddTicks(7667),
+                            EditedAt = new DateTime(2024, 3, 22, 17, 27, 31, 686, DateTimeKind.Local).AddTicks(7668),
+                            IsDeleted = false,
+                            Number = "4排7號",
+                            SeatAreaId = 1,
+                            Status = (byte)0
+                        },
+                        new
+                        {
+                            Id = 58,
+                            CreatedAt = new DateTime(2024, 3, 22, 17, 27, 31, 686, DateTimeKind.Local).AddTicks(7669),
+                            EditedAt = new DateTime(2024, 3, 22, 17, 27, 31, 686, DateTimeKind.Local).AddTicks(7670),
+                            IsDeleted = false,
+                            Number = "4排8號",
+                            SeatAreaId = 1,
+                            Status = (byte)0
+                        },
+                        new
+                        {
+                            Id = 59,
+                            CreatedAt = new DateTime(2024, 3, 22, 17, 27, 31, 686, DateTimeKind.Local).AddTicks(7672),
+                            EditedAt = new DateTime(2024, 3, 22, 17, 27, 31, 686, DateTimeKind.Local).AddTicks(7673),
+                            IsDeleted = false,
+                            Number = "4排9號",
+                            SeatAreaId = 1,
+                            Status = (byte)0
+                        },
+                        new
+                        {
+                            Id = 60,
+                            CreatedAt = new DateTime(2024, 3, 22, 17, 27, 31, 686, DateTimeKind.Local).AddTicks(7674),
+                            EditedAt = new DateTime(2024, 3, 22, 17, 27, 31, 686, DateTimeKind.Local).AddTicks(7675),
+                            IsDeleted = false,
+                            Number = "4排10號",
+                            SeatAreaId = 1,
+                            Status = (byte)0
+                        },
+                        new
+                        {
+                            Id = 61,
+                            CreatedAt = new DateTime(2024, 3, 22, 17, 27, 31, 686, DateTimeKind.Local).AddTicks(7676),
+                            EditedAt = new DateTime(2024, 3, 22, 17, 27, 31, 686, DateTimeKind.Local).AddTicks(7677),
+                            IsDeleted = false,
+                            Number = "4排11號",
+                            SeatAreaId = 1,
+                            Status = (byte)0
+                        },
+                        new
+                        {
+                            Id = 62,
+                            CreatedAt = new DateTime(2024, 3, 22, 17, 27, 31, 686, DateTimeKind.Local).AddTicks(7679),
+                            EditedAt = new DateTime(2024, 3, 22, 17, 27, 31, 686, DateTimeKind.Local).AddTicks(7679),
+                            IsDeleted = false,
+                            Number = "4排12號",
+                            SeatAreaId = 1,
+                            Status = (byte)0
+                        },
+                        new
+                        {
+                            Id = 63,
+                            CreatedAt = new DateTime(2024, 3, 22, 17, 27, 31, 686, DateTimeKind.Local).AddTicks(7681),
+                            EditedAt = new DateTime(2024, 3, 22, 17, 27, 31, 686, DateTimeKind.Local).AddTicks(7681),
+                            IsDeleted = false,
+                            Number = "4排13號",
+                            SeatAreaId = 1,
+                            Status = (byte)0
+                        });
                 });
 
             modelBuilder.Entity("ApplicationCore.Entities.SeatArea", b =>
@@ -998,6 +1757,68 @@ namespace Infrastructure.Data.Migrations
                     b.HasIndex(new[] { "EventId" }, "IX_TicketTypes_EventId");
 
                     b.ToTable("TicketTypes");
+
+                    b.HasData(
+                        new
+                        {
+                            Id = 1,
+                            CapacityAmount = 300,
+                            CreatedAt = new DateTime(2024, 3, 22, 17, 27, 31, 686, DateTimeKind.Local).AddTicks(7825),
+                            EditedAt = new DateTime(2024, 3, 22, 17, 27, 31, 686, DateTimeKind.Local).AddTicks(7826),
+                            EndSaleTime = new DateTime(2024, 3, 22, 17, 27, 31, 686, DateTimeKind.Local).AddTicks(7822),
+                            EventId = 1,
+                            IsDeleted = false,
+                            IsDisplayed = false,
+                            Name = "Free",
+                            Price = 0m,
+                            Sort = (byte)0,
+                            StartSaleTime = new DateTime(2024, 3, 22, 17, 27, 31, 686, DateTimeKind.Local).AddTicks(7821)
+                        },
+                        new
+                        {
+                            Id = 2,
+                            CapacityAmount = 50,
+                            CreatedAt = new DateTime(2024, 3, 22, 17, 27, 31, 686, DateTimeKind.Local).AddTicks(7832),
+                            EditedAt = new DateTime(2024, 3, 22, 17, 27, 31, 686, DateTimeKind.Local).AddTicks(7832),
+                            EndSaleTime = new DateTime(2024, 3, 22, 17, 27, 31, 686, DateTimeKind.Local).AddTicks(7829),
+                            EventId = 2,
+                            IsDeleted = false,
+                            IsDisplayed = false,
+                            Name = "搖滾票",
+                            Price = 6800m,
+                            Sort = (byte)0,
+                            StartSaleTime = new DateTime(2024, 3, 22, 17, 27, 31, 686, DateTimeKind.Local).AddTicks(7828)
+                        },
+                        new
+                        {
+                            Id = 3,
+                            CapacityAmount = 200,
+                            CreatedAt = new DateTime(2024, 3, 22, 17, 27, 31, 686, DateTimeKind.Local).AddTicks(7836),
+                            EditedAt = new DateTime(2024, 3, 22, 17, 27, 31, 686, DateTimeKind.Local).AddTicks(7836),
+                            EndSaleTime = new DateTime(2024, 3, 22, 17, 27, 31, 686, DateTimeKind.Local).AddTicks(7835),
+                            EventId = 2,
+                            IsDeleted = false,
+                            IsDisplayed = false,
+                            Name = "一般票",
+                            Price = 2800m,
+                            Sort = (byte)0,
+                            StartSaleTime = new DateTime(2024, 3, 22, 17, 27, 31, 686, DateTimeKind.Local).AddTicks(7834)
+                        },
+                        new
+                        {
+                            Id = 4,
+                            CapacityAmount = 400,
+                            CreatedAt = new DateTime(2024, 3, 22, 17, 27, 31, 686, DateTimeKind.Local).AddTicks(7840),
+                            EditedAt = new DateTime(2024, 3, 22, 17, 27, 31, 686, DateTimeKind.Local).AddTicks(7840),
+                            EndSaleTime = new DateTime(2024, 3, 22, 17, 27, 31, 686, DateTimeKind.Local).AddTicks(7839),
+                            EventId = 2,
+                            IsDeleted = false,
+                            IsDisplayed = false,
+                            Name = "站票",
+                            Price = 800m,
+                            Sort = (byte)0,
+                            StartSaleTime = new DateTime(2024, 3, 22, 17, 27, 31, 686, DateTimeKind.Local).AddTicks(7838)
+                        });
                 });
 
             modelBuilder.Entity("ApplicationCore.Entities.User", b =>
@@ -1067,12 +1888,12 @@ namespace Infrastructure.Data.Migrations
                         {
                             Id = 1,
                             Birthday = new DateTime(1990, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            CreatedAt = new DateTime(2024, 3, 17, 19, 37, 24, 144, DateTimeKind.Local).AddTicks(3123),
-                            EditedAt = new DateTime(2024, 3, 17, 19, 37, 24, 144, DateTimeKind.Local).AddTicks(3123),
+                            CreatedAt = new DateTime(2024, 3, 22, 17, 27, 31, 686, DateTimeKind.Local).AddTicks(7472),
+                            EditedAt = new DateTime(2024, 3, 22, 17, 27, 31, 686, DateTimeKind.Local).AddTicks(7473),
                             EdmSubscription = true,
                             Gender = (byte)1,
                             Image = "https://image.com/alice.jpg",
-                            LastLogInAt = new DateTime(2024, 3, 17, 19, 37, 24, 144, DateTimeKind.Local).AddTicks(3109),
+                            LastLogInAt = new DateTime(2024, 3, 22, 17, 27, 31, 686, DateTimeKind.Local).AddTicks(7458),
                             Mobile = "0912345678",
                             Nickname = "Alice",
                             PersonalProfile = "I'm Alice!",
@@ -1083,7 +1904,7 @@ namespace Infrastructure.Data.Migrations
                         {
                             Id = 2,
                             Birthday = new DateTime(1985, 7, 25, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            CreatedAt = new DateTime(2024, 3, 17, 19, 37, 24, 144, DateTimeKind.Local).AddTicks(3127),
+                            CreatedAt = new DateTime(2024, 3, 22, 17, 27, 31, 686, DateTimeKind.Local).AddTicks(7478),
                             EdmSubscription = false,
                             Gender = (byte)2,
                             Mobile = "0987654321",
@@ -1094,12 +1915,12 @@ namespace Infrastructure.Data.Migrations
                         {
                             Id = 3,
                             Birthday = new DateTime(1995, 10, 12, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            CreatedAt = new DateTime(2024, 3, 7, 19, 37, 24, 144, DateTimeKind.Local).AddTicks(3134),
-                            EditedAt = new DateTime(2024, 3, 15, 19, 37, 24, 144, DateTimeKind.Local).AddTicks(3135),
+                            CreatedAt = new DateTime(2024, 3, 12, 17, 27, 31, 686, DateTimeKind.Local).AddTicks(7517),
+                            EditedAt = new DateTime(2024, 3, 20, 17, 27, 31, 686, DateTimeKind.Local).AddTicks(7518),
                             EdmSubscription = true,
                             Gender = (byte)2,
                             Image = "https://image.com/charlie.png",
-                            LastLogInAt = new DateTime(2024, 3, 12, 19, 37, 24, 144, DateTimeKind.Local).AddTicks(3130),
+                            LastLogInAt = new DateTime(2024, 3, 17, 17, 27, 31, 686, DateTimeKind.Local).AddTicks(7511),
                             Mobile = "0955555555",
                             Nickname = "Charlie",
                             PersonalProfile = "Hello world!",
@@ -1162,13 +1983,11 @@ namespace Infrastructure.Data.Migrations
 
             modelBuilder.Entity("ApplicationCore.Entities.LogInInfo", b =>
                 {
-                    b.HasOne("ApplicationCore.Entities.User", "User")
+                    b.HasOne("ApplicationCore.Entities.User", null)
                         .WithOne("LogInInfo")
                         .HasForeignKey("ApplicationCore.Entities.LogInInfo", "UserId")
-                        .IsRequired()
-                        .HasConstraintName("FK_LogInInfo_Users");
-
-                    b.Navigation("User");
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
                 });
 
             modelBuilder.Entity("ApplicationCore.Entities.Order", b =>

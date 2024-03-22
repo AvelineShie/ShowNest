@@ -2,6 +2,7 @@
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Logging;
 using System.Diagnostics;
+using System.Threading.Channels;
 
 
 namespace Infrastructure.Data
@@ -968,6 +969,308 @@ namespace Infrastructure.Data
                  EditedAt = DateTime.Now
              }
             );
+            modelBuilder.Entity<Order>().HasData(
+                new Order
+            {
+                    Id = 1,
+                    UserId = 1,
+                    TicketId = 1,
+                    SeatNumber = "3排13號",
+                    PaymentType = 1,
+                    Status = 1,
+                    IsDeleted = false,
+                    CreatedAt = DateTime.Now,
+                    EditedAt = DateTime.Now.AddDays(-5),
+                    ContactPerson = "{\"Name\":\"John Doe\",\"Email\":\"john.doe@example.com\",\"Phone\":\"0912345678\"}",
+                    ParticipantPeople = "{\"Name\":\"Jane Smith\",\"Age\":25}",
+                    IsDisplayed = true
+                },
+                new Order
+                {
+                    Id = 2,
+                    UserId = 2,
+                    TicketId = 2,
+                    SeatNumber = "5排8號",
+                    PaymentType = 0,
+                    Status = 0,
+                    IsDeleted = false,
+                    CreatedAt = DateTime.Now.AddDays(-10),
+                    EditedAt = null,
+                    ContactPerson = "{\"Name\":\"Bob Johnson\",\"Email\":\"bob.johnson@example.com\",\"Phone\":\"0987654321\"}",
+                    ParticipantPeople = null,
+                    IsDisplayed = false
+                },
+                new Order
+                {
+                    Id = 3,
+                    UserId = 3,
+                    TicketId = 3,
+                    SeatNumber = "2排5號",
+                    PaymentType = 1,
+                    Status = 2,
+                    IsDeleted = false,
+                    CreatedAt = DateTime.Now.AddDays(-15),
+                    EditedAt = DateTime.Now.AddDays(-12),
+                    ContactPerson = "{\"Name\":\"Emily Wilson\",\"Email\":\"emily.wilson@example.com\",\"Phone\":\"0923456789\"}",
+                    ParticipantPeople = "{\"Name\":\"Michael Brown\",\"Age\":30}",
+                    IsDisplayed = true
+                },
+                new Order
+                {
+                    Id = 4,
+                    UserId = 4,
+                    TicketId = 4,
+                    SeatNumber = "7排20號",
+                    PaymentType = 0,
+                    Status = 3,
+                    IsDeleted = true,
+                    CreatedAt = DateTime.Now.AddDays(-20),
+                    EditedAt = DateTime.Now.AddDays(-18),
+                    ContactPerson = "{\"Name\":\"Sophia Davis\",\"Email\":\"sophia.davis@example.com\",\"Phone\":\"0935678901\"}",
+                    ParticipantPeople = null,
+                    IsDisplayed = false
+                },
+                new Order
+                {
+                    Id = 5,
+                    UserId = 5,
+                    TicketId = 5,
+                    SeatNumber = "4排3號",
+                    PaymentType = 1,
+                    Status = 1,
+                    IsDeleted = false,
+                    CreatedAt = DateTime.Now.AddDays(-25),
+                    EditedAt = DateTime.Now.AddDays(-22),
+                    ContactPerson = "{\"Name\":\"William Thompson\",\"Email\":\"william.thompson@example.com\",\"Phone\":\"0912345670\"}",
+                    ParticipantPeople = "{\"Name\":\"Olivia Johnson\",\"Age\":28}",
+                    IsDisplayed = true
+                },
+                new Order
+                {
+                    Id = 6,
+                    UserId = 6,
+                    TicketId = 6,
+                    SeatNumber = "6排18號",
+                    PaymentType = 0,
+                    Status = 0,
+                    IsDeleted = false,
+                    CreatedAt = DateTime.Now.AddDays(-30),
+                    EditedAt = null,
+                    ContactPerson = "{\"Name\":\"James Anderson\",\"Email\":\"james.anderson@example.com\",\"Phone\":\"0987654320\"}",
+                    ParticipantPeople = null,
+                    IsDisplayed = false
+                },
+                new Order
+                {
+                    Id = 7,
+                    UserId = 7,
+                    TicketId = 7,
+                    SeatNumber = "1排9號",
+                    PaymentType = 1,
+                    Status = 2,
+                    IsDeleted = false,
+                    CreatedAt = DateTime.Now.AddDays(-35),
+                    EditedAt = DateTime.Now.AddDays(-32),
+                    ContactPerson = "{\"Name\":\"Emma Thomas\",\"Email\":\"emma.thomas@example.com\",\"Phone\":\"0923456780\"}",
+                    ParticipantPeople = "{\"Name\":\"Daniel Wilson\",\"Age\":35}",
+                    IsDisplayed = true
+                },
+                new Order
+                {
+                    Id = 8,
+                    UserId = 8,
+                    TicketId = 8,
+                    SeatNumber = "8排7號",
+                    PaymentType = 0,
+                    Status = 3,
+                    IsDeleted = true,
+                    CreatedAt = DateTime.Now.AddDays(-40),
+                    EditedAt = DateTime.Now.AddDays(-38),
+                    ContactPerson = "{\"Name\":\"Ava Jackson\",\"Email\":\"ava.jackson@example.com\",\"Phone\":\"0935678900\"}",
+                    ParticipantPeople = null,
+                    IsDisplayed = false
+                },
+                new Order
+                {
+                    Id = 9,
+                    UserId = 9,
+                    TicketId = 9,
+                    SeatNumber = "5排15號",
+                    PaymentType = 1,
+                    Status = 1,
+                    IsDeleted = false,
+                    CreatedAt = DateTime.Now.AddDays(-45),
+                    EditedAt = DateTime.Now.AddDays(-42),
+                    ContactPerson = "{\"Name\":\"Michael Taylor\",\"Email\":\"michael.taylor@example.com\",\"Phone\":\"0912345671\"}",
+                    ParticipantPeople = "{\"Name\":\"Sophia Davis\",\"Age\":22}",
+                    IsDisplayed = true
+                },
+                new Order
+                {
+                    Id = 10,
+                    UserId = 10,
+                    TicketId = 10,
+                    SeatNumber = "3排6號",
+                    PaymentType = 0,
+                    Status = 0,
+                    IsDeleted = false,
+                    CreatedAt = DateTime.Now.AddDays(-50),
+                    EditedAt = null,
+                    ContactPerson = "{\"Name\":\"Daniel Brown\",\"Email\":\"daniel.brown@example.com\",\"Phone\":\"0987654321\"}",
+                    ParticipantPeople = null,
+                    IsDisplayed = false
+                },
+                new Order
+                {
+                    Id = 11,
+                    UserId = 11,
+                    TicketId = 11,
+                    SeatNumber = "7排11號",
+                    PaymentType = 1,
+                    Status = 2,
+                    IsDeleted = false,
+                    CreatedAt = DateTime.Now.AddDays(-55),
+                    EditedAt = DateTime.Now.AddDays(-52),
+                    ContactPerson = "{\"Name\":\"Olivia Wilson\",\"Email\":\"olivia.wilson@example.com\",\"Phone\":\"0923456781\"}",
+                    ParticipantPeople = "{\"Name\":\"William Johnson\",\"Age\":40}",
+                    IsDisplayed = true
+                },
+                new Order
+                {
+                    Id = 12,
+                    UserId = 12,
+                    TicketId = 12,
+                    SeatNumber = "4排22號",
+                    PaymentType = 0,
+                    Status = 3,
+                    IsDeleted = true,
+                    CreatedAt = DateTime.Now.AddDays(-60),
+                    EditedAt = DateTime.Now.AddDays(-58),
+                    ContactPerson = "{\"Name\":\"William Davis\",\"Email\":\"william.davis@example.com\",\"Phone\":\"0935678902\"}",
+                    ParticipantPeople = null,
+                    IsDisplayed = false
+                },
+                new Order
+                {
+                    Id = 13,
+                    UserId = 13,
+                    TicketId = 13,
+                    SeatNumber = "6排4號",
+                    PaymentType = 1,
+                    Status = 1,
+                    IsDeleted = false,
+                    CreatedAt = DateTime.Now.AddDays(-65),
+                    EditedAt = DateTime.Now.AddDays(-62),
+                    ContactPerson = "{\"Name\":\"Sophia Thompson\",\"Email\":\"sophia.thompson@example.com\",\"Phone\":\"0912345672\"}",
+                    ParticipantPeople = "{\"Name\":\"James Anderson\",\"Age\":27}",
+                    IsDisplayed = true
+                },
+                new Order
+                {
+                    Id = 14,
+                    UserId = 14,
+                    TicketId = 14,
+                    SeatNumber = "2排17號",
+                    PaymentType = 0,
+                    Status = 0,
+                    IsDeleted = false,
+                    CreatedAt = DateTime.Now.AddDays(-70),
+                    EditedAt = null,
+                    ContactPerson = "{\"Name\":\"James Johnson\",\"Email\":\"james.johnson@example.com\",\"Phone\":\"0987654322\"}",
+                    ParticipantPeople = null,
+                    IsDisplayed = false
+                },
+                new Order
+                {
+                    Id = 15,
+                    UserId = 15,
+                    TicketId = 15,
+                    SeatNumber = "8排12號",
+                    PaymentType = 1,
+                    Status = 2,
+                    IsDeleted = false,
+                    CreatedAt = DateTime.Now.AddDays(-75),
+                    EditedAt = DateTime.Now.AddDays(-72),
+                    ContactPerson = "{\"Name\":\"Emma Brown\",\"Email\":\"emma.brown@example.com\",\"Phone\":\"0923456782\"}",
+                    ParticipantPeople = "{\"Name\":\"Olivia Thomas\",\"Age\":32}",
+                    IsDisplayed = true
+                },
+                new Order
+                {
+                    Id = 16,
+                    UserId = 16,
+                    TicketId = 16,
+                    SeatNumber = "5排2號",
+                    PaymentType = 0,
+                    Status = 3,
+                    IsDeleted = true,
+                    CreatedAt = DateTime.Now.AddDays(-80),
+                    EditedAt = DateTime.Now.AddDays(-78),
+                    ContactPerson = "{\"Name\":\"Ava Wilson\",\"Email\":\"ava.wilson@example.com\",\"Phone\":\"0935678903\"}",
+                    ParticipantPeople = null,
+                    IsDisplayed = false
+                },
+                new Order
+                {
+                    Id = 17,
+                    UserId = 17,
+                    TicketId = 17,
+                    SeatNumber = "6排9號",
+                    PaymentType = 1,
+                    Status = 1,
+                    IsDeleted = false,
+                    CreatedAt = DateTime.Now.AddDays(-85),
+                    EditedAt = DateTime.Now.AddDays(-82),
+                    ContactPerson = "{\"Name\":\"Michael Davis\",\"Email\":\"michael.davis@example.com\",\"Phone\":\"0912345673\"}",
+                    ParticipantPeople = "{\"Name\":\"Daniel Jackson\",\"Age\":29}",
+                    IsDisplayed = true
+                },
+                new Order
+                {
+                    Id = 18,
+                    UserId = 18,
+                    TicketId = 18,
+                    SeatNumber = "3排20號",
+                    PaymentType = 0,
+                    Status = 0,
+                    IsDeleted = false,
+                    CreatedAt = DateTime.Now.AddDays(-90),
+                    EditedAt = null,
+                    ContactPerson = "{\"Name\":\"Daniel Taylor\",\"Email\":\"daniel.taylor@example.com\",\"Phone\":\"0987654323\"}",
+                    ParticipantPeople = null,
+                    IsDisplayed = false
+                },
+                new Order
+                {
+                    Id = 19,
+                    UserId = 19,
+                    TicketId = 19,
+                    SeatNumber = "7排3號",
+                    PaymentType = 1,
+                    Status = 2,
+                    IsDeleted = false,
+                    CreatedAt = DateTime.Now.AddDays(-95),
+                    EditedAt = DateTime.Now.AddDays(-92),
+                    ContactPerson = "{\"Name\":\"Olivia Anderson\",\"Email\":\"olivia.anderson@example.com\",\"Phone\":\"0923456783\"}",
+                    ParticipantPeople = "{\"Name\":\"Emma Davis\",\"Age\":36}",
+                    IsDisplayed = true
+                },
+                new Order
+                {
+                    Id = 20,
+                    UserId = 20,
+                    TicketId = 20,
+                    SeatNumber = "4排8號",
+                    PaymentType = 0,
+                    Status = 3,
+                    IsDeleted = true,
+                    CreatedAt = DateTime.Now.AddDays(-100),
+                    EditedAt = DateTime.Now.AddDays(-98),
+                    ContactPerson = "{\"Name\":\"William Thomas\",\"Email\":\"william.thomas@example.com\",\"Phone\":\"0935678904\"}",
+                    ParticipantPeople = null,
+                    IsDisplayed = false
+                }
+            );
             modelBuilder.Entity<Ticket>().HasData(
                 new Ticket
                 {
@@ -1132,6 +1435,171 @@ namespace Infrastructure.Data
                     EditedAt = null
                 }
             );
+            modelBuilder.Entity<Ticket>().HasData(
+               new Ticket
+               {
+                   OrderId = 1,
+                   TicketTypeId = 1,
+                   SeatId = 1,
+                   Number = "A123456789",
+                   Status = 0,
+                   IsDeleted = false,
+                   CreatedAt = DateTime.Now,
+                   EditedAt = null
+               },
+               new Ticket
+               {
+                   OrderId = 2,
+                   TicketTypeId = 2,
+                   SeatId = null,
+                   Number = "B987654321",
+                   Status = 1,
+                   IsDeleted = false,
+                   CreatedAt = DateTime.Now.AddDays(-1),
+                   EditedAt = DateTime.Now
+               },
+               new Ticket
+               {
+                   OrderId = null,
+                   TicketTypeId = 3,
+                   SeatId = 3,
+                   Number = "C123456789",
+                   Status = 0,
+                   IsDeleted = true,
+                   CreatedAt = DateTime.Now.AddDays(-2),
+                   EditedAt = null
+               }
+           );
+            modelBuilder.Entity<Order>().HasData(
+                new Order
+                {
+                    UserId = 1,
+                    TicketId = 1,
+                    SeatNumber = "3排13號",
+                    PaymentType = 1,
+                    Status = 1,
+                    IsDeleted = false,
+                    CreatedAt = DateTime.Now,
+                    EditedAt = null,
+                    ContactPerson = @"{
+                        ""Name"": ""張三"",
+                        ""Phone"": ""0912-345-678"",
+                        ""Email"": ""abc@gmail.com""}",
+                    ParticipantPeople = @"[
+                        { ""ParticipantPeopleImage"": ""https://picsum.photos/200/200/?random=10"",""ParticipantPeopleId"": ""A123456789""},{""ParticipantPeopleImage"": ""https://picsum.photos/200/200/?random=14"",""ParticipantPeopleId"": ""B987654321""
+                        }
+                    ]"
+                },
+                new Order
+                {
+                    UserId = 2,
+                    TicketId = 2,
+                    SeatNumber = null,
+                    PaymentType = 0,
+                    Status = 0,
+                    IsDeleted = false,
+                    CreatedAt = DateTime.Now.AddDays(-1),
+                    EditedAt = null,
+                    ContactPerson = @"{
+                                ""Name"": ""李四"",
+                                ""Phone"": ""0987-654-321"",
+                                ""Email"": ""def@gmail.com""
+                            }",
+                    ParticipantPeople = null
+                },
+                new Order
+                {
+                    UserId = 3,
+                    TicketId = 3,
+                    SeatNumber = "2排5號",
+                    PaymentType = 1,
+                    Status = 2,
+                    IsDeleted = false,
+                    CreatedAt = DateTime.Now.AddDays(-2),
+                    EditedAt = DateTime.Now,
+                    ContactPerson = @"{
+                            ""Name"": ""王五"",
+                            ""Phone"": ""0956-789-012"",
+                            ""Email"": ""ghi@gmail.com""
+                        }",
+                    ParticipantPeople = @"[{""ParticipantPeopleImage"": ""https://picsum.photos/200/200/?random=18"",""ParticipantPeopleId"": ""C123456789""
+                            },{""ParticipantPeopleImage"": ""https://picsum.photos/200/200/?random=22"",""ParticipantPeopleId"": ""D987654321""}]"
+                },
+                new Order
+                {
+                    UserId = 1,
+                    TicketId = 2,
+                    SeatNumber = null,
+                    PaymentType = 0,
+                    Status = 3,
+                    IsDeleted = true,
+                    CreatedAt = DateTime.Now.AddDays(-3),
+                    EditedAt = null,
+                    ContactPerson = @"{
+                                ""Name"": ""李四"",
+                                ""Phone"": ""0987-654-321"",
+                                ""Email"": ""def@gmail.com""
+                            }",
+                    ParticipantPeople = null
+                },
+                new Order
+                {
+                    UserId = 2,
+                    TicketId = 1,
+                    SeatNumber = "1排1號",
+                    PaymentType = 1,
+                    Status = 1,
+                    IsDeleted = false,
+                    CreatedAt = DateTime.Now.AddDays(-4),
+                    EditedAt = null,
+                    ContactPerson = @"{
+                        ""Name"": ""趙六"",
+                        ""Phone"": ""0923-456-789"",
+                        ""Email"": ""jkl@gmail.com""
+                        }",
+                    ParticipantPeople = @"[{""ParticipantPeopleImage"": ""https://picsum.photos/200/200/?random=26"",
+                            ""ParticipantPeopleId"": ""E123456789""
+                     }
+                        ]"
+                }
+            );
+            modelBuilder.Entity<ArchiveOrder>().HasData(
+                new ArchiveOrder
+                {
+                    OrderId = 1,
+                    EventStartTime = DateTime.Parse("2024-03-25 19:00:00"),
+                    EventName = "演唱會",
+                    LocationName = "台北小巨蛋",
+                    LocationAddress = "台北市松山區南京東路四段2號",
+                    StreamingPlatform = null,
+                    StreamingUrl = null,
+                    TicketTypeName = "一般票",
+                    TicketNumber = "A123456789",
+                    SeatNumber = "3排13號",
+                    TicketPrice = 1000,
+                    PurchaseAmount = 1,
+                    IsDeleted = false,
+                    CreatedAt = DateTime.Now,
+                    EditedAt = null
+                },
+                new ArchiveOrder
+                {
+                    OrderId = 2,
+                    EventStartTime = DateTime.Parse("2024-04-01 14:00:00"),
+                    EventName = "線上研討會",
+                    LocationName = null,
+                    LocationAddress = null,
+                    StreamingPlatform = "Zoom",
+                    StreamingUrl = "https://zoom.us/j/123456789",
+                    TicketTypeName = "免費票",
+                    TicketNumber = null,
+                    SeatNumber = null,
+                    TicketPrice = 0,
+                    PurchaseAmount = 2,
+                    IsDeleted = false,
+                    CreatedAt = DateTime.Now.AddDays(-1),
+                    EditedAt = null
+                }
         }
     }
 }
