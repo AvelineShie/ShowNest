@@ -38,8 +38,7 @@
                     <li>
                         <p class="info-desc">
                             <i class="fa fa-solid fa-calendar-days"></i>
-                            @Model.EventTime.ToString("yyyy/MM/dd HH:mm(+0800)")
-                            @* 2024/04/24(周三) 13:00(+0800) *@
+                            @Model.EventTime.ToString("yyyy/MM/dd HH:mm")
                             (
                             <a href="#">iCal/Outlook</a>,
                             <a href="#" target="_blank">
@@ -140,9 +139,9 @@
                         <tr>
                             <td>@ticket.TicketTypeName</td>
                             <td class="period-time">
-                                <span class="timezoneSuffix">@ticket.TicketSalseBegin.ToString("yyyy/MM/dd HH:mm(+0800)")</span>
+                                <span class="timezoneSuffix">@ticket.TicketSalseBegin.ToString("yyyy/MM/dd HH:mm")</span>
                                 ~
-                                <span class="timezoneSuffix">@ticket.TicketSalseEnd.ToString("yyyy/MM/dd HH:mm(+0800)")</span>
+                                <span class="timezoneSuffix">@ticket.TicketSalseEnd.ToString("yyyy/MM/dd HH:mm")</span>
                             </td>
                             <td class="price">
                                 <span class="currency">TWD$</span>
