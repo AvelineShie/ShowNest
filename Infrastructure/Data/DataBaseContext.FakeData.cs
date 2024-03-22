@@ -1599,7 +1599,7 @@ namespace Infrastructure.Data
                     IsDeleted = false,
                     CreatedAt = DateTime.Now.AddDays(-1),
                     EditedAt = null
-                }
+                });
         }
     }
 }
