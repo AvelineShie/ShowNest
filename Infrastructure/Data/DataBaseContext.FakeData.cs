@@ -1385,8 +1385,132 @@ namespace Infrastructure.Data
                     IsDeleted = false,
                     CreatedAt = DateTime.Now.AddDays(-1),
                     EditedAt = null
-                }
-             );
-         }
+                });
+            modelBuilder.Entity<SeatArea>().HasData(
+               new SeatArea()
+               {
+                   Id = 6,
+                   Name = "F區",
+                   CreatedAt = DateTime.Now.AddDays(-15),
+                   EditedAt = null,
+                   IsDeleted = false
+               },
+              new SeatArea()
+              {
+                  Id = 7,
+                  Name = "G區",
+                  CreatedAt = DateTime.Now.AddDays(-14),
+                  EditedAt = null,
+                  IsDeleted = false
+              },
+                new SeatArea()
+                {
+                    Id = 8,
+                    Name = "H區",
+                    CreatedAt = DateTime.Now.AddDays(-13),
+                    EditedAt = null,
+                    IsDeleted = false
+                },
+               new SeatArea()
+               {
+                   Id = 9,
+                   Name = "I區",
+                   CreatedAt = DateTime.Now.AddDays(-12),
+                   EditedAt = null,
+                   IsDeleted = false
+               },
+               new SeatArea()
+               {
+                   Id = 10,
+                   Name = "J區",
+                   CreatedAt = DateTime.Now.AddDays(-11),
+                   EditedAt = null,
+                   IsDeleted = false
+               }, new SeatArea()
+               {
+                   Id = 11,
+                   Name = "K區",
+                   CreatedAt = DateTime.Now.AddDays(-10),
+                   EditedAt = null,
+                   IsDeleted = false
+               },
+                new SeatArea()
+                {
+                    Id = 12,
+                    Name = "L區",
+                    CreatedAt = DateTime.Now.AddDays(-9),
+                    EditedAt = null,
+                    IsDeleted = false
+                },
+                new SeatArea()
+                {
+                    Id = 13,
+                    Name = "M區",
+                    CreatedAt = DateTime.Now.AddDays(-8),
+                    EditedAt = null,
+                    IsDeleted = false
+                },
+                new SeatArea()
+                {
+                    Id = 14,
+                    Name = "N區",
+                    CreatedAt = DateTime.Now.AddDays(-7),
+                    EditedAt = null,
+                    IsDeleted = false
+                },
+                new SeatArea()
+                {
+                    Id = 15,
+                    Name = "O區",
+                    CreatedAt = DateTime.Now.AddDays(-6),
+                    EditedAt = null,
+                    IsDeleted = false
+                },
+                new SeatArea()
+                {
+                    Id = 16,
+                    Name = "P區",
+                    CreatedAt = DateTime.Now.AddDays(-5),
+                    EditedAt = null,
+                    IsDeleted = false
+                });
+            modelBuilder.Entity<PreFill>().HasData(
+                new PreFill()
+                {
+                    Id = 11,
+                    UserId = 11,
+                    Name = "John Doe",
+                    Mobile = "0912345678",
+                    PostalCode = 106,
+                    County = "Taipei",
+                    District = "Daan",
+                    Address = "No.1, Lane 10, Section 3, Zhongxiao E Rd",
+                    CreatedAt = DateTime.Now.AddDays(-10)
+                },
+                new PreFill()
+                {
+                    Id = 12,
+                    UserId = 12,
+                    Name = "Jane Doe",
+                    Mobile = "0912345679",
+                    PostalCode = 107,
+                    County = "New Taipei",
+                    District = "Banqiao",
+                    Address = "No.100, Guandu Rd",
+                    CreatedAt = DateTime.Now.AddDays(-9)
+                },
+                new PreFill()
+                {
+                    Id = 13,
+                    UserId = 13,
+                    Name = "Mike Chen",
+                    Mobile = "0923456789",
+                    PostalCode = 108,
+                    County = "Taoyuan",
+                    District = "Zhongli",
+                    Address = "No.20, Jhongsing Rd",
+                    CreatedAt = DateTime.Now.AddDays(-8)
+                });
+        }
     }
 }
