@@ -60,6 +60,31 @@ namespace Infrastructure.Data
                     EditedAt = DateTime.Now.AddDays(-2)
                 }
             );
+            modelBuilder.Entity<LogInInfo>().HasData(
+                new LogInInfo
+                {
+                    Account = "abc123",
+                    Email = "abc@gmail.com",
+                    Password = "12345678",
+                    CreatedAt = DateTime.Now,
+                    EditedAt = null
+                },new LogInInfo
+                {
+                    Account = "def456",
+                    Email = "def@gmail.com",
+                    Password = "87654321",
+                    CreatedAt = DateTime.Now.AddDays(-1),
+                    EditedAt = null
+                },new LogInInfo
+                {
+                    Account = "ghi789",
+                    Email = "ghi@gmail.com",
+                    Password = "98765432",
+                    CreatedAt = DateTime.Now.AddDays(-2),
+                    EditedAt = null
+                }
+                );
+
             modelBuilder.Entity<Seat>().HasData(
                 new Seat
                 {
@@ -692,6 +717,22 @@ namespace Infrastructure.Data
                     IsDeleted = false
                 }
             );
+            modelBuilder.Entity<SeatArea>().HasData(
+                new SeatArea
+                {
+                    Name = "一般座位",
+                    IsDeleted = false,
+                    CreatedAt = DateTime.Now,
+                    EditedAt = null
+                },
+                new SeatArea
+                {
+                    Name = "貴賓席",
+                    IsDeleted = false,
+                    CreatedAt = DateTime.Now.AddDays(-1),
+                    EditedAt = null
+                }
+                );
             modelBuilder.Entity<Event>().HasData(
               new Event
               {
@@ -741,7 +782,26 @@ namespace Infrastructure.Data
                   EditedAt = DateTime.Now
               }
            );
-
+            modelBuilder.Entity<EventAndTagMapping>().HasData(
+                new EventAndTagMapping
+                {
+                    Id=1,
+                    CategoryTagId=1,
+                    EventId=1,
+                }, 
+                new EventAndTagMapping
+                {
+                    Id = 2,
+                    CategoryTagId = 2,
+                    EventId = 1,
+                },
+                new EventAndTagMapping
+                {
+                    Id = 3,
+                    CategoryTagId = 3,
+                    EventId = 2,
+                }
+           );
 
             modelBuilder.Entity<CategoryTag>().HasData(
                 new CategoryTag
@@ -766,10 +826,30 @@ namespace Infrastructure.Data
                     EditeAt = DateTime.Now,
                 }
             );
+            modelBuilder.Entity<PreferredActivityArea>().HasData(
+                new PreferredActivityArea
+                {
+                    UserId = 1,
+                    AreaId = 1,
+                }, new PreferredActivityArea
+                {
+                    UserId = 1,
+                    AreaId = 2,
+                }, new PreferredActivityArea
+                {
+                    UserId = 2,
+                    AreaId = 3,
+                }, new PreferredActivityArea
+                {
+                    UserId = 2,
+                    AreaId = 4,
+                }
+                );
             modelBuilder.Entity<Organization>().HasData(
               new Organization
               {
                   Id = 1,
+                  OwnerId = 1,
                   Name = "Build School",
                   OrganizationUrl = "HTTP",
                   Description = "組織簡介內容區",
@@ -806,6 +886,37 @@ namespace Infrastructure.Data
                   EditedAt = DateTime.Now
               }
            );
+            modelBuilder.Entity<OrgFan>().HasData(
+                new OrgFan
+                {
+                    OrganizationId = 1,
+                    UserId = 1,
+                    FanTime = DateTime.Now,
+                },
+                new OrgFan
+                {
+                    OrganizationId = 2,
+                    UserId = 2,
+                    FanTime = DateTime.Now.AddDays(-1),
+                }
+           );
+            modelBuilder.Entity<EventAndTagMapping>().HasData(
+                new EventAndTagMapping
+                {
+                    CategoryTagId = 1,
+                    EventId = 1,
+                },
+                new EventAndTagMapping
+                {
+                    CategoryTagId = 2,
+                    EventId = 2,
+                },
+                new EventAndTagMapping
+                {
+                    CategoryTagId = 3,
+                    EventId = 3,
+                }
+                );
 
             modelBuilder.Entity<TicketType>().HasData(
              new TicketType
@@ -856,6 +967,170 @@ namespace Infrastructure.Data
                  CreatedAt = DateTime.Now,
                  EditedAt = DateTime.Now
              }
+            );
+            modelBuilder.Entity<Ticket>().HasData(
+                new Ticket
+                {
+                    OrderId = 1,
+                    TicketTypeId = 1,
+                    SeatId = 1,
+                    Number = "A123456789",
+                    Status = 0,
+                    IsDeleted = false,
+                    CreatedAt = DateTime.Now,
+                    EditedAt = null
+                },
+                new Ticket
+                {
+                    OrderId = 2,
+                    TicketTypeId = 2,
+                    SeatId = null,
+                    Number = "B987654321",
+                    Status = 1,
+                    IsDeleted = false,
+                    CreatedAt = DateTime.Now.AddDays(-1),
+                    EditedAt = DateTime.Now
+                },
+                new Ticket
+                {
+                    OrderId = null,
+                    TicketTypeId = 3,
+                    SeatId = 3,
+                    Number = "C123456789",
+                    Status = 0,
+                    IsDeleted = true,
+                    CreatedAt = DateTime.Now.AddDays(-2),
+                    EditedAt = null
+                }
+            );
+            modelBuilder.Entity<Order>().HasData(
+                new Order
+                {
+                    UserId = 1,
+                    TicketId = 1,
+                    SeatNumber = "3排13號",
+                    PaymentType = 1,
+                    Status = 1,
+                    IsDeleted = false,
+                    CreatedAt = DateTime.Now,
+                    EditedAt = null,
+                    ContactPerson = @"{
+                        ""Name"": ""張三"",
+                        ""Phone"": ""0912-345-678"",
+                        ""Email"": ""abc@gmail.com""}",
+                    ParticipantPeople = @"[
+                        { ""ParticipantPeopleImage"": ""https://picsum.photos/200/200/?random=10"",""ParticipantPeopleId"": ""A123456789""},{""ParticipantPeopleImage"": ""https://picsum.photos/200/200/?random=14"",""ParticipantPeopleId"": ""B987654321""
+                        }
+                    ]"
+                },
+                new Order
+                {
+                    UserId = 2,
+                    TicketId = 2,
+                    SeatNumber = null,
+                    PaymentType = 0,
+                    Status = 0,
+                    IsDeleted = false,
+                    CreatedAt = DateTime.Now.AddDays(-1),
+                    EditedAt = null,
+                    ContactPerson = @"{
+                                ""Name"": ""李四"",
+                                ""Phone"": ""0987-654-321"",
+                                ""Email"": ""def@gmail.com""
+                            }",
+                    ParticipantPeople = null
+                },
+                new Order
+                {
+                    UserId = 3,
+                    TicketId = 3,
+                    SeatNumber = "2排5號",
+                    PaymentType = 1,
+                    Status = 2,
+                    IsDeleted = false,
+                    CreatedAt = DateTime.Now.AddDays(-2),
+                    EditedAt = DateTime.Now,
+                    ContactPerson = @"{
+                            ""Name"": ""王五"",
+                            ""Phone"": ""0956-789-012"",
+                            ""Email"": ""ghi@gmail.com""
+                        }",ParticipantPeople = @"[{""ParticipantPeopleImage"": ""https://picsum.photos/200/200/?random=18"",""ParticipantPeopleId"": ""C123456789""
+                            },{""ParticipantPeopleImage"": ""https://picsum.photos/200/200/?random=22"",""ParticipantPeopleId"": ""D987654321""}]"
+                 },
+                new Order
+                {
+                    UserId = 1,
+                    TicketId = 2,
+                    SeatNumber = null,
+                    PaymentType = 0,
+                    Status = 3,
+                    IsDeleted = true,
+                    CreatedAt = DateTime.Now.AddDays(-3),
+                    EditedAt = null,
+                    ContactPerson = @"{
+                                ""Name"": ""李四"",
+                                ""Phone"": ""0987-654-321"",
+                                ""Email"": ""def@gmail.com""
+                            }",
+                    ParticipantPeople = null
+                },
+                new Order
+                {
+                    UserId = 2,
+                    TicketId = 1,
+                    SeatNumber = "1排1號",
+                    PaymentType = 1,
+                    Status = 1,
+                    IsDeleted = false,
+                    CreatedAt = DateTime.Now.AddDays(-4),
+                    EditedAt = null,
+                    ContactPerson = @"{
+                        ""Name"": ""趙六"",
+                        ""Phone"": ""0923-456-789"",
+                        ""Email"": ""jkl@gmail.com""
+                        }",ParticipantPeople = @"[{""ParticipantPeopleImage"": ""https://picsum.photos/200/200/?random=26"",
+                            ""ParticipantPeopleId"": ""E123456789""
+                     }
+                        ]"
+                 }
+            );
+            modelBuilder.Entity<ArchiveOrder>().HasData(
+                new ArchiveOrder
+                {
+                    OrderId = 1,
+                    EventStartTime = DateTime.Parse("2024-03-25 19:00:00"),
+                    EventName = "演唱會",
+                    LocationName = "台北小巨蛋",
+                    LocationAddress = "台北市松山區南京東路四段2號",
+                    StreamingPlatform = null,
+                    StreamingUrl = null,
+                    TicketTypeName = "一般票",
+                    TicketNumber = "A123456789",
+                    SeatNumber = "3排13號",
+                    TicketPrice = 1000,
+                    PurchaseAmount = 1,
+                    IsDeleted = false,
+                    CreatedAt = DateTime.Now,
+                    EditedAt = null
+                },
+                new ArchiveOrder
+                {
+                    OrderId = 2,
+                    EventStartTime = DateTime.Parse("2024-04-01 14:00:00"),
+                    EventName = "線上研討會",
+                    LocationName = null,
+                    LocationAddress = null,
+                    StreamingPlatform = "Zoom",
+                    StreamingUrl = "https://zoom.us/j/123456789",
+                    TicketTypeName = "免費票",
+                    TicketNumber = null,
+                    SeatNumber = null,
+                    TicketPrice = 0,
+                    PurchaseAmount = 2,
+                    IsDeleted = false,
+                    CreatedAt = DateTime.Now.AddDays(-1),
+                    EditedAt = null
+                }
             );
         }
     }
