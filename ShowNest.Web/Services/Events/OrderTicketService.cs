@@ -17,12 +17,17 @@ namespace ShowNest.Web.Services.Events
         {
             _context = context;
         }
-        public RegistrationViewModel RegistrationTicketOrders()
+        public RegistrationViewModel RegistrationTicketOrders()//int eventId, int orderId
         {
-            var eventInfo = _context.Events.FirstOrDefault(); // 取得第一個事件作為範例
+            //var eventId = _context.Events.Any(e=>e.Id== orderId); // Assume this is the ID provided by the user
+            var eventInfo = _context.Events.FirstOrDefault();//e => e.Id == eventId
             var order = _context.Order.FirstOrDefault();
             var seats=_context.Seats.FirstOrDefault();
             var seatArea=_context.SeatAreas.FirstOrDefault();
+            var archiveOrder = _context.ArchiveOrders.FirstOrDefault();
+            var userPreFillInfo = _context.PreFills.FirstOrDefault();
+            var logInInfo =_context.LogInInfos.FirstOrDefault();
+
 
             if (eventInfo == null || order == null || seats == null || seatArea == null)
             {
@@ -40,14 +45,24 @@ namespace ShowNest.Web.Services.Events
                 EventHost = eventInfo.MainOrganizer,
                 TicketCollectionChannel = "線上QRcode",
                 PaymentMethodName = order.PaymentType.ToString(),
-                //TicketSeats = new List<Tickets>
-                //{
-                //    SeatArea= seats.SeatArea,
-                    
-
-                //}
-
-    };
+                TicketSeats = new List<Tickets>
+                {
+                    new Tickets
+                    {
+                        SeatArea=seatArea.Name,
+                        SeatNumber=seats.Number,
+                        TicketTypeName=archiveOrder.TicketTypeName,
+                        TicketPrice=archiveOrder.TicketPrice,
+                        PurchaseAmount=archiveOrder.PurchaseAmount
+                    }
+                   
+                },
+                TotalPrice = archiveOrder.TicketPrice * archiveOrder.PurchaseAmount,
+                Name= userPreFillInfo.Name,
+                PhoneNumber = userPreFillInfo.Mobile,
+                Email = logInInfo.Email,
+                ShownParticipatedCampaign=order.IsDisplayed
+            }; 
         }
     }
 }
