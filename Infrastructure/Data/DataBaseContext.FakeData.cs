@@ -64,6 +64,7 @@ namespace Infrastructure.Data
             modelBuilder.Entity<LogInInfo>().HasData(
                 new LogInInfo
                 {
+                    UserId= 1,
                     Account = "abc123",
                     Email = "abc@gmail.com",
                     Password = "12345678",
@@ -71,6 +72,7 @@ namespace Infrastructure.Data
                     EditedAt = null
                 }, new LogInInfo
                 {
+                    UserId=2,
                     Account = "def456",
                     Email = "def@gmail.com",
                     Password = "87654321",
@@ -78,6 +80,7 @@ namespace Infrastructure.Data
                     EditedAt = null
                 }, new LogInInfo
                 {
+                    UserId=3,
                     Account = "ghi789",
                     Email = "ghi@gmail.com",
                     Password = "98765432",
@@ -783,26 +786,7 @@ namespace Infrastructure.Data
                   EditedAt = DateTime.Now
               }
            );
-            modelBuilder.Entity<EventAndTagMapping>().HasData(
-                new EventAndTagMapping
-                {
-                    Id = 1,
-                    CategoryTagId = 1,
-                    EventId = 1,
-                },
-                new EventAndTagMapping
-                {
-                    Id = 2,
-                    CategoryTagId = 2,
-                    EventId = 1,
-                },
-                new EventAndTagMapping
-                {
-                    Id = 3,
-                    CategoryTagId = 3,
-                    EventId = 2,
-                }
-           );
+           
 
             modelBuilder.Entity<CategoryTag>().HasData(
                 new CategoryTag
@@ -925,16 +909,18 @@ namespace Infrastructure.Data
             modelBuilder.Entity<EventAndTagMapping>().HasData(
                 new EventAndTagMapping
                 {
+                    Id=1,
                     CategoryTagId = 1,
                     EventId = 1,
                 },
                 new EventAndTagMapping
                 {
+                    Id=2,
                     CategoryTagId = 2,
                     EventId = 2,
                 },
                 new EventAndTagMapping
-                {
+                {Id = 3,
                     CategoryTagId = 3,
                     EventId = 3,
                 }
