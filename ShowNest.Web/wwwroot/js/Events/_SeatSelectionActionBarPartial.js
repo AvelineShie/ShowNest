@@ -26,16 +26,22 @@ createApp({
     methods: {
         startCountdown() {
             setInterval(() => {
-                this.remainTime --;
                 
                 let minutes = Math.floor(this.remainTime / 60);
                 let seconds = Math.floor(this.remainTime % 60);
-                
+
                 minutes = minutes < 10 ? '0' + minutes : minutes;
                 seconds = seconds < 10 ? '0' + seconds : seconds;
                 
                 this.counter = minutes + ':' + seconds;
-
+                
+                if (minutes > 0 ^ seconds > 0) {
+                    this.remainTime--;
+                } 
+                else {
+                    clearInterval();
+                }
+                
             }, 1000);
         },
         setExpireTime(timesUp) {
@@ -48,19 +54,21 @@ createApp({
     mounted() {
         let expireTime = this.getExpireTime();
         if (!expireTime) {
-            expireTime = new Date().getTime() + 600 * 1000;
+            expireTime = new Date().getTime() + 3 * 1000;
 
             this.setExpireTime(expireTime);
         }
 
         const remainTimeMs = expireTime - new Date().getTime();
-        if (remainTimeMs < 0) {
-            // redirect
-            console.log('Timeout');
-            return;
+        
+        if (remainTimeMs <= 0 ) {
+            window.alert('選位時間已結束，請重新購票');
+            window.location.href = 'TicketTypeSelection';
+            $cookies.remove('expireTime');
+        } else {
+            this.remainTime = remainTimeMs / 1000;
+            this.startCountdown();
         }
-        this.remainTime = remainTimeMs / 1000;
-
-        this.startCountdown();
     },
 }).mount('#app')
+
