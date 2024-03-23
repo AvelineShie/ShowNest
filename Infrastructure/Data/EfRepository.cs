@@ -1,4 +1,5 @@
 ﻿using ApplicationCore.Interfaces;
+using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -10,59 +11,96 @@ namespace Infrastructure.Data
 {
     public class EfRepository<TEntity> : IRepository<TEntity> where TEntity : class
     {
+        private readonly DatabaseContext DbContext;
+        protected readonly DbSet<TEntity> DbSet;
+        public EfRepository(DatabaseContext context)
+        {
+            DbContext = context;
+            DbSet = DbContext.Set<TEntity>();
+        }
+       
         public TEntity Add(TEntity entity)
         {
-            throw new NotImplementedException();
+            DbSet.Add(entity);
+            DbContext.SaveChanges();
+            return entity;
         }
 
         public IEnumerable<TEntity> AddRange(IEnumerable<TEntity> entities)
         {
-            throw new NotImplementedException();
+            DbSet.AddRange(entities);
+            DbContext.SaveChanges();
+            return entities;
         }
 
         public TEntity Update(TEntity entity)
         {
-            throw new NotImplementedException();
+            DbSet.Update(entity);
+            DbContext.SaveChanges();
+            return entity;
         }
 
         public IEnumerable<TEntity> UpdateRange(IEnumerable<TEntity> entities)
         {
-            throw new NotImplementedException();
+            DbSet.UpdateRange(entities);
+            DbContext.SaveChanges();
+            return entities;
         }
 
         public void Delete(TEntity entity)
         {
-            throw new NotImplementedException();
+            DbSet.Remove(entity);
+            DbContext.SaveChanges();
         }
 
         public void DeleteRange(IEnumerable<TEntity> entities)
         {
-            throw new NotImplementedException();
+            DbSet.RemoveRange(entities);
+            DbContext.SaveChanges();
         }
 
         public TEntity GetById<TId>(TId id)
         {
-            throw new NotImplementedException();
+            var entity = DbSet.Find(id);
+            if (entity == null)
+            {
+               
+                throw new Exception("Entity not found");
+            }
+            return entity;
+
         }
 
         public TEntity FirstOrDefault(Expression<Func<TEntity, bool>> expression)
         {
-            throw new NotImplementedException();
+            var entity = DbSet.FirstOrDefault(expression);
+            if (entity == null)
+            {
+                
+                throw new Exception("Entity not found");
+            }
+            return entity;
         }
 
         public TEntity SingleOrDefault(Expression<Func<TEntity, bool>> expression)
         {
-            throw new NotImplementedException();
+            var entity = DbSet.SingleOrDefault(expression);
+            if (entity == null)
+            {
+                
+                throw new Exception("Entity not found");
+            }
+            return entity;
         }
 
         public bool Any(Expression<Func<TEntity, bool>> expression)
         {
-            throw new NotImplementedException();
+            return DbSet.Any(expression);
         }
 
         public List<TEntity> List(Expression<Func<TEntity, bool>> expression)
         {
-            throw new NotImplementedException();
+            return DbSet.Where(expression).ToList();
         }
     }
 }
