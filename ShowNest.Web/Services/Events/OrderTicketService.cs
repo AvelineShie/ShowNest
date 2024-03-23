@@ -43,7 +43,6 @@ namespace ShowNest.Web.Services.Events
                 EventLocation = eventInfo.LocationAddress,
                 EventAddress = eventInfo.LocationAddress,
                 EventHost = eventInfo.MainOrganizer,
-                TicketCollectionChannel = "線上QRcode",
                 PaymentMethodName = order.PaymentType.ToString(),
                 TicketSeats = new List<Tickets>
                 {
