@@ -15,7 +15,8 @@
             組織名稱
         </div>
         <div class="name">
-            @Model.OrganizationName
+            @* @Model.OrganizationName *@
+            Mafia
         </div>
     </div>
     <div class="wrap">
@@ -23,9 +24,9 @@
             <div>
                 <nav aria-label="breadcrumb">
                     <ol class="breadcrumb">
-                        <li class="breadcrumb-item"><a href="https://localhost:7156/Dashboard/Events?viewType=SetEvent">設定資料活動</a></li>
-                        <li class="breadcrumb-item"><a href="https://localhost:7156/Dashboard/Events?viewType=SetTicket">設定票種</a></li>
-                        <li class="breadcrumb-item" aria-current="page"><a href="https://localhost:7156/Dashboard/Events?viewType=SetTable">設定表單</a></li>
+                        <li class="breadcrumb-item"><a href="~/Dashboard/CreateEvent/SetEvent">設定資料活動</a></li>
+                        <li class="breadcrumb-item"><a href="~/Dashboard/CreateEvent/SetTicket">設定票種</a></li>
+                        <li class="breadcrumb-item" aria-current="page"><a href="~/Dashboard/CreateEvent/SetTable">設定表單</a></li>
                     </ol>
                 </nav>
             </div>
@@ -43,14 +44,13 @@
                         </tr>
                     </thead>
                     <tbody>
-                        @foreach (var ticket in Model.SetTickets)
+                        @* @foreach (var ticket in Model.SetTickets)
                         {
                             <tr>
                                 <td class="color-label"></td>
                                 <td>@ticket.TicketName</td>
                                 <td>@ticket.StartTime.ToString("yyyy/MM/dd HH:mm") ~
                                 @ticket.EndTime.ToString("yyyy/MM/dd HH:mm")</td>
-                               @*  2024/02/02 00:00  ~ 2024/02/06 00:00  *@
                                 <td>TWD$ @ticket.Price</td>
                                 <td>@ticket.Quantity</td>
                                 <td>
@@ -59,7 +59,7 @@
                                 </td>
                             </tr>
            
-                        }
+                        } *@ 
                     </tbody>
                 </table>
                 <div class="changeTicketSection">
@@ -99,8 +99,8 @@
                 <button type="button" class="btn btn-outline-secondary btn-sm" id="add-ticket">新增票種</button>
             </div>
             <div class="pages-change">
-                <button type="button" class="btn btn-outline-secondary" onclick="window.location.href='https://localhost:7156/Dashboard/Events?viewType=SetEvent'">上一頁</button>
-                <button type="button" class="btn btn-outline-secondary" onclick="window.location.href='https://localhost:7156/Dashboard/Events?viewType=SetTable'">下一頁</button>
+                <button type="button" class="btn btn-outline-secondary" onclick="window.location.href='@Url.Action("SetEvent", "Dashboard")'">上一頁</button>
+                <button type="button" class="btn btn-outline-secondary" onclick="window.location.href='@Url.Action("SetTable", "Dashboard")'">下一頁</button>
             </div>
         </div>
     </div>

@@ -119,45 +119,13 @@
                     <p>TWD$3,800</p>
                 </div>
                 <div class="seats-selection-complete">
-                    <a href="Registrations">完成選位</a>
+                    <a asp-controller="Events" asp-action="Registrations">完成選位</a>
                 </div>
             </div>
         </div>
     </div>
 </div>
 
-
-
 <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
-<script>
-  const { createApp } = Vue
-  
-  createApp({
-    data() {
-      return {
-        counter: '',
-        seconds: 600
-      }
-    },
-    methods: {
-        countdown() {
-            let m = Math.trunc(this.seconds / 60);
-            let mm = m.toString();
-            mm = parseInt(mm) < 10 ? "0" + mm : mm;
-            let s = this.seconds % 60;
-            let ss = s.toString();
-            ss = parseInt(ss) < 10 ? "0" + ss : ss;
-            this.counter = mm +':'+ss;
-        },
-        Time() {
-            setInterval(()=>{
-                this.countdown();
-                this.seconds --;
-            }, 1000)
-        }
-    },
-    mounted() {
-        this.Time();
-    },
-  }).mount('#app')
-</script>
+<script src="https://unpkg.com/vue-cookies@1.8.3/vue-cookies.js"></script>
+
