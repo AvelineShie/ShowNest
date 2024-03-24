@@ -2,12 +2,14 @@
 
 @{
 	ViewData["Title"] = "Index";
+	int viewDataPage = int.Parse(ViewData["CurrentPage"].ToString());
+	int viewDataTotalPages = int.Parse(ViewData["TotalPages"].ToString());
 }
 
 @section topCSS {
 	<link rel="stylesheet" href="~/css/Index/home_style.css">
-    <link rel="stylesheet" href="~/css/_Partial/_EventCards_Partial.css">
-    <link href="~/css/_partial/_categorytags_partial.css" rel="stylesheet" />
+	<link rel="stylesheet" href="~/css/_Partial/_EventCards_Partial.css">
+	<link href="~/css/_partial/_categorytags_partial.css" rel="stylesheet" />
 }
 
 <!-- slogan -->
@@ -71,7 +73,8 @@
 		<div id="categories-tags-div" class="d-flex">
 			@foreach (var tag in Model.EventCategoryTags)
 			{
-				@await Html.PartialAsync("~/PartialViews/_CategoryTags_Partial.cshtml", tag);
+				@await Html.PartialAsync("~/PartialViews/_CategoryTags_Partial.cshtml", tag)
+				;
 			}
 		</div>
 	</div>
@@ -82,16 +85,48 @@
 		<div class="cards">
 			@foreach (var card in Model.EventEventCards)
 			{
-				@await Html.PartialAsync("~/PartialViews/_EventCards_Partial.cshtml", card);
+				@await Html.PartialAsync("~/PartialViews/_EventCards_Partial.cshtml", card)
+				;
 			}
 		</div>
 	</div>
 	<div id="page-index" class="width">
-		<a href="" class="index active-index">1</a>
+		@if (viewDataPage > 1)
+		{
+			<a href="@Url.Action("Index","Events", new {page = viewDataPage - 1})" class="index">⭠</a>
+		}
+		@for (int i = 1; i <= viewDataTotalPages; i++)
+		{
+			<a href="@Url.Action("Index","Events", new {page = i})"
+				class="@(i == viewDataPage ? "index active-index" : "index")">@i</a>
+		}
+		@if (viewDataPage < viewDataTotalPages)
+		{
+			<a href="@Url.Action("Index","Events", new {page = viewDataPage + 1})" class="index">⭢</a>
+		}
+		@* <a href="" class="index active-index">1</a>
 		<a href="" class="index">2</a>
 		<a href="" class="index">3</a>
 		<a href="" class="index">4</a>
 		<a href="" class="index">5</a>
-		<a href="" class="index">></a>
+		<a href="" class="index">></a> *@
 	</div>
 </section>
+
+<script>
+	@* var pageIndexs = document.querySelectorAll('#page-index a')
+	pageIndexs.forEach(function (eachindex) {
+		eachindex.addEventListener('click', function (event) {
+	event.preventDefault()
+			var currentScrollPosition = window.pageYOffset || document.documentElement.scrollTop;
+			setTimeout(function () {
+				window.scrollTo(0, currentScrollPosition)
+			}, 0)
+		})
+	}) *@
+
+	var pageIndex = document.querySelector('#page-index')
+	pageIndex.addEventListener('click', function(event){
+		@* event.preventDefault() *@
+	})
+</script>

@@ -15,9 +15,9 @@ namespace ShowNest.Web
         {
             var builder = WebApplication.CreateBuilder(args);
 
-            // ¨ú±o²ÕºA¤¤¸ê®Æ®w³s½u³]©w
+            // ï¿½ï¿½ï¿½oï¿½ÕºAï¿½ï¿½ï¿½ï¿½Æ®wï¿½sï¿½uï¿½]ï¿½w
             string connectionString = builder.Configuration.GetConnectionString("DatabaseContext");
-            //¦bDI Containerµù¥UEF CoreªºDbContext
+            //ï¿½bDI Containerï¿½ï¿½ï¿½UEF Coreï¿½ï¿½DbContext
             builder.Services.AddDbContext<DatabaseContext>(options => options.UseSqlServer(connectionString));
 
             // Registration Service
@@ -33,7 +33,7 @@ namespace ShowNest.Web
             builder.Services.AddScoped<EventIndexService>();
 
 
-            //// Facebook Data ´ú¸Õ¤¤
+            //// Facebook Data ï¿½ï¿½ï¿½Õ¤ï¿½
             //builder.Services.AddAuthentication().AddFacebook(opt =>
             //{
             //    opt.ClientId = "";
@@ -57,11 +57,16 @@ namespace ShowNest.Web
 
             app.UseAuthorization();
 
-            ///´ú¸Õ¥Î¸ô¥Ñ
+            ///ï¿½ï¿½ï¿½Õ¥Î¸ï¿½ï¿½ï¿½
             //app.MapControllerRoute(
             //    name: "organizationEvents",
             //    pattern: "{OrganizationId}/{controller=Events}/{action=Index}/{EventId?}");
-            ///¥H¤W´ú¸Õ¤¤--------------------------------------------------------------------------------------------
+            ///ï¿½Hï¿½Wï¿½ï¿½ï¿½Õ¤ï¿½--------------------------------------------------------------------------------------------
+
+            // app.MapControllerRoute(
+            //     name: "eventPages",
+            //     pattern: "{controller=Events}/{action=Index}/{page?}",
+            //     defaults: new { controller = "Events", action = "Index" });
 
             app.MapControllerRoute(
             name: "NewEvent",
@@ -89,9 +94,8 @@ namespace ShowNest.Web
 
             app.MapControllerRoute(
                 name: "default",
-                pattern: "{controller=Home}/{action=Index}/{id?}");
+                pattern: "{controller=Home}/{action=Index}");
 
-            
             app.Run();
         }
     }
