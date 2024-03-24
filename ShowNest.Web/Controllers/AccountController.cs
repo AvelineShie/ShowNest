@@ -109,7 +109,7 @@ namespace ShowNest.Web.Controllers
             //資料庫存入尚未加密，之後增加
             //Account與Email擇一登入還沒完成，目前只能使用Account登入
 
-            var dbUser = await _context.LogInInfo.
+            var dbUser = await _context.LogInInfos.
                 FirstOrDefaultAsync(a => a.Account == Login.Account && a.Password == Login.Password);
         
 
