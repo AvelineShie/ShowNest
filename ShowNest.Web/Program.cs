@@ -64,6 +64,30 @@ namespace ShowNest.Web
             ///以上測試中--------------------------------------------------------------------------------------------
 
             app.MapControllerRoute(
+            name: "NewEvent",
+            pattern: "Dashboard/CreateEvent",
+            defaults: new { controller = "Dashboard", action = "CreateEvent" });
+
+            app.MapControllerRoute(
+            name: "TicketSetting",
+            pattern: "Dashboard/CreateEvent/SetTicket",
+            defaults: new { controller = "Dashboard", Action = "SetTicket" }
+            );
+
+            app.MapControllerRoute(
+            name: "TableSetting",
+            pattern: "Dashboard/CreateEvent/SetTable",
+            defaults: new { controller = "Dashboard", Action = "SetTable" }
+            );
+
+            app.MapControllerRoute(
+            name: "EventSetting",
+            pattern: "Dashboard/CreateEvent/{SetEvent}",
+            defaults: new { controller = "Dashboard", Action = "SetEvent" }
+            );
+
+
+            app.MapControllerRoute(
                 name: "default",
                 pattern: "{controller=Home}/{action=Index}/{id?}");
 
