@@ -64,20 +64,25 @@ namespace Infrastructure.Data
             modelBuilder.Entity<LogInInfo>().HasData(
                 new LogInInfo
                 {
+                    UserId= 1,
                     Account = "abc123",
                     Email = "abc@gmail.com",
                     Password = "12345678",
                     CreatedAt = DateTime.Now,
                     EditedAt = null
-                }, new LogInInfo
+                }, 
+                new LogInInfo
                 {
+                    UserId=2,
                     Account = "def456",
                     Email = "def@gmail.com",
                     Password = "87654321",
                     CreatedAt = DateTime.Now.AddDays(-1),
                     EditedAt = null
-                }, new LogInInfo
+                }, 
+                new LogInInfo
                 {
+                    UserId=3,
                     Account = "ghi789",
                     Email = "ghi@gmail.com",
                     Password = "98765432",
@@ -718,22 +723,7 @@ namespace Infrastructure.Data
                     IsDeleted = false
                 }
             );
-            modelBuilder.Entity<SeatArea>().HasData(
-                new SeatArea
-                {
-                    Name = "一般座位",
-                    IsDeleted = false,
-                    CreatedAt = DateTime.Now,
-                    EditedAt = null
-                },
-                new SeatArea
-                {
-                    Name = "貴賓席",
-                    IsDeleted = false,
-                    CreatedAt = DateTime.Now.AddDays(-1),
-                    EditedAt = null
-                }
-            );
+            
             modelBuilder.Entity<Event>().HasData(
               new Event
               {
@@ -783,26 +773,7 @@ namespace Infrastructure.Data
                   EditedAt = DateTime.Now
               }
            );
-            modelBuilder.Entity<EventAndTagMapping>().HasData(
-                new EventAndTagMapping
-                {
-                    Id = 1,
-                    CategoryTagId = 1,
-                    EventId = 1,
-                },
-                new EventAndTagMapping
-                {
-                    Id = 2,
-                    CategoryTagId = 2,
-                    EventId = 1,
-                },
-                new EventAndTagMapping
-                {
-                    Id = 3,
-                    CategoryTagId = 3,
-                    EventId = 2,
-                }
-           );
+           
 
             modelBuilder.Entity<CategoryTag>().HasData(
                 new CategoryTag
@@ -830,21 +801,25 @@ namespace Infrastructure.Data
             modelBuilder.Entity<PreferredActivityArea>().HasData(
                 new PreferredActivityArea
                 {
+                    Id= 4,
                     UserId = 1,
                     AreaId = 1,
                 }, 
                 new PreferredActivityArea
                 {
+                    Id= 5,
                     UserId = 1,
                     AreaId = 2,
                 }, 
                 new PreferredActivityArea
                 {
+                    Id= 6,
                     UserId = 2,
                     AreaId = 3,
                 }, 
                 new PreferredActivityArea
                 {
+                    Id= 7,
                     UserId = 2,
                     AreaId = 4,
                 }
@@ -893,16 +868,19 @@ namespace Infrastructure.Data
             modelBuilder.Entity<OrganizationAndUserMapping>().HasData(
                 new OrganizationAndUserMapping
                 {
+                    Id = 1,
                     OrganizationId = 1,
                     UserId = 1,
                 }, 
                 new OrganizationAndUserMapping
                 {
+                    Id = 2,
                     OrganizationId = 2,
                     UserId = 2,
                 }, 
                 new OrganizationAndUserMapping
                 {
+                    Id = 3,
                     OrganizationId = 3,
                     UserId = 3,
                 }
@@ -911,12 +889,14 @@ namespace Infrastructure.Data
            modelBuilder.Entity<OrgFan>().HasData(
                 new OrgFan
                 {
+                    Id= 1,
                     OrganizationId = 1,
                     UserId = 1,
                     FanTime = DateTime.Now,
                 },
                 new OrgFan
                 {
+                    Id= 2,
                     OrganizationId = 2,
                     UserId = 2,
                     FanTime = DateTime.Now.AddDays(-1),
@@ -925,18 +905,15 @@ namespace Infrastructure.Data
             modelBuilder.Entity<EventAndTagMapping>().HasData(
                 new EventAndTagMapping
                 {
+                    Id=1,
                     CategoryTagId = 1,
                     EventId = 1,
                 },
                 new EventAndTagMapping
                 {
+                    Id=2,
                     CategoryTagId = 2,
                     EventId = 2,
-                },
-                new EventAndTagMapping
-                {
-                    CategoryTagId = 3,
-                    EventId = 3,
                 }
                 );
 
@@ -1295,6 +1272,7 @@ namespace Infrastructure.Data
             modelBuilder.Entity<Ticket>().HasData(
                 new Ticket
                 {
+                    Id = 21,
                     OrderId = 1,
                     TicketTypeId = 1,
                     SeatId = 1,
@@ -1302,10 +1280,12 @@ namespace Infrastructure.Data
                     Status = 0,
                     IsDeleted = false,
                     CreatedAt = DateTime.Now,
-                    EditedAt = null
+                    EditedAt = null,
+                    CheckCode="QRcode"
                 },
                 new Ticket
                 {
+                        Id = 22,
                     OrderId = 2,
                     TicketTypeId = 2,
                     SeatId = null,
@@ -1313,10 +1293,12 @@ namespace Infrastructure.Data
                     Status = 1,
                     IsDeleted = false,
                     CreatedAt = DateTime.Now.AddDays(-1),
-                    EditedAt = DateTime.Now
+                    EditedAt = DateTime.Now,
+                    CheckCode = "QRcode"
                 },
                 new Ticket
                 {
+                    Id = 23,
                     OrderId = null,
                     TicketTypeId = 3,
                     SeatId = 3,
@@ -1324,10 +1306,12 @@ namespace Infrastructure.Data
                     Status = 0,
                     IsDeleted = true,
                     CreatedAt = DateTime.Now.AddDays(-2),
-                    EditedAt = null
+                    EditedAt = null,
+                    CheckCode = "QRcode"
                 },
                 new Ticket
                 {
+                        Id = 24,
                     OrderId = 1,
                     TicketTypeId = 1,
                     SeatId = 1,
@@ -1335,10 +1319,12 @@ namespace Infrastructure.Data
                     Status = 0,
                     IsDeleted = false,
                     CreatedAt = DateTime.Now,
-                    EditedAt = null
+                    EditedAt = null,
+                    CheckCode = "QRcode"
                 },
                 new Ticket
                {
+                    Id = 25,
                    OrderId = 2,
                    TicketTypeId = 2,
                    SeatId = null,
@@ -1346,8 +1332,9 @@ namespace Infrastructure.Data
                    Status = 1,
                    IsDeleted = false,
                    CreatedAt = DateTime.Now.AddDays(-1),
-                   EditedAt = DateTime.Now
-               }
+                   EditedAt = DateTime.Now,
+                    CheckCode = "QRcode"
+                }
             );
             modelBuilder.Entity<ArchiveOrder>().HasData(
                 new ArchiveOrder

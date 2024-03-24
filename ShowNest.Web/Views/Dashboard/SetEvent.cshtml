@@ -15,6 +15,7 @@
             組織名稱
         </div>
         <div class="name">
+            @* @Model.OrganizationName *@
             Mafia
         </div>
     </div>
@@ -24,9 +25,9 @@
             <div id="tabs">
                 <nav aria-label="breadcrumb" >
                     <ol class="breadcrumb">
-                        <li class="breadcrumb-item"><a href="~/Dashboard/Events?viewType=SetEvent">設定資料活動</a></li>
-                        <li class="breadcrumb-item"><a href="~/Dashboard/Events?viewType=SetTicket">設定票種</a></li>
-                        <li class="breadcrumb-item" aria-current="page"><a href="~/Dashboard/Events?viewType=SetTable">設定表單</a></li>
+                        <li class="breadcrumb-item"><a href="~/Dashboard/CreateEvent/SetEvent">設定資料活動</a></li>
+                        <li class="breadcrumb-item"><a href="~/Dashboard/CreateEvent/SetTicket">設定票種</a></li>
+                        <li class="breadcrumb-item" aria-current="page"><a href="~/Dashboard/CreateEvent/SetTable">設定表單</a></li>
                     </ol>
                 </nav>
             </div>
@@ -164,17 +165,18 @@
                         </script>
                     </div>
                     <div class="pages-change">
-                        <button type="button" class="btn btn-outline-secondary" onclick="window.location.href='https://localhost:7156/Dashboard/Events?viewType=CreateEvent'">上一頁</button>
-                        <button type="button" class="btn btn-outline-secondary" onclick="window.location.href='https://localhost:7156/Dashboard/Events?viewType=SetTicket'">下一頁</button>
+                        <button type="button" class="btn btn-outline-secondary" onclick="window.location.href='@ViewContext.HttpContext.Request.Headers["Referer"].ToString()'">上一頁</button>
+                        <button type="button" class="btn btn-outline-secondary" onclick="window.location.href='@Url.Action("SetTicket", "Dashboard")'">下一頁</button>
                     </div>
                 </div>
 
 
                 <div class="other-setting">
                     <!-- (右邊)圖片上傳區 -->
+                    
                     <div class="section">
                         <h4>社群分享圖片</h4>
-                        <img id="uploadedImage" src='https://res.cloudinary.com/dl42higsa/image/upload/v1710816990/upload-img_ofm2yc.png' >
+                        <img id="uploadedImage" src='/img/Dashboard/upload-img.png' >
                         <div>
                             <!-- 添加文件上傳元素 -->
                             <input type="file" id="uploadInput" accept="image/*" style="display: none;">
@@ -231,6 +233,8 @@
     @section Scripts {
         <script src="~/js/Dashboard/SetEvent.js"></script>
 
+    }
+   
     }
 </body>
 
