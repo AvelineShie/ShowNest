@@ -49,7 +49,6 @@ namespace ShowNest.Web.Controllers
             _registrationService = registrationService;
         }
 
-        [Route("Events")]
         public IActionResult Index(int page)
         {
             var eventIndexViewModel = _eventIndexService.GetEventIndexViewModel();
