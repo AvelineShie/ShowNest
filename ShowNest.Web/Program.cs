@@ -15,9 +15,9 @@ namespace ShowNest.Web
         {
             var builder = WebApplication.CreateBuilder(args);
 
-            // ���o�պA����Ʈw�s�u�]�w
+            // 取得組態中資料庫連線設定
             string connectionString = builder.Configuration.GetConnectionString("DatabaseContext");
-            //�bDI Container���UEF Core��DbContext
+            //在DI Container註冊EF Core的DbContext
             builder.Services.AddDbContext<DatabaseContext>(options => options.UseSqlServer(connectionString));
 
             // Registration Service
@@ -33,7 +33,7 @@ namespace ShowNest.Web
             builder.Services.AddScoped<EventIndexService>();
 
 
-            //// Facebook Data ���դ�
+            //// Facebook Data 測試中
             //builder.Services.AddAuthentication().AddFacebook(opt =>
             //{
             //    opt.ClientId = "";
@@ -57,11 +57,11 @@ namespace ShowNest.Web
 
             app.UseAuthorization();
 
-            ///���եθ���
+            ///測試用路由
             //app.MapControllerRoute(
             //    name: "organizationEvents",
             //    pattern: "{OrganizationId}/{controller=Events}/{action=Index}/{EventId?}");
-            ///�H�W���դ�--------------------------------------------------------------------------------------------
+            ///以上測試中--------------------------------------------------------------------------------------------
 
             app.MapControllerRoute(
                 name: "eventPages",
