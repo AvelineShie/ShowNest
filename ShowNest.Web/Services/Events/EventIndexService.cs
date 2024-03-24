@@ -18,7 +18,7 @@ namespace ShowNest.Web.Services.Events
             return new EventIndexViewModel
             {
                 EventCategoryTags = _categoryTagService.GetAllCategoryTags(),
-                EventEventCards = _eventCardService.GetSixEventCards().ToList()
+                EventEventCards = _eventCardService.GetAllEventCards().ToList()
             };
         }
     }
