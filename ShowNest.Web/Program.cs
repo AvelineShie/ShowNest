@@ -6,6 +6,7 @@ using ShowNest.Web.Services.General;
 using ShowNest.Web.Services.Home;
 using Microsoft.AspNetCore.Identity;
 using Infrastructure.Data;
+using Microsoft.AspNetCore.Authentication.Cookies;
 
 namespace ShowNest.Web
 {
@@ -40,6 +41,9 @@ namespace ShowNest.Web
             //    opt.ClientSecret = "";
             //});
 
+            //登入餅乾驗證
+            builder.Services.AddAuthentication(CookieAuthenticationDefaults.AuthenticationScheme).AddCookie();
+
             var app = builder.Build();
 
             // Configure the HTTP request pipeline.
@@ -55,7 +59,13 @@ namespace ShowNest.Web
 
             app.UseRouting();
 
+            //驗證
+            app.UseAuthentication();
             app.UseAuthorization();
+
+            //控制路由
+            app.MapControllers();
+           //app.MapRazorPages();
 
             ///測試用路由
             //app.MapControllerRoute(
@@ -67,7 +77,7 @@ namespace ShowNest.Web
                 name: "default",
                 pattern: "{controller=Home}/{action=Index}/{id?}");
 
-            
+
             app.Run();
         }
     }
