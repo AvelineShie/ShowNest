@@ -220,7 +220,7 @@ namespace ShowNest.Web.Controllers
 
         public IActionResult Registrations()
         {
-            var registration = _registrationService.RegistrationTicketOrders();
+            var registration = _registrationService.GetRegistrationInfo();
             return View(registration);
         }
 
