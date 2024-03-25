@@ -72,7 +72,7 @@ namespace ShowNest.Web
             app.MapControllerRoute(
                 name: "eventPages",
                 pattern: "Events/{page=1}",
-        defaults: new { controller = "Events", action = "Index"});
+            defaults: new { controller = "Events", action = "Index"});
 
             app.MapControllerRoute(
             name: "NewEvent",
