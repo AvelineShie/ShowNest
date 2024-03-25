@@ -28,7 +28,7 @@ public partial class Event
     /// <summary>
     /// 結束時間
     /// </summary>
-    public DateTime EndTime { get; set; }
+    public DateTime? EndTime { get; set; }
 
     /// <summary>
     /// 0線上1實體
@@ -123,12 +123,12 @@ public partial class Event
     /// <summary>
     /// 預設值50
     /// </summary>
-    public int Sort { get; set; }
+    public int? Sort { get; set; }
 
     /// <summary>
     /// 資料封存或強制下架
     /// </summary>
-    public bool IsDeleted { get; set; }
+    public bool? IsDeleted { get; set; }
 
     /// <summary>
     /// 新增時間

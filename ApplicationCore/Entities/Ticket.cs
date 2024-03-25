@@ -53,7 +53,7 @@ public partial class Ticket
     /// <summary>
     /// 檢查碼
     /// </summary>
-    public string CheckCode { get; set; } = null!;
+    public int? CheckCode { get; set; }
 
     public virtual Order? Order { get; set; }
 

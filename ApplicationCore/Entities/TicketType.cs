@@ -43,17 +43,17 @@ public partial class TicketType
     /// <summary>
     /// 預設值50
     /// </summary>
-    public byte Sort { get; set; }
+    public int? Sort { get; set; }
 
     /// <summary>
     /// 是否顯示
     /// </summary>
-    public bool IsDisplayed { get; set; }
+    public int? IsDisplayed { get; set; }
 
     /// <summary>
     /// 強制下架
     /// </summary>
-    public bool IsDeleted { get; set; }
+    public int? IsDeleted { get; set; }
 
     /// <summary>
     /// 新增時間
