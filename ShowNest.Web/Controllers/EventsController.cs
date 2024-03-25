@@ -1,7 +1,9 @@
 ﻿using System.Collections.Generic;
 using System.Drawing.Text;
 using System.Globalization;
+using ApplicationCore.Interfaces;
 using Elfie.Serialization;
+using Infrastructure.Services;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 using ShowNest.Web.Models;
@@ -42,11 +44,14 @@ namespace ShowNest.Web.Controllers
 
         private readonly EventIndexService _eventIndexService;
         private readonly OrderTicketService _registrationService;
+        private readonly IOrderQueryService _orderQueryService;
 
-        public EventsController(EventIndexService eventIndexService, OrderTicketService registrationService)
+        public EventsController(EventIndexService eventIndexService, OrderTicketService registrationService, IOrderQueryService orderQueryService)
         {
             _eventIndexService = eventIndexService;
             _registrationService = registrationService;
+            _orderQueryService = orderQueryService;
+            _orderQueryService = orderQueryService;
         }
 
         public IActionResult Index(int page)
@@ -246,5 +251,6 @@ namespace ShowNest.Web.Controllers
         {
             return View();
         }
+     
     }
 }

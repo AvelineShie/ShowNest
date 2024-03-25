@@ -21,6 +21,7 @@ namespace ApplicationCore.Interfaces
         TEntity SingleOrDefault(Expression<Func<TEntity, bool>> expression);
         bool Any(Expression<Func<TEntity, bool>> expression);
         List<TEntity> List(Expression<Func<TEntity, bool>> expression);
+        List<TEntity> All();
 
     }
 }
