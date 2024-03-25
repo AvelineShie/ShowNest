@@ -58,6 +58,10 @@ namespace Infrastructure.Data
             DbSet.RemoveRange(entities);
             DbContext.SaveChanges();
         }
+        public List<TEntity> All()
+        {
+            return DbSet.ToList();
+        }
 
         public TEntity GetById<TId>(TId id)
         {

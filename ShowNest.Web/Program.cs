@@ -6,6 +6,7 @@ using ShowNest.Web.Services.General;
 using ShowNest.Web.Services.Home;
 using Microsoft.AspNetCore.Identity;
 using Infrastructure.Data;
+using ShowNest.Web.Configurations;
 
 namespace ShowNest.Web
 {
@@ -25,6 +26,11 @@ namespace ShowNest.Web
 
             // Add services to the container.
             builder.Services.AddControllersWithViews();
+            Infrastructure.Dependencies.ConfigureServices(builder.Configuration, builder.Services);
+
+            builder.Services
+               .AddApplicationCoreServices()
+               .AddWebServices();
 
             builder.Services.AddScoped<HomeCarouselService>();
             builder.Services.AddScoped<EventCardService>();
