@@ -1,3 +1,5 @@
+@using ShowNest.Web.ViewModels
+@model LoginViewModel
 @{
     ViewData["Title"] = "LogIn";
 }
@@ -16,9 +18,9 @@
                 </div>
                 <div class="input-area">
 
-                <form method="post" asp-controller="Account" asp-action="Login">
+                <form method="post" asp-controller="Account" asp-action="LogIn">
                     <div class="user-name-or-email">
-                        <input id="accountOrEmail" type="text" name="Account" placeholder="使用者名稱或 email" required>
+                        <input id="account" type="text" name="Account" placeholder="使用者名稱或 email" required>
                     </div>
                     <div class="passwords">
                         <input id="password" type="password" name="Password" minlength="8" required placeholder="密碼" />

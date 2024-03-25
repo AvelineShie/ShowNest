@@ -15,9 +15,9 @@ namespace ShowNest.Web
         {
             var builder = WebApplication.CreateBuilder(args);
 
-            // ¨ú±o²ÕºA¤¤¸ê®Æ®w³s½u³]©w
+            // å–å¾—çµ„æ…‹ä¸­è³‡æ–™åº«é€£ç·šè¨­å®š
             string connectionString = builder.Configuration.GetConnectionString("DatabaseContext");
-            //¦bDI Containerµù¥UEF CoreªºDbContext
+            //åœ¨DI Containerè¨»å†ŠEF Coreçš„DbContext
             builder.Services.AddDbContext<DatabaseContext>(options => options.UseSqlServer(connectionString));
 
             // Registration Service
@@ -33,7 +33,7 @@ namespace ShowNest.Web
             builder.Services.AddScoped<EventIndexService>();
 
 
-            //// Facebook Data ´ú¸Õ¤¤
+            //// Facebook Data æ¸¬è©¦ä¸­
             //builder.Services.AddAuthentication().AddFacebook(opt =>
             //{
             //    opt.ClientId = "";
@@ -57,11 +57,16 @@ namespace ShowNest.Web
 
             app.UseAuthorization();
 
-            ///´ú¸Õ¥Î¸ô¥Ñ
+            ///æ¸¬è©¦ç”¨è·¯ç”±
             //app.MapControllerRoute(
             //    name: "organizationEvents",
             //    pattern: "{OrganizationId}/{controller=Events}/{action=Index}/{EventId?}");
-            ///¥H¤W´ú¸Õ¤¤--------------------------------------------------------------------------------------------
+            ///ä»¥ä¸Šæ¸¬è©¦ä¸­--------------------------------------------------------------------------------------------
+
+            app.MapControllerRoute(
+                name: "eventPages",
+                pattern: "Events/{page=1}",
+        defaults: new { controller = "Events", action = "Index"});
 
             app.MapControllerRoute(
             name: "NewEvent",
@@ -89,9 +94,8 @@ namespace ShowNest.Web
 
             app.MapControllerRoute(
                 name: "default",
-                pattern: "{controller=Home}/{action=Index}/{id?}");
+                pattern: "{controller=Home}/{action=Index}");
 
-            
             app.Run();
         }
     }

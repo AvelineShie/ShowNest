@@ -269,7 +269,7 @@
             </div>
             <span class="note"><i class="fa-solid fa-circle-info"></i>  如果您的活動應適用文化部成年禮金「文化幣」折抵，請在建立活動後聯絡 SHOWNEST 審查開通。</span>
             <div class="pages-change">
-                <button type="button" class="btn btn-outline-secondary" onclick="window.location.href='@ViewContext.HttpContext.Request.Headers["Referer"].ToString()''">上一頁</button>
+                <button type="button" class="btn btn-outline-secondary" onclick="window.location.href='@Url.Action("SetTicket", "Dashboard")'">上一頁</button>
                 <button type="button" class="btn btn-outline-secondary" onclick="window.location.href='@Url.Action("EventHub", "Dashboard")'" id="send">送出</button>
             </div>
         </div>

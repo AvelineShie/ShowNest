@@ -2,6 +2,10 @@
 using Infrastructure.Data;
 using Newtonsoft.Json;
 using ApplicationCore.Entities;
+using Microsoft.AspNetCore.Authentication.Cookies;
+using Microsoft.AspNetCore.Authentication;
+using System.Security.Claims;
+using Microsoft.CodeAnalysis.Elfie.Extensions;
 
 namespace ShowNest.Web.Controllers
 {
@@ -11,6 +15,7 @@ namespace ShowNest.Web.Controllers
         public AccountController(DatabaseContext context)
         {
             _context = context;
+            //_context.Database.EnsureCreated();
         }
         public IActionResult UserEdit()
         {
@@ -89,7 +94,7 @@ namespace ShowNest.Web.Controllers
         {
             return View();
         }
-        //登入起點
+        ////登入起點
         [HttpGet]
         public IActionResult LogIn()
         {
@@ -97,14 +102,21 @@ namespace ShowNest.Web.Controllers
         }
 
         [HttpPost]
-        public async Task<IActionResult> LogIn(LogInInfo LogInInfo)
+        [ValidateAntiForgeryToken]
+        public async Task<IActionResult> LogIn(LoginViewModel Login)
         {
-            var dbUser = await _context.LogInInfos
-                .FirstOrDefaultAsync(a => a.Account == LogInInfo.Account && a.Password == LogInInfo.Password);
+            //var passwordToSHA256 = Login.Password.ToSHA256();
+            //資料庫存入尚未加密，之後增加
             //Account與Email擇一登入還沒完成，目前只能使用Account登入
+
+            var dbUser = await _context.LogInInfos.
+                FirstOrDefaultAsync(a => a.Account == Login.Account && a.Password == Login.Password);
+        
+
 
             if (dbUser != null)
             {
+
                 // 登入成功，重定向到Privacy
                 return RedirectToAction("Privacy", "Home");
             }
