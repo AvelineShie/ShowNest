@@ -76,7 +76,7 @@ public partial class Organization
     /// <summary>
     /// 標記封存
     /// </summary>
-    public bool IsDeleted { get; set; }
+    public bool? IsDeleted { get; set; }
 
     /// <summary>
     /// 新增時間

@@ -363,3 +363,4 @@ MigrationBackup/
 FodyWeavers.xsd
 
 .DS_Store
+/ShowNest.Web/Models/UploadCloudinary.cs

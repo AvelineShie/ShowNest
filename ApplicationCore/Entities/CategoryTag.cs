@@ -18,12 +18,12 @@ public partial class CategoryTag
     /// <summary>
     /// 排序預設50
     /// </summary>
-    public int Sort { get; set; }
+    public int? Sort { get; set; }
 
     /// <summary>
     /// 標記刪除
     /// </summary>
-    public bool IsDeleted { get; set; }
+    public int? IsDeleted { get; set; }
 
     /// <summary>
     /// 新增時間
