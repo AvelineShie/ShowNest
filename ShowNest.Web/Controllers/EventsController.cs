@@ -226,7 +226,7 @@ namespace ShowNest.Web.Controllers
             return View();
         }
 
-        public IActionResult SelectSeats()
+        public IActionResult SeatsSelection()
         {
             return View();
         }
