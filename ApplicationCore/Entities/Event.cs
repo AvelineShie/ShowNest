@@ -28,7 +28,7 @@ public partial class Event
     /// <summary>
     /// 結束時間
     /// </summary>
-    public DateTime? EndTime { get; set; }
+    public DateTime EndTime { get; set; }
 
     /// <summary>
     /// 0線上1實體

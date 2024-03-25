@@ -5,24 +5,19 @@ namespace ShowNest.Web.Services.Organization
 {
     public class OrganizationService
     {
-        public OrganizationIndexViewModel OrganizationIndexViewModel { get; set; }
-        public OrganizationDetailService OrganizationDetailService {  get;}
-
         private readonly EventDetailService _eventDetailService;
 
         public OrganizationService(EventDetailService eventDetailService)
         {
             _eventDetailService = eventDetailService;
-            OrganizationIndexViewModel = new OrganizationIndexViewModel();
-            OrganizationDetailService=new OrganizationDetailService();
+            OrganizationIndexViewModel = new OrganizationIndexViewModel(); 
         }
-        public string GetGroupedEvents()
+
+        public OrganizationIndexViewModel OrganizationIndexViewModel { get; set; }
+
+        public (IEnumerable<IGrouping<string, EventDetail>>, IEnumerable<IGrouping<string, EventDetail>>) GetGroupedEvents()
         {
-            return "123";
+            return _eventDetailService.GetGroupedEvents();
         }
-
-
-
-
     }
 }
