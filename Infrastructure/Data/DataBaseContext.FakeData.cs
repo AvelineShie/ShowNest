@@ -1283,7 +1283,7 @@ namespace Infrastructure.Data
                     IsDeleted = false,
                     CreatedAt = DateTime.Now,
                     EditedAt = null,
-                    CheckCode="QRcode"
+                    CheckCode=123
                 },
                 new Ticket
                 {
@@ -1296,7 +1296,7 @@ namespace Infrastructure.Data
                     IsDeleted = false,
                     CreatedAt = DateTime.Now.AddDays(-1),
                     EditedAt = DateTime.Now,
-                    CheckCode = "QRcode"
+                    CheckCode = 123
                 },
                 new Ticket
                 {
@@ -1309,7 +1309,7 @@ namespace Infrastructure.Data
                     IsDeleted = true,
                     CreatedAt = DateTime.Now.AddDays(-2),
                     EditedAt = null,
-                    CheckCode = "QRcode"
+                    CheckCode = 123
                 },
                 new Ticket
                 {
@@ -1322,7 +1322,7 @@ namespace Infrastructure.Data
                     IsDeleted = false,
                     CreatedAt = DateTime.Now,
                     EditedAt = null,
-                    CheckCode = "QRcode"
+                    CheckCode = 123
                 },
                 new Ticket
                {
@@ -1335,7 +1335,7 @@ namespace Infrastructure.Data
                    IsDeleted = false,
                    CreatedAt = DateTime.Now.AddDays(-1),
                    EditedAt = DateTime.Now,
-                    CheckCode = "QRcode"
+                    CheckCode = 123
                 }
             );
             modelBuilder.Entity<ArchiveOrder>().HasData(
