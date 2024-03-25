@@ -16,6 +16,7 @@
     <EmbeddedResource Remove="Services\NewFolder\**" />
     <None Remove="Services\Dashboard\**" />
     <None Remove="Services\NewFolder\**" />
+    <None Include="wwwroot\SeatsData.json" />
   </ItemGroup>
 
   <ItemGroup>
