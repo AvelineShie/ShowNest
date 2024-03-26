@@ -14,7 +14,7 @@ namespace Infrastructure.Data
         static void FakeDataFilling(ModelBuilder modelBuilder)
         {
 
-       //--------------------SEAT-----------------------------------
+            //--------------------SEAT-----------------------------------
             modelBuilder.Entity<Seat>().HasData(
                new Seat
                {
@@ -645,8 +645,7700 @@ namespace Infrastructure.Data
                    CreatedAt = DateTime.Now,
                    EditedAt = DateTime.Now,
                    IsDeleted = false
+               },
+               new Seat
+               {
+                   Id = 1,
+                   SeatAreaId = 2,
+                   Number = "1排1號",
+                   Status = 1,
+                   CreatedAt = DateTime.Now,
+                   EditedAt = DateTime.Now,
+                   IsDeleted = false
+               },
+               new Seat
+               {
+                   Id = 2,
+                   SeatAreaId = 2,
+                   Number = "1排2號",
+                   Status = 1,
+                   CreatedAt = DateTime.Now,
+                   EditedAt = DateTime.Now,
+                   IsDeleted = false
+               },
+               new Seat
+               {
+                   Id = 3,
+                   SeatAreaId = 2,
+                   Number = "1排3號",
+                   Status = 1,
+                   CreatedAt = DateTime.Now,
+                   EditedAt = DateTime.Now,
+                   IsDeleted = false
+               },
+               new Seat
+               {
+                   Id = 4,
+                   SeatAreaId = 2,
+                   Number = "1排4號",
+                   Status = 1,
+                   CreatedAt = DateTime.Now,
+                   EditedAt = DateTime.Now,
+                   IsDeleted = false
+               },
+               new Seat
+               {
+                   Id = 5,
+                   SeatAreaId = 2,
+                   Number = "1排5號",
+                   Status = 1,
+                   CreatedAt = DateTime.Now,
+                   EditedAt = DateTime.Now,
+                   IsDeleted = false
+               },
+               new Seat
+               {
+                   Id = 6,
+                   SeatAreaId = 2,
+                   Number = "1排6號",
+                   Status = 1,
+                   CreatedAt = DateTime.Now,
+                   EditedAt = DateTime.Now,
+                   IsDeleted = false
+               },
+               new Seat
+               {
+                   Id = 7,
+                   SeatAreaId = 2,
+                   Number = "1排7號",
+                   Status = 1,
+                   CreatedAt = DateTime.Now,
+                   EditedAt = DateTime.Now,
+                   IsDeleted = false
+               },
+               new Seat
+               {
+                   Id = 8,
+                   SeatAreaId = 2,
+                   Number = "1排8號",
+                   Status = 1,
+                   CreatedAt = DateTime.Now,
+                   EditedAt = DateTime.Now,
+                   IsDeleted = false
+               },
+               new Seat
+               {
+                   Id = 9,
+                   SeatAreaId = 2,
+                   Number = "1排9號",
+                   Status = 1,
+                   CreatedAt = DateTime.Now,
+                   EditedAt = DateTime.Now,
+                   IsDeleted = false
+               },
+               new Seat
+               {
+                   Id = 10,
+                   SeatAreaId = 2,
+                   Number = "1排10號",
+                   Status = 1,
+                   CreatedAt = DateTime.Now,
+                   EditedAt = DateTime.Now,
+                   IsDeleted = false
+               },
+               new Seat
+               {
+                   Id = 11,
+                   SeatAreaId = 2,
+                   Number = "1排11號",
+                   Status = 1,
+                   CreatedAt = DateTime.Now,
+                   EditedAt = DateTime.Now,
+                   IsDeleted = false
+               },
+               new Seat
+               {
+                   Id = 12,
+                   SeatAreaId = 2,
+                   Number = "1排12號",
+                   Status = 1,
+                   CreatedAt = DateTime.Now,
+                   EditedAt = DateTime.Now,
+                   IsDeleted = false
+               },
+               new Seat
+               {
+                   Id = 13,
+                   SeatAreaId = 2,
+                   Number = "1排13號",
+                   Status = 1,
+                   CreatedAt = DateTime.Now,
+                   EditedAt = DateTime.Now,
+                   IsDeleted = false
+               },
+               new Seat
+               {
+                   Id = 14,
+                   SeatAreaId = 2,
+                   Number = "1排14號",
+                   Status = 1,
+                   CreatedAt = DateTime.Now,
+                   EditedAt = DateTime.Now,
+                   IsDeleted = false
+               },
+               new Seat
+               {
+                   Id = 15,
+                   SeatAreaId = 2,
+                   Number = "1排15號",
+                   Status = 1,
+                   CreatedAt = DateTime.Now,
+                   EditedAt = DateTime.Now,
+                   IsDeleted = false
+               },
+               new Seat
+               {
+                   Id = 16,
+                   SeatAreaId = 2,
+                   Number = "1排16號",
+                   Status = 1,
+                   CreatedAt = DateTime.Now,
+                   EditedAt = DateTime.Now,
+                   IsDeleted = false
+               },
+               new Seat
+               {
+                   Id = 17,
+                   SeatAreaId = 2,
+                   Number = "1排17號",
+                   Status = 1,
+                   CreatedAt = DateTime.Now,
+                   EditedAt = DateTime.Now,
+                   IsDeleted = false
+               },
+               new Seat
+               {
+                   Id = 18,
+                   SeatAreaId = 2,
+                   Number = "2排1號",
+                   Status = 1,
+                   CreatedAt = DateTime.Now,
+                   EditedAt = DateTime.Now,
+                   IsDeleted = false
+               },
+               new Seat
+               {
+                   Id = 19,
+                   SeatAreaId = 2,
+                   Number = "2排2號",
+                   Status = 1,
+                   CreatedAt = DateTime.Now,
+                   EditedAt = DateTime.Now,
+                   IsDeleted = false
+               },
+               new Seat
+               {
+                   Id = 20,
+                   SeatAreaId = 2,
+                   Number = "2排3號",
+                   Status = 1,
+                   CreatedAt = DateTime.Now,
+                   EditedAt = DateTime.Now,
+                   IsDeleted = false
+               },
+               new Seat
+               {
+                   Id = 21,
+                   SeatAreaId = 2,
+                   Number = "2排4號",
+                   Status = 1,
+                   CreatedAt = DateTime.Now,
+                   EditedAt = DateTime.Now,
+                   IsDeleted = false
+               },
+               new Seat
+               {
+                   Id = 22,
+                   SeatAreaId = 2,
+                   Number = "2排5號",
+                   Status = 1,
+                   CreatedAt = DateTime.Now,
+                   EditedAt = DateTime.Now,
+                   IsDeleted = false
+               },
+               new Seat
+               {
+                   Id = 23,
+                   SeatAreaId = 2,
+                   Number = "2排6號",
+                   Status = 1,
+                   CreatedAt = DateTime.Now,
+                   EditedAt = DateTime.Now,
+                   IsDeleted = false
+               },
+               new Seat
+               {
+                   Id = 24,
+                   SeatAreaId = 2,
+                   Number = "2排7號",
+                   Status = 1,
+                   CreatedAt = DateTime.Now,
+                   EditedAt = DateTime.Now,
+                   IsDeleted = false
+               },
+               new Seat
+               {
+                   Id = 25,
+                   SeatAreaId = 2,
+                   Number = "2排8號",
+                   Status = 1,
+                   CreatedAt = DateTime.Now,
+                   EditedAt = DateTime.Now,
+                   IsDeleted = false
+               },
+               new Seat
+               {
+                   Id = 26,
+                   SeatAreaId = 2,
+                   Number = "2排9號",
+                   Status = 1,
+                   CreatedAt = DateTime.Now,
+                   EditedAt = DateTime.Now,
+                   IsDeleted = false
+               },
+               new Seat
+               {
+                   Id = 27,
+                   SeatAreaId = 2,
+                   Number = "2排10號",
+                   Status = 1,
+                   CreatedAt = DateTime.Now,
+                   EditedAt = DateTime.Now,
+                   IsDeleted = false
+               },
+               new Seat
+               {
+                   Id = 28,
+                   SeatAreaId = 2,
+                   Number = "2排11號",
+                   Status = 1,
+                   CreatedAt = DateTime.Now,
+                   EditedAt = DateTime.Now,
+                   IsDeleted = false
+               },
+               new Seat
+               {
+                   Id = 29,
+                   SeatAreaId = 2,
+                   Number = "2排12號",
+                   Status = 1,
+                   CreatedAt = DateTime.Now,
+                   EditedAt = DateTime.Now,
+                   IsDeleted = false
+               },
+               new Seat
+               {
+                   Id = 30,
+                   SeatAreaId = 2,
+                   Number = "2排13號",
+                   Status = 1,
+                   CreatedAt = DateTime.Now,
+                   EditedAt = DateTime.Now,
+                   IsDeleted = false
+               },
+               new Seat
+               {
+                   Id = 31,
+                   SeatAreaId = 2,
+                   Number = "2排14號",
+                   Status = 1,
+                   CreatedAt = DateTime.Now,
+                   EditedAt = DateTime.Now,
+                   IsDeleted = false
+               },
+               new Seat
+               {
+                   Id = 32,
+                   SeatAreaId = 2,
+                   Number = "2排15號",
+                   Status = 1,
+                   CreatedAt = DateTime.Now,
+                   EditedAt = DateTime.Now,
+                   IsDeleted = false
+               },
+               new Seat
+               {
+                   Id = 33,
+                   SeatAreaId = 2,
+                   Number = "2排16號",
+                   Status = 1,
+                   CreatedAt = DateTime.Now,
+                   EditedAt = DateTime.Now,
+                   IsDeleted = false
+               },
+               new Seat
+               {
+                   Id = 34,
+                   SeatAreaId = 2,
+                   Number = "2排17號",
+                   Status = 1,
+                   CreatedAt = DateTime.Now,
+                   EditedAt = DateTime.Now,
+                   IsDeleted = false
+               },
+               new Seat
+               {
+                   Id = 35,
+                   SeatAreaId = 2,
+                   Number = "3排1號",
+                   Status = 1,
+                   CreatedAt = DateTime.Now,
+                   EditedAt = DateTime.Now,
+                   IsDeleted = false
+               },
+               new Seat
+               {
+                   Id = 36,
+                   SeatAreaId = 2,
+                   Number = "3排2號",
+                   Status = 1,
+                   CreatedAt = DateTime.Now,
+                   EditedAt = DateTime.Now,
+                   IsDeleted = false
+               },
+               new Seat
+               {
+                   Id = 37,
+                   SeatAreaId = 2,
+                   Number = "3排3號",
+                   Status = 1,
+                   CreatedAt = DateTime.Now,
+                   EditedAt = DateTime.Now,
+                   IsDeleted = false
+               },
+               new Seat
+               {
+                   Id = 38,
+                   SeatAreaId = 2,
+                   Number = "3排4號",
+                   Status = 1,
+                   CreatedAt = DateTime.Now,
+                   EditedAt = DateTime.Now,
+                   IsDeleted = false
+               },
+               new Seat
+               {
+                   Id = 39,
+                   SeatAreaId = 2,
+                   Number = "3排5號",
+                   Status = 1,
+                   CreatedAt = DateTime.Now,
+                   EditedAt = DateTime.Now,
+                   IsDeleted = false
+               },
+               new Seat
+               {
+                   Id = 40,
+                   SeatAreaId = 2,
+                   Number = "3排6號",
+                   Status = 1,
+                   CreatedAt = DateTime.Now,
+                   EditedAt = DateTime.Now,
+                   IsDeleted = false
+               },
+               new Seat
+               {
+                   Id = 41,
+                   SeatAreaId = 2,
+                   Number = "3排7號",
+                   Status = 1,
+                   CreatedAt = DateTime.Now,
+                   EditedAt = DateTime.Now,
+                   IsDeleted = false
+               },
+               new Seat
+               {
+                   Id = 42,
+                   SeatAreaId = 2,
+                   Number = "3排8號",
+                   Status = 1,
+                   CreatedAt = DateTime.Now,
+                   EditedAt = DateTime.Now,
+                   IsDeleted = false
+               },
+               new Seat
+               {
+                   Id = 43,
+                   SeatAreaId = 2,
+                   Number = "3排9號",
+                   Status = 1,
+                   CreatedAt = DateTime.Now,
+                   EditedAt = DateTime.Now,
+                   IsDeleted = false
+               },
+               new Seat
+               {
+                   Id = 44,
+                   SeatAreaId = 2,
+                   Number = "3排10號",
+                   Status = 1,
+                   CreatedAt = DateTime.Now,
+                   EditedAt = DateTime.Now,
+                   IsDeleted = false
+               },
+               new Seat
+               {
+                   Id = 45,
+                   SeatAreaId = 2,
+                   Number = "3排11號",
+                   Status = 1,
+                   CreatedAt = DateTime.Now,
+                   EditedAt = DateTime.Now,
+                   IsDeleted = false
+               },
+               new Seat
+               {
+                   Id = 46,
+                   SeatAreaId = 2,
+                   Number = "3排12號",
+                   Status = 1,
+                   CreatedAt = DateTime.Now,
+                   EditedAt = DateTime.Now,
+                   IsDeleted = false
+               },
+               new Seat
+               {
+                   Id = 47,
+                   SeatAreaId = 2,
+                   Number = "3排13號",
+                   Status = 1,
+                   CreatedAt = DateTime.Now,
+                   EditedAt = DateTime.Now,
+                   IsDeleted = false
+               },
+               new Seat
+               {
+                   Id = 48,
+                   SeatAreaId = 2,
+                   Number = "3排14號",
+                   Status = 1,
+                   CreatedAt = DateTime.Now,
+                   EditedAt = DateTime.Now,
+                   IsDeleted = false
+               },
+               new Seat
+               {
+                   Id = 49,
+                   SeatAreaId = 2,
+                   Number = "3排16號",
+                   Status = 0,
+                   CreatedAt = DateTime.Now,
+                   EditedAt = DateTime.Now,
+                   IsDeleted = false
+               },
+               new Seat
+               {
+                   Id = 50,
+                   SeatAreaId = 2,
+                   Number = "3排17號",
+                   Status = 0,
+                   CreatedAt = DateTime.Now,
+                   EditedAt = DateTime.Now,
+                   IsDeleted = false
+               },
+               new Seat
+               {
+                   Id = 51,
+                   SeatAreaId = 2,
+                   Number = "4排1號",
+                   Status = 0,
+                   CreatedAt = DateTime.Now,
+                   EditedAt = DateTime.Now,
+                   IsDeleted = false
+               },
+               new Seat
+               {
+                   Id = 52,
+                   SeatAreaId = 2,
+                   Number = "4排2號",
+                   Status = 0,
+                   CreatedAt = DateTime.Now,
+                   EditedAt = DateTime.Now,
+                   IsDeleted = false
+               },
+               new Seat
+               {
+                   Id = 53,
+                   SeatAreaId = 2,
+                   Number = "4排3號",
+                   Status = 0,
+                   CreatedAt = DateTime.Now,
+                   EditedAt = DateTime.Now,
+                   IsDeleted = false
+               },
+               new Seat
+               {
+                   Id = 54,
+                   SeatAreaId = 2,
+                   Number = "4排4號",
+                   Status = 0,
+                   CreatedAt = DateTime.Now,
+                   EditedAt = DateTime.Now,
+                   IsDeleted = false
+               },
+               new Seat
+               {
+                   Id = 55,
+                   SeatAreaId = 2,
+                   Number = "4排5號",
+                   Status = 0,
+                   CreatedAt = DateTime.Now,
+                   EditedAt = DateTime.Now,
+                   IsDeleted = false
+               },
+               new Seat
+               {
+                   Id = 56,
+                   SeatAreaId = 2,
+                   Number = "4排6號",
+                   Status = 0,
+                   CreatedAt = DateTime.Now,
+                   EditedAt = DateTime.Now,
+                   IsDeleted = false
+               },
+               new Seat
+               {
+                   Id = 57,
+                   SeatAreaId = 2,
+                   Number = "4排7號",
+                   Status = 0,
+                   CreatedAt = DateTime.Now,
+                   EditedAt = DateTime.Now,
+                   IsDeleted = false
+               },
+               new Seat
+               {
+                   Id = 58,
+                   SeatAreaId = 2,
+                   Number = "4排8號",
+                   Status = 0,
+                   CreatedAt = DateTime.Now,
+                   EditedAt = DateTime.Now,
+                   IsDeleted = false
+               },
+               new Seat
+               {
+                   Id = 59,
+                   SeatAreaId = 2,
+                   Number = "4排9號",
+                   Status = 0,
+                   CreatedAt = DateTime.Now,
+                   EditedAt = DateTime.Now,
+                   IsDeleted = false
+               },
+               new Seat
+               {
+                   Id = 60,
+                   SeatAreaId = 2,
+                   Number = "4排10號",
+                   Status = 0,
+                   CreatedAt = DateTime.Now,
+                   EditedAt = DateTime.Now,
+                   IsDeleted = false
+               },
+               new Seat
+               {
+                   Id = 61,
+                   SeatAreaId = 2,
+                   Number = "4排11號",
+                   Status = 0,
+                   CreatedAt = DateTime.Now,
+                   EditedAt = DateTime.Now,
+                   IsDeleted = false
+               },
+               new Seat
+               {
+                   Id = 62,
+                   SeatAreaId = 2,
+                   Number = "4排12號",
+                   Status = 0,
+                   CreatedAt = DateTime.Now,
+                   EditedAt = DateTime.Now,
+                   IsDeleted = false
+               },
+               new Seat
+               {
+                   Id = 63,
+                   SeatAreaId = 2,
+                   Number = "4排13號",
+                   Status = 0,
+                   CreatedAt = DateTime.Now,
+                   EditedAt = DateTime.Now,
+                   IsDeleted = false
+               },
+               new Seat
+               {
+                   Id = 1,
+                   SeatAreaId = 3,
+                   Number = "1排1號",
+                   Status = 1,
+                   CreatedAt = DateTime.Now,
+                   EditedAt = DateTime.Now,
+                   IsDeleted = false
+               },
+               new Seat
+               {
+                   Id = 2,
+                   SeatAreaId = 3,
+                   Number = "1排2號",
+                   Status = 1,
+                   CreatedAt = DateTime.Now,
+                   EditedAt = DateTime.Now,
+                   IsDeleted = false
+               },
+               new Seat
+               {
+                   Id = 3,
+                   SeatAreaId = 3,
+                   Number = "1排3號",
+                   Status = 1,
+                   CreatedAt = DateTime.Now,
+                   EditedAt = DateTime.Now,
+                   IsDeleted = false
+               },
+               new Seat
+               {
+                   Id = 4,
+                   SeatAreaId = 3,
+                   Number = "1排4號",
+                   Status = 1,
+                   CreatedAt = DateTime.Now,
+                   EditedAt = DateTime.Now,
+                   IsDeleted = false
+               },
+               new Seat
+               {
+                   Id = 5,
+                   SeatAreaId = 3,
+                   Number = "1排5號",
+                   Status = 1,
+                   CreatedAt = DateTime.Now,
+                   EditedAt = DateTime.Now,
+                   IsDeleted = false
+               },
+               new Seat
+               {
+                   Id = 6,
+                   SeatAreaId = 3,
+                   Number = "1排6號",
+                   Status = 1,
+                   CreatedAt = DateTime.Now,
+                   EditedAt = DateTime.Now,
+                   IsDeleted = false
+               },
+               new Seat
+               {
+                   Id = 7,
+                   SeatAreaId = 3,
+                   Number = "1排7號",
+                   Status = 1,
+                   CreatedAt = DateTime.Now,
+                   EditedAt = DateTime.Now,
+                   IsDeleted = false
+               },
+               new Seat
+               {
+                   Id = 8,
+                   SeatAreaId = 3,
+                   Number = "1排8號",
+                   Status = 1,
+                   CreatedAt = DateTime.Now,
+                   EditedAt = DateTime.Now,
+                   IsDeleted = false
+               },
+               new Seat
+               {
+                   Id = 9,
+                   SeatAreaId = 3,
+                   Number = "1排9號",
+                   Status = 1,
+                   CreatedAt = DateTime.Now,
+                   EditedAt = DateTime.Now,
+                   IsDeleted = false
+               },
+               new Seat
+               {
+                   Id = 10,
+                   SeatAreaId = 3,
+                   Number = "1排10號",
+                   Status = 1,
+                   CreatedAt = DateTime.Now,
+                   EditedAt = DateTime.Now,
+                   IsDeleted = false
+               },
+               new Seat
+               {
+                   Id = 11,
+                   SeatAreaId = 3,
+                   Number = "1排11號",
+                   Status = 1,
+                   CreatedAt = DateTime.Now,
+                   EditedAt = DateTime.Now,
+                   IsDeleted = false
+               },
+               new Seat
+               {
+                   Id = 12,
+                   SeatAreaId = 3,
+                   Number = "1排12號",
+                   Status = 1,
+                   CreatedAt = DateTime.Now,
+                   EditedAt = DateTime.Now,
+                   IsDeleted = false
+               },
+               new Seat
+               {
+                   Id = 13,
+                   SeatAreaId = 3,
+                   Number = "1排13號",
+                   Status = 1,
+                   CreatedAt = DateTime.Now,
+                   EditedAt = DateTime.Now,
+                   IsDeleted = false
+               },
+               new Seat
+               {
+                   Id = 14,
+                   SeatAreaId = 3,
+                   Number = "1排14號",
+                   Status = 1,
+                   CreatedAt = DateTime.Now,
+                   EditedAt = DateTime.Now,
+                   IsDeleted = false
+               },
+               new Seat
+               {
+                   Id = 15,
+                   SeatAreaId = 3,
+                   Number = "1排15號",
+                   Status = 1,
+                   CreatedAt = DateTime.Now,
+                   EditedAt = DateTime.Now,
+                   IsDeleted = false
+               },
+               new Seat
+               {
+                   Id = 16,
+                   SeatAreaId = 3,
+                   Number = "1排16號",
+                   Status = 1,
+                   CreatedAt = DateTime.Now,
+                   EditedAt = DateTime.Now,
+                   IsDeleted = false
+               },
+               new Seat
+               {
+                   Id = 17,
+                   SeatAreaId = 3,
+                   Number = "1排17號",
+                   Status = 1,
+                   CreatedAt = DateTime.Now,
+                   EditedAt = DateTime.Now,
+                   IsDeleted = false
+               },
+               new Seat
+               {
+                   Id = 18,
+                   SeatAreaId = 3,
+                   Number = "2排1號",
+                   Status = 1,
+                   CreatedAt = DateTime.Now,
+                   EditedAt = DateTime.Now,
+                   IsDeleted = false
+               },
+               new Seat
+               {
+                   Id = 19,
+                   SeatAreaId = 3,
+                   Number = "2排2號",
+                   Status = 1,
+                   CreatedAt = DateTime.Now,
+                   EditedAt = DateTime.Now,
+                   IsDeleted = false
+               },
+               new Seat
+               {
+                   Id = 20,
+                   SeatAreaId = 3,
+                   Number = "2排3號",
+                   Status = 1,
+                   CreatedAt = DateTime.Now,
+                   EditedAt = DateTime.Now,
+                   IsDeleted = false
+               },
+               new Seat
+               {
+                   Id = 21,
+                   SeatAreaId = 3,
+                   Number = "2排4號",
+                   Status = 1,
+                   CreatedAt = DateTime.Now,
+                   EditedAt = DateTime.Now,
+                   IsDeleted = false
+               },
+               new Seat
+               {
+                   Id = 22,
+                   SeatAreaId = 3,
+                   Number = "2排5號",
+                   Status = 1,
+                   CreatedAt = DateTime.Now,
+                   EditedAt = DateTime.Now,
+                   IsDeleted = false
+               },
+               new Seat
+               {
+                   Id = 23,
+                   SeatAreaId = 3,
+                   Number = "2排6號",
+                   Status = 1,
+                   CreatedAt = DateTime.Now,
+                   EditedAt = DateTime.Now,
+                   IsDeleted = false
+               },
+               new Seat
+               {
+                   Id = 24,
+                   SeatAreaId = 3,
+                   Number = "2排7號",
+                   Status = 1,
+                   CreatedAt = DateTime.Now,
+                   EditedAt = DateTime.Now,
+                   IsDeleted = false
+               },
+               new Seat
+               {
+                   Id = 25,
+                   SeatAreaId = 3,
+                   Number = "2排8號",
+                   Status = 1,
+                   CreatedAt = DateTime.Now,
+                   EditedAt = DateTime.Now,
+                   IsDeleted = false
+               },
+               new Seat
+               {
+                   Id = 26,
+                   SeatAreaId = 3,
+                   Number = "2排9號",
+                   Status = 1,
+                   CreatedAt = DateTime.Now,
+                   EditedAt = DateTime.Now,
+                   IsDeleted = false
+               },
+               new Seat
+               {
+                   Id = 27,
+                   SeatAreaId = 3,
+                   Number = "2排10號",
+                   Status = 1,
+                   CreatedAt = DateTime.Now,
+                   EditedAt = DateTime.Now,
+                   IsDeleted = false
+               },
+               new Seat
+               {
+                   Id = 28,
+                   SeatAreaId = 3,
+                   Number = "2排11號",
+                   Status = 1,
+                   CreatedAt = DateTime.Now,
+                   EditedAt = DateTime.Now,
+                   IsDeleted = false
+               },
+               new Seat
+               {
+                   Id = 29,
+                   SeatAreaId = 3,
+                   Number = "2排12號",
+                   Status = 1,
+                   CreatedAt = DateTime.Now,
+                   EditedAt = DateTime.Now,
+                   IsDeleted = false
+               },
+               new Seat
+               {
+                   Id = 30,
+                   SeatAreaId = 3,
+                   Number = "2排13號",
+                   Status = 1,
+                   CreatedAt = DateTime.Now,
+                   EditedAt = DateTime.Now,
+                   IsDeleted = false
+               },
+               new Seat
+               {
+                   Id = 31,
+                   SeatAreaId = 3,
+                   Number = "2排14號",
+                   Status = 1,
+                   CreatedAt = DateTime.Now,
+                   EditedAt = DateTime.Now,
+                   IsDeleted = false
+               },
+               new Seat
+               {
+                   Id = 32,
+                   SeatAreaId = 3,
+                   Number = "2排15號",
+                   Status = 1,
+                   CreatedAt = DateTime.Now,
+                   EditedAt = DateTime.Now,
+                   IsDeleted = false
+               },
+               new Seat
+               {
+                   Id = 33,
+                   SeatAreaId = 3,
+                   Number = "2排16號",
+                   Status = 1,
+                   CreatedAt = DateTime.Now,
+                   EditedAt = DateTime.Now,
+                   IsDeleted = false
+               },
+               new Seat
+               {
+                   Id = 34,
+                   SeatAreaId = 3,
+                   Number = "2排17號",
+                   Status = 1,
+                   CreatedAt = DateTime.Now,
+                   EditedAt = DateTime.Now,
+                   IsDeleted = false
+               },
+               new Seat
+               {
+                   Id = 35,
+                   SeatAreaId = 3,
+                   Number = "3排1號",
+                   Status = 1,
+                   CreatedAt = DateTime.Now,
+                   EditedAt = DateTime.Now,
+                   IsDeleted = false
+               },
+               new Seat
+               {
+                   Id = 36,
+                   SeatAreaId = 3,
+                   Number = "3排2號",
+                   Status = 1,
+                   CreatedAt = DateTime.Now,
+                   EditedAt = DateTime.Now,
+                   IsDeleted = false
+               },
+               new Seat
+               {
+                   Id = 37,
+                   SeatAreaId = 3,
+                   Number = "3排3號",
+                   Status = 1,
+                   CreatedAt = DateTime.Now,
+                   EditedAt = DateTime.Now,
+                   IsDeleted = false
+               },
+               new Seat
+               {
+                   Id = 38,
+                   SeatAreaId = 3,
+                   Number = "3排4號",
+                   Status = 1,
+                   CreatedAt = DateTime.Now,
+                   EditedAt = DateTime.Now,
+                   IsDeleted = false
+               },
+               new Seat
+               {
+                   Id = 39,
+                   SeatAreaId = 3,
+                   Number = "3排5號",
+                   Status = 1,
+                   CreatedAt = DateTime.Now,
+                   EditedAt = DateTime.Now,
+                   IsDeleted = false
+               },
+               new Seat
+               {
+                   Id = 40,
+                   SeatAreaId = 3,
+                   Number = "3排6號",
+                   Status = 1,
+                   CreatedAt = DateTime.Now,
+                   EditedAt = DateTime.Now,
+                   IsDeleted = false
+               },
+               new Seat
+               {
+                   Id = 41,
+                   SeatAreaId = 3,
+                   Number = "3排7號",
+                   Status = 1,
+                   CreatedAt = DateTime.Now,
+                   EditedAt = DateTime.Now,
+                   IsDeleted = false
+               },
+               new Seat
+               {
+                   Id = 42,
+                   SeatAreaId = 3,
+                   Number = "3排8號",
+                   Status = 1,
+                   CreatedAt = DateTime.Now,
+                   EditedAt = DateTime.Now,
+                   IsDeleted = false
+               },
+               new Seat
+               {
+                   Id = 43,
+                   SeatAreaId = 3,
+                   Number = "3排9號",
+                   Status = 1,
+                   CreatedAt = DateTime.Now,
+                   EditedAt = DateTime.Now,
+                   IsDeleted = false
+               },
+               new Seat
+               {
+                   Id = 44,
+                   SeatAreaId = 3,
+                   Number = "3排10號",
+                   Status = 1,
+                   CreatedAt = DateTime.Now,
+                   EditedAt = DateTime.Now,
+                   IsDeleted = false
+               },
+               new Seat
+               {
+                   Id = 45,
+                   SeatAreaId = 3,
+                   Number = "3排11號",
+                   Status = 1,
+                   CreatedAt = DateTime.Now,
+                   EditedAt = DateTime.Now,
+                   IsDeleted = false
+               },
+               new Seat
+               {
+                   Id = 46,
+                   SeatAreaId = 3,
+                   Number = "3排12號",
+                   Status = 1,
+                   CreatedAt = DateTime.Now,
+                   EditedAt = DateTime.Now,
+                   IsDeleted = false
+               },
+               new Seat
+               {
+                   Id = 47,
+                   SeatAreaId = 3,
+                   Number = "3排13號",
+                   Status = 1,
+                   CreatedAt = DateTime.Now,
+                   EditedAt = DateTime.Now,
+                   IsDeleted = false
+               },
+               new Seat
+               {
+                   Id = 48,
+                   SeatAreaId = 3,
+                   Number = "3排14號",
+                   Status = 1,
+                   CreatedAt = DateTime.Now,
+                   EditedAt = DateTime.Now,
+                   IsDeleted = false
+               },
+               new Seat
+               {
+                   Id = 49,
+                   SeatAreaId = 3,
+                   Number = "3排16號",
+                   Status = 0,
+                   CreatedAt = DateTime.Now,
+                   EditedAt = DateTime.Now,
+                   IsDeleted = false
+               },
+               new Seat
+               {
+                   Id = 50,
+                   SeatAreaId = 3,
+                   Number = "3排17號",
+                   Status = 0,
+                   CreatedAt = DateTime.Now,
+                   EditedAt = DateTime.Now,
+                   IsDeleted = false
+               },
+               new Seat
+               {
+                   Id = 51,
+                   SeatAreaId = 3,
+                   Number = "4排1號",
+                   Status = 0,
+                   CreatedAt = DateTime.Now,
+                   EditedAt = DateTime.Now,
+                   IsDeleted = false
+               },
+               new Seat
+               {
+                   Id = 52,
+                   SeatAreaId = 3,
+                   Number = "4排2號",
+                   Status = 0,
+                   CreatedAt = DateTime.Now,
+                   EditedAt = DateTime.Now,
+                   IsDeleted = false
+               },
+               new Seat
+               {
+                   Id = 53,
+                   SeatAreaId = 3,
+                   Number = "4排3號",
+                   Status = 0,
+                   CreatedAt = DateTime.Now,
+                   EditedAt = DateTime.Now,
+                   IsDeleted = false
+               },
+               new Seat
+               {
+                   Id = 54,
+                   SeatAreaId = 3,
+                   Number = "4排4號",
+                   Status = 0,
+                   CreatedAt = DateTime.Now,
+                   EditedAt = DateTime.Now,
+                   IsDeleted = false
+               },
+               new Seat
+               {
+                   Id = 55,
+                   SeatAreaId = 3,
+                   Number = "4排5號",
+                   Status = 0,
+                   CreatedAt = DateTime.Now,
+                   EditedAt = DateTime.Now,
+                   IsDeleted = false
+               },
+               new Seat
+               {
+                   Id = 56,
+                   SeatAreaId = 3,
+                   Number = "4排6號",
+                   Status = 0,
+                   CreatedAt = DateTime.Now,
+                   EditedAt = DateTime.Now,
+                   IsDeleted = false
+               },
+               new Seat
+               {
+                   Id = 57,
+                   SeatAreaId = 3,
+                   Number = "4排7號",
+                   Status = 0,
+                   CreatedAt = DateTime.Now,
+                   EditedAt = DateTime.Now,
+                   IsDeleted = false
+               },
+               new Seat
+               {
+                   Id = 58,
+                   SeatAreaId = 3,
+                   Number = "4排8號",
+                   Status = 0,
+                   CreatedAt = DateTime.Now,
+                   EditedAt = DateTime.Now,
+                   IsDeleted = false
+               },
+               new Seat
+               {
+                   Id = 59,
+                   SeatAreaId = 3,
+                   Number = "4排9號",
+                   Status = 0,
+                   CreatedAt = DateTime.Now,
+                   EditedAt = DateTime.Now,
+                   IsDeleted = false
+               },
+               new Seat
+               {
+                   Id = 60,
+                   SeatAreaId = 3,
+                   Number = "4排10號",
+                   Status = 0,
+                   CreatedAt = DateTime.Now,
+                   EditedAt = DateTime.Now,
+                   IsDeleted = false
+               },
+               new Seat
+               {
+                   Id = 61,
+                   SeatAreaId = 3,
+                   Number = "4排11號",
+                   Status = 0,
+                   CreatedAt = DateTime.Now,
+                   EditedAt = DateTime.Now,
+                   IsDeleted = false
+               },
+               new Seat
+               {
+                   Id = 62,
+                   SeatAreaId = 3,
+                   Number = "4排12號",
+                   Status = 0,
+                   CreatedAt = DateTime.Now,
+                   EditedAt = DateTime.Now,
+                   IsDeleted = false
+               },
+               new Seat
+               {
+                   Id = 63,
+                   SeatAreaId = 3,
+                   Number = "4排13號",
+                   Status = 0,
+                   CreatedAt = DateTime.Now,
+                   EditedAt = DateTime.Now,
+                   IsDeleted = false
+               },
+               new Seat
+               {
+                   Id = 1,
+                   SeatAreaId = 4,
+                   Number = "1排1號",
+                   Status = 1,
+                   CreatedAt = DateTime.Now,
+                   EditedAt = DateTime.Now,
+                   IsDeleted = false
+               },
+               new Seat
+               {
+                   Id = 2,
+                   SeatAreaId = 4,
+                   Number = "1排2號",
+                   Status = 1,
+                   CreatedAt = DateTime.Now,
+                   EditedAt = DateTime.Now,
+                   IsDeleted = false
+               },
+               new Seat
+               {
+                   Id = 3,
+                   SeatAreaId = 4,
+                   Number = "1排3號",
+                   Status = 1,
+                   CreatedAt = DateTime.Now,
+                   EditedAt = DateTime.Now,
+                   IsDeleted = false
+               },
+               new Seat
+               {
+                   Id = 4,
+                   SeatAreaId = 4,
+                   Number = "1排4號",
+                   Status = 1,
+                   CreatedAt = DateTime.Now,
+                   EditedAt = DateTime.Now,
+                   IsDeleted = false
+               },
+               new Seat
+               {
+                   Id = 5,
+                   SeatAreaId = 4,
+                   Number = "1排5號",
+                   Status = 1,
+                   CreatedAt = DateTime.Now,
+                   EditedAt = DateTime.Now,
+                   IsDeleted = false
+               },
+               new Seat
+               {
+                   Id = 6,
+                   SeatAreaId = 4,
+                   Number = "1排6號",
+                   Status = 1,
+                   CreatedAt = DateTime.Now,
+                   EditedAt = DateTime.Now,
+                   IsDeleted = false
+               },
+               new Seat
+               {
+                   Id = 7,
+                   SeatAreaId = 4,
+                   Number = "1排7號",
+                   Status = 1,
+                   CreatedAt = DateTime.Now,
+                   EditedAt = DateTime.Now,
+                   IsDeleted = false
+               },
+               new Seat
+               {
+                   Id = 8,
+                   SeatAreaId = 4,
+                   Number = "1排8號",
+                   Status = 1,
+                   CreatedAt = DateTime.Now,
+                   EditedAt = DateTime.Now,
+                   IsDeleted = false
+               },
+               new Seat
+               {
+                   Id = 9,
+                   SeatAreaId = 4,
+                   Number = "1排9號",
+                   Status = 1,
+                   CreatedAt = DateTime.Now,
+                   EditedAt = DateTime.Now,
+                   IsDeleted = false
+               },
+               new Seat
+               {
+                   Id = 10,
+                   SeatAreaId = 4,
+                   Number = "1排10號",
+                   Status = 1,
+                   CreatedAt = DateTime.Now,
+                   EditedAt = DateTime.Now,
+                   IsDeleted = false
+               },
+               new Seat
+               {
+                   Id = 11,
+                   SeatAreaId = 4,
+                   Number = "1排11號",
+                   Status = 1,
+                   CreatedAt = DateTime.Now,
+                   EditedAt = DateTime.Now,
+                   IsDeleted = false
+               },
+               new Seat
+               {
+                   Id = 12,
+                   SeatAreaId = 4,
+                   Number = "1排12號",
+                   Status = 1,
+                   CreatedAt = DateTime.Now,
+                   EditedAt = DateTime.Now,
+                   IsDeleted = false
+               },
+               new Seat
+               {
+                   Id = 13,
+                   SeatAreaId = 4,
+                   Number = "1排13號",
+                   Status = 1,
+                   CreatedAt = DateTime.Now,
+                   EditedAt = DateTime.Now,
+                   IsDeleted = false
+               },
+               new Seat
+               {
+                   Id = 14,
+                   SeatAreaId = 4,
+                   Number = "1排14號",
+                   Status = 1,
+                   CreatedAt = DateTime.Now,
+                   EditedAt = DateTime.Now,
+                   IsDeleted = false
+               },
+               new Seat
+               {
+                   Id = 15,
+                   SeatAreaId = 4,
+                   Number = "1排15號",
+                   Status = 1,
+                   CreatedAt = DateTime.Now,
+                   EditedAt = DateTime.Now,
+                   IsDeleted = false
+               },
+               new Seat
+               {
+                   Id = 16,
+                   SeatAreaId = 4,
+                   Number = "1排16號",
+                   Status = 1,
+                   CreatedAt = DateTime.Now,
+                   EditedAt = DateTime.Now,
+                   IsDeleted = false
+               },
+               new Seat
+               {
+                   Id = 17,
+                   SeatAreaId = 4,
+                   Number = "1排17號",
+                   Status = 1,
+                   CreatedAt = DateTime.Now,
+                   EditedAt = DateTime.Now,
+                   IsDeleted = false
+               },
+               new Seat
+               {
+                   Id = 18,
+                   SeatAreaId = 4,
+                   Number = "2排1號",
+                   Status = 1,
+                   CreatedAt = DateTime.Now,
+                   EditedAt = DateTime.Now,
+                   IsDeleted = false
+               },
+               new Seat
+               {
+                   Id = 19,
+                   SeatAreaId = 4,
+                   Number = "2排2號",
+                   Status = 1,
+                   CreatedAt = DateTime.Now,
+                   EditedAt = DateTime.Now,
+                   IsDeleted = false
+               },
+               new Seat
+               {
+                   Id = 20,
+                   SeatAreaId = 4,
+                   Number = "2排3號",
+                   Status = 1,
+                   CreatedAt = DateTime.Now,
+                   EditedAt = DateTime.Now,
+                   IsDeleted = false
+               },
+               new Seat
+               {
+                   Id = 21,
+                   SeatAreaId = 4,
+                   Number = "2排4號",
+                   Status = 1,
+                   CreatedAt = DateTime.Now,
+                   EditedAt = DateTime.Now,
+                   IsDeleted = false
+               },
+               new Seat
+               {
+                   Id = 22,
+                   SeatAreaId = 4,
+                   Number = "2排5號",
+                   Status = 1,
+                   CreatedAt = DateTime.Now,
+                   EditedAt = DateTime.Now,
+                   IsDeleted = false
+               },
+               new Seat
+               {
+                   Id = 23,
+                   SeatAreaId = 4,
+                   Number = "2排6號",
+                   Status = 1,
+                   CreatedAt = DateTime.Now,
+                   EditedAt = DateTime.Now,
+                   IsDeleted = false
+               },
+               new Seat
+               {
+                   Id = 24,
+                   SeatAreaId = 4,
+                   Number = "2排7號",
+                   Status = 1,
+                   CreatedAt = DateTime.Now,
+                   EditedAt = DateTime.Now,
+                   IsDeleted = false
+               },
+               new Seat
+               {
+                   Id = 25,
+                   SeatAreaId = 4,
+                   Number = "2排8號",
+                   Status = 1,
+                   CreatedAt = DateTime.Now,
+                   EditedAt = DateTime.Now,
+                   IsDeleted = false
+               },
+               new Seat
+               {
+                   Id = 26,
+                   SeatAreaId = 4,
+                   Number = "2排9號",
+                   Status = 1,
+                   CreatedAt = DateTime.Now,
+                   EditedAt = DateTime.Now,
+                   IsDeleted = false
+               },
+               new Seat
+               {
+                   Id = 27,
+                   SeatAreaId = 4,
+                   Number = "2排10號",
+                   Status = 1,
+                   CreatedAt = DateTime.Now,
+                   EditedAt = DateTime.Now,
+                   IsDeleted = false
+               },
+               new Seat
+               {
+                   Id = 28,
+                   SeatAreaId = 4,
+                   Number = "2排11號",
+                   Status = 1,
+                   CreatedAt = DateTime.Now,
+                   EditedAt = DateTime.Now,
+                   IsDeleted = false
+               },
+               new Seat
+               {
+                   Id = 29,
+                   SeatAreaId = 4,
+                   Number = "2排12號",
+                   Status = 1,
+                   CreatedAt = DateTime.Now,
+                   EditedAt = DateTime.Now,
+                   IsDeleted = false
+               },
+               new Seat
+               {
+                   Id = 30,
+                   SeatAreaId = 4,
+                   Number = "2排13號",
+                   Status = 1,
+                   CreatedAt = DateTime.Now,
+                   EditedAt = DateTime.Now,
+                   IsDeleted = false
+               },
+               new Seat
+               {
+                   Id = 31,
+                   SeatAreaId = 4,
+                   Number = "2排14號",
+                   Status = 1,
+                   CreatedAt = DateTime.Now,
+                   EditedAt = DateTime.Now,
+                   IsDeleted = false
+               },
+               new Seat
+               {
+                   Id = 32,
+                   SeatAreaId = 4,
+                   Number = "2排15號",
+                   Status = 1,
+                   CreatedAt = DateTime.Now,
+                   EditedAt = DateTime.Now,
+                   IsDeleted = false
+               },
+               new Seat
+               {
+                   Id = 33,
+                   SeatAreaId = 4,
+                   Number = "2排16號",
+                   Status = 1,
+                   CreatedAt = DateTime.Now,
+                   EditedAt = DateTime.Now,
+                   IsDeleted = false
+               },
+               new Seat
+               {
+                   Id = 34,
+                   SeatAreaId = 4,
+                   Number = "2排17號",
+                   Status = 1,
+                   CreatedAt = DateTime.Now,
+                   EditedAt = DateTime.Now,
+                   IsDeleted = false
+               },
+               new Seat
+               {
+                   Id = 35,
+                   SeatAreaId = 4,
+                   Number = "3排1號",
+                   Status = 1,
+                   CreatedAt = DateTime.Now,
+                   EditedAt = DateTime.Now,
+                   IsDeleted = false
+               },
+               new Seat
+               {
+                   Id = 36,
+                   SeatAreaId = 4,
+                   Number = "3排2號",
+                   Status = 1,
+                   CreatedAt = DateTime.Now,
+                   EditedAt = DateTime.Now,
+                   IsDeleted = false
+               },
+               new Seat
+               {
+                   Id = 37,
+                   SeatAreaId = 4,
+                   Number = "3排3號",
+                   Status = 1,
+                   CreatedAt = DateTime.Now,
+                   EditedAt = DateTime.Now,
+                   IsDeleted = false
+               },
+               new Seat
+               {
+                   Id = 38,
+                   SeatAreaId = 4,
+                   Number = "3排4號",
+                   Status = 1,
+                   CreatedAt = DateTime.Now,
+                   EditedAt = DateTime.Now,
+                   IsDeleted = false
+               },
+               new Seat
+               {
+                   Id = 39,
+                   SeatAreaId = 4,
+                   Number = "3排5號",
+                   Status = 1,
+                   CreatedAt = DateTime.Now,
+                   EditedAt = DateTime.Now,
+                   IsDeleted = false
+               },
+               new Seat
+               {
+                   Id = 40,
+                   SeatAreaId = 4,
+                   Number = "3排6號",
+                   Status = 1,
+                   CreatedAt = DateTime.Now,
+                   EditedAt = DateTime.Now,
+                   IsDeleted = false
+               },
+               new Seat
+               {
+                   Id = 41,
+                   SeatAreaId = 4,
+                   Number = "3排7號",
+                   Status = 1,
+                   CreatedAt = DateTime.Now,
+                   EditedAt = DateTime.Now,
+                   IsDeleted = false
+               },
+               new Seat
+               {
+                   Id = 42,
+                   SeatAreaId = 4,
+                   Number = "3排8號",
+                   Status = 1,
+                   CreatedAt = DateTime.Now,
+                   EditedAt = DateTime.Now,
+                   IsDeleted = false
+               },
+               new Seat
+               {
+                   Id = 43,
+                   SeatAreaId = 4,
+                   Number = "3排9號",
+                   Status = 1,
+                   CreatedAt = DateTime.Now,
+                   EditedAt = DateTime.Now,
+                   IsDeleted = false
+               },
+               new Seat
+               {
+                   Id = 44,
+                   SeatAreaId = 4,
+                   Number = "3排10號",
+                   Status = 1,
+                   CreatedAt = DateTime.Now,
+                   EditedAt = DateTime.Now,
+                   IsDeleted = false
+               },
+               new Seat
+               {
+                   Id = 45,
+                   SeatAreaId = 4,
+                   Number = "3排11號",
+                   Status = 1,
+                   CreatedAt = DateTime.Now,
+                   EditedAt = DateTime.Now,
+                   IsDeleted = false
+               },
+               new Seat
+               {
+                   Id = 46,
+                   SeatAreaId = 4,
+                   Number = "3排12號",
+                   Status = 1,
+                   CreatedAt = DateTime.Now,
+                   EditedAt = DateTime.Now,
+                   IsDeleted = false
+               },
+               new Seat
+               {
+                   Id = 47,
+                   SeatAreaId = 4,
+                   Number = "3排13號",
+                   Status = 1,
+                   CreatedAt = DateTime.Now,
+                   EditedAt = DateTime.Now,
+                   IsDeleted = false
+               },
+               new Seat
+               {
+                   Id = 48,
+                   SeatAreaId = 4,
+                   Number = "3排14號",
+                   Status = 1,
+                   CreatedAt = DateTime.Now,
+                   EditedAt = DateTime.Now,
+                   IsDeleted = false
+               },
+               new Seat
+               {
+                   Id = 49,
+                   SeatAreaId = 4,
+                   Number = "3排16號",
+                   Status = 0,
+                   CreatedAt = DateTime.Now,
+                   EditedAt = DateTime.Now,
+                   IsDeleted = false
+               },
+               new Seat
+               {
+                   Id = 50,
+                   SeatAreaId = 4,
+                   Number = "3排17號",
+                   Status = 0,
+                   CreatedAt = DateTime.Now,
+                   EditedAt = DateTime.Now,
+                   IsDeleted = false
+               },
+               new Seat
+               {
+                   Id = 51,
+                   SeatAreaId = 4,
+                   Number = "4排1號",
+                   Status = 0,
+                   CreatedAt = DateTime.Now,
+                   EditedAt = DateTime.Now,
+                   IsDeleted = false
+               },
+               new Seat
+               {
+                   Id = 52,
+                   SeatAreaId = 4,
+                   Number = "4排2號",
+                   Status = 0,
+                   CreatedAt = DateTime.Now,
+                   EditedAt = DateTime.Now,
+                   IsDeleted = false
+               },
+               new Seat
+               {
+                   Id = 53,
+                   SeatAreaId = 4,
+                   Number = "4排3號",
+                   Status = 0,
+                   CreatedAt = DateTime.Now,
+                   EditedAt = DateTime.Now,
+                   IsDeleted = false
+               },
+               new Seat
+               {
+                   Id = 54,
+                   SeatAreaId = 4,
+                   Number = "4排4號",
+                   Status = 0,
+                   CreatedAt = DateTime.Now,
+                   EditedAt = DateTime.Now,
+                   IsDeleted = false
+               },
+               new Seat
+               {
+                   Id = 55,
+                   SeatAreaId = 4,
+                   Number = "4排5號",
+                   Status = 0,
+                   CreatedAt = DateTime.Now,
+                   EditedAt = DateTime.Now,
+                   IsDeleted = false
+               },
+               new Seat
+               {
+                   Id = 56,
+                   SeatAreaId = 4,
+                   Number = "4排6號",
+                   Status = 0,
+                   CreatedAt = DateTime.Now,
+                   EditedAt = DateTime.Now,
+                   IsDeleted = false
+               },
+               new Seat
+               {
+                   Id = 57,
+                   SeatAreaId = 4,
+                   Number = "4排7號",
+                   Status = 0,
+                   CreatedAt = DateTime.Now,
+                   EditedAt = DateTime.Now,
+                   IsDeleted = false
+               },
+               new Seat
+               {
+                   Id = 58,
+                   SeatAreaId = 4,
+                   Number = "4排8號",
+                   Status = 0,
+                   CreatedAt = DateTime.Now,
+                   EditedAt = DateTime.Now,
+                   IsDeleted = false
+               },
+               new Seat
+               {
+                   Id = 59,
+                   SeatAreaId = 4,
+                   Number = "4排9號",
+                   Status = 0,
+                   CreatedAt = DateTime.Now,
+                   EditedAt = DateTime.Now,
+                   IsDeleted = false
+               },
+               new Seat
+               {
+                   Id = 60,
+                   SeatAreaId = 4,
+                   Number = "4排10號",
+                   Status = 0,
+                   CreatedAt = DateTime.Now,
+                   EditedAt = DateTime.Now,
+                   IsDeleted = false
+               },
+               new Seat
+               {
+                   Id = 61,
+                   SeatAreaId = 4,
+                   Number = "4排11號",
+                   Status = 0,
+                   CreatedAt = DateTime.Now,
+                   EditedAt = DateTime.Now,
+                   IsDeleted = false
+               },
+               new Seat
+               {
+                   Id = 62,
+                   SeatAreaId = 4,
+                   Number = "4排12號",
+                   Status = 0,
+                   CreatedAt = DateTime.Now,
+                   EditedAt = DateTime.Now,
+                   IsDeleted = false
+               },
+               new Seat
+               {
+                   Id = 63,
+                   SeatAreaId = 4,
+                   Number = "4排13號",
+                   Status = 0,
+                   CreatedAt = DateTime.Now,
+                   EditedAt = DateTime.Now,
+                   IsDeleted = false
+               }, 
+               new Seat
+               {
+                   Id = 1,
+                   SeatAreaId = 5,
+                   Number = "1排1號",
+                   Status = 1,
+                   CreatedAt = DateTime.Now,
+                   EditedAt = DateTime.Now,
+                   IsDeleted = false
+               },
+               new Seat
+               {
+                   Id = 2,
+                   SeatAreaId = 5,
+                   Number = "1排2號",
+                   Status = 1,
+                   CreatedAt = DateTime.Now,
+                   EditedAt = DateTime.Now,
+                   IsDeleted = false
+               },
+               new Seat
+               {
+                   Id = 3,
+                   SeatAreaId = 5,
+                   Number = "1排3號",
+                   Status = 1,
+                   CreatedAt = DateTime.Now,
+                   EditedAt = DateTime.Now,
+                   IsDeleted = false
+               },
+               new Seat
+               {
+                   Id = 4,
+                   SeatAreaId = 5,
+                   Number = "1排4號",
+                   Status = 1,
+                   CreatedAt = DateTime.Now,
+                   EditedAt = DateTime.Now,
+                   IsDeleted = false
+               },
+               new Seat
+               {
+                   Id = 5,
+                   SeatAreaId = 5,
+                   Number = "1排5號",
+                   Status = 1,
+                   CreatedAt = DateTime.Now,
+                   EditedAt = DateTime.Now,
+                   IsDeleted = false
+               },
+               new Seat
+               {
+                   Id = 6,
+                   SeatAreaId = 5,
+                   Number = "1排6號",
+                   Status = 1,
+                   CreatedAt = DateTime.Now,
+                   EditedAt = DateTime.Now,
+                   IsDeleted = false
+               },
+               new Seat
+               {
+                   Id = 7,
+                   SeatAreaId = 5,
+                   Number = "1排7號",
+                   Status = 1,
+                   CreatedAt = DateTime.Now,
+                   EditedAt = DateTime.Now,
+                   IsDeleted = false
+               },
+               new Seat
+               {
+                   Id = 8,
+                   SeatAreaId = 5,
+                   Number = "1排8號",
+                   Status = 1,
+                   CreatedAt = DateTime.Now,
+                   EditedAt = DateTime.Now,
+                   IsDeleted = false
+               },
+               new Seat
+               {
+                   Id = 9,
+                   SeatAreaId = 5,
+                   Number = "1排9號",
+                   Status = 1,
+                   CreatedAt = DateTime.Now,
+                   EditedAt = DateTime.Now,
+                   IsDeleted = false
+               },
+               new Seat
+               {
+                   Id = 10,
+                   SeatAreaId = 5,
+                   Number = "1排10號",
+                   Status = 1,
+                   CreatedAt = DateTime.Now,
+                   EditedAt = DateTime.Now,
+                   IsDeleted = false
+               },
+               new Seat
+               {
+                   Id = 11,
+                   SeatAreaId = 5,
+                   Number = "1排11號",
+                   Status = 1,
+                   CreatedAt = DateTime.Now,
+                   EditedAt = DateTime.Now,
+                   IsDeleted = false
+               },
+               new Seat
+               {
+                   Id = 12,
+                   SeatAreaId = 5,
+                   Number = "1排12號",
+                   Status = 1,
+                   CreatedAt = DateTime.Now,
+                   EditedAt = DateTime.Now,
+                   IsDeleted = false
+               },
+               new Seat
+               {
+                   Id = 13,
+                   SeatAreaId = 5,
+                   Number = "1排13號",
+                   Status = 1,
+                   CreatedAt = DateTime.Now,
+                   EditedAt = DateTime.Now,
+                   IsDeleted = false
+               },
+               new Seat
+               {
+                   Id = 14,
+                   SeatAreaId = 5,
+                   Number = "1排14號",
+                   Status = 1,
+                   CreatedAt = DateTime.Now,
+                   EditedAt = DateTime.Now,
+                   IsDeleted = false
+               },
+               new Seat
+               {
+                   Id = 15,
+                   SeatAreaId = 5,
+                   Number = "1排15號",
+                   Status = 1,
+                   CreatedAt = DateTime.Now,
+                   EditedAt = DateTime.Now,
+                   IsDeleted = false
+               },
+               new Seat
+               {
+                   Id = 16,
+                   SeatAreaId = 5,
+                   Number = "1排16號",
+                   Status = 1,
+                   CreatedAt = DateTime.Now,
+                   EditedAt = DateTime.Now,
+                   IsDeleted = false
+               },
+               new Seat
+               {
+                   Id = 17,
+                   SeatAreaId = 5,
+                   Number = "1排17號",
+                   Status = 1,
+                   CreatedAt = DateTime.Now,
+                   EditedAt = DateTime.Now,
+                   IsDeleted = false
+               },
+               new Seat
+               {
+                   Id = 18,
+                   SeatAreaId = 5,
+                   Number = "2排1號",
+                   Status = 1,
+                   CreatedAt = DateTime.Now,
+                   EditedAt = DateTime.Now,
+                   IsDeleted = false
+               },
+               new Seat
+               {
+                   Id = 19,
+                   SeatAreaId = 5,
+                   Number = "2排2號",
+                   Status = 1,
+                   CreatedAt = DateTime.Now,
+                   EditedAt = DateTime.Now,
+                   IsDeleted = false
+               },
+               new Seat
+               {
+                   Id = 20,
+                   SeatAreaId = 5,
+                   Number = "2排3號",
+                   Status = 1,
+                   CreatedAt = DateTime.Now,
+                   EditedAt = DateTime.Now,
+                   IsDeleted = false
+               },
+               new Seat
+               {
+                   Id = 21,
+                   SeatAreaId = 5,
+                   Number = "2排4號",
+                   Status = 1,
+                   CreatedAt = DateTime.Now,
+                   EditedAt = DateTime.Now,
+                   IsDeleted = false
+               },
+               new Seat
+               {
+                   Id = 22,
+                   SeatAreaId = 5,
+                   Number = "2排5號",
+                   Status = 1,
+                   CreatedAt = DateTime.Now,
+                   EditedAt = DateTime.Now,
+                   IsDeleted = false
+               },
+               new Seat
+               {
+                   Id = 23,
+                   SeatAreaId = 5,
+                   Number = "2排6號",
+                   Status = 1,
+                   CreatedAt = DateTime.Now,
+                   EditedAt = DateTime.Now,
+                   IsDeleted = false
+               },
+               new Seat
+               {
+                   Id = 24,
+                   SeatAreaId = 5,
+                   Number = "2排7號",
+                   Status = 1,
+                   CreatedAt = DateTime.Now,
+                   EditedAt = DateTime.Now,
+                   IsDeleted = false
+               },
+               new Seat
+               {
+                   Id = 25,
+                   SeatAreaId = 5,
+                   Number = "2排8號",
+                   Status = 1,
+                   CreatedAt = DateTime.Now,
+                   EditedAt = DateTime.Now,
+                   IsDeleted = false
+               },
+               new Seat
+               {
+                   Id = 26,
+                   SeatAreaId = 5,
+                   Number = "2排9號",
+                   Status = 1,
+                   CreatedAt = DateTime.Now,
+                   EditedAt = DateTime.Now,
+                   IsDeleted = false
+               },
+               new Seat
+               {
+                   Id = 27,
+                   SeatAreaId = 5,
+                   Number = "2排10號",
+                   Status = 1,
+                   CreatedAt = DateTime.Now,
+                   EditedAt = DateTime.Now,
+                   IsDeleted = false
+               },
+               new Seat
+               {
+                   Id = 28,
+                   SeatAreaId = 5,
+                   Number = "2排11號",
+                   Status = 1,
+                   CreatedAt = DateTime.Now,
+                   EditedAt = DateTime.Now,
+                   IsDeleted = false
+               },
+               new Seat
+               {
+                   Id = 29,
+                   SeatAreaId = 5,
+                   Number = "2排12號",
+                   Status = 1,
+                   CreatedAt = DateTime.Now,
+                   EditedAt = DateTime.Now,
+                   IsDeleted = false
+               },
+               new Seat
+               {
+                   Id = 30,
+                   SeatAreaId = 5,
+                   Number = "2排13號",
+                   Status = 1,
+                   CreatedAt = DateTime.Now,
+                   EditedAt = DateTime.Now,
+                   IsDeleted = false
+               },
+               new Seat
+               {
+                   Id = 31,
+                   SeatAreaId = 5,
+                   Number = "2排14號",
+                   Status = 1,
+                   CreatedAt = DateTime.Now,
+                   EditedAt = DateTime.Now,
+                   IsDeleted = false
+               },
+               new Seat
+               {
+                   Id = 32,
+                   SeatAreaId = 5,
+                   Number = "2排15號",
+                   Status = 1,
+                   CreatedAt = DateTime.Now,
+                   EditedAt = DateTime.Now,
+                   IsDeleted = false
+               },
+               new Seat
+               {
+                   Id = 33,
+                   SeatAreaId = 5,
+                   Number = "2排16號",
+                   Status = 1,
+                   CreatedAt = DateTime.Now,
+                   EditedAt = DateTime.Now,
+                   IsDeleted = false
+               },
+               new Seat
+               {
+                   Id = 34,
+                   SeatAreaId = 5,
+                   Number = "2排17號",
+                   Status = 1,
+                   CreatedAt = DateTime.Now,
+                   EditedAt = DateTime.Now,
+                   IsDeleted = false
+               },
+               new Seat
+               {
+                   Id = 35,
+                   SeatAreaId = 5,
+                   Number = "3排1號",
+                   Status = 1,
+                   CreatedAt = DateTime.Now,
+                   EditedAt = DateTime.Now,
+                   IsDeleted = false
+               },
+               new Seat
+               {
+                   Id = 36,
+                   SeatAreaId = 5,
+                   Number = "3排2號",
+                   Status = 1,
+                   CreatedAt = DateTime.Now,
+                   EditedAt = DateTime.Now,
+                   IsDeleted = false
+               },
+               new Seat
+               {
+                   Id = 37,
+                   SeatAreaId = 5,
+                   Number = "3排3號",
+                   Status = 1,
+                   CreatedAt = DateTime.Now,
+                   EditedAt = DateTime.Now,
+                   IsDeleted = false
+               },
+               new Seat
+               {
+                   Id = 38,
+                   SeatAreaId = 5,
+                   Number = "3排4號",
+                   Status = 1,
+                   CreatedAt = DateTime.Now,
+                   EditedAt = DateTime.Now,
+                   IsDeleted = false
+               },
+               new Seat
+               {
+                   Id = 39,
+                   SeatAreaId = 5,
+                   Number = "3排5號",
+                   Status = 1,
+                   CreatedAt = DateTime.Now,
+                   EditedAt = DateTime.Now,
+                   IsDeleted = false
+               },
+               new Seat
+               {
+                   Id = 40,
+                   SeatAreaId = 5,
+                   Number = "3排6號",
+                   Status = 1,
+                   CreatedAt = DateTime.Now,
+                   EditedAt = DateTime.Now,
+                   IsDeleted = false
+               },
+               new Seat
+               {
+                   Id = 41,
+                   SeatAreaId = 5,
+                   Number = "3排7號",
+                   Status = 1,
+                   CreatedAt = DateTime.Now,
+                   EditedAt = DateTime.Now,
+                   IsDeleted = false
+               },
+               new Seat
+               {
+                   Id = 42,
+                   SeatAreaId = 5,
+                   Number = "3排8號",
+                   Status = 1,
+                   CreatedAt = DateTime.Now,
+                   EditedAt = DateTime.Now,
+                   IsDeleted = false
+               },
+               new Seat
+               {
+                   Id = 43,
+                   SeatAreaId = 5,
+                   Number = "3排9號",
+                   Status = 1,
+                   CreatedAt = DateTime.Now,
+                   EditedAt = DateTime.Now,
+                   IsDeleted = false
+               },
+               new Seat
+               {
+                   Id = 44,
+                   SeatAreaId = 5,
+                   Number = "3排10號",
+                   Status = 1,
+                   CreatedAt = DateTime.Now,
+                   EditedAt = DateTime.Now,
+                   IsDeleted = false
+               },
+               new Seat
+               {
+                   Id = 45,
+                   SeatAreaId = 5,
+                   Number = "3排11號",
+                   Status = 1,
+                   CreatedAt = DateTime.Now,
+                   EditedAt = DateTime.Now,
+                   IsDeleted = false
+               },
+               new Seat
+               {
+                   Id = 46,
+                   SeatAreaId = 5,
+                   Number = "3排12號",
+                   Status = 1,
+                   CreatedAt = DateTime.Now,
+                   EditedAt = DateTime.Now,
+                   IsDeleted = false
+               },
+               new Seat
+               {
+                   Id = 47,
+                   SeatAreaId = 5,
+                   Number = "3排13號",
+                   Status = 1,
+                   CreatedAt = DateTime.Now,
+                   EditedAt = DateTime.Now,
+                   IsDeleted = false
+               },
+               new Seat
+               {
+                   Id = 48,
+                   SeatAreaId = 5,
+                   Number = "3排14號",
+                   Status = 1,
+                   CreatedAt = DateTime.Now,
+                   EditedAt = DateTime.Now,
+                   IsDeleted = false
+               },
+               new Seat
+               {
+                   Id = 49,
+                   SeatAreaId = 5,
+                   Number = "3排16號",
+                   Status = 0,
+                   CreatedAt = DateTime.Now,
+                   EditedAt = DateTime.Now,
+                   IsDeleted = false
+               },
+               new Seat
+               {
+                   Id = 50,
+                   SeatAreaId = 5,
+                   Number = "3排17號",
+                   Status = 0,
+                   CreatedAt = DateTime.Now,
+                   EditedAt = DateTime.Now,
+                   IsDeleted = false
+               },
+               new Seat
+               {
+                   Id = 51,
+                   SeatAreaId = 5,
+                   Number = "4排1號",
+                   Status = 0,
+                   CreatedAt = DateTime.Now,
+                   EditedAt = DateTime.Now,
+                   IsDeleted = false
+               },
+               new Seat
+               {
+                   Id = 52,
+                   SeatAreaId = 5,
+                   Number = "4排2號",
+                   Status = 0,
+                   CreatedAt = DateTime.Now,
+                   EditedAt = DateTime.Now,
+                   IsDeleted = false
+               },
+               new Seat
+               {
+                   Id = 53,
+                   SeatAreaId = 5,
+                   Number = "4排3號",
+                   Status = 0,
+                   CreatedAt = DateTime.Now,
+                   EditedAt = DateTime.Now,
+                   IsDeleted = false
+               },
+               new Seat
+               {
+                   Id = 54,
+                   SeatAreaId = 5,
+                   Number = "4排4號",
+                   Status = 0,
+                   CreatedAt = DateTime.Now,
+                   EditedAt = DateTime.Now,
+                   IsDeleted = false
+               },
+               new Seat
+               {
+                   Id = 55,
+                   SeatAreaId = 5,
+                   Number = "4排5號",
+                   Status = 0,
+                   CreatedAt = DateTime.Now,
+                   EditedAt = DateTime.Now,
+                   IsDeleted = false
+               },
+               new Seat
+               {
+                   Id = 56,
+                   SeatAreaId = 5,
+                   Number = "4排6號",
+                   Status = 0,
+                   CreatedAt = DateTime.Now,
+                   EditedAt = DateTime.Now,
+                   IsDeleted = false
+               },
+               new Seat
+               {
+                   Id = 57,
+                   SeatAreaId = 5,
+                   Number = "4排7號",
+                   Status = 0,
+                   CreatedAt = DateTime.Now,
+                   EditedAt = DateTime.Now,
+                   IsDeleted = false
+               },
+               new Seat
+               {
+                   Id = 58,
+                   SeatAreaId = 5,
+                   Number = "4排8號",
+                   Status = 0,
+                   CreatedAt = DateTime.Now,
+                   EditedAt = DateTime.Now,
+                   IsDeleted = false
+               },
+               new Seat
+               {
+                   Id = 59,
+                   SeatAreaId = 5,
+                   Number = "4排9號",
+                   Status = 0,
+                   CreatedAt = DateTime.Now,
+                   EditedAt = DateTime.Now,
+                   IsDeleted = false
+               },
+               new Seat
+               {
+                   Id = 60,
+                   SeatAreaId = 5,
+                   Number = "4排10號",
+                   Status = 0,
+                   CreatedAt = DateTime.Now,
+                   EditedAt = DateTime.Now,
+                   IsDeleted = false
+               },
+               new Seat
+               {
+                   Id = 61,
+                   SeatAreaId = 5,
+                   Number = "4排11號",
+                   Status = 0,
+                   CreatedAt = DateTime.Now,
+                   EditedAt = DateTime.Now,
+                   IsDeleted = false
+               },
+               new Seat
+               {
+                   Id = 62,
+                   SeatAreaId = 5,
+                   Number = "4排12號",
+                   Status = 0,
+                   CreatedAt = DateTime.Now,
+                   EditedAt = DateTime.Now,
+                   IsDeleted = false
+               },
+               new Seat
+               {
+                   Id = 63,
+                   SeatAreaId = 5,
+                   Number = "4排13號",
+                   Status = 0,
+                   CreatedAt = DateTime.Now,
+                   EditedAt = DateTime.Now,
+                   IsDeleted = false
+               }, 
+               new Seat
+               {
+                   Id = 1,
+                   SeatAreaId = 6,
+                   Number = "1排1號",
+                   Status = 1,
+                   CreatedAt = DateTime.Now,
+                   EditedAt = DateTime.Now,
+                   IsDeleted = false
+               },
+               new Seat
+               {
+                   Id = 2,
+                   SeatAreaId = 6,
+                   Number = "1排2號",
+                   Status = 1,
+                   CreatedAt = DateTime.Now,
+                   EditedAt = DateTime.Now,
+                   IsDeleted = false
+               },
+               new Seat
+               {
+                   Id = 3,
+                   SeatAreaId = 6,
+                   Number = "1排3號",
+                   Status = 1,
+                   CreatedAt = DateTime.Now,
+                   EditedAt = DateTime.Now,
+                   IsDeleted = false
+               },
+               new Seat
+               {
+                   Id = 4,
+                   SeatAreaId = 6,
+                   Number = "1排4號",
+                   Status = 1,
+                   CreatedAt = DateTime.Now,
+                   EditedAt = DateTime.Now,
+                   IsDeleted = false
+               },
+               new Seat
+               {
+                   Id = 5,
+                   SeatAreaId = 6,
+                   Number = "1排5號",
+                   Status = 1,
+                   CreatedAt = DateTime.Now,
+                   EditedAt = DateTime.Now,
+                   IsDeleted = false
+               },
+               new Seat
+               {
+                   Id = 6,
+                   SeatAreaId = 6,
+                   Number = "1排6號",
+                   Status = 1,
+                   CreatedAt = DateTime.Now,
+                   EditedAt = DateTime.Now,
+                   IsDeleted = false
+               },
+               new Seat
+               {
+                   Id = 7,
+                   SeatAreaId = 6,
+                   Number = "1排7號",
+                   Status = 1,
+                   CreatedAt = DateTime.Now,
+                   EditedAt = DateTime.Now,
+                   IsDeleted = false
+               },
+               new Seat
+               {
+                   Id = 8,
+                   SeatAreaId = 6,
+                   Number = "1排8號",
+                   Status = 1,
+                   CreatedAt = DateTime.Now,
+                   EditedAt = DateTime.Now,
+                   IsDeleted = false
+               },
+               new Seat
+               {
+                   Id = 9,
+                   SeatAreaId = 6,
+                   Number = "1排9號",
+                   Status = 1,
+                   CreatedAt = DateTime.Now,
+                   EditedAt = DateTime.Now,
+                   IsDeleted = false
+               },
+               new Seat
+               {
+                   Id = 10,
+                   SeatAreaId = 6,
+                   Number = "1排10號",
+                   Status = 1,
+                   CreatedAt = DateTime.Now,
+                   EditedAt = DateTime.Now,
+                   IsDeleted = false
+               },
+               new Seat
+               {
+                   Id = 11,
+                   SeatAreaId = 6,
+                   Number = "1排11號",
+                   Status = 1,
+                   CreatedAt = DateTime.Now,
+                   EditedAt = DateTime.Now,
+                   IsDeleted = false
+               },
+               new Seat
+               {
+                   Id = 12,
+                   SeatAreaId = 6,
+                   Number = "1排12號",
+                   Status = 1,
+                   CreatedAt = DateTime.Now,
+                   EditedAt = DateTime.Now,
+                   IsDeleted = false
+               },
+               new Seat
+               {
+                   Id = 13,
+                   SeatAreaId = 6,
+                   Number = "1排13號",
+                   Status = 1,
+                   CreatedAt = DateTime.Now,
+                   EditedAt = DateTime.Now,
+                   IsDeleted = false
+               },
+               new Seat
+               {
+                   Id = 14,
+                   SeatAreaId = 6,
+                   Number = "1排14號",
+                   Status = 1,
+                   CreatedAt = DateTime.Now,
+                   EditedAt = DateTime.Now,
+                   IsDeleted = false
+               },
+               new Seat
+               {
+                   Id = 15,
+                   SeatAreaId = 6,
+                   Number = "1排15號",
+                   Status = 1,
+                   CreatedAt = DateTime.Now,
+                   EditedAt = DateTime.Now,
+                   IsDeleted = false
+               },
+               new Seat
+               {
+                   Id = 16,
+                   SeatAreaId = 6,
+                   Number = "1排16號",
+                   Status = 1,
+                   CreatedAt = DateTime.Now,
+                   EditedAt = DateTime.Now,
+                   IsDeleted = false
+               },
+               new Seat
+               {
+                   Id = 17,
+                   SeatAreaId = 6,
+                   Number = "1排17號",
+                   Status = 1,
+                   CreatedAt = DateTime.Now,
+                   EditedAt = DateTime.Now,
+                   IsDeleted = false
+               },
+               new Seat
+               {
+                   Id = 18,
+                   SeatAreaId = 6,
+                   Number = "2排1號",
+                   Status = 1,
+                   CreatedAt = DateTime.Now,
+                   EditedAt = DateTime.Now,
+                   IsDeleted = false
+               },
+               new Seat
+               {
+                   Id = 19,
+                   SeatAreaId = 6,
+                   Number = "2排2號",
+                   Status = 1,
+                   CreatedAt = DateTime.Now,
+                   EditedAt = DateTime.Now,
+                   IsDeleted = false
+               },
+               new Seat
+               {
+                   Id = 20,
+                   SeatAreaId = 6,
+                   Number = "2排3號",
+                   Status = 1,
+                   CreatedAt = DateTime.Now,
+                   EditedAt = DateTime.Now,
+                   IsDeleted = false
+               },
+               new Seat
+               {
+                   Id = 21,
+                   SeatAreaId = 6,
+                   Number = "2排4號",
+                   Status = 1,
+                   CreatedAt = DateTime.Now,
+                   EditedAt = DateTime.Now,
+                   IsDeleted = false
+               },
+               new Seat
+               {
+                   Id = 22,
+                   SeatAreaId = 6,
+                   Number = "2排5號",
+                   Status = 1,
+                   CreatedAt = DateTime.Now,
+                   EditedAt = DateTime.Now,
+                   IsDeleted = false
+               },
+               new Seat
+               {
+                   Id = 23,
+                   SeatAreaId = 6,
+                   Number = "2排6號",
+                   Status = 1,
+                   CreatedAt = DateTime.Now,
+                   EditedAt = DateTime.Now,
+                   IsDeleted = false
+               },
+               new Seat
+               {
+                   Id = 24,
+                   SeatAreaId = 6,
+                   Number = "2排7號",
+                   Status = 1,
+                   CreatedAt = DateTime.Now,
+                   EditedAt = DateTime.Now,
+                   IsDeleted = false
+               },
+               new Seat
+               {
+                   Id = 25,
+                   SeatAreaId = 6,
+                   Number = "2排8號",
+                   Status = 1,
+                   CreatedAt = DateTime.Now,
+                   EditedAt = DateTime.Now,
+                   IsDeleted = false
+               },
+               new Seat
+               {
+                   Id = 26,
+                   SeatAreaId = 6,
+                   Number = "2排9號",
+                   Status = 1,
+                   CreatedAt = DateTime.Now,
+                   EditedAt = DateTime.Now,
+                   IsDeleted = false
+               },
+               new Seat
+               {
+                   Id = 27,
+                   SeatAreaId = 6,
+                   Number = "2排10號",
+                   Status = 1,
+                   CreatedAt = DateTime.Now,
+                   EditedAt = DateTime.Now,
+                   IsDeleted = false
+               },
+               new Seat
+               {
+                   Id = 28,
+                   SeatAreaId = 6,
+                   Number = "2排11號",
+                   Status = 1,
+                   CreatedAt = DateTime.Now,
+                   EditedAt = DateTime.Now,
+                   IsDeleted = false
+               },
+               new Seat
+               {
+                   Id = 29,
+                   SeatAreaId = 6,
+                   Number = "2排12號",
+                   Status = 1,
+                   CreatedAt = DateTime.Now,
+                   EditedAt = DateTime.Now,
+                   IsDeleted = false
+               },
+               new Seat
+               {
+                   Id = 30,
+                   SeatAreaId = 6,
+                   Number = "2排13號",
+                   Status = 1,
+                   CreatedAt = DateTime.Now,
+                   EditedAt = DateTime.Now,
+                   IsDeleted = false
+               },
+               new Seat
+               {
+                   Id = 31,
+                   SeatAreaId = 6,
+                   Number = "2排14號",
+                   Status = 1,
+                   CreatedAt = DateTime.Now,
+                   EditedAt = DateTime.Now,
+                   IsDeleted = false
+               },
+               new Seat
+               {
+                   Id = 32,
+                   SeatAreaId = 6,
+                   Number = "2排15號",
+                   Status = 1,
+                   CreatedAt = DateTime.Now,
+                   EditedAt = DateTime.Now,
+                   IsDeleted = false
+               },
+               new Seat
+               {
+                   Id = 33,
+                   SeatAreaId = 6,
+                   Number = "2排16號",
+                   Status = 1,
+                   CreatedAt = DateTime.Now,
+                   EditedAt = DateTime.Now,
+                   IsDeleted = false
+               },
+               new Seat
+               {
+                   Id = 34,
+                   SeatAreaId = 6,
+                   Number = "2排17號",
+                   Status = 1,
+                   CreatedAt = DateTime.Now,
+                   EditedAt = DateTime.Now,
+                   IsDeleted = false
+               },
+               new Seat
+               {
+                   Id = 35,
+                   SeatAreaId = 6,
+                   Number = "3排1號",
+                   Status = 1,
+                   CreatedAt = DateTime.Now,
+                   EditedAt = DateTime.Now,
+                   IsDeleted = false
+               },
+               new Seat
+               {
+                   Id = 36,
+                   SeatAreaId = 6,
+                   Number = "3排2號",
+                   Status = 1,
+                   CreatedAt = DateTime.Now,
+                   EditedAt = DateTime.Now,
+                   IsDeleted = false
+               },
+               new Seat
+               {
+                   Id = 37,
+                   SeatAreaId = 6,
+                   Number = "3排3號",
+                   Status = 1,
+                   CreatedAt = DateTime.Now,
+                   EditedAt = DateTime.Now,
+                   IsDeleted = false
+               },
+               new Seat
+               {
+                   Id = 38,
+                   SeatAreaId = 6,
+                   Number = "3排4號",
+                   Status = 1,
+                   CreatedAt = DateTime.Now,
+                   EditedAt = DateTime.Now,
+                   IsDeleted = false
+               },
+               new Seat
+               {
+                   Id = 39,
+                   SeatAreaId = 6,
+                   Number = "3排5號",
+                   Status = 1,
+                   CreatedAt = DateTime.Now,
+                   EditedAt = DateTime.Now,
+                   IsDeleted = false
+               },
+               new Seat
+               {
+                   Id = 40,
+                   SeatAreaId = 6,
+                   Number = "3排6號",
+                   Status = 1,
+                   CreatedAt = DateTime.Now,
+                   EditedAt = DateTime.Now,
+                   IsDeleted = false
+               },
+               new Seat
+               {
+                   Id = 41,
+                   SeatAreaId = 6,
+                   Number = "3排7號",
+                   Status = 1,
+                   CreatedAt = DateTime.Now,
+                   EditedAt = DateTime.Now,
+                   IsDeleted = false
+               },
+               new Seat
+               {
+                   Id = 42,
+                   SeatAreaId = 6,
+                   Number = "3排8號",
+                   Status = 1,
+                   CreatedAt = DateTime.Now,
+                   EditedAt = DateTime.Now,
+                   IsDeleted = false
+               },
+               new Seat
+               {
+                   Id = 43,
+                   SeatAreaId = 6,
+                   Number = "3排9號",
+                   Status = 1,
+                   CreatedAt = DateTime.Now,
+                   EditedAt = DateTime.Now,
+                   IsDeleted = false
+               },
+               new Seat
+               {
+                   Id = 44,
+                   SeatAreaId = 6,
+                   Number = "3排10號",
+                   Status = 1,
+                   CreatedAt = DateTime.Now,
+                   EditedAt = DateTime.Now,
+                   IsDeleted = false
+               },
+               new Seat
+               {
+                   Id = 45,
+                   SeatAreaId = 6,
+                   Number = "3排11號",
+                   Status = 1,
+                   CreatedAt = DateTime.Now,
+                   EditedAt = DateTime.Now,
+                   IsDeleted = false
+               },
+               new Seat
+               {
+                   Id = 46,
+                   SeatAreaId = 6,
+                   Number = "3排12號",
+                   Status = 1,
+                   CreatedAt = DateTime.Now,
+                   EditedAt = DateTime.Now,
+                   IsDeleted = false
+               },
+               new Seat
+               {
+                   Id = 47,
+                   SeatAreaId = 6,
+                   Number = "3排13號",
+                   Status = 1,
+                   CreatedAt = DateTime.Now,
+                   EditedAt = DateTime.Now,
+                   IsDeleted = false
+               },
+               new Seat
+               {
+                   Id = 48,
+                   SeatAreaId = 6,
+                   Number = "3排14號",
+                   Status = 1,
+                   CreatedAt = DateTime.Now,
+                   EditedAt = DateTime.Now,
+                   IsDeleted = false
+               },
+               new Seat
+               {
+                   Id = 49,
+                   SeatAreaId = 6,
+                   Number = "3排16號",
+                   Status = 0,
+                   CreatedAt = DateTime.Now,
+                   EditedAt = DateTime.Now,
+                   IsDeleted = false
+               },
+               new Seat
+               {
+                   Id = 50,
+                   SeatAreaId = 6,
+                   Number = "3排17號",
+                   Status = 0,
+                   CreatedAt = DateTime.Now,
+                   EditedAt = DateTime.Now,
+                   IsDeleted = false
+               },
+               new Seat
+               {
+                   Id = 51,
+                   SeatAreaId = 6,
+                   Number = "4排1號",
+                   Status = 0,
+                   CreatedAt = DateTime.Now,
+                   EditedAt = DateTime.Now,
+                   IsDeleted = false
+               },
+               new Seat
+               {
+                   Id = 52,
+                   SeatAreaId = 6,
+                   Number = "4排2號",
+                   Status = 0,
+                   CreatedAt = DateTime.Now,
+                   EditedAt = DateTime.Now,
+                   IsDeleted = false
+               },
+               new Seat
+               {
+                   Id = 53,
+                   SeatAreaId = 6,
+                   Number = "4排3號",
+                   Status = 0,
+                   CreatedAt = DateTime.Now,
+                   EditedAt = DateTime.Now,
+                   IsDeleted = false
+               },
+               new Seat
+               {
+                   Id = 54,
+                   SeatAreaId = 6,
+                   Number = "4排4號",
+                   Status = 0,
+                   CreatedAt = DateTime.Now,
+                   EditedAt = DateTime.Now,
+                   IsDeleted = false
+               },
+               new Seat
+               {
+                   Id = 55,
+                   SeatAreaId = 6,
+                   Number = "4排5號",
+                   Status = 0,
+                   CreatedAt = DateTime.Now,
+                   EditedAt = DateTime.Now,
+                   IsDeleted = false
+               },
+               new Seat
+               {
+                   Id = 56,
+                   SeatAreaId = 6,
+                   Number = "4排6號",
+                   Status = 0,
+                   CreatedAt = DateTime.Now,
+                   EditedAt = DateTime.Now,
+                   IsDeleted = false
+               },
+               new Seat
+               {
+                   Id = 57,
+                   SeatAreaId = 6,
+                   Number = "4排7號",
+                   Status = 0,
+                   CreatedAt = DateTime.Now,
+                   EditedAt = DateTime.Now,
+                   IsDeleted = false
+               },
+               new Seat
+               {
+                   Id = 58,
+                   SeatAreaId = 6,
+                   Number = "4排8號",
+                   Status = 0,
+                   CreatedAt = DateTime.Now,
+                   EditedAt = DateTime.Now,
+                   IsDeleted = false
+               },
+               new Seat
+               {
+                   Id = 59,
+                   SeatAreaId = 6,
+                   Number = "4排9號",
+                   Status = 0,
+                   CreatedAt = DateTime.Now,
+                   EditedAt = DateTime.Now,
+                   IsDeleted = false
+               },
+               new Seat
+               {
+                   Id = 60,
+                   SeatAreaId = 6,
+                   Number = "4排10號",
+                   Status = 0,
+                   CreatedAt = DateTime.Now,
+                   EditedAt = DateTime.Now,
+                   IsDeleted = false
+               },
+               new Seat
+               {
+                   Id = 61,
+                   SeatAreaId = 6,
+                   Number = "4排11號",
+                   Status = 0,
+                   CreatedAt = DateTime.Now,
+                   EditedAt = DateTime.Now,
+                   IsDeleted = false
+               },
+               new Seat
+               {
+                   Id = 62,
+                   SeatAreaId = 6,
+                   Number = "4排12號",
+                   Status = 0,
+                   CreatedAt = DateTime.Now,
+                   EditedAt = DateTime.Now,
+                   IsDeleted = false
+               },
+               new Seat
+               {
+                   Id = 63,
+                   SeatAreaId = 6,
+                   Number = "4排13號",
+                   Status = 0,
+                   CreatedAt = DateTime.Now,
+                   EditedAt = DateTime.Now,
+                   IsDeleted = false
+               }, 
+               new Seat
+               {
+                   Id = 1,
+                   SeatAreaId = 7,
+                   Number = "1排1號",
+                   Status = 1,
+                   CreatedAt = DateTime.Now,
+                   EditedAt = DateTime.Now,
+                   IsDeleted = false
+               },
+               new Seat
+               {
+                   Id = 2,
+                   SeatAreaId = 7,
+                   Number = "1排2號",
+                   Status = 1,
+                   CreatedAt = DateTime.Now,
+                   EditedAt = DateTime.Now,
+                   IsDeleted = false
+               },
+               new Seat
+               {
+                   Id = 3,
+                   SeatAreaId = 7,
+                   Number = "1排3號",
+                   Status = 1,
+                   CreatedAt = DateTime.Now,
+                   EditedAt = DateTime.Now,
+                   IsDeleted = false
+               },
+               new Seat
+               {
+                   Id = 4,
+                   SeatAreaId = 7,
+                   Number = "1排4號",
+                   Status = 1,
+                   CreatedAt = DateTime.Now,
+                   EditedAt = DateTime.Now,
+                   IsDeleted = false
+               },
+               new Seat
+               {
+                   Id = 5,
+                   SeatAreaId = 7,
+                   Number = "1排5號",
+                   Status = 1,
+                   CreatedAt = DateTime.Now,
+                   EditedAt = DateTime.Now,
+                   IsDeleted = false
+               },
+               new Seat
+               {
+                   Id = 6,
+                   SeatAreaId = 7,
+                   Number = "1排6號",
+                   Status = 1,
+                   CreatedAt = DateTime.Now,
+                   EditedAt = DateTime.Now,
+                   IsDeleted = false
+               },
+               new Seat
+               {
+                   Id = 7,
+                   SeatAreaId = 7,
+                   Number = "1排7號",
+                   Status = 1,
+                   CreatedAt = DateTime.Now,
+                   EditedAt = DateTime.Now,
+                   IsDeleted = false
+               },
+               new Seat
+               {
+                   Id = 8,
+                   SeatAreaId = 7,
+                   Number = "1排8號",
+                   Status = 1,
+                   CreatedAt = DateTime.Now,
+                   EditedAt = DateTime.Now,
+                   IsDeleted = false
+               },
+               new Seat
+               {
+                   Id = 9,
+                   SeatAreaId = 7,
+                   Number = "1排9號",
+                   Status = 1,
+                   CreatedAt = DateTime.Now,
+                   EditedAt = DateTime.Now,
+                   IsDeleted = false
+               },
+               new Seat
+               {
+                   Id = 10,
+                   SeatAreaId = 7,
+                   Number = "1排10號",
+                   Status = 1,
+                   CreatedAt = DateTime.Now,
+                   EditedAt = DateTime.Now,
+                   IsDeleted = false
+               },
+               new Seat
+               {
+                   Id = 11,
+                   SeatAreaId = 7,
+                   Number = "1排11號",
+                   Status = 1,
+                   CreatedAt = DateTime.Now,
+                   EditedAt = DateTime.Now,
+                   IsDeleted = false
+               },
+               new Seat
+               {
+                   Id = 12,
+                   SeatAreaId = 7,
+                   Number = "1排12號",
+                   Status = 1,
+                   CreatedAt = DateTime.Now,
+                   EditedAt = DateTime.Now,
+                   IsDeleted = false
+               },
+               new Seat
+               {
+                   Id = 13,
+                   SeatAreaId = 7,
+                   Number = "1排13號",
+                   Status = 1,
+                   CreatedAt = DateTime.Now,
+                   EditedAt = DateTime.Now,
+                   IsDeleted = false
+               },
+               new Seat
+               {
+                   Id = 14,
+                   SeatAreaId = 7,
+                   Number = "1排14號",
+                   Status = 1,
+                   CreatedAt = DateTime.Now,
+                   EditedAt = DateTime.Now,
+                   IsDeleted = false
+               },
+               new Seat
+               {
+                   Id = 15,
+                   SeatAreaId = 7,
+                   Number = "1排15號",
+                   Status = 1,
+                   CreatedAt = DateTime.Now,
+                   EditedAt = DateTime.Now,
+                   IsDeleted = false
+               },
+               new Seat
+               {
+                   Id = 16,
+                   SeatAreaId = 7,
+                   Number = "1排16號",
+                   Status = 1,
+                   CreatedAt = DateTime.Now,
+                   EditedAt = DateTime.Now,
+                   IsDeleted = false
+               },
+               new Seat
+               {
+                   Id = 17,
+                   SeatAreaId = 7,
+                   Number = "1排17號",
+                   Status = 1,
+                   CreatedAt = DateTime.Now,
+                   EditedAt = DateTime.Now,
+                   IsDeleted = false
+               },
+               new Seat
+               {
+                   Id = 18,
+                   SeatAreaId = 7,
+                   Number = "2排1號",
+                   Status = 1,
+                   CreatedAt = DateTime.Now,
+                   EditedAt = DateTime.Now,
+                   IsDeleted = false
+               },
+               new Seat
+               {
+                   Id = 19,
+                   SeatAreaId = 7,
+                   Number = "2排2號",
+                   Status = 1,
+                   CreatedAt = DateTime.Now,
+                   EditedAt = DateTime.Now,
+                   IsDeleted = false
+               },
+               new Seat
+               {
+                   Id = 20,
+                   SeatAreaId = 7,
+                   Number = "2排3號",
+                   Status = 1,
+                   CreatedAt = DateTime.Now,
+                   EditedAt = DateTime.Now,
+                   IsDeleted = false
+               },
+               new Seat
+               {
+                   Id = 21,
+                   SeatAreaId = 7,
+                   Number = "2排4號",
+                   Status = 1,
+                   CreatedAt = DateTime.Now,
+                   EditedAt = DateTime.Now,
+                   IsDeleted = false
+               },
+               new Seat
+               {
+                   Id = 22,
+                   SeatAreaId = 7,
+                   Number = "2排5號",
+                   Status = 1,
+                   CreatedAt = DateTime.Now,
+                   EditedAt = DateTime.Now,
+                   IsDeleted = false
+               },
+               new Seat
+               {
+                   Id = 23,
+                   SeatAreaId = 7,
+                   Number = "2排6號",
+                   Status = 1,
+                   CreatedAt = DateTime.Now,
+                   EditedAt = DateTime.Now,
+                   IsDeleted = false
+               },
+               new Seat
+               {
+                   Id = 24,
+                   SeatAreaId = 7,
+                   Number = "2排7號",
+                   Status = 1,
+                   CreatedAt = DateTime.Now,
+                   EditedAt = DateTime.Now,
+                   IsDeleted = false
+               },
+               new Seat
+               {
+                   Id = 25,
+                   SeatAreaId = 7,
+                   Number = "2排8號",
+                   Status = 1,
+                   CreatedAt = DateTime.Now,
+                   EditedAt = DateTime.Now,
+                   IsDeleted = false
+               },
+               new Seat
+               {
+                   Id = 26,
+                   SeatAreaId = 7,
+                   Number = "2排9號",
+                   Status = 1,
+                   CreatedAt = DateTime.Now,
+                   EditedAt = DateTime.Now,
+                   IsDeleted = false
+               },
+               new Seat
+               {
+                   Id = 27,
+                   SeatAreaId = 7,
+                   Number = "2排10號",
+                   Status = 1,
+                   CreatedAt = DateTime.Now,
+                   EditedAt = DateTime.Now,
+                   IsDeleted = false
+               },
+               new Seat
+               {
+                   Id = 28,
+                   SeatAreaId = 7,
+                   Number = "2排11號",
+                   Status = 1,
+                   CreatedAt = DateTime.Now,
+                   EditedAt = DateTime.Now,
+                   IsDeleted = false
+               },
+               new Seat
+               {
+                   Id = 29,
+                   SeatAreaId = 7,
+                   Number = "2排12號",
+                   Status = 1,
+                   CreatedAt = DateTime.Now,
+                   EditedAt = DateTime.Now,
+                   IsDeleted = false
+               },
+               new Seat
+               {
+                   Id = 30,
+                   SeatAreaId = 7,
+                   Number = "2排13號",
+                   Status = 1,
+                   CreatedAt = DateTime.Now,
+                   EditedAt = DateTime.Now,
+                   IsDeleted = false
+               },
+               new Seat
+               {
+                   Id = 31,
+                   SeatAreaId = 7,
+                   Number = "2排14號",
+                   Status = 1,
+                   CreatedAt = DateTime.Now,
+                   EditedAt = DateTime.Now,
+                   IsDeleted = false
+               },
+               new Seat
+               {
+                   Id = 32,
+                   SeatAreaId = 7,
+                   Number = "2排15號",
+                   Status = 1,
+                   CreatedAt = DateTime.Now,
+                   EditedAt = DateTime.Now,
+                   IsDeleted = false
+               },
+               new Seat
+               {
+                   Id = 33,
+                   SeatAreaId = 7,
+                   Number = "2排16號",
+                   Status = 1,
+                   CreatedAt = DateTime.Now,
+                   EditedAt = DateTime.Now,
+                   IsDeleted = false
+               },
+               new Seat
+               {
+                   Id = 34,
+                   SeatAreaId = 7,
+                   Number = "2排17號",
+                   Status = 1,
+                   CreatedAt = DateTime.Now,
+                   EditedAt = DateTime.Now,
+                   IsDeleted = false
+               },
+               new Seat
+               {
+                   Id = 35,
+                   SeatAreaId = 7,
+                   Number = "3排1號",
+                   Status = 1,
+                   CreatedAt = DateTime.Now,
+                   EditedAt = DateTime.Now,
+                   IsDeleted = false
+               },
+               new Seat
+               {
+                   Id = 36,
+                   SeatAreaId = 7,
+                   Number = "3排2號",
+                   Status = 1,
+                   CreatedAt = DateTime.Now,
+                   EditedAt = DateTime.Now,
+                   IsDeleted = false
+               },
+               new Seat
+               {
+                   Id = 37,
+                   SeatAreaId = 7,
+                   Number = "3排3號",
+                   Status = 1,
+                   CreatedAt = DateTime.Now,
+                   EditedAt = DateTime.Now,
+                   IsDeleted = false
+               },
+               new Seat
+               {
+                   Id = 38,
+                   SeatAreaId = 7,
+                   Number = "3排4號",
+                   Status = 1,
+                   CreatedAt = DateTime.Now,
+                   EditedAt = DateTime.Now,
+                   IsDeleted = false
+               },
+               new Seat
+               {
+                   Id = 39,
+                   SeatAreaId = 7,
+                   Number = "3排5號",
+                   Status = 1,
+                   CreatedAt = DateTime.Now,
+                   EditedAt = DateTime.Now,
+                   IsDeleted = false
+               },
+               new Seat
+               {
+                   Id = 40,
+                   SeatAreaId = 7,
+                   Number = "3排6號",
+                   Status = 1,
+                   CreatedAt = DateTime.Now,
+                   EditedAt = DateTime.Now,
+                   IsDeleted = false
+               },
+               new Seat
+               {
+                   Id = 41,
+                   SeatAreaId = 7,
+                   Number = "3排7號",
+                   Status = 1,
+                   CreatedAt = DateTime.Now,
+                   EditedAt = DateTime.Now,
+                   IsDeleted = false
+               },
+               new Seat
+               {
+                   Id = 42,
+                   SeatAreaId = 7,
+                   Number = "3排8號",
+                   Status = 1,
+                   CreatedAt = DateTime.Now,
+                   EditedAt = DateTime.Now,
+                   IsDeleted = false
+               },
+               new Seat
+               {
+                   Id = 43,
+                   SeatAreaId = 7,
+                   Number = "3排9號",
+                   Status = 1,
+                   CreatedAt = DateTime.Now,
+                   EditedAt = DateTime.Now,
+                   IsDeleted = false
+               },
+               new Seat
+               {
+                   Id = 44,
+                   SeatAreaId = 7,
+                   Number = "3排10號",
+                   Status = 1,
+                   CreatedAt = DateTime.Now,
+                   EditedAt = DateTime.Now,
+                   IsDeleted = false
+               },
+               new Seat
+               {
+                   Id = 45,
+                   SeatAreaId = 7,
+                   Number = "3排11號",
+                   Status = 1,
+                   CreatedAt = DateTime.Now,
+                   EditedAt = DateTime.Now,
+                   IsDeleted = false
+               },
+               new Seat
+               {
+                   Id = 46,
+                   SeatAreaId = 7,
+                   Number = "3排12號",
+                   Status = 1,
+                   CreatedAt = DateTime.Now,
+                   EditedAt = DateTime.Now,
+                   IsDeleted = false
+               },
+               new Seat
+               {
+                   Id = 47,
+                   SeatAreaId = 7,
+                   Number = "3排13號",
+                   Status = 1,
+                   CreatedAt = DateTime.Now,
+                   EditedAt = DateTime.Now,
+                   IsDeleted = false
+               },
+               new Seat
+               {
+                   Id = 48,
+                   SeatAreaId = 7,
+                   Number = "3排14號",
+                   Status = 1,
+                   CreatedAt = DateTime.Now,
+                   EditedAt = DateTime.Now,
+                   IsDeleted = false
+               },
+               new Seat
+               {
+                   Id = 49,
+                   SeatAreaId = 7,
+                   Number = "3排16號",
+                   Status = 0,
+                   CreatedAt = DateTime.Now,
+                   EditedAt = DateTime.Now,
+                   IsDeleted = false
+               },
+               new Seat
+               {
+                   Id = 50,
+                   SeatAreaId = 7,
+                   Number = "3排17號",
+                   Status = 0,
+                   CreatedAt = DateTime.Now,
+                   EditedAt = DateTime.Now,
+                   IsDeleted = false
+               },
+               new Seat
+               {
+                   Id = 51,
+                   SeatAreaId = 7,
+                   Number = "4排1號",
+                   Status = 0,
+                   CreatedAt = DateTime.Now,
+                   EditedAt = DateTime.Now,
+                   IsDeleted = false
+               },
+               new Seat
+               {
+                   Id = 52,
+                   SeatAreaId = 7,
+                   Number = "4排2號",
+                   Status = 0,
+                   CreatedAt = DateTime.Now,
+                   EditedAt = DateTime.Now,
+                   IsDeleted = false
+               },
+               new Seat
+               {
+                   Id = 53,
+                   SeatAreaId = 7,
+                   Number = "4排3號",
+                   Status = 0,
+                   CreatedAt = DateTime.Now,
+                   EditedAt = DateTime.Now,
+                   IsDeleted = false
+               },
+               new Seat
+               {
+                   Id = 54,
+                   SeatAreaId = 7,
+                   Number = "4排4號",
+                   Status = 0,
+                   CreatedAt = DateTime.Now,
+                   EditedAt = DateTime.Now,
+                   IsDeleted = false
+               },
+               new Seat
+               {
+                   Id = 55,
+                   SeatAreaId = 7,
+                   Number = "4排5號",
+                   Status = 0,
+                   CreatedAt = DateTime.Now,
+                   EditedAt = DateTime.Now,
+                   IsDeleted = false
+               },
+               new Seat
+               {
+                   Id = 56,
+                   SeatAreaId = 7,
+                   Number = "4排6號",
+                   Status = 0,
+                   CreatedAt = DateTime.Now,
+                   EditedAt = DateTime.Now,
+                   IsDeleted = false
+               },
+               new Seat
+               {
+                   Id = 57,
+                   SeatAreaId = 7,
+                   Number = "4排7號",
+                   Status = 0,
+                   CreatedAt = DateTime.Now,
+                   EditedAt = DateTime.Now,
+                   IsDeleted = false
+               },
+               new Seat
+               {
+                   Id = 58,
+                   SeatAreaId = 7,
+                   Number = "4排8號",
+                   Status = 0,
+                   CreatedAt = DateTime.Now,
+                   EditedAt = DateTime.Now,
+                   IsDeleted = false
+               },
+               new Seat
+               {
+                   Id = 59,
+                   SeatAreaId = 7,
+                   Number = "4排9號",
+                   Status = 0,
+                   CreatedAt = DateTime.Now,
+                   EditedAt = DateTime.Now,
+                   IsDeleted = false
+               },
+               new Seat
+               {
+                   Id = 60,
+                   SeatAreaId = 7,
+                   Number = "4排10號",
+                   Status = 0,
+                   CreatedAt = DateTime.Now,
+                   EditedAt = DateTime.Now,
+                   IsDeleted = false
+               },
+               new Seat
+               {
+                   Id = 61,
+                   SeatAreaId = 7,
+                   Number = "4排11號",
+                   Status = 0,
+                   CreatedAt = DateTime.Now,
+                   EditedAt = DateTime.Now,
+                   IsDeleted = false
+               },
+               new Seat
+               {
+                   Id = 62,
+                   SeatAreaId = 7,
+                   Number = "4排12號",
+                   Status = 0,
+                   CreatedAt = DateTime.Now,
+                   EditedAt = DateTime.Now,
+                   IsDeleted = false
+               },
+               new Seat
+               {
+                   Id = 63,
+                   SeatAreaId = 7,
+                   Number = "4排13號",
+                   Status = 0,
+                   CreatedAt = DateTime.Now,
+                   EditedAt = DateTime.Now,
+                   IsDeleted = false
+               }, 
+               new Seat
+               {
+                   Id = 1,
+                   SeatAreaId = 8,
+                   Number = "1排1號",
+                   Status = 1,
+                   CreatedAt = DateTime.Now,
+                   EditedAt = DateTime.Now,
+                   IsDeleted = false
+               },
+               new Seat
+               {
+                   Id = 2,
+                   SeatAreaId = 8,
+                   Number = "1排2號",
+                   Status = 1,
+                   CreatedAt = DateTime.Now,
+                   EditedAt = DateTime.Now,
+                   IsDeleted = false
+               },
+               new Seat
+               {
+                   Id = 3,
+                   SeatAreaId = 8,
+                   Number = "1排3號",
+                   Status = 1,
+                   CreatedAt = DateTime.Now,
+                   EditedAt = DateTime.Now,
+                   IsDeleted = false
+               },
+               new Seat
+               {
+                   Id = 4,
+                   SeatAreaId = 8,
+                   Number = "1排4號",
+                   Status = 1,
+                   CreatedAt = DateTime.Now,
+                   EditedAt = DateTime.Now,
+                   IsDeleted = false
+               },
+               new Seat
+               {
+                   Id = 5,
+                   SeatAreaId = 8,
+                   Number = "1排5號",
+                   Status = 1,
+                   CreatedAt = DateTime.Now,
+                   EditedAt = DateTime.Now,
+                   IsDeleted = false
+               },
+               new Seat
+               {
+                   Id = 6,
+                   SeatAreaId = 8,
+                   Number = "1排6號",
+                   Status = 1,
+                   CreatedAt = DateTime.Now,
+                   EditedAt = DateTime.Now,
+                   IsDeleted = false
+               },
+               new Seat
+               {
+                   Id = 7,
+                   SeatAreaId = 8,
+                   Number = "1排7號",
+                   Status = 1,
+                   CreatedAt = DateTime.Now,
+                   EditedAt = DateTime.Now,
+                   IsDeleted = false
+               },
+               new Seat
+               {
+                   Id = 8,
+                   SeatAreaId = 8,
+                   Number = "1排8號",
+                   Status = 1,
+                   CreatedAt = DateTime.Now,
+                   EditedAt = DateTime.Now,
+                   IsDeleted = false
+               },
+               new Seat
+               {
+                   Id = 9,
+                   SeatAreaId = 8,
+                   Number = "1排9號",
+                   Status = 1,
+                   CreatedAt = DateTime.Now,
+                   EditedAt = DateTime.Now,
+                   IsDeleted = false
+               },
+               new Seat
+               {
+                   Id = 10,
+                   SeatAreaId = 8,
+                   Number = "1排10號",
+                   Status = 1,
+                   CreatedAt = DateTime.Now,
+                   EditedAt = DateTime.Now,
+                   IsDeleted = false
+               },
+               new Seat
+               {
+                   Id = 11,
+                   SeatAreaId = 8,
+                   Number = "1排11號",
+                   Status = 1,
+                   CreatedAt = DateTime.Now,
+                   EditedAt = DateTime.Now,
+                   IsDeleted = false
+               },
+               new Seat
+               {
+                   Id = 12,
+                   SeatAreaId = 8,
+                   Number = "1排12號",
+                   Status = 1,
+                   CreatedAt = DateTime.Now,
+                   EditedAt = DateTime.Now,
+                   IsDeleted = false
+               },
+               new Seat
+               {
+                   Id = 13,
+                   SeatAreaId = 8,
+                   Number = "1排13號",
+                   Status = 1,
+                   CreatedAt = DateTime.Now,
+                   EditedAt = DateTime.Now,
+                   IsDeleted = false
+               },
+               new Seat
+               {
+                   Id = 14,
+                   SeatAreaId = 8,
+                   Number = "1排14號",
+                   Status = 1,
+                   CreatedAt = DateTime.Now,
+                   EditedAt = DateTime.Now,
+                   IsDeleted = false
+               },
+               new Seat
+               {
+                   Id = 15,
+                   SeatAreaId = 8,
+                   Number = "1排15號",
+                   Status = 1,
+                   CreatedAt = DateTime.Now,
+                   EditedAt = DateTime.Now,
+                   IsDeleted = false
+               },
+               new Seat
+               {
+                   Id = 16,
+                   SeatAreaId = 8,
+                   Number = "1排16號",
+                   Status = 1,
+                   CreatedAt = DateTime.Now,
+                   EditedAt = DateTime.Now,
+                   IsDeleted = false
+               },
+               new Seat
+               {
+                   Id = 17,
+                   SeatAreaId = 8,
+                   Number = "1排17號",
+                   Status = 1,
+                   CreatedAt = DateTime.Now,
+                   EditedAt = DateTime.Now,
+                   IsDeleted = false
+               },
+               new Seat
+               {
+                   Id = 18,
+                   SeatAreaId = 8,
+                   Number = "2排1號",
+                   Status = 1,
+                   CreatedAt = DateTime.Now,
+                   EditedAt = DateTime.Now,
+                   IsDeleted = false
+               },
+               new Seat
+               {
+                   Id = 19,
+                   SeatAreaId = 8,
+                   Number = "2排2號",
+                   Status = 1,
+                   CreatedAt = DateTime.Now,
+                   EditedAt = DateTime.Now,
+                   IsDeleted = false
+               },
+               new Seat
+               {
+                   Id = 20,
+                   SeatAreaId = 8,
+                   Number = "2排3號",
+                   Status = 1,
+                   CreatedAt = DateTime.Now,
+                   EditedAt = DateTime.Now,
+                   IsDeleted = false
+               },
+               new Seat
+               {
+                   Id = 21,
+                   SeatAreaId = 8,
+                   Number = "2排4號",
+                   Status = 1,
+                   CreatedAt = DateTime.Now,
+                   EditedAt = DateTime.Now,
+                   IsDeleted = false
+               },
+               new Seat
+               {
+                   Id = 22,
+                   SeatAreaId = 8,
+                   Number = "2排5號",
+                   Status = 1,
+                   CreatedAt = DateTime.Now,
+                   EditedAt = DateTime.Now,
+                   IsDeleted = false
+               },
+               new Seat
+               {
+                   Id = 23,
+                   SeatAreaId = 8,
+                   Number = "2排6號",
+                   Status = 1,
+                   CreatedAt = DateTime.Now,
+                   EditedAt = DateTime.Now,
+                   IsDeleted = false
+               },
+               new Seat
+               {
+                   Id = 24,
+                   SeatAreaId = 8,
+                   Number = "2排7號",
+                   Status = 1,
+                   CreatedAt = DateTime.Now,
+                   EditedAt = DateTime.Now,
+                   IsDeleted = false
+               },
+               new Seat
+               {
+                   Id = 25,
+                   SeatAreaId = 8,
+                   Number = "2排8號",
+                   Status = 1,
+                   CreatedAt = DateTime.Now,
+                   EditedAt = DateTime.Now,
+                   IsDeleted = false
+               },
+               new Seat
+               {
+                   Id = 26,
+                   SeatAreaId = 8,
+                   Number = "2排9號",
+                   Status = 1,
+                   CreatedAt = DateTime.Now,
+                   EditedAt = DateTime.Now,
+                   IsDeleted = false
+               },
+               new Seat
+               {
+                   Id = 27,
+                   SeatAreaId = 8,
+                   Number = "2排10號",
+                   Status = 1,
+                   CreatedAt = DateTime.Now,
+                   EditedAt = DateTime.Now,
+                   IsDeleted = false
+               },
+               new Seat
+               {
+                   Id = 28,
+                   SeatAreaId = 8,
+                   Number = "2排11號",
+                   Status = 1,
+                   CreatedAt = DateTime.Now,
+                   EditedAt = DateTime.Now,
+                   IsDeleted = false
+               },
+               new Seat
+               {
+                   Id = 29,
+                   SeatAreaId = 8,
+                   Number = "2排12號",
+                   Status = 1,
+                   CreatedAt = DateTime.Now,
+                   EditedAt = DateTime.Now,
+                   IsDeleted = false
+               },
+               new Seat
+               {
+                   Id = 30,
+                   SeatAreaId = 8,
+                   Number = "2排13號",
+                   Status = 1,
+                   CreatedAt = DateTime.Now,
+                   EditedAt = DateTime.Now,
+                   IsDeleted = false
+               },
+               new Seat
+               {
+                   Id = 31,
+                   SeatAreaId = 8,
+                   Number = "2排14號",
+                   Status = 1,
+                   CreatedAt = DateTime.Now,
+                   EditedAt = DateTime.Now,
+                   IsDeleted = false
+               },
+               new Seat
+               {
+                   Id = 32,
+                   SeatAreaId = 8,
+                   Number = "2排15號",
+                   Status = 1,
+                   CreatedAt = DateTime.Now,
+                   EditedAt = DateTime.Now,
+                   IsDeleted = false
+               },
+               new Seat
+               {
+                   Id = 33,
+                   SeatAreaId = 8,
+                   Number = "2排16號",
+                   Status = 1,
+                   CreatedAt = DateTime.Now,
+                   EditedAt = DateTime.Now,
+                   IsDeleted = false
+               },
+               new Seat
+               {
+                   Id = 34,
+                   SeatAreaId = 8,
+                   Number = "2排17號",
+                   Status = 1,
+                   CreatedAt = DateTime.Now,
+                   EditedAt = DateTime.Now,
+                   IsDeleted = false
+               },
+               new Seat
+               {
+                   Id = 35,
+                   SeatAreaId = 8,
+                   Number = "3排1號",
+                   Status = 1,
+                   CreatedAt = DateTime.Now,
+                   EditedAt = DateTime.Now,
+                   IsDeleted = false
+               },
+               new Seat
+               {
+                   Id = 36,
+                   SeatAreaId = 8,
+                   Number = "3排2號",
+                   Status = 1,
+                   CreatedAt = DateTime.Now,
+                   EditedAt = DateTime.Now,
+                   IsDeleted = false
+               },
+               new Seat
+               {
+                   Id = 37,
+                   SeatAreaId = 8,
+                   Number = "3排3號",
+                   Status = 1,
+                   CreatedAt = DateTime.Now,
+                   EditedAt = DateTime.Now,
+                   IsDeleted = false
+               },
+               new Seat
+               {
+                   Id = 38,
+                   SeatAreaId = 8,
+                   Number = "3排4號",
+                   Status = 1,
+                   CreatedAt = DateTime.Now,
+                   EditedAt = DateTime.Now,
+                   IsDeleted = false
+               },
+               new Seat
+               {
+                   Id = 39,
+                   SeatAreaId = 8,
+                   Number = "3排5號",
+                   Status = 1,
+                   CreatedAt = DateTime.Now,
+                   EditedAt = DateTime.Now,
+                   IsDeleted = false
+               },
+               new Seat
+               {
+                   Id = 40,
+                   SeatAreaId = 8,
+                   Number = "3排6號",
+                   Status = 1,
+                   CreatedAt = DateTime.Now,
+                   EditedAt = DateTime.Now,
+                   IsDeleted = false
+               },
+               new Seat
+               {
+                   Id = 41,
+                   SeatAreaId = 8,
+                   Number = "3排7號",
+                   Status = 1,
+                   CreatedAt = DateTime.Now,
+                   EditedAt = DateTime.Now,
+                   IsDeleted = false
+               },
+               new Seat
+               {
+                   Id = 42,
+                   SeatAreaId = 8,
+                   Number = "3排8號",
+                   Status = 1,
+                   CreatedAt = DateTime.Now,
+                   EditedAt = DateTime.Now,
+                   IsDeleted = false
+               },
+               new Seat
+               {
+                   Id = 43,
+                   SeatAreaId = 8,
+                   Number = "3排9號",
+                   Status = 1,
+                   CreatedAt = DateTime.Now,
+                   EditedAt = DateTime.Now,
+                   IsDeleted = false
+               },
+               new Seat
+               {
+                   Id = 44,
+                   SeatAreaId = 8,
+                   Number = "3排10號",
+                   Status = 1,
+                   CreatedAt = DateTime.Now,
+                   EditedAt = DateTime.Now,
+                   IsDeleted = false
+               },
+               new Seat
+               {
+                   Id = 45,
+                   SeatAreaId = 8,
+                   Number = "3排11號",
+                   Status = 1,
+                   CreatedAt = DateTime.Now,
+                   EditedAt = DateTime.Now,
+                   IsDeleted = false
+               },
+               new Seat
+               {
+                   Id = 46,
+                   SeatAreaId = 8,
+                   Number = "3排12號",
+                   Status = 1,
+                   CreatedAt = DateTime.Now,
+                   EditedAt = DateTime.Now,
+                   IsDeleted = false
+               },
+               new Seat
+               {
+                   Id = 47,
+                   SeatAreaId = 8,
+                   Number = "3排13號",
+                   Status = 1,
+                   CreatedAt = DateTime.Now,
+                   EditedAt = DateTime.Now,
+                   IsDeleted = false
+               },
+               new Seat
+               {
+                   Id = 48,
+                   SeatAreaId = 8,
+                   Number = "3排14號",
+                   Status = 1,
+                   CreatedAt = DateTime.Now,
+                   EditedAt = DateTime.Now,
+                   IsDeleted = false
+               },
+               new Seat
+               {
+                   Id = 49,
+                   SeatAreaId = 8,
+                   Number = "3排16號",
+                   Status = 0,
+                   CreatedAt = DateTime.Now,
+                   EditedAt = DateTime.Now,
+                   IsDeleted = false
+               },
+               new Seat
+               {
+                   Id = 50,
+                   SeatAreaId = 8,
+                   Number = "3排17號",
+                   Status = 0,
+                   CreatedAt = DateTime.Now,
+                   EditedAt = DateTime.Now,
+                   IsDeleted = false
+               },
+               new Seat
+               {
+                   Id = 51,
+                   SeatAreaId = 8,
+                   Number = "4排1號",
+                   Status = 0,
+                   CreatedAt = DateTime.Now,
+                   EditedAt = DateTime.Now,
+                   IsDeleted = false
+               },
+               new Seat
+               {
+                   Id = 52,
+                   SeatAreaId = 8,
+                   Number = "4排2號",
+                   Status = 0,
+                   CreatedAt = DateTime.Now,
+                   EditedAt = DateTime.Now,
+                   IsDeleted = false
+               },
+               new Seat
+               {
+                   Id = 53,
+                   SeatAreaId = 8,
+                   Number = "4排3號",
+                   Status = 0,
+                   CreatedAt = DateTime.Now,
+                   EditedAt = DateTime.Now,
+                   IsDeleted = false
+               },
+               new Seat
+               {
+                   Id = 54,
+                   SeatAreaId = 8,
+                   Number = "4排4號",
+                   Status = 0,
+                   CreatedAt = DateTime.Now,
+                   EditedAt = DateTime.Now,
+                   IsDeleted = false
+               },
+               new Seat
+               {
+                   Id = 55,
+                   SeatAreaId = 8,
+                   Number = "4排5號",
+                   Status = 0,
+                   CreatedAt = DateTime.Now,
+                   EditedAt = DateTime.Now,
+                   IsDeleted = false
+               },
+               new Seat
+               {
+                   Id = 56,
+                   SeatAreaId = 8,
+                   Number = "4排6號",
+                   Status = 0,
+                   CreatedAt = DateTime.Now,
+                   EditedAt = DateTime.Now,
+                   IsDeleted = false
+               },
+               new Seat
+               {
+                   Id = 57,
+                   SeatAreaId = 8,
+                   Number = "4排7號",
+                   Status = 0,
+                   CreatedAt = DateTime.Now,
+                   EditedAt = DateTime.Now,
+                   IsDeleted = false
+               },
+               new Seat
+               {
+                   Id = 58,
+                   SeatAreaId = 8,
+                   Number = "4排8號",
+                   Status = 0,
+                   CreatedAt = DateTime.Now,
+                   EditedAt = DateTime.Now,
+                   IsDeleted = false
+               },
+               new Seat
+               {
+                   Id = 59,
+                   SeatAreaId = 8,
+                   Number = "4排9號",
+                   Status = 0,
+                   CreatedAt = DateTime.Now,
+                   EditedAt = DateTime.Now,
+                   IsDeleted = false
+               },
+               new Seat
+               {
+                   Id = 60,
+                   SeatAreaId = 8,
+                   Number = "4排10號",
+                   Status = 0,
+                   CreatedAt = DateTime.Now,
+                   EditedAt = DateTime.Now,
+                   IsDeleted = false
+               },
+               new Seat
+               {
+                   Id = 61,
+                   SeatAreaId = 8,
+                   Number = "4排11號",
+                   Status = 0,
+                   CreatedAt = DateTime.Now,
+                   EditedAt = DateTime.Now,
+                   IsDeleted = false
+               },
+               new Seat
+               {
+                   Id = 62,
+                   SeatAreaId = 8,
+                   Number = "4排12號",
+                   Status = 0,
+                   CreatedAt = DateTime.Now,
+                   EditedAt = DateTime.Now,
+                   IsDeleted = false
+               },
+               new Seat
+               {
+                   Id = 63,
+                   SeatAreaId = 8,
+                   Number = "4排13號",
+                   Status = 0,
+                   CreatedAt = DateTime.Now,
+                   EditedAt = DateTime.Now,
+                   IsDeleted = false
+               }, 
+               new Seat
+               {
+                   Id = 1,
+                   SeatAreaId = 9,
+                   Number = "1排1號",
+                   Status = 1,
+                   CreatedAt = DateTime.Now,
+                   EditedAt = DateTime.Now,
+                   IsDeleted = false
+               },
+               new Seat
+               {
+                   Id = 2,
+                   SeatAreaId = 9,
+                   Number = "1排2號",
+                   Status = 1,
+                   CreatedAt = DateTime.Now,
+                   EditedAt = DateTime.Now,
+                   IsDeleted = false
+               },
+               new Seat
+               {
+                   Id = 3,
+                   SeatAreaId = 9,
+                   Number = "1排3號",
+                   Status = 1,
+                   CreatedAt = DateTime.Now,
+                   EditedAt = DateTime.Now,
+                   IsDeleted = false
+               },
+               new Seat
+               {
+                   Id = 4,
+                   SeatAreaId = 9,
+                   Number = "1排4號",
+                   Status = 1,
+                   CreatedAt = DateTime.Now,
+                   EditedAt = DateTime.Now,
+                   IsDeleted = false
+               },
+               new Seat
+               {
+                   Id = 5,
+                   SeatAreaId = 9,
+                   Number = "1排5號",
+                   Status = 1,
+                   CreatedAt = DateTime.Now,
+                   EditedAt = DateTime.Now,
+                   IsDeleted = false
+               },
+               new Seat
+               {
+                   Id = 6,
+                   SeatAreaId = 9,
+                   Number = "1排6號",
+                   Status = 1,
+                   CreatedAt = DateTime.Now,
+                   EditedAt = DateTime.Now,
+                   IsDeleted = false
+               },
+               new Seat
+               {
+                   Id = 7,
+                   SeatAreaId = 9,
+                   Number = "1排7號",
+                   Status = 1,
+                   CreatedAt = DateTime.Now,
+                   EditedAt = DateTime.Now,
+                   IsDeleted = false
+               },
+               new Seat
+               {
+                   Id = 8,
+                   SeatAreaId = 9,
+                   Number = "1排8號",
+                   Status = 1,
+                   CreatedAt = DateTime.Now,
+                   EditedAt = DateTime.Now,
+                   IsDeleted = false
+               },
+               new Seat
+               {
+                   Id = 9,
+                   SeatAreaId = 9,
+                   Number = "1排9號",
+                   Status = 1,
+                   CreatedAt = DateTime.Now,
+                   EditedAt = DateTime.Now,
+                   IsDeleted = false
+               },
+               new Seat
+               {
+                   Id = 10,
+                   SeatAreaId = 9,
+                   Number = "1排10號",
+                   Status = 1,
+                   CreatedAt = DateTime.Now,
+                   EditedAt = DateTime.Now,
+                   IsDeleted = false
+               },
+               new Seat
+               {
+                   Id = 11,
+                   SeatAreaId = 9,
+                   Number = "1排11號",
+                   Status = 1,
+                   CreatedAt = DateTime.Now,
+                   EditedAt = DateTime.Now,
+                   IsDeleted = false
+               },
+               new Seat
+               {
+                   Id = 12,
+                   SeatAreaId = 9,
+                   Number = "1排12號",
+                   Status = 1,
+                   CreatedAt = DateTime.Now,
+                   EditedAt = DateTime.Now,
+                   IsDeleted = false
+               },
+               new Seat
+               {
+                   Id = 13,
+                   SeatAreaId = 9,
+                   Number = "1排13號",
+                   Status = 1,
+                   CreatedAt = DateTime.Now,
+                   EditedAt = DateTime.Now,
+                   IsDeleted = false
+               },
+               new Seat
+               {
+                   Id = 14,
+                   SeatAreaId = 9,
+                   Number = "1排14號",
+                   Status = 1,
+                   CreatedAt = DateTime.Now,
+                   EditedAt = DateTime.Now,
+                   IsDeleted = false
+               },
+               new Seat
+               {
+                   Id = 15,
+                   SeatAreaId = 9,
+                   Number = "1排15號",
+                   Status = 1,
+                   CreatedAt = DateTime.Now,
+                   EditedAt = DateTime.Now,
+                   IsDeleted = false
+               },
+               new Seat
+               {
+                   Id = 16,
+                   SeatAreaId = 9,
+                   Number = "1排16號",
+                   Status = 1,
+                   CreatedAt = DateTime.Now,
+                   EditedAt = DateTime.Now,
+                   IsDeleted = false
+               },
+               new Seat
+               {
+                   Id = 17,
+                   SeatAreaId = 9,
+                   Number = "1排17號",
+                   Status = 1,
+                   CreatedAt = DateTime.Now,
+                   EditedAt = DateTime.Now,
+                   IsDeleted = false
+               },
+               new Seat
+               {
+                   Id = 18,
+                   SeatAreaId = 9,
+                   Number = "2排1號",
+                   Status = 1,
+                   CreatedAt = DateTime.Now,
+                   EditedAt = DateTime.Now,
+                   IsDeleted = false
+               },
+               new Seat
+               {
+                   Id = 19,
+                   SeatAreaId = 9,
+                   Number = "2排2號",
+                   Status = 1,
+                   CreatedAt = DateTime.Now,
+                   EditedAt = DateTime.Now,
+                   IsDeleted = false
+               },
+               new Seat
+               {
+                   Id = 20,
+                   SeatAreaId = 9,
+                   Number = "2排3號",
+                   Status = 1,
+                   CreatedAt = DateTime.Now,
+                   EditedAt = DateTime.Now,
+                   IsDeleted = false
+               },
+               new Seat
+               {
+                   Id = 21,
+                   SeatAreaId = 9,
+                   Number = "2排4號",
+                   Status = 1,
+                   CreatedAt = DateTime.Now,
+                   EditedAt = DateTime.Now,
+                   IsDeleted = false
+               },
+               new Seat
+               {
+                   Id = 22,
+                   SeatAreaId = 9,
+                   Number = "2排5號",
+                   Status = 1,
+                   CreatedAt = DateTime.Now,
+                   EditedAt = DateTime.Now,
+                   IsDeleted = false
+               },
+               new Seat
+               {
+                   Id = 23,
+                   SeatAreaId = 9,
+                   Number = "2排6號",
+                   Status = 1,
+                   CreatedAt = DateTime.Now,
+                   EditedAt = DateTime.Now,
+                   IsDeleted = false
+               },
+               new Seat
+               {
+                   Id = 24,
+                   SeatAreaId = 9,
+                   Number = "2排7號",
+                   Status = 1,
+                   CreatedAt = DateTime.Now,
+                   EditedAt = DateTime.Now,
+                   IsDeleted = false
+               },
+               new Seat
+               {
+                   Id = 25,
+                   SeatAreaId = 9,
+                   Number = "2排8號",
+                   Status = 1,
+                   CreatedAt = DateTime.Now,
+                   EditedAt = DateTime.Now,
+                   IsDeleted = false
+               },
+               new Seat
+               {
+                   Id = 26,
+                   SeatAreaId = 9,
+                   Number = "2排9號",
+                   Status = 1,
+                   CreatedAt = DateTime.Now,
+                   EditedAt = DateTime.Now,
+                   IsDeleted = false
+               },
+               new Seat
+               {
+                   Id = 27,
+                   SeatAreaId = 9,
+                   Number = "2排10號",
+                   Status = 1,
+                   CreatedAt = DateTime.Now,
+                   EditedAt = DateTime.Now,
+                   IsDeleted = false
+               },
+               new Seat
+               {
+                   Id = 28,
+                   SeatAreaId = 9,
+                   Number = "2排11號",
+                   Status = 1,
+                   CreatedAt = DateTime.Now,
+                   EditedAt = DateTime.Now,
+                   IsDeleted = false
+               },
+               new Seat
+               {
+                   Id = 29,
+                   SeatAreaId = 9,
+                   Number = "2排12號",
+                   Status = 1,
+                   CreatedAt = DateTime.Now,
+                   EditedAt = DateTime.Now,
+                   IsDeleted = false
+               },
+               new Seat
+               {
+                   Id = 30,
+                   SeatAreaId = 9,
+                   Number = "2排13號",
+                   Status = 1,
+                   CreatedAt = DateTime.Now,
+                   EditedAt = DateTime.Now,
+                   IsDeleted = false
+               },
+               new Seat
+               {
+                   Id = 31,
+                   SeatAreaId = 9,
+                   Number = "2排14號",
+                   Status = 1,
+                   CreatedAt = DateTime.Now,
+                   EditedAt = DateTime.Now,
+                   IsDeleted = false
+               },
+               new Seat
+               {
+                   Id = 32,
+                   SeatAreaId = 9,
+                   Number = "2排15號",
+                   Status = 1,
+                   CreatedAt = DateTime.Now,
+                   EditedAt = DateTime.Now,
+                   IsDeleted = false
+               },
+               new Seat
+               {
+                   Id = 33,
+                   SeatAreaId = 9,
+                   Number = "2排16號",
+                   Status = 1,
+                   CreatedAt = DateTime.Now,
+                   EditedAt = DateTime.Now,
+                   IsDeleted = false
+               },
+               new Seat
+               {
+                   Id = 34,
+                   SeatAreaId = 9,
+                   Number = "2排17號",
+                   Status = 1,
+                   CreatedAt = DateTime.Now,
+                   EditedAt = DateTime.Now,
+                   IsDeleted = false
+               },
+               new Seat
+               {
+                   Id = 35,
+                   SeatAreaId = 9,
+                   Number = "3排1號",
+                   Status = 1,
+                   CreatedAt = DateTime.Now,
+                   EditedAt = DateTime.Now,
+                   IsDeleted = false
+               },
+               new Seat
+               {
+                   Id = 36,
+                   SeatAreaId = 9,
+                   Number = "3排2號",
+                   Status = 1,
+                   CreatedAt = DateTime.Now,
+                   EditedAt = DateTime.Now,
+                   IsDeleted = false
+               },
+               new Seat
+               {
+                   Id = 37,
+                   SeatAreaId = 9,
+                   Number = "3排3號",
+                   Status = 1,
+                   CreatedAt = DateTime.Now,
+                   EditedAt = DateTime.Now,
+                   IsDeleted = false
+               },
+               new Seat
+               {
+                   Id = 38,
+                   SeatAreaId = 9,
+                   Number = "3排4號",
+                   Status = 1,
+                   CreatedAt = DateTime.Now,
+                   EditedAt = DateTime.Now,
+                   IsDeleted = false
+               },
+               new Seat
+               {
+                   Id = 39,
+                   SeatAreaId = 9,
+                   Number = "3排5號",
+                   Status = 1,
+                   CreatedAt = DateTime.Now,
+                   EditedAt = DateTime.Now,
+                   IsDeleted = false
+               },
+               new Seat
+               {
+                   Id = 40,
+                   SeatAreaId = 9,
+                   Number = "3排6號",
+                   Status = 1,
+                   CreatedAt = DateTime.Now,
+                   EditedAt = DateTime.Now,
+                   IsDeleted = false
+               },
+               new Seat
+               {
+                   Id = 41,
+                   SeatAreaId = 9,
+                   Number = "3排7號",
+                   Status = 1,
+                   CreatedAt = DateTime.Now,
+                   EditedAt = DateTime.Now,
+                   IsDeleted = false
+               },
+               new Seat
+               {
+                   Id = 42,
+                   SeatAreaId = 9,
+                   Number = "3排8號",
+                   Status = 1,
+                   CreatedAt = DateTime.Now,
+                   EditedAt = DateTime.Now,
+                   IsDeleted = false
+               },
+               new Seat
+               {
+                   Id = 43,
+                   SeatAreaId = 9,
+                   Number = "3排9號",
+                   Status = 1,
+                   CreatedAt = DateTime.Now,
+                   EditedAt = DateTime.Now,
+                   IsDeleted = false
+               },
+               new Seat
+               {
+                   Id = 44,
+                   SeatAreaId = 9,
+                   Number = "3排10號",
+                   Status = 1,
+                   CreatedAt = DateTime.Now,
+                   EditedAt = DateTime.Now,
+                   IsDeleted = false
+               },
+               new Seat
+               {
+                   Id = 45,
+                   SeatAreaId = 9,
+                   Number = "3排11號",
+                   Status = 1,
+                   CreatedAt = DateTime.Now,
+                   EditedAt = DateTime.Now,
+                   IsDeleted = false
+               },
+               new Seat
+               {
+                   Id = 46,
+                   SeatAreaId = 9,
+                   Number = "3排12號",
+                   Status = 1,
+                   CreatedAt = DateTime.Now,
+                   EditedAt = DateTime.Now,
+                   IsDeleted = false
+               },
+               new Seat
+               {
+                   Id = 47,
+                   SeatAreaId = 9,
+                   Number = "3排13號",
+                   Status = 1,
+                   CreatedAt = DateTime.Now,
+                   EditedAt = DateTime.Now,
+                   IsDeleted = false
+               },
+               new Seat
+               {
+                   Id = 48,
+                   SeatAreaId = 9,
+                   Number = "3排14號",
+                   Status = 1,
+                   CreatedAt = DateTime.Now,
+                   EditedAt = DateTime.Now,
+                   IsDeleted = false
+               },
+               new Seat
+               {
+                   Id = 49,
+                   SeatAreaId = 9,
+                   Number = "3排16號",
+                   Status = 0,
+                   CreatedAt = DateTime.Now,
+                   EditedAt = DateTime.Now,
+                   IsDeleted = false
+               },
+               new Seat
+               {
+                   Id = 50,
+                   SeatAreaId = 9,
+                   Number = "3排17號",
+                   Status = 0,
+                   CreatedAt = DateTime.Now,
+                   EditedAt = DateTime.Now,
+                   IsDeleted = false
+               },
+               new Seat
+               {
+                   Id = 51,
+                   SeatAreaId = 9,
+                   Number = "4排1號",
+                   Status = 0,
+                   CreatedAt = DateTime.Now,
+                   EditedAt = DateTime.Now,
+                   IsDeleted = false
+               },
+               new Seat
+               {
+                   Id = 52,
+                   SeatAreaId = 9,
+                   Number = "4排2號",
+                   Status = 0,
+                   CreatedAt = DateTime.Now,
+                   EditedAt = DateTime.Now,
+                   IsDeleted = false
+               },
+               new Seat
+               {
+                   Id = 53,
+                   SeatAreaId = 9,
+                   Number = "4排3號",
+                   Status = 0,
+                   CreatedAt = DateTime.Now,
+                   EditedAt = DateTime.Now,
+                   IsDeleted = false
+               },
+               new Seat
+               {
+                   Id = 54,
+                   SeatAreaId = 9,
+                   Number = "4排4號",
+                   Status = 0,
+                   CreatedAt = DateTime.Now,
+                   EditedAt = DateTime.Now,
+                   IsDeleted = false
+               },
+               new Seat
+               {
+                   Id = 55,
+                   SeatAreaId = 9,
+                   Number = "4排5號",
+                   Status = 0,
+                   CreatedAt = DateTime.Now,
+                   EditedAt = DateTime.Now,
+                   IsDeleted = false
+               },
+               new Seat
+               {
+                   Id = 56,
+                   SeatAreaId = 9,
+                   Number = "4排6號",
+                   Status = 0,
+                   CreatedAt = DateTime.Now,
+                   EditedAt = DateTime.Now,
+                   IsDeleted = false
+               },
+               new Seat
+               {
+                   Id = 57,
+                   SeatAreaId = 9,
+                   Number = "4排7號",
+                   Status = 0,
+                   CreatedAt = DateTime.Now,
+                   EditedAt = DateTime.Now,
+                   IsDeleted = false
+               },
+               new Seat
+               {
+                   Id = 58,
+                   SeatAreaId = 9,
+                   Number = "4排8號",
+                   Status = 0,
+                   CreatedAt = DateTime.Now,
+                   EditedAt = DateTime.Now,
+                   IsDeleted = false
+               },
+               new Seat
+               {
+                   Id = 59,
+                   SeatAreaId = 9,
+                   Number = "4排9號",
+                   Status = 0,
+                   CreatedAt = DateTime.Now,
+                   EditedAt = DateTime.Now,
+                   IsDeleted = false
+               },
+               new Seat
+               {
+                   Id = 60,
+                   SeatAreaId = 9,
+                   Number = "4排10號",
+                   Status = 0,
+                   CreatedAt = DateTime.Now,
+                   EditedAt = DateTime.Now,
+                   IsDeleted = false
+               },
+               new Seat
+               {
+                   Id = 61,
+                   SeatAreaId = 9,
+                   Number = "4排11號",
+                   Status = 0,
+                   CreatedAt = DateTime.Now,
+                   EditedAt = DateTime.Now,
+                   IsDeleted = false
+               },
+               new Seat
+               {
+                   Id = 62,
+                   SeatAreaId = 9,
+                   Number = "4排12號",
+                   Status = 0,
+                   CreatedAt = DateTime.Now,
+                   EditedAt = DateTime.Now,
+                   IsDeleted = false
+               },
+               new Seat
+               {
+                   Id = 63,
+                   SeatAreaId = 9,
+                   Number = "4排13號",
+                   Status = 0,
+                   CreatedAt = DateTime.Now,
+                   EditedAt = DateTime.Now,
+                   IsDeleted = false
+               }, 
+               new Seat
+               {
+                   Id = 1,
+                   SeatAreaId = 10,
+                   Number = "1排1號",
+                   Status = 1,
+                   CreatedAt = DateTime.Now,
+                   EditedAt = DateTime.Now,
+                   IsDeleted = false
+               },
+               new Seat
+               {
+                   Id = 2,
+                   SeatAreaId = 10,
+                   Number = "1排2號",
+                   Status = 1,
+                   CreatedAt = DateTime.Now,
+                   EditedAt = DateTime.Now,
+                   IsDeleted = false
+               },
+               new Seat
+               {
+                   Id = 3,
+                   SeatAreaId = 10,
+                   Number = "1排3號",
+                   Status = 1,
+                   CreatedAt = DateTime.Now,
+                   EditedAt = DateTime.Now,
+                   IsDeleted = false
+               },
+               new Seat
+               {
+                   Id = 4,
+                   SeatAreaId = 10,
+                   Number = "1排4號",
+                   Status = 1,
+                   CreatedAt = DateTime.Now,
+                   EditedAt = DateTime.Now,
+                   IsDeleted = false
+               },
+               new Seat
+               {
+                   Id = 5,
+                   SeatAreaId = 10,
+                   Number = "1排5號",
+                   Status = 1,
+                   CreatedAt = DateTime.Now,
+                   EditedAt = DateTime.Now,
+                   IsDeleted = false
+               },
+               new Seat
+               {
+                   Id = 6,
+                   SeatAreaId = 10,
+                   Number = "1排6號",
+                   Status = 1,
+                   CreatedAt = DateTime.Now,
+                   EditedAt = DateTime.Now,
+                   IsDeleted = false
+               },
+               new Seat
+               {
+                   Id = 7,
+                   SeatAreaId = 10,
+                   Number = "1排7號",
+                   Status = 1,
+                   CreatedAt = DateTime.Now,
+                   EditedAt = DateTime.Now,
+                   IsDeleted = false
+               },
+               new Seat
+               {
+                   Id = 8,
+                   SeatAreaId = 10,
+                   Number = "1排8號",
+                   Status = 1,
+                   CreatedAt = DateTime.Now,
+                   EditedAt = DateTime.Now,
+                   IsDeleted = false
+               },
+               new Seat
+               {
+                   Id = 9,
+                   SeatAreaId = 10,
+                   Number = "1排9號",
+                   Status = 1,
+                   CreatedAt = DateTime.Now,
+                   EditedAt = DateTime.Now,
+                   IsDeleted = false
+               },
+               new Seat
+               {
+                   Id = 10,
+                   SeatAreaId = 10,
+                   Number = "1排10號",
+                   Status = 1,
+                   CreatedAt = DateTime.Now,
+                   EditedAt = DateTime.Now,
+                   IsDeleted = false
+               },
+               new Seat
+               {
+                   Id = 11,
+                   SeatAreaId = 10,
+                   Number = "1排11號",
+                   Status = 1,
+                   CreatedAt = DateTime.Now,
+                   EditedAt = DateTime.Now,
+                   IsDeleted = false
+               },
+               new Seat
+               {
+                   Id = 12,
+                   SeatAreaId = 10,
+                   Number = "1排12號",
+                   Status = 1,
+                   CreatedAt = DateTime.Now,
+                   EditedAt = DateTime.Now,
+                   IsDeleted = false
+               },
+               new Seat
+               {
+                   Id = 13,
+                   SeatAreaId = 10,
+                   Number = "1排13號",
+                   Status = 1,
+                   CreatedAt = DateTime.Now,
+                   EditedAt = DateTime.Now,
+                   IsDeleted = false
+               },
+               new Seat
+               {
+                   Id = 14,
+                   SeatAreaId = 10,
+                   Number = "1排14號",
+                   Status = 1,
+                   CreatedAt = DateTime.Now,
+                   EditedAt = DateTime.Now,
+                   IsDeleted = false
+               },
+               new Seat
+               {
+                   Id = 15,
+                   SeatAreaId = 10,
+                   Number = "1排15號",
+                   Status = 1,
+                   CreatedAt = DateTime.Now,
+                   EditedAt = DateTime.Now,
+                   IsDeleted = false
+               },
+               new Seat
+               {
+                   Id = 16,
+                   SeatAreaId = 10,
+                   Number = "1排16號",
+                   Status = 1,
+                   CreatedAt = DateTime.Now,
+                   EditedAt = DateTime.Now,
+                   IsDeleted = false
+               },
+               new Seat
+               {
+                   Id = 17,
+                   SeatAreaId = 10,
+                   Number = "1排17號",
+                   Status = 1,
+                   CreatedAt = DateTime.Now,
+                   EditedAt = DateTime.Now,
+                   IsDeleted = false
+               },
+               new Seat
+               {
+                   Id = 18,
+                   SeatAreaId = 10,
+                   Number = "2排1號",
+                   Status = 1,
+                   CreatedAt = DateTime.Now,
+                   EditedAt = DateTime.Now,
+                   IsDeleted = false
+               },
+               new Seat
+               {
+                   Id = 19,
+                   SeatAreaId = 10,
+                   Number = "2排2號",
+                   Status = 1,
+                   CreatedAt = DateTime.Now,
+                   EditedAt = DateTime.Now,
+                   IsDeleted = false
+               },
+               new Seat
+               {
+                   Id = 20,
+                   SeatAreaId = 10,
+                   Number = "2排3號",
+                   Status = 1,
+                   CreatedAt = DateTime.Now,
+                   EditedAt = DateTime.Now,
+                   IsDeleted = false
+               },
+               new Seat
+               {
+                   Id = 21,
+                   SeatAreaId = 10,
+                   Number = "2排4號",
+                   Status = 1,
+                   CreatedAt = DateTime.Now,
+                   EditedAt = DateTime.Now,
+                   IsDeleted = false
+               },
+               new Seat
+               {
+                   Id = 22,
+                   SeatAreaId = 10,
+                   Number = "2排5號",
+                   Status = 1,
+                   CreatedAt = DateTime.Now,
+                   EditedAt = DateTime.Now,
+                   IsDeleted = false
+               },
+               new Seat
+               {
+                   Id = 23,
+                   SeatAreaId = 10,
+                   Number = "2排6號",
+                   Status = 1,
+                   CreatedAt = DateTime.Now,
+                   EditedAt = DateTime.Now,
+                   IsDeleted = false
+               },
+               new Seat
+               {
+                   Id = 24,
+                   SeatAreaId = 10,
+                   Number = "2排7號",
+                   Status = 1,
+                   CreatedAt = DateTime.Now,
+                   EditedAt = DateTime.Now,
+                   IsDeleted = false
+               },
+               new Seat
+               {
+                   Id = 25,
+                   SeatAreaId = 10,
+                   Number = "2排8號",
+                   Status = 1,
+                   CreatedAt = DateTime.Now,
+                   EditedAt = DateTime.Now,
+                   IsDeleted = false
+               },
+               new Seat
+               {
+                   Id = 26,
+                   SeatAreaId = 10,
+                   Number = "2排9號",
+                   Status = 1,
+                   CreatedAt = DateTime.Now,
+                   EditedAt = DateTime.Now,
+                   IsDeleted = false
+               },
+               new Seat
+               {
+                   Id = 27,
+                   SeatAreaId = 10,
+                   Number = "2排10號",
+                   Status = 1,
+                   CreatedAt = DateTime.Now,
+                   EditedAt = DateTime.Now,
+                   IsDeleted = false
+               },
+               new Seat
+               {
+                   Id = 28,
+                   SeatAreaId = 10,
+                   Number = "2排11號",
+                   Status = 1,
+                   CreatedAt = DateTime.Now,
+                   EditedAt = DateTime.Now,
+                   IsDeleted = false
+               },
+               new Seat
+               {
+                   Id = 29,
+                   SeatAreaId = 10,
+                   Number = "2排12號",
+                   Status = 1,
+                   CreatedAt = DateTime.Now,
+                   EditedAt = DateTime.Now,
+                   IsDeleted = false
+               },
+               new Seat
+               {
+                   Id = 30,
+                   SeatAreaId = 10,
+                   Number = "2排13號",
+                   Status = 1,
+                   CreatedAt = DateTime.Now,
+                   EditedAt = DateTime.Now,
+                   IsDeleted = false
+               },
+               new Seat
+               {
+                   Id = 31,
+                   SeatAreaId = 10,
+                   Number = "2排14號",
+                   Status = 1,
+                   CreatedAt = DateTime.Now,
+                   EditedAt = DateTime.Now,
+                   IsDeleted = false
+               },
+               new Seat
+               {
+                   Id = 32,
+                   SeatAreaId = 10,
+                   Number = "2排15號",
+                   Status = 1,
+                   CreatedAt = DateTime.Now,
+                   EditedAt = DateTime.Now,
+                   IsDeleted = false
+               },
+               new Seat
+               {
+                   Id = 33,
+                   SeatAreaId = 10,
+                   Number = "2排16號",
+                   Status = 1,
+                   CreatedAt = DateTime.Now,
+                   EditedAt = DateTime.Now,
+                   IsDeleted = false
+               },
+               new Seat
+               {
+                   Id = 34,
+                   SeatAreaId = 10,
+                   Number = "2排17號",
+                   Status = 1,
+                   CreatedAt = DateTime.Now,
+                   EditedAt = DateTime.Now,
+                   IsDeleted = false
+               },
+               new Seat
+               {
+                   Id = 35,
+                   SeatAreaId = 10,
+                   Number = "3排1號",
+                   Status = 1,
+                   CreatedAt = DateTime.Now,
+                   EditedAt = DateTime.Now,
+                   IsDeleted = false
+               },
+               new Seat
+               {
+                   Id = 36,
+                   SeatAreaId = 10,
+                   Number = "3排2號",
+                   Status = 1,
+                   CreatedAt = DateTime.Now,
+                   EditedAt = DateTime.Now,
+                   IsDeleted = false
+               },
+               new Seat
+               {
+                   Id = 37,
+                   SeatAreaId = 10,
+                   Number = "3排3號",
+                   Status = 1,
+                   CreatedAt = DateTime.Now,
+                   EditedAt = DateTime.Now,
+                   IsDeleted = false
+               },
+               new Seat
+               {
+                   Id = 38,
+                   SeatAreaId = 10,
+                   Number = "3排4號",
+                   Status = 1,
+                   CreatedAt = DateTime.Now,
+                   EditedAt = DateTime.Now,
+                   IsDeleted = false
+               },
+               new Seat
+               {
+                   Id = 39,
+                   SeatAreaId = 10,
+                   Number = "3排5號",
+                   Status = 1,
+                   CreatedAt = DateTime.Now,
+                   EditedAt = DateTime.Now,
+                   IsDeleted = false
+               },
+               new Seat
+               {
+                   Id = 40,
+                   SeatAreaId = 10,
+                   Number = "3排6號",
+                   Status = 1,
+                   CreatedAt = DateTime.Now,
+                   EditedAt = DateTime.Now,
+                   IsDeleted = false
+               },
+               new Seat
+               {
+                   Id = 41,
+                   SeatAreaId = 10,
+                   Number = "3排7號",
+                   Status = 1,
+                   CreatedAt = DateTime.Now,
+                   EditedAt = DateTime.Now,
+                   IsDeleted = false
+               },
+               new Seat
+               {
+                   Id = 42,
+                   SeatAreaId = 10,
+                   Number = "3排8號",
+                   Status = 1,
+                   CreatedAt = DateTime.Now,
+                   EditedAt = DateTime.Now,
+                   IsDeleted = false
+               },
+               new Seat
+               {
+                   Id = 43,
+                   SeatAreaId = 10,
+                   Number = "3排9號",
+                   Status = 1,
+                   CreatedAt = DateTime.Now,
+                   EditedAt = DateTime.Now,
+                   IsDeleted = false
+               },
+               new Seat
+               {
+                   Id = 44,
+                   SeatAreaId = 10,
+                   Number = "3排10號",
+                   Status = 1,
+                   CreatedAt = DateTime.Now,
+                   EditedAt = DateTime.Now,
+                   IsDeleted = false
+               },
+               new Seat
+               {
+                   Id = 45,
+                   SeatAreaId = 10,
+                   Number = "3排11號",
+                   Status = 1,
+                   CreatedAt = DateTime.Now,
+                   EditedAt = DateTime.Now,
+                   IsDeleted = false
+               },
+               new Seat
+               {
+                   Id = 46,
+                   SeatAreaId = 10,
+                   Number = "3排12號",
+                   Status = 1,
+                   CreatedAt = DateTime.Now,
+                   EditedAt = DateTime.Now,
+                   IsDeleted = false
+               },
+               new Seat
+               {
+                   Id = 47,
+                   SeatAreaId = 10,
+                   Number = "3排13號",
+                   Status = 1,
+                   CreatedAt = DateTime.Now,
+                   EditedAt = DateTime.Now,
+                   IsDeleted = false
+               },
+               new Seat
+               {
+                   Id = 48,
+                   SeatAreaId = 10,
+                   Number = "3排14號",
+                   Status = 1,
+                   CreatedAt = DateTime.Now,
+                   EditedAt = DateTime.Now,
+                   IsDeleted = false
+               },
+               new Seat
+               {
+                   Id = 49,
+                   SeatAreaId = 10,
+                   Number = "3排16號",
+                   Status = 0,
+                   CreatedAt = DateTime.Now,
+                   EditedAt = DateTime.Now,
+                   IsDeleted = false
+               },
+               new Seat
+               {
+                   Id = 50,
+                   SeatAreaId = 10,
+                   Number = "3排17號",
+                   Status = 0,
+                   CreatedAt = DateTime.Now,
+                   EditedAt = DateTime.Now,
+                   IsDeleted = false
+               },
+               new Seat
+               {
+                   Id = 51,
+                   SeatAreaId = 10,
+                   Number = "4排1號",
+                   Status = 0,
+                   CreatedAt = DateTime.Now,
+                   EditedAt = DateTime.Now,
+                   IsDeleted = false
+               },
+               new Seat
+               {
+                   Id = 52,
+                   SeatAreaId = 10,
+                   Number = "4排2號",
+                   Status = 0,
+                   CreatedAt = DateTime.Now,
+                   EditedAt = DateTime.Now,
+                   IsDeleted = false
+               },
+               new Seat
+               {
+                   Id = 53,
+                   SeatAreaId = 10,
+                   Number = "4排3號",
+                   Status = 0,
+                   CreatedAt = DateTime.Now,
+                   EditedAt = DateTime.Now,
+                   IsDeleted = false
+               },
+               new Seat
+               {
+                   Id = 54,
+                   SeatAreaId = 10,
+                   Number = "4排4號",
+                   Status = 0,
+                   CreatedAt = DateTime.Now,
+                   EditedAt = DateTime.Now,
+                   IsDeleted = false
+               },
+               new Seat
+               {
+                   Id = 55,
+                   SeatAreaId = 10,
+                   Number = "4排5號",
+                   Status = 0,
+                   CreatedAt = DateTime.Now,
+                   EditedAt = DateTime.Now,
+                   IsDeleted = false
+               },
+               new Seat
+               {
+                   Id = 56,
+                   SeatAreaId = 10,
+                   Number = "4排6號",
+                   Status = 0,
+                   CreatedAt = DateTime.Now,
+                   EditedAt = DateTime.Now,
+                   IsDeleted = false
+               },
+               new Seat
+               {
+                   Id = 57,
+                   SeatAreaId = 10,
+                   Number = "4排7號",
+                   Status = 0,
+                   CreatedAt = DateTime.Now,
+                   EditedAt = DateTime.Now,
+                   IsDeleted = false
+               },
+               new Seat
+               {
+                   Id = 58,
+                   SeatAreaId = 10,
+                   Number = "4排8號",
+                   Status = 0,
+                   CreatedAt = DateTime.Now,
+                   EditedAt = DateTime.Now,
+                   IsDeleted = false
+               },
+               new Seat
+               {
+                   Id = 59,
+                   SeatAreaId = 10,
+                   Number = "4排9號",
+                   Status = 0,
+                   CreatedAt = DateTime.Now,
+                   EditedAt = DateTime.Now,
+                   IsDeleted = false
+               },
+               new Seat
+               {
+                   Id = 60,
+                   SeatAreaId = 10,
+                   Number = "4排10號",
+                   Status = 0,
+                   CreatedAt = DateTime.Now,
+                   EditedAt = DateTime.Now,
+                   IsDeleted = false
+               },
+               new Seat
+               {
+                   Id = 61,
+                   SeatAreaId = 10,
+                   Number = "4排11號",
+                   Status = 0,
+                   CreatedAt = DateTime.Now,
+                   EditedAt = DateTime.Now,
+                   IsDeleted = false
+               },
+               new Seat
+               {
+                   Id = 62,
+                   SeatAreaId = 10,
+                   Number = "4排12號",
+                   Status = 0,
+                   CreatedAt = DateTime.Now,
+                   EditedAt = DateTime.Now,
+                   IsDeleted = false
+               },
+               new Seat
+               {
+                   Id = 63,
+                   SeatAreaId = 10,
+                   Number = "4排13號",
+                   Status = 0,
+                   CreatedAt = DateTime.Now,
+                   EditedAt = DateTime.Now,
+                   IsDeleted = false
+               }, 
+               new Seat
+               {
+                   Id = 1,
+                   SeatAreaId = 11,
+                   Number = "1排1號",
+                   Status = 1,
+                   CreatedAt = DateTime.Now,
+                   EditedAt = DateTime.Now,
+                   IsDeleted = false
+               },
+               new Seat
+               {
+                   Id = 2,
+                   SeatAreaId = 11,
+                   Number = "1排2號",
+                   Status = 1,
+                   CreatedAt = DateTime.Now,
+                   EditedAt = DateTime.Now,
+                   IsDeleted = false
+               },
+               new Seat
+               {
+                   Id = 3,
+                   SeatAreaId = 11,
+                   Number = "1排3號",
+                   Status = 1,
+                   CreatedAt = DateTime.Now,
+                   EditedAt = DateTime.Now,
+                   IsDeleted = false
+               },
+               new Seat
+               {
+                   Id = 4,
+                   SeatAreaId = 11,
+                   Number = "1排4號",
+                   Status = 1,
+                   CreatedAt = DateTime.Now,
+                   EditedAt = DateTime.Now,
+                   IsDeleted = false
+               },
+               new Seat
+               {
+                   Id = 5,
+                   SeatAreaId = 11,
+                   Number = "1排5號",
+                   Status = 1,
+                   CreatedAt = DateTime.Now,
+                   EditedAt = DateTime.Now,
+                   IsDeleted = false
+               },
+               new Seat
+               {
+                   Id = 6,
+                   SeatAreaId = 11,
+                   Number = "1排6號",
+                   Status = 1,
+                   CreatedAt = DateTime.Now,
+                   EditedAt = DateTime.Now,
+                   IsDeleted = false
+               },
+               new Seat
+               {
+                   Id = 7,
+                   SeatAreaId = 11,
+                   Number = "1排7號",
+                   Status = 1,
+                   CreatedAt = DateTime.Now,
+                   EditedAt = DateTime.Now,
+                   IsDeleted = false
+               },
+               new Seat
+               {
+                   Id = 8,
+                   SeatAreaId = 11,
+                   Number = "1排8號",
+                   Status = 1,
+                   CreatedAt = DateTime.Now,
+                   EditedAt = DateTime.Now,
+                   IsDeleted = false
+               },
+               new Seat
+               {
+                   Id = 9,
+                   SeatAreaId = 11,
+                   Number = "1排9號",
+                   Status = 1,
+                   CreatedAt = DateTime.Now,
+                   EditedAt = DateTime.Now,
+                   IsDeleted = false
+               },
+               new Seat
+               {
+                   Id = 10,
+                   SeatAreaId = 11,
+                   Number = "1排10號",
+                   Status = 1,
+                   CreatedAt = DateTime.Now,
+                   EditedAt = DateTime.Now,
+                   IsDeleted = false
+               },
+               new Seat
+               {
+                   Id = 11,
+                   SeatAreaId = 11,
+                   Number = "1排11號",
+                   Status = 1,
+                   CreatedAt = DateTime.Now,
+                   EditedAt = DateTime.Now,
+                   IsDeleted = false
+               },
+               new Seat
+               {
+                   Id = 12,
+                   SeatAreaId = 11,
+                   Number = "1排12號",
+                   Status = 1,
+                   CreatedAt = DateTime.Now,
+                   EditedAt = DateTime.Now,
+                   IsDeleted = false
+               },
+               new Seat
+               {
+                   Id = 13,
+                   SeatAreaId = 11,
+                   Number = "1排13號",
+                   Status = 1,
+                   CreatedAt = DateTime.Now,
+                   EditedAt = DateTime.Now,
+                   IsDeleted = false
+               },
+               new Seat
+               {
+                   Id = 14,
+                   SeatAreaId = 11,
+                   Number = "1排14號",
+                   Status = 1,
+                   CreatedAt = DateTime.Now,
+                   EditedAt = DateTime.Now,
+                   IsDeleted = false
+               },
+               new Seat
+               {
+                   Id = 15,
+                   SeatAreaId = 11,
+                   Number = "1排15號",
+                   Status = 1,
+                   CreatedAt = DateTime.Now,
+                   EditedAt = DateTime.Now,
+                   IsDeleted = false
+               },
+               new Seat
+               {
+                   Id = 16,
+                   SeatAreaId = 11,
+                   Number = "1排16號",
+                   Status = 1,
+                   CreatedAt = DateTime.Now,
+                   EditedAt = DateTime.Now,
+                   IsDeleted = false
+               },
+               new Seat
+               {
+                   Id = 17,
+                   SeatAreaId = 11,
+                   Number = "1排17號",
+                   Status = 1,
+                   CreatedAt = DateTime.Now,
+                   EditedAt = DateTime.Now,
+                   IsDeleted = false
+               },
+               new Seat
+               {
+                   Id = 18,
+                   SeatAreaId = 11,
+                   Number = "2排1號",
+                   Status = 1,
+                   CreatedAt = DateTime.Now,
+                   EditedAt = DateTime.Now,
+                   IsDeleted = false
+               },
+               new Seat
+               {
+                   Id = 19,
+                   SeatAreaId = 11,
+                   Number = "2排2號",
+                   Status = 1,
+                   CreatedAt = DateTime.Now,
+                   EditedAt = DateTime.Now,
+                   IsDeleted = false
+               },
+               new Seat
+               {
+                   Id = 20,
+                   SeatAreaId = 11,
+                   Number = "2排3號",
+                   Status = 1,
+                   CreatedAt = DateTime.Now,
+                   EditedAt = DateTime.Now,
+                   IsDeleted = false
+               },
+               new Seat
+               {
+                   Id = 21,
+                   SeatAreaId = 11,
+                   Number = "2排4號",
+                   Status = 1,
+                   CreatedAt = DateTime.Now,
+                   EditedAt = DateTime.Now,
+                   IsDeleted = false
+               },
+               new Seat
+               {
+                   Id = 22,
+                   SeatAreaId = 11,
+                   Number = "2排5號",
+                   Status = 1,
+                   CreatedAt = DateTime.Now,
+                   EditedAt = DateTime.Now,
+                   IsDeleted = false
+               },
+               new Seat
+               {
+                   Id = 23,
+                   SeatAreaId = 11,
+                   Number = "2排6號",
+                   Status = 1,
+                   CreatedAt = DateTime.Now,
+                   EditedAt = DateTime.Now,
+                   IsDeleted = false
+               },
+               new Seat
+               {
+                   Id = 24,
+                   SeatAreaId = 11,
+                   Number = "2排7號",
+                   Status = 1,
+                   CreatedAt = DateTime.Now,
+                   EditedAt = DateTime.Now,
+                   IsDeleted = false
+               },
+               new Seat
+               {
+                   Id = 25,
+                   SeatAreaId = 11,
+                   Number = "2排8號",
+                   Status = 1,
+                   CreatedAt = DateTime.Now,
+                   EditedAt = DateTime.Now,
+                   IsDeleted = false
+               },
+               new Seat
+               {
+                   Id = 26,
+                   SeatAreaId = 11,
+                   Number = "2排9號",
+                   Status = 1,
+                   CreatedAt = DateTime.Now,
+                   EditedAt = DateTime.Now,
+                   IsDeleted = false
+               },
+               new Seat
+               {
+                   Id = 27,
+                   SeatAreaId = 11,
+                   Number = "2排10號",
+                   Status = 1,
+                   CreatedAt = DateTime.Now,
+                   EditedAt = DateTime.Now,
+                   IsDeleted = false
+               },
+               new Seat
+               {
+                   Id = 28,
+                   SeatAreaId = 11,
+                   Number = "2排11號",
+                   Status = 1,
+                   CreatedAt = DateTime.Now,
+                   EditedAt = DateTime.Now,
+                   IsDeleted = false
+               },
+               new Seat
+               {
+                   Id = 29,
+                   SeatAreaId = 11,
+                   Number = "2排12號",
+                   Status = 1,
+                   CreatedAt = DateTime.Now,
+                   EditedAt = DateTime.Now,
+                   IsDeleted = false
+               },
+               new Seat
+               {
+                   Id = 30,
+                   SeatAreaId = 11,
+                   Number = "2排13號",
+                   Status = 1,
+                   CreatedAt = DateTime.Now,
+                   EditedAt = DateTime.Now,
+                   IsDeleted = false
+               },
+               new Seat
+               {
+                   Id = 31,
+                   SeatAreaId = 11,
+                   Number = "2排14號",
+                   Status = 1,
+                   CreatedAt = DateTime.Now,
+                   EditedAt = DateTime.Now,
+                   IsDeleted = false
+               },
+               new Seat
+               {
+                   Id = 32,
+                   SeatAreaId = 11,
+                   Number = "2排15號",
+                   Status = 1,
+                   CreatedAt = DateTime.Now,
+                   EditedAt = DateTime.Now,
+                   IsDeleted = false
+               },
+               new Seat
+               {
+                   Id = 33,
+                   SeatAreaId = 11,
+                   Number = "2排16號",
+                   Status = 1,
+                   CreatedAt = DateTime.Now,
+                   EditedAt = DateTime.Now,
+                   IsDeleted = false
+               },
+               new Seat
+               {
+                   Id = 34,
+                   SeatAreaId = 11,
+                   Number = "2排17號",
+                   Status = 1,
+                   CreatedAt = DateTime.Now,
+                   EditedAt = DateTime.Now,
+                   IsDeleted = false
+               },
+               new Seat
+               {
+                   Id = 35,
+                   SeatAreaId = 11,
+                   Number = "3排1號",
+                   Status = 1,
+                   CreatedAt = DateTime.Now,
+                   EditedAt = DateTime.Now,
+                   IsDeleted = false
+               },
+               new Seat
+               {
+                   Id = 36,
+                   SeatAreaId = 11,
+                   Number = "3排2號",
+                   Status = 1,
+                   CreatedAt = DateTime.Now,
+                   EditedAt = DateTime.Now,
+                   IsDeleted = false
+               },
+               new Seat
+               {
+                   Id = 37,
+                   SeatAreaId = 11,
+                   Number = "3排3號",
+                   Status = 1,
+                   CreatedAt = DateTime.Now,
+                   EditedAt = DateTime.Now,
+                   IsDeleted = false
+               },
+               new Seat
+               {
+                   Id = 38,
+                   SeatAreaId = 11,
+                   Number = "3排4號",
+                   Status = 1,
+                   CreatedAt = DateTime.Now,
+                   EditedAt = DateTime.Now,
+                   IsDeleted = false
+               },
+               new Seat
+               {
+                   Id = 39,
+                   SeatAreaId = 11,
+                   Number = "3排5號",
+                   Status = 1,
+                   CreatedAt = DateTime.Now,
+                   EditedAt = DateTime.Now,
+                   IsDeleted = false
+               },
+               new Seat
+               {
+                   Id = 40,
+                   SeatAreaId = 11,
+                   Number = "3排6號",
+                   Status = 1,
+                   CreatedAt = DateTime.Now,
+                   EditedAt = DateTime.Now,
+                   IsDeleted = false
+               },
+               new Seat
+               {
+                   Id = 41,
+                   SeatAreaId = 11,
+                   Number = "3排7號",
+                   Status = 1,
+                   CreatedAt = DateTime.Now,
+                   EditedAt = DateTime.Now,
+                   IsDeleted = false
+               },
+               new Seat
+               {
+                   Id = 42,
+                   SeatAreaId = 11,
+                   Number = "3排8號",
+                   Status = 1,
+                   CreatedAt = DateTime.Now,
+                   EditedAt = DateTime.Now,
+                   IsDeleted = false
+               },
+               new Seat
+               {
+                   Id = 43,
+                   SeatAreaId = 11,
+                   Number = "3排9號",
+                   Status = 1,
+                   CreatedAt = DateTime.Now,
+                   EditedAt = DateTime.Now,
+                   IsDeleted = false
+               },
+               new Seat
+               {
+                   Id = 44,
+                   SeatAreaId = 11,
+                   Number = "3排10號",
+                   Status = 1,
+                   CreatedAt = DateTime.Now,
+                   EditedAt = DateTime.Now,
+                   IsDeleted = false
+               },
+               new Seat
+               {
+                   Id = 45,
+                   SeatAreaId = 11,
+                   Number = "3排11號",
+                   Status = 1,
+                   CreatedAt = DateTime.Now,
+                   EditedAt = DateTime.Now,
+                   IsDeleted = false
+               },
+               new Seat
+               {
+                   Id = 46,
+                   SeatAreaId = 11,
+                   Number = "3排12號",
+                   Status = 1,
+                   CreatedAt = DateTime.Now,
+                   EditedAt = DateTime.Now,
+                   IsDeleted = false
+               },
+               new Seat
+               {
+                   Id = 47,
+                   SeatAreaId = 11,
+                   Number = "3排13號",
+                   Status = 1,
+                   CreatedAt = DateTime.Now,
+                   EditedAt = DateTime.Now,
+                   IsDeleted = false
+               },
+               new Seat
+               {
+                   Id = 48,
+                   SeatAreaId = 11,
+                   Number = "3排14號",
+                   Status = 1,
+                   CreatedAt = DateTime.Now,
+                   EditedAt = DateTime.Now,
+                   IsDeleted = false
+               },
+               new Seat
+               {
+                   Id = 49,
+                   SeatAreaId = 11,
+                   Number = "3排16號",
+                   Status = 0,
+                   CreatedAt = DateTime.Now,
+                   EditedAt = DateTime.Now,
+                   IsDeleted = false
+               },
+               new Seat
+               {
+                   Id = 50,
+                   SeatAreaId = 11,
+                   Number = "3排17號",
+                   Status = 0,
+                   CreatedAt = DateTime.Now,
+                   EditedAt = DateTime.Now,
+                   IsDeleted = false
+               },
+               new Seat
+               {
+                   Id = 51,
+                   SeatAreaId = 11,
+                   Number = "4排1號",
+                   Status = 0,
+                   CreatedAt = DateTime.Now,
+                   EditedAt = DateTime.Now,
+                   IsDeleted = false
+               },
+               new Seat
+               {
+                   Id = 52,
+                   SeatAreaId = 11,
+                   Number = "4排2號",
+                   Status = 0,
+                   CreatedAt = DateTime.Now,
+                   EditedAt = DateTime.Now,
+                   IsDeleted = false
+               },
+               new Seat
+               {
+                   Id = 53,
+                   SeatAreaId = 11,
+                   Number = "4排3號",
+                   Status = 0,
+                   CreatedAt = DateTime.Now,
+                   EditedAt = DateTime.Now,
+                   IsDeleted = false
+               },
+               new Seat
+               {
+                   Id = 54,
+                   SeatAreaId = 11,
+                   Number = "4排4號",
+                   Status = 0,
+                   CreatedAt = DateTime.Now,
+                   EditedAt = DateTime.Now,
+                   IsDeleted = false
+               },
+               new Seat
+               {
+                   Id = 55,
+                   SeatAreaId = 11,
+                   Number = "4排5號",
+                   Status = 0,
+                   CreatedAt = DateTime.Now,
+                   EditedAt = DateTime.Now,
+                   IsDeleted = false
+               },
+               new Seat
+               {
+                   Id = 56,
+                   SeatAreaId = 11,
+                   Number = "4排6號",
+                   Status = 0,
+                   CreatedAt = DateTime.Now,
+                   EditedAt = DateTime.Now,
+                   IsDeleted = false
+               },
+               new Seat
+               {
+                   Id = 57,
+                   SeatAreaId = 11,
+                   Number = "4排7號",
+                   Status = 0,
+                   CreatedAt = DateTime.Now,
+                   EditedAt = DateTime.Now,
+                   IsDeleted = false
+               },
+               new Seat
+               {
+                   Id = 58,
+                   SeatAreaId = 11,
+                   Number = "4排8號",
+                   Status = 0,
+                   CreatedAt = DateTime.Now,
+                   EditedAt = DateTime.Now,
+                   IsDeleted = false
+               },
+               new Seat
+               {
+                   Id = 59,
+                   SeatAreaId = 11,
+                   Number = "4排9號",
+                   Status = 0,
+                   CreatedAt = DateTime.Now,
+                   EditedAt = DateTime.Now,
+                   IsDeleted = false
+               },
+               new Seat
+               {
+                   Id = 60,
+                   SeatAreaId = 11,
+                   Number = "4排10號",
+                   Status = 0,
+                   CreatedAt = DateTime.Now,
+                   EditedAt = DateTime.Now,
+                   IsDeleted = false
+               },
+               new Seat
+               {
+                   Id = 61,
+                   SeatAreaId = 11,
+                   Number = "4排11號",
+                   Status = 0,
+                   CreatedAt = DateTime.Now,
+                   EditedAt = DateTime.Now,
+                   IsDeleted = false
+               },
+               new Seat
+               {
+                   Id = 62,
+                   SeatAreaId = 11,
+                   Number = "4排12號",
+                   Status = 0,
+                   CreatedAt = DateTime.Now,
+                   EditedAt = DateTime.Now,
+                   IsDeleted = false
+               },
+               new Seat
+               {
+                   Id = 63,
+                   SeatAreaId = 11,
+                   Number = "4排13號",
+                   Status = 0,
+                   CreatedAt = DateTime.Now,
+                   EditedAt = DateTime.Now,
+                   IsDeleted = false
+               }, 
+               new Seat
+               {
+                   Id = 1,
+                   SeatAreaId = 12,
+                   Number = "1排1號",
+                   Status = 1,
+                   CreatedAt = DateTime.Now,
+                   EditedAt = DateTime.Now,
+                   IsDeleted = false
+               },
+               new Seat
+               {
+                   Id = 2,
+                   SeatAreaId = 12,
+                   Number = "1排2號",
+                   Status = 1,
+                   CreatedAt = DateTime.Now,
+                   EditedAt = DateTime.Now,
+                   IsDeleted = false
+               },
+               new Seat
+               {
+                   Id = 3,
+                   SeatAreaId = 12,
+                   Number = "1排3號",
+                   Status = 1,
+                   CreatedAt = DateTime.Now,
+                   EditedAt = DateTime.Now,
+                   IsDeleted = false
+               },
+               new Seat
+               {
+                   Id = 4,
+                   SeatAreaId = 12,
+                   Number = "1排4號",
+                   Status = 1,
+                   CreatedAt = DateTime.Now,
+                   EditedAt = DateTime.Now,
+                   IsDeleted = false
+               },
+               new Seat
+               {
+                   Id = 5,
+                   SeatAreaId = 12,
+                   Number = "1排5號",
+                   Status = 1,
+                   CreatedAt = DateTime.Now,
+                   EditedAt = DateTime.Now,
+                   IsDeleted = false
+               },
+               new Seat
+               {
+                   Id = 6,
+                   SeatAreaId = 12,
+                   Number = "1排6號",
+                   Status = 1,
+                   CreatedAt = DateTime.Now,
+                   EditedAt = DateTime.Now,
+                   IsDeleted = false
+               },
+               new Seat
+               {
+                   Id = 7,
+                   SeatAreaId = 12,
+                   Number = "1排7號",
+                   Status = 1,
+                   CreatedAt = DateTime.Now,
+                   EditedAt = DateTime.Now,
+                   IsDeleted = false
+               },
+               new Seat
+               {
+                   Id = 8,
+                   SeatAreaId = 12,
+                   Number = "1排8號",
+                   Status = 1,
+                   CreatedAt = DateTime.Now,
+                   EditedAt = DateTime.Now,
+                   IsDeleted = false
+               },
+               new Seat
+               {
+                   Id = 9,
+                   SeatAreaId = 12,
+                   Number = "1排9號",
+                   Status = 1,
+                   CreatedAt = DateTime.Now,
+                   EditedAt = DateTime.Now,
+                   IsDeleted = false
+               },
+               new Seat
+               {
+                   Id = 10,
+                   SeatAreaId = 12,
+                   Number = "1排10號",
+                   Status = 1,
+                   CreatedAt = DateTime.Now,
+                   EditedAt = DateTime.Now,
+                   IsDeleted = false
+               },
+               new Seat
+               {
+                   Id = 11,
+                   SeatAreaId = 12,
+                   Number = "1排11號",
+                   Status = 1,
+                   CreatedAt = DateTime.Now,
+                   EditedAt = DateTime.Now,
+                   IsDeleted = false
+               },
+               new Seat
+               {
+                   Id = 12,
+                   SeatAreaId = 12,
+                   Number = "1排12號",
+                   Status = 1,
+                   CreatedAt = DateTime.Now,
+                   EditedAt = DateTime.Now,
+                   IsDeleted = false
+               },
+               new Seat
+               {
+                   Id = 13,
+                   SeatAreaId = 12,
+                   Number = "1排13號",
+                   Status = 1,
+                   CreatedAt = DateTime.Now,
+                   EditedAt = DateTime.Now,
+                   IsDeleted = false
+               },
+               new Seat
+               {
+                   Id = 14,
+                   SeatAreaId = 12,
+                   Number = "1排14號",
+                   Status = 1,
+                   CreatedAt = DateTime.Now,
+                   EditedAt = DateTime.Now,
+                   IsDeleted = false
+               },
+               new Seat
+               {
+                   Id = 15,
+                   SeatAreaId = 12,
+                   Number = "1排15號",
+                   Status = 1,
+                   CreatedAt = DateTime.Now,
+                   EditedAt = DateTime.Now,
+                   IsDeleted = false
+               },
+               new Seat
+               {
+                   Id = 16,
+                   SeatAreaId = 12,
+                   Number = "1排16號",
+                   Status = 1,
+                   CreatedAt = DateTime.Now,
+                   EditedAt = DateTime.Now,
+                   IsDeleted = false
+               },
+               new Seat
+               {
+                   Id = 17,
+                   SeatAreaId = 12,
+                   Number = "1排17號",
+                   Status = 1,
+                   CreatedAt = DateTime.Now,
+                   EditedAt = DateTime.Now,
+                   IsDeleted = false
+               },
+               new Seat
+               {
+                   Id = 18,
+                   SeatAreaId = 12,
+                   Number = "2排1號",
+                   Status = 1,
+                   CreatedAt = DateTime.Now,
+                   EditedAt = DateTime.Now,
+                   IsDeleted = false
+               },
+               new Seat
+               {
+                   Id = 19,
+                   SeatAreaId = 12,
+                   Number = "2排2號",
+                   Status = 1,
+                   CreatedAt = DateTime.Now,
+                   EditedAt = DateTime.Now,
+                   IsDeleted = false
+               },
+               new Seat
+               {
+                   Id = 20,
+                   SeatAreaId = 12,
+                   Number = "2排3號",
+                   Status = 1,
+                   CreatedAt = DateTime.Now,
+                   EditedAt = DateTime.Now,
+                   IsDeleted = false
+               },
+               new Seat
+               {
+                   Id = 21,
+                   SeatAreaId = 12,
+                   Number = "2排4號",
+                   Status = 1,
+                   CreatedAt = DateTime.Now,
+                   EditedAt = DateTime.Now,
+                   IsDeleted = false
+               },
+               new Seat
+               {
+                   Id = 22,
+                   SeatAreaId = 12,
+                   Number = "2排5號",
+                   Status = 1,
+                   CreatedAt = DateTime.Now,
+                   EditedAt = DateTime.Now,
+                   IsDeleted = false
+               },
+               new Seat
+               {
+                   Id = 23,
+                   SeatAreaId = 12,
+                   Number = "2排6號",
+                   Status = 1,
+                   CreatedAt = DateTime.Now,
+                   EditedAt = DateTime.Now,
+                   IsDeleted = false
+               },
+               new Seat
+               {
+                   Id = 24,
+                   SeatAreaId = 12,
+                   Number = "2排7號",
+                   Status = 1,
+                   CreatedAt = DateTime.Now,
+                   EditedAt = DateTime.Now,
+                   IsDeleted = false
+               },
+               new Seat
+               {
+                   Id = 25,
+                   SeatAreaId = 12,
+                   Number = "2排8號",
+                   Status = 1,
+                   CreatedAt = DateTime.Now,
+                   EditedAt = DateTime.Now,
+                   IsDeleted = false
+               },
+               new Seat
+               {
+                   Id = 26,
+                   SeatAreaId = 12,
+                   Number = "2排9號",
+                   Status = 1,
+                   CreatedAt = DateTime.Now,
+                   EditedAt = DateTime.Now,
+                   IsDeleted = false
+               },
+               new Seat
+               {
+                   Id = 27,
+                   SeatAreaId = 12,
+                   Number = "2排10號",
+                   Status = 1,
+                   CreatedAt = DateTime.Now,
+                   EditedAt = DateTime.Now,
+                   IsDeleted = false
+               },
+               new Seat
+               {
+                   Id = 28,
+                   SeatAreaId = 12,
+                   Number = "2排11號",
+                   Status = 1,
+                   CreatedAt = DateTime.Now,
+                   EditedAt = DateTime.Now,
+                   IsDeleted = false
+               },
+               new Seat
+               {
+                   Id = 29,
+                   SeatAreaId = 12,
+                   Number = "2排12號",
+                   Status = 1,
+                   CreatedAt = DateTime.Now,
+                   EditedAt = DateTime.Now,
+                   IsDeleted = false
+               },
+               new Seat
+               {
+                   Id = 30,
+                   SeatAreaId = 12,
+                   Number = "2排13號",
+                   Status = 1,
+                   CreatedAt = DateTime.Now,
+                   EditedAt = DateTime.Now,
+                   IsDeleted = false
+               },
+               new Seat
+               {
+                   Id = 31,
+                   SeatAreaId = 12,
+                   Number = "2排14號",
+                   Status = 1,
+                   CreatedAt = DateTime.Now,
+                   EditedAt = DateTime.Now,
+                   IsDeleted = false
+               },
+               new Seat
+               {
+                   Id = 32,
+                   SeatAreaId = 12,
+                   Number = "2排15號",
+                   Status = 1,
+                   CreatedAt = DateTime.Now,
+                   EditedAt = DateTime.Now,
+                   IsDeleted = false
+               },
+               new Seat
+               {
+                   Id = 33,
+                   SeatAreaId = 12,
+                   Number = "2排16號",
+                   Status = 1,
+                   CreatedAt = DateTime.Now,
+                   EditedAt = DateTime.Now,
+                   IsDeleted = false
+               },
+               new Seat
+               {
+                   Id = 34,
+                   SeatAreaId = 12,
+                   Number = "2排17號",
+                   Status = 1,
+                   CreatedAt = DateTime.Now,
+                   EditedAt = DateTime.Now,
+                   IsDeleted = false
+               },
+               new Seat
+               {
+                   Id = 35,
+                   SeatAreaId = 12,
+                   Number = "3排1號",
+                   Status = 1,
+                   CreatedAt = DateTime.Now,
+                   EditedAt = DateTime.Now,
+                   IsDeleted = false
+               },
+               new Seat
+               {
+                   Id = 36,
+                   SeatAreaId = 12,
+                   Number = "3排2號",
+                   Status = 1,
+                   CreatedAt = DateTime.Now,
+                   EditedAt = DateTime.Now,
+                   IsDeleted = false
+               },
+               new Seat
+               {
+                   Id = 37,
+                   SeatAreaId = 12,
+                   Number = "3排3號",
+                   Status = 1,
+                   CreatedAt = DateTime.Now,
+                   EditedAt = DateTime.Now,
+                   IsDeleted = false
+               },
+               new Seat
+               {
+                   Id = 38,
+                   SeatAreaId = 12,
+                   Number = "3排4號",
+                   Status = 1,
+                   CreatedAt = DateTime.Now,
+                   EditedAt = DateTime.Now,
+                   IsDeleted = false
+               },
+               new Seat
+               {
+                   Id = 39,
+                   SeatAreaId = 12,
+                   Number = "3排5號",
+                   Status = 1,
+                   CreatedAt = DateTime.Now,
+                   EditedAt = DateTime.Now,
+                   IsDeleted = false
+               },
+               new Seat
+               {
+                   Id = 40,
+                   SeatAreaId = 12,
+                   Number = "3排6號",
+                   Status = 1,
+                   CreatedAt = DateTime.Now,
+                   EditedAt = DateTime.Now,
+                   IsDeleted = false
+               },
+               new Seat
+               {
+                   Id = 41,
+                   SeatAreaId = 12,
+                   Number = "3排7號",
+                   Status = 1,
+                   CreatedAt = DateTime.Now,
+                   EditedAt = DateTime.Now,
+                   IsDeleted = false
+               },
+               new Seat
+               {
+                   Id = 42,
+                   SeatAreaId = 12,
+                   Number = "3排8號",
+                   Status = 1,
+                   CreatedAt = DateTime.Now,
+                   EditedAt = DateTime.Now,
+                   IsDeleted = false
+               },
+               new Seat
+               {
+                   Id = 43,
+                   SeatAreaId = 12,
+                   Number = "3排9號",
+                   Status = 1,
+                   CreatedAt = DateTime.Now,
+                   EditedAt = DateTime.Now,
+                   IsDeleted = false
+               },
+               new Seat
+               {
+                   Id = 44,
+                   SeatAreaId = 12,
+                   Number = "3排10號",
+                   Status = 1,
+                   CreatedAt = DateTime.Now,
+                   EditedAt = DateTime.Now,
+                   IsDeleted = false
+               },
+               new Seat
+               {
+                   Id = 45,
+                   SeatAreaId = 12,
+                   Number = "3排11號",
+                   Status = 1,
+                   CreatedAt = DateTime.Now,
+                   EditedAt = DateTime.Now,
+                   IsDeleted = false
+               },
+               new Seat
+               {
+                   Id = 46,
+                   SeatAreaId = 12,
+                   Number = "3排12號",
+                   Status = 1,
+                   CreatedAt = DateTime.Now,
+                   EditedAt = DateTime.Now,
+                   IsDeleted = false
+               },
+               new Seat
+               {
+                   Id = 47,
+                   SeatAreaId = 12,
+                   Number = "3排13號",
+                   Status = 1,
+                   CreatedAt = DateTime.Now,
+                   EditedAt = DateTime.Now,
+                   IsDeleted = false
+               },
+               new Seat
+               {
+                   Id = 48,
+                   SeatAreaId = 12,
+                   Number = "3排14號",
+                   Status = 1,
+                   CreatedAt = DateTime.Now,
+                   EditedAt = DateTime.Now,
+                   IsDeleted = false
+               },
+               new Seat
+               {
+                   Id = 49,
+                   SeatAreaId = 12,
+                   Number = "3排16號",
+                   Status = 0,
+                   CreatedAt = DateTime.Now,
+                   EditedAt = DateTime.Now,
+                   IsDeleted = false
+               },
+               new Seat
+               {
+                   Id = 50,
+                   SeatAreaId = 12,
+                   Number = "3排17號",
+                   Status = 0,
+                   CreatedAt = DateTime.Now,
+                   EditedAt = DateTime.Now,
+                   IsDeleted = false
+               },
+               new Seat
+               {
+                   Id = 51,
+                   SeatAreaId = 12,
+                   Number = "4排1號",
+                   Status = 0,
+                   CreatedAt = DateTime.Now,
+                   EditedAt = DateTime.Now,
+                   IsDeleted = false
+               },
+               new Seat
+               {
+                   Id = 52,
+                   SeatAreaId = 12,
+                   Number = "4排2號",
+                   Status = 0,
+                   CreatedAt = DateTime.Now,
+                   EditedAt = DateTime.Now,
+                   IsDeleted = false
+               },
+               new Seat
+               {
+                   Id = 53,
+                   SeatAreaId = 12,
+                   Number = "4排3號",
+                   Status = 0,
+                   CreatedAt = DateTime.Now,
+                   EditedAt = DateTime.Now,
+                   IsDeleted = false
+               },
+               new Seat
+               {
+                   Id = 54,
+                   SeatAreaId = 12,
+                   Number = "4排4號",
+                   Status = 0,
+                   CreatedAt = DateTime.Now,
+                   EditedAt = DateTime.Now,
+                   IsDeleted = false
+               },
+               new Seat
+               {
+                   Id = 55,
+                   SeatAreaId = 12,
+                   Number = "4排5號",
+                   Status = 0,
+                   CreatedAt = DateTime.Now,
+                   EditedAt = DateTime.Now,
+                   IsDeleted = false
+               },
+               new Seat
+               {
+                   Id = 56,
+                   SeatAreaId = 12,
+                   Number = "4排6號",
+                   Status = 0,
+                   CreatedAt = DateTime.Now,
+                   EditedAt = DateTime.Now,
+                   IsDeleted = false
+               },
+               new Seat
+               {
+                   Id = 57,
+                   SeatAreaId = 12,
+                   Number = "4排7號",
+                   Status = 0,
+                   CreatedAt = DateTime.Now,
+                   EditedAt = DateTime.Now,
+                   IsDeleted = false
+               },
+               new Seat
+               {
+                   Id = 58,
+                   SeatAreaId = 12,
+                   Number = "4排8號",
+                   Status = 0,
+                   CreatedAt = DateTime.Now,
+                   EditedAt = DateTime.Now,
+                   IsDeleted = false
+               },
+               new Seat
+               {
+                   Id = 59,
+                   SeatAreaId = 12,
+                   Number = "4排9號",
+                   Status = 0,
+                   CreatedAt = DateTime.Now,
+                   EditedAt = DateTime.Now,
+                   IsDeleted = false
+               },
+               new Seat
+               {
+                   Id = 60,
+                   SeatAreaId = 12,
+                   Number = "4排10號",
+                   Status = 0,
+                   CreatedAt = DateTime.Now,
+                   EditedAt = DateTime.Now,
+                   IsDeleted = false
+               },
+               new Seat
+               {
+                   Id = 61,
+                   SeatAreaId = 12,
+                   Number = "4排11號",
+                   Status = 0,
+                   CreatedAt = DateTime.Now,
+                   EditedAt = DateTime.Now,
+                   IsDeleted = false
+               },
+               new Seat
+               {
+                   Id = 62,
+                   SeatAreaId = 12,
+                   Number = "4排12號",
+                   Status = 0,
+                   CreatedAt = DateTime.Now,
+                   EditedAt = DateTime.Now,
+                   IsDeleted = false
+               },
+               new Seat
+               {
+                   Id = 63,
+                   SeatAreaId = 12,
+                   Number = "4排13號",
+                   Status = 0,
+                   CreatedAt = DateTime.Now,
+                   EditedAt = DateTime.Now,
+                   IsDeleted = false
+               }, 
+               new Seat
+               {
+                   Id = 1,
+                   SeatAreaId = 13,
+                   Number = "1排1號",
+                   Status = 1,
+                   CreatedAt = DateTime.Now,
+                   EditedAt = DateTime.Now,
+                   IsDeleted = false
+               },
+               new Seat
+               {
+                   Id = 2,
+                   SeatAreaId = 13,
+                   Number = "1排2號",
+                   Status = 1,
+                   CreatedAt = DateTime.Now,
+                   EditedAt = DateTime.Now,
+                   IsDeleted = false
+               },
+               new Seat
+               {
+                   Id = 3,
+                   SeatAreaId = 13,
+                   Number = "1排3號",
+                   Status = 1,
+                   CreatedAt = DateTime.Now,
+                   EditedAt = DateTime.Now,
+                   IsDeleted = false
+               },
+               new Seat
+               {
+                   Id = 4,
+                   SeatAreaId = 13,
+                   Number = "1排4號",
+                   Status = 1,
+                   CreatedAt = DateTime.Now,
+                   EditedAt = DateTime.Now,
+                   IsDeleted = false
+               },
+               new Seat
+               {
+                   Id = 5,
+                   SeatAreaId = 13,
+                   Number = "1排5號",
+                   Status = 1,
+                   CreatedAt = DateTime.Now,
+                   EditedAt = DateTime.Now,
+                   IsDeleted = false
+               },
+               new Seat
+               {
+                   Id = 6,
+                   SeatAreaId = 13,
+                   Number = "1排6號",
+                   Status = 1,
+                   CreatedAt = DateTime.Now,
+                   EditedAt = DateTime.Now,
+                   IsDeleted = false
+               },
+               new Seat
+               {
+                   Id = 7,
+                   SeatAreaId = 13,
+                   Number = "1排7號",
+                   Status = 1,
+                   CreatedAt = DateTime.Now,
+                   EditedAt = DateTime.Now,
+                   IsDeleted = false
+               },
+               new Seat
+               {
+                   Id = 8,
+                   SeatAreaId = 13,
+                   Number = "1排8號",
+                   Status = 1,
+                   CreatedAt = DateTime.Now,
+                   EditedAt = DateTime.Now,
+                   IsDeleted = false
+               },
+               new Seat
+               {
+                   Id = 9,
+                   SeatAreaId = 13,
+                   Number = "1排9號",
+                   Status = 1,
+                   CreatedAt = DateTime.Now,
+                   EditedAt = DateTime.Now,
+                   IsDeleted = false
+               },
+               new Seat
+               {
+                   Id = 10,
+                   SeatAreaId = 13,
+                   Number = "1排10號",
+                   Status = 1,
+                   CreatedAt = DateTime.Now,
+                   EditedAt = DateTime.Now,
+                   IsDeleted = false
+               },
+               new Seat
+               {
+                   Id = 11,
+                   SeatAreaId = 13,
+                   Number = "1排11號",
+                   Status = 1,
+                   CreatedAt = DateTime.Now,
+                   EditedAt = DateTime.Now,
+                   IsDeleted = false
+               },
+               new Seat
+               {
+                   Id = 12,
+                   SeatAreaId = 13,
+                   Number = "1排12號",
+                   Status = 1,
+                   CreatedAt = DateTime.Now,
+                   EditedAt = DateTime.Now,
+                   IsDeleted = false
+               },
+               new Seat
+               {
+                   Id = 13,
+                   SeatAreaId = 13,
+                   Number = "1排13號",
+                   Status = 1,
+                   CreatedAt = DateTime.Now,
+                   EditedAt = DateTime.Now,
+                   IsDeleted = false
+               },
+               new Seat
+               {
+                   Id = 14,
+                   SeatAreaId = 13,
+                   Number = "1排14號",
+                   Status = 1,
+                   CreatedAt = DateTime.Now,
+                   EditedAt = DateTime.Now,
+                   IsDeleted = false
+               },
+               new Seat
+               {
+                   Id = 15,
+                   SeatAreaId = 13,
+                   Number = "1排15號",
+                   Status = 1,
+                   CreatedAt = DateTime.Now,
+                   EditedAt = DateTime.Now,
+                   IsDeleted = false
+               },
+               new Seat
+               {
+                   Id = 16,
+                   SeatAreaId = 13,
+                   Number = "1排16號",
+                   Status = 1,
+                   CreatedAt = DateTime.Now,
+                   EditedAt = DateTime.Now,
+                   IsDeleted = false
+               },
+               new Seat
+               {
+                   Id = 17,
+                   SeatAreaId = 13,
+                   Number = "1排17號",
+                   Status = 1,
+                   CreatedAt = DateTime.Now,
+                   EditedAt = DateTime.Now,
+                   IsDeleted = false
+               },
+               new Seat
+               {
+                   Id = 18,
+                   SeatAreaId = 13,
+                   Number = "2排1號",
+                   Status = 1,
+                   CreatedAt = DateTime.Now,
+                   EditedAt = DateTime.Now,
+                   IsDeleted = false
+               },
+               new Seat
+               {
+                   Id = 19,
+                   SeatAreaId = 13,
+                   Number = "2排2號",
+                   Status = 1,
+                   CreatedAt = DateTime.Now,
+                   EditedAt = DateTime.Now,
+                   IsDeleted = false
+               },
+               new Seat
+               {
+                   Id = 20,
+                   SeatAreaId = 13,
+                   Number = "2排3號",
+                   Status = 1,
+                   CreatedAt = DateTime.Now,
+                   EditedAt = DateTime.Now,
+                   IsDeleted = false
+               },
+               new Seat
+               {
+                   Id = 21,
+                   SeatAreaId = 13,
+                   Number = "2排4號",
+                   Status = 1,
+                   CreatedAt = DateTime.Now,
+                   EditedAt = DateTime.Now,
+                   IsDeleted = false
+               },
+               new Seat
+               {
+                   Id = 22,
+                   SeatAreaId = 13,
+                   Number = "2排5號",
+                   Status = 1,
+                   CreatedAt = DateTime.Now,
+                   EditedAt = DateTime.Now,
+                   IsDeleted = false
+               },
+               new Seat
+               {
+                   Id = 23,
+                   SeatAreaId = 13,
+                   Number = "2排6號",
+                   Status = 1,
+                   CreatedAt = DateTime.Now,
+                   EditedAt = DateTime.Now,
+                   IsDeleted = false
+               },
+               new Seat
+               {
+                   Id = 24,
+                   SeatAreaId = 13,
+                   Number = "2排7號",
+                   Status = 1,
+                   CreatedAt = DateTime.Now,
+                   EditedAt = DateTime.Now,
+                   IsDeleted = false
+               },
+               new Seat
+               {
+                   Id = 25,
+                   SeatAreaId = 13,
+                   Number = "2排8號",
+                   Status = 1,
+                   CreatedAt = DateTime.Now,
+                   EditedAt = DateTime.Now,
+                   IsDeleted = false
+               },
+               new Seat
+               {
+                   Id = 26,
+                   SeatAreaId = 13,
+                   Number = "2排9號",
+                   Status = 1,
+                   CreatedAt = DateTime.Now,
+                   EditedAt = DateTime.Now,
+                   IsDeleted = false
+               },
+               new Seat
+               {
+                   Id = 27,
+                   SeatAreaId = 13,
+                   Number = "2排10號",
+                   Status = 1,
+                   CreatedAt = DateTime.Now,
+                   EditedAt = DateTime.Now,
+                   IsDeleted = false
+               },
+               new Seat
+               {
+                   Id = 28,
+                   SeatAreaId = 13,
+                   Number = "2排11號",
+                   Status = 1,
+                   CreatedAt = DateTime.Now,
+                   EditedAt = DateTime.Now,
+                   IsDeleted = false
+               },
+               new Seat
+               {
+                   Id = 29,
+                   SeatAreaId = 13,
+                   Number = "2排12號",
+                   Status = 1,
+                   CreatedAt = DateTime.Now,
+                   EditedAt = DateTime.Now,
+                   IsDeleted = false
+               },
+               new Seat
+               {
+                   Id = 30,
+                   SeatAreaId = 13,
+                   Number = "2排13號",
+                   Status = 1,
+                   CreatedAt = DateTime.Now,
+                   EditedAt = DateTime.Now,
+                   IsDeleted = false
+               },
+               new Seat
+               {
+                   Id = 31,
+                   SeatAreaId = 13,
+                   Number = "2排14號",
+                   Status = 1,
+                   CreatedAt = DateTime.Now,
+                   EditedAt = DateTime.Now,
+                   IsDeleted = false
+               },
+               new Seat
+               {
+                   Id = 32,
+                   SeatAreaId = 13,
+                   Number = "2排15號",
+                   Status = 1,
+                   CreatedAt = DateTime.Now,
+                   EditedAt = DateTime.Now,
+                   IsDeleted = false
+               },
+               new Seat
+               {
+                   Id = 33,
+                   SeatAreaId = 13,
+                   Number = "2排16號",
+                   Status = 1,
+                   CreatedAt = DateTime.Now,
+                   EditedAt = DateTime.Now,
+                   IsDeleted = false
+               },
+               new Seat
+               {
+                   Id = 34,
+                   SeatAreaId = 13,
+                   Number = "2排17號",
+                   Status = 1,
+                   CreatedAt = DateTime.Now,
+                   EditedAt = DateTime.Now,
+                   IsDeleted = false
+               },
+               new Seat
+               {
+                   Id = 35,
+                   SeatAreaId = 13,
+                   Number = "3排1號",
+                   Status = 1,
+                   CreatedAt = DateTime.Now,
+                   EditedAt = DateTime.Now,
+                   IsDeleted = false
+               },
+               new Seat
+               {
+                   Id = 36,
+                   SeatAreaId = 13,
+                   Number = "3排2號",
+                   Status = 1,
+                   CreatedAt = DateTime.Now,
+                   EditedAt = DateTime.Now,
+                   IsDeleted = false
+               },
+               new Seat
+               {
+                   Id = 37,
+                   SeatAreaId = 13,
+                   Number = "3排3號",
+                   Status = 1,
+                   CreatedAt = DateTime.Now,
+                   EditedAt = DateTime.Now,
+                   IsDeleted = false
+               },
+               new Seat
+               {
+                   Id = 38,
+                   SeatAreaId = 13,
+                   Number = "3排4號",
+                   Status = 1,
+                   CreatedAt = DateTime.Now,
+                   EditedAt = DateTime.Now,
+                   IsDeleted = false
+               },
+               new Seat
+               {
+                   Id = 39,
+                   SeatAreaId = 13,
+                   Number = "3排5號",
+                   Status = 1,
+                   CreatedAt = DateTime.Now,
+                   EditedAt = DateTime.Now,
+                   IsDeleted = false
+               },
+               new Seat
+               {
+                   Id = 40,
+                   SeatAreaId = 13,
+                   Number = "3排6號",
+                   Status = 1,
+                   CreatedAt = DateTime.Now,
+                   EditedAt = DateTime.Now,
+                   IsDeleted = false
+               },
+               new Seat
+               {
+                   Id = 41,
+                   SeatAreaId = 13,
+                   Number = "3排7號",
+                   Status = 1,
+                   CreatedAt = DateTime.Now,
+                   EditedAt = DateTime.Now,
+                   IsDeleted = false
+               },
+               new Seat
+               {
+                   Id = 42,
+                   SeatAreaId = 13,
+                   Number = "3排8號",
+                   Status = 1,
+                   CreatedAt = DateTime.Now,
+                   EditedAt = DateTime.Now,
+                   IsDeleted = false
+               },
+               new Seat
+               {
+                   Id = 43,
+                   SeatAreaId = 13,
+                   Number = "3排9號",
+                   Status = 1,
+                   CreatedAt = DateTime.Now,
+                   EditedAt = DateTime.Now,
+                   IsDeleted = false
+               },
+               new Seat
+               {
+                   Id = 44,
+                   SeatAreaId = 13,
+                   Number = "3排10號",
+                   Status = 1,
+                   CreatedAt = DateTime.Now,
+                   EditedAt = DateTime.Now,
+                   IsDeleted = false
+               },
+               new Seat
+               {
+                   Id = 45,
+                   SeatAreaId = 13,
+                   Number = "3排11號",
+                   Status = 1,
+                   CreatedAt = DateTime.Now,
+                   EditedAt = DateTime.Now,
+                   IsDeleted = false
+               },
+               new Seat
+               {
+                   Id = 46,
+                   SeatAreaId = 13,
+                   Number = "3排12號",
+                   Status = 1,
+                   CreatedAt = DateTime.Now,
+                   EditedAt = DateTime.Now,
+                   IsDeleted = false
+               },
+               new Seat
+               {
+                   Id = 47,
+                   SeatAreaId = 13,
+                   Number = "3排13號",
+                   Status = 1,
+                   CreatedAt = DateTime.Now,
+                   EditedAt = DateTime.Now,
+                   IsDeleted = false
+               },
+               new Seat
+               {
+                   Id = 48,
+                   SeatAreaId = 13,
+                   Number = "3排14號",
+                   Status = 1,
+                   CreatedAt = DateTime.Now,
+                   EditedAt = DateTime.Now,
+                   IsDeleted = false
+               },
+               new Seat
+               {
+                   Id = 49,
+                   SeatAreaId = 13,
+                   Number = "3排16號",
+                   Status = 0,
+                   CreatedAt = DateTime.Now,
+                   EditedAt = DateTime.Now,
+                   IsDeleted = false
+               },
+               new Seat
+               {
+                   Id = 50,
+                   SeatAreaId = 13,
+                   Number = "3排17號",
+                   Status = 0,
+                   CreatedAt = DateTime.Now,
+                   EditedAt = DateTime.Now,
+                   IsDeleted = false
+               },
+               new Seat
+               {
+                   Id = 51,
+                   SeatAreaId = 13,
+                   Number = "4排1號",
+                   Status = 0,
+                   CreatedAt = DateTime.Now,
+                   EditedAt = DateTime.Now,
+                   IsDeleted = false
+               },
+               new Seat
+               {
+                   Id = 52,
+                   SeatAreaId = 13,
+                   Number = "4排2號",
+                   Status = 0,
+                   CreatedAt = DateTime.Now,
+                   EditedAt = DateTime.Now,
+                   IsDeleted = false
+               },
+               new Seat
+               {
+                   Id = 53,
+                   SeatAreaId = 13,
+                   Number = "4排3號",
+                   Status = 0,
+                   CreatedAt = DateTime.Now,
+                   EditedAt = DateTime.Now,
+                   IsDeleted = false
+               },
+               new Seat
+               {
+                   Id = 54,
+                   SeatAreaId = 13,
+                   Number = "4排4號",
+                   Status = 0,
+                   CreatedAt = DateTime.Now,
+                   EditedAt = DateTime.Now,
+                   IsDeleted = false
+               },
+               new Seat
+               {
+                   Id = 55,
+                   SeatAreaId = 13,
+                   Number = "4排5號",
+                   Status = 0,
+                   CreatedAt = DateTime.Now,
+                   EditedAt = DateTime.Now,
+                   IsDeleted = false
+               },
+               new Seat
+               {
+                   Id = 56,
+                   SeatAreaId = 13,
+                   Number = "4排6號",
+                   Status = 0,
+                   CreatedAt = DateTime.Now,
+                   EditedAt = DateTime.Now,
+                   IsDeleted = false
+               },
+               new Seat
+               {
+                   Id = 57,
+                   SeatAreaId = 13,
+                   Number = "4排7號",
+                   Status = 0,
+                   CreatedAt = DateTime.Now,
+                   EditedAt = DateTime.Now,
+                   IsDeleted = false
+               },
+               new Seat
+               {
+                   Id = 58,
+                   SeatAreaId = 13,
+                   Number = "4排8號",
+                   Status = 0,
+                   CreatedAt = DateTime.Now,
+                   EditedAt = DateTime.Now,
+                   IsDeleted = false
+               },
+               new Seat
+               {
+                   Id = 59,
+                   SeatAreaId = 13,
+                   Number = "4排9號",
+                   Status = 0,
+                   CreatedAt = DateTime.Now,
+                   EditedAt = DateTime.Now,
+                   IsDeleted = false
+               },
+               new Seat
+               {
+                   Id = 60,
+                   SeatAreaId = 13,
+                   Number = "4排10號",
+                   Status = 0,
+                   CreatedAt = DateTime.Now,
+                   EditedAt = DateTime.Now,
+                   IsDeleted = false
+               },
+               new Seat
+               {
+                   Id = 61,
+                   SeatAreaId = 13,
+                   Number = "4排11號",
+                   Status = 0,
+                   CreatedAt = DateTime.Now,
+                   EditedAt = DateTime.Now,
+                   IsDeleted = false
+               },
+               new Seat
+               {
+                   Id = 62,
+                   SeatAreaId = 13,
+                   Number = "4排12號",
+                   Status = 0,
+                   CreatedAt = DateTime.Now,
+                   EditedAt = DateTime.Now,
+                   IsDeleted = false
+               },
+               new Seat
+               {
+                   Id = 63,
+                   SeatAreaId = 13,
+                   Number = "4排13號",
+                   Status = 0,
+                   CreatedAt = DateTime.Now,
+                   EditedAt = DateTime.Now,
+                   IsDeleted = false
                }
            );
+
+            //--------------------SeatArea---------------------------------
+
+            modelBuilder.Entity<SeatArea>().HasData(
+              new SeatArea()
+              {
+                  Id = 1,
+                  Name = "1A區",
+                  CreatedAt = DateTime.Now.AddDays(-15),
+                  EditedAt = null,
+                  IsDeleted = false
+              },
+               new SeatArea()
+               {
+                   Id = 1,
+                   Name = "2A區",
+                   CreatedAt = DateTime.Now.AddDays(-15),
+                   EditedAt = null,
+                   IsDeleted = false
+               },
+                new SeatArea()
+                {
+                    Id = 1,
+                    Name = "2A區",
+                    CreatedAt = DateTime.Now.AddDays(-15),
+                    EditedAt = null,
+                    IsDeleted = false
+                },
+             new SeatArea()
+             {
+                 Id = 2,
+                 Name = "2B區",
+                 CreatedAt = DateTime.Now.AddDays(-14),
+                 EditedAt = null,
+                 IsDeleted = false
+             },
+               new SeatArea()
+               {
+                   Id = 2,
+                   Name = "2C區",
+                   CreatedAt = DateTime.Now.AddDays(-13),
+                   EditedAt = null,
+                   IsDeleted = false
+               },
+              new SeatArea()
+              {
+                  Id = 3,
+                  Name = "2D區",
+                  CreatedAt = DateTime.Now.AddDays(-12),
+                  EditedAt = null,
+                  IsDeleted = false
+              },
+              new SeatArea()
+              {
+                  Id = 4,
+                  Name = "2E區",
+                  CreatedAt = DateTime.Now.AddDays(-11),
+                  EditedAt = null,
+                  IsDeleted = false
+              }, new SeatArea()
+              {
+                  Id = 5,
+                  Name = "2F區",
+                  CreatedAt = DateTime.Now.AddDays(-10),
+                  EditedAt = null,
+                  IsDeleted = false
+              },
+               new SeatArea()
+               {
+                   Id = 6,
+                   Name = "2G區",
+                   CreatedAt = DateTime.Now.AddDays(-9),
+                   EditedAt = null,
+                   IsDeleted = false
+               },
+               new SeatArea()
+               {
+                   Id = 7,
+                   Name = "3A區",
+                   CreatedAt = DateTime.Now.AddDays(-8),
+                   EditedAt = null,
+                   IsDeleted = false
+               },
+               new SeatArea()
+               {
+                   Id = 8,
+                   Name = "3B區",
+                   CreatedAt = DateTime.Now.AddDays(-7),
+                   EditedAt = null,
+                   IsDeleted = false
+               },
+               new SeatArea()
+               {
+                   Id = 9,
+                   Name = "3C區",
+                   CreatedAt = DateTime.Now.AddDays(-6),
+                   EditedAt = null,
+                   IsDeleted = false
+               },
+               new SeatArea()
+               {
+                   Id = 10,
+                   Name = "3D區",
+                   CreatedAt = DateTime.Now.AddDays(-5),
+                   EditedAt = null,
+                   IsDeleted = false
+               },
+                new SeatArea()
+                {
+                    Id = 11,
+                    Name = "3E區",
+                    CreatedAt = DateTime.Now.AddDays(-5),
+                    EditedAt = null,
+                    IsDeleted = false
+                },
+                 new SeatArea()
+                 {
+                     Id = 12,
+                     Name = "3F區",
+                     CreatedAt = DateTime.Now.AddDays(-7),
+                     EditedAt = null,
+                     IsDeleted = false
+                 },
+                  new SeatArea()
+                  {
+                      Id = 13,
+                      Name = "3G區",
+                      CreatedAt = DateTime.Now.AddDays(-8),
+                      EditedAt = null,
+                      IsDeleted = false
+                  }
+               );
             modelBuilder.Entity<User>().HasData(
                 new User
                 {
@@ -1125,94 +8817,7 @@ namespace Infrastructure.Data
                     CreatedAt = DateTime.Now.AddDays(-1),
                     EditedAt = null
                 });
-            modelBuilder.Entity<SeatArea>().HasData(
-               new SeatArea()
-               {
-                   Id = 1,
-                   Name = "A區",
-                   CreatedAt = DateTime.Now.AddDays(-15),
-                   EditedAt = null,
-                   IsDeleted = false
-               },
-              new SeatArea()
-              {
-                  Id = 2,
-                  Name = "B區",
-                  CreatedAt = DateTime.Now.AddDays(-14),
-                  EditedAt = null,
-                  IsDeleted = false
-              },
-                new SeatArea()
-                {
-                    Id = 2,
-                    Name = "C區",
-                    CreatedAt = DateTime.Now.AddDays(-13),
-                    EditedAt = null,
-                    IsDeleted = false
-                },
-               new SeatArea()
-               {
-                   Id = 3,
-                   Name = "D區",
-                   CreatedAt = DateTime.Now.AddDays(-12),
-                   EditedAt = null,
-                   IsDeleted = false
-               },
-               new SeatArea()
-               {
-                   Id = 4,
-                   Name = "E區",
-                   CreatedAt = DateTime.Now.AddDays(-11),
-                   EditedAt = null,
-                   IsDeleted = false
-               }, new SeatArea()
-               {
-                   Id = 5,
-                   Name = "F區",
-                   CreatedAt = DateTime.Now.AddDays(-10),
-                   EditedAt = null,
-                   IsDeleted = false
-               },
-                new SeatArea()
-                {
-                    Id = 6,
-                    Name = "G區",
-                    CreatedAt = DateTime.Now.AddDays(-9),
-                    EditedAt = null,
-                    IsDeleted = false
-                },
-                new SeatArea()
-                {
-                    Id = 7,
-                    Name = "H區",
-                    CreatedAt = DateTime.Now.AddDays(-8),
-                    EditedAt = null,
-                    IsDeleted = false
-                },
-                new SeatArea()
-                {
-                    Id = 8,
-                    Name = "I區",
-                    CreatedAt = DateTime.Now.AddDays(-7),
-                    EditedAt = null,
-                    IsDeleted = false
-                },
-                new SeatArea()
-                {
-                    Id = 9,
-                    Name = "J區",
-                    CreatedAt = DateTime.Now.AddDays(-6),
-                    EditedAt = null,
-                    IsDeleted = false
-                },
-                new SeatArea()
-                {
-                    Id = 10,
-                    Name = "K區",
-                    CreatedAt = DateTime.Now.AddDays(-5),
-                    EditedAt = null,
-                    IsDeleted = false
-                });
+
             modelBuilder.Entity<PreFill>().HasData(
                 new PreFill()
                 {
