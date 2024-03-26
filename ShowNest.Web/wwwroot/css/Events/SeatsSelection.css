@@ -212,18 +212,19 @@ a {
     cursor: pointer;
 }
 
-.selected-seat {
+[seat-status="1"] {
     display: inline-block;
     background: url(https://res.cloudinary.com/dwn2iafcc/image/upload/v1708682218/selected_armchair_icon_tx0yfb.svg);
     height: 30px;
     width: 30px;
 }
 
-.occupied-seat {
+[seat-status="2"] {
     display: inline-block;
     background: url(https://res.cloudinary.com/dwn2iafcc/image/upload/v1708682217/occupied_armchair_icon_yeubih.svg);
     height: 30px;
     width: 30px;
+    pointer-events: none;
 }
 
 .disabled {

@@ -7,8 +7,8 @@ using System.Threading.Tasks;
 
 namespace ApplicationCore.Interfaces
 {
-    public interface IOrderQueryService
+    public interface IOrderRepository:IRepository<Order>
     {
-        List<Order> GetOrders(string customerId);
+        IEnumerable<Order> GetAll();
     }
 }

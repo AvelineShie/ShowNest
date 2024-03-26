@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 
 namespace ApplicationCore.Entities;
 
@@ -18,17 +19,19 @@ public partial class Event
     /// <summary>
     /// 活動名稱
     /// </summary>
-    public string Name { get; set; } = null!;
+    public string? Name { get; set; }
+    [Required(ErrorMessage ="請輸入活動名稱")]
 
     /// <summary>
     /// 開始時間
     /// </summary>
     public DateTime StartTime { get; set; }
+    [Required]
 
     /// <summary>
     /// 結束時間
     /// </summary>
-    public DateTime? EndTime { get; set; }
+    public DateTime EndTime { get; set; }
 
     /// <summary>
     /// 0線上1實體
@@ -39,11 +42,13 @@ public partial class Event
     /// 活動地點
     /// </summary>
     public string? LocationName { get; set; }
+    [Required(ErrorMessage = "請輸入場地名稱")]
 
     /// <summary>
     /// 活動地址
     /// </summary>
     public string? LocationAddress { get; set; }
+    [Required(ErrorMessage = "請輸入活動地址")]
 
     /// <summary>
     /// 經度
@@ -73,12 +78,12 @@ public partial class Event
     /// <summary>
     /// 聯絡人欄位JSON
     /// </summary>
-    public string ContactPerson { get; set; } = null!;
+    public required string ContactPerson { get; set; } 
 
     /// <summary>
     /// 報名人欄位JSON
     /// </summary>
-    public string ParticipantPeople { get; set; } = null!;
+    public required string ParticipantPeople { get; set; }
 
     /// <summary>
     /// 活動主圖
@@ -98,7 +103,7 @@ public partial class Event
     /// <summary>
     /// 主辦單位
     /// </summary>
-    public string MainOrganizer { get; set; } = null!;
+    public required string MainOrganizer { get; set; }
 
     /// <summary>
     /// 協辦單位

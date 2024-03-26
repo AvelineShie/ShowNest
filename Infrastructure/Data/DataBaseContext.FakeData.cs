@@ -9,6 +9,8 @@ namespace Infrastructure.Data
 {
     public partial class DatabaseContext : DbContext
     {
+        public object EventDetails { get; set; }
+
         static void FakeDataFilling(ModelBuilder modelBuilder)
         {
             modelBuilder.Entity<User>().HasData(
@@ -1281,7 +1283,7 @@ namespace Infrastructure.Data
                     IsDeleted = false,
                     CreatedAt = DateTime.Now,
                     EditedAt = null,
-                    CheckCode=1234
+                    CheckCode=123
                 },
                 new Ticket
                 {
@@ -1294,7 +1296,7 @@ namespace Infrastructure.Data
                     IsDeleted = false,
                     CreatedAt = DateTime.Now.AddDays(-1),
                     EditedAt = DateTime.Now,
-                    CheckCode = 1235
+                    CheckCode = 123
                 },
                 new Ticket
                 {
@@ -1307,7 +1309,7 @@ namespace Infrastructure.Data
                     IsDeleted = true,
                     CreatedAt = DateTime.Now.AddDays(-2),
                     EditedAt = null,
-                    CheckCode =1236
+                    CheckCode = 123
                 },
                 new Ticket
                 {
@@ -1320,7 +1322,7 @@ namespace Infrastructure.Data
                     IsDeleted = false,
                     CreatedAt = DateTime.Now,
                     EditedAt = null,
-                    CheckCode = 1237
+                    CheckCode = 123
                 },
                 new Ticket
                {
@@ -1333,7 +1335,7 @@ namespace Infrastructure.Data
                    IsDeleted = false,
                    CreatedAt = DateTime.Now.AddDays(-1),
                    EditedAt = DateTime.Now,
-                    CheckCode = 1238
+                    CheckCode = 123
                 }
             );
             modelBuilder.Entity<ArchiveOrder>().HasData(

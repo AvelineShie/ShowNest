@@ -52,12 +52,12 @@
     margin-left: 10px;
 }
 
-a {
-    text-decoration: none;
+#set-table {
+    color: var(--light-green);
 }
 
-#set-table{
-    color: var(--light-green);
+a {
+    text-decoration: none;
 }
 
 /* 麵包屑吃完 */

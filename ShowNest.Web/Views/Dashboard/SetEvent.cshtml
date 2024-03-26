@@ -180,8 +180,8 @@
                         <img id="uploadedImage" src='/img/Dashboard/upload-img.png' >
                         <div>
                             <!-- 添加文件上傳元素 -->
-                            <input id="fileupload" type="file" name="images" multiple accept="image/gif, image/jpeg, image/png">
-                            <button type="button" class="btn btn-outline-secondary" onclick="document.getElementById('uploadInput').click()">選擇圖片</button>
+                            @* <input id="fileupload" type="file" name="images" multiple accept="image/gif, image/jpeg, image/png"> *@
+                            <button type="button" class="btn btn-outline-secondary" onclick="document.getElementById('uploadInput').click()" accept="image/gif, image/jpeg, image/png" id="fileupload" >選擇圖片</button>
                             <button type="button" class="btn btn-outline-secondary" id="restoreBtn">還原原圖</button>
                         </div>
                     </div>
