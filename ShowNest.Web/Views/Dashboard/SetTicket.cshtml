@@ -54,8 +54,7 @@
                             <td>TWD$ 5000</td>
                             <td>1</td>
                             <td>
-                                <button>編輯</button>
-                                <button class="delete">刪除</button>
+                                <button class="edit">編輯</button>
                             </td>
                         </tr>
 
@@ -69,7 +68,7 @@
                                 <td>TWD$ @ticket.Price</td>
                                 <td>@ticket.Quantity</td>
                                 <td>
-                                    <button>編輯</button>
+                                <button class="edit">編輯</button>
                                     <button class="delete">刪除</button>
                                 </td>
                             </tr>
@@ -111,6 +110,7 @@
                     </div>
                     
                 </div>
+
                 <button type="button" class="btn btn-outline-secondary btn-sm" id="add-ticket">新增票種</button>
             </div>
             <div class="pages-change">
@@ -119,5 +119,10 @@
             </div>
         </div>
     </div>
+
+    @section Scripts {
+        <script src="~/js/Dashboard/SetTicket.js"></script>
+
+    }
 </body>
 

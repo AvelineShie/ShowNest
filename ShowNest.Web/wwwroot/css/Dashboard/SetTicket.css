@@ -26,16 +26,18 @@
 
 /* 正式版面 */
 .wrap{
-    /*width:75%;*/
     display: flex;
     flex-direction: column;
     margin: 0 auto;
+    min-height:500px;
 }
 
 .container {
     color: #333333;
     flex-direction: column;
     margin-bottom: 90px;
+    padding-right: 30px;
+    padding-left: 30px;
 }
 
 /* 麵包屑 */
