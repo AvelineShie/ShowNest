@@ -2466,26 +2466,6 @@ namespace Infrastructure.Data
                     EditedAt = DateTime.Now,
                     IsDeleted = false
                 },
-               new Seat
-               {
-                   Id = 246,
-                   SeatAreaId = 4,
-                   Number = "4排8號",
-                   Status = 0,
-                   CreatedAt = DateTime.Now,
-                   EditedAt = DateTime.Now,
-                   IsDeleted = false
-               },
-                new Seat
-                {
-                    Id = 247,
-                    SeatAreaId = 4,
-                    Number = "4排9號",
-                    Status = 0,
-                    CreatedAt = DateTime.Now,
-                    EditedAt = DateTime.Now,
-                    IsDeleted = false
-                },
                 new Seat
                 {
                     Id = 248,
@@ -2541,46 +2521,6 @@ namespace Infrastructure.Data
                     Id = 247,
                     SeatAreaId = 5,
                     Number = "1排2號",
-                    Status = 1,
-                    CreatedAt = DateTime.Now,
-                    EditedAt = DateTime.Now,
-                    IsDeleted = false
-                },
-                new Seat
-                {
-                    Id = 248,
-                    SeatAreaId = 5,
-                    Number = "1排3號",
-                    Status = 1,
-                    CreatedAt = DateTime.Now,
-                    EditedAt = DateTime.Now,
-                    IsDeleted = false
-                },
-                new Seat
-                {
-                    Id = 249,
-                    SeatAreaId = 5,
-                    Number = "1排4號",
-                    Status = 1,
-                    CreatedAt = DateTime.Now,
-                    EditedAt = DateTime.Now,
-                    IsDeleted = false
-                },
-                new Seat
-                {
-                    Id = 250,
-                    SeatAreaId = 5,
-                    Number = "1排5號",
-                    Status = 1,
-                    CreatedAt = DateTime.Now,
-                    EditedAt = DateTime.Now,
-                    IsDeleted = false
-                },
-                new Seat
-                {
-                    Id = 251,
-                    SeatAreaId = 5,
-                    Number = "1排6號",
                     Status = 1,
                     CreatedAt = DateTime.Now,
                     EditedAt = DateTime.Now,
