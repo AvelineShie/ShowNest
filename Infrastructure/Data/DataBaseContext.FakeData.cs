@@ -4688,7 +4688,7 @@ namespace Infrastructure.Data
               },
                new SeatArea()
                {
-                   Id = 1,
+                   Id = 2,
                    Name = "2A區",
                    CreatedAt = DateTime.Now.AddDays(-15),
                    EditedAt = null,
@@ -4696,7 +4696,7 @@ namespace Infrastructure.Data
                },
                 new SeatArea()
                 {
-                    Id = 1,
+                    Id = 3,
                     Name = "2A區",
                     CreatedAt = DateTime.Now.AddDays(-15),
                     EditedAt = null,
@@ -4704,7 +4704,7 @@ namespace Infrastructure.Data
                 },
              new SeatArea()
              {
-                 Id = 2,
+                 Id = 4,
                  Name = "2B區",
                  CreatedAt = DateTime.Now.AddDays(-14),
                  EditedAt = null,
@@ -4712,7 +4712,7 @@ namespace Infrastructure.Data
              },
                new SeatArea()
                {
-                   Id = 2,
+                   Id = 5,
                    Name = "2C區",
                    CreatedAt = DateTime.Now.AddDays(-13),
                    EditedAt = null,
@@ -4720,7 +4720,7 @@ namespace Infrastructure.Data
                },
               new SeatArea()
               {
-                  Id = 3,
+                  Id = 6,
                   Name = "2D區",
                   CreatedAt = DateTime.Now.AddDays(-12),
                   EditedAt = null,
@@ -4728,14 +4728,14 @@ namespace Infrastructure.Data
               },
               new SeatArea()
               {
-                  Id = 4,
+                  Id = 7,
                   Name = "2E區",
                   CreatedAt = DateTime.Now.AddDays(-11),
                   EditedAt = null,
                   IsDeleted = false
               }, new SeatArea()
               {
-                  Id = 5,
+                  Id = 8,
                   Name = "2F區",
                   CreatedAt = DateTime.Now.AddDays(-10),
                   EditedAt = null,
@@ -4743,7 +4743,7 @@ namespace Infrastructure.Data
               },
                new SeatArea()
                {
-                   Id = 6,
+                   Id = 9,
                    Name = "2G區",
                    CreatedAt = DateTime.Now.AddDays(-9),
                    EditedAt = null,
@@ -4751,7 +4751,7 @@ namespace Infrastructure.Data
                },
                new SeatArea()
                {
-                   Id = 7,
+                   Id = 10,
                    Name = "3A區",
                    CreatedAt = DateTime.Now.AddDays(-8),
                    EditedAt = null,
@@ -4759,7 +4759,7 @@ namespace Infrastructure.Data
                },
                new SeatArea()
                {
-                   Id = 8,
+                   Id = 11,
                    Name = "3B區",
                    CreatedAt = DateTime.Now.AddDays(-7),
                    EditedAt = null,
@@ -4767,7 +4767,7 @@ namespace Infrastructure.Data
                },
                new SeatArea()
                {
-                   Id = 9,
+                   Id = 12,
                    Name = "3C區",
                    CreatedAt = DateTime.Now.AddDays(-6),
                    EditedAt = null,
@@ -4775,7 +4775,7 @@ namespace Infrastructure.Data
                },
                new SeatArea()
                {
-                   Id = 10,
+                   Id = 13,
                    Name = "3D區",
                    CreatedAt = DateTime.Now.AddDays(-5),
                    EditedAt = null,
@@ -4783,7 +4783,7 @@ namespace Infrastructure.Data
                },
                 new SeatArea()
                 {
-                    Id = 11,
+                    Id = 14,
                     Name = "3E區",
                     CreatedAt = DateTime.Now.AddDays(-5),
                     EditedAt = null,
@@ -4791,7 +4791,7 @@ namespace Infrastructure.Data
                 },
                  new SeatArea()
                  {
-                     Id = 12,
+                     Id = 15,
                      Name = "3F區",
                      CreatedAt = DateTime.Now.AddDays(-7),
                      EditedAt = null,
@@ -4799,7 +4799,7 @@ namespace Infrastructure.Data
                  },
                   new SeatArea()
                   {
-                      Id = 13,
+                      Id = 16,
                       Name = "3G區",
                       CreatedAt = DateTime.Now.AddDays(-8),
                       EditedAt = null,
