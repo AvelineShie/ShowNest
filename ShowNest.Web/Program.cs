@@ -69,10 +69,10 @@ namespace ShowNest.Web
             //    pattern: "{OrganizationId}/{controller=Events}/{action=Index}/{EventId?}");
             ///以上測試中--------------------------------------------------------------------------------------------
 
-            // app.MapControllerRoute(
-            //     name: "eventPages",
-            //     pattern: "Events/{page=1}",
-            // defaults: new { controller = "Events", action = "Index"});
+            app.MapControllerRoute(
+            name: "EventPages",
+            pattern: "Events/Explore/{page=1}",
+            defaults: new { controller = "Events", action = "Index" });
 
             app.MapControllerRoute(
             name: "NewEvent",
