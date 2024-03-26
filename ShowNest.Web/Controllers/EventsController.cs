@@ -44,14 +44,13 @@ namespace ShowNest.Web.Controllers
 
         private readonly EventIndexService _eventIndexService;
         private readonly OrderTicketService _registrationService;
-        private readonly IOrderQueryService _orderQueryService;
+        //private readonly IOrderQueryService _orderQueryService;
 
-        public EventsController(EventIndexService eventIndexService, OrderTicketService registrationService, IOrderQueryService orderQueryService)
+        public EventsController(EventIndexService eventIndexService, OrderTicketService registrationService)
         {
             _eventIndexService = eventIndexService;
             _registrationService = registrationService;
-            _orderQueryService = orderQueryService;
-            _orderQueryService = orderQueryService;
+          
         }
 
         public IActionResult Index(int page)
