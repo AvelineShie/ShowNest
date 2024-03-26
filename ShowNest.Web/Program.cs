@@ -7,6 +7,7 @@ using ShowNest.Web.Services.Home;
 using Microsoft.AspNetCore.Identity;
 using Infrastructure.Data;
 using ShowNest.Web.Configurations;
+using Microsoft.AspNetCore.Authentication.Cookies;
 
 namespace ShowNest.Web
 {
@@ -45,6 +46,9 @@ namespace ShowNest.Web
             //    opt.ClientId = "";
             //    opt.ClientSecret = "";
             //});
+            
+            //登入餅乾
+            builder.Services.AddAuthentication(CookieAuthenticationDefaults.AuthenticationScheme).AddCookie();
 
             var app = builder.Build();
 
@@ -60,6 +64,10 @@ namespace ShowNest.Web
             app.UseStaticFiles();
 
             app.UseRouting();
+            //先驗證再授權
+            app.UseAuthentication();
+            app.UseAuthorization();
+
 
             app.UseAuthorization();
 
