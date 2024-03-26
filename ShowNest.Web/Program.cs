@@ -6,6 +6,8 @@ using ShowNest.Web.Services.General;
 using ShowNest.Web.Services.Home;
 using Microsoft.AspNetCore.Identity;
 using Infrastructure.Data;
+using ShowNest.Web.Configurations;
+using Microsoft.AspNetCore.Authentication.Cookies;
 
 namespace ShowNest.Web
 {
@@ -25,6 +27,11 @@ namespace ShowNest.Web
 
             // Add services to the container.
             builder.Services.AddControllersWithViews();
+            Infrastructure.Dependencies.ConfigureServices(builder.Configuration, builder.Services);
+
+            builder.Services
+               .AddApplicationCoreServices()
+               .AddWebServices();
 
             builder.Services.AddScoped<HomeCarouselService>();
             builder.Services.AddScoped<EventCardService>();
@@ -39,6 +46,9 @@ namespace ShowNest.Web
             //    opt.ClientId = "";
             //    opt.ClientSecret = "";
             //});
+            
+            //登入餅乾
+            builder.Services.AddAuthentication(CookieAuthenticationDefaults.AuthenticationScheme).AddCookie();
 
             var app = builder.Build();
 
@@ -54,6 +64,10 @@ namespace ShowNest.Web
             app.UseStaticFiles();
 
             app.UseRouting();
+            //先驗證再授權
+            app.UseAuthentication();
+            app.UseAuthorization();
+
 
             app.UseAuthorization();
 
@@ -63,10 +77,10 @@ namespace ShowNest.Web
             //    pattern: "{OrganizationId}/{controller=Events}/{action=Index}/{EventId?}");
             ///以上測試中--------------------------------------------------------------------------------------------
 
-            //app.MapControllerRoute(
-            //    name: "eventPages",
-            //    pattern: "Events/{page=1}",
-            //defaults: new { controller = "Events", action = "Index"});
+            app.MapControllerRoute(
+            name: "EventPages",
+            pattern: "Events/Explore/{page=1}",
+            defaults: new { controller = "Events", action = "Index" });
 
             app.MapControllerRoute(
             name: "NewEvent",
