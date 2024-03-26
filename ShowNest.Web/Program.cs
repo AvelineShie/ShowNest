@@ -101,7 +101,7 @@ namespace ShowNest.Web
 
             app.MapControllerRoute(
             name: "EventSetting",
-            pattern: "Dashboard/CreateEvent/{SetEvent}",
+            pattern: "Dashboard/CreateEvent/SetEvent",
             defaults: new { controller = "Dashboard", Action = "SetEvent" }
             );
 
