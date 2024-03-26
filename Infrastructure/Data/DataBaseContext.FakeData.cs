@@ -9,6 +9,7 @@ namespace Infrastructure.Data
 {
     public partial class DatabaseContext : DbContext
     {
+
         public object EventDetails { get; set; }
 
         static void FakeDataFilling(ModelBuilder modelBuilder)
@@ -4806,7 +4807,7 @@ namespace Infrastructure.Data
                       IsDeleted = false
                   }
                );
-            modelBuilder.Entity<User>().HasData(
+   
           modelBuilder.Entity<User>().HasData(
             new User
             {
@@ -4855,8 +4856,7 @@ namespace Infrastructure.Data
                 Status = 1,
                 CreatedAt = DateTime.Now.AddDays(-10),
                 EditedAt = DateTime.Now.AddDays(-2)
-            })
-            );
+            });
             modelBuilder.Entity<LogInInfo>().HasData(
                 new LogInInfo
                 {

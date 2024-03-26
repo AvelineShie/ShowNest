@@ -12,7 +12,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace Infrastructure.Data.Migrations
 {
     [DbContext(typeof(DatabaseContext))]
-    [Migration("20240326170624_0326")]
+    [Migration("20240326175112_0326")]
     partial class _0326
     {
         /// <inheritdoc />
@@ -106,7 +106,7 @@ namespace Infrastructure.Data.Migrations
                         new
                         {
                             OrderId = 1,
-                            CreatedAt = new DateTime(2024, 3, 27, 1, 6, 24, 381, DateTimeKind.Local).AddTicks(534),
+                            CreatedAt = new DateTime(2024, 3, 27, 1, 51, 12, 494, DateTimeKind.Local).AddTicks(4224),
                             EventName = "演唱會",
                             EventStartTime = new DateTime(2024, 3, 25, 19, 0, 0, 0, DateTimeKind.Unspecified),
                             IsDeleted = false,
@@ -121,7 +121,7 @@ namespace Infrastructure.Data.Migrations
                         new
                         {
                             OrderId = 2,
-                            CreatedAt = new DateTime(2024, 3, 26, 1, 6, 24, 381, DateTimeKind.Local).AddTicks(546),
+                            CreatedAt = new DateTime(2024, 3, 26, 1, 51, 12, 494, DateTimeKind.Local).AddTicks(4238),
                             EventName = "線上研討會",
                             EventStartTime = new DateTime(2024, 4, 1, 14, 0, 0, 0, DateTimeKind.Unspecified),
                             IsDeleted = false,
@@ -248,22 +248,22 @@ namespace Infrastructure.Data.Migrations
                         new
                         {
                             Id = 1,
-                            CreatedAt = new DateTime(2024, 3, 27, 1, 6, 24, 381, DateTimeKind.Local).AddTicks(112),
-                            EditeAt = new DateTime(2024, 3, 27, 1, 6, 24, 381, DateTimeKind.Local).AddTicks(112),
+                            CreatedAt = new DateTime(2024, 3, 27, 1, 51, 12, 494, DateTimeKind.Local).AddTicks(3854),
+                            EditeAt = new DateTime(2024, 3, 27, 1, 51, 12, 494, DateTimeKind.Local).AddTicks(3855),
                             Name = "音樂"
                         },
                         new
                         {
                             Id = 2,
-                            CreatedAt = new DateTime(2024, 3, 27, 1, 6, 24, 381, DateTimeKind.Local).AddTicks(115),
-                            EditeAt = new DateTime(2024, 3, 27, 1, 6, 24, 381, DateTimeKind.Local).AddTicks(116),
+                            CreatedAt = new DateTime(2024, 3, 27, 1, 51, 12, 494, DateTimeKind.Local).AddTicks(3857),
+                            EditeAt = new DateTime(2024, 3, 27, 1, 51, 12, 494, DateTimeKind.Local).AddTicks(3858),
                             Name = "戲劇"
                         },
                         new
                         {
                             Id = 3,
-                            CreatedAt = new DateTime(2024, 3, 27, 1, 6, 24, 381, DateTimeKind.Local).AddTicks(118),
-                            EditeAt = new DateTime(2024, 3, 27, 1, 6, 24, 381, DateTimeKind.Local).AddTicks(118),
+                            CreatedAt = new DateTime(2024, 3, 27, 1, 51, 12, 494, DateTimeKind.Local).AddTicks(3860),
+                            EditeAt = new DateTime(2024, 3, 27, 1, 51, 12, 494, DateTimeKind.Local).AddTicks(3861),
                             Name = "展覽"
                         });
                 });
@@ -408,9 +408,9 @@ namespace Infrastructure.Data.Migrations
                             Id = 1,
                             Capacity = 500,
                             ContactPerson = "",
-                            CreatedAt = new DateTime(2024, 3, 27, 1, 6, 24, 381, DateTimeKind.Local).AddTicks(79),
+                            CreatedAt = new DateTime(2024, 3, 27, 1, 51, 12, 494, DateTimeKind.Local).AddTicks(3827),
                             Description = "線上活動描述內容區",
-                            EditedAt = new DateTime(2024, 3, 27, 1, 6, 24, 381, DateTimeKind.Local).AddTicks(80),
+                            EditedAt = new DateTime(2024, 3, 27, 1, 51, 12, 494, DateTimeKind.Local).AddTicks(3828),
                             EndTime = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             EventImage = "https://picsum.photos/1300/600/?random=11",
                             Introduction = "線上活動簡介內容區",
@@ -424,7 +424,7 @@ namespace Infrastructure.Data.Migrations
                             Name = "【線上直播課】掌握網路三大流量，讓你在同行中脫穎而出",
                             OrganizationId = 1,
                             ParticipantPeople = "[\r\n  {\r\n    \"ParticipantPeopleImage\": \"https://picsum.photos/200/200/?random=10\",\r\n    \"ParticipantPeopleId\": \"DDDD\"\r\n  },\r\n  {\r\n    \"ParticipantPeopleImage\": \"https://picsum.photos/200/200/?random=14\",\r\n    \"ParticipantPeopleId\": \"EEEE\"\r\n  },\r\n  {\r\n    \"ParticipantPeopleImage\": \"https://picsum.photos/200/200/?random=18\",\r\n    \"ParticipantPeopleId\": \"FFFF\"\r\n  }\r\n]\r\n",
-                            StartTime = new DateTime(2024, 4, 10, 1, 6, 24, 381, DateTimeKind.Local).AddTicks(72),
+                            StartTime = new DateTime(2024, 4, 10, 1, 51, 12, 494, DateTimeKind.Local).AddTicks(3818),
                             Status = (byte)1,
                             StreamingPlatform = "http;",
                             StreamingUrl = "http;",
@@ -435,10 +435,10 @@ namespace Infrastructure.Data.Migrations
                             Id = 2,
                             Capacity = 1000,
                             ContactPerson = "",
-                            CreatedAt = new DateTime(2024, 3, 27, 1, 6, 24, 381, DateTimeKind.Local).AddTicks(89),
+                            CreatedAt = new DateTime(2024, 3, 27, 1, 51, 12, 494, DateTimeKind.Local).AddTicks(3837),
                             Description = "實體活動描述內容區",
-                            EditedAt = new DateTime(2024, 3, 27, 1, 6, 24, 381, DateTimeKind.Local).AddTicks(90),
-                            EndTime = new DateTime(2024, 4, 10, 1, 6, 24, 381, DateTimeKind.Local).AddTicks(84),
+                            EditedAt = new DateTime(2024, 3, 27, 1, 51, 12, 494, DateTimeKind.Local).AddTicks(3838),
+                            EndTime = new DateTime(2024, 4, 10, 1, 51, 12, 494, DateTimeKind.Local).AddTicks(3832),
                             EventImage = "https://picsum.photos/1300/600/?random=15",
                             Introduction = "實體活動簡介內容區",
                             IsFree = false,
@@ -451,7 +451,7 @@ namespace Infrastructure.Data.Migrations
                             Name = "【演唱會】五月天",
                             OrganizationId = 2,
                             ParticipantPeople = "[\r\n  {\r\n    \"ParticipantPeopleImage\": \"https://picsum.photos/200/200/?random=10\",\r\n    \"ParticipantPeopleId\": \"DDDD\"\r\n  },\r\n  {\r\n    \"ParticipantPeopleImage\": \"https://picsum.photos/200/200/?random=14\",\r\n    \"ParticipantPeopleId\": \"EEEE\"\r\n  },\r\n  {\r\n    \"ParticipantPeopleImage\": \"https://picsum.photos/200/200/?random=18\",\r\n    \"ParticipantPeopleId\": \"FFFF\"\r\n  }\r\n]\r\n",
-                            StartTime = new DateTime(2024, 3, 27, 1, 6, 24, 381, DateTimeKind.Local).AddTicks(83),
+                            StartTime = new DateTime(2024, 3, 27, 1, 51, 12, 494, DateTimeKind.Local).AddTicks(3831),
                             Status = (byte)1,
                             Type = (byte)1
                         });
@@ -600,7 +600,7 @@ namespace Infrastructure.Data.Migrations
                         {
                             UserId = 1,
                             Account = "abc123",
-                            CreatedAt = new DateTime(2024, 3, 27, 1, 6, 24, 381, DateTimeKind.Local).AddTicks(47),
+                            CreatedAt = new DateTime(2024, 3, 27, 1, 51, 12, 494, DateTimeKind.Local).AddTicks(3793),
                             Email = "abc@gmail.com",
                             Password = "12345678"
                         },
@@ -608,7 +608,7 @@ namespace Infrastructure.Data.Migrations
                         {
                             UserId = 2,
                             Account = "def456",
-                            CreatedAt = new DateTime(2024, 3, 26, 1, 6, 24, 381, DateTimeKind.Local).AddTicks(50),
+                            CreatedAt = new DateTime(2024, 3, 26, 1, 51, 12, 494, DateTimeKind.Local).AddTicks(3796),
                             Email = "def@gmail.com",
                             Password = "87654321"
                         },
@@ -616,7 +616,7 @@ namespace Infrastructure.Data.Migrations
                         {
                             UserId = 3,
                             Account = "ghi789",
-                            CreatedAt = new DateTime(2024, 3, 25, 1, 6, 24, 381, DateTimeKind.Local).AddTicks(53),
+                            CreatedAt = new DateTime(2024, 3, 25, 1, 51, 12, 494, DateTimeKind.Local).AddTicks(3799),
                             Email = "ghi@gmail.com",
                             Password = "98765432"
                         });
@@ -691,8 +691,8 @@ namespace Infrastructure.Data.Migrations
                         {
                             Id = 1,
                             ContactPerson = "{\"Name\":\"John Doe\",\"Email\":\"john.doe@example.com\",\"Phone\":\"0912345678\"}",
-                            CreatedAt = new DateTime(2024, 3, 27, 1, 6, 24, 381, DateTimeKind.Local).AddTicks(351),
-                            EditedAt = new DateTime(2024, 3, 22, 1, 6, 24, 381, DateTimeKind.Local).AddTicks(354),
+                            CreatedAt = new DateTime(2024, 3, 27, 1, 51, 12, 494, DateTimeKind.Local).AddTicks(4016),
+                            EditedAt = new DateTime(2024, 3, 22, 1, 51, 12, 494, DateTimeKind.Local).AddTicks(4017),
                             IsDeleted = false,
                             IsDisplayed = true,
                             ParticipantPeople = "{\"Name\":\"Jane Smith\",\"Age\":25}",
@@ -706,7 +706,7 @@ namespace Infrastructure.Data.Migrations
                         {
                             Id = 2,
                             ContactPerson = "{\"Name\":\"Bob Johnson\",\"Email\":\"bob.johnson@example.com\",\"Phone\":\"0987654321\"}",
-                            CreatedAt = new DateTime(2024, 3, 17, 1, 6, 24, 381, DateTimeKind.Local).AddTicks(359),
+                            CreatedAt = new DateTime(2024, 3, 17, 1, 51, 12, 494, DateTimeKind.Local).AddTicks(4022),
                             IsDeleted = false,
                             IsDisplayed = false,
                             PaymentType = (byte)0,
@@ -719,8 +719,8 @@ namespace Infrastructure.Data.Migrations
                         {
                             Id = 3,
                             ContactPerson = "{\"Name\":\"Emily Wilson\",\"Email\":\"emily.wilson@example.com\",\"Phone\":\"0923456789\"}",
-                            CreatedAt = new DateTime(2024, 3, 12, 1, 6, 24, 381, DateTimeKind.Local).AddTicks(363),
-                            EditedAt = new DateTime(2024, 3, 15, 1, 6, 24, 381, DateTimeKind.Local).AddTicks(364),
+                            CreatedAt = new DateTime(2024, 3, 12, 1, 51, 12, 494, DateTimeKind.Local).AddTicks(4026),
+                            EditedAt = new DateTime(2024, 3, 15, 1, 51, 12, 494, DateTimeKind.Local).AddTicks(4027),
                             IsDeleted = false,
                             IsDisplayed = true,
                             ParticipantPeople = "{\"Name\":\"Michael Brown\",\"Age\":30}",
@@ -768,14 +768,14 @@ namespace Infrastructure.Data.Migrations
                         new
                         {
                             Id = 1,
-                            FanTime = new DateTime(2024, 3, 27, 1, 6, 24, 381, DateTimeKind.Local).AddTicks(211),
+                            FanTime = new DateTime(2024, 3, 27, 1, 51, 12, 494, DateTimeKind.Local).AddTicks(3949),
                             OrganizationId = 1,
                             UserId = 1
                         },
                         new
                         {
                             Id = 2,
-                            FanTime = new DateTime(2024, 3, 26, 1, 6, 24, 381, DateTimeKind.Local).AddTicks(213),
+                            FanTime = new DateTime(2024, 3, 26, 1, 51, 12, 494, DateTimeKind.Local).AddTicks(3952),
                             OrganizationId = 2,
                             UserId = 2
                         });
@@ -883,9 +883,9 @@ namespace Infrastructure.Data.Migrations
                             ContactMobile = "0123456789",
                             ContactName = "Alice",
                             ContactTelephone = "02-2123-45678",
-                            CreatedAt = new DateTime(2024, 3, 27, 1, 6, 24, 381, DateTimeKind.Local).AddTicks(161),
+                            CreatedAt = new DateTime(2024, 3, 27, 1, 51, 12, 494, DateTimeKind.Local).AddTicks(3901),
                             Description = "組織簡介內容區",
-                            EditedAt = new DateTime(2024, 3, 27, 1, 6, 24, 381, DateTimeKind.Local).AddTicks(162),
+                            EditedAt = new DateTime(2024, 3, 27, 1, 51, 12, 494, DateTimeKind.Local).AddTicks(3902),
                             Name = "Build School",
                             OrganizationUrl = "HTTP",
                             OwnerId = 1
@@ -896,9 +896,9 @@ namespace Infrastructure.Data.Migrations
                             ContactMobile = "0123456789",
                             ContactName = "Bob",
                             ContactTelephone = "02-2123-45678",
-                            CreatedAt = new DateTime(2024, 3, 27, 1, 6, 24, 381, DateTimeKind.Local).AddTicks(166),
+                            CreatedAt = new DateTime(2024, 3, 27, 1, 51, 12, 494, DateTimeKind.Local).AddTicks(3907),
                             Description = "組織簡介內容區",
-                            EditedAt = new DateTime(2024, 3, 27, 1, 6, 24, 381, DateTimeKind.Local).AddTicks(167),
+                            EditedAt = new DateTime(2024, 3, 27, 1, 51, 12, 494, DateTimeKind.Local).AddTicks(3908),
                             Name = "卡米地",
                             OrganizationUrl = "HTTP",
                             OwnerId = 2
@@ -909,9 +909,9 @@ namespace Infrastructure.Data.Migrations
                             ContactMobile = "0123456789",
                             ContactName = "Charlie",
                             ContactTelephone = "02-2123-45678",
-                            CreatedAt = new DateTime(2024, 3, 27, 1, 6, 24, 381, DateTimeKind.Local).AddTicks(171),
+                            CreatedAt = new DateTime(2024, 3, 27, 1, 51, 12, 494, DateTimeKind.Local).AddTicks(3911),
                             Description = "組織簡介內容區",
-                            EditedAt = new DateTime(2024, 3, 27, 1, 6, 24, 381, DateTimeKind.Local).AddTicks(172),
+                            EditedAt = new DateTime(2024, 3, 27, 1, 51, 12, 494, DateTimeKind.Local).AddTicks(3912),
                             Name = "海邊的卡夫卡",
                             OrganizationUrl = "HTTP",
                             OwnerId = 3
@@ -1053,7 +1053,7 @@ namespace Infrastructure.Data.Migrations
                             Id = 1,
                             Address = "No.1, Lane 10, Section 3, Zhongxiao E Rd",
                             County = "Taipei",
-                            CreatedAt = new DateTime(2024, 3, 17, 1, 6, 24, 381, DateTimeKind.Local).AddTicks(567),
+                            CreatedAt = new DateTime(2024, 3, 17, 1, 51, 12, 494, DateTimeKind.Local).AddTicks(4259),
                             District = "Daan",
                             Mobile = "0912345678",
                             Name = "John Doe",
@@ -1065,7 +1065,7 @@ namespace Infrastructure.Data.Migrations
                             Id = 2,
                             Address = "No.100, Guandu Rd",
                             County = "New Taipei",
-                            CreatedAt = new DateTime(2024, 3, 18, 1, 6, 24, 381, DateTimeKind.Local).AddTicks(572),
+                            CreatedAt = new DateTime(2024, 3, 18, 1, 51, 12, 494, DateTimeKind.Local).AddTicks(4265),
                             District = "Banqiao",
                             Mobile = "0912345679",
                             Name = "Jane Doe",
@@ -1077,7 +1077,7 @@ namespace Infrastructure.Data.Migrations
                             Id = 3,
                             Address = "No.20, Jhongsing Rd",
                             County = "Taoyuan",
-                            CreatedAt = new DateTime(2024, 3, 19, 1, 6, 24, 381, DateTimeKind.Local).AddTicks(576),
+                            CreatedAt = new DateTime(2024, 3, 19, 1, 51, 12, 494, DateTimeKind.Local).AddTicks(4268),
                             District = "Zhongli",
                             Mobile = "0923456789",
                             Name = "Mike Chen",
@@ -1187,8 +1187,8 @@ namespace Infrastructure.Data.Migrations
                         new
                         {
                             Id = 1,
-                            CreatedAt = new DateTime(2024, 3, 27, 1, 6, 24, 380, DateTimeKind.Local).AddTicks(8162),
-                            EditedAt = new DateTime(2024, 3, 27, 1, 6, 24, 380, DateTimeKind.Local).AddTicks(8174),
+                            CreatedAt = new DateTime(2024, 3, 27, 1, 51, 12, 494, DateTimeKind.Local).AddTicks(1895),
+                            EditedAt = new DateTime(2024, 3, 27, 1, 51, 12, 494, DateTimeKind.Local).AddTicks(1906),
                             IsDeleted = false,
                             Number = "1排1號",
                             SeatAreaId = 1,
@@ -1197,8 +1197,8 @@ namespace Infrastructure.Data.Migrations
                         new
                         {
                             Id = 2,
-                            CreatedAt = new DateTime(2024, 3, 27, 1, 6, 24, 380, DateTimeKind.Local).AddTicks(8181),
-                            EditedAt = new DateTime(2024, 3, 27, 1, 6, 24, 380, DateTimeKind.Local).AddTicks(8181),
+                            CreatedAt = new DateTime(2024, 3, 27, 1, 51, 12, 494, DateTimeKind.Local).AddTicks(1912),
+                            EditedAt = new DateTime(2024, 3, 27, 1, 51, 12, 494, DateTimeKind.Local).AddTicks(1913),
                             IsDeleted = false,
                             Number = "1排2號",
                             SeatAreaId = 1,
@@ -1207,8 +1207,8 @@ namespace Infrastructure.Data.Migrations
                         new
                         {
                             Id = 3,
-                            CreatedAt = new DateTime(2024, 3, 27, 1, 6, 24, 380, DateTimeKind.Local).AddTicks(8184),
-                            EditedAt = new DateTime(2024, 3, 27, 1, 6, 24, 380, DateTimeKind.Local).AddTicks(8185),
+                            CreatedAt = new DateTime(2024, 3, 27, 1, 51, 12, 494, DateTimeKind.Local).AddTicks(1916),
+                            EditedAt = new DateTime(2024, 3, 27, 1, 51, 12, 494, DateTimeKind.Local).AddTicks(1916),
                             IsDeleted = false,
                             Number = "1排3號",
                             SeatAreaId = 1,
@@ -1217,8 +1217,8 @@ namespace Infrastructure.Data.Migrations
                         new
                         {
                             Id = 4,
-                            CreatedAt = new DateTime(2024, 3, 27, 1, 6, 24, 380, DateTimeKind.Local).AddTicks(8187),
-                            EditedAt = new DateTime(2024, 3, 27, 1, 6, 24, 380, DateTimeKind.Local).AddTicks(8188),
+                            CreatedAt = new DateTime(2024, 3, 27, 1, 51, 12, 494, DateTimeKind.Local).AddTicks(1918),
+                            EditedAt = new DateTime(2024, 3, 27, 1, 51, 12, 494, DateTimeKind.Local).AddTicks(1919),
                             IsDeleted = false,
                             Number = "1排4號",
                             SeatAreaId = 1,
@@ -1227,8 +1227,8 @@ namespace Infrastructure.Data.Migrations
                         new
                         {
                             Id = 5,
-                            CreatedAt = new DateTime(2024, 3, 27, 1, 6, 24, 380, DateTimeKind.Local).AddTicks(8190),
-                            EditedAt = new DateTime(2024, 3, 27, 1, 6, 24, 380, DateTimeKind.Local).AddTicks(8191),
+                            CreatedAt = new DateTime(2024, 3, 27, 1, 51, 12, 494, DateTimeKind.Local).AddTicks(1921),
+                            EditedAt = new DateTime(2024, 3, 27, 1, 51, 12, 494, DateTimeKind.Local).AddTicks(1922),
                             IsDeleted = false,
                             Number = "1排5號",
                             SeatAreaId = 1,
@@ -1237,8 +1237,8 @@ namespace Infrastructure.Data.Migrations
                         new
                         {
                             Id = 6,
-                            CreatedAt = new DateTime(2024, 3, 27, 1, 6, 24, 380, DateTimeKind.Local).AddTicks(8193),
-                            EditedAt = new DateTime(2024, 3, 27, 1, 6, 24, 380, DateTimeKind.Local).AddTicks(8194),
+                            CreatedAt = new DateTime(2024, 3, 27, 1, 51, 12, 494, DateTimeKind.Local).AddTicks(1924),
+                            EditedAt = new DateTime(2024, 3, 27, 1, 51, 12, 494, DateTimeKind.Local).AddTicks(1925),
                             IsDeleted = false,
                             Number = "1排6號",
                             SeatAreaId = 1,
@@ -1247,8 +1247,8 @@ namespace Infrastructure.Data.Migrations
                         new
                         {
                             Id = 7,
-                            CreatedAt = new DateTime(2024, 3, 27, 1, 6, 24, 380, DateTimeKind.Local).AddTicks(8196),
-                            EditedAt = new DateTime(2024, 3, 27, 1, 6, 24, 380, DateTimeKind.Local).AddTicks(8197),
+                            CreatedAt = new DateTime(2024, 3, 27, 1, 51, 12, 494, DateTimeKind.Local).AddTicks(1928),
+                            EditedAt = new DateTime(2024, 3, 27, 1, 51, 12, 494, DateTimeKind.Local).AddTicks(1928),
                             IsDeleted = false,
                             Number = "1排7號",
                             SeatAreaId = 1,
@@ -1257,8 +1257,8 @@ namespace Infrastructure.Data.Migrations
                         new
                         {
                             Id = 8,
-                            CreatedAt = new DateTime(2024, 3, 27, 1, 6, 24, 380, DateTimeKind.Local).AddTicks(8199),
-                            EditedAt = new DateTime(2024, 3, 27, 1, 6, 24, 380, DateTimeKind.Local).AddTicks(8200),
+                            CreatedAt = new DateTime(2024, 3, 27, 1, 51, 12, 494, DateTimeKind.Local).AddTicks(1931),
+                            EditedAt = new DateTime(2024, 3, 27, 1, 51, 12, 494, DateTimeKind.Local).AddTicks(1932),
                             IsDeleted = false,
                             Number = "1排8號",
                             SeatAreaId = 1,
@@ -1267,8 +1267,8 @@ namespace Infrastructure.Data.Migrations
                         new
                         {
                             Id = 9,
-                            CreatedAt = new DateTime(2024, 3, 27, 1, 6, 24, 380, DateTimeKind.Local).AddTicks(8202),
-                            EditedAt = new DateTime(2024, 3, 27, 1, 6, 24, 380, DateTimeKind.Local).AddTicks(8203),
+                            CreatedAt = new DateTime(2024, 3, 27, 1, 51, 12, 494, DateTimeKind.Local).AddTicks(1934),
+                            EditedAt = new DateTime(2024, 3, 27, 1, 51, 12, 494, DateTimeKind.Local).AddTicks(1935),
                             IsDeleted = false,
                             Number = "1排9號",
                             SeatAreaId = 1,
@@ -1277,8 +1277,8 @@ namespace Infrastructure.Data.Migrations
                         new
                         {
                             Id = 10,
-                            CreatedAt = new DateTime(2024, 3, 27, 1, 6, 24, 380, DateTimeKind.Local).AddTicks(8205),
-                            EditedAt = new DateTime(2024, 3, 27, 1, 6, 24, 380, DateTimeKind.Local).AddTicks(8206),
+                            CreatedAt = new DateTime(2024, 3, 27, 1, 51, 12, 494, DateTimeKind.Local).AddTicks(1937),
+                            EditedAt = new DateTime(2024, 3, 27, 1, 51, 12, 494, DateTimeKind.Local).AddTicks(1937),
                             IsDeleted = false,
                             Number = "1排10號",
                             SeatAreaId = 1,
@@ -1287,8 +1287,8 @@ namespace Infrastructure.Data.Migrations
                         new
                         {
                             Id = 11,
-                            CreatedAt = new DateTime(2024, 3, 27, 1, 6, 24, 380, DateTimeKind.Local).AddTicks(8208),
-                            EditedAt = new DateTime(2024, 3, 27, 1, 6, 24, 380, DateTimeKind.Local).AddTicks(8209),
+                            CreatedAt = new DateTime(2024, 3, 27, 1, 51, 12, 494, DateTimeKind.Local).AddTicks(1939),
+                            EditedAt = new DateTime(2024, 3, 27, 1, 51, 12, 494, DateTimeKind.Local).AddTicks(1940),
                             IsDeleted = false,
                             Number = "1排11號",
                             SeatAreaId = 1,
@@ -1297,8 +1297,8 @@ namespace Infrastructure.Data.Migrations
                         new
                         {
                             Id = 12,
-                            CreatedAt = new DateTime(2024, 3, 27, 1, 6, 24, 380, DateTimeKind.Local).AddTicks(8212),
-                            EditedAt = new DateTime(2024, 3, 27, 1, 6, 24, 380, DateTimeKind.Local).AddTicks(8212),
+                            CreatedAt = new DateTime(2024, 3, 27, 1, 51, 12, 494, DateTimeKind.Local).AddTicks(1942),
+                            EditedAt = new DateTime(2024, 3, 27, 1, 51, 12, 494, DateTimeKind.Local).AddTicks(1943),
                             IsDeleted = false,
                             Number = "1排12號",
                             SeatAreaId = 1,
@@ -1307,8 +1307,8 @@ namespace Infrastructure.Data.Migrations
                         new
                         {
                             Id = 13,
-                            CreatedAt = new DateTime(2024, 3, 27, 1, 6, 24, 380, DateTimeKind.Local).AddTicks(8215),
-                            EditedAt = new DateTime(2024, 3, 27, 1, 6, 24, 380, DateTimeKind.Local).AddTicks(8215),
+                            CreatedAt = new DateTime(2024, 3, 27, 1, 51, 12, 494, DateTimeKind.Local).AddTicks(1945),
+                            EditedAt = new DateTime(2024, 3, 27, 1, 51, 12, 494, DateTimeKind.Local).AddTicks(1946),
                             IsDeleted = false,
                             Number = "1排13號",
                             SeatAreaId = 1,
@@ -1317,8 +1317,8 @@ namespace Infrastructure.Data.Migrations
                         new
                         {
                             Id = 14,
-                            CreatedAt = new DateTime(2024, 3, 27, 1, 6, 24, 380, DateTimeKind.Local).AddTicks(8218),
-                            EditedAt = new DateTime(2024, 3, 27, 1, 6, 24, 380, DateTimeKind.Local).AddTicks(8218),
+                            CreatedAt = new DateTime(2024, 3, 27, 1, 51, 12, 494, DateTimeKind.Local).AddTicks(1948),
+                            EditedAt = new DateTime(2024, 3, 27, 1, 51, 12, 494, DateTimeKind.Local).AddTicks(1948),
                             IsDeleted = false,
                             Number = "1排14號",
                             SeatAreaId = 1,
@@ -1327,8 +1327,8 @@ namespace Infrastructure.Data.Migrations
                         new
                         {
                             Id = 15,
-                            CreatedAt = new DateTime(2024, 3, 27, 1, 6, 24, 380, DateTimeKind.Local).AddTicks(8220),
-                            EditedAt = new DateTime(2024, 3, 27, 1, 6, 24, 380, DateTimeKind.Local).AddTicks(8221),
+                            CreatedAt = new DateTime(2024, 3, 27, 1, 51, 12, 494, DateTimeKind.Local).AddTicks(1950),
+                            EditedAt = new DateTime(2024, 3, 27, 1, 51, 12, 494, DateTimeKind.Local).AddTicks(1951),
                             IsDeleted = false,
                             Number = "1排15號",
                             SeatAreaId = 1,
@@ -1337,8 +1337,8 @@ namespace Infrastructure.Data.Migrations
                         new
                         {
                             Id = 16,
-                            CreatedAt = new DateTime(2024, 3, 27, 1, 6, 24, 380, DateTimeKind.Local).AddTicks(8223),
-                            EditedAt = new DateTime(2024, 3, 27, 1, 6, 24, 380, DateTimeKind.Local).AddTicks(8224),
+                            CreatedAt = new DateTime(2024, 3, 27, 1, 51, 12, 494, DateTimeKind.Local).AddTicks(1953),
+                            EditedAt = new DateTime(2024, 3, 27, 1, 51, 12, 494, DateTimeKind.Local).AddTicks(1954),
                             IsDeleted = false,
                             Number = "1排16號",
                             SeatAreaId = 1,
@@ -1347,8 +1347,8 @@ namespace Infrastructure.Data.Migrations
                         new
                         {
                             Id = 17,
-                            CreatedAt = new DateTime(2024, 3, 27, 1, 6, 24, 380, DateTimeKind.Local).AddTicks(8226),
-                            EditedAt = new DateTime(2024, 3, 27, 1, 6, 24, 380, DateTimeKind.Local).AddTicks(8227),
+                            CreatedAt = new DateTime(2024, 3, 27, 1, 51, 12, 494, DateTimeKind.Local).AddTicks(1956),
+                            EditedAt = new DateTime(2024, 3, 27, 1, 51, 12, 494, DateTimeKind.Local).AddTicks(1956),
                             IsDeleted = false,
                             Number = "1排17號",
                             SeatAreaId = 1,
@@ -1357,8 +1357,8 @@ namespace Infrastructure.Data.Migrations
                         new
                         {
                             Id = 18,
-                            CreatedAt = new DateTime(2024, 3, 27, 1, 6, 24, 380, DateTimeKind.Local).AddTicks(8229),
-                            EditedAt = new DateTime(2024, 3, 27, 1, 6, 24, 380, DateTimeKind.Local).AddTicks(8230),
+                            CreatedAt = new DateTime(2024, 3, 27, 1, 51, 12, 494, DateTimeKind.Local).AddTicks(1958),
+                            EditedAt = new DateTime(2024, 3, 27, 1, 51, 12, 494, DateTimeKind.Local).AddTicks(1959),
                             IsDeleted = false,
                             Number = "2排1號",
                             SeatAreaId = 1,
@@ -1367,8 +1367,8 @@ namespace Infrastructure.Data.Migrations
                         new
                         {
                             Id = 19,
-                            CreatedAt = new DateTime(2024, 3, 27, 1, 6, 24, 380, DateTimeKind.Local).AddTicks(8232),
-                            EditedAt = new DateTime(2024, 3, 27, 1, 6, 24, 380, DateTimeKind.Local).AddTicks(8232),
+                            CreatedAt = new DateTime(2024, 3, 27, 1, 51, 12, 494, DateTimeKind.Local).AddTicks(1961),
+                            EditedAt = new DateTime(2024, 3, 27, 1, 51, 12, 494, DateTimeKind.Local).AddTicks(1962),
                             IsDeleted = false,
                             Number = "2排2號",
                             SeatAreaId = 1,
@@ -1377,8 +1377,8 @@ namespace Infrastructure.Data.Migrations
                         new
                         {
                             Id = 20,
-                            CreatedAt = new DateTime(2024, 3, 27, 1, 6, 24, 380, DateTimeKind.Local).AddTicks(8235),
-                            EditedAt = new DateTime(2024, 3, 27, 1, 6, 24, 380, DateTimeKind.Local).AddTicks(8235),
+                            CreatedAt = new DateTime(2024, 3, 27, 1, 51, 12, 494, DateTimeKind.Local).AddTicks(1964),
+                            EditedAt = new DateTime(2024, 3, 27, 1, 51, 12, 494, DateTimeKind.Local).AddTicks(1965),
                             IsDeleted = false,
                             Number = "2排3號",
                             SeatAreaId = 1,
@@ -1387,8 +1387,8 @@ namespace Infrastructure.Data.Migrations
                         new
                         {
                             Id = 21,
-                            CreatedAt = new DateTime(2024, 3, 27, 1, 6, 24, 380, DateTimeKind.Local).AddTicks(8237),
-                            EditedAt = new DateTime(2024, 3, 27, 1, 6, 24, 380, DateTimeKind.Local).AddTicks(8238),
+                            CreatedAt = new DateTime(2024, 3, 27, 1, 51, 12, 494, DateTimeKind.Local).AddTicks(1967),
+                            EditedAt = new DateTime(2024, 3, 27, 1, 51, 12, 494, DateTimeKind.Local).AddTicks(1967),
                             IsDeleted = false,
                             Number = "2排4號",
                             SeatAreaId = 1,
@@ -1397,8 +1397,8 @@ namespace Infrastructure.Data.Migrations
                         new
                         {
                             Id = 22,
-                            CreatedAt = new DateTime(2024, 3, 27, 1, 6, 24, 380, DateTimeKind.Local).AddTicks(8240),
-                            EditedAt = new DateTime(2024, 3, 27, 1, 6, 24, 380, DateTimeKind.Local).AddTicks(8241),
+                            CreatedAt = new DateTime(2024, 3, 27, 1, 51, 12, 494, DateTimeKind.Local).AddTicks(1969),
+                            EditedAt = new DateTime(2024, 3, 27, 1, 51, 12, 494, DateTimeKind.Local).AddTicks(1970),
                             IsDeleted = false,
                             Number = "2排5號",
                             SeatAreaId = 1,
@@ -1407,8 +1407,8 @@ namespace Infrastructure.Data.Migrations
                         new
                         {
                             Id = 23,
-                            CreatedAt = new DateTime(2024, 3, 27, 1, 6, 24, 380, DateTimeKind.Local).AddTicks(8243),
-                            EditedAt = new DateTime(2024, 3, 27, 1, 6, 24, 380, DateTimeKind.Local).AddTicks(8243),
+                            CreatedAt = new DateTime(2024, 3, 27, 1, 51, 12, 494, DateTimeKind.Local).AddTicks(1972),
+                            EditedAt = new DateTime(2024, 3, 27, 1, 51, 12, 494, DateTimeKind.Local).AddTicks(1973),
                             IsDeleted = false,
                             Number = "2排6號",
                             SeatAreaId = 1,
@@ -1417,8 +1417,8 @@ namespace Infrastructure.Data.Migrations
                         new
                         {
                             Id = 24,
-                            CreatedAt = new DateTime(2024, 3, 27, 1, 6, 24, 380, DateTimeKind.Local).AddTicks(8245),
-                            EditedAt = new DateTime(2024, 3, 27, 1, 6, 24, 380, DateTimeKind.Local).AddTicks(8246),
+                            CreatedAt = new DateTime(2024, 3, 27, 1, 51, 12, 494, DateTimeKind.Local).AddTicks(1975),
+                            EditedAt = new DateTime(2024, 3, 27, 1, 51, 12, 494, DateTimeKind.Local).AddTicks(1975),
                             IsDeleted = false,
                             Number = "2排7號",
                             SeatAreaId = 1,
@@ -1427,8 +1427,8 @@ namespace Infrastructure.Data.Migrations
                         new
                         {
                             Id = 25,
-                            CreatedAt = new DateTime(2024, 3, 27, 1, 6, 24, 380, DateTimeKind.Local).AddTicks(8248),
-                            EditedAt = new DateTime(2024, 3, 27, 1, 6, 24, 380, DateTimeKind.Local).AddTicks(8249),
+                            CreatedAt = new DateTime(2024, 3, 27, 1, 51, 12, 494, DateTimeKind.Local).AddTicks(1978),
+                            EditedAt = new DateTime(2024, 3, 27, 1, 51, 12, 494, DateTimeKind.Local).AddTicks(1979),
                             IsDeleted = false,
                             Number = "2排8號",
                             SeatAreaId = 1,
@@ -1437,8 +1437,8 @@ namespace Infrastructure.Data.Migrations
                         new
                         {
                             Id = 26,
-                            CreatedAt = new DateTime(2024, 3, 27, 1, 6, 24, 380, DateTimeKind.Local).AddTicks(8251),
-                            EditedAt = new DateTime(2024, 3, 27, 1, 6, 24, 380, DateTimeKind.Local).AddTicks(8252),
+                            CreatedAt = new DateTime(2024, 3, 27, 1, 51, 12, 494, DateTimeKind.Local).AddTicks(1981),
+                            EditedAt = new DateTime(2024, 3, 27, 1, 51, 12, 494, DateTimeKind.Local).AddTicks(1981),
                             IsDeleted = false,
                             Number = "2排9號",
                             SeatAreaId = 1,
@@ -1447,8 +1447,8 @@ namespace Infrastructure.Data.Migrations
                         new
                         {
                             Id = 27,
-                            CreatedAt = new DateTime(2024, 3, 27, 1, 6, 24, 380, DateTimeKind.Local).AddTicks(8254),
-                            EditedAt = new DateTime(2024, 3, 27, 1, 6, 24, 380, DateTimeKind.Local).AddTicks(8254),
+                            CreatedAt = new DateTime(2024, 3, 27, 1, 51, 12, 494, DateTimeKind.Local).AddTicks(1983),
+                            EditedAt = new DateTime(2024, 3, 27, 1, 51, 12, 494, DateTimeKind.Local).AddTicks(1984),
                             IsDeleted = false,
                             Number = "2排10號",
                             SeatAreaId = 1,
@@ -1457,8 +1457,8 @@ namespace Infrastructure.Data.Migrations
                         new
                         {
                             Id = 28,
-                            CreatedAt = new DateTime(2024, 3, 27, 1, 6, 24, 380, DateTimeKind.Local).AddTicks(8256),
-                            EditedAt = new DateTime(2024, 3, 27, 1, 6, 24, 380, DateTimeKind.Local).AddTicks(8257),
+                            CreatedAt = new DateTime(2024, 3, 27, 1, 51, 12, 494, DateTimeKind.Local).AddTicks(1987),
+                            EditedAt = new DateTime(2024, 3, 27, 1, 51, 12, 494, DateTimeKind.Local).AddTicks(1987),
                             IsDeleted = false,
                             Number = "2排11號",
                             SeatAreaId = 1,
@@ -1467,8 +1467,8 @@ namespace Infrastructure.Data.Migrations
                         new
                         {
                             Id = 29,
-                            CreatedAt = new DateTime(2024, 3, 27, 1, 6, 24, 380, DateTimeKind.Local).AddTicks(8259),
-                            EditedAt = new DateTime(2024, 3, 27, 1, 6, 24, 380, DateTimeKind.Local).AddTicks(8260),
+                            CreatedAt = new DateTime(2024, 3, 27, 1, 51, 12, 494, DateTimeKind.Local).AddTicks(1989),
+                            EditedAt = new DateTime(2024, 3, 27, 1, 51, 12, 494, DateTimeKind.Local).AddTicks(1990),
                             IsDeleted = false,
                             Number = "2排12號",
                             SeatAreaId = 1,
@@ -1477,8 +1477,8 @@ namespace Infrastructure.Data.Migrations
                         new
                         {
                             Id = 30,
-                            CreatedAt = new DateTime(2024, 3, 27, 1, 6, 24, 380, DateTimeKind.Local).AddTicks(8262),
-                            EditedAt = new DateTime(2024, 3, 27, 1, 6, 24, 380, DateTimeKind.Local).AddTicks(8263),
+                            CreatedAt = new DateTime(2024, 3, 27, 1, 51, 12, 494, DateTimeKind.Local).AddTicks(1993),
+                            EditedAt = new DateTime(2024, 3, 27, 1, 51, 12, 494, DateTimeKind.Local).AddTicks(1993),
                             IsDeleted = false,
                             Number = "2排13號",
                             SeatAreaId = 1,
@@ -1487,8 +1487,8 @@ namespace Infrastructure.Data.Migrations
                         new
                         {
                             Id = 31,
-                            CreatedAt = new DateTime(2024, 3, 27, 1, 6, 24, 380, DateTimeKind.Local).AddTicks(8265),
-                            EditedAt = new DateTime(2024, 3, 27, 1, 6, 24, 380, DateTimeKind.Local).AddTicks(8265),
+                            CreatedAt = new DateTime(2024, 3, 27, 1, 51, 12, 494, DateTimeKind.Local).AddTicks(1995),
+                            EditedAt = new DateTime(2024, 3, 27, 1, 51, 12, 494, DateTimeKind.Local).AddTicks(1996),
                             IsDeleted = false,
                             Number = "2排14號",
                             SeatAreaId = 1,
@@ -1497,8 +1497,8 @@ namespace Infrastructure.Data.Migrations
                         new
                         {
                             Id = 32,
-                            CreatedAt = new DateTime(2024, 3, 27, 1, 6, 24, 380, DateTimeKind.Local).AddTicks(8267),
-                            EditedAt = new DateTime(2024, 3, 27, 1, 6, 24, 380, DateTimeKind.Local).AddTicks(8268),
+                            CreatedAt = new DateTime(2024, 3, 27, 1, 51, 12, 494, DateTimeKind.Local).AddTicks(1998),
+                            EditedAt = new DateTime(2024, 3, 27, 1, 51, 12, 494, DateTimeKind.Local).AddTicks(1999),
                             IsDeleted = false,
                             Number = "2排15號",
                             SeatAreaId = 1,
@@ -1507,8 +1507,8 @@ namespace Infrastructure.Data.Migrations
                         new
                         {
                             Id = 33,
-                            CreatedAt = new DateTime(2024, 3, 27, 1, 6, 24, 380, DateTimeKind.Local).AddTicks(8270),
-                            EditedAt = new DateTime(2024, 3, 27, 1, 6, 24, 380, DateTimeKind.Local).AddTicks(8271),
+                            CreatedAt = new DateTime(2024, 3, 27, 1, 51, 12, 494, DateTimeKind.Local).AddTicks(2001),
+                            EditedAt = new DateTime(2024, 3, 27, 1, 51, 12, 494, DateTimeKind.Local).AddTicks(2001),
                             IsDeleted = false,
                             Number = "2排16號",
                             SeatAreaId = 1,
@@ -1517,8 +1517,8 @@ namespace Infrastructure.Data.Migrations
                         new
                         {
                             Id = 34,
-                            CreatedAt = new DateTime(2024, 3, 27, 1, 6, 24, 380, DateTimeKind.Local).AddTicks(8273),
-                            EditedAt = new DateTime(2024, 3, 27, 1, 6, 24, 380, DateTimeKind.Local).AddTicks(8273),
+                            CreatedAt = new DateTime(2024, 3, 27, 1, 51, 12, 494, DateTimeKind.Local).AddTicks(2003),
+                            EditedAt = new DateTime(2024, 3, 27, 1, 51, 12, 494, DateTimeKind.Local).AddTicks(2004),
                             IsDeleted = false,
                             Number = "2排17號",
                             SeatAreaId = 1,
@@ -1527,8 +1527,8 @@ namespace Infrastructure.Data.Migrations
                         new
                         {
                             Id = 35,
-                            CreatedAt = new DateTime(2024, 3, 27, 1, 6, 24, 380, DateTimeKind.Local).AddTicks(8276),
-                            EditedAt = new DateTime(2024, 3, 27, 1, 6, 24, 380, DateTimeKind.Local).AddTicks(8276),
+                            CreatedAt = new DateTime(2024, 3, 27, 1, 51, 12, 494, DateTimeKind.Local).AddTicks(2006),
+                            EditedAt = new DateTime(2024, 3, 27, 1, 51, 12, 494, DateTimeKind.Local).AddTicks(2007),
                             IsDeleted = false,
                             Number = "3排1號",
                             SeatAreaId = 1,
@@ -1537,8 +1537,8 @@ namespace Infrastructure.Data.Migrations
                         new
                         {
                             Id = 36,
-                            CreatedAt = new DateTime(2024, 3, 27, 1, 6, 24, 380, DateTimeKind.Local).AddTicks(8278),
-                            EditedAt = new DateTime(2024, 3, 27, 1, 6, 24, 380, DateTimeKind.Local).AddTicks(8279),
+                            CreatedAt = new DateTime(2024, 3, 27, 1, 51, 12, 494, DateTimeKind.Local).AddTicks(2009),
+                            EditedAt = new DateTime(2024, 3, 27, 1, 51, 12, 494, DateTimeKind.Local).AddTicks(2009),
                             IsDeleted = false,
                             Number = "3排2號",
                             SeatAreaId = 1,
@@ -1547,8 +1547,8 @@ namespace Infrastructure.Data.Migrations
                         new
                         {
                             Id = 37,
-                            CreatedAt = new DateTime(2024, 3, 27, 1, 6, 24, 380, DateTimeKind.Local).AddTicks(8281),
-                            EditedAt = new DateTime(2024, 3, 27, 1, 6, 24, 380, DateTimeKind.Local).AddTicks(8282),
+                            CreatedAt = new DateTime(2024, 3, 27, 1, 51, 12, 494, DateTimeKind.Local).AddTicks(2011),
+                            EditedAt = new DateTime(2024, 3, 27, 1, 51, 12, 494, DateTimeKind.Local).AddTicks(2012),
                             IsDeleted = false,
                             Number = "3排3號",
                             SeatAreaId = 1,
@@ -1557,8 +1557,8 @@ namespace Infrastructure.Data.Migrations
                         new
                         {
                             Id = 38,
-                            CreatedAt = new DateTime(2024, 3, 27, 1, 6, 24, 380, DateTimeKind.Local).AddTicks(8317),
-                            EditedAt = new DateTime(2024, 3, 27, 1, 6, 24, 380, DateTimeKind.Local).AddTicks(8318),
+                            CreatedAt = new DateTime(2024, 3, 27, 1, 51, 12, 494, DateTimeKind.Local).AddTicks(2014),
+                            EditedAt = new DateTime(2024, 3, 27, 1, 51, 12, 494, DateTimeKind.Local).AddTicks(2015),
                             IsDeleted = false,
                             Number = "3排4號",
                             SeatAreaId = 1,
@@ -1567,8 +1567,8 @@ namespace Infrastructure.Data.Migrations
                         new
                         {
                             Id = 39,
-                            CreatedAt = new DateTime(2024, 3, 27, 1, 6, 24, 380, DateTimeKind.Local).AddTicks(8320),
-                            EditedAt = new DateTime(2024, 3, 27, 1, 6, 24, 380, DateTimeKind.Local).AddTicks(8321),
+                            CreatedAt = new DateTime(2024, 3, 27, 1, 51, 12, 494, DateTimeKind.Local).AddTicks(2017),
+                            EditedAt = new DateTime(2024, 3, 27, 1, 51, 12, 494, DateTimeKind.Local).AddTicks(2018),
                             IsDeleted = false,
                             Number = "3排5號",
                             SeatAreaId = 1,
@@ -1577,8 +1577,8 @@ namespace Infrastructure.Data.Migrations
                         new
                         {
                             Id = 40,
-                            CreatedAt = new DateTime(2024, 3, 27, 1, 6, 24, 380, DateTimeKind.Local).AddTicks(8323),
-                            EditedAt = new DateTime(2024, 3, 27, 1, 6, 24, 380, DateTimeKind.Local).AddTicks(8323),
+                            CreatedAt = new DateTime(2024, 3, 27, 1, 51, 12, 494, DateTimeKind.Local).AddTicks(2020),
+                            EditedAt = new DateTime(2024, 3, 27, 1, 51, 12, 494, DateTimeKind.Local).AddTicks(2020),
                             IsDeleted = false,
                             Number = "3排6號",
                             SeatAreaId = 1,
@@ -1587,8 +1587,8 @@ namespace Infrastructure.Data.Migrations
                         new
                         {
                             Id = 41,
-                            CreatedAt = new DateTime(2024, 3, 27, 1, 6, 24, 380, DateTimeKind.Local).AddTicks(8325),
-                            EditedAt = new DateTime(2024, 3, 27, 1, 6, 24, 380, DateTimeKind.Local).AddTicks(8326),
+                            CreatedAt = new DateTime(2024, 3, 27, 1, 51, 12, 494, DateTimeKind.Local).AddTicks(2022),
+                            EditedAt = new DateTime(2024, 3, 27, 1, 51, 12, 494, DateTimeKind.Local).AddTicks(2023),
                             IsDeleted = false,
                             Number = "3排7號",
                             SeatAreaId = 1,
@@ -1597,8 +1597,8 @@ namespace Infrastructure.Data.Migrations
                         new
                         {
                             Id = 42,
-                            CreatedAt = new DateTime(2024, 3, 27, 1, 6, 24, 380, DateTimeKind.Local).AddTicks(8328),
-                            EditedAt = new DateTime(2024, 3, 27, 1, 6, 24, 380, DateTimeKind.Local).AddTicks(8329),
+                            CreatedAt = new DateTime(2024, 3, 27, 1, 51, 12, 494, DateTimeKind.Local).AddTicks(2026),
+                            EditedAt = new DateTime(2024, 3, 27, 1, 51, 12, 494, DateTimeKind.Local).AddTicks(2026),
                             IsDeleted = false,
                             Number = "3排8號",
                             SeatAreaId = 1,
@@ -1607,8 +1607,8 @@ namespace Infrastructure.Data.Migrations
                         new
                         {
                             Id = 43,
-                            CreatedAt = new DateTime(2024, 3, 27, 1, 6, 24, 380, DateTimeKind.Local).AddTicks(8331),
-                            EditedAt = new DateTime(2024, 3, 27, 1, 6, 24, 380, DateTimeKind.Local).AddTicks(8331),
+                            CreatedAt = new DateTime(2024, 3, 27, 1, 51, 12, 494, DateTimeKind.Local).AddTicks(2029),
+                            EditedAt = new DateTime(2024, 3, 27, 1, 51, 12, 494, DateTimeKind.Local).AddTicks(2030),
                             IsDeleted = false,
                             Number = "3排9號",
                             SeatAreaId = 1,
@@ -1617,8 +1617,8 @@ namespace Infrastructure.Data.Migrations
                         new
                         {
                             Id = 44,
-                            CreatedAt = new DateTime(2024, 3, 27, 1, 6, 24, 380, DateTimeKind.Local).AddTicks(8333),
-                            EditedAt = new DateTime(2024, 3, 27, 1, 6, 24, 380, DateTimeKind.Local).AddTicks(8334),
+                            CreatedAt = new DateTime(2024, 3, 27, 1, 51, 12, 494, DateTimeKind.Local).AddTicks(2034),
+                            EditedAt = new DateTime(2024, 3, 27, 1, 51, 12, 494, DateTimeKind.Local).AddTicks(2035),
                             IsDeleted = false,
                             Number = "3排10號",
                             SeatAreaId = 1,
@@ -1627,8 +1627,8 @@ namespace Infrastructure.Data.Migrations
                         new
                         {
                             Id = 45,
-                            CreatedAt = new DateTime(2024, 3, 27, 1, 6, 24, 380, DateTimeKind.Local).AddTicks(8336),
-                            EditedAt = new DateTime(2024, 3, 27, 1, 6, 24, 380, DateTimeKind.Local).AddTicks(8337),
+                            CreatedAt = new DateTime(2024, 3, 27, 1, 51, 12, 494, DateTimeKind.Local).AddTicks(2037),
+                            EditedAt = new DateTime(2024, 3, 27, 1, 51, 12, 494, DateTimeKind.Local).AddTicks(2038),
                             IsDeleted = false,
                             Number = "3排11號",
                             SeatAreaId = 1,
@@ -1637,8 +1637,8 @@ namespace Infrastructure.Data.Migrations
                         new
                         {
                             Id = 46,
-                            CreatedAt = new DateTime(2024, 3, 27, 1, 6, 24, 380, DateTimeKind.Local).AddTicks(8340),
-                            EditedAt = new DateTime(2024, 3, 27, 1, 6, 24, 380, DateTimeKind.Local).AddTicks(8341),
+                            CreatedAt = new DateTime(2024, 3, 27, 1, 51, 12, 494, DateTimeKind.Local).AddTicks(2040),
+                            EditedAt = new DateTime(2024, 3, 27, 1, 51, 12, 494, DateTimeKind.Local).AddTicks(2040),
                             IsDeleted = false,
                             Number = "3排12號",
                             SeatAreaId = 1,
@@ -1647,8 +1647,8 @@ namespace Infrastructure.Data.Migrations
                         new
                         {
                             Id = 47,
-                            CreatedAt = new DateTime(2024, 3, 27, 1, 6, 24, 380, DateTimeKind.Local).AddTicks(8343),
-                            EditedAt = new DateTime(2024, 3, 27, 1, 6, 24, 380, DateTimeKind.Local).AddTicks(8343),
+                            CreatedAt = new DateTime(2024, 3, 27, 1, 51, 12, 494, DateTimeKind.Local).AddTicks(2042),
+                            EditedAt = new DateTime(2024, 3, 27, 1, 51, 12, 494, DateTimeKind.Local).AddTicks(2043),
                             IsDeleted = false,
                             Number = "3排13號",
                             SeatAreaId = 1,
@@ -1657,8 +1657,8 @@ namespace Infrastructure.Data.Migrations
                         new
                         {
                             Id = 48,
-                            CreatedAt = new DateTime(2024, 3, 27, 1, 6, 24, 380, DateTimeKind.Local).AddTicks(8345),
-                            EditedAt = new DateTime(2024, 3, 27, 1, 6, 24, 380, DateTimeKind.Local).AddTicks(8346),
+                            CreatedAt = new DateTime(2024, 3, 27, 1, 51, 12, 494, DateTimeKind.Local).AddTicks(2045),
+                            EditedAt = new DateTime(2024, 3, 27, 1, 51, 12, 494, DateTimeKind.Local).AddTicks(2046),
                             IsDeleted = false,
                             Number = "3排14號",
                             SeatAreaId = 1,
@@ -1667,8 +1667,8 @@ namespace Infrastructure.Data.Migrations
                         new
                         {
                             Id = 49,
-                            CreatedAt = new DateTime(2024, 3, 27, 1, 6, 24, 380, DateTimeKind.Local).AddTicks(8349),
-                            EditedAt = new DateTime(2024, 3, 27, 1, 6, 24, 380, DateTimeKind.Local).AddTicks(8350),
+                            CreatedAt = new DateTime(2024, 3, 27, 1, 51, 12, 494, DateTimeKind.Local).AddTicks(2048),
+                            EditedAt = new DateTime(2024, 3, 27, 1, 51, 12, 494, DateTimeKind.Local).AddTicks(2048),
                             IsDeleted = false,
                             Number = "3排16號",
                             SeatAreaId = 1,
@@ -1677,8 +1677,8 @@ namespace Infrastructure.Data.Migrations
                         new
                         {
                             Id = 50,
-                            CreatedAt = new DateTime(2024, 3, 27, 1, 6, 24, 380, DateTimeKind.Local).AddTicks(8352),
-                            EditedAt = new DateTime(2024, 3, 27, 1, 6, 24, 380, DateTimeKind.Local).AddTicks(8353),
+                            CreatedAt = new DateTime(2024, 3, 27, 1, 51, 12, 494, DateTimeKind.Local).AddTicks(2051),
+                            EditedAt = new DateTime(2024, 3, 27, 1, 51, 12, 494, DateTimeKind.Local).AddTicks(2051),
                             IsDeleted = false,
                             Number = "3排17號",
                             SeatAreaId = 1,
@@ -1687,8 +1687,8 @@ namespace Infrastructure.Data.Migrations
                         new
                         {
                             Id = 51,
-                            CreatedAt = new DateTime(2024, 3, 27, 1, 6, 24, 380, DateTimeKind.Local).AddTicks(8356),
-                            EditedAt = new DateTime(2024, 3, 27, 1, 6, 24, 380, DateTimeKind.Local).AddTicks(8357),
+                            CreatedAt = new DateTime(2024, 3, 27, 1, 51, 12, 494, DateTimeKind.Local).AddTicks(2053),
+                            EditedAt = new DateTime(2024, 3, 27, 1, 51, 12, 494, DateTimeKind.Local).AddTicks(2054),
                             IsDeleted = false,
                             Number = "4排1號",
                             SeatAreaId = 1,
@@ -1697,8 +1697,8 @@ namespace Infrastructure.Data.Migrations
                         new
                         {
                             Id = 52,
-                            CreatedAt = new DateTime(2024, 3, 27, 1, 6, 24, 380, DateTimeKind.Local).AddTicks(8359),
-                            EditedAt = new DateTime(2024, 3, 27, 1, 6, 24, 380, DateTimeKind.Local).AddTicks(8360),
+                            CreatedAt = new DateTime(2024, 3, 27, 1, 51, 12, 494, DateTimeKind.Local).AddTicks(2056),
+                            EditedAt = new DateTime(2024, 3, 27, 1, 51, 12, 494, DateTimeKind.Local).AddTicks(2057),
                             IsDeleted = false,
                             Number = "4排2號",
                             SeatAreaId = 1,
@@ -1707,8 +1707,8 @@ namespace Infrastructure.Data.Migrations
                         new
                         {
                             Id = 53,
-                            CreatedAt = new DateTime(2024, 3, 27, 1, 6, 24, 380, DateTimeKind.Local).AddTicks(8362),
-                            EditedAt = new DateTime(2024, 3, 27, 1, 6, 24, 380, DateTimeKind.Local).AddTicks(8362),
+                            CreatedAt = new DateTime(2024, 3, 27, 1, 51, 12, 494, DateTimeKind.Local).AddTicks(2059),
+                            EditedAt = new DateTime(2024, 3, 27, 1, 51, 12, 494, DateTimeKind.Local).AddTicks(2059),
                             IsDeleted = false,
                             Number = "4排3號",
                             SeatAreaId = 1,
@@ -1717,8 +1717,8 @@ namespace Infrastructure.Data.Migrations
                         new
                         {
                             Id = 54,
-                            CreatedAt = new DateTime(2024, 3, 27, 1, 6, 24, 380, DateTimeKind.Local).AddTicks(8364),
-                            EditedAt = new DateTime(2024, 3, 27, 1, 6, 24, 380, DateTimeKind.Local).AddTicks(8365),
+                            CreatedAt = new DateTime(2024, 3, 27, 1, 51, 12, 494, DateTimeKind.Local).AddTicks(2061),
+                            EditedAt = new DateTime(2024, 3, 27, 1, 51, 12, 494, DateTimeKind.Local).AddTicks(2062),
                             IsDeleted = false,
                             Number = "4排4號",
                             SeatAreaId = 1,
@@ -1727,8 +1727,8 @@ namespace Infrastructure.Data.Migrations
                         new
                         {
                             Id = 55,
-                            CreatedAt = new DateTime(2024, 3, 27, 1, 6, 24, 380, DateTimeKind.Local).AddTicks(8367),
-                            EditedAt = new DateTime(2024, 3, 27, 1, 6, 24, 380, DateTimeKind.Local).AddTicks(8368),
+                            CreatedAt = new DateTime(2024, 3, 27, 1, 51, 12, 494, DateTimeKind.Local).AddTicks(2064),
+                            EditedAt = new DateTime(2024, 3, 27, 1, 51, 12, 494, DateTimeKind.Local).AddTicks(2065),
                             IsDeleted = false,
                             Number = "4排5號",
                             SeatAreaId = 1,
@@ -1737,8 +1737,8 @@ namespace Infrastructure.Data.Migrations
                         new
                         {
                             Id = 56,
-                            CreatedAt = new DateTime(2024, 3, 27, 1, 6, 24, 380, DateTimeKind.Local).AddTicks(8370),
-                            EditedAt = new DateTime(2024, 3, 27, 1, 6, 24, 380, DateTimeKind.Local).AddTicks(8371),
+                            CreatedAt = new DateTime(2024, 3, 27, 1, 51, 12, 494, DateTimeKind.Local).AddTicks(2066),
+                            EditedAt = new DateTime(2024, 3, 27, 1, 51, 12, 494, DateTimeKind.Local).AddTicks(2067),
                             IsDeleted = false,
                             Number = "4排6號",
                             SeatAreaId = 1,
@@ -1747,8 +1747,8 @@ namespace Infrastructure.Data.Migrations
                         new
                         {
                             Id = 57,
-                            CreatedAt = new DateTime(2024, 3, 27, 1, 6, 24, 380, DateTimeKind.Local).AddTicks(8373),
-                            EditedAt = new DateTime(2024, 3, 27, 1, 6, 24, 380, DateTimeKind.Local).AddTicks(8373),
+                            CreatedAt = new DateTime(2024, 3, 27, 1, 51, 12, 494, DateTimeKind.Local).AddTicks(2069),
+                            EditedAt = new DateTime(2024, 3, 27, 1, 51, 12, 494, DateTimeKind.Local).AddTicks(2070),
                             IsDeleted = false,
                             Number = "4排7號",
                             SeatAreaId = 1,
@@ -1757,8 +1757,8 @@ namespace Infrastructure.Data.Migrations
                         new
                         {
                             Id = 58,
-                            CreatedAt = new DateTime(2024, 3, 27, 1, 6, 24, 380, DateTimeKind.Local).AddTicks(8375),
-                            EditedAt = new DateTime(2024, 3, 27, 1, 6, 24, 380, DateTimeKind.Local).AddTicks(8376),
+                            CreatedAt = new DateTime(2024, 3, 27, 1, 51, 12, 494, DateTimeKind.Local).AddTicks(2072),
+                            EditedAt = new DateTime(2024, 3, 27, 1, 51, 12, 494, DateTimeKind.Local).AddTicks(2072),
                             IsDeleted = false,
                             Number = "4排8號",
                             SeatAreaId = 1,
@@ -1767,8 +1767,8 @@ namespace Infrastructure.Data.Migrations
                         new
                         {
                             Id = 59,
-                            CreatedAt = new DateTime(2024, 3, 27, 1, 6, 24, 380, DateTimeKind.Local).AddTicks(8378),
-                            EditedAt = new DateTime(2024, 3, 27, 1, 6, 24, 380, DateTimeKind.Local).AddTicks(8379),
+                            CreatedAt = new DateTime(2024, 3, 27, 1, 51, 12, 494, DateTimeKind.Local).AddTicks(2074),
+                            EditedAt = new DateTime(2024, 3, 27, 1, 51, 12, 494, DateTimeKind.Local).AddTicks(2075),
                             IsDeleted = false,
                             Number = "4排9號",
                             SeatAreaId = 1,
@@ -1777,8 +1777,8 @@ namespace Infrastructure.Data.Migrations
                         new
                         {
                             Id = 60,
-                            CreatedAt = new DateTime(2024, 3, 27, 1, 6, 24, 380, DateTimeKind.Local).AddTicks(8381),
-                            EditedAt = new DateTime(2024, 3, 27, 1, 6, 24, 380, DateTimeKind.Local).AddTicks(8381),
+                            CreatedAt = new DateTime(2024, 3, 27, 1, 51, 12, 494, DateTimeKind.Local).AddTicks(2077),
+                            EditedAt = new DateTime(2024, 3, 27, 1, 51, 12, 494, DateTimeKind.Local).AddTicks(2078),
                             IsDeleted = false,
                             Number = "4排10號",
                             SeatAreaId = 1,
@@ -1787,8 +1787,8 @@ namespace Infrastructure.Data.Migrations
                         new
                         {
                             Id = 61,
-                            CreatedAt = new DateTime(2024, 3, 27, 1, 6, 24, 380, DateTimeKind.Local).AddTicks(8383),
-                            EditedAt = new DateTime(2024, 3, 27, 1, 6, 24, 380, DateTimeKind.Local).AddTicks(8384),
+                            CreatedAt = new DateTime(2024, 3, 27, 1, 51, 12, 494, DateTimeKind.Local).AddTicks(2081),
+                            EditedAt = new DateTime(2024, 3, 27, 1, 51, 12, 494, DateTimeKind.Local).AddTicks(2082),
                             IsDeleted = false,
                             Number = "4排11號",
                             SeatAreaId = 1,
@@ -1797,8 +1797,8 @@ namespace Infrastructure.Data.Migrations
                         new
                         {
                             Id = 62,
-                            CreatedAt = new DateTime(2024, 3, 27, 1, 6, 24, 380, DateTimeKind.Local).AddTicks(8386),
-                            EditedAt = new DateTime(2024, 3, 27, 1, 6, 24, 380, DateTimeKind.Local).AddTicks(8387),
+                            CreatedAt = new DateTime(2024, 3, 27, 1, 51, 12, 494, DateTimeKind.Local).AddTicks(2114),
+                            EditedAt = new DateTime(2024, 3, 27, 1, 51, 12, 494, DateTimeKind.Local).AddTicks(2115),
                             IsDeleted = false,
                             Number = "4排12號",
                             SeatAreaId = 1,
@@ -1807,8 +1807,8 @@ namespace Infrastructure.Data.Migrations
                         new
                         {
                             Id = 63,
-                            CreatedAt = new DateTime(2024, 3, 27, 1, 6, 24, 380, DateTimeKind.Local).AddTicks(8389),
-                            EditedAt = new DateTime(2024, 3, 27, 1, 6, 24, 380, DateTimeKind.Local).AddTicks(8389),
+                            CreatedAt = new DateTime(2024, 3, 27, 1, 51, 12, 494, DateTimeKind.Local).AddTicks(2117),
+                            EditedAt = new DateTime(2024, 3, 27, 1, 51, 12, 494, DateTimeKind.Local).AddTicks(2118),
                             IsDeleted = false,
                             Number = "4排13號",
                             SeatAreaId = 1,
@@ -1817,8 +1817,8 @@ namespace Infrastructure.Data.Migrations
                         new
                         {
                             Id = 64,
-                            CreatedAt = new DateTime(2024, 3, 27, 1, 6, 24, 380, DateTimeKind.Local).AddTicks(8391),
-                            EditedAt = new DateTime(2024, 3, 27, 1, 6, 24, 380, DateTimeKind.Local).AddTicks(8392),
+                            CreatedAt = new DateTime(2024, 3, 27, 1, 51, 12, 494, DateTimeKind.Local).AddTicks(2120),
+                            EditedAt = new DateTime(2024, 3, 27, 1, 51, 12, 494, DateTimeKind.Local).AddTicks(2121),
                             IsDeleted = false,
                             Number = "1排1號",
                             SeatAreaId = 2,
@@ -1827,8 +1827,8 @@ namespace Infrastructure.Data.Migrations
                         new
                         {
                             Id = 65,
-                            CreatedAt = new DateTime(2024, 3, 27, 1, 6, 24, 380, DateTimeKind.Local).AddTicks(8394),
-                            EditedAt = new DateTime(2024, 3, 27, 1, 6, 24, 380, DateTimeKind.Local).AddTicks(8394),
+                            CreatedAt = new DateTime(2024, 3, 27, 1, 51, 12, 494, DateTimeKind.Local).AddTicks(2122),
+                            EditedAt = new DateTime(2024, 3, 27, 1, 51, 12, 494, DateTimeKind.Local).AddTicks(2123),
                             IsDeleted = false,
                             Number = "1排2號",
                             SeatAreaId = 2,
@@ -1837,8 +1837,8 @@ namespace Infrastructure.Data.Migrations
                         new
                         {
                             Id = 66,
-                            CreatedAt = new DateTime(2024, 3, 27, 1, 6, 24, 380, DateTimeKind.Local).AddTicks(8396),
-                            EditedAt = new DateTime(2024, 3, 27, 1, 6, 24, 380, DateTimeKind.Local).AddTicks(8397),
+                            CreatedAt = new DateTime(2024, 3, 27, 1, 51, 12, 494, DateTimeKind.Local).AddTicks(2125),
+                            EditedAt = new DateTime(2024, 3, 27, 1, 51, 12, 494, DateTimeKind.Local).AddTicks(2126),
                             IsDeleted = false,
                             Number = "1排3號",
                             SeatAreaId = 2,
@@ -1847,8 +1847,8 @@ namespace Infrastructure.Data.Migrations
                         new
                         {
                             Id = 67,
-                            CreatedAt = new DateTime(2024, 3, 27, 1, 6, 24, 380, DateTimeKind.Local).AddTicks(8399),
-                            EditedAt = new DateTime(2024, 3, 27, 1, 6, 24, 380, DateTimeKind.Local).AddTicks(8400),
+                            CreatedAt = new DateTime(2024, 3, 27, 1, 51, 12, 494, DateTimeKind.Local).AddTicks(2128),
+                            EditedAt = new DateTime(2024, 3, 27, 1, 51, 12, 494, DateTimeKind.Local).AddTicks(2129),
                             IsDeleted = false,
                             Number = "1排5號",
                             SeatAreaId = 2,
@@ -1857,8 +1857,8 @@ namespace Infrastructure.Data.Migrations
                         new
                         {
                             Id = 68,
-                            CreatedAt = new DateTime(2024, 3, 27, 1, 6, 24, 380, DateTimeKind.Local).AddTicks(8403),
-                            EditedAt = new DateTime(2024, 3, 27, 1, 6, 24, 380, DateTimeKind.Local).AddTicks(8404),
+                            CreatedAt = new DateTime(2024, 3, 27, 1, 51, 12, 494, DateTimeKind.Local).AddTicks(2131),
+                            EditedAt = new DateTime(2024, 3, 27, 1, 51, 12, 494, DateTimeKind.Local).AddTicks(2132),
                             IsDeleted = false,
                             Number = "1排6號",
                             SeatAreaId = 2,
@@ -1867,8 +1867,8 @@ namespace Infrastructure.Data.Migrations
                         new
                         {
                             Id = 69,
-                            CreatedAt = new DateTime(2024, 3, 27, 1, 6, 24, 380, DateTimeKind.Local).AddTicks(8407),
-                            EditedAt = new DateTime(2024, 3, 27, 1, 6, 24, 380, DateTimeKind.Local).AddTicks(8408),
+                            CreatedAt = new DateTime(2024, 3, 27, 1, 51, 12, 494, DateTimeKind.Local).AddTicks(2134),
+                            EditedAt = new DateTime(2024, 3, 27, 1, 51, 12, 494, DateTimeKind.Local).AddTicks(2135),
                             IsDeleted = false,
                             Number = "1排7號",
                             SeatAreaId = 2,
@@ -1877,8 +1877,8 @@ namespace Infrastructure.Data.Migrations
                         new
                         {
                             Id = 70,
-                            CreatedAt = new DateTime(2024, 3, 27, 1, 6, 24, 380, DateTimeKind.Local).AddTicks(8410),
-                            EditedAt = new DateTime(2024, 3, 27, 1, 6, 24, 380, DateTimeKind.Local).AddTicks(8410),
+                            CreatedAt = new DateTime(2024, 3, 27, 1, 51, 12, 494, DateTimeKind.Local).AddTicks(2137),
+                            EditedAt = new DateTime(2024, 3, 27, 1, 51, 12, 494, DateTimeKind.Local).AddTicks(2138),
                             IsDeleted = false,
                             Number = "1排8號",
                             SeatAreaId = 2,
@@ -1887,8 +1887,8 @@ namespace Infrastructure.Data.Migrations
                         new
                         {
                             Id = 71,
-                            CreatedAt = new DateTime(2024, 3, 27, 1, 6, 24, 380, DateTimeKind.Local).AddTicks(8412),
-                            EditedAt = new DateTime(2024, 3, 27, 1, 6, 24, 380, DateTimeKind.Local).AddTicks(8413),
+                            CreatedAt = new DateTime(2024, 3, 27, 1, 51, 12, 494, DateTimeKind.Local).AddTicks(2140),
+                            EditedAt = new DateTime(2024, 3, 27, 1, 51, 12, 494, DateTimeKind.Local).AddTicks(2140),
                             IsDeleted = false,
                             Number = "1排9號",
                             SeatAreaId = 2,
@@ -1897,8 +1897,8 @@ namespace Infrastructure.Data.Migrations
                         new
                         {
                             Id = 72,
-                            CreatedAt = new DateTime(2024, 3, 27, 1, 6, 24, 380, DateTimeKind.Local).AddTicks(8415),
-                            EditedAt = new DateTime(2024, 3, 27, 1, 6, 24, 380, DateTimeKind.Local).AddTicks(8416),
+                            CreatedAt = new DateTime(2024, 3, 27, 1, 51, 12, 494, DateTimeKind.Local).AddTicks(2142),
+                            EditedAt = new DateTime(2024, 3, 27, 1, 51, 12, 494, DateTimeKind.Local).AddTicks(2143),
                             IsDeleted = false,
                             Number = "1排10號",
                             SeatAreaId = 2,
@@ -1907,8 +1907,8 @@ namespace Infrastructure.Data.Migrations
                         new
                         {
                             Id = 73,
-                            CreatedAt = new DateTime(2024, 3, 27, 1, 6, 24, 380, DateTimeKind.Local).AddTicks(8418),
-                            EditedAt = new DateTime(2024, 3, 27, 1, 6, 24, 380, DateTimeKind.Local).AddTicks(8418),
+                            CreatedAt = new DateTime(2024, 3, 27, 1, 51, 12, 494, DateTimeKind.Local).AddTicks(2145),
+                            EditedAt = new DateTime(2024, 3, 27, 1, 51, 12, 494, DateTimeKind.Local).AddTicks(2146),
                             IsDeleted = false,
                             Number = "1排11號",
                             SeatAreaId = 2,
@@ -1917,8 +1917,8 @@ namespace Infrastructure.Data.Migrations
                         new
                         {
                             Id = 74,
-                            CreatedAt = new DateTime(2024, 3, 27, 1, 6, 24, 380, DateTimeKind.Local).AddTicks(8420),
-                            EditedAt = new DateTime(2024, 3, 27, 1, 6, 24, 380, DateTimeKind.Local).AddTicks(8421),
+                            CreatedAt = new DateTime(2024, 3, 27, 1, 51, 12, 494, DateTimeKind.Local).AddTicks(2150),
+                            EditedAt = new DateTime(2024, 3, 27, 1, 51, 12, 494, DateTimeKind.Local).AddTicks(2151),
                             IsDeleted = false,
                             Number = "1排12號",
                             SeatAreaId = 2,
@@ -1927,8 +1927,8 @@ namespace Infrastructure.Data.Migrations
                         new
                         {
                             Id = 75,
-                            CreatedAt = new DateTime(2024, 3, 27, 1, 6, 24, 380, DateTimeKind.Local).AddTicks(8423),
-                            EditedAt = new DateTime(2024, 3, 27, 1, 6, 24, 380, DateTimeKind.Local).AddTicks(8424),
+                            CreatedAt = new DateTime(2024, 3, 27, 1, 51, 12, 494, DateTimeKind.Local).AddTicks(2154),
+                            EditedAt = new DateTime(2024, 3, 27, 1, 51, 12, 494, DateTimeKind.Local).AddTicks(2155),
                             IsDeleted = false,
                             Number = "1排13號",
                             SeatAreaId = 2,
@@ -1937,8 +1937,8 @@ namespace Infrastructure.Data.Migrations
                         new
                         {
                             Id = 76,
-                            CreatedAt = new DateTime(2024, 3, 27, 1, 6, 24, 380, DateTimeKind.Local).AddTicks(8426),
-                            EditedAt = new DateTime(2024, 3, 27, 1, 6, 24, 380, DateTimeKind.Local).AddTicks(8426),
+                            CreatedAt = new DateTime(2024, 3, 27, 1, 51, 12, 494, DateTimeKind.Local).AddTicks(2160),
+                            EditedAt = new DateTime(2024, 3, 27, 1, 51, 12, 494, DateTimeKind.Local).AddTicks(2161),
                             IsDeleted = false,
                             Number = "1排14號",
                             SeatAreaId = 2,
@@ -1947,8 +1947,8 @@ namespace Infrastructure.Data.Migrations
                         new
                         {
                             Id = 77,
-                            CreatedAt = new DateTime(2024, 3, 27, 1, 6, 24, 380, DateTimeKind.Local).AddTicks(8429),
-                            EditedAt = new DateTime(2024, 3, 27, 1, 6, 24, 380, DateTimeKind.Local).AddTicks(8429),
+                            CreatedAt = new DateTime(2024, 3, 27, 1, 51, 12, 494, DateTimeKind.Local).AddTicks(2163),
+                            EditedAt = new DateTime(2024, 3, 27, 1, 51, 12, 494, DateTimeKind.Local).AddTicks(2164),
                             IsDeleted = false,
                             Number = "1排15號",
                             SeatAreaId = 2,
@@ -1957,8 +1957,8 @@ namespace Infrastructure.Data.Migrations
                         new
                         {
                             Id = 78,
-                            CreatedAt = new DateTime(2024, 3, 27, 1, 6, 24, 380, DateTimeKind.Local).AddTicks(8431),
-                            EditedAt = new DateTime(2024, 3, 27, 1, 6, 24, 380, DateTimeKind.Local).AddTicks(8432),
+                            CreatedAt = new DateTime(2024, 3, 27, 1, 51, 12, 494, DateTimeKind.Local).AddTicks(2168),
+                            EditedAt = new DateTime(2024, 3, 27, 1, 51, 12, 494, DateTimeKind.Local).AddTicks(2168),
                             IsDeleted = false,
                             Number = "1排16號",
                             SeatAreaId = 2,
@@ -1967,8 +1967,8 @@ namespace Infrastructure.Data.Migrations
                         new
                         {
                             Id = 79,
-                            CreatedAt = new DateTime(2024, 3, 27, 1, 6, 24, 380, DateTimeKind.Local).AddTicks(8434),
-                            EditedAt = new DateTime(2024, 3, 27, 1, 6, 24, 380, DateTimeKind.Local).AddTicks(8435),
+                            CreatedAt = new DateTime(2024, 3, 27, 1, 51, 12, 494, DateTimeKind.Local).AddTicks(2172),
+                            EditedAt = new DateTime(2024, 3, 27, 1, 51, 12, 494, DateTimeKind.Local).AddTicks(2173),
                             IsDeleted = false,
                             Number = "1排17號",
                             SeatAreaId = 2,
@@ -1977,8 +1977,8 @@ namespace Infrastructure.Data.Migrations
                         new
                         {
                             Id = 80,
-                            CreatedAt = new DateTime(2024, 3, 27, 1, 6, 24, 380, DateTimeKind.Local).AddTicks(8437),
-                            EditedAt = new DateTime(2024, 3, 27, 1, 6, 24, 380, DateTimeKind.Local).AddTicks(8437),
+                            CreatedAt = new DateTime(2024, 3, 27, 1, 51, 12, 494, DateTimeKind.Local).AddTicks(2175),
+                            EditedAt = new DateTime(2024, 3, 27, 1, 51, 12, 494, DateTimeKind.Local).AddTicks(2175),
                             IsDeleted = false,
                             Number = "2排1號",
                             SeatAreaId = 2,
@@ -1987,8 +1987,8 @@ namespace Infrastructure.Data.Migrations
                         new
                         {
                             Id = 81,
-                            CreatedAt = new DateTime(2024, 3, 27, 1, 6, 24, 380, DateTimeKind.Local).AddTicks(8441),
-                            EditedAt = new DateTime(2024, 3, 27, 1, 6, 24, 380, DateTimeKind.Local).AddTicks(8442),
+                            CreatedAt = new DateTime(2024, 3, 27, 1, 51, 12, 494, DateTimeKind.Local).AddTicks(2177),
+                            EditedAt = new DateTime(2024, 3, 27, 1, 51, 12, 494, DateTimeKind.Local).AddTicks(2179),
                             IsDeleted = false,
                             Number = "2排2號",
                             SeatAreaId = 2,
@@ -1997,8 +1997,8 @@ namespace Infrastructure.Data.Migrations
                         new
                         {
                             Id = 82,
-                            CreatedAt = new DateTime(2024, 3, 27, 1, 6, 24, 380, DateTimeKind.Local).AddTicks(8445),
-                            EditedAt = new DateTime(2024, 3, 27, 1, 6, 24, 380, DateTimeKind.Local).AddTicks(8446),
+                            CreatedAt = new DateTime(2024, 3, 27, 1, 51, 12, 494, DateTimeKind.Local).AddTicks(2181),
+                            EditedAt = new DateTime(2024, 3, 27, 1, 51, 12, 494, DateTimeKind.Local).AddTicks(2182),
                             IsDeleted = false,
                             Number = "2排3號",
                             SeatAreaId = 2,
@@ -2007,8 +2007,8 @@ namespace Infrastructure.Data.Migrations
                         new
                         {
                             Id = 83,
-                            CreatedAt = new DateTime(2024, 3, 27, 1, 6, 24, 380, DateTimeKind.Local).AddTicks(8450),
-                            EditedAt = new DateTime(2024, 3, 27, 1, 6, 24, 380, DateTimeKind.Local).AddTicks(8450),
+                            CreatedAt = new DateTime(2024, 3, 27, 1, 51, 12, 494, DateTimeKind.Local).AddTicks(2186),
+                            EditedAt = new DateTime(2024, 3, 27, 1, 51, 12, 494, DateTimeKind.Local).AddTicks(2189),
                             IsDeleted = false,
                             Number = "2排4號",
                             SeatAreaId = 2,
@@ -2017,8 +2017,8 @@ namespace Infrastructure.Data.Migrations
                         new
                         {
                             Id = 84,
-                            CreatedAt = new DateTime(2024, 3, 27, 1, 6, 24, 380, DateTimeKind.Local).AddTicks(8453),
-                            EditedAt = new DateTime(2024, 3, 27, 1, 6, 24, 380, DateTimeKind.Local).AddTicks(8453),
+                            CreatedAt = new DateTime(2024, 3, 27, 1, 51, 12, 494, DateTimeKind.Local).AddTicks(2193),
+                            EditedAt = new DateTime(2024, 3, 27, 1, 51, 12, 494, DateTimeKind.Local).AddTicks(2194),
                             IsDeleted = false,
                             Number = "2排5號",
                             SeatAreaId = 2,
@@ -2027,8 +2027,8 @@ namespace Infrastructure.Data.Migrations
                         new
                         {
                             Id = 85,
-                            CreatedAt = new DateTime(2024, 3, 27, 1, 6, 24, 380, DateTimeKind.Local).AddTicks(8455),
-                            EditedAt = new DateTime(2024, 3, 27, 1, 6, 24, 380, DateTimeKind.Local).AddTicks(8456),
+                            CreatedAt = new DateTime(2024, 3, 27, 1, 51, 12, 494, DateTimeKind.Local).AddTicks(2197),
+                            EditedAt = new DateTime(2024, 3, 27, 1, 51, 12, 494, DateTimeKind.Local).AddTicks(2198),
                             IsDeleted = false,
                             Number = "2排6號",
                             SeatAreaId = 2,
@@ -2037,8 +2037,8 @@ namespace Infrastructure.Data.Migrations
                         new
                         {
                             Id = 86,
-                            CreatedAt = new DateTime(2024, 3, 27, 1, 6, 24, 380, DateTimeKind.Local).AddTicks(8459),
-                            EditedAt = new DateTime(2024, 3, 27, 1, 6, 24, 380, DateTimeKind.Local).AddTicks(8459),
+                            CreatedAt = new DateTime(2024, 3, 27, 1, 51, 12, 494, DateTimeKind.Local).AddTicks(2201),
+                            EditedAt = new DateTime(2024, 3, 27, 1, 51, 12, 494, DateTimeKind.Local).AddTicks(2201),
                             IsDeleted = false,
                             Number = "2排7號",
                             SeatAreaId = 2,
@@ -2047,8 +2047,8 @@ namespace Infrastructure.Data.Migrations
                         new
                         {
                             Id = 87,
-                            CreatedAt = new DateTime(2024, 3, 27, 1, 6, 24, 380, DateTimeKind.Local).AddTicks(8462),
-                            EditedAt = new DateTime(2024, 3, 27, 1, 6, 24, 380, DateTimeKind.Local).AddTicks(8463),
+                            CreatedAt = new DateTime(2024, 3, 27, 1, 51, 12, 494, DateTimeKind.Local).AddTicks(2203),
+                            EditedAt = new DateTime(2024, 3, 27, 1, 51, 12, 494, DateTimeKind.Local).AddTicks(2204),
                             IsDeleted = false,
                             Number = "2排8號",
                             SeatAreaId = 2,
@@ -2057,8 +2057,8 @@ namespace Infrastructure.Data.Migrations
                         new
                         {
                             Id = 88,
-                            CreatedAt = new DateTime(2024, 3, 27, 1, 6, 24, 380, DateTimeKind.Local).AddTicks(8465),
-                            EditedAt = new DateTime(2024, 3, 27, 1, 6, 24, 380, DateTimeKind.Local).AddTicks(8466),
+                            CreatedAt = new DateTime(2024, 3, 27, 1, 51, 12, 494, DateTimeKind.Local).AddTicks(2208),
+                            EditedAt = new DateTime(2024, 3, 27, 1, 51, 12, 494, DateTimeKind.Local).AddTicks(2210),
                             IsDeleted = false,
                             Number = "2排9號",
                             SeatAreaId = 2,
@@ -2067,8 +2067,8 @@ namespace Infrastructure.Data.Migrations
                         new
                         {
                             Id = 89,
-                            CreatedAt = new DateTime(2024, 3, 27, 1, 6, 24, 380, DateTimeKind.Local).AddTicks(8470),
-                            EditedAt = new DateTime(2024, 3, 27, 1, 6, 24, 380, DateTimeKind.Local).AddTicks(8471),
+                            CreatedAt = new DateTime(2024, 3, 27, 1, 51, 12, 494, DateTimeKind.Local).AddTicks(2213),
+                            EditedAt = new DateTime(2024, 3, 27, 1, 51, 12, 494, DateTimeKind.Local).AddTicks(2213),
                             IsDeleted = false,
                             Number = "2排10號",
                             SeatAreaId = 2,
@@ -2077,8 +2077,8 @@ namespace Infrastructure.Data.Migrations
                         new
                         {
                             Id = 90,
-                            CreatedAt = new DateTime(2024, 3, 27, 1, 6, 24, 380, DateTimeKind.Local).AddTicks(8476),
-                            EditedAt = new DateTime(2024, 3, 27, 1, 6, 24, 380, DateTimeKind.Local).AddTicks(8477),
+                            CreatedAt = new DateTime(2024, 3, 27, 1, 51, 12, 494, DateTimeKind.Local).AddTicks(2216),
+                            EditedAt = new DateTime(2024, 3, 27, 1, 51, 12, 494, DateTimeKind.Local).AddTicks(2217),
                             IsDeleted = false,
                             Number = "2排11號",
                             SeatAreaId = 2,
@@ -2087,8 +2087,8 @@ namespace Infrastructure.Data.Migrations
                         new
                         {
                             Id = 91,
-                            CreatedAt = new DateTime(2024, 3, 27, 1, 6, 24, 380, DateTimeKind.Local).AddTicks(8482),
-                            EditedAt = new DateTime(2024, 3, 27, 1, 6, 24, 380, DateTimeKind.Local).AddTicks(8483),
+                            CreatedAt = new DateTime(2024, 3, 27, 1, 51, 12, 494, DateTimeKind.Local).AddTicks(2221),
+                            EditedAt = new DateTime(2024, 3, 27, 1, 51, 12, 494, DateTimeKind.Local).AddTicks(2222),
                             IsDeleted = false,
                             Number = "2排12號",
                             SeatAreaId = 2,
@@ -2097,8 +2097,8 @@ namespace Infrastructure.Data.Migrations
                         new
                         {
                             Id = 92,
-                            CreatedAt = new DateTime(2024, 3, 27, 1, 6, 24, 380, DateTimeKind.Local).AddTicks(8486),
-                            EditedAt = new DateTime(2024, 3, 27, 1, 6, 24, 380, DateTimeKind.Local).AddTicks(8487),
+                            CreatedAt = new DateTime(2024, 3, 27, 1, 51, 12, 494, DateTimeKind.Local).AddTicks(2227),
+                            EditedAt = new DateTime(2024, 3, 27, 1, 51, 12, 494, DateTimeKind.Local).AddTicks(2228),
                             IsDeleted = false,
                             Number = "2排13號",
                             SeatAreaId = 2,
@@ -2107,8 +2107,8 @@ namespace Infrastructure.Data.Migrations
                         new
                         {
                             Id = 93,
-                            CreatedAt = new DateTime(2024, 3, 27, 1, 6, 24, 380, DateTimeKind.Local).AddTicks(8490),
-                            EditedAt = new DateTime(2024, 3, 27, 1, 6, 24, 380, DateTimeKind.Local).AddTicks(8491),
+                            CreatedAt = new DateTime(2024, 3, 27, 1, 51, 12, 494, DateTimeKind.Local).AddTicks(2230),
+                            EditedAt = new DateTime(2024, 3, 27, 1, 51, 12, 494, DateTimeKind.Local).AddTicks(2230),
                             IsDeleted = false,
                             Number = "2排14號",
                             SeatAreaId = 2,
@@ -2117,8 +2117,8 @@ namespace Infrastructure.Data.Migrations
                         new
                         {
                             Id = 94,
-                            CreatedAt = new DateTime(2024, 3, 27, 1, 6, 24, 380, DateTimeKind.Local).AddTicks(8493),
-                            EditedAt = new DateTime(2024, 3, 27, 1, 6, 24, 380, DateTimeKind.Local).AddTicks(8494),
+                            CreatedAt = new DateTime(2024, 3, 27, 1, 51, 12, 494, DateTimeKind.Local).AddTicks(2234),
+                            EditedAt = new DateTime(2024, 3, 27, 1, 51, 12, 494, DateTimeKind.Local).AddTicks(2234),
                             IsDeleted = false,
                             Number = "2排15號",
                             SeatAreaId = 2,
@@ -2127,8 +2127,8 @@ namespace Infrastructure.Data.Migrations
                         new
                         {
                             Id = 95,
-                            CreatedAt = new DateTime(2024, 3, 27, 1, 6, 24, 380, DateTimeKind.Local).AddTicks(8496),
-                            EditedAt = new DateTime(2024, 3, 27, 1, 6, 24, 380, DateTimeKind.Local).AddTicks(8496),
+                            CreatedAt = new DateTime(2024, 3, 27, 1, 51, 12, 494, DateTimeKind.Local).AddTicks(2238),
+                            EditedAt = new DateTime(2024, 3, 27, 1, 51, 12, 494, DateTimeKind.Local).AddTicks(2238),
                             IsDeleted = false,
                             Number = "2排16號",
                             SeatAreaId = 2,
@@ -2137,8 +2137,8 @@ namespace Infrastructure.Data.Migrations
                         new
                         {
                             Id = 96,
-                            CreatedAt = new DateTime(2024, 3, 27, 1, 6, 24, 380, DateTimeKind.Local).AddTicks(8502),
-                            EditedAt = new DateTime(2024, 3, 27, 1, 6, 24, 380, DateTimeKind.Local).AddTicks(8503),
+                            CreatedAt = new DateTime(2024, 3, 27, 1, 51, 12, 494, DateTimeKind.Local).AddTicks(2240),
+                            EditedAt = new DateTime(2024, 3, 27, 1, 51, 12, 494, DateTimeKind.Local).AddTicks(2241),
                             IsDeleted = false,
                             Number = "2排17號",
                             SeatAreaId = 2,
@@ -2147,8 +2147,8 @@ namespace Infrastructure.Data.Migrations
                         new
                         {
                             Id = 97,
-                            CreatedAt = new DateTime(2024, 3, 27, 1, 6, 24, 380, DateTimeKind.Local).AddTicks(8505),
-                            EditedAt = new DateTime(2024, 3, 27, 1, 6, 24, 380, DateTimeKind.Local).AddTicks(8506),
+                            CreatedAt = new DateTime(2024, 3, 27, 1, 51, 12, 494, DateTimeKind.Local).AddTicks(2243),
+                            EditedAt = new DateTime(2024, 3, 27, 1, 51, 12, 494, DateTimeKind.Local).AddTicks(2243),
                             IsDeleted = false,
                             Number = "3排1號",
                             SeatAreaId = 2,
@@ -2157,8 +2157,8 @@ namespace Infrastructure.Data.Migrations
                         new
                         {
                             Id = 98,
-                            CreatedAt = new DateTime(2024, 3, 27, 1, 6, 24, 380, DateTimeKind.Local).AddTicks(8509),
-                            EditedAt = new DateTime(2024, 3, 27, 1, 6, 24, 380, DateTimeKind.Local).AddTicks(8510),
+                            CreatedAt = new DateTime(2024, 3, 27, 1, 51, 12, 494, DateTimeKind.Local).AddTicks(2247),
+                            EditedAt = new DateTime(2024, 3, 27, 1, 51, 12, 494, DateTimeKind.Local).AddTicks(2248),
                             IsDeleted = false,
                             Number = "3排2號",
                             SeatAreaId = 2,
@@ -2167,8 +2167,8 @@ namespace Infrastructure.Data.Migrations
                         new
                         {
                             Id = 99,
-                            CreatedAt = new DateTime(2024, 3, 27, 1, 6, 24, 380, DateTimeKind.Local).AddTicks(8515),
-                            EditedAt = new DateTime(2024, 3, 27, 1, 6, 24, 380, DateTimeKind.Local).AddTicks(8516),
+                            CreatedAt = new DateTime(2024, 3, 27, 1, 51, 12, 494, DateTimeKind.Local).AddTicks(2252),
+                            EditedAt = new DateTime(2024, 3, 27, 1, 51, 12, 494, DateTimeKind.Local).AddTicks(2253),
                             IsDeleted = false,
                             Number = "3排3號",
                             SeatAreaId = 2,
@@ -2177,8 +2177,8 @@ namespace Infrastructure.Data.Migrations
                         new
                         {
                             Id = 100,
-                            CreatedAt = new DateTime(2024, 3, 27, 1, 6, 24, 380, DateTimeKind.Local).AddTicks(8518),
-                            EditedAt = new DateTime(2024, 3, 27, 1, 6, 24, 380, DateTimeKind.Local).AddTicks(8519),
+                            CreatedAt = new DateTime(2024, 3, 27, 1, 51, 12, 494, DateTimeKind.Local).AddTicks(2256),
+                            EditedAt = new DateTime(2024, 3, 27, 1, 51, 12, 494, DateTimeKind.Local).AddTicks(2257),
                             IsDeleted = false,
                             Number = "3排4號",
                             SeatAreaId = 2,
@@ -2187,8 +2187,8 @@ namespace Infrastructure.Data.Migrations
                         new
                         {
                             Id = 101,
-                            CreatedAt = new DateTime(2024, 3, 27, 1, 6, 24, 380, DateTimeKind.Local).AddTicks(8523),
-                            EditedAt = new DateTime(2024, 3, 27, 1, 6, 24, 380, DateTimeKind.Local).AddTicks(8524),
+                            CreatedAt = new DateTime(2024, 3, 27, 1, 51, 12, 494, DateTimeKind.Local).AddTicks(2261),
+                            EditedAt = new DateTime(2024, 3, 27, 1, 51, 12, 494, DateTimeKind.Local).AddTicks(2261),
                             IsDeleted = false,
                             Number = "3排5號",
                             SeatAreaId = 2,
@@ -2197,8 +2197,8 @@ namespace Infrastructure.Data.Migrations
                         new
                         {
                             Id = 102,
-                            CreatedAt = new DateTime(2024, 3, 27, 1, 6, 24, 380, DateTimeKind.Local).AddTicks(8527),
-                            EditedAt = new DateTime(2024, 3, 27, 1, 6, 24, 380, DateTimeKind.Local).AddTicks(8528),
+                            CreatedAt = new DateTime(2024, 3, 27, 1, 51, 12, 494, DateTimeKind.Local).AddTicks(2267),
+                            EditedAt = new DateTime(2024, 3, 27, 1, 51, 12, 494, DateTimeKind.Local).AddTicks(2267),
                             IsDeleted = false,
                             Number = "3排6號",
                             SeatAreaId = 2,
@@ -2207,8 +2207,8 @@ namespace Infrastructure.Data.Migrations
                         new
                         {
                             Id = 103,
-                            CreatedAt = new DateTime(2024, 3, 27, 1, 6, 24, 380, DateTimeKind.Local).AddTicks(8530),
-                            EditedAt = new DateTime(2024, 3, 27, 1, 6, 24, 380, DateTimeKind.Local).AddTicks(8531),
+                            CreatedAt = new DateTime(2024, 3, 27, 1, 51, 12, 494, DateTimeKind.Local).AddTicks(2271),
+                            EditedAt = new DateTime(2024, 3, 27, 1, 51, 12, 494, DateTimeKind.Local).AddTicks(2272),
                             IsDeleted = false,
                             Number = "3排7號",
                             SeatAreaId = 2,
@@ -2217,8 +2217,8 @@ namespace Infrastructure.Data.Migrations
                         new
                         {
                             Id = 104,
-                            CreatedAt = new DateTime(2024, 3, 27, 1, 6, 24, 380, DateTimeKind.Local).AddTicks(8533),
-                            EditedAt = new DateTime(2024, 3, 27, 1, 6, 24, 380, DateTimeKind.Local).AddTicks(8533),
+                            CreatedAt = new DateTime(2024, 3, 27, 1, 51, 12, 494, DateTimeKind.Local).AddTicks(2276),
+                            EditedAt = new DateTime(2024, 3, 27, 1, 51, 12, 494, DateTimeKind.Local).AddTicks(2277),
                             IsDeleted = false,
                             Number = "3排8號",
                             SeatAreaId = 2,
@@ -2227,8 +2227,8 @@ namespace Infrastructure.Data.Migrations
                         new
                         {
                             Id = 105,
-                            CreatedAt = new DateTime(2024, 3, 27, 1, 6, 24, 380, DateTimeKind.Local).AddTicks(8535),
-                            EditedAt = new DateTime(2024, 3, 27, 1, 6, 24, 380, DateTimeKind.Local).AddTicks(8536),
+                            CreatedAt = new DateTime(2024, 3, 27, 1, 51, 12, 494, DateTimeKind.Local).AddTicks(2281),
+                            EditedAt = new DateTime(2024, 3, 27, 1, 51, 12, 494, DateTimeKind.Local).AddTicks(2282),
                             IsDeleted = false,
                             Number = "3排9號",
                             SeatAreaId = 2,
@@ -2237,8 +2237,8 @@ namespace Infrastructure.Data.Migrations
                         new
                         {
                             Id = 106,
-                            CreatedAt = new DateTime(2024, 3, 27, 1, 6, 24, 380, DateTimeKind.Local).AddTicks(8540),
-                            EditedAt = new DateTime(2024, 3, 27, 1, 6, 24, 380, DateTimeKind.Local).AddTicks(8541),
+                            CreatedAt = new DateTime(2024, 3, 27, 1, 51, 12, 494, DateTimeKind.Local).AddTicks(2286),
+                            EditedAt = new DateTime(2024, 3, 27, 1, 51, 12, 494, DateTimeKind.Local).AddTicks(2287),
                             IsDeleted = false,
                             Number = "3排10號",
                             SeatAreaId = 2,
@@ -2247,8 +2247,8 @@ namespace Infrastructure.Data.Migrations
                         new
                         {
                             Id = 107,
-                            CreatedAt = new DateTime(2024, 3, 27, 1, 6, 24, 380, DateTimeKind.Local).AddTicks(8546),
-                            EditedAt = new DateTime(2024, 3, 27, 1, 6, 24, 380, DateTimeKind.Local).AddTicks(8547),
+                            CreatedAt = new DateTime(2024, 3, 27, 1, 51, 12, 494, DateTimeKind.Local).AddTicks(2290),
+                            EditedAt = new DateTime(2024, 3, 27, 1, 51, 12, 494, DateTimeKind.Local).AddTicks(2291),
                             IsDeleted = false,
                             Number = "3排11號",
                             SeatAreaId = 2,
@@ -2257,8 +2257,8 @@ namespace Infrastructure.Data.Migrations
                         new
                         {
                             Id = 108,
-                            CreatedAt = new DateTime(2024, 3, 27, 1, 6, 24, 380, DateTimeKind.Local).AddTicks(8550),
-                            EditedAt = new DateTime(2024, 3, 27, 1, 6, 24, 380, DateTimeKind.Local).AddTicks(8551),
+                            CreatedAt = new DateTime(2024, 3, 27, 1, 51, 12, 494, DateTimeKind.Local).AddTicks(2296),
+                            EditedAt = new DateTime(2024, 3, 27, 1, 51, 12, 494, DateTimeKind.Local).AddTicks(2296),
                             IsDeleted = false,
                             Number = "3排12號",
                             SeatAreaId = 2,
@@ -2267,8 +2267,8 @@ namespace Infrastructure.Data.Migrations
                         new
                         {
                             Id = 109,
-                            CreatedAt = new DateTime(2024, 3, 27, 1, 6, 24, 380, DateTimeKind.Local).AddTicks(8556),
-                            EditedAt = new DateTime(2024, 3, 27, 1, 6, 24, 380, DateTimeKind.Local).AddTicks(8556),
+                            CreatedAt = new DateTime(2024, 3, 27, 1, 51, 12, 494, DateTimeKind.Local).AddTicks(2299),
+                            EditedAt = new DateTime(2024, 3, 27, 1, 51, 12, 494, DateTimeKind.Local).AddTicks(2299),
                             IsDeleted = false,
                             Number = "3排13號",
                             SeatAreaId = 2,
@@ -2277,8 +2277,8 @@ namespace Infrastructure.Data.Migrations
                         new
                         {
                             Id = 110,
-                            CreatedAt = new DateTime(2024, 3, 27, 1, 6, 24, 380, DateTimeKind.Local).AddTicks(8560),
-                            EditedAt = new DateTime(2024, 3, 27, 1, 6, 24, 380, DateTimeKind.Local).AddTicks(8561),
+                            CreatedAt = new DateTime(2024, 3, 27, 1, 51, 12, 494, DateTimeKind.Local).AddTicks(2305),
+                            EditedAt = new DateTime(2024, 3, 27, 1, 51, 12, 494, DateTimeKind.Local).AddTicks(2305),
                             IsDeleted = false,
                             Number = "3排14號",
                             SeatAreaId = 2,
@@ -2287,8 +2287,8 @@ namespace Infrastructure.Data.Migrations
                         new
                         {
                             Id = 111,
-                            CreatedAt = new DateTime(2024, 3, 27, 1, 6, 24, 380, DateTimeKind.Local).AddTicks(8599),
-                            EditedAt = new DateTime(2024, 3, 27, 1, 6, 24, 380, DateTimeKind.Local).AddTicks(8600),
+                            CreatedAt = new DateTime(2024, 3, 27, 1, 51, 12, 494, DateTimeKind.Local).AddTicks(2310),
+                            EditedAt = new DateTime(2024, 3, 27, 1, 51, 12, 494, DateTimeKind.Local).AddTicks(2310),
                             IsDeleted = false,
                             Number = "3排16號",
                             SeatAreaId = 2,
@@ -2297,8 +2297,8 @@ namespace Infrastructure.Data.Migrations
                         new
                         {
                             Id = 112,
-                            CreatedAt = new DateTime(2024, 3, 27, 1, 6, 24, 380, DateTimeKind.Local).AddTicks(8604),
-                            EditedAt = new DateTime(2024, 3, 27, 1, 6, 24, 380, DateTimeKind.Local).AddTicks(8605),
+                            CreatedAt = new DateTime(2024, 3, 27, 1, 51, 12, 494, DateTimeKind.Local).AddTicks(2314),
+                            EditedAt = new DateTime(2024, 3, 27, 1, 51, 12, 494, DateTimeKind.Local).AddTicks(2314),
                             IsDeleted = false,
                             Number = "3排17號",
                             SeatAreaId = 2,
@@ -2307,8 +2307,8 @@ namespace Infrastructure.Data.Migrations
                         new
                         {
                             Id = 113,
-                            CreatedAt = new DateTime(2024, 3, 27, 1, 6, 24, 380, DateTimeKind.Local).AddTicks(8609),
-                            EditedAt = new DateTime(2024, 3, 27, 1, 6, 24, 380, DateTimeKind.Local).AddTicks(8610),
+                            CreatedAt = new DateTime(2024, 3, 27, 1, 51, 12, 494, DateTimeKind.Local).AddTicks(2318),
+                            EditedAt = new DateTime(2024, 3, 27, 1, 51, 12, 494, DateTimeKind.Local).AddTicks(2319),
                             IsDeleted = false,
                             Number = "4排1號",
                             SeatAreaId = 2,
@@ -2317,8 +2317,8 @@ namespace Infrastructure.Data.Migrations
                         new
                         {
                             Id = 114,
-                            CreatedAt = new DateTime(2024, 3, 27, 1, 6, 24, 380, DateTimeKind.Local).AddTicks(8612),
-                            EditedAt = new DateTime(2024, 3, 27, 1, 6, 24, 380, DateTimeKind.Local).AddTicks(8613),
+                            CreatedAt = new DateTime(2024, 3, 27, 1, 51, 12, 494, DateTimeKind.Local).AddTicks(2321),
+                            EditedAt = new DateTime(2024, 3, 27, 1, 51, 12, 494, DateTimeKind.Local).AddTicks(2322),
                             IsDeleted = false,
                             Number = "4排2號",
                             SeatAreaId = 2,
@@ -2327,8 +2327,8 @@ namespace Infrastructure.Data.Migrations
                         new
                         {
                             Id = 115,
-                            CreatedAt = new DateTime(2024, 3, 27, 1, 6, 24, 380, DateTimeKind.Local).AddTicks(8619),
-                            EditedAt = new DateTime(2024, 3, 27, 1, 6, 24, 380, DateTimeKind.Local).AddTicks(8620),
+                            CreatedAt = new DateTime(2024, 3, 27, 1, 51, 12, 494, DateTimeKind.Local).AddTicks(2328),
+                            EditedAt = new DateTime(2024, 3, 27, 1, 51, 12, 494, DateTimeKind.Local).AddTicks(2328),
                             IsDeleted = false,
                             Number = "4排3號",
                             SeatAreaId = 2,
@@ -2337,8 +2337,8 @@ namespace Infrastructure.Data.Migrations
                         new
                         {
                             Id = 116,
-                            CreatedAt = new DateTime(2024, 3, 27, 1, 6, 24, 380, DateTimeKind.Local).AddTicks(8622),
-                            EditedAt = new DateTime(2024, 3, 27, 1, 6, 24, 380, DateTimeKind.Local).AddTicks(8622),
+                            CreatedAt = new DateTime(2024, 3, 27, 1, 51, 12, 494, DateTimeKind.Local).AddTicks(2333),
+                            EditedAt = new DateTime(2024, 3, 27, 1, 51, 12, 494, DateTimeKind.Local).AddTicks(2334),
                             IsDeleted = false,
                             Number = "4排4號",
                             SeatAreaId = 2,
@@ -2347,8 +2347,8 @@ namespace Infrastructure.Data.Migrations
                         new
                         {
                             Id = 117,
-                            CreatedAt = new DateTime(2024, 3, 27, 1, 6, 24, 380, DateTimeKind.Local).AddTicks(8627),
-                            EditedAt = new DateTime(2024, 3, 27, 1, 6, 24, 380, DateTimeKind.Local).AddTicks(8627),
+                            CreatedAt = new DateTime(2024, 3, 27, 1, 51, 12, 494, DateTimeKind.Local).AddTicks(2338),
+                            EditedAt = new DateTime(2024, 3, 27, 1, 51, 12, 494, DateTimeKind.Local).AddTicks(2340),
                             IsDeleted = false,
                             Number = "4排5號",
                             SeatAreaId = 2,
@@ -2357,8 +2357,8 @@ namespace Infrastructure.Data.Migrations
                         new
                         {
                             Id = 118,
-                            CreatedAt = new DateTime(2024, 3, 27, 1, 6, 24, 380, DateTimeKind.Local).AddTicks(8630),
-                            EditedAt = new DateTime(2024, 3, 27, 1, 6, 24, 380, DateTimeKind.Local).AddTicks(8630),
+                            CreatedAt = new DateTime(2024, 3, 27, 1, 51, 12, 494, DateTimeKind.Local).AddTicks(2342),
+                            EditedAt = new DateTime(2024, 3, 27, 1, 51, 12, 494, DateTimeKind.Local).AddTicks(2344),
                             IsDeleted = false,
                             Number = "4排6號",
                             SeatAreaId = 2,
@@ -2367,8 +2367,8 @@ namespace Infrastructure.Data.Migrations
                         new
                         {
                             Id = 119,
-                            CreatedAt = new DateTime(2024, 3, 27, 1, 6, 24, 380, DateTimeKind.Local).AddTicks(8632),
-                            EditedAt = new DateTime(2024, 3, 27, 1, 6, 24, 380, DateTimeKind.Local).AddTicks(8633),
+                            CreatedAt = new DateTime(2024, 3, 27, 1, 51, 12, 494, DateTimeKind.Local).AddTicks(2346),
+                            EditedAt = new DateTime(2024, 3, 27, 1, 51, 12, 494, DateTimeKind.Local).AddTicks(2349),
                             IsDeleted = false,
                             Number = "4排7號",
                             SeatAreaId = 2,
@@ -2377,8 +2377,8 @@ namespace Infrastructure.Data.Migrations
                         new
                         {
                             Id = 120,
-                            CreatedAt = new DateTime(2024, 3, 27, 1, 6, 24, 380, DateTimeKind.Local).AddTicks(8636),
-                            EditedAt = new DateTime(2024, 3, 27, 1, 6, 24, 380, DateTimeKind.Local).AddTicks(8637),
+                            CreatedAt = new DateTime(2024, 3, 27, 1, 51, 12, 494, DateTimeKind.Local).AddTicks(2353),
+                            EditedAt = new DateTime(2024, 3, 27, 1, 51, 12, 494, DateTimeKind.Local).AddTicks(2353),
                             IsDeleted = false,
                             Number = "4排8號",
                             SeatAreaId = 2,
@@ -2387,8 +2387,8 @@ namespace Infrastructure.Data.Migrations
                         new
                         {
                             Id = 121,
-                            CreatedAt = new DateTime(2024, 3, 27, 1, 6, 24, 380, DateTimeKind.Local).AddTicks(8639),
-                            EditedAt = new DateTime(2024, 3, 27, 1, 6, 24, 380, DateTimeKind.Local).AddTicks(8640),
+                            CreatedAt = new DateTime(2024, 3, 27, 1, 51, 12, 494, DateTimeKind.Local).AddTicks(2357),
+                            EditedAt = new DateTime(2024, 3, 27, 1, 51, 12, 494, DateTimeKind.Local).AddTicks(2358),
                             IsDeleted = false,
                             Number = "4排9號",
                             SeatAreaId = 2,
@@ -2397,8 +2397,8 @@ namespace Infrastructure.Data.Migrations
                         new
                         {
                             Id = 122,
-                            CreatedAt = new DateTime(2024, 3, 27, 1, 6, 24, 380, DateTimeKind.Local).AddTicks(8644),
-                            EditedAt = new DateTime(2024, 3, 27, 1, 6, 24, 380, DateTimeKind.Local).AddTicks(8645),
+                            CreatedAt = new DateTime(2024, 3, 27, 1, 51, 12, 494, DateTimeKind.Local).AddTicks(2361),
+                            EditedAt = new DateTime(2024, 3, 27, 1, 51, 12, 494, DateTimeKind.Local).AddTicks(2361),
                             IsDeleted = false,
                             Number = "4排10號",
                             SeatAreaId = 2,
@@ -2407,8 +2407,8 @@ namespace Infrastructure.Data.Migrations
                         new
                         {
                             Id = 123,
-                            CreatedAt = new DateTime(2024, 3, 27, 1, 6, 24, 380, DateTimeKind.Local).AddTicks(8648),
-                            EditedAt = new DateTime(2024, 3, 27, 1, 6, 24, 380, DateTimeKind.Local).AddTicks(8650),
+                            CreatedAt = new DateTime(2024, 3, 27, 1, 51, 12, 494, DateTimeKind.Local).AddTicks(2363),
+                            EditedAt = new DateTime(2024, 3, 27, 1, 51, 12, 494, DateTimeKind.Local).AddTicks(2364),
                             IsDeleted = false,
                             Number = "4排11號",
                             SeatAreaId = 2,
@@ -2417,8 +2417,8 @@ namespace Infrastructure.Data.Migrations
                         new
                         {
                             Id = 124,
-                            CreatedAt = new DateTime(2024, 3, 27, 1, 6, 24, 380, DateTimeKind.Local).AddTicks(8654),
-                            EditedAt = new DateTime(2024, 3, 27, 1, 6, 24, 380, DateTimeKind.Local).AddTicks(8654),
+                            CreatedAt = new DateTime(2024, 3, 27, 1, 51, 12, 494, DateTimeKind.Local).AddTicks(2367),
+                            EditedAt = new DateTime(2024, 3, 27, 1, 51, 12, 494, DateTimeKind.Local).AddTicks(2367),
                             IsDeleted = false,
                             Number = "4排12號",
                             SeatAreaId = 2,
@@ -2427,8 +2427,8 @@ namespace Infrastructure.Data.Migrations
                         new
                         {
                             Id = 125,
-                            CreatedAt = new DateTime(2024, 3, 27, 1, 6, 24, 380, DateTimeKind.Local).AddTicks(8656),
-                            EditedAt = new DateTime(2024, 3, 27, 1, 6, 24, 380, DateTimeKind.Local).AddTicks(8657),
+                            CreatedAt = new DateTime(2024, 3, 27, 1, 51, 12, 494, DateTimeKind.Local).AddTicks(2370),
+                            EditedAt = new DateTime(2024, 3, 27, 1, 51, 12, 494, DateTimeKind.Local).AddTicks(2371),
                             IsDeleted = false,
                             Number = "4排13號",
                             SeatAreaId = 2,
@@ -2437,8 +2437,8 @@ namespace Infrastructure.Data.Migrations
                         new
                         {
                             Id = 126,
-                            CreatedAt = new DateTime(2024, 3, 27, 1, 6, 24, 380, DateTimeKind.Local).AddTicks(8659),
-                            EditedAt = new DateTime(2024, 3, 27, 1, 6, 24, 380, DateTimeKind.Local).AddTicks(8659),
+                            CreatedAt = new DateTime(2024, 3, 27, 1, 51, 12, 494, DateTimeKind.Local).AddTicks(2376),
+                            EditedAt = new DateTime(2024, 3, 27, 1, 51, 12, 494, DateTimeKind.Local).AddTicks(2376),
                             IsDeleted = false,
                             Number = "1排1號",
                             SeatAreaId = 3,
@@ -2447,8 +2447,8 @@ namespace Infrastructure.Data.Migrations
                         new
                         {
                             Id = 127,
-                            CreatedAt = new DateTime(2024, 3, 27, 1, 6, 24, 380, DateTimeKind.Local).AddTicks(8662),
-                            EditedAt = new DateTime(2024, 3, 27, 1, 6, 24, 380, DateTimeKind.Local).AddTicks(8663),
+                            CreatedAt = new DateTime(2024, 3, 27, 1, 51, 12, 494, DateTimeKind.Local).AddTicks(2381),
+                            EditedAt = new DateTime(2024, 3, 27, 1, 51, 12, 494, DateTimeKind.Local).AddTicks(2381),
                             IsDeleted = false,
                             Number = "1排2號",
                             SeatAreaId = 3,
@@ -2457,8 +2457,8 @@ namespace Infrastructure.Data.Migrations
                         new
                         {
                             Id = 128,
-                            CreatedAt = new DateTime(2024, 3, 27, 1, 6, 24, 380, DateTimeKind.Local).AddTicks(8666),
-                            EditedAt = new DateTime(2024, 3, 27, 1, 6, 24, 380, DateTimeKind.Local).AddTicks(8666),
+                            CreatedAt = new DateTime(2024, 3, 27, 1, 51, 12, 494, DateTimeKind.Local).AddTicks(2387),
+                            EditedAt = new DateTime(2024, 3, 27, 1, 51, 12, 494, DateTimeKind.Local).AddTicks(2388),
                             IsDeleted = false,
                             Number = "1排3號",
                             SeatAreaId = 3,
@@ -2467,8 +2467,8 @@ namespace Infrastructure.Data.Migrations
                         new
                         {
                             Id = 129,
-                            CreatedAt = new DateTime(2024, 3, 27, 1, 6, 24, 380, DateTimeKind.Local).AddTicks(8669),
-                            EditedAt = new DateTime(2024, 3, 27, 1, 6, 24, 380, DateTimeKind.Local).AddTicks(8670),
+                            CreatedAt = new DateTime(2024, 3, 27, 1, 51, 12, 494, DateTimeKind.Local).AddTicks(2391),
+                            EditedAt = new DateTime(2024, 3, 27, 1, 51, 12, 494, DateTimeKind.Local).AddTicks(2392),
                             IsDeleted = false,
                             Number = "1排4號",
                             SeatAreaId = 3,
@@ -2477,8 +2477,8 @@ namespace Infrastructure.Data.Migrations
                         new
                         {
                             Id = 130,
-                            CreatedAt = new DateTime(2024, 3, 27, 1, 6, 24, 380, DateTimeKind.Local).AddTicks(8672),
-                            EditedAt = new DateTime(2024, 3, 27, 1, 6, 24, 380, DateTimeKind.Local).AddTicks(8674),
+                            CreatedAt = new DateTime(2024, 3, 27, 1, 51, 12, 494, DateTimeKind.Local).AddTicks(2394),
+                            EditedAt = new DateTime(2024, 3, 27, 1, 51, 12, 494, DateTimeKind.Local).AddTicks(2394),
                             IsDeleted = false,
                             Number = "1排5號",
                             SeatAreaId = 3,
@@ -2487,8 +2487,8 @@ namespace Infrastructure.Data.Migrations
                         new
                         {
                             Id = 131,
-                            CreatedAt = new DateTime(2024, 3, 27, 1, 6, 24, 380, DateTimeKind.Local).AddTicks(8676),
-                            EditedAt = new DateTime(2024, 3, 27, 1, 6, 24, 380, DateTimeKind.Local).AddTicks(8676),
+                            CreatedAt = new DateTime(2024, 3, 27, 1, 51, 12, 494, DateTimeKind.Local).AddTicks(2396),
+                            EditedAt = new DateTime(2024, 3, 27, 1, 51, 12, 494, DateTimeKind.Local).AddTicks(2397),
                             IsDeleted = false,
                             Number = "1排6號",
                             SeatAreaId = 3,
@@ -2497,8 +2497,8 @@ namespace Infrastructure.Data.Migrations
                         new
                         {
                             Id = 132,
-                            CreatedAt = new DateTime(2024, 3, 27, 1, 6, 24, 380, DateTimeKind.Local).AddTicks(8678),
-                            EditedAt = new DateTime(2024, 3, 27, 1, 6, 24, 380, DateTimeKind.Local).AddTicks(8679),
+                            CreatedAt = new DateTime(2024, 3, 27, 1, 51, 12, 494, DateTimeKind.Local).AddTicks(2399),
+                            EditedAt = new DateTime(2024, 3, 27, 1, 51, 12, 494, DateTimeKind.Local).AddTicks(2400),
                             IsDeleted = false,
                             Number = "1排7號",
                             SeatAreaId = 3,
@@ -2507,8 +2507,8 @@ namespace Infrastructure.Data.Migrations
                         new
                         {
                             Id = 133,
-                            CreatedAt = new DateTime(2024, 3, 27, 1, 6, 24, 380, DateTimeKind.Local).AddTicks(8683),
-                            EditedAt = new DateTime(2024, 3, 27, 1, 6, 24, 380, DateTimeKind.Local).AddTicks(8684),
+                            CreatedAt = new DateTime(2024, 3, 27, 1, 51, 12, 494, DateTimeKind.Local).AddTicks(2402),
+                            EditedAt = new DateTime(2024, 3, 27, 1, 51, 12, 494, DateTimeKind.Local).AddTicks(2402),
                             IsDeleted = false,
                             Number = "1排8號",
                             SeatAreaId = 3,
@@ -2517,8 +2517,8 @@ namespace Infrastructure.Data.Migrations
                         new
                         {
                             Id = 134,
-                            CreatedAt = new DateTime(2024, 3, 27, 1, 6, 24, 380, DateTimeKind.Local).AddTicks(8688),
-                            EditedAt = new DateTime(2024, 3, 27, 1, 6, 24, 380, DateTimeKind.Local).AddTicks(8689),
+                            CreatedAt = new DateTime(2024, 3, 27, 1, 51, 12, 494, DateTimeKind.Local).AddTicks(2435),
+                            EditedAt = new DateTime(2024, 3, 27, 1, 51, 12, 494, DateTimeKind.Local).AddTicks(2436),
                             IsDeleted = false,
                             Number = "1排9號",
                             SeatAreaId = 3,
@@ -2527,8 +2527,8 @@ namespace Infrastructure.Data.Migrations
                         new
                         {
                             Id = 135,
-                            CreatedAt = new DateTime(2024, 3, 27, 1, 6, 24, 380, DateTimeKind.Local).AddTicks(8693),
-                            EditedAt = new DateTime(2024, 3, 27, 1, 6, 24, 380, DateTimeKind.Local).AddTicks(8694),
+                            CreatedAt = new DateTime(2024, 3, 27, 1, 51, 12, 494, DateTimeKind.Local).AddTicks(2438),
+                            EditedAt = new DateTime(2024, 3, 27, 1, 51, 12, 494, DateTimeKind.Local).AddTicks(2438),
                             IsDeleted = false,
                             Number = "1排10號",
                             SeatAreaId = 3,
@@ -2537,8 +2537,8 @@ namespace Infrastructure.Data.Migrations
                         new
                         {
                             Id = 136,
-                            CreatedAt = new DateTime(2024, 3, 27, 1, 6, 24, 380, DateTimeKind.Local).AddTicks(8698),
-                            EditedAt = new DateTime(2024, 3, 27, 1, 6, 24, 380, DateTimeKind.Local).AddTicks(8699),
+                            CreatedAt = new DateTime(2024, 3, 27, 1, 51, 12, 494, DateTimeKind.Local).AddTicks(2440),
+                            EditedAt = new DateTime(2024, 3, 27, 1, 51, 12, 494, DateTimeKind.Local).AddTicks(2441),
                             IsDeleted = false,
                             Number = "1排11號",
                             SeatAreaId = 3,
@@ -2547,8 +2547,8 @@ namespace Infrastructure.Data.Migrations
                         new
                         {
                             Id = 137,
-                            CreatedAt = new DateTime(2024, 3, 27, 1, 6, 24, 380, DateTimeKind.Local).AddTicks(8701),
-                            EditedAt = new DateTime(2024, 3, 27, 1, 6, 24, 380, DateTimeKind.Local).AddTicks(8701),
+                            CreatedAt = new DateTime(2024, 3, 27, 1, 51, 12, 494, DateTimeKind.Local).AddTicks(2443),
+                            EditedAt = new DateTime(2024, 3, 27, 1, 51, 12, 494, DateTimeKind.Local).AddTicks(2444),
                             IsDeleted = false,
                             Number = "1排12號",
                             SeatAreaId = 3,
@@ -2557,8 +2557,8 @@ namespace Infrastructure.Data.Migrations
                         new
                         {
                             Id = 138,
-                            CreatedAt = new DateTime(2024, 3, 27, 1, 6, 24, 380, DateTimeKind.Local).AddTicks(8703),
-                            EditedAt = new DateTime(2024, 3, 27, 1, 6, 24, 380, DateTimeKind.Local).AddTicks(8704),
+                            CreatedAt = new DateTime(2024, 3, 27, 1, 51, 12, 494, DateTimeKind.Local).AddTicks(2446),
+                            EditedAt = new DateTime(2024, 3, 27, 1, 51, 12, 494, DateTimeKind.Local).AddTicks(2447),
                             IsDeleted = false,
                             Number = "1排13號",
                             SeatAreaId = 3,
@@ -2567,8 +2567,8 @@ namespace Infrastructure.Data.Migrations
                         new
                         {
                             Id = 139,
-                            CreatedAt = new DateTime(2024, 3, 27, 1, 6, 24, 380, DateTimeKind.Local).AddTicks(8706),
-                            EditedAt = new DateTime(2024, 3, 27, 1, 6, 24, 380, DateTimeKind.Local).AddTicks(8707),
+                            CreatedAt = new DateTime(2024, 3, 27, 1, 51, 12, 494, DateTimeKind.Local).AddTicks(2449),
+                            EditedAt = new DateTime(2024, 3, 27, 1, 51, 12, 494, DateTimeKind.Local).AddTicks(2450),
                             IsDeleted = false,
                             Number = "1排14號",
                             SeatAreaId = 3,
@@ -2577,8 +2577,8 @@ namespace Infrastructure.Data.Migrations
                         new
                         {
                             Id = 140,
-                            CreatedAt = new DateTime(2024, 3, 27, 1, 6, 24, 380, DateTimeKind.Local).AddTicks(8709),
-                            EditedAt = new DateTime(2024, 3, 27, 1, 6, 24, 380, DateTimeKind.Local).AddTicks(8709),
+                            CreatedAt = new DateTime(2024, 3, 27, 1, 51, 12, 494, DateTimeKind.Local).AddTicks(2452),
+                            EditedAt = new DateTime(2024, 3, 27, 1, 51, 12, 494, DateTimeKind.Local).AddTicks(2452),
                             IsDeleted = false,
                             Number = "1排15號",
                             SeatAreaId = 3,
@@ -2587,8 +2587,8 @@ namespace Infrastructure.Data.Migrations
                         new
                         {
                             Id = 141,
-                            CreatedAt = new DateTime(2024, 3, 27, 1, 6, 24, 380, DateTimeKind.Local).AddTicks(8711),
-                            EditedAt = new DateTime(2024, 3, 27, 1, 6, 24, 380, DateTimeKind.Local).AddTicks(8712),
+                            CreatedAt = new DateTime(2024, 3, 27, 1, 51, 12, 494, DateTimeKind.Local).AddTicks(2455),
+                            EditedAt = new DateTime(2024, 3, 27, 1, 51, 12, 494, DateTimeKind.Local).AddTicks(2455),
                             IsDeleted = false,
                             Number = "1排16號",
                             SeatAreaId = 3,
@@ -2597,8 +2597,8 @@ namespace Infrastructure.Data.Migrations
                         new
                         {
                             Id = 142,
-                            CreatedAt = new DateTime(2024, 3, 27, 1, 6, 24, 380, DateTimeKind.Local).AddTicks(8714),
-                            EditedAt = new DateTime(2024, 3, 27, 1, 6, 24, 380, DateTimeKind.Local).AddTicks(8715),
+                            CreatedAt = new DateTime(2024, 3, 27, 1, 51, 12, 494, DateTimeKind.Local).AddTicks(2457),
+                            EditedAt = new DateTime(2024, 3, 27, 1, 51, 12, 494, DateTimeKind.Local).AddTicks(2458),
                             IsDeleted = false,
                             Number = "1排17號",
                             SeatAreaId = 3,
@@ -2607,8 +2607,8 @@ namespace Infrastructure.Data.Migrations
                         new
                         {
                             Id = 143,
-                            CreatedAt = new DateTime(2024, 3, 27, 1, 6, 24, 380, DateTimeKind.Local).AddTicks(8717),
-                            EditedAt = new DateTime(2024, 3, 27, 1, 6, 24, 380, DateTimeKind.Local).AddTicks(8717),
+                            CreatedAt = new DateTime(2024, 3, 27, 1, 51, 12, 494, DateTimeKind.Local).AddTicks(2461),
+                            EditedAt = new DateTime(2024, 3, 27, 1, 51, 12, 494, DateTimeKind.Local).AddTicks(2461),
                             IsDeleted = false,
                             Number = "2排1號",
                             SeatAreaId = 3,
@@ -2617,8 +2617,8 @@ namespace Infrastructure.Data.Migrations
                         new
                         {
                             Id = 144,
-                            CreatedAt = new DateTime(2024, 3, 27, 1, 6, 24, 380, DateTimeKind.Local).AddTicks(8719),
-                            EditedAt = new DateTime(2024, 3, 27, 1, 6, 24, 380, DateTimeKind.Local).AddTicks(8720),
+                            CreatedAt = new DateTime(2024, 3, 27, 1, 51, 12, 494, DateTimeKind.Local).AddTicks(2463),
+                            EditedAt = new DateTime(2024, 3, 27, 1, 51, 12, 494, DateTimeKind.Local).AddTicks(2464),
                             IsDeleted = false,
                             Number = "2排2號",
                             SeatAreaId = 3,
@@ -2627,8 +2627,8 @@ namespace Infrastructure.Data.Migrations
                         new
                         {
                             Id = 145,
-                            CreatedAt = new DateTime(2024, 3, 27, 1, 6, 24, 380, DateTimeKind.Local).AddTicks(8722),
-                            EditedAt = new DateTime(2024, 3, 27, 1, 6, 24, 380, DateTimeKind.Local).AddTicks(8723),
+                            CreatedAt = new DateTime(2024, 3, 27, 1, 51, 12, 494, DateTimeKind.Local).AddTicks(2466),
+                            EditedAt = new DateTime(2024, 3, 27, 1, 51, 12, 494, DateTimeKind.Local).AddTicks(2467),
                             IsDeleted = false,
                             Number = "2排3號",
                             SeatAreaId = 3,
@@ -2637,8 +2637,8 @@ namespace Infrastructure.Data.Migrations
                         new
                         {
                             Id = 146,
-                            CreatedAt = new DateTime(2024, 3, 27, 1, 6, 24, 380, DateTimeKind.Local).AddTicks(8725),
-                            EditedAt = new DateTime(2024, 3, 27, 1, 6, 24, 380, DateTimeKind.Local).AddTicks(8725),
+                            CreatedAt = new DateTime(2024, 3, 27, 1, 51, 12, 494, DateTimeKind.Local).AddTicks(2469),
+                            EditedAt = new DateTime(2024, 3, 27, 1, 51, 12, 494, DateTimeKind.Local).AddTicks(2469),
                             IsDeleted = false,
                             Number = "2排4號",
                             SeatAreaId = 3,
@@ -2647,8 +2647,8 @@ namespace Infrastructure.Data.Migrations
                         new
                         {
                             Id = 147,
-                            CreatedAt = new DateTime(2024, 3, 27, 1, 6, 24, 380, DateTimeKind.Local).AddTicks(8727),
-                            EditedAt = new DateTime(2024, 3, 27, 1, 6, 24, 380, DateTimeKind.Local).AddTicks(8728),
+                            CreatedAt = new DateTime(2024, 3, 27, 1, 51, 12, 494, DateTimeKind.Local).AddTicks(2471),
+                            EditedAt = new DateTime(2024, 3, 27, 1, 51, 12, 494, DateTimeKind.Local).AddTicks(2472),
                             IsDeleted = false,
                             Number = "2排5號",
                             SeatAreaId = 3,
@@ -2657,8 +2657,8 @@ namespace Infrastructure.Data.Migrations
                         new
                         {
                             Id = 148,
-                            CreatedAt = new DateTime(2024, 3, 27, 1, 6, 24, 380, DateTimeKind.Local).AddTicks(8730),
-                            EditedAt = new DateTime(2024, 3, 27, 1, 6, 24, 380, DateTimeKind.Local).AddTicks(8731),
+                            CreatedAt = new DateTime(2024, 3, 27, 1, 51, 12, 494, DateTimeKind.Local).AddTicks(2474),
+                            EditedAt = new DateTime(2024, 3, 27, 1, 51, 12, 494, DateTimeKind.Local).AddTicks(2475),
                             IsDeleted = false,
                             Number = "2排6號",
                             SeatAreaId = 3,
@@ -2667,8 +2667,8 @@ namespace Infrastructure.Data.Migrations
                         new
                         {
                             Id = 149,
-                            CreatedAt = new DateTime(2024, 3, 27, 1, 6, 24, 380, DateTimeKind.Local).AddTicks(8733),
-                            EditedAt = new DateTime(2024, 3, 27, 1, 6, 24, 380, DateTimeKind.Local).AddTicks(8733),
+                            CreatedAt = new DateTime(2024, 3, 27, 1, 51, 12, 494, DateTimeKind.Local).AddTicks(2477),
+                            EditedAt = new DateTime(2024, 3, 27, 1, 51, 12, 494, DateTimeKind.Local).AddTicks(2478),
                             IsDeleted = false,
                             Number = "2排7號",
                             SeatAreaId = 3,
@@ -2677,8 +2677,8 @@ namespace Infrastructure.Data.Migrations
                         new
                         {
                             Id = 150,
-                            CreatedAt = new DateTime(2024, 3, 27, 1, 6, 24, 380, DateTimeKind.Local).AddTicks(8735),
-                            EditedAt = new DateTime(2024, 3, 27, 1, 6, 24, 380, DateTimeKind.Local).AddTicks(8736),
+                            CreatedAt = new DateTime(2024, 3, 27, 1, 51, 12, 494, DateTimeKind.Local).AddTicks(2480),
+                            EditedAt = new DateTime(2024, 3, 27, 1, 51, 12, 494, DateTimeKind.Local).AddTicks(2480),
                             IsDeleted = false,
                             Number = "2排8號",
                             SeatAreaId = 3,
@@ -2687,8 +2687,8 @@ namespace Infrastructure.Data.Migrations
                         new
                         {
                             Id = 151,
-                            CreatedAt = new DateTime(2024, 3, 27, 1, 6, 24, 380, DateTimeKind.Local).AddTicks(8738),
-                            EditedAt = new DateTime(2024, 3, 27, 1, 6, 24, 380, DateTimeKind.Local).AddTicks(8739),
+                            CreatedAt = new DateTime(2024, 3, 27, 1, 51, 12, 494, DateTimeKind.Local).AddTicks(2482),
+                            EditedAt = new DateTime(2024, 3, 27, 1, 51, 12, 494, DateTimeKind.Local).AddTicks(2483),
                             IsDeleted = false,
                             Number = "2排9號",
                             SeatAreaId = 3,
@@ -2697,8 +2697,8 @@ namespace Infrastructure.Data.Migrations
                         new
                         {
                             Id = 152,
-                            CreatedAt = new DateTime(2024, 3, 27, 1, 6, 24, 380, DateTimeKind.Local).AddTicks(8741),
-                            EditedAt = new DateTime(2024, 3, 27, 1, 6, 24, 380, DateTimeKind.Local).AddTicks(8741),
+                            CreatedAt = new DateTime(2024, 3, 27, 1, 51, 12, 494, DateTimeKind.Local).AddTicks(2485),
+                            EditedAt = new DateTime(2024, 3, 27, 1, 51, 12, 494, DateTimeKind.Local).AddTicks(2486),
                             IsDeleted = false,
                             Number = "2排10號",
                             SeatAreaId = 3,
@@ -2707,8 +2707,8 @@ namespace Infrastructure.Data.Migrations
                         new
                         {
                             Id = 153,
-                            CreatedAt = new DateTime(2024, 3, 27, 1, 6, 24, 380, DateTimeKind.Local).AddTicks(8743),
-                            EditedAt = new DateTime(2024, 3, 27, 1, 6, 24, 380, DateTimeKind.Local).AddTicks(8744),
+                            CreatedAt = new DateTime(2024, 3, 27, 1, 51, 12, 494, DateTimeKind.Local).AddTicks(2488),
+                            EditedAt = new DateTime(2024, 3, 27, 1, 51, 12, 494, DateTimeKind.Local).AddTicks(2488),
                             IsDeleted = false,
                             Number = "2排11號",
                             SeatAreaId = 3,
@@ -2717,8 +2717,8 @@ namespace Infrastructure.Data.Migrations
                         new
                         {
                             Id = 154,
-                            CreatedAt = new DateTime(2024, 3, 27, 1, 6, 24, 380, DateTimeKind.Local).AddTicks(8746),
-                            EditedAt = new DateTime(2024, 3, 27, 1, 6, 24, 380, DateTimeKind.Local).AddTicks(8746),
+                            CreatedAt = new DateTime(2024, 3, 27, 1, 51, 12, 494, DateTimeKind.Local).AddTicks(2490),
+                            EditedAt = new DateTime(2024, 3, 27, 1, 51, 12, 494, DateTimeKind.Local).AddTicks(2491),
                             IsDeleted = false,
                             Number = "2排12號",
                             SeatAreaId = 3,
@@ -2727,8 +2727,8 @@ namespace Infrastructure.Data.Migrations
                         new
                         {
                             Id = 155,
-                            CreatedAt = new DateTime(2024, 3, 27, 1, 6, 24, 380, DateTimeKind.Local).AddTicks(8748),
-                            EditedAt = new DateTime(2024, 3, 27, 1, 6, 24, 380, DateTimeKind.Local).AddTicks(8749),
+                            CreatedAt = new DateTime(2024, 3, 27, 1, 51, 12, 494, DateTimeKind.Local).AddTicks(2493),
+                            EditedAt = new DateTime(2024, 3, 27, 1, 51, 12, 494, DateTimeKind.Local).AddTicks(2494),
                             IsDeleted = false,
                             Number = "2排13號",
                             SeatAreaId = 3,
@@ -2737,8 +2737,8 @@ namespace Infrastructure.Data.Migrations
                         new
                         {
                             Id = 156,
-                            CreatedAt = new DateTime(2024, 3, 27, 1, 6, 24, 380, DateTimeKind.Local).AddTicks(8751),
-                            EditedAt = new DateTime(2024, 3, 27, 1, 6, 24, 380, DateTimeKind.Local).AddTicks(8752),
+                            CreatedAt = new DateTime(2024, 3, 27, 1, 51, 12, 494, DateTimeKind.Local).AddTicks(2496),
+                            EditedAt = new DateTime(2024, 3, 27, 1, 51, 12, 494, DateTimeKind.Local).AddTicks(2497),
                             IsDeleted = false,
                             Number = "2排14號",
                             SeatAreaId = 3,
@@ -2747,8 +2747,8 @@ namespace Infrastructure.Data.Migrations
                         new
                         {
                             Id = 157,
-                            CreatedAt = new DateTime(2024, 3, 27, 1, 6, 24, 380, DateTimeKind.Local).AddTicks(8754),
-                            EditedAt = new DateTime(2024, 3, 27, 1, 6, 24, 380, DateTimeKind.Local).AddTicks(8754),
+                            CreatedAt = new DateTime(2024, 3, 27, 1, 51, 12, 494, DateTimeKind.Local).AddTicks(2499),
+                            EditedAt = new DateTime(2024, 3, 27, 1, 51, 12, 494, DateTimeKind.Local).AddTicks(2499),
                             IsDeleted = false,
                             Number = "2排15號",
                             SeatAreaId = 3,
@@ -2757,8 +2757,8 @@ namespace Infrastructure.Data.Migrations
                         new
                         {
                             Id = 158,
-                            CreatedAt = new DateTime(2024, 3, 27, 1, 6, 24, 380, DateTimeKind.Local).AddTicks(8757),
-                            EditedAt = new DateTime(2024, 3, 27, 1, 6, 24, 380, DateTimeKind.Local).AddTicks(8757),
+                            CreatedAt = new DateTime(2024, 3, 27, 1, 51, 12, 494, DateTimeKind.Local).AddTicks(2501),
+                            EditedAt = new DateTime(2024, 3, 27, 1, 51, 12, 494, DateTimeKind.Local).AddTicks(2502),
                             IsDeleted = false,
                             Number = "2排16號",
                             SeatAreaId = 3,
@@ -2767,8 +2767,8 @@ namespace Infrastructure.Data.Migrations
                         new
                         {
                             Id = 159,
-                            CreatedAt = new DateTime(2024, 3, 27, 1, 6, 24, 380, DateTimeKind.Local).AddTicks(8759),
-                            EditedAt = new DateTime(2024, 3, 27, 1, 6, 24, 380, DateTimeKind.Local).AddTicks(8760),
+                            CreatedAt = new DateTime(2024, 3, 27, 1, 51, 12, 494, DateTimeKind.Local).AddTicks(2504),
+                            EditedAt = new DateTime(2024, 3, 27, 1, 51, 12, 494, DateTimeKind.Local).AddTicks(2504),
                             IsDeleted = false,
                             Number = "2排17號",
                             SeatAreaId = 3,
@@ -2777,8 +2777,8 @@ namespace Infrastructure.Data.Migrations
                         new
                         {
                             Id = 160,
-                            CreatedAt = new DateTime(2024, 3, 27, 1, 6, 24, 380, DateTimeKind.Local).AddTicks(8762),
-                            EditedAt = new DateTime(2024, 3, 27, 1, 6, 24, 380, DateTimeKind.Local).AddTicks(8763),
+                            CreatedAt = new DateTime(2024, 3, 27, 1, 51, 12, 494, DateTimeKind.Local).AddTicks(2506),
+                            EditedAt = new DateTime(2024, 3, 27, 1, 51, 12, 494, DateTimeKind.Local).AddTicks(2507),
                             IsDeleted = false,
                             Number = "3排1號",
                             SeatAreaId = 3,
@@ -2787,8 +2787,8 @@ namespace Infrastructure.Data.Migrations
                         new
                         {
                             Id = 161,
-                            CreatedAt = new DateTime(2024, 3, 27, 1, 6, 24, 380, DateTimeKind.Local).AddTicks(8765),
-                            EditedAt = new DateTime(2024, 3, 27, 1, 6, 24, 380, DateTimeKind.Local).AddTicks(8765),
+                            CreatedAt = new DateTime(2024, 3, 27, 1, 51, 12, 494, DateTimeKind.Local).AddTicks(2509),
+                            EditedAt = new DateTime(2024, 3, 27, 1, 51, 12, 494, DateTimeKind.Local).AddTicks(2510),
                             IsDeleted = false,
                             Number = "3排2號",
                             SeatAreaId = 3,
@@ -2797,8 +2797,8 @@ namespace Infrastructure.Data.Migrations
                         new
                         {
                             Id = 162,
-                            CreatedAt = new DateTime(2024, 3, 27, 1, 6, 24, 380, DateTimeKind.Local).AddTicks(8768),
-                            EditedAt = new DateTime(2024, 3, 27, 1, 6, 24, 380, DateTimeKind.Local).AddTicks(8768),
+                            CreatedAt = new DateTime(2024, 3, 27, 1, 51, 12, 494, DateTimeKind.Local).AddTicks(2512),
+                            EditedAt = new DateTime(2024, 3, 27, 1, 51, 12, 494, DateTimeKind.Local).AddTicks(2512),
                             IsDeleted = false,
                             Number = "3排3號",
                             SeatAreaId = 3,
@@ -2807,8 +2807,8 @@ namespace Infrastructure.Data.Migrations
                         new
                         {
                             Id = 163,
-                            CreatedAt = new DateTime(2024, 3, 27, 1, 6, 24, 380, DateTimeKind.Local).AddTicks(8770),
-                            EditedAt = new DateTime(2024, 3, 27, 1, 6, 24, 380, DateTimeKind.Local).AddTicks(8771),
+                            CreatedAt = new DateTime(2024, 3, 27, 1, 51, 12, 494, DateTimeKind.Local).AddTicks(2514),
+                            EditedAt = new DateTime(2024, 3, 27, 1, 51, 12, 494, DateTimeKind.Local).AddTicks(2515),
                             IsDeleted = false,
                             Number = "3排4號",
                             SeatAreaId = 3,
@@ -2817,8 +2817,8 @@ namespace Infrastructure.Data.Migrations
                         new
                         {
                             Id = 164,
-                            CreatedAt = new DateTime(2024, 3, 27, 1, 6, 24, 380, DateTimeKind.Local).AddTicks(8773),
-                            EditedAt = new DateTime(2024, 3, 27, 1, 6, 24, 380, DateTimeKind.Local).AddTicks(8773),
+                            CreatedAt = new DateTime(2024, 3, 27, 1, 51, 12, 494, DateTimeKind.Local).AddTicks(2517),
+                            EditedAt = new DateTime(2024, 3, 27, 1, 51, 12, 494, DateTimeKind.Local).AddTicks(2518),
                             IsDeleted = false,
                             Number = "3排5號",
                             SeatAreaId = 3,
@@ -2827,8 +2827,8 @@ namespace Infrastructure.Data.Migrations
                         new
                         {
                             Id = 165,
-                            CreatedAt = new DateTime(2024, 3, 27, 1, 6, 24, 380, DateTimeKind.Local).AddTicks(8775),
-                            EditedAt = new DateTime(2024, 3, 27, 1, 6, 24, 380, DateTimeKind.Local).AddTicks(8776),
+                            CreatedAt = new DateTime(2024, 3, 27, 1, 51, 12, 494, DateTimeKind.Local).AddTicks(2520),
+                            EditedAt = new DateTime(2024, 3, 27, 1, 51, 12, 494, DateTimeKind.Local).AddTicks(2520),
                             IsDeleted = false,
                             Number = "3排6號",
                             SeatAreaId = 3,
@@ -2837,8 +2837,8 @@ namespace Infrastructure.Data.Migrations
                         new
                         {
                             Id = 166,
-                            CreatedAt = new DateTime(2024, 3, 27, 1, 6, 24, 380, DateTimeKind.Local).AddTicks(8778),
-                            EditedAt = new DateTime(2024, 3, 27, 1, 6, 24, 380, DateTimeKind.Local).AddTicks(8779),
+                            CreatedAt = new DateTime(2024, 3, 27, 1, 51, 12, 494, DateTimeKind.Local).AddTicks(2522),
+                            EditedAt = new DateTime(2024, 3, 27, 1, 51, 12, 494, DateTimeKind.Local).AddTicks(2523),
                             IsDeleted = false,
                             Number = "3排7號",
                             SeatAreaId = 3,
@@ -2847,8 +2847,8 @@ namespace Infrastructure.Data.Migrations
                         new
                         {
                             Id = 167,
-                            CreatedAt = new DateTime(2024, 3, 27, 1, 6, 24, 380, DateTimeKind.Local).AddTicks(8781),
-                            EditedAt = new DateTime(2024, 3, 27, 1, 6, 24, 380, DateTimeKind.Local).AddTicks(8781),
+                            CreatedAt = new DateTime(2024, 3, 27, 1, 51, 12, 494, DateTimeKind.Local).AddTicks(2525),
+                            EditedAt = new DateTime(2024, 3, 27, 1, 51, 12, 494, DateTimeKind.Local).AddTicks(2525),
                             IsDeleted = false,
                             Number = "3排8號",
                             SeatAreaId = 3,
@@ -2857,8 +2857,8 @@ namespace Infrastructure.Data.Migrations
                         new
                         {
                             Id = 168,
-                            CreatedAt = new DateTime(2024, 3, 27, 1, 6, 24, 380, DateTimeKind.Local).AddTicks(8784),
-                            EditedAt = new DateTime(2024, 3, 27, 1, 6, 24, 380, DateTimeKind.Local).AddTicks(8784),
+                            CreatedAt = new DateTime(2024, 3, 27, 1, 51, 12, 494, DateTimeKind.Local).AddTicks(2528),
+                            EditedAt = new DateTime(2024, 3, 27, 1, 51, 12, 494, DateTimeKind.Local).AddTicks(2528),
                             IsDeleted = false,
                             Number = "3排9號",
                             SeatAreaId = 3,
@@ -2867,8 +2867,8 @@ namespace Infrastructure.Data.Migrations
                         new
                         {
                             Id = 169,
-                            CreatedAt = new DateTime(2024, 3, 27, 1, 6, 24, 380, DateTimeKind.Local).AddTicks(8786),
-                            EditedAt = new DateTime(2024, 3, 27, 1, 6, 24, 380, DateTimeKind.Local).AddTicks(8787),
+                            CreatedAt = new DateTime(2024, 3, 27, 1, 51, 12, 494, DateTimeKind.Local).AddTicks(2530),
+                            EditedAt = new DateTime(2024, 3, 27, 1, 51, 12, 494, DateTimeKind.Local).AddTicks(2531),
                             IsDeleted = false,
                             Number = "3排10號",
                             SeatAreaId = 3,
@@ -2877,8 +2877,8 @@ namespace Infrastructure.Data.Migrations
                         new
                         {
                             Id = 170,
-                            CreatedAt = new DateTime(2024, 3, 27, 1, 6, 24, 380, DateTimeKind.Local).AddTicks(8789),
-                            EditedAt = new DateTime(2024, 3, 27, 1, 6, 24, 380, DateTimeKind.Local).AddTicks(8790),
+                            CreatedAt = new DateTime(2024, 3, 27, 1, 51, 12, 494, DateTimeKind.Local).AddTicks(2533),
+                            EditedAt = new DateTime(2024, 3, 27, 1, 51, 12, 494, DateTimeKind.Local).AddTicks(2534),
                             IsDeleted = false,
                             Number = "3排11號",
                             SeatAreaId = 3,
@@ -2887,8 +2887,8 @@ namespace Infrastructure.Data.Migrations
                         new
                         {
                             Id = 171,
-                            CreatedAt = new DateTime(2024, 3, 27, 1, 6, 24, 380, DateTimeKind.Local).AddTicks(8792),
-                            EditedAt = new DateTime(2024, 3, 27, 1, 6, 24, 380, DateTimeKind.Local).AddTicks(8792),
+                            CreatedAt = new DateTime(2024, 3, 27, 1, 51, 12, 494, DateTimeKind.Local).AddTicks(2536),
+                            EditedAt = new DateTime(2024, 3, 27, 1, 51, 12, 494, DateTimeKind.Local).AddTicks(2536),
                             IsDeleted = false,
                             Number = "3排12號",
                             SeatAreaId = 3,
@@ -2897,8 +2897,8 @@ namespace Infrastructure.Data.Migrations
                         new
                         {
                             Id = 172,
-                            CreatedAt = new DateTime(2024, 3, 27, 1, 6, 24, 380, DateTimeKind.Local).AddTicks(8794),
-                            EditedAt = new DateTime(2024, 3, 27, 1, 6, 24, 380, DateTimeKind.Local).AddTicks(8795),
+                            CreatedAt = new DateTime(2024, 3, 27, 1, 51, 12, 494, DateTimeKind.Local).AddTicks(2538),
+                            EditedAt = new DateTime(2024, 3, 27, 1, 51, 12, 494, DateTimeKind.Local).AddTicks(2539),
                             IsDeleted = false,
                             Number = "3排13號",
                             SeatAreaId = 3,
@@ -2907,8 +2907,8 @@ namespace Infrastructure.Data.Migrations
                         new
                         {
                             Id = 173,
-                            CreatedAt = new DateTime(2024, 3, 27, 1, 6, 24, 380, DateTimeKind.Local).AddTicks(8797),
-                            EditedAt = new DateTime(2024, 3, 27, 1, 6, 24, 380, DateTimeKind.Local).AddTicks(8798),
+                            CreatedAt = new DateTime(2024, 3, 27, 1, 51, 12, 494, DateTimeKind.Local).AddTicks(2541),
+                            EditedAt = new DateTime(2024, 3, 27, 1, 51, 12, 494, DateTimeKind.Local).AddTicks(2541),
                             IsDeleted = false,
                             Number = "3排14號",
                             SeatAreaId = 3,
@@ -2917,8 +2917,8 @@ namespace Infrastructure.Data.Migrations
                         new
                         {
                             Id = 174,
-                            CreatedAt = new DateTime(2024, 3, 27, 1, 6, 24, 380, DateTimeKind.Local).AddTicks(8800),
-                            EditedAt = new DateTime(2024, 3, 27, 1, 6, 24, 380, DateTimeKind.Local).AddTicks(8800),
+                            CreatedAt = new DateTime(2024, 3, 27, 1, 51, 12, 494, DateTimeKind.Local).AddTicks(2543),
+                            EditedAt = new DateTime(2024, 3, 27, 1, 51, 12, 494, DateTimeKind.Local).AddTicks(2544),
                             IsDeleted = false,
                             Number = "3排16號",
                             SeatAreaId = 3,
@@ -2927,8 +2927,8 @@ namespace Infrastructure.Data.Migrations
                         new
                         {
                             Id = 175,
-                            CreatedAt = new DateTime(2024, 3, 27, 1, 6, 24, 380, DateTimeKind.Local).AddTicks(8802),
-                            EditedAt = new DateTime(2024, 3, 27, 1, 6, 24, 380, DateTimeKind.Local).AddTicks(8803),
+                            CreatedAt = new DateTime(2024, 3, 27, 1, 51, 12, 494, DateTimeKind.Local).AddTicks(2546),
+                            EditedAt = new DateTime(2024, 3, 27, 1, 51, 12, 494, DateTimeKind.Local).AddTicks(2547),
                             IsDeleted = false,
                             Number = "3排17號",
                             SeatAreaId = 3,
@@ -2937,8 +2937,8 @@ namespace Infrastructure.Data.Migrations
                         new
                         {
                             Id = 176,
-                            CreatedAt = new DateTime(2024, 3, 27, 1, 6, 24, 380, DateTimeKind.Local).AddTicks(8805),
-                            EditedAt = new DateTime(2024, 3, 27, 1, 6, 24, 380, DateTimeKind.Local).AddTicks(8806),
+                            CreatedAt = new DateTime(2024, 3, 27, 1, 51, 12, 494, DateTimeKind.Local).AddTicks(2549),
+                            EditedAt = new DateTime(2024, 3, 27, 1, 51, 12, 494, DateTimeKind.Local).AddTicks(2549),
                             IsDeleted = false,
                             Number = "4排1號",
                             SeatAreaId = 3,
@@ -2947,8 +2947,8 @@ namespace Infrastructure.Data.Migrations
                         new
                         {
                             Id = 177,
-                            CreatedAt = new DateTime(2024, 3, 27, 1, 6, 24, 380, DateTimeKind.Local).AddTicks(8808),
-                            EditedAt = new DateTime(2024, 3, 27, 1, 6, 24, 380, DateTimeKind.Local).AddTicks(8808),
+                            CreatedAt = new DateTime(2024, 3, 27, 1, 51, 12, 494, DateTimeKind.Local).AddTicks(2551),
+                            EditedAt = new DateTime(2024, 3, 27, 1, 51, 12, 494, DateTimeKind.Local).AddTicks(2552),
                             IsDeleted = false,
                             Number = "4排2號",
                             SeatAreaId = 3,
@@ -2957,8 +2957,8 @@ namespace Infrastructure.Data.Migrations
                         new
                         {
                             Id = 178,
-                            CreatedAt = new DateTime(2024, 3, 27, 1, 6, 24, 380, DateTimeKind.Local).AddTicks(8810),
-                            EditedAt = new DateTime(2024, 3, 27, 1, 6, 24, 380, DateTimeKind.Local).AddTicks(8811),
+                            CreatedAt = new DateTime(2024, 3, 27, 1, 51, 12, 494, DateTimeKind.Local).AddTicks(2554),
+                            EditedAt = new DateTime(2024, 3, 27, 1, 51, 12, 494, DateTimeKind.Local).AddTicks(2555),
                             IsDeleted = false,
                             Number = "4排3號",
                             SeatAreaId = 3,
@@ -2967,8 +2967,8 @@ namespace Infrastructure.Data.Migrations
                         new
                         {
                             Id = 179,
-                            CreatedAt = new DateTime(2024, 3, 27, 1, 6, 24, 380, DateTimeKind.Local).AddTicks(8813),
-                            EditedAt = new DateTime(2024, 3, 27, 1, 6, 24, 380, DateTimeKind.Local).AddTicks(8814),
+                            CreatedAt = new DateTime(2024, 3, 27, 1, 51, 12, 494, DateTimeKind.Local).AddTicks(2557),
+                            EditedAt = new DateTime(2024, 3, 27, 1, 51, 12, 494, DateTimeKind.Local).AddTicks(2557),
                             IsDeleted = false,
                             Number = "4排4號",
                             SeatAreaId = 3,
@@ -2977,8 +2977,8 @@ namespace Infrastructure.Data.Migrations
                         new
                         {
                             Id = 180,
-                            CreatedAt = new DateTime(2024, 3, 27, 1, 6, 24, 380, DateTimeKind.Local).AddTicks(8816),
-                            EditedAt = new DateTime(2024, 3, 27, 1, 6, 24, 380, DateTimeKind.Local).AddTicks(8816),
+                            CreatedAt = new DateTime(2024, 3, 27, 1, 51, 12, 494, DateTimeKind.Local).AddTicks(2559),
+                            EditedAt = new DateTime(2024, 3, 27, 1, 51, 12, 494, DateTimeKind.Local).AddTicks(2560),
                             IsDeleted = false,
                             Number = "4排5號",
                             SeatAreaId = 3,
@@ -2987,8 +2987,8 @@ namespace Infrastructure.Data.Migrations
                         new
                         {
                             Id = 181,
-                            CreatedAt = new DateTime(2024, 3, 27, 1, 6, 24, 380, DateTimeKind.Local).AddTicks(8818),
-                            EditedAt = new DateTime(2024, 3, 27, 1, 6, 24, 380, DateTimeKind.Local).AddTicks(8819),
+                            CreatedAt = new DateTime(2024, 3, 27, 1, 51, 12, 494, DateTimeKind.Local).AddTicks(2562),
+                            EditedAt = new DateTime(2024, 3, 27, 1, 51, 12, 494, DateTimeKind.Local).AddTicks(2563),
                             IsDeleted = false,
                             Number = "4排6號",
                             SeatAreaId = 3,
@@ -2997,8 +2997,8 @@ namespace Infrastructure.Data.Migrations
                         new
                         {
                             Id = 182,
-                            CreatedAt = new DateTime(2024, 3, 27, 1, 6, 24, 380, DateTimeKind.Local).AddTicks(8821),
-                            EditedAt = new DateTime(2024, 3, 27, 1, 6, 24, 380, DateTimeKind.Local).AddTicks(8822),
+                            CreatedAt = new DateTime(2024, 3, 27, 1, 51, 12, 494, DateTimeKind.Local).AddTicks(2565),
+                            EditedAt = new DateTime(2024, 3, 27, 1, 51, 12, 494, DateTimeKind.Local).AddTicks(2565),
                             IsDeleted = false,
                             Number = "4排7號",
                             SeatAreaId = 3,
@@ -3007,8 +3007,8 @@ namespace Infrastructure.Data.Migrations
                         new
                         {
                             Id = 183,
-                            CreatedAt = new DateTime(2024, 3, 27, 1, 6, 24, 380, DateTimeKind.Local).AddTicks(8824),
-                            EditedAt = new DateTime(2024, 3, 27, 1, 6, 24, 380, DateTimeKind.Local).AddTicks(8825),
+                            CreatedAt = new DateTime(2024, 3, 27, 1, 51, 12, 494, DateTimeKind.Local).AddTicks(2568),
+                            EditedAt = new DateTime(2024, 3, 27, 1, 51, 12, 494, DateTimeKind.Local).AddTicks(2568),
                             IsDeleted = false,
                             Number = "4排8號",
                             SeatAreaId = 3,
@@ -3017,8 +3017,8 @@ namespace Infrastructure.Data.Migrations
                         new
                         {
                             Id = 184,
-                            CreatedAt = new DateTime(2024, 3, 27, 1, 6, 24, 380, DateTimeKind.Local).AddTicks(8878),
-                            EditedAt = new DateTime(2024, 3, 27, 1, 6, 24, 380, DateTimeKind.Local).AddTicks(8878),
+                            CreatedAt = new DateTime(2024, 3, 27, 1, 51, 12, 494, DateTimeKind.Local).AddTicks(2570),
+                            EditedAt = new DateTime(2024, 3, 27, 1, 51, 12, 494, DateTimeKind.Local).AddTicks(2571),
                             IsDeleted = false,
                             Number = "4排9號",
                             SeatAreaId = 3,
@@ -3027,8 +3027,8 @@ namespace Infrastructure.Data.Migrations
                         new
                         {
                             Id = 185,
-                            CreatedAt = new DateTime(2024, 3, 27, 1, 6, 24, 380, DateTimeKind.Local).AddTicks(8881),
-                            EditedAt = new DateTime(2024, 3, 27, 1, 6, 24, 380, DateTimeKind.Local).AddTicks(8881),
+                            CreatedAt = new DateTime(2024, 3, 27, 1, 51, 12, 494, DateTimeKind.Local).AddTicks(2573),
+                            EditedAt = new DateTime(2024, 3, 27, 1, 51, 12, 494, DateTimeKind.Local).AddTicks(2574),
                             IsDeleted = false,
                             Number = "4排10號",
                             SeatAreaId = 3,
@@ -3037,8 +3037,8 @@ namespace Infrastructure.Data.Migrations
                         new
                         {
                             Id = 186,
-                            CreatedAt = new DateTime(2024, 3, 27, 1, 6, 24, 380, DateTimeKind.Local).AddTicks(8883),
-                            EditedAt = new DateTime(2024, 3, 27, 1, 6, 24, 380, DateTimeKind.Local).AddTicks(8884),
+                            CreatedAt = new DateTime(2024, 3, 27, 1, 51, 12, 494, DateTimeKind.Local).AddTicks(2576),
+                            EditedAt = new DateTime(2024, 3, 27, 1, 51, 12, 494, DateTimeKind.Local).AddTicks(2576),
                             IsDeleted = false,
                             Number = "4排11號",
                             SeatAreaId = 3,
@@ -3047,8 +3047,8 @@ namespace Infrastructure.Data.Migrations
                         new
                         {
                             Id = 187,
-                            CreatedAt = new DateTime(2024, 3, 27, 1, 6, 24, 380, DateTimeKind.Local).AddTicks(8886),
-                            EditedAt = new DateTime(2024, 3, 27, 1, 6, 24, 380, DateTimeKind.Local).AddTicks(8887),
+                            CreatedAt = new DateTime(2024, 3, 27, 1, 51, 12, 494, DateTimeKind.Local).AddTicks(2578),
+                            EditedAt = new DateTime(2024, 3, 27, 1, 51, 12, 494, DateTimeKind.Local).AddTicks(2579),
                             IsDeleted = false,
                             Number = "4排12號",
                             SeatAreaId = 3,
@@ -3057,8 +3057,8 @@ namespace Infrastructure.Data.Migrations
                         new
                         {
                             Id = 188,
-                            CreatedAt = new DateTime(2024, 3, 27, 1, 6, 24, 380, DateTimeKind.Local).AddTicks(8889),
-                            EditedAt = new DateTime(2024, 3, 27, 1, 6, 24, 380, DateTimeKind.Local).AddTicks(8890),
+                            CreatedAt = new DateTime(2024, 3, 27, 1, 51, 12, 494, DateTimeKind.Local).AddTicks(2581),
+                            EditedAt = new DateTime(2024, 3, 27, 1, 51, 12, 494, DateTimeKind.Local).AddTicks(2582),
                             IsDeleted = false,
                             Number = "4排13號",
                             SeatAreaId = 3,
@@ -3067,8 +3067,8 @@ namespace Infrastructure.Data.Migrations
                         new
                         {
                             Id = 189,
-                            CreatedAt = new DateTime(2024, 3, 27, 1, 6, 24, 380, DateTimeKind.Local).AddTicks(8894),
-                            EditedAt = new DateTime(2024, 3, 27, 1, 6, 24, 380, DateTimeKind.Local).AddTicks(8894),
+                            CreatedAt = new DateTime(2024, 3, 27, 1, 51, 12, 494, DateTimeKind.Local).AddTicks(2584),
+                            EditedAt = new DateTime(2024, 3, 27, 1, 51, 12, 494, DateTimeKind.Local).AddTicks(2584),
                             IsDeleted = false,
                             Number = "1排1號",
                             SeatAreaId = 4,
@@ -3077,8 +3077,8 @@ namespace Infrastructure.Data.Migrations
                         new
                         {
                             Id = 190,
-                            CreatedAt = new DateTime(2024, 3, 27, 1, 6, 24, 380, DateTimeKind.Local).AddTicks(8897),
-                            EditedAt = new DateTime(2024, 3, 27, 1, 6, 24, 380, DateTimeKind.Local).AddTicks(8897),
+                            CreatedAt = new DateTime(2024, 3, 27, 1, 51, 12, 494, DateTimeKind.Local).AddTicks(2586),
+                            EditedAt = new DateTime(2024, 3, 27, 1, 51, 12, 494, DateTimeKind.Local).AddTicks(2587),
                             IsDeleted = false,
                             Number = "1排2號",
                             SeatAreaId = 4,
@@ -3087,8 +3087,8 @@ namespace Infrastructure.Data.Migrations
                         new
                         {
                             Id = 191,
-                            CreatedAt = new DateTime(2024, 3, 27, 1, 6, 24, 380, DateTimeKind.Local).AddTicks(8899),
-                            EditedAt = new DateTime(2024, 3, 27, 1, 6, 24, 380, DateTimeKind.Local).AddTicks(8900),
+                            CreatedAt = new DateTime(2024, 3, 27, 1, 51, 12, 494, DateTimeKind.Local).AddTicks(2589),
+                            EditedAt = new DateTime(2024, 3, 27, 1, 51, 12, 494, DateTimeKind.Local).AddTicks(2590),
                             IsDeleted = false,
                             Number = "1排3號",
                             SeatAreaId = 4,
@@ -3097,8 +3097,8 @@ namespace Infrastructure.Data.Migrations
                         new
                         {
                             Id = 192,
-                            CreatedAt = new DateTime(2024, 3, 27, 1, 6, 24, 380, DateTimeKind.Local).AddTicks(8902),
-                            EditedAt = new DateTime(2024, 3, 27, 1, 6, 24, 380, DateTimeKind.Local).AddTicks(8903),
+                            CreatedAt = new DateTime(2024, 3, 27, 1, 51, 12, 494, DateTimeKind.Local).AddTicks(2592),
+                            EditedAt = new DateTime(2024, 3, 27, 1, 51, 12, 494, DateTimeKind.Local).AddTicks(2592),
                             IsDeleted = false,
                             Number = "1排4號",
                             SeatAreaId = 4,
@@ -3107,8 +3107,8 @@ namespace Infrastructure.Data.Migrations
                         new
                         {
                             Id = 193,
-                            CreatedAt = new DateTime(2024, 3, 27, 1, 6, 24, 380, DateTimeKind.Local).AddTicks(8905),
-                            EditedAt = new DateTime(2024, 3, 27, 1, 6, 24, 380, DateTimeKind.Local).AddTicks(8905),
+                            CreatedAt = new DateTime(2024, 3, 27, 1, 51, 12, 494, DateTimeKind.Local).AddTicks(2594),
+                            EditedAt = new DateTime(2024, 3, 27, 1, 51, 12, 494, DateTimeKind.Local).AddTicks(2595),
                             IsDeleted = false,
                             Number = "1排5號",
                             SeatAreaId = 4,
@@ -3117,8 +3117,8 @@ namespace Infrastructure.Data.Migrations
                         new
                         {
                             Id = 194,
-                            CreatedAt = new DateTime(2024, 3, 27, 1, 6, 24, 380, DateTimeKind.Local).AddTicks(8908),
-                            EditedAt = new DateTime(2024, 3, 27, 1, 6, 24, 380, DateTimeKind.Local).AddTicks(8908),
+                            CreatedAt = new DateTime(2024, 3, 27, 1, 51, 12, 494, DateTimeKind.Local).AddTicks(2597),
+                            EditedAt = new DateTime(2024, 3, 27, 1, 51, 12, 494, DateTimeKind.Local).AddTicks(2598),
                             IsDeleted = false,
                             Number = "1排6號",
                             SeatAreaId = 4,
@@ -3127,8 +3127,8 @@ namespace Infrastructure.Data.Migrations
                         new
                         {
                             Id = 195,
-                            CreatedAt = new DateTime(2024, 3, 27, 1, 6, 24, 380, DateTimeKind.Local).AddTicks(8910),
-                            EditedAt = new DateTime(2024, 3, 27, 1, 6, 24, 380, DateTimeKind.Local).AddTicks(8911),
+                            CreatedAt = new DateTime(2024, 3, 27, 1, 51, 12, 494, DateTimeKind.Local).AddTicks(2601),
+                            EditedAt = new DateTime(2024, 3, 27, 1, 51, 12, 494, DateTimeKind.Local).AddTicks(2601),
                             IsDeleted = false,
                             Number = "1排7號",
                             SeatAreaId = 4,
@@ -3137,8 +3137,8 @@ namespace Infrastructure.Data.Migrations
                         new
                         {
                             Id = 196,
-                            CreatedAt = new DateTime(2024, 3, 27, 1, 6, 24, 380, DateTimeKind.Local).AddTicks(8913),
-                            EditedAt = new DateTime(2024, 3, 27, 1, 6, 24, 380, DateTimeKind.Local).AddTicks(8914),
+                            CreatedAt = new DateTime(2024, 3, 27, 1, 51, 12, 494, DateTimeKind.Local).AddTicks(2603),
+                            EditedAt = new DateTime(2024, 3, 27, 1, 51, 12, 494, DateTimeKind.Local).AddTicks(2604),
                             IsDeleted = false,
                             Number = "1排8號",
                             SeatAreaId = 4,
@@ -3147,8 +3147,8 @@ namespace Infrastructure.Data.Migrations
                         new
                         {
                             Id = 197,
-                            CreatedAt = new DateTime(2024, 3, 27, 1, 6, 24, 380, DateTimeKind.Local).AddTicks(8916),
-                            EditedAt = new DateTime(2024, 3, 27, 1, 6, 24, 380, DateTimeKind.Local).AddTicks(8916),
+                            CreatedAt = new DateTime(2024, 3, 27, 1, 51, 12, 494, DateTimeKind.Local).AddTicks(2606),
+                            EditedAt = new DateTime(2024, 3, 27, 1, 51, 12, 494, DateTimeKind.Local).AddTicks(2607),
                             IsDeleted = false,
                             Number = "1排9號",
                             SeatAreaId = 4,
@@ -3157,8 +3157,8 @@ namespace Infrastructure.Data.Migrations
                         new
                         {
                             Id = 198,
-                            CreatedAt = new DateTime(2024, 3, 27, 1, 6, 24, 380, DateTimeKind.Local).AddTicks(8919),
-                            EditedAt = new DateTime(2024, 3, 27, 1, 6, 24, 380, DateTimeKind.Local).AddTicks(8919),
+                            CreatedAt = new DateTime(2024, 3, 27, 1, 51, 12, 494, DateTimeKind.Local).AddTicks(2609),
+                            EditedAt = new DateTime(2024, 3, 27, 1, 51, 12, 494, DateTimeKind.Local).AddTicks(2609),
                             IsDeleted = false,
                             Number = "1排10號",
                             SeatAreaId = 4,
@@ -3167,8 +3167,8 @@ namespace Infrastructure.Data.Migrations
                         new
                         {
                             Id = 199,
-                            CreatedAt = new DateTime(2024, 3, 27, 1, 6, 24, 380, DateTimeKind.Local).AddTicks(8921),
-                            EditedAt = new DateTime(2024, 3, 27, 1, 6, 24, 380, DateTimeKind.Local).AddTicks(8922),
+                            CreatedAt = new DateTime(2024, 3, 27, 1, 51, 12, 494, DateTimeKind.Local).AddTicks(2611),
+                            EditedAt = new DateTime(2024, 3, 27, 1, 51, 12, 494, DateTimeKind.Local).AddTicks(2612),
                             IsDeleted = false,
                             Number = "1排11號",
                             SeatAreaId = 4,
@@ -3177,8 +3177,8 @@ namespace Infrastructure.Data.Migrations
                         new
                         {
                             Id = 200,
-                            CreatedAt = new DateTime(2024, 3, 27, 1, 6, 24, 380, DateTimeKind.Local).AddTicks(8924),
-                            EditedAt = new DateTime(2024, 3, 27, 1, 6, 24, 380, DateTimeKind.Local).AddTicks(8925),
+                            CreatedAt = new DateTime(2024, 3, 27, 1, 51, 12, 494, DateTimeKind.Local).AddTicks(2614),
+                            EditedAt = new DateTime(2024, 3, 27, 1, 51, 12, 494, DateTimeKind.Local).AddTicks(2615),
                             IsDeleted = false,
                             Number = "1排12號",
                             SeatAreaId = 4,
@@ -3187,8 +3187,8 @@ namespace Infrastructure.Data.Migrations
                         new
                         {
                             Id = 201,
-                            CreatedAt = new DateTime(2024, 3, 27, 1, 6, 24, 380, DateTimeKind.Local).AddTicks(8927),
-                            EditedAt = new DateTime(2024, 3, 27, 1, 6, 24, 380, DateTimeKind.Local).AddTicks(8927),
+                            CreatedAt = new DateTime(2024, 3, 27, 1, 51, 12, 494, DateTimeKind.Local).AddTicks(2617),
+                            EditedAt = new DateTime(2024, 3, 27, 1, 51, 12, 494, DateTimeKind.Local).AddTicks(2617),
                             IsDeleted = false,
                             Number = "1排13號",
                             SeatAreaId = 4,
@@ -3197,8 +3197,8 @@ namespace Infrastructure.Data.Migrations
                         new
                         {
                             Id = 202,
-                            CreatedAt = new DateTime(2024, 3, 27, 1, 6, 24, 380, DateTimeKind.Local).AddTicks(8929),
-                            EditedAt = new DateTime(2024, 3, 27, 1, 6, 24, 380, DateTimeKind.Local).AddTicks(8930),
+                            CreatedAt = new DateTime(2024, 3, 27, 1, 51, 12, 494, DateTimeKind.Local).AddTicks(2619),
+                            EditedAt = new DateTime(2024, 3, 27, 1, 51, 12, 494, DateTimeKind.Local).AddTicks(2620),
                             IsDeleted = false,
                             Number = "1排14號",
                             SeatAreaId = 4,
@@ -3207,8 +3207,8 @@ namespace Infrastructure.Data.Migrations
                         new
                         {
                             Id = 203,
-                            CreatedAt = new DateTime(2024, 3, 27, 1, 6, 24, 380, DateTimeKind.Local).AddTicks(8932),
-                            EditedAt = new DateTime(2024, 3, 27, 1, 6, 24, 380, DateTimeKind.Local).AddTicks(8933),
+                            CreatedAt = new DateTime(2024, 3, 27, 1, 51, 12, 494, DateTimeKind.Local).AddTicks(2622),
+                            EditedAt = new DateTime(2024, 3, 27, 1, 51, 12, 494, DateTimeKind.Local).AddTicks(2622),
                             IsDeleted = false,
                             Number = "1排15號",
                             SeatAreaId = 4,
@@ -3217,8 +3217,8 @@ namespace Infrastructure.Data.Migrations
                         new
                         {
                             Id = 204,
-                            CreatedAt = new DateTime(2024, 3, 27, 1, 6, 24, 380, DateTimeKind.Local).AddTicks(8935),
-                            EditedAt = new DateTime(2024, 3, 27, 1, 6, 24, 380, DateTimeKind.Local).AddTicks(8936),
+                            CreatedAt = new DateTime(2024, 3, 27, 1, 51, 12, 494, DateTimeKind.Local).AddTicks(2624),
+                            EditedAt = new DateTime(2024, 3, 27, 1, 51, 12, 494, DateTimeKind.Local).AddTicks(2625),
                             IsDeleted = false,
                             Number = "1排16號",
                             SeatAreaId = 4,
@@ -3227,8 +3227,8 @@ namespace Infrastructure.Data.Migrations
                         new
                         {
                             Id = 205,
-                            CreatedAt = new DateTime(2024, 3, 27, 1, 6, 24, 380, DateTimeKind.Local).AddTicks(8938),
-                            EditedAt = new DateTime(2024, 3, 27, 1, 6, 24, 380, DateTimeKind.Local).AddTicks(8938),
+                            CreatedAt = new DateTime(2024, 3, 27, 1, 51, 12, 494, DateTimeKind.Local).AddTicks(2627),
+                            EditedAt = new DateTime(2024, 3, 27, 1, 51, 12, 494, DateTimeKind.Local).AddTicks(2628),
                             IsDeleted = false,
                             Number = "1排17號",
                             SeatAreaId = 4,
@@ -3237,8 +3237,8 @@ namespace Infrastructure.Data.Migrations
                         new
                         {
                             Id = 206,
-                            CreatedAt = new DateTime(2024, 3, 27, 1, 6, 24, 380, DateTimeKind.Local).AddTicks(8940),
-                            EditedAt = new DateTime(2024, 3, 27, 1, 6, 24, 380, DateTimeKind.Local).AddTicks(8941),
+                            CreatedAt = new DateTime(2024, 3, 27, 1, 51, 12, 494, DateTimeKind.Local).AddTicks(2630),
+                            EditedAt = new DateTime(2024, 3, 27, 1, 51, 12, 494, DateTimeKind.Local).AddTicks(2630),
                             IsDeleted = false,
                             Number = "2排1號",
                             SeatAreaId = 4,
@@ -3247,8 +3247,8 @@ namespace Infrastructure.Data.Migrations
                         new
                         {
                             Id = 207,
-                            CreatedAt = new DateTime(2024, 3, 27, 1, 6, 24, 380, DateTimeKind.Local).AddTicks(8943),
-                            EditedAt = new DateTime(2024, 3, 27, 1, 6, 24, 380, DateTimeKind.Local).AddTicks(8944),
+                            CreatedAt = new DateTime(2024, 3, 27, 1, 51, 12, 494, DateTimeKind.Local).AddTicks(2664),
+                            EditedAt = new DateTime(2024, 3, 27, 1, 51, 12, 494, DateTimeKind.Local).AddTicks(2666),
                             IsDeleted = false,
                             Number = "2排2號",
                             SeatAreaId = 4,
@@ -3257,8 +3257,8 @@ namespace Infrastructure.Data.Migrations
                         new
                         {
                             Id = 208,
-                            CreatedAt = new DateTime(2024, 3, 27, 1, 6, 24, 380, DateTimeKind.Local).AddTicks(8946),
-                            EditedAt = new DateTime(2024, 3, 27, 1, 6, 24, 380, DateTimeKind.Local).AddTicks(8947),
+                            CreatedAt = new DateTime(2024, 3, 27, 1, 51, 12, 494, DateTimeKind.Local).AddTicks(2668),
+                            EditedAt = new DateTime(2024, 3, 27, 1, 51, 12, 494, DateTimeKind.Local).AddTicks(2669),
                             IsDeleted = false,
                             Number = "2排3號",
                             SeatAreaId = 4,
@@ -3267,8 +3267,8 @@ namespace Infrastructure.Data.Migrations
                         new
                         {
                             Id = 209,
-                            CreatedAt = new DateTime(2024, 3, 27, 1, 6, 24, 380, DateTimeKind.Local).AddTicks(8949),
-                            EditedAt = new DateTime(2024, 3, 27, 1, 6, 24, 380, DateTimeKind.Local).AddTicks(8950),
+                            CreatedAt = new DateTime(2024, 3, 27, 1, 51, 12, 494, DateTimeKind.Local).AddTicks(2671),
+                            EditedAt = new DateTime(2024, 3, 27, 1, 51, 12, 494, DateTimeKind.Local).AddTicks(2672),
                             IsDeleted = false,
                             Number = "2排4號",
                             SeatAreaId = 4,
@@ -3277,8 +3277,8 @@ namespace Infrastructure.Data.Migrations
                         new
                         {
                             Id = 210,
-                            CreatedAt = new DateTime(2024, 3, 27, 1, 6, 24, 380, DateTimeKind.Local).AddTicks(8952),
-                            EditedAt = new DateTime(2024, 3, 27, 1, 6, 24, 380, DateTimeKind.Local).AddTicks(8952),
+                            CreatedAt = new DateTime(2024, 3, 27, 1, 51, 12, 494, DateTimeKind.Local).AddTicks(2674),
+                            EditedAt = new DateTime(2024, 3, 27, 1, 51, 12, 494, DateTimeKind.Local).AddTicks(2674),
                             IsDeleted = false,
                             Number = "2排5號",
                             SeatAreaId = 4,
@@ -3287,8 +3287,8 @@ namespace Infrastructure.Data.Migrations
                         new
                         {
                             Id = 211,
-                            CreatedAt = new DateTime(2024, 3, 27, 1, 6, 24, 380, DateTimeKind.Local).AddTicks(8954),
-                            EditedAt = new DateTime(2024, 3, 27, 1, 6, 24, 380, DateTimeKind.Local).AddTicks(8955),
+                            CreatedAt = new DateTime(2024, 3, 27, 1, 51, 12, 494, DateTimeKind.Local).AddTicks(2676),
+                            EditedAt = new DateTime(2024, 3, 27, 1, 51, 12, 494, DateTimeKind.Local).AddTicks(2677),
                             IsDeleted = false,
                             Number = "2排6號",
                             SeatAreaId = 4,
@@ -3297,8 +3297,8 @@ namespace Infrastructure.Data.Migrations
                         new
                         {
                             Id = 212,
-                            CreatedAt = new DateTime(2024, 3, 27, 1, 6, 24, 380, DateTimeKind.Local).AddTicks(8957),
-                            EditedAt = new DateTime(2024, 3, 27, 1, 6, 24, 380, DateTimeKind.Local).AddTicks(8958),
+                            CreatedAt = new DateTime(2024, 3, 27, 1, 51, 12, 494, DateTimeKind.Local).AddTicks(2679),
+                            EditedAt = new DateTime(2024, 3, 27, 1, 51, 12, 494, DateTimeKind.Local).AddTicks(2680),
                             IsDeleted = false,
                             Number = "2排7號",
                             SeatAreaId = 4,
@@ -3307,8 +3307,8 @@ namespace Infrastructure.Data.Migrations
                         new
                         {
                             Id = 213,
-                            CreatedAt = new DateTime(2024, 3, 27, 1, 6, 24, 380, DateTimeKind.Local).AddTicks(8960),
-                            EditedAt = new DateTime(2024, 3, 27, 1, 6, 24, 380, DateTimeKind.Local).AddTicks(8960),
+                            CreatedAt = new DateTime(2024, 3, 27, 1, 51, 12, 494, DateTimeKind.Local).AddTicks(2682),
+                            EditedAt = new DateTime(2024, 3, 27, 1, 51, 12, 494, DateTimeKind.Local).AddTicks(2682),
                             IsDeleted = false,
                             Number = "2排8號",
                             SeatAreaId = 4,
@@ -3317,8 +3317,8 @@ namespace Infrastructure.Data.Migrations
                         new
                         {
                             Id = 214,
-                            CreatedAt = new DateTime(2024, 3, 27, 1, 6, 24, 380, DateTimeKind.Local).AddTicks(8962),
-                            EditedAt = new DateTime(2024, 3, 27, 1, 6, 24, 380, DateTimeKind.Local).AddTicks(8963),
+                            CreatedAt = new DateTime(2024, 3, 27, 1, 51, 12, 494, DateTimeKind.Local).AddTicks(2685),
+                            EditedAt = new DateTime(2024, 3, 27, 1, 51, 12, 494, DateTimeKind.Local).AddTicks(2685),
                             IsDeleted = false,
                             Number = "2排9號",
                             SeatAreaId = 4,
@@ -3327,8 +3327,8 @@ namespace Infrastructure.Data.Migrations
                         new
                         {
                             Id = 215,
-                            CreatedAt = new DateTime(2024, 3, 27, 1, 6, 24, 380, DateTimeKind.Local).AddTicks(8965),
-                            EditedAt = new DateTime(2024, 3, 27, 1, 6, 24, 380, DateTimeKind.Local).AddTicks(8965),
+                            CreatedAt = new DateTime(2024, 3, 27, 1, 51, 12, 494, DateTimeKind.Local).AddTicks(2687),
+                            EditedAt = new DateTime(2024, 3, 27, 1, 51, 12, 494, DateTimeKind.Local).AddTicks(2688),
                             IsDeleted = false,
                             Number = "2排10號",
                             SeatAreaId = 4,
@@ -3337,8 +3337,8 @@ namespace Infrastructure.Data.Migrations
                         new
                         {
                             Id = 216,
-                            CreatedAt = new DateTime(2024, 3, 27, 1, 6, 24, 380, DateTimeKind.Local).AddTicks(8968),
-                            EditedAt = new DateTime(2024, 3, 27, 1, 6, 24, 380, DateTimeKind.Local).AddTicks(8968),
+                            CreatedAt = new DateTime(2024, 3, 27, 1, 51, 12, 494, DateTimeKind.Local).AddTicks(2690),
+                            EditedAt = new DateTime(2024, 3, 27, 1, 51, 12, 494, DateTimeKind.Local).AddTicks(2691),
                             IsDeleted = false,
                             Number = "2排11號",
                             SeatAreaId = 4,
@@ -3347,8 +3347,8 @@ namespace Infrastructure.Data.Migrations
                         new
                         {
                             Id = 217,
-                            CreatedAt = new DateTime(2024, 3, 27, 1, 6, 24, 380, DateTimeKind.Local).AddTicks(8970),
-                            EditedAt = new DateTime(2024, 3, 27, 1, 6, 24, 380, DateTimeKind.Local).AddTicks(8971),
+                            CreatedAt = new DateTime(2024, 3, 27, 1, 51, 12, 494, DateTimeKind.Local).AddTicks(2693),
+                            EditedAt = new DateTime(2024, 3, 27, 1, 51, 12, 494, DateTimeKind.Local).AddTicks(2693),
                             IsDeleted = false,
                             Number = "2排12號",
                             SeatAreaId = 4,
@@ -3357,8 +3357,8 @@ namespace Infrastructure.Data.Migrations
                         new
                         {
                             Id = 218,
-                            CreatedAt = new DateTime(2024, 3, 27, 1, 6, 24, 380, DateTimeKind.Local).AddTicks(8973),
-                            EditedAt = new DateTime(2024, 3, 27, 1, 6, 24, 380, DateTimeKind.Local).AddTicks(8974),
+                            CreatedAt = new DateTime(2024, 3, 27, 1, 51, 12, 494, DateTimeKind.Local).AddTicks(2695),
+                            EditedAt = new DateTime(2024, 3, 27, 1, 51, 12, 494, DateTimeKind.Local).AddTicks(2696),
                             IsDeleted = false,
                             Number = "2排13號",
                             SeatAreaId = 4,
@@ -3367,8 +3367,8 @@ namespace Infrastructure.Data.Migrations
                         new
                         {
                             Id = 219,
-                            CreatedAt = new DateTime(2024, 3, 27, 1, 6, 24, 380, DateTimeKind.Local).AddTicks(8976),
-                            EditedAt = new DateTime(2024, 3, 27, 1, 6, 24, 380, DateTimeKind.Local).AddTicks(8977),
+                            CreatedAt = new DateTime(2024, 3, 27, 1, 51, 12, 494, DateTimeKind.Local).AddTicks(2698),
+                            EditedAt = new DateTime(2024, 3, 27, 1, 51, 12, 494, DateTimeKind.Local).AddTicks(2699),
                             IsDeleted = false,
                             Number = "2排14號",
                             SeatAreaId = 4,
@@ -3377,8 +3377,8 @@ namespace Infrastructure.Data.Migrations
                         new
                         {
                             Id = 220,
-                            CreatedAt = new DateTime(2024, 3, 27, 1, 6, 24, 380, DateTimeKind.Local).AddTicks(8979),
-                            EditedAt = new DateTime(2024, 3, 27, 1, 6, 24, 380, DateTimeKind.Local).AddTicks(8979),
+                            CreatedAt = new DateTime(2024, 3, 27, 1, 51, 12, 494, DateTimeKind.Local).AddTicks(2702),
+                            EditedAt = new DateTime(2024, 3, 27, 1, 51, 12, 494, DateTimeKind.Local).AddTicks(2703),
                             IsDeleted = false,
                             Number = "2排15號",
                             SeatAreaId = 4,
@@ -3387,8 +3387,8 @@ namespace Infrastructure.Data.Migrations
                         new
                         {
                             Id = 221,
-                            CreatedAt = new DateTime(2024, 3, 27, 1, 6, 24, 380, DateTimeKind.Local).AddTicks(8981),
-                            EditedAt = new DateTime(2024, 3, 27, 1, 6, 24, 380, DateTimeKind.Local).AddTicks(8982),
+                            CreatedAt = new DateTime(2024, 3, 27, 1, 51, 12, 494, DateTimeKind.Local).AddTicks(2705),
+                            EditedAt = new DateTime(2024, 3, 27, 1, 51, 12, 494, DateTimeKind.Local).AddTicks(2706),
                             IsDeleted = false,
                             Number = "2排16號",
                             SeatAreaId = 4,
@@ -3397,8 +3397,8 @@ namespace Infrastructure.Data.Migrations
                         new
                         {
                             Id = 222,
-                            CreatedAt = new DateTime(2024, 3, 27, 1, 6, 24, 380, DateTimeKind.Local).AddTicks(8984),
-                            EditedAt = new DateTime(2024, 3, 27, 1, 6, 24, 380, DateTimeKind.Local).AddTicks(8985),
+                            CreatedAt = new DateTime(2024, 3, 27, 1, 51, 12, 494, DateTimeKind.Local).AddTicks(2708),
+                            EditedAt = new DateTime(2024, 3, 27, 1, 51, 12, 494, DateTimeKind.Local).AddTicks(2708),
                             IsDeleted = false,
                             Number = "2排17號",
                             SeatAreaId = 4,
@@ -3407,8 +3407,8 @@ namespace Infrastructure.Data.Migrations
                         new
                         {
                             Id = 223,
-                            CreatedAt = new DateTime(2024, 3, 27, 1, 6, 24, 380, DateTimeKind.Local).AddTicks(8987),
-                            EditedAt = new DateTime(2024, 3, 27, 1, 6, 24, 380, DateTimeKind.Local).AddTicks(8988),
+                            CreatedAt = new DateTime(2024, 3, 27, 1, 51, 12, 494, DateTimeKind.Local).AddTicks(2710),
+                            EditedAt = new DateTime(2024, 3, 27, 1, 51, 12, 494, DateTimeKind.Local).AddTicks(2711),
                             IsDeleted = false,
                             Number = "3排1號",
                             SeatAreaId = 4,
@@ -3417,8 +3417,8 @@ namespace Infrastructure.Data.Migrations
                         new
                         {
                             Id = 224,
-                            CreatedAt = new DateTime(2024, 3, 27, 1, 6, 24, 380, DateTimeKind.Local).AddTicks(8990),
-                            EditedAt = new DateTime(2024, 3, 27, 1, 6, 24, 380, DateTimeKind.Local).AddTicks(8990),
+                            CreatedAt = new DateTime(2024, 3, 27, 1, 51, 12, 494, DateTimeKind.Local).AddTicks(2713),
+                            EditedAt = new DateTime(2024, 3, 27, 1, 51, 12, 494, DateTimeKind.Local).AddTicks(2714),
                             IsDeleted = false,
                             Number = "3排2號",
                             SeatAreaId = 4,
@@ -3427,8 +3427,8 @@ namespace Infrastructure.Data.Migrations
                         new
                         {
                             Id = 225,
-                            CreatedAt = new DateTime(2024, 3, 27, 1, 6, 24, 380, DateTimeKind.Local).AddTicks(8992),
-                            EditedAt = new DateTime(2024, 3, 27, 1, 6, 24, 380, DateTimeKind.Local).AddTicks(8993),
+                            CreatedAt = new DateTime(2024, 3, 27, 1, 51, 12, 494, DateTimeKind.Local).AddTicks(2716),
+                            EditedAt = new DateTime(2024, 3, 27, 1, 51, 12, 494, DateTimeKind.Local).AddTicks(2716),
                             IsDeleted = false,
                             Number = "3排3號",
                             SeatAreaId = 4,
@@ -3437,8 +3437,8 @@ namespace Infrastructure.Data.Migrations
                         new
                         {
                             Id = 226,
-                            CreatedAt = new DateTime(2024, 3, 27, 1, 6, 24, 380, DateTimeKind.Local).AddTicks(8995),
-                            EditedAt = new DateTime(2024, 3, 27, 1, 6, 24, 380, DateTimeKind.Local).AddTicks(8996),
+                            CreatedAt = new DateTime(2024, 3, 27, 1, 51, 12, 494, DateTimeKind.Local).AddTicks(2718),
+                            EditedAt = new DateTime(2024, 3, 27, 1, 51, 12, 494, DateTimeKind.Local).AddTicks(2719),
                             IsDeleted = false,
                             Number = "3排4號",
                             SeatAreaId = 4,
@@ -3447,8 +3447,8 @@ namespace Infrastructure.Data.Migrations
                         new
                         {
                             Id = 227,
-                            CreatedAt = new DateTime(2024, 3, 27, 1, 6, 24, 380, DateTimeKind.Local).AddTicks(8998),
-                            EditedAt = new DateTime(2024, 3, 27, 1, 6, 24, 380, DateTimeKind.Local).AddTicks(8998),
+                            CreatedAt = new DateTime(2024, 3, 27, 1, 51, 12, 494, DateTimeKind.Local).AddTicks(2721),
+                            EditedAt = new DateTime(2024, 3, 27, 1, 51, 12, 494, DateTimeKind.Local).AddTicks(2722),
                             IsDeleted = false,
                             Number = "3排5號",
                             SeatAreaId = 4,
@@ -3457,8 +3457,8 @@ namespace Infrastructure.Data.Migrations
                         new
                         {
                             Id = 228,
-                            CreatedAt = new DateTime(2024, 3, 27, 1, 6, 24, 380, DateTimeKind.Local).AddTicks(9001),
-                            EditedAt = new DateTime(2024, 3, 27, 1, 6, 24, 380, DateTimeKind.Local).AddTicks(9001),
+                            CreatedAt = new DateTime(2024, 3, 27, 1, 51, 12, 494, DateTimeKind.Local).AddTicks(2724),
+                            EditedAt = new DateTime(2024, 3, 27, 1, 51, 12, 494, DateTimeKind.Local).AddTicks(2725),
                             IsDeleted = false,
                             Number = "3排6號",
                             SeatAreaId = 4,
@@ -3467,8 +3467,8 @@ namespace Infrastructure.Data.Migrations
                         new
                         {
                             Id = 229,
-                            CreatedAt = new DateTime(2024, 3, 27, 1, 6, 24, 380, DateTimeKind.Local).AddTicks(9003),
-                            EditedAt = new DateTime(2024, 3, 27, 1, 6, 24, 380, DateTimeKind.Local).AddTicks(9004),
+                            CreatedAt = new DateTime(2024, 3, 27, 1, 51, 12, 494, DateTimeKind.Local).AddTicks(2726),
+                            EditedAt = new DateTime(2024, 3, 27, 1, 51, 12, 494, DateTimeKind.Local).AddTicks(2727),
                             IsDeleted = false,
                             Number = "3排7號",
                             SeatAreaId = 4,
@@ -3477,8 +3477,8 @@ namespace Infrastructure.Data.Migrations
                         new
                         {
                             Id = 230,
-                            CreatedAt = new DateTime(2024, 3, 27, 1, 6, 24, 380, DateTimeKind.Local).AddTicks(9006),
-                            EditedAt = new DateTime(2024, 3, 27, 1, 6, 24, 380, DateTimeKind.Local).AddTicks(9006),
+                            CreatedAt = new DateTime(2024, 3, 27, 1, 51, 12, 494, DateTimeKind.Local).AddTicks(2729),
+                            EditedAt = new DateTime(2024, 3, 27, 1, 51, 12, 494, DateTimeKind.Local).AddTicks(2730),
                             IsDeleted = false,
                             Number = "3排8號",
                             SeatAreaId = 4,
@@ -3487,8 +3487,8 @@ namespace Infrastructure.Data.Migrations
                         new
                         {
                             Id = 231,
-                            CreatedAt = new DateTime(2024, 3, 27, 1, 6, 24, 380, DateTimeKind.Local).AddTicks(9009),
-                            EditedAt = new DateTime(2024, 3, 27, 1, 6, 24, 380, DateTimeKind.Local).AddTicks(9009),
+                            CreatedAt = new DateTime(2024, 3, 27, 1, 51, 12, 494, DateTimeKind.Local).AddTicks(2732),
+                            EditedAt = new DateTime(2024, 3, 27, 1, 51, 12, 494, DateTimeKind.Local).AddTicks(2732),
                             IsDeleted = false,
                             Number = "3排9號",
                             SeatAreaId = 4,
@@ -3497,8 +3497,8 @@ namespace Infrastructure.Data.Migrations
                         new
                         {
                             Id = 232,
-                            CreatedAt = new DateTime(2024, 3, 27, 1, 6, 24, 380, DateTimeKind.Local).AddTicks(9011),
-                            EditedAt = new DateTime(2024, 3, 27, 1, 6, 24, 380, DateTimeKind.Local).AddTicks(9012),
+                            CreatedAt = new DateTime(2024, 3, 27, 1, 51, 12, 494, DateTimeKind.Local).AddTicks(2734),
+                            EditedAt = new DateTime(2024, 3, 27, 1, 51, 12, 494, DateTimeKind.Local).AddTicks(2736),
                             IsDeleted = false,
                             Number = "3排10號",
                             SeatAreaId = 4,
@@ -3507,8 +3507,8 @@ namespace Infrastructure.Data.Migrations
                         new
                         {
                             Id = 233,
-                            CreatedAt = new DateTime(2024, 3, 27, 1, 6, 24, 380, DateTimeKind.Local).AddTicks(9014),
-                            EditedAt = new DateTime(2024, 3, 27, 1, 6, 24, 380, DateTimeKind.Local).AddTicks(9014),
+                            CreatedAt = new DateTime(2024, 3, 27, 1, 51, 12, 494, DateTimeKind.Local).AddTicks(2738),
+                            EditedAt = new DateTime(2024, 3, 27, 1, 51, 12, 494, DateTimeKind.Local).AddTicks(2739),
                             IsDeleted = false,
                             Number = "3排11號",
                             SeatAreaId = 4,
@@ -3517,8 +3517,8 @@ namespace Infrastructure.Data.Migrations
                         new
                         {
                             Id = 234,
-                            CreatedAt = new DateTime(2024, 3, 27, 1, 6, 24, 380, DateTimeKind.Local).AddTicks(9017),
-                            EditedAt = new DateTime(2024, 3, 27, 1, 6, 24, 380, DateTimeKind.Local).AddTicks(9017),
+                            CreatedAt = new DateTime(2024, 3, 27, 1, 51, 12, 494, DateTimeKind.Local).AddTicks(2741),
+                            EditedAt = new DateTime(2024, 3, 27, 1, 51, 12, 494, DateTimeKind.Local).AddTicks(2741),
                             IsDeleted = false,
                             Number = "3排12號",
                             SeatAreaId = 4,
@@ -3527,8 +3527,8 @@ namespace Infrastructure.Data.Migrations
                         new
                         {
                             Id = 235,
-                            CreatedAt = new DateTime(2024, 3, 27, 1, 6, 24, 380, DateTimeKind.Local).AddTicks(9019),
-                            EditedAt = new DateTime(2024, 3, 27, 1, 6, 24, 380, DateTimeKind.Local).AddTicks(9020),
+                            CreatedAt = new DateTime(2024, 3, 27, 1, 51, 12, 494, DateTimeKind.Local).AddTicks(2743),
+                            EditedAt = new DateTime(2024, 3, 27, 1, 51, 12, 494, DateTimeKind.Local).AddTicks(2744),
                             IsDeleted = false,
                             Number = "3排13號",
                             SeatAreaId = 4,
@@ -3537,8 +3537,8 @@ namespace Infrastructure.Data.Migrations
                         new
                         {
                             Id = 236,
-                            CreatedAt = new DateTime(2024, 3, 27, 1, 6, 24, 380, DateTimeKind.Local).AddTicks(9022),
-                            EditedAt = new DateTime(2024, 3, 27, 1, 6, 24, 380, DateTimeKind.Local).AddTicks(9023),
+                            CreatedAt = new DateTime(2024, 3, 27, 1, 51, 12, 494, DateTimeKind.Local).AddTicks(2746),
+                            EditedAt = new DateTime(2024, 3, 27, 1, 51, 12, 494, DateTimeKind.Local).AddTicks(2747),
                             IsDeleted = false,
                             Number = "3排14號",
                             SeatAreaId = 4,
@@ -3547,8 +3547,8 @@ namespace Infrastructure.Data.Migrations
                         new
                         {
                             Id = 237,
-                            CreatedAt = new DateTime(2024, 3, 27, 1, 6, 24, 380, DateTimeKind.Local).AddTicks(9025),
-                            EditedAt = new DateTime(2024, 3, 27, 1, 6, 24, 380, DateTimeKind.Local).AddTicks(9025),
+                            CreatedAt = new DateTime(2024, 3, 27, 1, 51, 12, 494, DateTimeKind.Local).AddTicks(2749),
+                            EditedAt = new DateTime(2024, 3, 27, 1, 51, 12, 494, DateTimeKind.Local).AddTicks(2750),
                             IsDeleted = false,
                             Number = "3排16號",
                             SeatAreaId = 4,
@@ -3557,8 +3557,8 @@ namespace Infrastructure.Data.Migrations
                         new
                         {
                             Id = 238,
-                            CreatedAt = new DateTime(2024, 3, 27, 1, 6, 24, 380, DateTimeKind.Local).AddTicks(9027),
-                            EditedAt = new DateTime(2024, 3, 27, 1, 6, 24, 380, DateTimeKind.Local).AddTicks(9028),
+                            CreatedAt = new DateTime(2024, 3, 27, 1, 51, 12, 494, DateTimeKind.Local).AddTicks(2752),
+                            EditedAt = new DateTime(2024, 3, 27, 1, 51, 12, 494, DateTimeKind.Local).AddTicks(2752),
                             IsDeleted = false,
                             Number = "3排17號",
                             SeatAreaId = 4,
@@ -3567,8 +3567,8 @@ namespace Infrastructure.Data.Migrations
                         new
                         {
                             Id = 239,
-                            CreatedAt = new DateTime(2024, 3, 27, 1, 6, 24, 380, DateTimeKind.Local).AddTicks(9030),
-                            EditedAt = new DateTime(2024, 3, 27, 1, 6, 24, 380, DateTimeKind.Local).AddTicks(9031),
+                            CreatedAt = new DateTime(2024, 3, 27, 1, 51, 12, 494, DateTimeKind.Local).AddTicks(2754),
+                            EditedAt = new DateTime(2024, 3, 27, 1, 51, 12, 494, DateTimeKind.Local).AddTicks(2755),
                             IsDeleted = false,
                             Number = "4排1號",
                             SeatAreaId = 4,
@@ -3577,8 +3577,8 @@ namespace Infrastructure.Data.Migrations
                         new
                         {
                             Id = 240,
-                            CreatedAt = new DateTime(2024, 3, 27, 1, 6, 24, 380, DateTimeKind.Local).AddTicks(9033),
-                            EditedAt = new DateTime(2024, 3, 27, 1, 6, 24, 380, DateTimeKind.Local).AddTicks(9034),
+                            CreatedAt = new DateTime(2024, 3, 27, 1, 51, 12, 494, DateTimeKind.Local).AddTicks(2757),
+                            EditedAt = new DateTime(2024, 3, 27, 1, 51, 12, 494, DateTimeKind.Local).AddTicks(2758),
                             IsDeleted = false,
                             Number = "4排2號",
                             SeatAreaId = 4,
@@ -3587,8 +3587,8 @@ namespace Infrastructure.Data.Migrations
                         new
                         {
                             Id = 241,
-                            CreatedAt = new DateTime(2024, 3, 27, 1, 6, 24, 380, DateTimeKind.Local).AddTicks(9036),
-                            EditedAt = new DateTime(2024, 3, 27, 1, 6, 24, 380, DateTimeKind.Local).AddTicks(9036),
+                            CreatedAt = new DateTime(2024, 3, 27, 1, 51, 12, 494, DateTimeKind.Local).AddTicks(2760),
+                            EditedAt = new DateTime(2024, 3, 27, 1, 51, 12, 494, DateTimeKind.Local).AddTicks(2760),
                             IsDeleted = false,
                             Number = "4排3號",
                             SeatAreaId = 4,
@@ -3597,8 +3597,8 @@ namespace Infrastructure.Data.Migrations
                         new
                         {
                             Id = 242,
-                            CreatedAt = new DateTime(2024, 3, 27, 1, 6, 24, 380, DateTimeKind.Local).AddTicks(9038),
-                            EditedAt = new DateTime(2024, 3, 27, 1, 6, 24, 380, DateTimeKind.Local).AddTicks(9039),
+                            CreatedAt = new DateTime(2024, 3, 27, 1, 51, 12, 494, DateTimeKind.Local).AddTicks(2762),
+                            EditedAt = new DateTime(2024, 3, 27, 1, 51, 12, 494, DateTimeKind.Local).AddTicks(2763),
                             IsDeleted = false,
                             Number = "4排4號",
                             SeatAreaId = 4,
@@ -3607,8 +3607,8 @@ namespace Infrastructure.Data.Migrations
                         new
                         {
                             Id = 243,
-                            CreatedAt = new DateTime(2024, 3, 27, 1, 6, 24, 380, DateTimeKind.Local).AddTicks(9041),
-                            EditedAt = new DateTime(2024, 3, 27, 1, 6, 24, 380, DateTimeKind.Local).AddTicks(9042),
+                            CreatedAt = new DateTime(2024, 3, 27, 1, 51, 12, 494, DateTimeKind.Local).AddTicks(2765),
+                            EditedAt = new DateTime(2024, 3, 27, 1, 51, 12, 494, DateTimeKind.Local).AddTicks(2766),
                             IsDeleted = false,
                             Number = "4排5號",
                             SeatAreaId = 4,
@@ -3617,8 +3617,8 @@ namespace Infrastructure.Data.Migrations
                         new
                         {
                             Id = 244,
-                            CreatedAt = new DateTime(2024, 3, 27, 1, 6, 24, 380, DateTimeKind.Local).AddTicks(9044),
-                            EditedAt = new DateTime(2024, 3, 27, 1, 6, 24, 380, DateTimeKind.Local).AddTicks(9044),
+                            CreatedAt = new DateTime(2024, 3, 27, 1, 51, 12, 494, DateTimeKind.Local).AddTicks(2768),
+                            EditedAt = new DateTime(2024, 3, 27, 1, 51, 12, 494, DateTimeKind.Local).AddTicks(2768),
                             IsDeleted = false,
                             Number = "4排6號",
                             SeatAreaId = 4,
@@ -3627,8 +3627,8 @@ namespace Infrastructure.Data.Migrations
                         new
                         {
                             Id = 245,
-                            CreatedAt = new DateTime(2024, 3, 27, 1, 6, 24, 380, DateTimeKind.Local).AddTicks(9047),
-                            EditedAt = new DateTime(2024, 3, 27, 1, 6, 24, 380, DateTimeKind.Local).AddTicks(9047),
+                            CreatedAt = new DateTime(2024, 3, 27, 1, 51, 12, 494, DateTimeKind.Local).AddTicks(2772),
+                            EditedAt = new DateTime(2024, 3, 27, 1, 51, 12, 494, DateTimeKind.Local).AddTicks(2772),
                             IsDeleted = false,
                             Number = "4排7號",
                             SeatAreaId = 4,
@@ -3637,8 +3637,8 @@ namespace Infrastructure.Data.Migrations
                         new
                         {
                             Id = 248,
-                            CreatedAt = new DateTime(2024, 3, 27, 1, 6, 24, 380, DateTimeKind.Local).AddTicks(9049),
-                            EditedAt = new DateTime(2024, 3, 27, 1, 6, 24, 380, DateTimeKind.Local).AddTicks(9050),
+                            CreatedAt = new DateTime(2024, 3, 27, 1, 51, 12, 494, DateTimeKind.Local).AddTicks(2774),
+                            EditedAt = new DateTime(2024, 3, 27, 1, 51, 12, 494, DateTimeKind.Local).AddTicks(2775),
                             IsDeleted = false,
                             Number = "4排10號",
                             SeatAreaId = 4,
@@ -3647,8 +3647,8 @@ namespace Infrastructure.Data.Migrations
                         new
                         {
                             Id = 249,
-                            CreatedAt = new DateTime(2024, 3, 27, 1, 6, 24, 380, DateTimeKind.Local).AddTicks(9052),
-                            EditedAt = new DateTime(2024, 3, 27, 1, 6, 24, 380, DateTimeKind.Local).AddTicks(9053),
+                            CreatedAt = new DateTime(2024, 3, 27, 1, 51, 12, 494, DateTimeKind.Local).AddTicks(2777),
+                            EditedAt = new DateTime(2024, 3, 27, 1, 51, 12, 494, DateTimeKind.Local).AddTicks(2778),
                             IsDeleted = false,
                             Number = "4排11號",
                             SeatAreaId = 4,
@@ -3657,8 +3657,8 @@ namespace Infrastructure.Data.Migrations
                         new
                         {
                             Id = 250,
-                            CreatedAt = new DateTime(2024, 3, 27, 1, 6, 24, 380, DateTimeKind.Local).AddTicks(9055),
-                            EditedAt = new DateTime(2024, 3, 27, 1, 6, 24, 380, DateTimeKind.Local).AddTicks(9055),
+                            CreatedAt = new DateTime(2024, 3, 27, 1, 51, 12, 494, DateTimeKind.Local).AddTicks(2780),
+                            EditedAt = new DateTime(2024, 3, 27, 1, 51, 12, 494, DateTimeKind.Local).AddTicks(2780),
                             IsDeleted = false,
                             Number = "4排12號",
                             SeatAreaId = 4,
@@ -3667,8 +3667,8 @@ namespace Infrastructure.Data.Migrations
                         new
                         {
                             Id = 251,
-                            CreatedAt = new DateTime(2024, 3, 27, 1, 6, 24, 380, DateTimeKind.Local).AddTicks(9057),
-                            EditedAt = new DateTime(2024, 3, 27, 1, 6, 24, 380, DateTimeKind.Local).AddTicks(9058),
+                            CreatedAt = new DateTime(2024, 3, 27, 1, 51, 12, 494, DateTimeKind.Local).AddTicks(2782),
+                            EditedAt = new DateTime(2024, 3, 27, 1, 51, 12, 494, DateTimeKind.Local).AddTicks(2783),
                             IsDeleted = false,
                             Number = "4排13號",
                             SeatAreaId = 4,
@@ -3677,8 +3677,8 @@ namespace Infrastructure.Data.Migrations
                         new
                         {
                             Id = 246,
-                            CreatedAt = new DateTime(2024, 3, 27, 1, 6, 24, 380, DateTimeKind.Local).AddTicks(9060),
-                            EditedAt = new DateTime(2024, 3, 27, 1, 6, 24, 380, DateTimeKind.Local).AddTicks(9061),
+                            CreatedAt = new DateTime(2024, 3, 27, 1, 51, 12, 494, DateTimeKind.Local).AddTicks(2785),
+                            EditedAt = new DateTime(2024, 3, 27, 1, 51, 12, 494, DateTimeKind.Local).AddTicks(2786),
                             IsDeleted = false,
                             Number = "1排1號",
                             SeatAreaId = 5,
@@ -3687,8 +3687,8 @@ namespace Infrastructure.Data.Migrations
                         new
                         {
                             Id = 247,
-                            CreatedAt = new DateTime(2024, 3, 27, 1, 6, 24, 380, DateTimeKind.Local).AddTicks(9063),
-                            EditedAt = new DateTime(2024, 3, 27, 1, 6, 24, 380, DateTimeKind.Local).AddTicks(9064),
+                            CreatedAt = new DateTime(2024, 3, 27, 1, 51, 12, 494, DateTimeKind.Local).AddTicks(2788),
+                            EditedAt = new DateTime(2024, 3, 27, 1, 51, 12, 494, DateTimeKind.Local).AddTicks(2789),
                             IsDeleted = false,
                             Number = "1排2號",
                             SeatAreaId = 5,
@@ -3697,8 +3697,8 @@ namespace Infrastructure.Data.Migrations
                         new
                         {
                             Id = 252,
-                            CreatedAt = new DateTime(2024, 3, 27, 1, 6, 24, 380, DateTimeKind.Local).AddTicks(9066),
-                            EditedAt = new DateTime(2024, 3, 27, 1, 6, 24, 380, DateTimeKind.Local).AddTicks(9067),
+                            CreatedAt = new DateTime(2024, 3, 27, 1, 51, 12, 494, DateTimeKind.Local).AddTicks(2790),
+                            EditedAt = new DateTime(2024, 3, 27, 1, 51, 12, 494, DateTimeKind.Local).AddTicks(2791),
                             IsDeleted = false,
                             Number = "1排7號",
                             SeatAreaId = 5,
@@ -3707,8 +3707,8 @@ namespace Infrastructure.Data.Migrations
                         new
                         {
                             Id = 253,
-                            CreatedAt = new DateTime(2024, 3, 27, 1, 6, 24, 380, DateTimeKind.Local).AddTicks(9069),
-                            EditedAt = new DateTime(2024, 3, 27, 1, 6, 24, 380, DateTimeKind.Local).AddTicks(9069),
+                            CreatedAt = new DateTime(2024, 3, 27, 1, 51, 12, 494, DateTimeKind.Local).AddTicks(2793),
+                            EditedAt = new DateTime(2024, 3, 27, 1, 51, 12, 494, DateTimeKind.Local).AddTicks(2794),
                             IsDeleted = false,
                             Number = "1排8號",
                             SeatAreaId = 5,
@@ -3717,8 +3717,8 @@ namespace Infrastructure.Data.Migrations
                         new
                         {
                             Id = 254,
-                            CreatedAt = new DateTime(2024, 3, 27, 1, 6, 24, 380, DateTimeKind.Local).AddTicks(9071),
-                            EditedAt = new DateTime(2024, 3, 27, 1, 6, 24, 380, DateTimeKind.Local).AddTicks(9072),
+                            CreatedAt = new DateTime(2024, 3, 27, 1, 51, 12, 494, DateTimeKind.Local).AddTicks(2796),
+                            EditedAt = new DateTime(2024, 3, 27, 1, 51, 12, 494, DateTimeKind.Local).AddTicks(2797),
                             IsDeleted = false,
                             Number = "1排9號",
                             SeatAreaId = 5,
@@ -3727,8 +3727,8 @@ namespace Infrastructure.Data.Migrations
                         new
                         {
                             Id = 255,
-                            CreatedAt = new DateTime(2024, 3, 27, 1, 6, 24, 380, DateTimeKind.Local).AddTicks(9074),
-                            EditedAt = new DateTime(2024, 3, 27, 1, 6, 24, 380, DateTimeKind.Local).AddTicks(9075),
+                            CreatedAt = new DateTime(2024, 3, 27, 1, 51, 12, 494, DateTimeKind.Local).AddTicks(2799),
+                            EditedAt = new DateTime(2024, 3, 27, 1, 51, 12, 494, DateTimeKind.Local).AddTicks(2799),
                             IsDeleted = false,
                             Number = "1排10號",
                             SeatAreaId = 5,
@@ -3737,8 +3737,8 @@ namespace Infrastructure.Data.Migrations
                         new
                         {
                             Id = 256,
-                            CreatedAt = new DateTime(2024, 3, 27, 1, 6, 24, 380, DateTimeKind.Local).AddTicks(9077),
-                            EditedAt = new DateTime(2024, 3, 27, 1, 6, 24, 380, DateTimeKind.Local).AddTicks(9077),
+                            CreatedAt = new DateTime(2024, 3, 27, 1, 51, 12, 494, DateTimeKind.Local).AddTicks(2801),
+                            EditedAt = new DateTime(2024, 3, 27, 1, 51, 12, 494, DateTimeKind.Local).AddTicks(2802),
                             IsDeleted = false,
                             Number = "1排11號",
                             SeatAreaId = 5,
@@ -3747,8 +3747,8 @@ namespace Infrastructure.Data.Migrations
                         new
                         {
                             Id = 257,
-                            CreatedAt = new DateTime(2024, 3, 27, 1, 6, 24, 380, DateTimeKind.Local).AddTicks(9110),
-                            EditedAt = new DateTime(2024, 3, 27, 1, 6, 24, 380, DateTimeKind.Local).AddTicks(9111),
+                            CreatedAt = new DateTime(2024, 3, 27, 1, 51, 12, 494, DateTimeKind.Local).AddTicks(2805),
+                            EditedAt = new DateTime(2024, 3, 27, 1, 51, 12, 494, DateTimeKind.Local).AddTicks(2806),
                             IsDeleted = false,
                             Number = "1排12號",
                             SeatAreaId = 5,
@@ -3757,8 +3757,8 @@ namespace Infrastructure.Data.Migrations
                         new
                         {
                             Id = 258,
-                            CreatedAt = new DateTime(2024, 3, 27, 1, 6, 24, 380, DateTimeKind.Local).AddTicks(9113),
-                            EditedAt = new DateTime(2024, 3, 27, 1, 6, 24, 380, DateTimeKind.Local).AddTicks(9114),
+                            CreatedAt = new DateTime(2024, 3, 27, 1, 51, 12, 494, DateTimeKind.Local).AddTicks(2808),
+                            EditedAt = new DateTime(2024, 3, 27, 1, 51, 12, 494, DateTimeKind.Local).AddTicks(2809),
                             IsDeleted = false,
                             Number = "1排13號",
                             SeatAreaId = 5,
@@ -3767,8 +3767,8 @@ namespace Infrastructure.Data.Migrations
                         new
                         {
                             Id = 259,
-                            CreatedAt = new DateTime(2024, 3, 27, 1, 6, 24, 380, DateTimeKind.Local).AddTicks(9116),
-                            EditedAt = new DateTime(2024, 3, 27, 1, 6, 24, 380, DateTimeKind.Local).AddTicks(9117),
+                            CreatedAt = new DateTime(2024, 3, 27, 1, 51, 12, 494, DateTimeKind.Local).AddTicks(2811),
+                            EditedAt = new DateTime(2024, 3, 27, 1, 51, 12, 494, DateTimeKind.Local).AddTicks(2811),
                             IsDeleted = false,
                             Number = "1排14號",
                             SeatAreaId = 5,
@@ -3777,8 +3777,8 @@ namespace Infrastructure.Data.Migrations
                         new
                         {
                             Id = 260,
-                            CreatedAt = new DateTime(2024, 3, 27, 1, 6, 24, 380, DateTimeKind.Local).AddTicks(9119),
-                            EditedAt = new DateTime(2024, 3, 27, 1, 6, 24, 380, DateTimeKind.Local).AddTicks(9120),
+                            CreatedAt = new DateTime(2024, 3, 27, 1, 51, 12, 494, DateTimeKind.Local).AddTicks(2813),
+                            EditedAt = new DateTime(2024, 3, 27, 1, 51, 12, 494, DateTimeKind.Local).AddTicks(2814),
                             IsDeleted = false,
                             Number = "1排15號",
                             SeatAreaId = 5,
@@ -3787,8 +3787,8 @@ namespace Infrastructure.Data.Migrations
                         new
                         {
                             Id = 261,
-                            CreatedAt = new DateTime(2024, 3, 27, 1, 6, 24, 380, DateTimeKind.Local).AddTicks(9122),
-                            EditedAt = new DateTime(2024, 3, 27, 1, 6, 24, 380, DateTimeKind.Local).AddTicks(9123),
+                            CreatedAt = new DateTime(2024, 3, 27, 1, 51, 12, 494, DateTimeKind.Local).AddTicks(2816),
+                            EditedAt = new DateTime(2024, 3, 27, 1, 51, 12, 494, DateTimeKind.Local).AddTicks(2817),
                             IsDeleted = false,
                             Number = "1排16號",
                             SeatAreaId = 5,
@@ -3797,8 +3797,8 @@ namespace Infrastructure.Data.Migrations
                         new
                         {
                             Id = 262,
-                            CreatedAt = new DateTime(2024, 3, 27, 1, 6, 24, 380, DateTimeKind.Local).AddTicks(9125),
-                            EditedAt = new DateTime(2024, 3, 27, 1, 6, 24, 380, DateTimeKind.Local).AddTicks(9125),
+                            CreatedAt = new DateTime(2024, 3, 27, 1, 51, 12, 494, DateTimeKind.Local).AddTicks(2819),
+                            EditedAt = new DateTime(2024, 3, 27, 1, 51, 12, 494, DateTimeKind.Local).AddTicks(2819),
                             IsDeleted = false,
                             Number = "1排17號",
                             SeatAreaId = 5,
@@ -3807,8 +3807,8 @@ namespace Infrastructure.Data.Migrations
                         new
                         {
                             Id = 263,
-                            CreatedAt = new DateTime(2024, 3, 27, 1, 6, 24, 380, DateTimeKind.Local).AddTicks(9128),
-                            EditedAt = new DateTime(2024, 3, 27, 1, 6, 24, 380, DateTimeKind.Local).AddTicks(9128),
+                            CreatedAt = new DateTime(2024, 3, 27, 1, 51, 12, 494, DateTimeKind.Local).AddTicks(2821),
+                            EditedAt = new DateTime(2024, 3, 27, 1, 51, 12, 494, DateTimeKind.Local).AddTicks(2822),
                             IsDeleted = false,
                             Number = "2排1號",
                             SeatAreaId = 5,
@@ -3817,8 +3817,8 @@ namespace Infrastructure.Data.Migrations
                         new
                         {
                             Id = 264,
-                            CreatedAt = new DateTime(2024, 3, 27, 1, 6, 24, 380, DateTimeKind.Local).AddTicks(9132),
-                            EditedAt = new DateTime(2024, 3, 27, 1, 6, 24, 380, DateTimeKind.Local).AddTicks(9133),
+                            CreatedAt = new DateTime(2024, 3, 27, 1, 51, 12, 494, DateTimeKind.Local).AddTicks(2824),
+                            EditedAt = new DateTime(2024, 3, 27, 1, 51, 12, 494, DateTimeKind.Local).AddTicks(2825),
                             IsDeleted = false,
                             Number = "2排2號",
                             SeatAreaId = 5,
@@ -3827,8 +3827,8 @@ namespace Infrastructure.Data.Migrations
                         new
                         {
                             Id = 265,
-                            CreatedAt = new DateTime(2024, 3, 27, 1, 6, 24, 380, DateTimeKind.Local).AddTicks(9135),
-                            EditedAt = new DateTime(2024, 3, 27, 1, 6, 24, 380, DateTimeKind.Local).AddTicks(9135),
+                            CreatedAt = new DateTime(2024, 3, 27, 1, 51, 12, 494, DateTimeKind.Local).AddTicks(2827),
+                            EditedAt = new DateTime(2024, 3, 27, 1, 51, 12, 494, DateTimeKind.Local).AddTicks(2827),
                             IsDeleted = false,
                             Number = "2排3號",
                             SeatAreaId = 5,
@@ -3837,8 +3837,8 @@ namespace Infrastructure.Data.Migrations
                         new
                         {
                             Id = 266,
-                            CreatedAt = new DateTime(2024, 3, 27, 1, 6, 24, 380, DateTimeKind.Local).AddTicks(9138),
-                            EditedAt = new DateTime(2024, 3, 27, 1, 6, 24, 380, DateTimeKind.Local).AddTicks(9138),
+                            CreatedAt = new DateTime(2024, 3, 27, 1, 51, 12, 494, DateTimeKind.Local).AddTicks(2829),
+                            EditedAt = new DateTime(2024, 3, 27, 1, 51, 12, 494, DateTimeKind.Local).AddTicks(2830),
                             IsDeleted = false,
                             Number = "2排4號",
                             SeatAreaId = 5,
@@ -3847,8 +3847,8 @@ namespace Infrastructure.Data.Migrations
                         new
                         {
                             Id = 267,
-                            CreatedAt = new DateTime(2024, 3, 27, 1, 6, 24, 380, DateTimeKind.Local).AddTicks(9140),
-                            EditedAt = new DateTime(2024, 3, 27, 1, 6, 24, 380, DateTimeKind.Local).AddTicks(9141),
+                            CreatedAt = new DateTime(2024, 3, 27, 1, 51, 12, 494, DateTimeKind.Local).AddTicks(2832),
+                            EditedAt = new DateTime(2024, 3, 27, 1, 51, 12, 494, DateTimeKind.Local).AddTicks(2832),
                             IsDeleted = false,
                             Number = "2排5號",
                             SeatAreaId = 5,
@@ -3857,8 +3857,8 @@ namespace Infrastructure.Data.Migrations
                         new
                         {
                             Id = 268,
-                            CreatedAt = new DateTime(2024, 3, 27, 1, 6, 24, 380, DateTimeKind.Local).AddTicks(9143),
-                            EditedAt = new DateTime(2024, 3, 27, 1, 6, 24, 380, DateTimeKind.Local).AddTicks(9144),
+                            CreatedAt = new DateTime(2024, 3, 27, 1, 51, 12, 494, DateTimeKind.Local).AddTicks(2835),
+                            EditedAt = new DateTime(2024, 3, 27, 1, 51, 12, 494, DateTimeKind.Local).AddTicks(2835),
                             IsDeleted = false,
                             Number = "2排6號",
                             SeatAreaId = 5,
@@ -3867,8 +3867,8 @@ namespace Infrastructure.Data.Migrations
                         new
                         {
                             Id = 269,
-                            CreatedAt = new DateTime(2024, 3, 27, 1, 6, 24, 380, DateTimeKind.Local).AddTicks(9146),
-                            EditedAt = new DateTime(2024, 3, 27, 1, 6, 24, 380, DateTimeKind.Local).AddTicks(9147),
+                            CreatedAt = new DateTime(2024, 3, 27, 1, 51, 12, 494, DateTimeKind.Local).AddTicks(2837),
+                            EditedAt = new DateTime(2024, 3, 27, 1, 51, 12, 494, DateTimeKind.Local).AddTicks(2838),
                             IsDeleted = false,
                             Number = "2排7號",
                             SeatAreaId = 5,
@@ -3877,8 +3877,8 @@ namespace Infrastructure.Data.Migrations
                         new
                         {
                             Id = 270,
-                            CreatedAt = new DateTime(2024, 3, 27, 1, 6, 24, 380, DateTimeKind.Local).AddTicks(9149),
-                            EditedAt = new DateTime(2024, 3, 27, 1, 6, 24, 380, DateTimeKind.Local).AddTicks(9149),
+                            CreatedAt = new DateTime(2024, 3, 27, 1, 51, 12, 494, DateTimeKind.Local).AddTicks(2841),
+                            EditedAt = new DateTime(2024, 3, 27, 1, 51, 12, 494, DateTimeKind.Local).AddTicks(2842),
                             IsDeleted = false,
                             Number = "2排8號",
                             SeatAreaId = 5,
@@ -3887,8 +3887,8 @@ namespace Infrastructure.Data.Migrations
                         new
                         {
                             Id = 271,
-                            CreatedAt = new DateTime(2024, 3, 27, 1, 6, 24, 380, DateTimeKind.Local).AddTicks(9151),
-                            EditedAt = new DateTime(2024, 3, 27, 1, 6, 24, 380, DateTimeKind.Local).AddTicks(9152),
+                            CreatedAt = new DateTime(2024, 3, 27, 1, 51, 12, 494, DateTimeKind.Local).AddTicks(2844),
+                            EditedAt = new DateTime(2024, 3, 27, 1, 51, 12, 494, DateTimeKind.Local).AddTicks(2844),
                             IsDeleted = false,
                             Number = "2排9號",
                             SeatAreaId = 5,
@@ -3897,8 +3897,8 @@ namespace Infrastructure.Data.Migrations
                         new
                         {
                             Id = 272,
-                            CreatedAt = new DateTime(2024, 3, 27, 1, 6, 24, 380, DateTimeKind.Local).AddTicks(9154),
-                            EditedAt = new DateTime(2024, 3, 27, 1, 6, 24, 380, DateTimeKind.Local).AddTicks(9155),
+                            CreatedAt = new DateTime(2024, 3, 27, 1, 51, 12, 494, DateTimeKind.Local).AddTicks(2846),
+                            EditedAt = new DateTime(2024, 3, 27, 1, 51, 12, 494, DateTimeKind.Local).AddTicks(2847),
                             IsDeleted = false,
                             Number = "2排10號",
                             SeatAreaId = 5,
@@ -3907,8 +3907,8 @@ namespace Infrastructure.Data.Migrations
                         new
                         {
                             Id = 273,
-                            CreatedAt = new DateTime(2024, 3, 27, 1, 6, 24, 380, DateTimeKind.Local).AddTicks(9157),
-                            EditedAt = new DateTime(2024, 3, 27, 1, 6, 24, 380, DateTimeKind.Local).AddTicks(9158),
+                            CreatedAt = new DateTime(2024, 3, 27, 1, 51, 12, 494, DateTimeKind.Local).AddTicks(2849),
+                            EditedAt = new DateTime(2024, 3, 27, 1, 51, 12, 494, DateTimeKind.Local).AddTicks(2850),
                             IsDeleted = false,
                             Number = "2排11號",
                             SeatAreaId = 5,
@@ -3917,8 +3917,8 @@ namespace Infrastructure.Data.Migrations
                         new
                         {
                             Id = 274,
-                            CreatedAt = new DateTime(2024, 3, 27, 1, 6, 24, 380, DateTimeKind.Local).AddTicks(9160),
-                            EditedAt = new DateTime(2024, 3, 27, 1, 6, 24, 380, DateTimeKind.Local).AddTicks(9160),
+                            CreatedAt = new DateTime(2024, 3, 27, 1, 51, 12, 494, DateTimeKind.Local).AddTicks(2852),
+                            EditedAt = new DateTime(2024, 3, 27, 1, 51, 12, 494, DateTimeKind.Local).AddTicks(2853),
                             IsDeleted = false,
                             Number = "2排12號",
                             SeatAreaId = 5,
@@ -3927,8 +3927,8 @@ namespace Infrastructure.Data.Migrations
                         new
                         {
                             Id = 275,
-                            CreatedAt = new DateTime(2024, 3, 27, 1, 6, 24, 380, DateTimeKind.Local).AddTicks(9162),
-                            EditedAt = new DateTime(2024, 3, 27, 1, 6, 24, 380, DateTimeKind.Local).AddTicks(9163),
+                            CreatedAt = new DateTime(2024, 3, 27, 1, 51, 12, 494, DateTimeKind.Local).AddTicks(2855),
+                            EditedAt = new DateTime(2024, 3, 27, 1, 51, 12, 494, DateTimeKind.Local).AddTicks(2855),
                             IsDeleted = false,
                             Number = "2排13號",
                             SeatAreaId = 5,
@@ -3937,8 +3937,8 @@ namespace Infrastructure.Data.Migrations
                         new
                         {
                             Id = 276,
-                            CreatedAt = new DateTime(2024, 3, 27, 1, 6, 24, 380, DateTimeKind.Local).AddTicks(9165),
-                            EditedAt = new DateTime(2024, 3, 27, 1, 6, 24, 380, DateTimeKind.Local).AddTicks(9166),
+                            CreatedAt = new DateTime(2024, 3, 27, 1, 51, 12, 494, DateTimeKind.Local).AddTicks(2857),
+                            EditedAt = new DateTime(2024, 3, 27, 1, 51, 12, 494, DateTimeKind.Local).AddTicks(2858),
                             IsDeleted = false,
                             Number = "2排14號",
                             SeatAreaId = 5,
@@ -3947,8 +3947,8 @@ namespace Infrastructure.Data.Migrations
                         new
                         {
                             Id = 277,
-                            CreatedAt = new DateTime(2024, 3, 27, 1, 6, 24, 380, DateTimeKind.Local).AddTicks(9168),
-                            EditedAt = new DateTime(2024, 3, 27, 1, 6, 24, 380, DateTimeKind.Local).AddTicks(9169),
+                            CreatedAt = new DateTime(2024, 3, 27, 1, 51, 12, 494, DateTimeKind.Local).AddTicks(2860),
+                            EditedAt = new DateTime(2024, 3, 27, 1, 51, 12, 494, DateTimeKind.Local).AddTicks(2861),
                             IsDeleted = false,
                             Number = "2排15號",
                             SeatAreaId = 5,
@@ -3957,8 +3957,8 @@ namespace Infrastructure.Data.Migrations
                         new
                         {
                             Id = 278,
-                            CreatedAt = new DateTime(2024, 3, 27, 1, 6, 24, 380, DateTimeKind.Local).AddTicks(9171),
-                            EditedAt = new DateTime(2024, 3, 27, 1, 6, 24, 380, DateTimeKind.Local).AddTicks(9171),
+                            CreatedAt = new DateTime(2024, 3, 27, 1, 51, 12, 494, DateTimeKind.Local).AddTicks(2863),
+                            EditedAt = new DateTime(2024, 3, 27, 1, 51, 12, 494, DateTimeKind.Local).AddTicks(2863),
                             IsDeleted = false,
                             Number = "2排16號",
                             SeatAreaId = 5,
@@ -3967,8 +3967,8 @@ namespace Infrastructure.Data.Migrations
                         new
                         {
                             Id = 279,
-                            CreatedAt = new DateTime(2024, 3, 27, 1, 6, 24, 380, DateTimeKind.Local).AddTicks(9174),
-                            EditedAt = new DateTime(2024, 3, 27, 1, 6, 24, 380, DateTimeKind.Local).AddTicks(9174),
+                            CreatedAt = new DateTime(2024, 3, 27, 1, 51, 12, 494, DateTimeKind.Local).AddTicks(2865),
+                            EditedAt = new DateTime(2024, 3, 27, 1, 51, 12, 494, DateTimeKind.Local).AddTicks(2866),
                             IsDeleted = false,
                             Number = "2排17號",
                             SeatAreaId = 5,
@@ -3977,8 +3977,8 @@ namespace Infrastructure.Data.Migrations
                         new
                         {
                             Id = 280,
-                            CreatedAt = new DateTime(2024, 3, 27, 1, 6, 24, 380, DateTimeKind.Local).AddTicks(9176),
-                            EditedAt = new DateTime(2024, 3, 27, 1, 6, 24, 380, DateTimeKind.Local).AddTicks(9177),
+                            CreatedAt = new DateTime(2024, 3, 27, 1, 51, 12, 494, DateTimeKind.Local).AddTicks(2899),
+                            EditedAt = new DateTime(2024, 3, 27, 1, 51, 12, 494, DateTimeKind.Local).AddTicks(2899),
                             IsDeleted = false,
                             Number = "3排1號",
                             SeatAreaId = 5,
@@ -3987,8 +3987,8 @@ namespace Infrastructure.Data.Migrations
                         new
                         {
                             Id = 281,
-                            CreatedAt = new DateTime(2024, 3, 27, 1, 6, 24, 380, DateTimeKind.Local).AddTicks(9179),
-                            EditedAt = new DateTime(2024, 3, 27, 1, 6, 24, 380, DateTimeKind.Local).AddTicks(9180),
+                            CreatedAt = new DateTime(2024, 3, 27, 1, 51, 12, 494, DateTimeKind.Local).AddTicks(2903),
+                            EditedAt = new DateTime(2024, 3, 27, 1, 51, 12, 494, DateTimeKind.Local).AddTicks(2903),
                             IsDeleted = false,
                             Number = "3排2號",
                             SeatAreaId = 5,
@@ -3997,8 +3997,8 @@ namespace Infrastructure.Data.Migrations
                         new
                         {
                             Id = 282,
-                            CreatedAt = new DateTime(2024, 3, 27, 1, 6, 24, 380, DateTimeKind.Local).AddTicks(9182),
-                            EditedAt = new DateTime(2024, 3, 27, 1, 6, 24, 380, DateTimeKind.Local).AddTicks(9182),
+                            CreatedAt = new DateTime(2024, 3, 27, 1, 51, 12, 494, DateTimeKind.Local).AddTicks(2906),
+                            EditedAt = new DateTime(2024, 3, 27, 1, 51, 12, 494, DateTimeKind.Local).AddTicks(2906),
                             IsDeleted = false,
                             Number = "3排3號",
                             SeatAreaId = 5,
@@ -4007,8 +4007,8 @@ namespace Infrastructure.Data.Migrations
                         new
                         {
                             Id = 283,
-                            CreatedAt = new DateTime(2024, 3, 27, 1, 6, 24, 380, DateTimeKind.Local).AddTicks(9185),
-                            EditedAt = new DateTime(2024, 3, 27, 1, 6, 24, 380, DateTimeKind.Local).AddTicks(9185),
+                            CreatedAt = new DateTime(2024, 3, 27, 1, 51, 12, 494, DateTimeKind.Local).AddTicks(2908),
+                            EditedAt = new DateTime(2024, 3, 27, 1, 51, 12, 494, DateTimeKind.Local).AddTicks(2909),
                             IsDeleted = false,
                             Number = "3排4號",
                             SeatAreaId = 5,
@@ -4017,8 +4017,8 @@ namespace Infrastructure.Data.Migrations
                         new
                         {
                             Id = 284,
-                            CreatedAt = new DateTime(2024, 3, 27, 1, 6, 24, 380, DateTimeKind.Local).AddTicks(9187),
-                            EditedAt = new DateTime(2024, 3, 27, 1, 6, 24, 380, DateTimeKind.Local).AddTicks(9188),
+                            CreatedAt = new DateTime(2024, 3, 27, 1, 51, 12, 494, DateTimeKind.Local).AddTicks(2911),
+                            EditedAt = new DateTime(2024, 3, 27, 1, 51, 12, 494, DateTimeKind.Local).AddTicks(2912),
                             IsDeleted = false,
                             Number = "3排5號",
                             SeatAreaId = 5,
@@ -4027,8 +4027,8 @@ namespace Infrastructure.Data.Migrations
                         new
                         {
                             Id = 285,
-                            CreatedAt = new DateTime(2024, 3, 27, 1, 6, 24, 380, DateTimeKind.Local).AddTicks(9190),
-                            EditedAt = new DateTime(2024, 3, 27, 1, 6, 24, 380, DateTimeKind.Local).AddTicks(9191),
+                            CreatedAt = new DateTime(2024, 3, 27, 1, 51, 12, 494, DateTimeKind.Local).AddTicks(2914),
+                            EditedAt = new DateTime(2024, 3, 27, 1, 51, 12, 494, DateTimeKind.Local).AddTicks(2915),
                             IsDeleted = false,
                             Number = "3排6號",
                             SeatAreaId = 5,
@@ -4037,8 +4037,8 @@ namespace Infrastructure.Data.Migrations
                         new
                         {
                             Id = 286,
-                            CreatedAt = new DateTime(2024, 3, 27, 1, 6, 24, 380, DateTimeKind.Local).AddTicks(9193),
-                            EditedAt = new DateTime(2024, 3, 27, 1, 6, 24, 380, DateTimeKind.Local).AddTicks(9193),
+                            CreatedAt = new DateTime(2024, 3, 27, 1, 51, 12, 494, DateTimeKind.Local).AddTicks(2917),
+                            EditedAt = new DateTime(2024, 3, 27, 1, 51, 12, 494, DateTimeKind.Local).AddTicks(2918),
                             IsDeleted = false,
                             Number = "3排7號",
                             SeatAreaId = 5,
@@ -4047,8 +4047,8 @@ namespace Infrastructure.Data.Migrations
                         new
                         {
                             Id = 287,
-                            CreatedAt = new DateTime(2024, 3, 27, 1, 6, 24, 380, DateTimeKind.Local).AddTicks(9195),
-                            EditedAt = new DateTime(2024, 3, 27, 1, 6, 24, 380, DateTimeKind.Local).AddTicks(9196),
+                            CreatedAt = new DateTime(2024, 3, 27, 1, 51, 12, 494, DateTimeKind.Local).AddTicks(2920),
+                            EditedAt = new DateTime(2024, 3, 27, 1, 51, 12, 494, DateTimeKind.Local).AddTicks(2920),
                             IsDeleted = false,
                             Number = "3排8號",
                             SeatAreaId = 5,
@@ -4057,8 +4057,8 @@ namespace Infrastructure.Data.Migrations
                         new
                         {
                             Id = 288,
-                            CreatedAt = new DateTime(2024, 3, 27, 1, 6, 24, 380, DateTimeKind.Local).AddTicks(9198),
-                            EditedAt = new DateTime(2024, 3, 27, 1, 6, 24, 380, DateTimeKind.Local).AddTicks(9199),
+                            CreatedAt = new DateTime(2024, 3, 27, 1, 51, 12, 494, DateTimeKind.Local).AddTicks(2922),
+                            EditedAt = new DateTime(2024, 3, 27, 1, 51, 12, 494, DateTimeKind.Local).AddTicks(2923),
                             IsDeleted = false,
                             Number = "3排9號",
                             SeatAreaId = 5,
@@ -4067,8 +4067,8 @@ namespace Infrastructure.Data.Migrations
                         new
                         {
                             Id = 289,
-                            CreatedAt = new DateTime(2024, 3, 27, 1, 6, 24, 380, DateTimeKind.Local).AddTicks(9201),
-                            EditedAt = new DateTime(2024, 3, 27, 1, 6, 24, 380, DateTimeKind.Local).AddTicks(9201),
+                            CreatedAt = new DateTime(2024, 3, 27, 1, 51, 12, 494, DateTimeKind.Local).AddTicks(2925),
+                            EditedAt = new DateTime(2024, 3, 27, 1, 51, 12, 494, DateTimeKind.Local).AddTicks(2926),
                             IsDeleted = false,
                             Number = "3排10號",
                             SeatAreaId = 5,
@@ -4077,8 +4077,8 @@ namespace Infrastructure.Data.Migrations
                         new
                         {
                             Id = 290,
-                            CreatedAt = new DateTime(2024, 3, 27, 1, 6, 24, 380, DateTimeKind.Local).AddTicks(9204),
-                            EditedAt = new DateTime(2024, 3, 27, 1, 6, 24, 380, DateTimeKind.Local).AddTicks(9204),
+                            CreatedAt = new DateTime(2024, 3, 27, 1, 51, 12, 494, DateTimeKind.Local).AddTicks(2928),
+                            EditedAt = new DateTime(2024, 3, 27, 1, 51, 12, 494, DateTimeKind.Local).AddTicks(2929),
                             IsDeleted = false,
                             Number = "3排11號",
                             SeatAreaId = 5,
@@ -4087,8 +4087,8 @@ namespace Infrastructure.Data.Migrations
                         new
                         {
                             Id = 291,
-                            CreatedAt = new DateTime(2024, 3, 27, 1, 6, 24, 380, DateTimeKind.Local).AddTicks(9206),
-                            EditedAt = new DateTime(2024, 3, 27, 1, 6, 24, 380, DateTimeKind.Local).AddTicks(9207),
+                            CreatedAt = new DateTime(2024, 3, 27, 1, 51, 12, 494, DateTimeKind.Local).AddTicks(2931),
+                            EditedAt = new DateTime(2024, 3, 27, 1, 51, 12, 494, DateTimeKind.Local).AddTicks(2931),
                             IsDeleted = false,
                             Number = "3排12號",
                             SeatAreaId = 5,
@@ -4097,8 +4097,8 @@ namespace Infrastructure.Data.Migrations
                         new
                         {
                             Id = 292,
-                            CreatedAt = new DateTime(2024, 3, 27, 1, 6, 24, 380, DateTimeKind.Local).AddTicks(9209),
-                            EditedAt = new DateTime(2024, 3, 27, 1, 6, 24, 380, DateTimeKind.Local).AddTicks(9210),
+                            CreatedAt = new DateTime(2024, 3, 27, 1, 51, 12, 494, DateTimeKind.Local).AddTicks(2933),
+                            EditedAt = new DateTime(2024, 3, 27, 1, 51, 12, 494, DateTimeKind.Local).AddTicks(2934),
                             IsDeleted = false,
                             Number = "3排13號",
                             SeatAreaId = 5,
@@ -4107,8 +4107,8 @@ namespace Infrastructure.Data.Migrations
                         new
                         {
                             Id = 293,
-                            CreatedAt = new DateTime(2024, 3, 27, 1, 6, 24, 380, DateTimeKind.Local).AddTicks(9212),
-                            EditedAt = new DateTime(2024, 3, 27, 1, 6, 24, 380, DateTimeKind.Local).AddTicks(9212),
+                            CreatedAt = new DateTime(2024, 3, 27, 1, 51, 12, 494, DateTimeKind.Local).AddTicks(2937),
+                            EditedAt = new DateTime(2024, 3, 27, 1, 51, 12, 494, DateTimeKind.Local).AddTicks(2937),
                             IsDeleted = false,
                             Number = "3排14號",
                             SeatAreaId = 5,
@@ -4117,8 +4117,8 @@ namespace Infrastructure.Data.Migrations
                         new
                         {
                             Id = 294,
-                            CreatedAt = new DateTime(2024, 3, 27, 1, 6, 24, 380, DateTimeKind.Local).AddTicks(9214),
-                            EditedAt = new DateTime(2024, 3, 27, 1, 6, 24, 380, DateTimeKind.Local).AddTicks(9215),
+                            CreatedAt = new DateTime(2024, 3, 27, 1, 51, 12, 494, DateTimeKind.Local).AddTicks(2940),
+                            EditedAt = new DateTime(2024, 3, 27, 1, 51, 12, 494, DateTimeKind.Local).AddTicks(2941),
                             IsDeleted = false,
                             Number = "3排16號",
                             SeatAreaId = 5,
@@ -4127,8 +4127,8 @@ namespace Infrastructure.Data.Migrations
                         new
                         {
                             Id = 295,
-                            CreatedAt = new DateTime(2024, 3, 27, 1, 6, 24, 380, DateTimeKind.Local).AddTicks(9217),
-                            EditedAt = new DateTime(2024, 3, 27, 1, 6, 24, 380, DateTimeKind.Local).AddTicks(9218),
+                            CreatedAt = new DateTime(2024, 3, 27, 1, 51, 12, 494, DateTimeKind.Local).AddTicks(2943),
+                            EditedAt = new DateTime(2024, 3, 27, 1, 51, 12, 494, DateTimeKind.Local).AddTicks(2944),
                             IsDeleted = false,
                             Number = "3排17號",
                             SeatAreaId = 5,
@@ -4137,8 +4137,8 @@ namespace Infrastructure.Data.Migrations
                         new
                         {
                             Id = 296,
-                            CreatedAt = new DateTime(2024, 3, 27, 1, 6, 24, 380, DateTimeKind.Local).AddTicks(9220),
-                            EditedAt = new DateTime(2024, 3, 27, 1, 6, 24, 380, DateTimeKind.Local).AddTicks(9220),
+                            CreatedAt = new DateTime(2024, 3, 27, 1, 51, 12, 494, DateTimeKind.Local).AddTicks(2946),
+                            EditedAt = new DateTime(2024, 3, 27, 1, 51, 12, 494, DateTimeKind.Local).AddTicks(2947),
                             IsDeleted = false,
                             Number = "4排1號",
                             SeatAreaId = 5,
@@ -4147,8 +4147,8 @@ namespace Infrastructure.Data.Migrations
                         new
                         {
                             Id = 297,
-                            CreatedAt = new DateTime(2024, 3, 27, 1, 6, 24, 380, DateTimeKind.Local).AddTicks(9222),
-                            EditedAt = new DateTime(2024, 3, 27, 1, 6, 24, 380, DateTimeKind.Local).AddTicks(9223),
+                            CreatedAt = new DateTime(2024, 3, 27, 1, 51, 12, 494, DateTimeKind.Local).AddTicks(2948),
+                            EditedAt = new DateTime(2024, 3, 27, 1, 51, 12, 494, DateTimeKind.Local).AddTicks(2949),
                             IsDeleted = false,
                             Number = "4排2號",
                             SeatAreaId = 5,
@@ -4157,8 +4157,8 @@ namespace Infrastructure.Data.Migrations
                         new
                         {
                             Id = 298,
-                            CreatedAt = new DateTime(2024, 3, 27, 1, 6, 24, 380, DateTimeKind.Local).AddTicks(9225),
-                            EditedAt = new DateTime(2024, 3, 27, 1, 6, 24, 380, DateTimeKind.Local).AddTicks(9226),
+                            CreatedAt = new DateTime(2024, 3, 27, 1, 51, 12, 494, DateTimeKind.Local).AddTicks(2951),
+                            EditedAt = new DateTime(2024, 3, 27, 1, 51, 12, 494, DateTimeKind.Local).AddTicks(2952),
                             IsDeleted = false,
                             Number = "4排3號",
                             SeatAreaId = 5,
@@ -4167,8 +4167,8 @@ namespace Infrastructure.Data.Migrations
                         new
                         {
                             Id = 299,
-                            CreatedAt = new DateTime(2024, 3, 27, 1, 6, 24, 380, DateTimeKind.Local).AddTicks(9228),
-                            EditedAt = new DateTime(2024, 3, 27, 1, 6, 24, 380, DateTimeKind.Local).AddTicks(9228),
+                            CreatedAt = new DateTime(2024, 3, 27, 1, 51, 12, 494, DateTimeKind.Local).AddTicks(2954),
+                            EditedAt = new DateTime(2024, 3, 27, 1, 51, 12, 494, DateTimeKind.Local).AddTicks(2954),
                             IsDeleted = false,
                             Number = "4排4號",
                             SeatAreaId = 5,
@@ -4177,8 +4177,8 @@ namespace Infrastructure.Data.Migrations
                         new
                         {
                             Id = 300,
-                            CreatedAt = new DateTime(2024, 3, 27, 1, 6, 24, 380, DateTimeKind.Local).AddTicks(9230),
-                            EditedAt = new DateTime(2024, 3, 27, 1, 6, 24, 380, DateTimeKind.Local).AddTicks(9231),
+                            CreatedAt = new DateTime(2024, 3, 27, 1, 51, 12, 494, DateTimeKind.Local).AddTicks(2957),
+                            EditedAt = new DateTime(2024, 3, 27, 1, 51, 12, 494, DateTimeKind.Local).AddTicks(2957),
                             IsDeleted = false,
                             Number = "4排5號",
                             SeatAreaId = 5,
@@ -4187,8 +4187,8 @@ namespace Infrastructure.Data.Migrations
                         new
                         {
                             Id = 301,
-                            CreatedAt = new DateTime(2024, 3, 27, 1, 6, 24, 380, DateTimeKind.Local).AddTicks(9233),
-                            EditedAt = new DateTime(2024, 3, 27, 1, 6, 24, 380, DateTimeKind.Local).AddTicks(9234),
+                            CreatedAt = new DateTime(2024, 3, 27, 1, 51, 12, 494, DateTimeKind.Local).AddTicks(2960),
+                            EditedAt = new DateTime(2024, 3, 27, 1, 51, 12, 494, DateTimeKind.Local).AddTicks(2961),
                             IsDeleted = false,
                             Number = "4排6號",
                             SeatAreaId = 5,
@@ -4197,8 +4197,8 @@ namespace Infrastructure.Data.Migrations
                         new
                         {
                             Id = 302,
-                            CreatedAt = new DateTime(2024, 3, 27, 1, 6, 24, 380, DateTimeKind.Local).AddTicks(9236),
-                            EditedAt = new DateTime(2024, 3, 27, 1, 6, 24, 380, DateTimeKind.Local).AddTicks(9236),
+                            CreatedAt = new DateTime(2024, 3, 27, 1, 51, 12, 494, DateTimeKind.Local).AddTicks(2963),
+                            EditedAt = new DateTime(2024, 3, 27, 1, 51, 12, 494, DateTimeKind.Local).AddTicks(2964),
                             IsDeleted = false,
                             Number = "4排7號",
                             SeatAreaId = 5,
@@ -4207,8 +4207,8 @@ namespace Infrastructure.Data.Migrations
                         new
                         {
                             Id = 303,
-                            CreatedAt = new DateTime(2024, 3, 27, 1, 6, 24, 380, DateTimeKind.Local).AddTicks(9239),
-                            EditedAt = new DateTime(2024, 3, 27, 1, 6, 24, 380, DateTimeKind.Local).AddTicks(9239),
+                            CreatedAt = new DateTime(2024, 3, 27, 1, 51, 12, 494, DateTimeKind.Local).AddTicks(2966),
+                            EditedAt = new DateTime(2024, 3, 27, 1, 51, 12, 494, DateTimeKind.Local).AddTicks(2966),
                             IsDeleted = false,
                             Number = "4排8號",
                             SeatAreaId = 5,
@@ -4217,8 +4217,8 @@ namespace Infrastructure.Data.Migrations
                         new
                         {
                             Id = 304,
-                            CreatedAt = new DateTime(2024, 3, 27, 1, 6, 24, 380, DateTimeKind.Local).AddTicks(9241),
-                            EditedAt = new DateTime(2024, 3, 27, 1, 6, 24, 380, DateTimeKind.Local).AddTicks(9242),
+                            CreatedAt = new DateTime(2024, 3, 27, 1, 51, 12, 494, DateTimeKind.Local).AddTicks(2968),
+                            EditedAt = new DateTime(2024, 3, 27, 1, 51, 12, 494, DateTimeKind.Local).AddTicks(2969),
                             IsDeleted = false,
                             Number = "4排9號",
                             SeatAreaId = 5,
@@ -4227,8 +4227,8 @@ namespace Infrastructure.Data.Migrations
                         new
                         {
                             Id = 305,
-                            CreatedAt = new DateTime(2024, 3, 27, 1, 6, 24, 380, DateTimeKind.Local).AddTicks(9244),
-                            EditedAt = new DateTime(2024, 3, 27, 1, 6, 24, 380, DateTimeKind.Local).AddTicks(9245),
+                            CreatedAt = new DateTime(2024, 3, 27, 1, 51, 12, 494, DateTimeKind.Local).AddTicks(2971),
+                            EditedAt = new DateTime(2024, 3, 27, 1, 51, 12, 494, DateTimeKind.Local).AddTicks(2972),
                             IsDeleted = false,
                             Number = "4排10號",
                             SeatAreaId = 5,
@@ -4237,8 +4237,8 @@ namespace Infrastructure.Data.Migrations
                         new
                         {
                             Id = 306,
-                            CreatedAt = new DateTime(2024, 3, 27, 1, 6, 24, 380, DateTimeKind.Local).AddTicks(9247),
-                            EditedAt = new DateTime(2024, 3, 27, 1, 6, 24, 380, DateTimeKind.Local).AddTicks(9247),
+                            CreatedAt = new DateTime(2024, 3, 27, 1, 51, 12, 494, DateTimeKind.Local).AddTicks(2974),
+                            EditedAt = new DateTime(2024, 3, 27, 1, 51, 12, 494, DateTimeKind.Local).AddTicks(2974),
                             IsDeleted = false,
                             Number = "4排11號",
                             SeatAreaId = 5,
@@ -4247,8 +4247,8 @@ namespace Infrastructure.Data.Migrations
                         new
                         {
                             Id = 307,
-                            CreatedAt = new DateTime(2024, 3, 27, 1, 6, 24, 380, DateTimeKind.Local).AddTicks(9249),
-                            EditedAt = new DateTime(2024, 3, 27, 1, 6, 24, 380, DateTimeKind.Local).AddTicks(9250),
+                            CreatedAt = new DateTime(2024, 3, 27, 1, 51, 12, 494, DateTimeKind.Local).AddTicks(2978),
+                            EditedAt = new DateTime(2024, 3, 27, 1, 51, 12, 494, DateTimeKind.Local).AddTicks(2978),
                             IsDeleted = false,
                             Number = "4排12號",
                             SeatAreaId = 5,
@@ -4257,8 +4257,8 @@ namespace Infrastructure.Data.Migrations
                         new
                         {
                             Id = 308,
-                            CreatedAt = new DateTime(2024, 3, 27, 1, 6, 24, 380, DateTimeKind.Local).AddTicks(9252),
-                            EditedAt = new DateTime(2024, 3, 27, 1, 6, 24, 380, DateTimeKind.Local).AddTicks(9253),
+                            CreatedAt = new DateTime(2024, 3, 27, 1, 51, 12, 494, DateTimeKind.Local).AddTicks(2980),
+                            EditedAt = new DateTime(2024, 3, 27, 1, 51, 12, 494, DateTimeKind.Local).AddTicks(2981),
                             IsDeleted = false,
                             Number = "4排13號",
                             SeatAreaId = 5,
@@ -4267,8 +4267,8 @@ namespace Infrastructure.Data.Migrations
                         new
                         {
                             Id = 309,
-                            CreatedAt = new DateTime(2024, 3, 27, 1, 6, 24, 380, DateTimeKind.Local).AddTicks(9255),
-                            EditedAt = new DateTime(2024, 3, 27, 1, 6, 24, 380, DateTimeKind.Local).AddTicks(9255),
+                            CreatedAt = new DateTime(2024, 3, 27, 1, 51, 12, 494, DateTimeKind.Local).AddTicks(2983),
+                            EditedAt = new DateTime(2024, 3, 27, 1, 51, 12, 494, DateTimeKind.Local).AddTicks(2984),
                             IsDeleted = false,
                             Number = "4排15號",
                             SeatAreaId = 5,
@@ -4277,8 +4277,8 @@ namespace Infrastructure.Data.Migrations
                         new
                         {
                             Id = 310,
-                            CreatedAt = new DateTime(2024, 3, 27, 1, 6, 24, 380, DateTimeKind.Local).AddTicks(9257),
-                            EditedAt = new DateTime(2024, 3, 27, 1, 6, 24, 380, DateTimeKind.Local).AddTicks(9258),
+                            CreatedAt = new DateTime(2024, 3, 27, 1, 51, 12, 494, DateTimeKind.Local).AddTicks(2986),
+                            EditedAt = new DateTime(2024, 3, 27, 1, 51, 12, 494, DateTimeKind.Local).AddTicks(2986),
                             IsDeleted = false,
                             Number = "4排16號",
                             SeatAreaId = 5,
@@ -4287,8 +4287,8 @@ namespace Infrastructure.Data.Migrations
                         new
                         {
                             Id = 311,
-                            CreatedAt = new DateTime(2024, 3, 27, 1, 6, 24, 380, DateTimeKind.Local).AddTicks(9260),
-                            EditedAt = new DateTime(2024, 3, 27, 1, 6, 24, 380, DateTimeKind.Local).AddTicks(9261),
+                            CreatedAt = new DateTime(2024, 3, 27, 1, 51, 12, 494, DateTimeKind.Local).AddTicks(2989),
+                            EditedAt = new DateTime(2024, 3, 27, 1, 51, 12, 494, DateTimeKind.Local).AddTicks(2989),
                             IsDeleted = false,
                             Number = "4排17號",
                             SeatAreaId = 5,
@@ -4297,8 +4297,8 @@ namespace Infrastructure.Data.Migrations
                         new
                         {
                             Id = 312,
-                            CreatedAt = new DateTime(2024, 3, 27, 1, 6, 24, 380, DateTimeKind.Local).AddTicks(9263),
-                            EditedAt = new DateTime(2024, 3, 27, 1, 6, 24, 380, DateTimeKind.Local).AddTicks(9263),
+                            CreatedAt = new DateTime(2024, 3, 27, 1, 51, 12, 494, DateTimeKind.Local).AddTicks(2992),
+                            EditedAt = new DateTime(2024, 3, 27, 1, 51, 12, 494, DateTimeKind.Local).AddTicks(2993),
                             IsDeleted = false,
                             Number = "5排1號",
                             SeatAreaId = 5,
@@ -4307,8 +4307,8 @@ namespace Infrastructure.Data.Migrations
                         new
                         {
                             Id = 313,
-                            CreatedAt = new DateTime(2024, 3, 27, 1, 6, 24, 380, DateTimeKind.Local).AddTicks(9265),
-                            EditedAt = new DateTime(2024, 3, 27, 1, 6, 24, 380, DateTimeKind.Local).AddTicks(9266),
+                            CreatedAt = new DateTime(2024, 3, 27, 1, 51, 12, 494, DateTimeKind.Local).AddTicks(2995),
+                            EditedAt = new DateTime(2024, 3, 27, 1, 51, 12, 494, DateTimeKind.Local).AddTicks(2996),
                             IsDeleted = false,
                             Number = "5排2號",
                             SeatAreaId = 5,
@@ -4317,8 +4317,8 @@ namespace Infrastructure.Data.Migrations
                         new
                         {
                             Id = 314,
-                            CreatedAt = new DateTime(2024, 3, 27, 1, 6, 24, 380, DateTimeKind.Local).AddTicks(9268),
-                            EditedAt = new DateTime(2024, 3, 27, 1, 6, 24, 380, DateTimeKind.Local).AddTicks(9269),
+                            CreatedAt = new DateTime(2024, 3, 27, 1, 51, 12, 494, DateTimeKind.Local).AddTicks(2997),
+                            EditedAt = new DateTime(2024, 3, 27, 1, 51, 12, 494, DateTimeKind.Local).AddTicks(2998),
                             IsDeleted = false,
                             Number = "5排3號",
                             SeatAreaId = 5,
@@ -4327,8 +4327,8 @@ namespace Infrastructure.Data.Migrations
                         new
                         {
                             Id = 315,
-                            CreatedAt = new DateTime(2024, 3, 27, 1, 6, 24, 380, DateTimeKind.Local).AddTicks(9271),
-                            EditedAt = new DateTime(2024, 3, 27, 1, 6, 24, 380, DateTimeKind.Local).AddTicks(9271),
+                            CreatedAt = new DateTime(2024, 3, 27, 1, 51, 12, 494, DateTimeKind.Local).AddTicks(3000),
+                            EditedAt = new DateTime(2024, 3, 27, 1, 51, 12, 494, DateTimeKind.Local).AddTicks(3001),
                             IsDeleted = false,
                             Number = "5排4號",
                             SeatAreaId = 5,
@@ -4337,8 +4337,8 @@ namespace Infrastructure.Data.Migrations
                         new
                         {
                             Id = 316,
-                            CreatedAt = new DateTime(2024, 3, 27, 1, 6, 24, 380, DateTimeKind.Local).AddTicks(9274),
-                            EditedAt = new DateTime(2024, 3, 27, 1, 6, 24, 380, DateTimeKind.Local).AddTicks(9274),
+                            CreatedAt = new DateTime(2024, 3, 27, 1, 51, 12, 494, DateTimeKind.Local).AddTicks(3003),
+                            EditedAt = new DateTime(2024, 3, 27, 1, 51, 12, 494, DateTimeKind.Local).AddTicks(3004),
                             IsDeleted = false,
                             Number = "5排5號",
                             SeatAreaId = 5,
@@ -4347,8 +4347,8 @@ namespace Infrastructure.Data.Migrations
                         new
                         {
                             Id = 317,
-                            CreatedAt = new DateTime(2024, 3, 27, 1, 6, 24, 380, DateTimeKind.Local).AddTicks(9276),
-                            EditedAt = new DateTime(2024, 3, 27, 1, 6, 24, 380, DateTimeKind.Local).AddTicks(9277),
+                            CreatedAt = new DateTime(2024, 3, 27, 1, 51, 12, 494, DateTimeKind.Local).AddTicks(3005),
+                            EditedAt = new DateTime(2024, 3, 27, 1, 51, 12, 494, DateTimeKind.Local).AddTicks(3006),
                             IsDeleted = false,
                             Number = "5排6號",
                             SeatAreaId = 5,
@@ -4357,8 +4357,8 @@ namespace Infrastructure.Data.Migrations
                         new
                         {
                             Id = 318,
-                            CreatedAt = new DateTime(2024, 3, 27, 1, 6, 24, 380, DateTimeKind.Local).AddTicks(9279),
-                            EditedAt = new DateTime(2024, 3, 27, 1, 6, 24, 380, DateTimeKind.Local).AddTicks(9280),
+                            CreatedAt = new DateTime(2024, 3, 27, 1, 51, 12, 494, DateTimeKind.Local).AddTicks(3008),
+                            EditedAt = new DateTime(2024, 3, 27, 1, 51, 12, 494, DateTimeKind.Local).AddTicks(3009),
                             IsDeleted = false,
                             Number = "5排7號",
                             SeatAreaId = 5,
@@ -4367,8 +4367,8 @@ namespace Infrastructure.Data.Migrations
                         new
                         {
                             Id = 319,
-                            CreatedAt = new DateTime(2024, 3, 27, 1, 6, 24, 380, DateTimeKind.Local).AddTicks(9282),
-                            EditedAt = new DateTime(2024, 3, 27, 1, 6, 24, 380, DateTimeKind.Local).AddTicks(9282),
+                            CreatedAt = new DateTime(2024, 3, 27, 1, 51, 12, 494, DateTimeKind.Local).AddTicks(3013),
+                            EditedAt = new DateTime(2024, 3, 27, 1, 51, 12, 494, DateTimeKind.Local).AddTicks(3014),
                             IsDeleted = false,
                             Number = "5排8號",
                             SeatAreaId = 5,
@@ -4377,8 +4377,8 @@ namespace Infrastructure.Data.Migrations
                         new
                         {
                             Id = 320,
-                            CreatedAt = new DateTime(2024, 3, 27, 1, 6, 24, 380, DateTimeKind.Local).AddTicks(9284),
-                            EditedAt = new DateTime(2024, 3, 27, 1, 6, 24, 380, DateTimeKind.Local).AddTicks(9285),
+                            CreatedAt = new DateTime(2024, 3, 27, 1, 51, 12, 494, DateTimeKind.Local).AddTicks(3016),
+                            EditedAt = new DateTime(2024, 3, 27, 1, 51, 12, 494, DateTimeKind.Local).AddTicks(3016),
                             IsDeleted = false,
                             Number = "4排5號",
                             SeatAreaId = 6,
@@ -4387,8 +4387,8 @@ namespace Infrastructure.Data.Migrations
                         new
                         {
                             Id = 321,
-                            CreatedAt = new DateTime(2024, 3, 27, 1, 6, 24, 380, DateTimeKind.Local).AddTicks(9287),
-                            EditedAt = new DateTime(2024, 3, 27, 1, 6, 24, 380, DateTimeKind.Local).AddTicks(9288),
+                            CreatedAt = new DateTime(2024, 3, 27, 1, 51, 12, 494, DateTimeKind.Local).AddTicks(3018),
+                            EditedAt = new DateTime(2024, 3, 27, 1, 51, 12, 494, DateTimeKind.Local).AddTicks(3019),
                             IsDeleted = false,
                             Number = "4排6號",
                             SeatAreaId = 6,
@@ -4397,8 +4397,8 @@ namespace Infrastructure.Data.Migrations
                         new
                         {
                             Id = 322,
-                            CreatedAt = new DateTime(2024, 3, 27, 1, 6, 24, 380, DateTimeKind.Local).AddTicks(9290),
-                            EditedAt = new DateTime(2024, 3, 27, 1, 6, 24, 380, DateTimeKind.Local).AddTicks(9290),
+                            CreatedAt = new DateTime(2024, 3, 27, 1, 51, 12, 494, DateTimeKind.Local).AddTicks(3021),
+                            EditedAt = new DateTime(2024, 3, 27, 1, 51, 12, 494, DateTimeKind.Local).AddTicks(3022),
                             IsDeleted = false,
                             Number = "4排7號",
                             SeatAreaId = 6,
@@ -4407,8 +4407,8 @@ namespace Infrastructure.Data.Migrations
                         new
                         {
                             Id = 323,
-                            CreatedAt = new DateTime(2024, 3, 27, 1, 6, 24, 380, DateTimeKind.Local).AddTicks(9293),
-                            EditedAt = new DateTime(2024, 3, 27, 1, 6, 24, 380, DateTimeKind.Local).AddTicks(9293),
+                            CreatedAt = new DateTime(2024, 3, 27, 1, 51, 12, 494, DateTimeKind.Local).AddTicks(3023),
+                            EditedAt = new DateTime(2024, 3, 27, 1, 51, 12, 494, DateTimeKind.Local).AddTicks(3024),
                             IsDeleted = false,
                             Number = "4排8號",
                             SeatAreaId = 6,
@@ -4417,8 +4417,8 @@ namespace Infrastructure.Data.Migrations
                         new
                         {
                             Id = 324,
-                            CreatedAt = new DateTime(2024, 3, 27, 1, 6, 24, 380, DateTimeKind.Local).AddTicks(9295),
-                            EditedAt = new DateTime(2024, 3, 27, 1, 6, 24, 380, DateTimeKind.Local).AddTicks(9296),
+                            CreatedAt = new DateTime(2024, 3, 27, 1, 51, 12, 494, DateTimeKind.Local).AddTicks(3026),
+                            EditedAt = new DateTime(2024, 3, 27, 1, 51, 12, 494, DateTimeKind.Local).AddTicks(3027),
                             IsDeleted = false,
                             Number = "4排9號",
                             SeatAreaId = 6,
@@ -4427,8 +4427,8 @@ namespace Infrastructure.Data.Migrations
                         new
                         {
                             Id = 325,
-                            CreatedAt = new DateTime(2024, 3, 27, 1, 6, 24, 380, DateTimeKind.Local).AddTicks(9298),
-                            EditedAt = new DateTime(2024, 3, 27, 1, 6, 24, 380, DateTimeKind.Local).AddTicks(9299),
+                            CreatedAt = new DateTime(2024, 3, 27, 1, 51, 12, 494, DateTimeKind.Local).AddTicks(3030),
+                            EditedAt = new DateTime(2024, 3, 27, 1, 51, 12, 494, DateTimeKind.Local).AddTicks(3030),
                             IsDeleted = false,
                             Number = "4排10號",
                             SeatAreaId = 6,
@@ -4437,8 +4437,8 @@ namespace Infrastructure.Data.Migrations
                         new
                         {
                             Id = 326,
-                            CreatedAt = new DateTime(2024, 3, 27, 1, 6, 24, 380, DateTimeKind.Local).AddTicks(9301),
-                            EditedAt = new DateTime(2024, 3, 27, 1, 6, 24, 380, DateTimeKind.Local).AddTicks(9301),
+                            CreatedAt = new DateTime(2024, 3, 27, 1, 51, 12, 494, DateTimeKind.Local).AddTicks(3032),
+                            EditedAt = new DateTime(2024, 3, 27, 1, 51, 12, 494, DateTimeKind.Local).AddTicks(3033),
                             IsDeleted = false,
                             Number = "4排11號",
                             SeatAreaId = 6,
@@ -4447,8 +4447,8 @@ namespace Infrastructure.Data.Migrations
                         new
                         {
                             Id = 327,
-                            CreatedAt = new DateTime(2024, 3, 27, 1, 6, 24, 380, DateTimeKind.Local).AddTicks(9303),
-                            EditedAt = new DateTime(2024, 3, 27, 1, 6, 24, 380, DateTimeKind.Local).AddTicks(9304),
+                            CreatedAt = new DateTime(2024, 3, 27, 1, 51, 12, 494, DateTimeKind.Local).AddTicks(3035),
+                            EditedAt = new DateTime(2024, 3, 27, 1, 51, 12, 494, DateTimeKind.Local).AddTicks(3036),
                             IsDeleted = false,
                             Number = "4排12號",
                             SeatAreaId = 6,
@@ -4457,8 +4457,8 @@ namespace Infrastructure.Data.Migrations
                         new
                         {
                             Id = 328,
-                            CreatedAt = new DateTime(2024, 3, 27, 1, 6, 24, 380, DateTimeKind.Local).AddTicks(9306),
-                            EditedAt = new DateTime(2024, 3, 27, 1, 6, 24, 380, DateTimeKind.Local).AddTicks(9307),
+                            CreatedAt = new DateTime(2024, 3, 27, 1, 51, 12, 494, DateTimeKind.Local).AddTicks(3038),
+                            EditedAt = new DateTime(2024, 3, 27, 1, 51, 12, 494, DateTimeKind.Local).AddTicks(3039),
                             IsDeleted = false,
                             Number = "4排13號",
                             SeatAreaId = 6,
@@ -4467,8 +4467,8 @@ namespace Infrastructure.Data.Migrations
                         new
                         {
                             Id = 329,
-                            CreatedAt = new DateTime(2024, 3, 27, 1, 6, 24, 380, DateTimeKind.Local).AddTicks(9309),
-                            EditedAt = new DateTime(2024, 3, 27, 1, 6, 24, 380, DateTimeKind.Local).AddTicks(9310),
+                            CreatedAt = new DateTime(2024, 3, 27, 1, 51, 12, 494, DateTimeKind.Local).AddTicks(3040),
+                            EditedAt = new DateTime(2024, 3, 27, 1, 51, 12, 494, DateTimeKind.Local).AddTicks(3041),
                             IsDeleted = false,
                             Number = "4排14號",
                             SeatAreaId = 6,
@@ -4477,8 +4477,8 @@ namespace Infrastructure.Data.Migrations
                         new
                         {
                             Id = 330,
-                            CreatedAt = new DateTime(2024, 3, 27, 1, 6, 24, 380, DateTimeKind.Local).AddTicks(9341),
-                            EditedAt = new DateTime(2024, 3, 27, 1, 6, 24, 380, DateTimeKind.Local).AddTicks(9342),
+                            CreatedAt = new DateTime(2024, 3, 27, 1, 51, 12, 494, DateTimeKind.Local).AddTicks(3043),
+                            EditedAt = new DateTime(2024, 3, 27, 1, 51, 12, 494, DateTimeKind.Local).AddTicks(3044),
                             IsDeleted = false,
                             Number = "2排2號",
                             SeatAreaId = 7,
@@ -4487,8 +4487,8 @@ namespace Infrastructure.Data.Migrations
                         new
                         {
                             Id = 331,
-                            CreatedAt = new DateTime(2024, 3, 27, 1, 6, 24, 380, DateTimeKind.Local).AddTicks(9345),
-                            EditedAt = new DateTime(2024, 3, 27, 1, 6, 24, 380, DateTimeKind.Local).AddTicks(9346),
+                            CreatedAt = new DateTime(2024, 3, 27, 1, 51, 12, 494, DateTimeKind.Local).AddTicks(3046),
+                            EditedAt = new DateTime(2024, 3, 27, 1, 51, 12, 494, DateTimeKind.Local).AddTicks(3047),
                             IsDeleted = false,
                             Number = "2排3號",
                             SeatAreaId = 7,
@@ -4497,8 +4497,8 @@ namespace Infrastructure.Data.Migrations
                         new
                         {
                             Id = 332,
-                            CreatedAt = new DateTime(2024, 3, 27, 1, 6, 24, 380, DateTimeKind.Local).AddTicks(9348),
-                            EditedAt = new DateTime(2024, 3, 27, 1, 6, 24, 380, DateTimeKind.Local).AddTicks(9348),
+                            CreatedAt = new DateTime(2024, 3, 27, 1, 51, 12, 494, DateTimeKind.Local).AddTicks(3050),
+                            EditedAt = new DateTime(2024, 3, 27, 1, 51, 12, 494, DateTimeKind.Local).AddTicks(3050),
                             IsDeleted = false,
                             Number = "2排4號",
                             SeatAreaId = 7,
@@ -4507,8 +4507,8 @@ namespace Infrastructure.Data.Migrations
                         new
                         {
                             Id = 333,
-                            CreatedAt = new DateTime(2024, 3, 27, 1, 6, 24, 380, DateTimeKind.Local).AddTicks(9350),
-                            EditedAt = new DateTime(2024, 3, 27, 1, 6, 24, 380, DateTimeKind.Local).AddTicks(9351),
+                            CreatedAt = new DateTime(2024, 3, 27, 1, 51, 12, 494, DateTimeKind.Local).AddTicks(3052),
+                            EditedAt = new DateTime(2024, 3, 27, 1, 51, 12, 494, DateTimeKind.Local).AddTicks(3053),
                             IsDeleted = false,
                             Number = "2排5號",
                             SeatAreaId = 7,
@@ -4517,8 +4517,8 @@ namespace Infrastructure.Data.Migrations
                         new
                         {
                             Id = 334,
-                            CreatedAt = new DateTime(2024, 3, 27, 1, 6, 24, 380, DateTimeKind.Local).AddTicks(9353),
-                            EditedAt = new DateTime(2024, 3, 27, 1, 6, 24, 380, DateTimeKind.Local).AddTicks(9354),
+                            CreatedAt = new DateTime(2024, 3, 27, 1, 51, 12, 494, DateTimeKind.Local).AddTicks(3055),
+                            EditedAt = new DateTime(2024, 3, 27, 1, 51, 12, 494, DateTimeKind.Local).AddTicks(3056),
                             IsDeleted = false,
                             Number = "2排6號",
                             SeatAreaId = 7,
@@ -4527,8 +4527,8 @@ namespace Infrastructure.Data.Migrations
                         new
                         {
                             Id = 335,
-                            CreatedAt = new DateTime(2024, 3, 27, 1, 6, 24, 380, DateTimeKind.Local).AddTicks(9356),
-                            EditedAt = new DateTime(2024, 3, 27, 1, 6, 24, 380, DateTimeKind.Local).AddTicks(9357),
+                            CreatedAt = new DateTime(2024, 3, 27, 1, 51, 12, 494, DateTimeKind.Local).AddTicks(3058),
+                            EditedAt = new DateTime(2024, 3, 27, 1, 51, 12, 494, DateTimeKind.Local).AddTicks(3058),
                             IsDeleted = false,
                             Number = "2排7號",
                             SeatAreaId = 7,
@@ -4537,8 +4537,8 @@ namespace Infrastructure.Data.Migrations
                         new
                         {
                             Id = 336,
-                            CreatedAt = new DateTime(2024, 3, 27, 1, 6, 24, 380, DateTimeKind.Local).AddTicks(9359),
-                            EditedAt = new DateTime(2024, 3, 27, 1, 6, 24, 380, DateTimeKind.Local).AddTicks(9359),
+                            CreatedAt = new DateTime(2024, 3, 27, 1, 51, 12, 494, DateTimeKind.Local).AddTicks(3060),
+                            EditedAt = new DateTime(2024, 3, 27, 1, 51, 12, 494, DateTimeKind.Local).AddTicks(3061),
                             IsDeleted = false,
                             Number = "2排8號",
                             SeatAreaId = 7,
@@ -4547,8 +4547,8 @@ namespace Infrastructure.Data.Migrations
                         new
                         {
                             Id = 337,
-                            CreatedAt = new DateTime(2024, 3, 27, 1, 6, 24, 380, DateTimeKind.Local).AddTicks(9361),
-                            EditedAt = new DateTime(2024, 3, 27, 1, 6, 24, 380, DateTimeKind.Local).AddTicks(9362),
+                            CreatedAt = new DateTime(2024, 3, 27, 1, 51, 12, 494, DateTimeKind.Local).AddTicks(3063),
+                            EditedAt = new DateTime(2024, 3, 27, 1, 51, 12, 494, DateTimeKind.Local).AddTicks(3064),
                             IsDeleted = false,
                             Number = "2排9號",
                             SeatAreaId = 7,
@@ -4557,8 +4557,8 @@ namespace Infrastructure.Data.Migrations
                         new
                         {
                             Id = 338,
-                            CreatedAt = new DateTime(2024, 3, 27, 1, 6, 24, 380, DateTimeKind.Local).AddTicks(9364),
-                            EditedAt = new DateTime(2024, 3, 27, 1, 6, 24, 380, DateTimeKind.Local).AddTicks(9366),
+                            CreatedAt = new DateTime(2024, 3, 27, 1, 51, 12, 494, DateTimeKind.Local).AddTicks(3065),
+                            EditedAt = new DateTime(2024, 3, 27, 1, 51, 12, 494, DateTimeKind.Local).AddTicks(3066),
                             IsDeleted = false,
                             Number = "2排10號",
                             SeatAreaId = 7,
@@ -4567,8 +4567,8 @@ namespace Infrastructure.Data.Migrations
                         new
                         {
                             Id = 339,
-                            CreatedAt = new DateTime(2024, 3, 27, 1, 6, 24, 380, DateTimeKind.Local).AddTicks(9368),
-                            EditedAt = new DateTime(2024, 3, 27, 1, 6, 24, 380, DateTimeKind.Local).AddTicks(9368),
+                            CreatedAt = new DateTime(2024, 3, 27, 1, 51, 12, 494, DateTimeKind.Local).AddTicks(3068),
+                            EditedAt = new DateTime(2024, 3, 27, 1, 51, 12, 494, DateTimeKind.Local).AddTicks(3069),
                             IsDeleted = false,
                             Number = "2排11號",
                             SeatAreaId = 7,
@@ -4577,8 +4577,8 @@ namespace Infrastructure.Data.Migrations
                         new
                         {
                             Id = 340,
-                            CreatedAt = new DateTime(2024, 3, 27, 1, 6, 24, 380, DateTimeKind.Local).AddTicks(9370),
-                            EditedAt = new DateTime(2024, 3, 27, 1, 6, 24, 380, DateTimeKind.Local).AddTicks(9371),
+                            CreatedAt = new DateTime(2024, 3, 27, 1, 51, 12, 494, DateTimeKind.Local).AddTicks(3071),
+                            EditedAt = new DateTime(2024, 3, 27, 1, 51, 12, 494, DateTimeKind.Local).AddTicks(3072),
                             IsDeleted = false,
                             Number = "4排10號",
                             SeatAreaId = 7,
@@ -4587,8 +4587,8 @@ namespace Infrastructure.Data.Migrations
                         new
                         {
                             Id = 341,
-                            CreatedAt = new DateTime(2024, 3, 27, 1, 6, 24, 380, DateTimeKind.Local).AddTicks(9373),
-                            EditedAt = new DateTime(2024, 3, 27, 1, 6, 24, 380, DateTimeKind.Local).AddTicks(9374),
+                            CreatedAt = new DateTime(2024, 3, 27, 1, 51, 12, 494, DateTimeKind.Local).AddTicks(3074),
+                            EditedAt = new DateTime(2024, 3, 27, 1, 51, 12, 494, DateTimeKind.Local).AddTicks(3074),
                             IsDeleted = false,
                             Number = "4排11號",
                             SeatAreaId = 7,
@@ -4597,8 +4597,8 @@ namespace Infrastructure.Data.Migrations
                         new
                         {
                             Id = 342,
-                            CreatedAt = new DateTime(2024, 3, 27, 1, 6, 24, 380, DateTimeKind.Local).AddTicks(9376),
-                            EditedAt = new DateTime(2024, 3, 27, 1, 6, 24, 380, DateTimeKind.Local).AddTicks(9376),
+                            CreatedAt = new DateTime(2024, 3, 27, 1, 51, 12, 494, DateTimeKind.Local).AddTicks(3076),
+                            EditedAt = new DateTime(2024, 3, 27, 1, 51, 12, 494, DateTimeKind.Local).AddTicks(3077),
                             IsDeleted = false,
                             Number = "4排12號",
                             SeatAreaId = 7,
@@ -4607,8 +4607,8 @@ namespace Infrastructure.Data.Migrations
                         new
                         {
                             Id = 343,
-                            CreatedAt = new DateTime(2024, 3, 27, 1, 6, 24, 380, DateTimeKind.Local).AddTicks(9378),
-                            EditedAt = new DateTime(2024, 3, 27, 1, 6, 24, 380, DateTimeKind.Local).AddTicks(9379),
+                            CreatedAt = new DateTime(2024, 3, 27, 1, 51, 12, 494, DateTimeKind.Local).AddTicks(3079),
+                            EditedAt = new DateTime(2024, 3, 27, 1, 51, 12, 494, DateTimeKind.Local).AddTicks(3080),
                             IsDeleted = false,
                             Number = "4排13號",
                             SeatAreaId = 7,
@@ -4617,8 +4617,8 @@ namespace Infrastructure.Data.Migrations
                         new
                         {
                             Id = 344,
-                            CreatedAt = new DateTime(2024, 3, 27, 1, 6, 24, 380, DateTimeKind.Local).AddTicks(9381),
-                            EditedAt = new DateTime(2024, 3, 27, 1, 6, 24, 380, DateTimeKind.Local).AddTicks(9382),
+                            CreatedAt = new DateTime(2024, 3, 27, 1, 51, 12, 494, DateTimeKind.Local).AddTicks(3083),
+                            EditedAt = new DateTime(2024, 3, 27, 1, 51, 12, 494, DateTimeKind.Local).AddTicks(3083),
                             IsDeleted = false,
                             Number = "4排14號",
                             SeatAreaId = 7,
@@ -4627,8 +4627,8 @@ namespace Infrastructure.Data.Migrations
                         new
                         {
                             Id = 345,
-                            CreatedAt = new DateTime(2024, 3, 27, 1, 6, 24, 380, DateTimeKind.Local).AddTicks(9384),
-                            EditedAt = new DateTime(2024, 3, 27, 1, 6, 24, 380, DateTimeKind.Local).AddTicks(9384),
+                            CreatedAt = new DateTime(2024, 3, 27, 1, 51, 12, 494, DateTimeKind.Local).AddTicks(3085),
+                            EditedAt = new DateTime(2024, 3, 27, 1, 51, 12, 494, DateTimeKind.Local).AddTicks(3086),
                             IsDeleted = false,
                             Number = "4排15號",
                             SeatAreaId = 7,
@@ -4637,8 +4637,8 @@ namespace Infrastructure.Data.Migrations
                         new
                         {
                             Id = 346,
-                            CreatedAt = new DateTime(2024, 3, 27, 1, 6, 24, 380, DateTimeKind.Local).AddTicks(9386),
-                            EditedAt = new DateTime(2024, 3, 27, 1, 6, 24, 380, DateTimeKind.Local).AddTicks(9387),
+                            CreatedAt = new DateTime(2024, 3, 27, 1, 51, 12, 494, DateTimeKind.Local).AddTicks(3088),
+                            EditedAt = new DateTime(2024, 3, 27, 1, 51, 12, 494, DateTimeKind.Local).AddTicks(3089),
                             IsDeleted = false,
                             Number = "4排16號",
                             SeatAreaId = 7,
@@ -4647,8 +4647,8 @@ namespace Infrastructure.Data.Migrations
                         new
                         {
                             Id = 347,
-                            CreatedAt = new DateTime(2024, 3, 27, 1, 6, 24, 380, DateTimeKind.Local).AddTicks(9389),
-                            EditedAt = new DateTime(2024, 3, 27, 1, 6, 24, 380, DateTimeKind.Local).AddTicks(9390),
+                            CreatedAt = new DateTime(2024, 3, 27, 1, 51, 12, 494, DateTimeKind.Local).AddTicks(3091),
+                            EditedAt = new DateTime(2024, 3, 27, 1, 51, 12, 494, DateTimeKind.Local).AddTicks(3091),
                             IsDeleted = false,
                             Number = "4排17號",
                             SeatAreaId = 7,
@@ -4657,8 +4657,8 @@ namespace Infrastructure.Data.Migrations
                         new
                         {
                             Id = 348,
-                            CreatedAt = new DateTime(2024, 3, 27, 1, 6, 24, 380, DateTimeKind.Local).AddTicks(9392),
-                            EditedAt = new DateTime(2024, 3, 27, 1, 6, 24, 380, DateTimeKind.Local).AddTicks(9392),
+                            CreatedAt = new DateTime(2024, 3, 27, 1, 51, 12, 494, DateTimeKind.Local).AddTicks(3093),
+                            EditedAt = new DateTime(2024, 3, 27, 1, 51, 12, 494, DateTimeKind.Local).AddTicks(3094),
                             IsDeleted = false,
                             Number = "4排5號",
                             SeatAreaId = 8,
@@ -4667,8 +4667,8 @@ namespace Infrastructure.Data.Migrations
                         new
                         {
                             Id = 349,
-                            CreatedAt = new DateTime(2024, 3, 27, 1, 6, 24, 380, DateTimeKind.Local).AddTicks(9395),
-                            EditedAt = new DateTime(2024, 3, 27, 1, 6, 24, 380, DateTimeKind.Local).AddTicks(9395),
+                            CreatedAt = new DateTime(2024, 3, 27, 1, 51, 12, 494, DateTimeKind.Local).AddTicks(3096),
+                            EditedAt = new DateTime(2024, 3, 27, 1, 51, 12, 494, DateTimeKind.Local).AddTicks(3097),
                             IsDeleted = false,
                             Number = "4排6號",
                             SeatAreaId = 8,
@@ -4677,8 +4677,8 @@ namespace Infrastructure.Data.Migrations
                         new
                         {
                             Id = 350,
-                            CreatedAt = new DateTime(2024, 3, 27, 1, 6, 24, 380, DateTimeKind.Local).AddTicks(9397),
-                            EditedAt = new DateTime(2024, 3, 27, 1, 6, 24, 380, DateTimeKind.Local).AddTicks(9398),
+                            CreatedAt = new DateTime(2024, 3, 27, 1, 51, 12, 494, DateTimeKind.Local).AddTicks(3099),
+                            EditedAt = new DateTime(2024, 3, 27, 1, 51, 12, 494, DateTimeKind.Local).AddTicks(3099),
                             IsDeleted = false,
                             Number = "4排7號",
                             SeatAreaId = 8,
@@ -4687,8 +4687,8 @@ namespace Infrastructure.Data.Migrations
                         new
                         {
                             Id = 351,
-                            CreatedAt = new DateTime(2024, 3, 27, 1, 6, 24, 380, DateTimeKind.Local).AddTicks(9400),
-                            EditedAt = new DateTime(2024, 3, 27, 1, 6, 24, 380, DateTimeKind.Local).AddTicks(9401),
+                            CreatedAt = new DateTime(2024, 3, 27, 1, 51, 12, 494, DateTimeKind.Local).AddTicks(3101),
+                            EditedAt = new DateTime(2024, 3, 27, 1, 51, 12, 494, DateTimeKind.Local).AddTicks(3102),
                             IsDeleted = false,
                             Number = "4排8號",
                             SeatAreaId = 8,
@@ -4697,8 +4697,8 @@ namespace Infrastructure.Data.Migrations
                         new
                         {
                             Id = 352,
-                            CreatedAt = new DateTime(2024, 3, 27, 1, 6, 24, 380, DateTimeKind.Local).AddTicks(9403),
-                            EditedAt = new DateTime(2024, 3, 27, 1, 6, 24, 380, DateTimeKind.Local).AddTicks(9403),
+                            CreatedAt = new DateTime(2024, 3, 27, 1, 51, 12, 494, DateTimeKind.Local).AddTicks(3104),
+                            EditedAt = new DateTime(2024, 3, 27, 1, 51, 12, 494, DateTimeKind.Local).AddTicks(3105),
                             IsDeleted = false,
                             Number = "4排9號",
                             SeatAreaId = 8,
@@ -4707,8 +4707,8 @@ namespace Infrastructure.Data.Migrations
                         new
                         {
                             Id = 353,
-                            CreatedAt = new DateTime(2024, 3, 27, 1, 6, 24, 380, DateTimeKind.Local).AddTicks(9406),
-                            EditedAt = new DateTime(2024, 3, 27, 1, 6, 24, 380, DateTimeKind.Local).AddTicks(9406),
+                            CreatedAt = new DateTime(2024, 3, 27, 1, 51, 12, 494, DateTimeKind.Local).AddTicks(3136),
+                            EditedAt = new DateTime(2024, 3, 27, 1, 51, 12, 494, DateTimeKind.Local).AddTicks(3137),
                             IsDeleted = false,
                             Number = "4排10號",
                             SeatAreaId = 8,
@@ -4717,8 +4717,8 @@ namespace Infrastructure.Data.Migrations
                         new
                         {
                             Id = 354,
-                            CreatedAt = new DateTime(2024, 3, 27, 1, 6, 24, 380, DateTimeKind.Local).AddTicks(9408),
-                            EditedAt = new DateTime(2024, 3, 27, 1, 6, 24, 380, DateTimeKind.Local).AddTicks(9409),
+                            CreatedAt = new DateTime(2024, 3, 27, 1, 51, 12, 494, DateTimeKind.Local).AddTicks(3139),
+                            EditedAt = new DateTime(2024, 3, 27, 1, 51, 12, 494, DateTimeKind.Local).AddTicks(3140),
                             IsDeleted = false,
                             Number = "4排11號",
                             SeatAreaId = 8,
@@ -4727,8 +4727,8 @@ namespace Infrastructure.Data.Migrations
                         new
                         {
                             Id = 355,
-                            CreatedAt = new DateTime(2024, 3, 27, 1, 6, 24, 380, DateTimeKind.Local).AddTicks(9411),
-                            EditedAt = new DateTime(2024, 3, 27, 1, 6, 24, 380, DateTimeKind.Local).AddTicks(9411),
+                            CreatedAt = new DateTime(2024, 3, 27, 1, 51, 12, 494, DateTimeKind.Local).AddTicks(3142),
+                            EditedAt = new DateTime(2024, 3, 27, 1, 51, 12, 494, DateTimeKind.Local).AddTicks(3143),
                             IsDeleted = false,
                             Number = "4排12號",
                             SeatAreaId = 8,
@@ -4737,8 +4737,8 @@ namespace Infrastructure.Data.Migrations
                         new
                         {
                             Id = 356,
-                            CreatedAt = new DateTime(2024, 3, 27, 1, 6, 24, 380, DateTimeKind.Local).AddTicks(9413),
-                            EditedAt = new DateTime(2024, 3, 27, 1, 6, 24, 380, DateTimeKind.Local).AddTicks(9414),
+                            CreatedAt = new DateTime(2024, 3, 27, 1, 51, 12, 494, DateTimeKind.Local).AddTicks(3145),
+                            EditedAt = new DateTime(2024, 3, 27, 1, 51, 12, 494, DateTimeKind.Local).AddTicks(3146),
                             IsDeleted = false,
                             Number = "3排18號",
                             SeatAreaId = 9,
@@ -4747,8 +4747,8 @@ namespace Infrastructure.Data.Migrations
                         new
                         {
                             Id = 357,
-                            CreatedAt = new DateTime(2024, 3, 27, 1, 6, 24, 380, DateTimeKind.Local).AddTicks(9416),
-                            EditedAt = new DateTime(2024, 3, 27, 1, 6, 24, 380, DateTimeKind.Local).AddTicks(9417),
+                            CreatedAt = new DateTime(2024, 3, 27, 1, 51, 12, 494, DateTimeKind.Local).AddTicks(3148),
+                            EditedAt = new DateTime(2024, 3, 27, 1, 51, 12, 494, DateTimeKind.Local).AddTicks(3149),
                             IsDeleted = false,
                             Number = "3排19號",
                             SeatAreaId = 9,
@@ -4757,8 +4757,8 @@ namespace Infrastructure.Data.Migrations
                         new
                         {
                             Id = 358,
-                            CreatedAt = new DateTime(2024, 3, 27, 1, 6, 24, 380, DateTimeKind.Local).AddTicks(9419),
-                            EditedAt = new DateTime(2024, 3, 27, 1, 6, 24, 380, DateTimeKind.Local).AddTicks(9419),
+                            CreatedAt = new DateTime(2024, 3, 27, 1, 51, 12, 494, DateTimeKind.Local).AddTicks(3151),
+                            EditedAt = new DateTime(2024, 3, 27, 1, 51, 12, 494, DateTimeKind.Local).AddTicks(3152),
                             IsDeleted = false,
                             Number = "3排20號",
                             SeatAreaId = 9,
@@ -4767,8 +4767,8 @@ namespace Infrastructure.Data.Migrations
                         new
                         {
                             Id = 359,
-                            CreatedAt = new DateTime(2024, 3, 27, 1, 6, 24, 380, DateTimeKind.Local).AddTicks(9421),
-                            EditedAt = new DateTime(2024, 3, 27, 1, 6, 24, 380, DateTimeKind.Local).AddTicks(9422),
+                            CreatedAt = new DateTime(2024, 3, 27, 1, 51, 12, 494, DateTimeKind.Local).AddTicks(3154),
+                            EditedAt = new DateTime(2024, 3, 27, 1, 51, 12, 494, DateTimeKind.Local).AddTicks(3155),
                             IsDeleted = false,
                             Number = "3排21號",
                             SeatAreaId = 9,
@@ -4777,8 +4777,8 @@ namespace Infrastructure.Data.Migrations
                         new
                         {
                             Id = 360,
-                            CreatedAt = new DateTime(2024, 3, 27, 1, 6, 24, 380, DateTimeKind.Local).AddTicks(9424),
-                            EditedAt = new DateTime(2024, 3, 27, 1, 6, 24, 380, DateTimeKind.Local).AddTicks(9425),
+                            CreatedAt = new DateTime(2024, 3, 27, 1, 51, 12, 494, DateTimeKind.Local).AddTicks(3157),
+                            EditedAt = new DateTime(2024, 3, 27, 1, 51, 12, 494, DateTimeKind.Local).AddTicks(3157),
                             IsDeleted = false,
                             Number = "3排22號",
                             SeatAreaId = 9,
@@ -4787,8 +4787,8 @@ namespace Infrastructure.Data.Migrations
                         new
                         {
                             Id = 361,
-                            CreatedAt = new DateTime(2024, 3, 27, 1, 6, 24, 380, DateTimeKind.Local).AddTicks(9427),
-                            EditedAt = new DateTime(2024, 3, 27, 1, 6, 24, 380, DateTimeKind.Local).AddTicks(9428),
+                            CreatedAt = new DateTime(2024, 3, 27, 1, 51, 12, 494, DateTimeKind.Local).AddTicks(3159),
+                            EditedAt = new DateTime(2024, 3, 27, 1, 51, 12, 494, DateTimeKind.Local).AddTicks(3160),
                             IsDeleted = false,
                             Number = "3排23號",
                             SeatAreaId = 9,
@@ -4797,8 +4797,8 @@ namespace Infrastructure.Data.Migrations
                         new
                         {
                             Id = 362,
-                            CreatedAt = new DateTime(2024, 3, 27, 1, 6, 24, 380, DateTimeKind.Local).AddTicks(9430),
-                            EditedAt = new DateTime(2024, 3, 27, 1, 6, 24, 380, DateTimeKind.Local).AddTicks(9430),
+                            CreatedAt = new DateTime(2024, 3, 27, 1, 51, 12, 494, DateTimeKind.Local).AddTicks(3162),
+                            EditedAt = new DateTime(2024, 3, 27, 1, 51, 12, 494, DateTimeKind.Local).AddTicks(3163),
                             IsDeleted = false,
                             Number = "3排24號",
                             SeatAreaId = 9,
@@ -4807,8 +4807,8 @@ namespace Infrastructure.Data.Migrations
                         new
                         {
                             Id = 363,
-                            CreatedAt = new DateTime(2024, 3, 27, 1, 6, 24, 380, DateTimeKind.Local).AddTicks(9432),
-                            EditedAt = new DateTime(2024, 3, 27, 1, 6, 24, 380, DateTimeKind.Local).AddTicks(9433),
+                            CreatedAt = new DateTime(2024, 3, 27, 1, 51, 12, 494, DateTimeKind.Local).AddTicks(3165),
+                            EditedAt = new DateTime(2024, 3, 27, 1, 51, 12, 494, DateTimeKind.Local).AddTicks(3166),
                             IsDeleted = false,
                             Number = "3排25號",
                             SeatAreaId = 9,
@@ -4817,8 +4817,8 @@ namespace Infrastructure.Data.Migrations
                         new
                         {
                             Id = 364,
-                            CreatedAt = new DateTime(2024, 3, 27, 1, 6, 24, 380, DateTimeKind.Local).AddTicks(9435),
-                            EditedAt = new DateTime(2024, 3, 27, 1, 6, 24, 380, DateTimeKind.Local).AddTicks(9436),
+                            CreatedAt = new DateTime(2024, 3, 27, 1, 51, 12, 494, DateTimeKind.Local).AddTicks(3168),
+                            EditedAt = new DateTime(2024, 3, 27, 1, 51, 12, 494, DateTimeKind.Local).AddTicks(3169),
                             IsDeleted = false,
                             Number = "3排12號",
                             SeatAreaId = 10,
@@ -4827,8 +4827,8 @@ namespace Infrastructure.Data.Migrations
                         new
                         {
                             Id = 365,
-                            CreatedAt = new DateTime(2024, 3, 27, 1, 6, 24, 380, DateTimeKind.Local).AddTicks(9438),
-                            EditedAt = new DateTime(2024, 3, 27, 1, 6, 24, 380, DateTimeKind.Local).AddTicks(9438),
+                            CreatedAt = new DateTime(2024, 3, 27, 1, 51, 12, 494, DateTimeKind.Local).AddTicks(3171),
+                            EditedAt = new DateTime(2024, 3, 27, 1, 51, 12, 494, DateTimeKind.Local).AddTicks(3171),
                             IsDeleted = false,
                             Number = "3排13號",
                             SeatAreaId = 10,
@@ -4837,8 +4837,8 @@ namespace Infrastructure.Data.Migrations
                         new
                         {
                             Id = 366,
-                            CreatedAt = new DateTime(2024, 3, 27, 1, 6, 24, 380, DateTimeKind.Local).AddTicks(9440),
-                            EditedAt = new DateTime(2024, 3, 27, 1, 6, 24, 380, DateTimeKind.Local).AddTicks(9441),
+                            CreatedAt = new DateTime(2024, 3, 27, 1, 51, 12, 494, DateTimeKind.Local).AddTicks(3173),
+                            EditedAt = new DateTime(2024, 3, 27, 1, 51, 12, 494, DateTimeKind.Local).AddTicks(3174),
                             IsDeleted = false,
                             Number = "3排14號",
                             SeatAreaId = 10,
@@ -4847,8 +4847,8 @@ namespace Infrastructure.Data.Migrations
                         new
                         {
                             Id = 367,
-                            CreatedAt = new DateTime(2024, 3, 27, 1, 6, 24, 380, DateTimeKind.Local).AddTicks(9443),
-                            EditedAt = new DateTime(2024, 3, 27, 1, 6, 24, 380, DateTimeKind.Local).AddTicks(9444),
+                            CreatedAt = new DateTime(2024, 3, 27, 1, 51, 12, 494, DateTimeKind.Local).AddTicks(3176),
+                            EditedAt = new DateTime(2024, 3, 27, 1, 51, 12, 494, DateTimeKind.Local).AddTicks(3177),
                             IsDeleted = false,
                             Number = "3排15號",
                             SeatAreaId = 10,
@@ -4857,8 +4857,8 @@ namespace Infrastructure.Data.Migrations
                         new
                         {
                             Id = 368,
-                            CreatedAt = new DateTime(2024, 3, 27, 1, 6, 24, 380, DateTimeKind.Local).AddTicks(9446),
-                            EditedAt = new DateTime(2024, 3, 27, 1, 6, 24, 380, DateTimeKind.Local).AddTicks(9446),
+                            CreatedAt = new DateTime(2024, 3, 27, 1, 51, 12, 494, DateTimeKind.Local).AddTicks(3179),
+                            EditedAt = new DateTime(2024, 3, 27, 1, 51, 12, 494, DateTimeKind.Local).AddTicks(3179),
                             IsDeleted = false,
                             Number = "3排16號",
                             SeatAreaId = 10,
@@ -4867,8 +4867,8 @@ namespace Infrastructure.Data.Migrations
                         new
                         {
                             Id = 369,
-                            CreatedAt = new DateTime(2024, 3, 27, 1, 6, 24, 380, DateTimeKind.Local).AddTicks(9448),
-                            EditedAt = new DateTime(2024, 3, 27, 1, 6, 24, 380, DateTimeKind.Local).AddTicks(9449),
+                            CreatedAt = new DateTime(2024, 3, 27, 1, 51, 12, 494, DateTimeKind.Local).AddTicks(3182),
+                            EditedAt = new DateTime(2024, 3, 27, 1, 51, 12, 494, DateTimeKind.Local).AddTicks(3183),
                             IsDeleted = false,
                             Number = "3排17號",
                             SeatAreaId = 10,
@@ -4877,8 +4877,8 @@ namespace Infrastructure.Data.Migrations
                         new
                         {
                             Id = 370,
-                            CreatedAt = new DateTime(2024, 3, 27, 1, 6, 24, 380, DateTimeKind.Local).AddTicks(9451),
-                            EditedAt = new DateTime(2024, 3, 27, 1, 6, 24, 380, DateTimeKind.Local).AddTicks(9452),
+                            CreatedAt = new DateTime(2024, 3, 27, 1, 51, 12, 494, DateTimeKind.Local).AddTicks(3185),
+                            EditedAt = new DateTime(2024, 3, 27, 1, 51, 12, 494, DateTimeKind.Local).AddTicks(3186),
                             IsDeleted = false,
                             Number = "3排18號",
                             SeatAreaId = 10,
@@ -4887,8 +4887,8 @@ namespace Infrastructure.Data.Migrations
                         new
                         {
                             Id = 371,
-                            CreatedAt = new DateTime(2024, 3, 27, 1, 6, 24, 380, DateTimeKind.Local).AddTicks(9454),
-                            EditedAt = new DateTime(2024, 3, 27, 1, 6, 24, 380, DateTimeKind.Local).AddTicks(9454),
+                            CreatedAt = new DateTime(2024, 3, 27, 1, 51, 12, 494, DateTimeKind.Local).AddTicks(3188),
+                            EditedAt = new DateTime(2024, 3, 27, 1, 51, 12, 494, DateTimeKind.Local).AddTicks(3188),
                             IsDeleted = false,
                             Number = "3排19號",
                             SeatAreaId = 10,
@@ -4897,8 +4897,8 @@ namespace Infrastructure.Data.Migrations
                         new
                         {
                             Id = 372,
-                            CreatedAt = new DateTime(2024, 3, 27, 1, 6, 24, 380, DateTimeKind.Local).AddTicks(9456),
-                            EditedAt = new DateTime(2024, 3, 27, 1, 6, 24, 380, DateTimeKind.Local).AddTicks(9457),
+                            CreatedAt = new DateTime(2024, 3, 27, 1, 51, 12, 494, DateTimeKind.Local).AddTicks(3191),
+                            EditedAt = new DateTime(2024, 3, 27, 1, 51, 12, 494, DateTimeKind.Local).AddTicks(3191),
                             IsDeleted = false,
                             Number = "3排20號",
                             SeatAreaId = 10,
@@ -4907,8 +4907,8 @@ namespace Infrastructure.Data.Migrations
                         new
                         {
                             Id = 373,
-                            CreatedAt = new DateTime(2024, 3, 27, 1, 6, 24, 380, DateTimeKind.Local).AddTicks(9459),
-                            EditedAt = new DateTime(2024, 3, 27, 1, 6, 24, 380, DateTimeKind.Local).AddTicks(9460),
+                            CreatedAt = new DateTime(2024, 3, 27, 1, 51, 12, 494, DateTimeKind.Local).AddTicks(3193),
+                            EditedAt = new DateTime(2024, 3, 27, 1, 51, 12, 494, DateTimeKind.Local).AddTicks(3194),
                             IsDeleted = false,
                             Number = "3排21號",
                             SeatAreaId = 10,
@@ -4917,8 +4917,8 @@ namespace Infrastructure.Data.Migrations
                         new
                         {
                             Id = 374,
-                            CreatedAt = new DateTime(2024, 3, 27, 1, 6, 24, 380, DateTimeKind.Local).AddTicks(9462),
-                            EditedAt = new DateTime(2024, 3, 27, 1, 6, 24, 380, DateTimeKind.Local).AddTicks(9462),
+                            CreatedAt = new DateTime(2024, 3, 27, 1, 51, 12, 494, DateTimeKind.Local).AddTicks(3196),
+                            EditedAt = new DateTime(2024, 3, 27, 1, 51, 12, 494, DateTimeKind.Local).AddTicks(3197),
                             IsDeleted = false,
                             Number = "3排6號",
                             SeatAreaId = 11,
@@ -4927,8 +4927,8 @@ namespace Infrastructure.Data.Migrations
                         new
                         {
                             Id = 375,
-                            CreatedAt = new DateTime(2024, 3, 27, 1, 6, 24, 380, DateTimeKind.Local).AddTicks(9464),
-                            EditedAt = new DateTime(2024, 3, 27, 1, 6, 24, 380, DateTimeKind.Local).AddTicks(9465),
+                            CreatedAt = new DateTime(2024, 3, 27, 1, 51, 12, 494, DateTimeKind.Local).AddTicks(3199),
+                            EditedAt = new DateTime(2024, 3, 27, 1, 51, 12, 494, DateTimeKind.Local).AddTicks(3199),
                             IsDeleted = false,
                             Number = "3排7號",
                             SeatAreaId = 11,
@@ -4937,8 +4937,8 @@ namespace Infrastructure.Data.Migrations
                         new
                         {
                             Id = 376,
-                            CreatedAt = new DateTime(2024, 3, 27, 1, 6, 24, 380, DateTimeKind.Local).AddTicks(9467),
-                            EditedAt = new DateTime(2024, 3, 27, 1, 6, 24, 380, DateTimeKind.Local).AddTicks(9468),
+                            CreatedAt = new DateTime(2024, 3, 27, 1, 51, 12, 494, DateTimeKind.Local).AddTicks(3201),
+                            EditedAt = new DateTime(2024, 3, 27, 1, 51, 12, 494, DateTimeKind.Local).AddTicks(3202),
                             IsDeleted = false,
                             Number = "3排8號",
                             SeatAreaId = 11,
@@ -4947,8 +4947,8 @@ namespace Infrastructure.Data.Migrations
                         new
                         {
                             Id = 377,
-                            CreatedAt = new DateTime(2024, 3, 27, 1, 6, 24, 380, DateTimeKind.Local).AddTicks(9470),
-                            EditedAt = new DateTime(2024, 3, 27, 1, 6, 24, 380, DateTimeKind.Local).AddTicks(9471),
+                            CreatedAt = new DateTime(2024, 3, 27, 1, 51, 12, 494, DateTimeKind.Local).AddTicks(3204),
+                            EditedAt = new DateTime(2024, 3, 27, 1, 51, 12, 494, DateTimeKind.Local).AddTicks(3205),
                             IsDeleted = false,
                             Number = "3排9號",
                             SeatAreaId = 11,
@@ -4957,8 +4957,8 @@ namespace Infrastructure.Data.Migrations
                         new
                         {
                             Id = 378,
-                            CreatedAt = new DateTime(2024, 3, 27, 1, 6, 24, 380, DateTimeKind.Local).AddTicks(9473),
-                            EditedAt = new DateTime(2024, 3, 27, 1, 6, 24, 380, DateTimeKind.Local).AddTicks(9474),
+                            CreatedAt = new DateTime(2024, 3, 27, 1, 51, 12, 494, DateTimeKind.Local).AddTicks(3207),
+                            EditedAt = new DateTime(2024, 3, 27, 1, 51, 12, 494, DateTimeKind.Local).AddTicks(3207),
                             IsDeleted = false,
                             Number = "3排10號",
                             SeatAreaId = 11,
@@ -4967,8 +4967,8 @@ namespace Infrastructure.Data.Migrations
                         new
                         {
                             Id = 379,
-                            CreatedAt = new DateTime(2024, 3, 27, 1, 6, 24, 380, DateTimeKind.Local).AddTicks(9476),
-                            EditedAt = new DateTime(2024, 3, 27, 1, 6, 24, 380, DateTimeKind.Local).AddTicks(9476),
+                            CreatedAt = new DateTime(2024, 3, 27, 1, 51, 12, 494, DateTimeKind.Local).AddTicks(3209),
+                            EditedAt = new DateTime(2024, 3, 27, 1, 51, 12, 494, DateTimeKind.Local).AddTicks(3210),
                             IsDeleted = false,
                             Number = "3排11號",
                             SeatAreaId = 11,
@@ -4977,8 +4977,8 @@ namespace Infrastructure.Data.Migrations
                         new
                         {
                             Id = 380,
-                            CreatedAt = new DateTime(2024, 3, 27, 1, 6, 24, 380, DateTimeKind.Local).AddTicks(9478),
-                            EditedAt = new DateTime(2024, 3, 27, 1, 6, 24, 380, DateTimeKind.Local).AddTicks(9479),
+                            CreatedAt = new DateTime(2024, 3, 27, 1, 51, 12, 494, DateTimeKind.Local).AddTicks(3212),
+                            EditedAt = new DateTime(2024, 3, 27, 1, 51, 12, 494, DateTimeKind.Local).AddTicks(3213),
                             IsDeleted = false,
                             Number = "3排12號",
                             SeatAreaId = 11,
@@ -4987,8 +4987,8 @@ namespace Infrastructure.Data.Migrations
                         new
                         {
                             Id = 381,
-                            CreatedAt = new DateTime(2024, 3, 27, 1, 6, 24, 380, DateTimeKind.Local).AddTicks(9481),
-                            EditedAt = new DateTime(2024, 3, 27, 1, 6, 24, 380, DateTimeKind.Local).AddTicks(9482),
+                            CreatedAt = new DateTime(2024, 3, 27, 1, 51, 12, 494, DateTimeKind.Local).AddTicks(3216),
+                            EditedAt = new DateTime(2024, 3, 27, 1, 51, 12, 494, DateTimeKind.Local).AddTicks(3217),
                             IsDeleted = false,
                             Number = "3排13號",
                             SeatAreaId = 11,
@@ -4997,8 +4997,8 @@ namespace Infrastructure.Data.Migrations
                         new
                         {
                             Id = 382,
-                            CreatedAt = new DateTime(2024, 3, 27, 1, 6, 24, 380, DateTimeKind.Local).AddTicks(9484),
-                            EditedAt = new DateTime(2024, 3, 27, 1, 6, 24, 380, DateTimeKind.Local).AddTicks(9484),
+                            CreatedAt = new DateTime(2024, 3, 27, 1, 51, 12, 494, DateTimeKind.Local).AddTicks(3219),
+                            EditedAt = new DateTime(2024, 3, 27, 1, 51, 12, 494, DateTimeKind.Local).AddTicks(3219),
                             IsDeleted = false,
                             Number = "3排14號",
                             SeatAreaId = 11,
@@ -5007,8 +5007,8 @@ namespace Infrastructure.Data.Migrations
                         new
                         {
                             Id = 383,
-                            CreatedAt = new DateTime(2024, 3, 27, 1, 6, 24, 380, DateTimeKind.Local).AddTicks(9486),
-                            EditedAt = new DateTime(2024, 3, 27, 1, 6, 24, 380, DateTimeKind.Local).AddTicks(9487),
+                            CreatedAt = new DateTime(2024, 3, 27, 1, 51, 12, 494, DateTimeKind.Local).AddTicks(3221),
+                            EditedAt = new DateTime(2024, 3, 27, 1, 51, 12, 494, DateTimeKind.Local).AddTicks(3222),
                             IsDeleted = false,
                             Number = "3排15號",
                             SeatAreaId = 11,
@@ -5017,8 +5017,8 @@ namespace Infrastructure.Data.Migrations
                         new
                         {
                             Id = 384,
-                            CreatedAt = new DateTime(2024, 3, 27, 1, 6, 24, 380, DateTimeKind.Local).AddTicks(9489),
-                            EditedAt = new DateTime(2024, 3, 27, 1, 6, 24, 380, DateTimeKind.Local).AddTicks(9490),
+                            CreatedAt = new DateTime(2024, 3, 27, 1, 51, 12, 494, DateTimeKind.Local).AddTicks(3224),
+                            EditedAt = new DateTime(2024, 3, 27, 1, 51, 12, 494, DateTimeKind.Local).AddTicks(3224),
                             IsDeleted = false,
                             Number = "4排10號",
                             SeatAreaId = 12,
@@ -5027,8 +5027,8 @@ namespace Infrastructure.Data.Migrations
                         new
                         {
                             Id = 385,
-                            CreatedAt = new DateTime(2024, 3, 27, 1, 6, 24, 380, DateTimeKind.Local).AddTicks(9492),
-                            EditedAt = new DateTime(2024, 3, 27, 1, 6, 24, 380, DateTimeKind.Local).AddTicks(9492),
+                            CreatedAt = new DateTime(2024, 3, 27, 1, 51, 12, 494, DateTimeKind.Local).AddTicks(3227),
+                            EditedAt = new DateTime(2024, 3, 27, 1, 51, 12, 494, DateTimeKind.Local).AddTicks(3227),
                             IsDeleted = false,
                             Number = "4排11號",
                             SeatAreaId = 12,
@@ -5037,8 +5037,8 @@ namespace Infrastructure.Data.Migrations
                         new
                         {
                             Id = 386,
-                            CreatedAt = new DateTime(2024, 3, 27, 1, 6, 24, 380, DateTimeKind.Local).AddTicks(9494),
-                            EditedAt = new DateTime(2024, 3, 27, 1, 6, 24, 380, DateTimeKind.Local).AddTicks(9495),
+                            CreatedAt = new DateTime(2024, 3, 27, 1, 51, 12, 494, DateTimeKind.Local).AddTicks(3230),
+                            EditedAt = new DateTime(2024, 3, 27, 1, 51, 12, 494, DateTimeKind.Local).AddTicks(3231),
                             IsDeleted = false,
                             Number = "4排12號",
                             SeatAreaId = 12,
@@ -5047,8 +5047,8 @@ namespace Infrastructure.Data.Migrations
                         new
                         {
                             Id = 387,
-                            CreatedAt = new DateTime(2024, 3, 27, 1, 6, 24, 380, DateTimeKind.Local).AddTicks(9497),
-                            EditedAt = new DateTime(2024, 3, 27, 1, 6, 24, 380, DateTimeKind.Local).AddTicks(9498),
+                            CreatedAt = new DateTime(2024, 3, 27, 1, 51, 12, 494, DateTimeKind.Local).AddTicks(3233),
+                            EditedAt = new DateTime(2024, 3, 27, 1, 51, 12, 494, DateTimeKind.Local).AddTicks(3234),
                             IsDeleted = false,
                             Number = "4排13號",
                             SeatAreaId = 12,
@@ -5057,8 +5057,8 @@ namespace Infrastructure.Data.Migrations
                         new
                         {
                             Id = 388,
-                            CreatedAt = new DateTime(2024, 3, 27, 1, 6, 24, 380, DateTimeKind.Local).AddTicks(9500),
-                            EditedAt = new DateTime(2024, 3, 27, 1, 6, 24, 380, DateTimeKind.Local).AddTicks(9501),
+                            CreatedAt = new DateTime(2024, 3, 27, 1, 51, 12, 494, DateTimeKind.Local).AddTicks(3236),
+                            EditedAt = new DateTime(2024, 3, 27, 1, 51, 12, 494, DateTimeKind.Local).AddTicks(3236),
                             IsDeleted = false,
                             Number = "4排14號",
                             SeatAreaId = 12,
@@ -5067,8 +5067,8 @@ namespace Infrastructure.Data.Migrations
                         new
                         {
                             Id = 389,
-                            CreatedAt = new DateTime(2024, 3, 27, 1, 6, 24, 380, DateTimeKind.Local).AddTicks(9503),
-                            EditedAt = new DateTime(2024, 3, 27, 1, 6, 24, 380, DateTimeKind.Local).AddTicks(9503),
+                            CreatedAt = new DateTime(2024, 3, 27, 1, 51, 12, 494, DateTimeKind.Local).AddTicks(3238),
+                            EditedAt = new DateTime(2024, 3, 27, 1, 51, 12, 494, DateTimeKind.Local).AddTicks(3239),
                             IsDeleted = false,
                             Number = "4排15號",
                             SeatAreaId = 12,
@@ -5077,8 +5077,8 @@ namespace Infrastructure.Data.Migrations
                         new
                         {
                             Id = 390,
-                            CreatedAt = new DateTime(2024, 3, 27, 1, 6, 24, 380, DateTimeKind.Local).AddTicks(9505),
-                            EditedAt = new DateTime(2024, 3, 27, 1, 6, 24, 380, DateTimeKind.Local).AddTicks(9506),
+                            CreatedAt = new DateTime(2024, 3, 27, 1, 51, 12, 494, DateTimeKind.Local).AddTicks(3241),
+                            EditedAt = new DateTime(2024, 3, 27, 1, 51, 12, 494, DateTimeKind.Local).AddTicks(3242),
                             IsDeleted = false,
                             Number = "4排16號",
                             SeatAreaId = 12,
@@ -5087,8 +5087,8 @@ namespace Infrastructure.Data.Migrations
                         new
                         {
                             Id = 391,
-                            CreatedAt = new DateTime(2024, 3, 27, 1, 6, 24, 380, DateTimeKind.Local).AddTicks(9508),
-                            EditedAt = new DateTime(2024, 3, 27, 1, 6, 24, 380, DateTimeKind.Local).AddTicks(9509),
+                            CreatedAt = new DateTime(2024, 3, 27, 1, 51, 12, 494, DateTimeKind.Local).AddTicks(3244),
+                            EditedAt = new DateTime(2024, 3, 27, 1, 51, 12, 494, DateTimeKind.Local).AddTicks(3244),
                             IsDeleted = false,
                             Number = "4排17號",
                             SeatAreaId = 12,
@@ -5097,8 +5097,8 @@ namespace Infrastructure.Data.Migrations
                         new
                         {
                             Id = 392,
-                            CreatedAt = new DateTime(2024, 3, 27, 1, 6, 24, 380, DateTimeKind.Local).AddTicks(9511),
-                            EditedAt = new DateTime(2024, 3, 27, 1, 6, 24, 380, DateTimeKind.Local).AddTicks(9511),
+                            CreatedAt = new DateTime(2024, 3, 27, 1, 51, 12, 494, DateTimeKind.Local).AddTicks(3246),
+                            EditedAt = new DateTime(2024, 3, 27, 1, 51, 12, 494, DateTimeKind.Local).AddTicks(3247),
                             IsDeleted = false,
                             Number = "5排1號",
                             SeatAreaId = 12,
@@ -5107,8 +5107,8 @@ namespace Infrastructure.Data.Migrations
                         new
                         {
                             Id = 393,
-                            CreatedAt = new DateTime(2024, 3, 27, 1, 6, 24, 380, DateTimeKind.Local).AddTicks(9513),
-                            EditedAt = new DateTime(2024, 3, 27, 1, 6, 24, 380, DateTimeKind.Local).AddTicks(9514),
+                            CreatedAt = new DateTime(2024, 3, 27, 1, 51, 12, 494, DateTimeKind.Local).AddTicks(3249),
+                            EditedAt = new DateTime(2024, 3, 27, 1, 51, 12, 494, DateTimeKind.Local).AddTicks(3250),
                             IsDeleted = false,
                             Number = "5排2號",
                             SeatAreaId = 12,
@@ -5117,8 +5117,8 @@ namespace Infrastructure.Data.Migrations
                         new
                         {
                             Id = 394,
-                            CreatedAt = new DateTime(2024, 3, 27, 1, 6, 24, 380, DateTimeKind.Local).AddTicks(9516),
-                            EditedAt = new DateTime(2024, 3, 27, 1, 6, 24, 380, DateTimeKind.Local).AddTicks(9517),
+                            CreatedAt = new DateTime(2024, 3, 27, 1, 51, 12, 494, DateTimeKind.Local).AddTicks(3253),
+                            EditedAt = new DateTime(2024, 3, 27, 1, 51, 12, 494, DateTimeKind.Local).AddTicks(3253),
                             IsDeleted = false,
                             Number = "5排3號",
                             SeatAreaId = 12,
@@ -5127,8 +5127,8 @@ namespace Infrastructure.Data.Migrations
                         new
                         {
                             Id = 395,
-                            CreatedAt = new DateTime(2024, 3, 27, 1, 6, 24, 380, DateTimeKind.Local).AddTicks(9519),
-                            EditedAt = new DateTime(2024, 3, 27, 1, 6, 24, 380, DateTimeKind.Local).AddTicks(9519),
+                            CreatedAt = new DateTime(2024, 3, 27, 1, 51, 12, 494, DateTimeKind.Local).AddTicks(3255),
+                            EditedAt = new DateTime(2024, 3, 27, 1, 51, 12, 494, DateTimeKind.Local).AddTicks(3256),
                             IsDeleted = false,
                             Number = "5排4號",
                             SeatAreaId = 12,
@@ -5137,8 +5137,8 @@ namespace Infrastructure.Data.Migrations
                         new
                         {
                             Id = 396,
-                            CreatedAt = new DateTime(2024, 3, 27, 1, 6, 24, 380, DateTimeKind.Local).AddTicks(9521),
-                            EditedAt = new DateTime(2024, 3, 27, 1, 6, 24, 380, DateTimeKind.Local).AddTicks(9522),
+                            CreatedAt = new DateTime(2024, 3, 27, 1, 51, 12, 494, DateTimeKind.Local).AddTicks(3258),
+                            EditedAt = new DateTime(2024, 3, 27, 1, 51, 12, 494, DateTimeKind.Local).AddTicks(3259),
                             IsDeleted = false,
                             Number = "5排5號",
                             SeatAreaId = 12,
@@ -5147,8 +5147,8 @@ namespace Infrastructure.Data.Migrations
                         new
                         {
                             Id = 397,
-                            CreatedAt = new DateTime(2024, 3, 27, 1, 6, 24, 380, DateTimeKind.Local).AddTicks(9524),
-                            EditedAt = new DateTime(2024, 3, 27, 1, 6, 24, 380, DateTimeKind.Local).AddTicks(9525),
+                            CreatedAt = new DateTime(2024, 3, 27, 1, 51, 12, 494, DateTimeKind.Local).AddTicks(3261),
+                            EditedAt = new DateTime(2024, 3, 27, 1, 51, 12, 494, DateTimeKind.Local).AddTicks(3261),
                             IsDeleted = false,
                             Number = "5排6號",
                             SeatAreaId = 12,
@@ -5157,8 +5157,8 @@ namespace Infrastructure.Data.Migrations
                         new
                         {
                             Id = 398,
-                            CreatedAt = new DateTime(2024, 3, 27, 1, 6, 24, 380, DateTimeKind.Local).AddTicks(9527),
-                            EditedAt = new DateTime(2024, 3, 27, 1, 6, 24, 380, DateTimeKind.Local).AddTicks(9527),
+                            CreatedAt = new DateTime(2024, 3, 27, 1, 51, 12, 494, DateTimeKind.Local).AddTicks(3263),
+                            EditedAt = new DateTime(2024, 3, 27, 1, 51, 12, 494, DateTimeKind.Local).AddTicks(3264),
                             IsDeleted = false,
                             Number = "5排7號",
                             SeatAreaId = 12,
@@ -5167,8 +5167,8 @@ namespace Infrastructure.Data.Migrations
                         new
                         {
                             Id = 399,
-                            CreatedAt = new DateTime(2024, 3, 27, 1, 6, 24, 380, DateTimeKind.Local).AddTicks(9529),
-                            EditedAt = new DateTime(2024, 3, 27, 1, 6, 24, 380, DateTimeKind.Local).AddTicks(9530),
+                            CreatedAt = new DateTime(2024, 3, 27, 1, 51, 12, 494, DateTimeKind.Local).AddTicks(3266),
+                            EditedAt = new DateTime(2024, 3, 27, 1, 51, 12, 494, DateTimeKind.Local).AddTicks(3267),
                             IsDeleted = false,
                             Number = "5排8號",
                             SeatAreaId = 12,
@@ -5177,8 +5177,8 @@ namespace Infrastructure.Data.Migrations
                         new
                         {
                             Id = 400,
-                            CreatedAt = new DateTime(2024, 3, 27, 1, 6, 24, 380, DateTimeKind.Local).AddTicks(9532),
-                            EditedAt = new DateTime(2024, 3, 27, 1, 6, 24, 380, DateTimeKind.Local).AddTicks(9533),
+                            CreatedAt = new DateTime(2024, 3, 27, 1, 51, 12, 494, DateTimeKind.Local).AddTicks(3269),
+                            EditedAt = new DateTime(2024, 3, 27, 1, 51, 12, 494, DateTimeKind.Local).AddTicks(3270),
                             IsDeleted = false,
                             Number = "4排10號",
                             SeatAreaId = 12,
@@ -5187,8 +5187,8 @@ namespace Infrastructure.Data.Migrations
                         new
                         {
                             Id = 401,
-                            CreatedAt = new DateTime(2024, 3, 27, 1, 6, 24, 380, DateTimeKind.Local).AddTicks(9535),
-                            EditedAt = new DateTime(2024, 3, 27, 1, 6, 24, 380, DateTimeKind.Local).AddTicks(9536),
+                            CreatedAt = new DateTime(2024, 3, 27, 1, 51, 12, 494, DateTimeKind.Local).AddTicks(3272),
+                            EditedAt = new DateTime(2024, 3, 27, 1, 51, 12, 494, DateTimeKind.Local).AddTicks(3272),
                             IsDeleted = false,
                             Number = "4排11號",
                             SeatAreaId = 12,
@@ -5197,8 +5197,8 @@ namespace Infrastructure.Data.Migrations
                         new
                         {
                             Id = 402,
-                            CreatedAt = new DateTime(2024, 3, 27, 1, 6, 24, 380, DateTimeKind.Local).AddTicks(9538),
-                            EditedAt = new DateTime(2024, 3, 27, 1, 6, 24, 380, DateTimeKind.Local).AddTicks(9538),
+                            CreatedAt = new DateTime(2024, 3, 27, 1, 51, 12, 494, DateTimeKind.Local).AddTicks(3274),
+                            EditedAt = new DateTime(2024, 3, 27, 1, 51, 12, 494, DateTimeKind.Local).AddTicks(3275),
                             IsDeleted = false,
                             Number = "4排12號",
                             SeatAreaId = 12,
@@ -5207,8 +5207,8 @@ namespace Infrastructure.Data.Migrations
                         new
                         {
                             Id = 403,
-                            CreatedAt = new DateTime(2024, 3, 27, 1, 6, 24, 380, DateTimeKind.Local).AddTicks(9572),
-                            EditedAt = new DateTime(2024, 3, 27, 1, 6, 24, 380, DateTimeKind.Local).AddTicks(9572),
+                            CreatedAt = new DateTime(2024, 3, 27, 1, 51, 12, 494, DateTimeKind.Local).AddTicks(3277),
+                            EditedAt = new DateTime(2024, 3, 27, 1, 51, 12, 494, DateTimeKind.Local).AddTicks(3278),
                             IsDeleted = false,
                             Number = "4排13號",
                             SeatAreaId = 12,
@@ -5217,8 +5217,8 @@ namespace Infrastructure.Data.Migrations
                         new
                         {
                             Id = 404,
-                            CreatedAt = new DateTime(2024, 3, 27, 1, 6, 24, 380, DateTimeKind.Local).AddTicks(9575),
-                            EditedAt = new DateTime(2024, 3, 27, 1, 6, 24, 380, DateTimeKind.Local).AddTicks(9575),
+                            CreatedAt = new DateTime(2024, 3, 27, 1, 51, 12, 494, DateTimeKind.Local).AddTicks(3280),
+                            EditedAt = new DateTime(2024, 3, 27, 1, 51, 12, 494, DateTimeKind.Local).AddTicks(3281),
                             IsDeleted = false,
                             Number = "1排1號",
                             SeatAreaId = 13,
@@ -5227,8 +5227,8 @@ namespace Infrastructure.Data.Migrations
                         new
                         {
                             Id = 405,
-                            CreatedAt = new DateTime(2024, 3, 27, 1, 6, 24, 380, DateTimeKind.Local).AddTicks(9577),
-                            EditedAt = new DateTime(2024, 3, 27, 1, 6, 24, 380, DateTimeKind.Local).AddTicks(9578),
+                            CreatedAt = new DateTime(2024, 3, 27, 1, 51, 12, 494, DateTimeKind.Local).AddTicks(3283),
+                            EditedAt = new DateTime(2024, 3, 27, 1, 51, 12, 494, DateTimeKind.Local).AddTicks(3283),
                             IsDeleted = false,
                             Number = "1排2號",
                             SeatAreaId = 13,
@@ -5237,8 +5237,8 @@ namespace Infrastructure.Data.Migrations
                         new
                         {
                             Id = 406,
-                            CreatedAt = new DateTime(2024, 3, 27, 1, 6, 24, 380, DateTimeKind.Local).AddTicks(9580),
-                            EditedAt = new DateTime(2024, 3, 27, 1, 6, 24, 380, DateTimeKind.Local).AddTicks(9581),
+                            CreatedAt = new DateTime(2024, 3, 27, 1, 51, 12, 494, DateTimeKind.Local).AddTicks(3286),
+                            EditedAt = new DateTime(2024, 3, 27, 1, 51, 12, 494, DateTimeKind.Local).AddTicks(3287),
                             IsDeleted = false,
                             Number = "1排3號",
                             SeatAreaId = 13,
@@ -5247,8 +5247,8 @@ namespace Infrastructure.Data.Migrations
                         new
                         {
                             Id = 407,
-                            CreatedAt = new DateTime(2024, 3, 27, 1, 6, 24, 380, DateTimeKind.Local).AddTicks(9583),
-                            EditedAt = new DateTime(2024, 3, 27, 1, 6, 24, 380, DateTimeKind.Local).AddTicks(9584),
+                            CreatedAt = new DateTime(2024, 3, 27, 1, 51, 12, 494, DateTimeKind.Local).AddTicks(3289),
+                            EditedAt = new DateTime(2024, 3, 27, 1, 51, 12, 494, DateTimeKind.Local).AddTicks(3290),
                             IsDeleted = false,
                             Number = "1排4號",
                             SeatAreaId = 13,
@@ -5257,8 +5257,8 @@ namespace Infrastructure.Data.Migrations
                         new
                         {
                             Id = 408,
-                            CreatedAt = new DateTime(2024, 3, 27, 1, 6, 24, 380, DateTimeKind.Local).AddTicks(9586),
-                            EditedAt = new DateTime(2024, 3, 27, 1, 6, 24, 380, DateTimeKind.Local).AddTicks(9586),
+                            CreatedAt = new DateTime(2024, 3, 27, 1, 51, 12, 494, DateTimeKind.Local).AddTicks(3292),
+                            EditedAt = new DateTime(2024, 3, 27, 1, 51, 12, 494, DateTimeKind.Local).AddTicks(3292),
                             IsDeleted = false,
                             Number = "1排5號",
                             SeatAreaId = 13,
@@ -5267,8 +5267,8 @@ namespace Infrastructure.Data.Migrations
                         new
                         {
                             Id = 409,
-                            CreatedAt = new DateTime(2024, 3, 27, 1, 6, 24, 380, DateTimeKind.Local).AddTicks(9588),
-                            EditedAt = new DateTime(2024, 3, 27, 1, 6, 24, 380, DateTimeKind.Local).AddTicks(9589),
+                            CreatedAt = new DateTime(2024, 3, 27, 1, 51, 12, 494, DateTimeKind.Local).AddTicks(3294),
+                            EditedAt = new DateTime(2024, 3, 27, 1, 51, 12, 494, DateTimeKind.Local).AddTicks(3295),
                             IsDeleted = false,
                             Number = "1排6號",
                             SeatAreaId = 13,
@@ -5277,8 +5277,8 @@ namespace Infrastructure.Data.Migrations
                         new
                         {
                             Id = 410,
-                            CreatedAt = new DateTime(2024, 3, 27, 1, 6, 24, 380, DateTimeKind.Local).AddTicks(9591),
-                            EditedAt = new DateTime(2024, 3, 27, 1, 6, 24, 380, DateTimeKind.Local).AddTicks(9592),
+                            CreatedAt = new DateTime(2024, 3, 27, 1, 51, 12, 494, DateTimeKind.Local).AddTicks(3297),
+                            EditedAt = new DateTime(2024, 3, 27, 1, 51, 12, 494, DateTimeKind.Local).AddTicks(3298),
                             IsDeleted = false,
                             Number = "1排7號",
                             SeatAreaId = 13,
@@ -5287,8 +5287,8 @@ namespace Infrastructure.Data.Migrations
                         new
                         {
                             Id = 411,
-                            CreatedAt = new DateTime(2024, 3, 27, 1, 6, 24, 380, DateTimeKind.Local).AddTicks(9594),
-                            EditedAt = new DateTime(2024, 3, 27, 1, 6, 24, 380, DateTimeKind.Local).AddTicks(9594),
+                            CreatedAt = new DateTime(2024, 3, 27, 1, 51, 12, 494, DateTimeKind.Local).AddTicks(3300),
+                            EditedAt = new DateTime(2024, 3, 27, 1, 51, 12, 494, DateTimeKind.Local).AddTicks(3300),
                             IsDeleted = false,
                             Number = "1排8號",
                             SeatAreaId = 13,
@@ -5297,8 +5297,8 @@ namespace Infrastructure.Data.Migrations
                         new
                         {
                             Id = 412,
-                            CreatedAt = new DateTime(2024, 3, 27, 1, 6, 24, 380, DateTimeKind.Local).AddTicks(9597),
-                            EditedAt = new DateTime(2024, 3, 27, 1, 6, 24, 380, DateTimeKind.Local).AddTicks(9597),
+                            CreatedAt = new DateTime(2024, 3, 27, 1, 51, 12, 494, DateTimeKind.Local).AddTicks(3302),
+                            EditedAt = new DateTime(2024, 3, 27, 1, 51, 12, 494, DateTimeKind.Local).AddTicks(3303),
                             IsDeleted = false,
                             Number = "1排9號",
                             SeatAreaId = 13,
@@ -5307,8 +5307,8 @@ namespace Infrastructure.Data.Migrations
                         new
                         {
                             Id = 413,
-                            CreatedAt = new DateTime(2024, 3, 27, 1, 6, 24, 380, DateTimeKind.Local).AddTicks(9599),
-                            EditedAt = new DateTime(2024, 3, 27, 1, 6, 24, 380, DateTimeKind.Local).AddTicks(9600),
+                            CreatedAt = new DateTime(2024, 3, 27, 1, 51, 12, 494, DateTimeKind.Local).AddTicks(3305),
+                            EditedAt = new DateTime(2024, 3, 27, 1, 51, 12, 494, DateTimeKind.Local).AddTicks(3306),
                             IsDeleted = false,
                             Number = "1排10號",
                             SeatAreaId = 13,
@@ -5317,8 +5317,8 @@ namespace Infrastructure.Data.Migrations
                         new
                         {
                             Id = 414,
-                            CreatedAt = new DateTime(2024, 3, 27, 1, 6, 24, 380, DateTimeKind.Local).AddTicks(9602),
-                            EditedAt = new DateTime(2024, 3, 27, 1, 6, 24, 380, DateTimeKind.Local).AddTicks(9602),
+                            CreatedAt = new DateTime(2024, 3, 27, 1, 51, 12, 494, DateTimeKind.Local).AddTicks(3308),
+                            EditedAt = new DateTime(2024, 3, 27, 1, 51, 12, 494, DateTimeKind.Local).AddTicks(3308),
                             IsDeleted = false,
                             Number = "1排11號",
                             SeatAreaId = 13,
@@ -5327,8 +5327,8 @@ namespace Infrastructure.Data.Migrations
                         new
                         {
                             Id = 415,
-                            CreatedAt = new DateTime(2024, 3, 27, 1, 6, 24, 380, DateTimeKind.Local).AddTicks(9604),
-                            EditedAt = new DateTime(2024, 3, 27, 1, 6, 24, 380, DateTimeKind.Local).AddTicks(9605),
+                            CreatedAt = new DateTime(2024, 3, 27, 1, 51, 12, 494, DateTimeKind.Local).AddTicks(3310),
+                            EditedAt = new DateTime(2024, 3, 27, 1, 51, 12, 494, DateTimeKind.Local).AddTicks(3311),
                             IsDeleted = false,
                             Number = "1排12號",
                             SeatAreaId = 13,
@@ -5337,8 +5337,8 @@ namespace Infrastructure.Data.Migrations
                         new
                         {
                             Id = 416,
-                            CreatedAt = new DateTime(2024, 3, 27, 1, 6, 24, 380, DateTimeKind.Local).AddTicks(9607),
-                            EditedAt = new DateTime(2024, 3, 27, 1, 6, 24, 380, DateTimeKind.Local).AddTicks(9608),
+                            CreatedAt = new DateTime(2024, 3, 27, 1, 51, 12, 494, DateTimeKind.Local).AddTicks(3313),
+                            EditedAt = new DateTime(2024, 3, 27, 1, 51, 12, 494, DateTimeKind.Local).AddTicks(3313),
                             IsDeleted = false,
                             Number = "1排13號",
                             SeatAreaId = 13,
@@ -5347,8 +5347,8 @@ namespace Infrastructure.Data.Migrations
                         new
                         {
                             Id = 417,
-                            CreatedAt = new DateTime(2024, 3, 27, 1, 6, 24, 380, DateTimeKind.Local).AddTicks(9610),
-                            EditedAt = new DateTime(2024, 3, 27, 1, 6, 24, 380, DateTimeKind.Local).AddTicks(9611),
+                            CreatedAt = new DateTime(2024, 3, 27, 1, 51, 12, 494, DateTimeKind.Local).AddTicks(3315),
+                            EditedAt = new DateTime(2024, 3, 27, 1, 51, 12, 494, DateTimeKind.Local).AddTicks(3316),
                             IsDeleted = false,
                             Number = "1排14號",
                             SeatAreaId = 13,
@@ -5357,8 +5357,8 @@ namespace Infrastructure.Data.Migrations
                         new
                         {
                             Id = 418,
-                            CreatedAt = new DateTime(2024, 3, 27, 1, 6, 24, 380, DateTimeKind.Local).AddTicks(9613),
-                            EditedAt = new DateTime(2024, 3, 27, 1, 6, 24, 380, DateTimeKind.Local).AddTicks(9613),
+                            CreatedAt = new DateTime(2024, 3, 27, 1, 51, 12, 494, DateTimeKind.Local).AddTicks(3318),
+                            EditedAt = new DateTime(2024, 3, 27, 1, 51, 12, 494, DateTimeKind.Local).AddTicks(3320),
                             IsDeleted = false,
                             Number = "1排15號",
                             SeatAreaId = 13,
@@ -5367,8 +5367,8 @@ namespace Infrastructure.Data.Migrations
                         new
                         {
                             Id = 419,
-                            CreatedAt = new DateTime(2024, 3, 27, 1, 6, 24, 380, DateTimeKind.Local).AddTicks(9615),
-                            EditedAt = new DateTime(2024, 3, 27, 1, 6, 24, 380, DateTimeKind.Local).AddTicks(9616),
+                            CreatedAt = new DateTime(2024, 3, 27, 1, 51, 12, 494, DateTimeKind.Local).AddTicks(3322),
+                            EditedAt = new DateTime(2024, 3, 27, 1, 51, 12, 494, DateTimeKind.Local).AddTicks(3323),
                             IsDeleted = false,
                             Number = "1排16號",
                             SeatAreaId = 13,
@@ -5377,8 +5377,8 @@ namespace Infrastructure.Data.Migrations
                         new
                         {
                             Id = 420,
-                            CreatedAt = new DateTime(2024, 3, 27, 1, 6, 24, 380, DateTimeKind.Local).AddTicks(9618),
-                            EditedAt = new DateTime(2024, 3, 27, 1, 6, 24, 380, DateTimeKind.Local).AddTicks(9619),
+                            CreatedAt = new DateTime(2024, 3, 27, 1, 51, 12, 494, DateTimeKind.Local).AddTicks(3325),
+                            EditedAt = new DateTime(2024, 3, 27, 1, 51, 12, 494, DateTimeKind.Local).AddTicks(3325),
                             IsDeleted = false,
                             Number = "1排17號",
                             SeatAreaId = 13,
@@ -5387,8 +5387,8 @@ namespace Infrastructure.Data.Migrations
                         new
                         {
                             Id = 421,
-                            CreatedAt = new DateTime(2024, 3, 27, 1, 6, 24, 380, DateTimeKind.Local).AddTicks(9621),
-                            EditedAt = new DateTime(2024, 3, 27, 1, 6, 24, 380, DateTimeKind.Local).AddTicks(9621),
+                            CreatedAt = new DateTime(2024, 3, 27, 1, 51, 12, 494, DateTimeKind.Local).AddTicks(3327),
+                            EditedAt = new DateTime(2024, 3, 27, 1, 51, 12, 494, DateTimeKind.Local).AddTicks(3328),
                             IsDeleted = false,
                             Number = "2排1號",
                             SeatAreaId = 13,
@@ -5397,8 +5397,8 @@ namespace Infrastructure.Data.Migrations
                         new
                         {
                             Id = 422,
-                            CreatedAt = new DateTime(2024, 3, 27, 1, 6, 24, 380, DateTimeKind.Local).AddTicks(9624),
-                            EditedAt = new DateTime(2024, 3, 27, 1, 6, 24, 380, DateTimeKind.Local).AddTicks(9624),
+                            CreatedAt = new DateTime(2024, 3, 27, 1, 51, 12, 494, DateTimeKind.Local).AddTicks(3330),
+                            EditedAt = new DateTime(2024, 3, 27, 1, 51, 12, 494, DateTimeKind.Local).AddTicks(3330),
                             IsDeleted = false,
                             Number = "2排2號",
                             SeatAreaId = 13,
@@ -5407,8 +5407,8 @@ namespace Infrastructure.Data.Migrations
                         new
                         {
                             Id = 423,
-                            CreatedAt = new DateTime(2024, 3, 27, 1, 6, 24, 380, DateTimeKind.Local).AddTicks(9626),
-                            EditedAt = new DateTime(2024, 3, 27, 1, 6, 24, 380, DateTimeKind.Local).AddTicks(9627),
+                            CreatedAt = new DateTime(2024, 3, 27, 1, 51, 12, 494, DateTimeKind.Local).AddTicks(3332),
+                            EditedAt = new DateTime(2024, 3, 27, 1, 51, 12, 494, DateTimeKind.Local).AddTicks(3333),
                             IsDeleted = false,
                             Number = "2排3號",
                             SeatAreaId = 13,
@@ -5417,8 +5417,8 @@ namespace Infrastructure.Data.Migrations
                         new
                         {
                             Id = 424,
-                            CreatedAt = new DateTime(2024, 3, 27, 1, 6, 24, 380, DateTimeKind.Local).AddTicks(9629),
-                            EditedAt = new DateTime(2024, 3, 27, 1, 6, 24, 380, DateTimeKind.Local).AddTicks(9630),
+                            CreatedAt = new DateTime(2024, 3, 27, 1, 51, 12, 494, DateTimeKind.Local).AddTicks(3335),
+                            EditedAt = new DateTime(2024, 3, 27, 1, 51, 12, 494, DateTimeKind.Local).AddTicks(3336),
                             IsDeleted = false,
                             Number = "2排4號",
                             SeatAreaId = 13,
@@ -5427,8 +5427,8 @@ namespace Infrastructure.Data.Migrations
                         new
                         {
                             Id = 425,
-                            CreatedAt = new DateTime(2024, 3, 27, 1, 6, 24, 380, DateTimeKind.Local).AddTicks(9632),
-                            EditedAt = new DateTime(2024, 3, 27, 1, 6, 24, 380, DateTimeKind.Local).AddTicks(9633),
+                            CreatedAt = new DateTime(2024, 3, 27, 1, 51, 12, 494, DateTimeKind.Local).AddTicks(3338),
+                            EditedAt = new DateTime(2024, 3, 27, 1, 51, 12, 494, DateTimeKind.Local).AddTicks(3338),
                             IsDeleted = false,
                             Number = "2排5號",
                             SeatAreaId = 13,
@@ -5437,8 +5437,8 @@ namespace Infrastructure.Data.Migrations
                         new
                         {
                             Id = 426,
-                            CreatedAt = new DateTime(2024, 3, 27, 1, 6, 24, 380, DateTimeKind.Local).AddTicks(9635),
-                            EditedAt = new DateTime(2024, 3, 27, 1, 6, 24, 380, DateTimeKind.Local).AddTicks(9635),
+                            CreatedAt = new DateTime(2024, 3, 27, 1, 51, 12, 494, DateTimeKind.Local).AddTicks(3375),
+                            EditedAt = new DateTime(2024, 3, 27, 1, 51, 12, 494, DateTimeKind.Local).AddTicks(3375),
                             IsDeleted = false,
                             Number = "2排6號",
                             SeatAreaId = 13,
@@ -5447,8 +5447,8 @@ namespace Infrastructure.Data.Migrations
                         new
                         {
                             Id = 427,
-                            CreatedAt = new DateTime(2024, 3, 27, 1, 6, 24, 380, DateTimeKind.Local).AddTicks(9637),
-                            EditedAt = new DateTime(2024, 3, 27, 1, 6, 24, 380, DateTimeKind.Local).AddTicks(9638),
+                            CreatedAt = new DateTime(2024, 3, 27, 1, 51, 12, 494, DateTimeKind.Local).AddTicks(3378),
+                            EditedAt = new DateTime(2024, 3, 27, 1, 51, 12, 494, DateTimeKind.Local).AddTicks(3378),
                             IsDeleted = false,
                             Number = "2排7號",
                             SeatAreaId = 13,
@@ -5457,8 +5457,8 @@ namespace Infrastructure.Data.Migrations
                         new
                         {
                             Id = 428,
-                            CreatedAt = new DateTime(2024, 3, 27, 1, 6, 24, 380, DateTimeKind.Local).AddTicks(9640),
-                            EditedAt = new DateTime(2024, 3, 27, 1, 6, 24, 380, DateTimeKind.Local).AddTicks(9641),
+                            CreatedAt = new DateTime(2024, 3, 27, 1, 51, 12, 494, DateTimeKind.Local).AddTicks(3380),
+                            EditedAt = new DateTime(2024, 3, 27, 1, 51, 12, 494, DateTimeKind.Local).AddTicks(3381),
                             IsDeleted = false,
                             Number = "2排8號",
                             SeatAreaId = 13,
@@ -5467,8 +5467,8 @@ namespace Infrastructure.Data.Migrations
                         new
                         {
                             Id = 429,
-                            CreatedAt = new DateTime(2024, 3, 27, 1, 6, 24, 380, DateTimeKind.Local).AddTicks(9643),
-                            EditedAt = new DateTime(2024, 3, 27, 1, 6, 24, 380, DateTimeKind.Local).AddTicks(9643),
+                            CreatedAt = new DateTime(2024, 3, 27, 1, 51, 12, 494, DateTimeKind.Local).AddTicks(3383),
+                            EditedAt = new DateTime(2024, 3, 27, 1, 51, 12, 494, DateTimeKind.Local).AddTicks(3384),
                             IsDeleted = false,
                             Number = "2排9號",
                             SeatAreaId = 13,
@@ -5477,8 +5477,8 @@ namespace Infrastructure.Data.Migrations
                         new
                         {
                             Id = 430,
-                            CreatedAt = new DateTime(2024, 3, 27, 1, 6, 24, 380, DateTimeKind.Local).AddTicks(9645),
-                            EditedAt = new DateTime(2024, 3, 27, 1, 6, 24, 380, DateTimeKind.Local).AddTicks(9646),
+                            CreatedAt = new DateTime(2024, 3, 27, 1, 51, 12, 494, DateTimeKind.Local).AddTicks(3386),
+                            EditedAt = new DateTime(2024, 3, 27, 1, 51, 12, 494, DateTimeKind.Local).AddTicks(3387),
                             IsDeleted = false,
                             Number = "2排10號",
                             SeatAreaId = 13,
@@ -5487,8 +5487,8 @@ namespace Infrastructure.Data.Migrations
                         new
                         {
                             Id = 431,
-                            CreatedAt = new DateTime(2024, 3, 27, 1, 6, 24, 380, DateTimeKind.Local).AddTicks(9648),
-                            EditedAt = new DateTime(2024, 3, 27, 1, 6, 24, 380, DateTimeKind.Local).AddTicks(9649),
+                            CreatedAt = new DateTime(2024, 3, 27, 1, 51, 12, 494, DateTimeKind.Local).AddTicks(3390),
+                            EditedAt = new DateTime(2024, 3, 27, 1, 51, 12, 494, DateTimeKind.Local).AddTicks(3391),
                             IsDeleted = false,
                             Number = "2排11號",
                             SeatAreaId = 13,
@@ -5497,8 +5497,8 @@ namespace Infrastructure.Data.Migrations
                         new
                         {
                             Id = 432,
-                            CreatedAt = new DateTime(2024, 3, 27, 1, 6, 24, 380, DateTimeKind.Local).AddTicks(9651),
-                            EditedAt = new DateTime(2024, 3, 27, 1, 6, 24, 380, DateTimeKind.Local).AddTicks(9651),
+                            CreatedAt = new DateTime(2024, 3, 27, 1, 51, 12, 494, DateTimeKind.Local).AddTicks(3393),
+                            EditedAt = new DateTime(2024, 3, 27, 1, 51, 12, 494, DateTimeKind.Local).AddTicks(3394),
                             IsDeleted = false,
                             Number = "2排12號",
                             SeatAreaId = 13,
@@ -5507,8 +5507,8 @@ namespace Infrastructure.Data.Migrations
                         new
                         {
                             Id = 433,
-                            CreatedAt = new DateTime(2024, 3, 27, 1, 6, 24, 380, DateTimeKind.Local).AddTicks(9653),
-                            EditedAt = new DateTime(2024, 3, 27, 1, 6, 24, 380, DateTimeKind.Local).AddTicks(9654),
+                            CreatedAt = new DateTime(2024, 3, 27, 1, 51, 12, 494, DateTimeKind.Local).AddTicks(3396),
+                            EditedAt = new DateTime(2024, 3, 27, 1, 51, 12, 494, DateTimeKind.Local).AddTicks(3397),
                             IsDeleted = false,
                             Number = "2排13號",
                             SeatAreaId = 13,
@@ -5517,8 +5517,8 @@ namespace Infrastructure.Data.Migrations
                         new
                         {
                             Id = 434,
-                            CreatedAt = new DateTime(2024, 3, 27, 1, 6, 24, 380, DateTimeKind.Local).AddTicks(9656),
-                            EditedAt = new DateTime(2024, 3, 27, 1, 6, 24, 380, DateTimeKind.Local).AddTicks(9657),
+                            CreatedAt = new DateTime(2024, 3, 27, 1, 51, 12, 494, DateTimeKind.Local).AddTicks(3399),
+                            EditedAt = new DateTime(2024, 3, 27, 1, 51, 12, 494, DateTimeKind.Local).AddTicks(3399),
                             IsDeleted = false,
                             Number = "2排14號",
                             SeatAreaId = 13,
@@ -5527,8 +5527,8 @@ namespace Infrastructure.Data.Migrations
                         new
                         {
                             Id = 435,
-                            CreatedAt = new DateTime(2024, 3, 27, 1, 6, 24, 380, DateTimeKind.Local).AddTicks(9659),
-                            EditedAt = new DateTime(2024, 3, 27, 1, 6, 24, 380, DateTimeKind.Local).AddTicks(9659),
+                            CreatedAt = new DateTime(2024, 3, 27, 1, 51, 12, 494, DateTimeKind.Local).AddTicks(3401),
+                            EditedAt = new DateTime(2024, 3, 27, 1, 51, 12, 494, DateTimeKind.Local).AddTicks(3402),
                             IsDeleted = false,
                             Number = "2排15號",
                             SeatAreaId = 13,
@@ -5537,8 +5537,8 @@ namespace Infrastructure.Data.Migrations
                         new
                         {
                             Id = 436,
-                            CreatedAt = new DateTime(2024, 3, 27, 1, 6, 24, 380, DateTimeKind.Local).AddTicks(9662),
-                            EditedAt = new DateTime(2024, 3, 27, 1, 6, 24, 380, DateTimeKind.Local).AddTicks(9662),
+                            CreatedAt = new DateTime(2024, 3, 27, 1, 51, 12, 494, DateTimeKind.Local).AddTicks(3404),
+                            EditedAt = new DateTime(2024, 3, 27, 1, 51, 12, 494, DateTimeKind.Local).AddTicks(3405),
                             IsDeleted = false,
                             Number = "2排16號",
                             SeatAreaId = 13,
@@ -5547,8 +5547,8 @@ namespace Infrastructure.Data.Migrations
                         new
                         {
                             Id = 437,
-                            CreatedAt = new DateTime(2024, 3, 27, 1, 6, 24, 380, DateTimeKind.Local).AddTicks(9664),
-                            EditedAt = new DateTime(2024, 3, 27, 1, 6, 24, 380, DateTimeKind.Local).AddTicks(9665),
+                            CreatedAt = new DateTime(2024, 3, 27, 1, 51, 12, 494, DateTimeKind.Local).AddTicks(3407),
+                            EditedAt = new DateTime(2024, 3, 27, 1, 51, 12, 494, DateTimeKind.Local).AddTicks(3407),
                             IsDeleted = false,
                             Number = "2排17號",
                             SeatAreaId = 13,
@@ -5557,8 +5557,8 @@ namespace Infrastructure.Data.Migrations
                         new
                         {
                             Id = 438,
-                            CreatedAt = new DateTime(2024, 3, 27, 1, 6, 24, 380, DateTimeKind.Local).AddTicks(9667),
-                            EditedAt = new DateTime(2024, 3, 27, 1, 6, 24, 380, DateTimeKind.Local).AddTicks(9668),
+                            CreatedAt = new DateTime(2024, 3, 27, 1, 51, 12, 494, DateTimeKind.Local).AddTicks(3410),
+                            EditedAt = new DateTime(2024, 3, 27, 1, 51, 12, 494, DateTimeKind.Local).AddTicks(3410),
                             IsDeleted = false,
                             Number = "3排1號",
                             SeatAreaId = 13,
@@ -5567,8 +5567,8 @@ namespace Infrastructure.Data.Migrations
                         new
                         {
                             Id = 439,
-                            CreatedAt = new DateTime(2024, 3, 27, 1, 6, 24, 380, DateTimeKind.Local).AddTicks(9670),
-                            EditedAt = new DateTime(2024, 3, 27, 1, 6, 24, 380, DateTimeKind.Local).AddTicks(9671),
+                            CreatedAt = new DateTime(2024, 3, 27, 1, 51, 12, 494, DateTimeKind.Local).AddTicks(3412),
+                            EditedAt = new DateTime(2024, 3, 27, 1, 51, 12, 494, DateTimeKind.Local).AddTicks(3413),
                             IsDeleted = false,
                             Number = "3排2號",
                             SeatAreaId = 13,
@@ -5577,8 +5577,8 @@ namespace Infrastructure.Data.Migrations
                         new
                         {
                             Id = 440,
-                            CreatedAt = new DateTime(2024, 3, 27, 1, 6, 24, 380, DateTimeKind.Local).AddTicks(9673),
-                            EditedAt = new DateTime(2024, 3, 27, 1, 6, 24, 380, DateTimeKind.Local).AddTicks(9673),
+                            CreatedAt = new DateTime(2024, 3, 27, 1, 51, 12, 494, DateTimeKind.Local).AddTicks(3415),
+                            EditedAt = new DateTime(2024, 3, 27, 1, 51, 12, 494, DateTimeKind.Local).AddTicks(3416),
                             IsDeleted = false,
                             Number = "3排3號",
                             SeatAreaId = 13,
@@ -5587,8 +5587,8 @@ namespace Infrastructure.Data.Migrations
                         new
                         {
                             Id = 441,
-                            CreatedAt = new DateTime(2024, 3, 27, 1, 6, 24, 380, DateTimeKind.Local).AddTicks(9675),
-                            EditedAt = new DateTime(2024, 3, 27, 1, 6, 24, 380, DateTimeKind.Local).AddTicks(9676),
+                            CreatedAt = new DateTime(2024, 3, 27, 1, 51, 12, 494, DateTimeKind.Local).AddTicks(3417),
+                            EditedAt = new DateTime(2024, 3, 27, 1, 51, 12, 494, DateTimeKind.Local).AddTicks(3418),
                             IsDeleted = false,
                             Number = "3排4號",
                             SeatAreaId = 13,
@@ -5597,8 +5597,8 @@ namespace Infrastructure.Data.Migrations
                         new
                         {
                             Id = 442,
-                            CreatedAt = new DateTime(2024, 3, 27, 1, 6, 24, 380, DateTimeKind.Local).AddTicks(9678),
-                            EditedAt = new DateTime(2024, 3, 27, 1, 6, 24, 380, DateTimeKind.Local).AddTicks(9679),
+                            CreatedAt = new DateTime(2024, 3, 27, 1, 51, 12, 494, DateTimeKind.Local).AddTicks(3420),
+                            EditedAt = new DateTime(2024, 3, 27, 1, 51, 12, 494, DateTimeKind.Local).AddTicks(3421),
                             IsDeleted = false,
                             Number = "3排5號",
                             SeatAreaId = 13,
@@ -5607,8 +5607,8 @@ namespace Infrastructure.Data.Migrations
                         new
                         {
                             Id = 443,
-                            CreatedAt = new DateTime(2024, 3, 27, 1, 6, 24, 380, DateTimeKind.Local).AddTicks(9681),
-                            EditedAt = new DateTime(2024, 3, 27, 1, 6, 24, 380, DateTimeKind.Local).AddTicks(9681),
+                            CreatedAt = new DateTime(2024, 3, 27, 1, 51, 12, 494, DateTimeKind.Local).AddTicks(3424),
+                            EditedAt = new DateTime(2024, 3, 27, 1, 51, 12, 494, DateTimeKind.Local).AddTicks(3425),
                             IsDeleted = false,
                             Number = "3排6號",
                             SeatAreaId = 13,
@@ -5617,8 +5617,8 @@ namespace Infrastructure.Data.Migrations
                         new
                         {
                             Id = 444,
-                            CreatedAt = new DateTime(2024, 3, 27, 1, 6, 24, 380, DateTimeKind.Local).AddTicks(9683),
-                            EditedAt = new DateTime(2024, 3, 27, 1, 6, 24, 380, DateTimeKind.Local).AddTicks(9684),
+                            CreatedAt = new DateTime(2024, 3, 27, 1, 51, 12, 494, DateTimeKind.Local).AddTicks(3427),
+                            EditedAt = new DateTime(2024, 3, 27, 1, 51, 12, 494, DateTimeKind.Local).AddTicks(3428),
                             IsDeleted = false,
                             Number = "3排7號",
                             SeatAreaId = 13,
@@ -5627,8 +5627,8 @@ namespace Infrastructure.Data.Migrations
                         new
                         {
                             Id = 445,
-                            CreatedAt = new DateTime(2024, 3, 27, 1, 6, 24, 380, DateTimeKind.Local).AddTicks(9686),
-                            EditedAt = new DateTime(2024, 3, 27, 1, 6, 24, 380, DateTimeKind.Local).AddTicks(9687),
+                            CreatedAt = new DateTime(2024, 3, 27, 1, 51, 12, 494, DateTimeKind.Local).AddTicks(3429),
+                            EditedAt = new DateTime(2024, 3, 27, 1, 51, 12, 494, DateTimeKind.Local).AddTicks(3430),
                             IsDeleted = false,
                             Number = "3排8號",
                             SeatAreaId = 13,
@@ -5637,8 +5637,8 @@ namespace Infrastructure.Data.Migrations
                         new
                         {
                             Id = 446,
-                            CreatedAt = new DateTime(2024, 3, 27, 1, 6, 24, 380, DateTimeKind.Local).AddTicks(9690),
-                            EditedAt = new DateTime(2024, 3, 27, 1, 6, 24, 380, DateTimeKind.Local).AddTicks(9691),
+                            CreatedAt = new DateTime(2024, 3, 27, 1, 51, 12, 494, DateTimeKind.Local).AddTicks(3432),
+                            EditedAt = new DateTime(2024, 3, 27, 1, 51, 12, 494, DateTimeKind.Local).AddTicks(3433),
                             IsDeleted = false,
                             Number = "3排9號",
                             SeatAreaId = 13,
@@ -5647,8 +5647,8 @@ namespace Infrastructure.Data.Migrations
                         new
                         {
                             Id = 447,
-                            CreatedAt = new DateTime(2024, 3, 27, 1, 6, 24, 380, DateTimeKind.Local).AddTicks(9693),
-                            EditedAt = new DateTime(2024, 3, 27, 1, 6, 24, 380, DateTimeKind.Local).AddTicks(9693),
+                            CreatedAt = new DateTime(2024, 3, 27, 1, 51, 12, 494, DateTimeKind.Local).AddTicks(3435),
+                            EditedAt = new DateTime(2024, 3, 27, 1, 51, 12, 494, DateTimeKind.Local).AddTicks(3436),
                             IsDeleted = false,
                             Number = "3排10號",
                             SeatAreaId = 13,
@@ -5657,8 +5657,8 @@ namespace Infrastructure.Data.Migrations
                         new
                         {
                             Id = 448,
-                            CreatedAt = new DateTime(2024, 3, 27, 1, 6, 24, 380, DateTimeKind.Local).AddTicks(9695),
-                            EditedAt = new DateTime(2024, 3, 27, 1, 6, 24, 380, DateTimeKind.Local).AddTicks(9696),
+                            CreatedAt = new DateTime(2024, 3, 27, 1, 51, 12, 494, DateTimeKind.Local).AddTicks(3438),
+                            EditedAt = new DateTime(2024, 3, 27, 1, 51, 12, 494, DateTimeKind.Local).AddTicks(3438),
                             IsDeleted = false,
                             Number = "3排11號",
                             SeatAreaId = 13,
@@ -5667,8 +5667,8 @@ namespace Infrastructure.Data.Migrations
                         new
                         {
                             Id = 449,
-                            CreatedAt = new DateTime(2024, 3, 27, 1, 6, 24, 380, DateTimeKind.Local).AddTicks(9698),
-                            EditedAt = new DateTime(2024, 3, 27, 1, 6, 24, 380, DateTimeKind.Local).AddTicks(9699),
+                            CreatedAt = new DateTime(2024, 3, 27, 1, 51, 12, 494, DateTimeKind.Local).AddTicks(3440),
+                            EditedAt = new DateTime(2024, 3, 27, 1, 51, 12, 494, DateTimeKind.Local).AddTicks(3441),
                             IsDeleted = false,
                             Number = "3排12號",
                             SeatAreaId = 13,
@@ -5677,8 +5677,8 @@ namespace Infrastructure.Data.Migrations
                         new
                         {
                             Id = 450,
-                            CreatedAt = new DateTime(2024, 3, 27, 1, 6, 24, 380, DateTimeKind.Local).AddTicks(9701),
-                            EditedAt = new DateTime(2024, 3, 27, 1, 6, 24, 380, DateTimeKind.Local).AddTicks(9702),
+                            CreatedAt = new DateTime(2024, 3, 27, 1, 51, 12, 494, DateTimeKind.Local).AddTicks(3443),
+                            EditedAt = new DateTime(2024, 3, 27, 1, 51, 12, 494, DateTimeKind.Local).AddTicks(3444),
                             IsDeleted = false,
                             Number = "3排13號",
                             SeatAreaId = 13,
@@ -5687,8 +5687,8 @@ namespace Infrastructure.Data.Migrations
                         new
                         {
                             Id = 451,
-                            CreatedAt = new DateTime(2024, 3, 27, 1, 6, 24, 380, DateTimeKind.Local).AddTicks(9705),
-                            EditedAt = new DateTime(2024, 3, 27, 1, 6, 24, 380, DateTimeKind.Local).AddTicks(9705),
+                            CreatedAt = new DateTime(2024, 3, 27, 1, 51, 12, 494, DateTimeKind.Local).AddTicks(3446),
+                            EditedAt = new DateTime(2024, 3, 27, 1, 51, 12, 494, DateTimeKind.Local).AddTicks(3446),
                             IsDeleted = false,
                             Number = "3排14號",
                             SeatAreaId = 13,
@@ -5697,8 +5697,8 @@ namespace Infrastructure.Data.Migrations
                         new
                         {
                             Id = 452,
-                            CreatedAt = new DateTime(2024, 3, 27, 1, 6, 24, 380, DateTimeKind.Local).AddTicks(9708),
-                            EditedAt = new DateTime(2024, 3, 27, 1, 6, 24, 380, DateTimeKind.Local).AddTicks(9708),
+                            CreatedAt = new DateTime(2024, 3, 27, 1, 51, 12, 494, DateTimeKind.Local).AddTicks(3448),
+                            EditedAt = new DateTime(2024, 3, 27, 1, 51, 12, 494, DateTimeKind.Local).AddTicks(3449),
                             IsDeleted = false,
                             Number = "3排16號",
                             SeatAreaId = 13,
@@ -5707,8 +5707,8 @@ namespace Infrastructure.Data.Migrations
                         new
                         {
                             Id = 453,
-                            CreatedAt = new DateTime(2024, 3, 27, 1, 6, 24, 380, DateTimeKind.Local).AddTicks(9710),
-                            EditedAt = new DateTime(2024, 3, 27, 1, 6, 24, 380, DateTimeKind.Local).AddTicks(9711),
+                            CreatedAt = new DateTime(2024, 3, 27, 1, 51, 12, 494, DateTimeKind.Local).AddTicks(3451),
+                            EditedAt = new DateTime(2024, 3, 27, 1, 51, 12, 494, DateTimeKind.Local).AddTicks(3452),
                             IsDeleted = false,
                             Number = "3排17號",
                             SeatAreaId = 13,
@@ -5717,8 +5717,8 @@ namespace Infrastructure.Data.Migrations
                         new
                         {
                             Id = 454,
-                            CreatedAt = new DateTime(2024, 3, 27, 1, 6, 24, 380, DateTimeKind.Local).AddTicks(9713),
-                            EditedAt = new DateTime(2024, 3, 27, 1, 6, 24, 380, DateTimeKind.Local).AddTicks(9713),
+                            CreatedAt = new DateTime(2024, 3, 27, 1, 51, 12, 494, DateTimeKind.Local).AddTicks(3454),
+                            EditedAt = new DateTime(2024, 3, 27, 1, 51, 12, 494, DateTimeKind.Local).AddTicks(3454),
                             IsDeleted = false,
                             Number = "4排1號",
                             SeatAreaId = 13,
@@ -5727,8 +5727,8 @@ namespace Infrastructure.Data.Migrations
                         new
                         {
                             Id = 455,
-                            CreatedAt = new DateTime(2024, 3, 27, 1, 6, 24, 380, DateTimeKind.Local).AddTicks(9716),
-                            EditedAt = new DateTime(2024, 3, 27, 1, 6, 24, 380, DateTimeKind.Local).AddTicks(9716),
+                            CreatedAt = new DateTime(2024, 3, 27, 1, 51, 12, 494, DateTimeKind.Local).AddTicks(3456),
+                            EditedAt = new DateTime(2024, 3, 27, 1, 51, 12, 494, DateTimeKind.Local).AddTicks(3458),
                             IsDeleted = false,
                             Number = "4排2號",
                             SeatAreaId = 13,
@@ -5737,8 +5737,8 @@ namespace Infrastructure.Data.Migrations
                         new
                         {
                             Id = 456,
-                            CreatedAt = new DateTime(2024, 3, 27, 1, 6, 24, 380, DateTimeKind.Local).AddTicks(9718),
-                            EditedAt = new DateTime(2024, 3, 27, 1, 6, 24, 380, DateTimeKind.Local).AddTicks(9719),
+                            CreatedAt = new DateTime(2024, 3, 27, 1, 51, 12, 494, DateTimeKind.Local).AddTicks(3460),
+                            EditedAt = new DateTime(2024, 3, 27, 1, 51, 12, 494, DateTimeKind.Local).AddTicks(3461),
                             IsDeleted = false,
                             Number = "4排3號",
                             SeatAreaId = 13,
@@ -5747,8 +5747,8 @@ namespace Infrastructure.Data.Migrations
                         new
                         {
                             Id = 457,
-                            CreatedAt = new DateTime(2024, 3, 27, 1, 6, 24, 380, DateTimeKind.Local).AddTicks(9721),
-                            EditedAt = new DateTime(2024, 3, 27, 1, 6, 24, 380, DateTimeKind.Local).AddTicks(9722),
+                            CreatedAt = new DateTime(2024, 3, 27, 1, 51, 12, 494, DateTimeKind.Local).AddTicks(3463),
+                            EditedAt = new DateTime(2024, 3, 27, 1, 51, 12, 494, DateTimeKind.Local).AddTicks(3464),
                             IsDeleted = false,
                             Number = "4排4號",
                             SeatAreaId = 13,
@@ -5757,8 +5757,8 @@ namespace Infrastructure.Data.Migrations
                         new
                         {
                             Id = 458,
-                            CreatedAt = new DateTime(2024, 3, 27, 1, 6, 24, 380, DateTimeKind.Local).AddTicks(9724),
-                            EditedAt = new DateTime(2024, 3, 27, 1, 6, 24, 380, DateTimeKind.Local).AddTicks(9724),
+                            CreatedAt = new DateTime(2024, 3, 27, 1, 51, 12, 494, DateTimeKind.Local).AddTicks(3466),
+                            EditedAt = new DateTime(2024, 3, 27, 1, 51, 12, 494, DateTimeKind.Local).AddTicks(3466),
                             IsDeleted = false,
                             Number = "4排5號",
                             SeatAreaId = 13,
@@ -5767,8 +5767,8 @@ namespace Infrastructure.Data.Migrations
                         new
                         {
                             Id = 459,
-                            CreatedAt = new DateTime(2024, 3, 27, 1, 6, 24, 380, DateTimeKind.Local).AddTicks(9726),
-                            EditedAt = new DateTime(2024, 3, 27, 1, 6, 24, 380, DateTimeKind.Local).AddTicks(9727),
+                            CreatedAt = new DateTime(2024, 3, 27, 1, 51, 12, 494, DateTimeKind.Local).AddTicks(3468),
+                            EditedAt = new DateTime(2024, 3, 27, 1, 51, 12, 494, DateTimeKind.Local).AddTicks(3469),
                             IsDeleted = false,
                             Number = "4排6號",
                             SeatAreaId = 13,
@@ -5777,8 +5777,8 @@ namespace Infrastructure.Data.Migrations
                         new
                         {
                             Id = 460,
-                            CreatedAt = new DateTime(2024, 3, 27, 1, 6, 24, 380, DateTimeKind.Local).AddTicks(9730),
-                            EditedAt = new DateTime(2024, 3, 27, 1, 6, 24, 380, DateTimeKind.Local).AddTicks(9731),
+                            CreatedAt = new DateTime(2024, 3, 27, 1, 51, 12, 494, DateTimeKind.Local).AddTicks(3471),
+                            EditedAt = new DateTime(2024, 3, 27, 1, 51, 12, 494, DateTimeKind.Local).AddTicks(3472),
                             IsDeleted = false,
                             Number = "4排7號",
                             SeatAreaId = 13,
@@ -5787,8 +5787,8 @@ namespace Infrastructure.Data.Migrations
                         new
                         {
                             Id = 461,
-                            CreatedAt = new DateTime(2024, 3, 27, 1, 6, 24, 380, DateTimeKind.Local).AddTicks(9733),
-                            EditedAt = new DateTime(2024, 3, 27, 1, 6, 24, 380, DateTimeKind.Local).AddTicks(9733),
+                            CreatedAt = new DateTime(2024, 3, 27, 1, 51, 12, 494, DateTimeKind.Local).AddTicks(3474),
+                            EditedAt = new DateTime(2024, 3, 27, 1, 51, 12, 494, DateTimeKind.Local).AddTicks(3474),
                             IsDeleted = false,
                             Number = "4排8號",
                             SeatAreaId = 13,
@@ -5797,8 +5797,8 @@ namespace Infrastructure.Data.Migrations
                         new
                         {
                             Id = 462,
-                            CreatedAt = new DateTime(2024, 3, 27, 1, 6, 24, 380, DateTimeKind.Local).AddTicks(9735),
-                            EditedAt = new DateTime(2024, 3, 27, 1, 6, 24, 380, DateTimeKind.Local).AddTicks(9736),
+                            CreatedAt = new DateTime(2024, 3, 27, 1, 51, 12, 494, DateTimeKind.Local).AddTicks(3476),
+                            EditedAt = new DateTime(2024, 3, 27, 1, 51, 12, 494, DateTimeKind.Local).AddTicks(3477),
                             IsDeleted = false,
                             Number = "4排9號",
                             SeatAreaId = 13,
@@ -5807,8 +5807,8 @@ namespace Infrastructure.Data.Migrations
                         new
                         {
                             Id = 463,
-                            CreatedAt = new DateTime(2024, 3, 27, 1, 6, 24, 380, DateTimeKind.Local).AddTicks(9738),
-                            EditedAt = new DateTime(2024, 3, 27, 1, 6, 24, 380, DateTimeKind.Local).AddTicks(9739),
+                            CreatedAt = new DateTime(2024, 3, 27, 1, 51, 12, 494, DateTimeKind.Local).AddTicks(3479),
+                            EditedAt = new DateTime(2024, 3, 27, 1, 51, 12, 494, DateTimeKind.Local).AddTicks(3480),
                             IsDeleted = false,
                             Number = "4排10號",
                             SeatAreaId = 13,
@@ -5817,8 +5817,8 @@ namespace Infrastructure.Data.Migrations
                         new
                         {
                             Id = 464,
-                            CreatedAt = new DateTime(2024, 3, 27, 1, 6, 24, 380, DateTimeKind.Local).AddTicks(9741),
-                            EditedAt = new DateTime(2024, 3, 27, 1, 6, 24, 380, DateTimeKind.Local).AddTicks(9741),
+                            CreatedAt = new DateTime(2024, 3, 27, 1, 51, 12, 494, DateTimeKind.Local).AddTicks(3482),
+                            EditedAt = new DateTime(2024, 3, 27, 1, 51, 12, 494, DateTimeKind.Local).AddTicks(3482),
                             IsDeleted = false,
                             Number = "4排11號",
                             SeatAreaId = 13,
@@ -5827,8 +5827,8 @@ namespace Infrastructure.Data.Migrations
                         new
                         {
                             Id = 465,
-                            CreatedAt = new DateTime(2024, 3, 27, 1, 6, 24, 380, DateTimeKind.Local).AddTicks(9744),
-                            EditedAt = new DateTime(2024, 3, 27, 1, 6, 24, 380, DateTimeKind.Local).AddTicks(9744),
+                            CreatedAt = new DateTime(2024, 3, 27, 1, 51, 12, 494, DateTimeKind.Local).AddTicks(3484),
+                            EditedAt = new DateTime(2024, 3, 27, 1, 51, 12, 494, DateTimeKind.Local).AddTicks(3485),
                             IsDeleted = false,
                             Number = "4排12號",
                             SeatAreaId = 13,
@@ -5837,8 +5837,8 @@ namespace Infrastructure.Data.Migrations
                         new
                         {
                             Id = 466,
-                            CreatedAt = new DateTime(2024, 3, 27, 1, 6, 24, 380, DateTimeKind.Local).AddTicks(9746),
-                            EditedAt = new DateTime(2024, 3, 27, 1, 6, 24, 380, DateTimeKind.Local).AddTicks(9747),
+                            CreatedAt = new DateTime(2024, 3, 27, 1, 51, 12, 494, DateTimeKind.Local).AddTicks(3487),
+                            EditedAt = new DateTime(2024, 3, 27, 1, 51, 12, 494, DateTimeKind.Local).AddTicks(3488),
                             IsDeleted = false,
                             Number = "4排13號",
                             SeatAreaId = 13,
@@ -5881,112 +5881,112 @@ namespace Infrastructure.Data.Migrations
                         new
                         {
                             Id = 1,
-                            CreatedAt = new DateTime(2024, 3, 12, 1, 6, 24, 380, DateTimeKind.Local).AddTicks(9898),
+                            CreatedAt = new DateTime(2024, 3, 12, 1, 51, 12, 494, DateTimeKind.Local).AddTicks(3647),
                             IsDeleted = false,
                             Name = "1A區"
                         },
                         new
                         {
                             Id = 2,
-                            CreatedAt = new DateTime(2024, 3, 12, 1, 6, 24, 380, DateTimeKind.Local).AddTicks(9906),
+                            CreatedAt = new DateTime(2024, 3, 12, 1, 51, 12, 494, DateTimeKind.Local).AddTicks(3653),
                             IsDeleted = false,
                             Name = "2A區"
                         },
                         new
                         {
                             Id = 3,
-                            CreatedAt = new DateTime(2024, 3, 12, 1, 6, 24, 380, DateTimeKind.Local).AddTicks(9908),
+                            CreatedAt = new DateTime(2024, 3, 12, 1, 51, 12, 494, DateTimeKind.Local).AddTicks(3656),
                             IsDeleted = false,
                             Name = "2A區"
                         },
                         new
                         {
                             Id = 4,
-                            CreatedAt = new DateTime(2024, 3, 13, 1, 6, 24, 380, DateTimeKind.Local).AddTicks(9911),
+                            CreatedAt = new DateTime(2024, 3, 13, 1, 51, 12, 494, DateTimeKind.Local).AddTicks(3657),
                             IsDeleted = false,
                             Name = "2B區"
                         },
                         new
                         {
                             Id = 5,
-                            CreatedAt = new DateTime(2024, 3, 14, 1, 6, 24, 380, DateTimeKind.Local).AddTicks(9947),
+                            CreatedAt = new DateTime(2024, 3, 14, 1, 51, 12, 494, DateTimeKind.Local).AddTicks(3660),
                             IsDeleted = false,
                             Name = "2C區"
                         },
                         new
                         {
                             Id = 6,
-                            CreatedAt = new DateTime(2024, 3, 15, 1, 6, 24, 380, DateTimeKind.Local).AddTicks(9949),
+                            CreatedAt = new DateTime(2024, 3, 15, 1, 51, 12, 494, DateTimeKind.Local).AddTicks(3662),
                             IsDeleted = false,
                             Name = "2D區"
                         },
                         new
                         {
                             Id = 7,
-                            CreatedAt = new DateTime(2024, 3, 16, 1, 6, 24, 380, DateTimeKind.Local).AddTicks(9952),
+                            CreatedAt = new DateTime(2024, 3, 16, 1, 51, 12, 494, DateTimeKind.Local).AddTicks(3665),
                             IsDeleted = false,
                             Name = "2E區"
                         },
                         new
                         {
                             Id = 8,
-                            CreatedAt = new DateTime(2024, 3, 17, 1, 6, 24, 380, DateTimeKind.Local).AddTicks(9954),
+                            CreatedAt = new DateTime(2024, 3, 17, 1, 51, 12, 494, DateTimeKind.Local).AddTicks(3667),
                             IsDeleted = false,
                             Name = "2F區"
                         },
                         new
                         {
                             Id = 9,
-                            CreatedAt = new DateTime(2024, 3, 18, 1, 6, 24, 380, DateTimeKind.Local).AddTicks(9956),
+                            CreatedAt = new DateTime(2024, 3, 18, 1, 51, 12, 494, DateTimeKind.Local).AddTicks(3669),
                             IsDeleted = false,
                             Name = "2G區"
                         },
                         new
                         {
                             Id = 10,
-                            CreatedAt = new DateTime(2024, 3, 19, 1, 6, 24, 380, DateTimeKind.Local).AddTicks(9959),
+                            CreatedAt = new DateTime(2024, 3, 19, 1, 51, 12, 494, DateTimeKind.Local).AddTicks(3671),
                             IsDeleted = false,
                             Name = "3A區"
                         },
                         new
                         {
                             Id = 11,
-                            CreatedAt = new DateTime(2024, 3, 20, 1, 6, 24, 380, DateTimeKind.Local).AddTicks(9961),
+                            CreatedAt = new DateTime(2024, 3, 20, 1, 51, 12, 494, DateTimeKind.Local).AddTicks(3673),
                             IsDeleted = false,
                             Name = "3B區"
                         },
                         new
                         {
                             Id = 12,
-                            CreatedAt = new DateTime(2024, 3, 21, 1, 6, 24, 380, DateTimeKind.Local).AddTicks(9963),
+                            CreatedAt = new DateTime(2024, 3, 21, 1, 51, 12, 494, DateTimeKind.Local).AddTicks(3676),
                             IsDeleted = false,
                             Name = "3C區"
                         },
                         new
                         {
                             Id = 13,
-                            CreatedAt = new DateTime(2024, 3, 22, 1, 6, 24, 380, DateTimeKind.Local).AddTicks(9965),
+                            CreatedAt = new DateTime(2024, 3, 22, 1, 51, 12, 494, DateTimeKind.Local).AddTicks(3678),
                             IsDeleted = false,
                             Name = "3D區"
                         },
                         new
                         {
                             Id = 14,
-                            CreatedAt = new DateTime(2024, 3, 22, 1, 6, 24, 380, DateTimeKind.Local).AddTicks(9967),
+                            CreatedAt = new DateTime(2024, 3, 22, 1, 51, 12, 494, DateTimeKind.Local).AddTicks(3680),
                             IsDeleted = false,
                             Name = "3E區"
                         },
                         new
                         {
                             Id = 15,
-                            CreatedAt = new DateTime(2024, 3, 20, 1, 6, 24, 380, DateTimeKind.Local).AddTicks(9969),
+                            CreatedAt = new DateTime(2024, 3, 20, 1, 51, 12, 494, DateTimeKind.Local).AddTicks(3682),
                             IsDeleted = false,
                             Name = "3F區"
                         },
                         new
                         {
                             Id = 16,
-                            CreatedAt = new DateTime(2024, 3, 19, 1, 6, 24, 380, DateTimeKind.Local).AddTicks(9971),
+                            CreatedAt = new DateTime(2024, 3, 19, 1, 51, 12, 494, DateTimeKind.Local).AddTicks(3685),
                             IsDeleted = false,
                             Name = "3G區"
                         });
@@ -6053,7 +6053,7 @@ namespace Infrastructure.Data.Migrations
                         {
                             Id = 1,
                             CheckCode = 123,
-                            CreatedAt = new DateTime(2024, 3, 27, 1, 6, 24, 381, DateTimeKind.Local).AddTicks(383),
+                            CreatedAt = new DateTime(2024, 3, 27, 1, 51, 12, 494, DateTimeKind.Local).AddTicks(4043),
                             IsDeleted = false,
                             Number = "A123456789",
                             OrderId = 1,
@@ -6065,8 +6065,8 @@ namespace Infrastructure.Data.Migrations
                         {
                             Id = 2,
                             CheckCode = 123,
-                            CreatedAt = new DateTime(2024, 3, 26, 1, 6, 24, 381, DateTimeKind.Local).AddTicks(387),
-                            EditedAt = new DateTime(2024, 3, 27, 1, 6, 24, 381, DateTimeKind.Local).AddTicks(388),
+                            CreatedAt = new DateTime(2024, 3, 26, 1, 51, 12, 494, DateTimeKind.Local).AddTicks(4047),
+                            EditedAt = new DateTime(2024, 3, 27, 1, 51, 12, 494, DateTimeKind.Local).AddTicks(4048),
                             IsDeleted = false,
                             Number = "B987654321",
                             OrderId = 2,
@@ -6077,7 +6077,7 @@ namespace Infrastructure.Data.Migrations
                         {
                             Id = 3,
                             CheckCode = 123,
-                            CreatedAt = new DateTime(2024, 3, 25, 1, 6, 24, 381, DateTimeKind.Local).AddTicks(391),
+                            CreatedAt = new DateTime(2024, 3, 25, 1, 51, 12, 494, DateTimeKind.Local).AddTicks(4051),
                             IsDeleted = true,
                             Number = "C123456789",
                             SeatId = 3,
@@ -6088,7 +6088,7 @@ namespace Infrastructure.Data.Migrations
                         {
                             Id = 4,
                             CheckCode = 123,
-                            CreatedAt = new DateTime(2024, 3, 27, 1, 6, 24, 381, DateTimeKind.Local).AddTicks(394),
+                            CreatedAt = new DateTime(2024, 3, 27, 1, 51, 12, 494, DateTimeKind.Local).AddTicks(4054),
                             IsDeleted = false,
                             Number = "A123456789",
                             OrderId = 1,
@@ -6100,8 +6100,8 @@ namespace Infrastructure.Data.Migrations
                         {
                             Id = 5,
                             CheckCode = 123,
-                            CreatedAt = new DateTime(2024, 3, 26, 1, 6, 24, 381, DateTimeKind.Local).AddTicks(397),
-                            EditedAt = new DateTime(2024, 3, 27, 1, 6, 24, 381, DateTimeKind.Local).AddTicks(398),
+                            CreatedAt = new DateTime(2024, 3, 26, 1, 51, 12, 494, DateTimeKind.Local).AddTicks(4057),
+                            EditedAt = new DateTime(2024, 3, 27, 1, 51, 12, 494, DateTimeKind.Local).AddTicks(4058),
                             IsDeleted = false,
                             Number = "B987654321",
                             OrderId = 2,
@@ -6176,49 +6176,49 @@ namespace Infrastructure.Data.Migrations
                         {
                             Id = 1,
                             CapacityAmount = 300,
-                            CreatedAt = new DateTime(2024, 3, 27, 1, 6, 24, 381, DateTimeKind.Local).AddTicks(314),
-                            EditedAt = new DateTime(2024, 3, 27, 1, 6, 24, 381, DateTimeKind.Local).AddTicks(315),
-                            EndSaleTime = new DateTime(2024, 3, 27, 1, 6, 24, 381, DateTimeKind.Local).AddTicks(312),
+                            CreatedAt = new DateTime(2024, 3, 27, 1, 51, 12, 494, DateTimeKind.Local).AddTicks(3983),
+                            EditedAt = new DateTime(2024, 3, 27, 1, 51, 12, 494, DateTimeKind.Local).AddTicks(3984),
+                            EndSaleTime = new DateTime(2024, 3, 27, 1, 51, 12, 494, DateTimeKind.Local).AddTicks(3980),
                             EventId = 1,
                             Name = "Free",
                             Price = 0m,
-                            StartSaleTime = new DateTime(2024, 3, 27, 1, 6, 24, 381, DateTimeKind.Local).AddTicks(311)
+                            StartSaleTime = new DateTime(2024, 3, 27, 1, 51, 12, 494, DateTimeKind.Local).AddTicks(3979)
                         },
                         new
                         {
                             Id = 2,
                             CapacityAmount = 50,
-                            CreatedAt = new DateTime(2024, 3, 27, 1, 6, 24, 381, DateTimeKind.Local).AddTicks(322),
-                            EditedAt = new DateTime(2024, 3, 27, 1, 6, 24, 381, DateTimeKind.Local).AddTicks(323),
-                            EndSaleTime = new DateTime(2024, 3, 27, 1, 6, 24, 381, DateTimeKind.Local).AddTicks(319),
+                            CreatedAt = new DateTime(2024, 3, 27, 1, 51, 12, 494, DateTimeKind.Local).AddTicks(3991),
+                            EditedAt = new DateTime(2024, 3, 27, 1, 51, 12, 494, DateTimeKind.Local).AddTicks(3991),
+                            EndSaleTime = new DateTime(2024, 3, 27, 1, 51, 12, 494, DateTimeKind.Local).AddTicks(3987),
                             EventId = 2,
                             Name = "搖滾票",
                             Price = 6800m,
-                            StartSaleTime = new DateTime(2024, 3, 27, 1, 6, 24, 381, DateTimeKind.Local).AddTicks(318)
+                            StartSaleTime = new DateTime(2024, 3, 27, 1, 51, 12, 494, DateTimeKind.Local).AddTicks(3986)
                         },
                         new
                         {
                             Id = 3,
                             CapacityAmount = 200,
-                            CreatedAt = new DateTime(2024, 3, 27, 1, 6, 24, 381, DateTimeKind.Local).AddTicks(327),
-                            EditedAt = new DateTime(2024, 3, 27, 1, 6, 24, 381, DateTimeKind.Local).AddTicks(327),
-                            EndSaleTime = new DateTime(2024, 3, 27, 1, 6, 24, 381, DateTimeKind.Local).AddTicks(326),
+                            CreatedAt = new DateTime(2024, 3, 27, 1, 51, 12, 494, DateTimeKind.Local).AddTicks(3995),
+                            EditedAt = new DateTime(2024, 3, 27, 1, 51, 12, 494, DateTimeKind.Local).AddTicks(3996),
+                            EndSaleTime = new DateTime(2024, 3, 27, 1, 51, 12, 494, DateTimeKind.Local).AddTicks(3994),
                             EventId = 2,
                             Name = "一般票",
                             Price = 2800m,
-                            StartSaleTime = new DateTime(2024, 3, 27, 1, 6, 24, 381, DateTimeKind.Local).AddTicks(325)
+                            StartSaleTime = new DateTime(2024, 3, 27, 1, 51, 12, 494, DateTimeKind.Local).AddTicks(3993)
                         },
                         new
                         {
                             Id = 4,
                             CapacityAmount = 400,
-                            CreatedAt = new DateTime(2024, 3, 27, 1, 6, 24, 381, DateTimeKind.Local).AddTicks(331),
-                            EditedAt = new DateTime(2024, 3, 27, 1, 6, 24, 381, DateTimeKind.Local).AddTicks(332),
-                            EndSaleTime = new DateTime(2024, 3, 27, 1, 6, 24, 381, DateTimeKind.Local).AddTicks(330),
+                            CreatedAt = new DateTime(2024, 3, 27, 1, 51, 12, 494, DateTimeKind.Local).AddTicks(3999),
+                            EditedAt = new DateTime(2024, 3, 27, 1, 51, 12, 494, DateTimeKind.Local).AddTicks(4000),
+                            EndSaleTime = new DateTime(2024, 3, 27, 1, 51, 12, 494, DateTimeKind.Local).AddTicks(3998),
                             EventId = 2,
                             Name = "站票",
                             Price = 800m,
-                            StartSaleTime = new DateTime(2024, 3, 27, 1, 6, 24, 381, DateTimeKind.Local).AddTicks(329)
+                            StartSaleTime = new DateTime(2024, 3, 27, 1, 51, 12, 494, DateTimeKind.Local).AddTicks(3998)
                         });
                 });
 
@@ -6291,13 +6291,13 @@ namespace Infrastructure.Data.Migrations
                         new
                         {
                             Id = 1,
-                            Birthday = new DateTime(1990, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            CreatedAt = new DateTime(2024, 3, 27, 1, 6, 24, 381, DateTimeKind.Local).AddTicks(9),
-                            EditedAt = new DateTime(2024, 3, 27, 1, 6, 24, 381, DateTimeKind.Local).AddTicks(10),
+                            Birthday = new DateTime(1995, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            CreatedAt = new DateTime(2024, 3, 27, 1, 51, 12, 494, DateTimeKind.Local).AddTicks(3723),
+                            EditedAt = new DateTime(2024, 3, 27, 1, 51, 12, 494, DateTimeKind.Local).AddTicks(3723),
                             EdmSubscription = true,
                             Gender = (byte)1,
                             Image = "https://image.com/alice.jpg",
-                            LastLogInAt = new DateTime(2024, 3, 27, 1, 6, 24, 381, DateTimeKind.Local).AddTicks(8),
+                            LastLogInAt = new DateTime(2024, 3, 27, 1, 51, 12, 494, DateTimeKind.Local).AddTicks(3721),
                             Mobile = "0912345678",
                             Nickname = "Alice",
                             PersonalProfile = "I'm Alice!",
@@ -6308,7 +6308,7 @@ namespace Infrastructure.Data.Migrations
                         {
                             Id = 2,
                             Birthday = new DateTime(1985, 7, 25, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            CreatedAt = new DateTime(2024, 3, 27, 1, 6, 24, 381, DateTimeKind.Local).AddTicks(17),
+                            CreatedAt = new DateTime(2024, 3, 27, 1, 51, 12, 494, DateTimeKind.Local).AddTicks(3730),
                             EdmSubscription = false,
                             Gender = (byte)2,
                             Mobile = "0987654321",
@@ -6319,12 +6319,12 @@ namespace Infrastructure.Data.Migrations
                         {
                             Id = 3,
                             Birthday = new DateTime(1995, 10, 12, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            CreatedAt = new DateTime(2024, 3, 17, 1, 6, 24, 381, DateTimeKind.Local).AddTicks(23),
-                            EditedAt = new DateTime(2024, 3, 25, 1, 6, 24, 381, DateTimeKind.Local).AddTicks(24),
+                            CreatedAt = new DateTime(2024, 3, 17, 1, 51, 12, 494, DateTimeKind.Local).AddTicks(3770),
+                            EditedAt = new DateTime(2024, 3, 25, 1, 51, 12, 494, DateTimeKind.Local).AddTicks(3771),
                             EdmSubscription = true,
                             Gender = (byte)2,
                             Image = "https://image.com/charlie.png",
-                            LastLogInAt = new DateTime(2024, 3, 22, 1, 6, 24, 381, DateTimeKind.Local).AddTicks(21),
+                            LastLogInAt = new DateTime(2024, 3, 22, 1, 51, 12, 494, DateTimeKind.Local).AddTicks(3768),
                             Mobile = "0955555555",
                             Nickname = "Charlie",
                             PersonalProfile = "Hello world!",
