@@ -1,4 +1,8 @@
-﻿
+﻿@using ApplicationCore.Entities
+
+
+
+
 
 @model EventPageViewModel
 
@@ -75,7 +79,7 @@
             <div class="organizers mobi-hide">
                 <i class="fa-solid fa-sitemap"></i>
                 主辦單位
-                <a asp-controller="Organizations" asp-action="Index">Build School</a>
+                <a asp-controller="Organizations" asp-action="Index" asp-route="">Build School</a>
                 <a href="" id="btn-Contact-organization">聯絡主辦單位</a>
             </div>
             <!-- 活動header頁 結束-->

@@ -8,11 +8,11 @@ namespace ShowNest.Web.Services.Organization
         private readonly EventDetailService _eventDetailService;
         private readonly DatabaseContext _context;
 
-        public OrganizationIndexService(EventDetailService eventDetailService)
-        {
-            _eventDetailService = eventDetailService;
+        //public OrganizationIndexService(EventDetailService eventDetailService)
+        //{
+        //    _eventDetailService = eventDetailService;
 
-        }
+        //}
         public OrganizationIndexService(DatabaseContext context)
         {
             _context = context;

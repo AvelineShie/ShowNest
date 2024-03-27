@@ -32,7 +32,7 @@ namespace ShowNest.Web
             builder.Services.AddScoped<HomeService>();
             builder.Services.AddScoped<EventIndexService>();
             builder.Services.AddScoped<EventDetailService>();
-            builder.Services.AddScoped<OrganizationService>();
+            builder.Services.AddScoped<OrganizationIndexService>();
             builder.Services.AddScoped<OrganizationDetailService>();
 
             // Add services to the container.

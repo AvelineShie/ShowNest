@@ -8,13 +8,13 @@ namespace ShowNest.Web.Controllers
     public class OrganizationsController : Controller
     {
         private readonly OrganizationIndexService _organizationService;
-        private readonly EventDetailService _eventDetailService;
+        
 
         public OrganizationsController(OrganizationIndexService organizationService)
         {
             _organizationService = organizationService;
         }
-
+        
         public IActionResult Index(int organizationId)
         {
             var organizationData = _organizationService.GetOrganizationDetails(organizationId);
