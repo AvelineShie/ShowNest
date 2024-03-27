@@ -3,21 +3,53 @@ using ShowNest.Web.ViewModels.Organization;
 
 namespace ShowNest.Web.Services.Organization
 {
-    public class OrganizationService
+    public class OrganizationIndexService
     {
         private readonly EventDetailService _eventDetailService;
+        private readonly DatabaseContext _context;
 
-        public OrganizationService(EventDetailService eventDetailService)
+        public OrganizationIndexService(EventDetailService eventDetailService)
         {
             _eventDetailService = eventDetailService;
-            OrganizationIndexViewModel = new OrganizationIndexViewModel(); 
+
+        }
+        public OrganizationIndexService(DatabaseContext context)
+        {
+            _context = context;
         }
 
+        
         public OrganizationIndexViewModel OrganizationIndexViewModel { get; set; }
 
-        public (IEnumerable<IGrouping<string, EventDetail>>, IEnumerable<IGrouping<string, EventDetail>>) GetGroupedEvents()
+
+        public (IEnumerable<IGrouping<string, EventDetail>>, IEnumerable<IGrouping<string, EventDetail>>) GetGroupedEvents(int organizationId)
         {
-            return _eventDetailService.GetGroupedEvents();
+            var groupedEvents = _eventDetailService.GetGroupedEvents(organizationId);
+            return (groupedEvents);
+        }
+        
+        
+        public OrganizationIndexViewModel GetOrganizationDetails(int organizationId) 
+        {
+            
+            var organization = _context.Organizations.Find(organizationId); 
+
+            if (organization == null)
+            {
+              return null;
+            }
+
+            return new OrganizationIndexViewModel
+            {
+                OrganizationId = organization.Id,
+                OrganizationName = organization.Name,
+                OrganizationImgUrl = organization.ImgUrl,  
+                OrganizationDescription = organization.Description,
+                OrganizationWeb = organization.OrganizationUrl,    
+                OrganizationFBLink = organization.Fblink, 
+                OrganizationEmail = organization.Email
+            };
         }
     }
+
 }
