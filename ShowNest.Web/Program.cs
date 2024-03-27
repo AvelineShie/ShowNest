@@ -22,7 +22,7 @@ namespace ShowNest.Web
             // 取得組態中資料庫連線設定
             string connectionString = builder.Configuration.GetConnectionString("DatabaseContext");
             //在DI Container註冊EF Core的DbContext
-            builder.Services.AddDbContext<DatabaseContext>(options => options.UseSqlServer(connectionString));
+            builder.Services.AddDbContext<DatabaseContext>(options => options.UseSqlServer(connectionString).EnableSensitiveDataLogging());
 
             // Registration Service
             builder.Services.AddScoped<OrderTicketService, OrderTicketService>();
@@ -104,7 +104,7 @@ namespace ShowNest.Web
 
             app.MapControllerRoute(
             name: "EventSetting",
-            pattern: "Dashboard/CreateEvent/{SetEvent}",
+            pattern: "Dashboard/CreateEvent/SetEvent",
             defaults: new { controller = "Dashboard", Action = "SetEvent" }
             );
 
