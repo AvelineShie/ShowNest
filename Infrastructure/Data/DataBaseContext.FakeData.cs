@@ -2037,46 +2037,7 @@ namespace Infrastructure.Data
         //           EditedAt = DateTime.Now,
         //           IsDeleted = false
         //       },
-        //       new Seat
-        //       {
-        //           Id = 203,
-        //           SeatAreaId = 4,
-        //           Number = "1排15號",
-        //           Status = 1,
-        //           CreatedAt = DateTime.Now,
-        //           EditedAt = DateTime.Now,
-        //           IsDeleted = false
-        //       },
-        //       new Seat
-        //       {
-        //           Id = 204,
-        //           SeatAreaId = 4,
-        //           Number = "1排16號",
-        //           Status = 1,
-        //           CreatedAt = DateTime.Now,
-        //           EditedAt = DateTime.Now,
-        //           IsDeleted = false
-        //       },
-        //       new Seat
-        //       {
-        //           Id = 205,
-        //           SeatAreaId = 4,
-        //           Number = "1排17號",
-        //           Status = 1,
-        //           CreatedAt = DateTime.Now,
-        //           EditedAt = DateTime.Now,
-        //           IsDeleted = false
-        //       },
-        //       new Seat
-        //       {
-        //           Id = 206,
-        //           SeatAreaId = 4,
-        //           Number = "2排1號",
-        //           Status = 1,
-        //           CreatedAt = DateTime.Now,
-        //           EditedAt = DateTime.Now,
-        //           IsDeleted = false
-        //       },
+    
         //       new Seat
         //       {
         //           Id = 207,
