@@ -1,5 +1,4 @@
-﻿
-using ShowNest.Web.ViewModels.Organization;
+﻿using ShowNest.Web.ViewModels.Organization;
 
 
 
