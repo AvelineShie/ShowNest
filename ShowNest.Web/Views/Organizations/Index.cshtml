@@ -23,9 +23,9 @@ https://cdn.jsdelivr.net/npm/fullcalendar@6.1.11/index.global.min.js
         <div class="main-org container">
             <div class="info-org">
                 <div class="org-avatar">
-                    <img src="https://picsum.photos/200/200/?random=9 alt=">
+                    <img src="@Model.OrganizationImgUrl">
                 </div>
-                <h1 class="org-title">@Model.</h1>
+                <h1 class="org-title">@Model.Name</h1>
                 <div class="attend-btn-wrapper d-grid gap-2 p-4 ">
                     <a href="JoinedOrganizations" class="btn btn-dark " type="button">成為組織粉絲</a>
                 </div>
@@ -93,12 +93,12 @@ https://cdn.jsdelivr.net/npm/fullcalendar@6.1.11/index.global.min.js
             <div class="history-container">
                 <h2>曾舉辦的活動</h2>
                 <!-- 一個月份一組history-wrapper -->
-                @* @foreach (var group in groupedPastEvents)
+                @foreach (var GroupedMonth in Model.groupedPastEvents)
                 {
                 <div class="history-wrapper">
-                    <h3>@group.key</h3>
+                        <h3>@GroupedMonth.key</h3>
                     <ul class="history-list-past">
-                        @foreach (var PastEvents in Model.OrganizationIndexViewModel)
+                            @foreach (var PastEvents in Model.groupedPastEvents)
                         {
                         <li>
                             <div class="table-wrapp">
@@ -112,7 +112,7 @@ https://cdn.jsdelivr.net/npm/fullcalendar@6.1.11/index.global.min.js
                         }
                     </ul>
                 </div>
-                } *@
+                }
             </div>
         </div>
     </div>
