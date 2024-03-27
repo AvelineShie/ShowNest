@@ -13,7 +13,7 @@ public partial class CategoryTag
     /// <summary>
     /// 類別Tag名稱
     /// </summary>
-    public string Name { get; set; } = null!;
+    public string Name { get; set; }
 
     /// <summary>
     /// 排序預設50

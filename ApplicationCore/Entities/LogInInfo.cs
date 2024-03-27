@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.ComponentModel.DataAnnotations;
 
 namespace ApplicationCore.Entities;
 
@@ -14,17 +13,17 @@ public partial class LogInInfo
     /// <summary>
     /// 帳號
     /// </summary>
-    public string Account { get; set; } = null!;
+    public string Account { get; set; }
 
     /// <summary>
     /// 電子郵件
     /// </summary>
-    public string Email { get; set; } = null!;
+    public string Email { get; set; }
 
     /// <summary>
     /// 密碼
     /// </summary>
-    public string Password { get; set; } = null!;
+    public string Password { get; set; }
 
     /// <summary>
     /// 新增時間
@@ -36,5 +35,5 @@ public partial class LogInInfo
     /// </summary>
     public DateTime? EditedAt { get; set; }
 
-    public virtual User User { get; set; } = null!;
+    public virtual User User { get; set; }
 }

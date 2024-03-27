@@ -1,13 +1,9 @@
-﻿using ApplicationCore.Entities;
-using Microsoft.EntityFrameworkCore;
-using Microsoft.Extensions.Logging;
-using System.Diagnostics;
-using System.Threading.Channels;
+﻿using Microsoft.EntityFrameworkCore;
 
 
 namespace Infrastructure.Data
 {
-    public partial class DatabaseContext : DbContext
+    public partial class DatabaseContext
     {
 
         public object EventDetails { get; set; }

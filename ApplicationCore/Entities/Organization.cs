@@ -21,57 +21,57 @@ public partial class Organization
     /// <summary>
     /// 組織名稱
     /// </summary>
-    public string Name { get; set; } = null!;
+    public string Name { get; set; }
 
     /// <summary>
     /// 站內連結
     /// </summary>
-    public string OrganizationUrl { get; set; } = null!;
+    public string OrganizationUrl { get; set; }
 
     /// <summary>
     /// 站外連結
     /// </summary>
-    public string? OuterUrl { get; set; }
+    public string OuterUrl { get; set; }
 
     /// <summary>
     /// 組織簡介
     /// </summary>
-    public string? Description { get; set; }
+    public string Description { get; set; }
 
     /// <summary>
     /// FB連結
     /// </summary>
-    public string? Fblink { get; set; }
+    public string Fblink { get; set; }
 
     /// <summary>
     /// IG連結
     /// </summary>
-    public string? Igaccount { get; set; }
+    public string Igaccount { get; set; }
 
     /// <summary>
     /// Email
     /// </summary>
-    public string? Email { get; set; }
+    public string Email { get; set; }
 
     /// <summary>
     /// 組織形象圖
     /// </summary>
-    public string? ImgUrl { get; set; }
+    public string ImgUrl { get; set; }
 
     /// <summary>
     /// 聯絡人姓名
     /// </summary>
-    public string ContactName { get; set; } = null!;
+    public string ContactName { get; set; }
 
     /// <summary>
     /// 聯絡手機
     /// </summary>
-    public string ContactMobile { get; set; } = null!;
+    public string ContactMobile { get; set; }
 
     /// <summary>
     /// 連絡電話
     /// </summary>
-    public string ContactTelephone { get; set; } = null!;
+    public string ContactTelephone { get; set; }
 
     /// <summary>
     /// 標記封存
@@ -94,5 +94,5 @@ public partial class Organization
 
     public virtual ICollection<OrganizationAndUserMapping> OrganizationAndUserMappings { get; set; } = new List<OrganizationAndUserMapping>();
 
-    public virtual User Owner { get; set; } = null!;
+    public virtual User Owner { get; set; }
 }
