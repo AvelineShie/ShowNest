@@ -15,7 +15,7 @@
 }
 
 .main-content {
-    width: 100%;
+    overflow: auto;
 }
 .gap {
     padding: 10px 0;
@@ -40,12 +40,13 @@
     border-bottom: 1px solid var(--light-gray);
 }
 .space{
-    display: flex;
-    justify-content: space-between;
-    width: 60%;
+    display: grid;
+    grid-template-columns:1fr 1fr 1fr;
 }
-.col-1{
-    width: 12%;
+
+.col-1,.col-2{
+    width:100% ;
+    min-width:165px;
 }
 
 /* --------org_header----------- */
@@ -53,7 +54,8 @@
 header.org_header {
     padding: 20px 32px 20px 20px;
     min-height: 36px;
-    border-bottom: 1px solid var(--light-gray)
+    border-bottom: 1px solid var(--light-gray);
+    line-height:1.5;
 }
 
 .org_header span {
@@ -142,7 +144,7 @@ header.org_header {
 /* -------caption----------- */
 .caption{
     padding-top: 17px;
-    width: 20%;
+    width: 30%;
     min-width: 180px;
     line-height: 1.5;
 }
@@ -170,38 +172,50 @@ header.org_header {
 
 .title-container,
 .paymentInfo {
-    display: flex;
-    flex-direction: row;
-    width: 80%;
+    display: grid;
+    grid-template-columns:0.3fr 0.3fr 0.4fr 0.4fr 0.3fr 0.3fr 0.3fr 1fr;
+    /* width: 90%; */
 }
 .w-90{
-    width: 90%;
+    width: 130%;
+}
+.list{
+    max-width: 80%;
+    height:50%;
+    overflow: auto;
+    overflow-y: auto;
 }
 @media screen and (max-width:900px) {
     .priceContainer{
         flex-direction: column-reverse;
     }
-    .col-1,.col-2{
-        width:auto ;
+    /* .col-1,.col-2{
+        min-width:165px;
+        width: auto;
+    } */
+    .AmountPrice{
+        width: 90%;
+    }
+    .space{
+        width: 100%;
     }
 
-    .w-90{
-    display: none;
-    }
-    .title-container, .paymentInfo{
-        display: table-cell;
-    }
-    .list{
-        display: flex;
-    }
     .caption{
         padding-left: 20px;
         width:50%
     }
 }
-@media screen and (max-width:500px){
+@media screen and (max-width:768px){
+    .list{
+        max-width: 90%;
+    }
     .caption{
-        width:80%
+        width:90%
+    }
+    .title-container,
+    .paymentInfo {
+        display: flex;
     }
 }
+
 

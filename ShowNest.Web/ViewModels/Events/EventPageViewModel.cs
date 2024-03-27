@@ -13,6 +13,7 @@ namespace ShowNest.Web.ViewModels.Events
         public string EventRegistered { get; set; } // 參與人數
         public string EventCapacity { get; set; } // 活動人數
         public string OrganizationName { get; set; }
+        public int OrganizationId { get; set; }
 
         public List<EventTicket> AllTickets { get; set; }
         public List<ParticipantPeople> AllParticipantPeoples { get; set; }

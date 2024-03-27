@@ -359,7 +359,7 @@ ul.attendees {
         display: grid !important;
     }
 
-    .attendees a {
+    .attendees li {
         padding: 20px 0;
     }
     /*  聯絡主辦單位按鈕 */

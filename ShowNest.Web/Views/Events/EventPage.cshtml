@@ -1,4 +1,8 @@
-﻿
+﻿@using ApplicationCore.Entities
+
+
+
+
 
 @model EventPageViewModel
 
@@ -11,10 +15,10 @@
 }
 
 @section topCSS {
-    <link href="~/css/share/reset.css" rel="stylesheet" />
+    <link href="~/css/general/reset.css" rel="stylesheet" />
     <link href="~/css/events/eventpage.css" rel="stylesheet" />
     <link href="~/css/_partial/_categorytags_partial.css" rel="stylesheet" />
-
+	
 }
 @section endJS {
     <script src="~/js/events/eventpage.js"></script>
@@ -38,8 +42,7 @@
                     <li>
                         <p class="info-desc">
                             <i class="fa fa-solid fa-calendar-days"></i>
-                            @Model.EventTime.ToString("yyyy/MM/dd HH:mm(+0800)")
-                            @* 2024/04/24(周三) 13:00(+0800) *@
+                            @Model.EventTime.ToString("yyyy/MM/dd HH:mm")
                             (
                             <a href="#">iCal/Outlook</a>,
                             <a href="#" target="_blank">
@@ -76,7 +79,7 @@
             <div class="organizers mobi-hide">
                 <i class="fa-solid fa-sitemap"></i>
                 主辦單位
-                <a asp-controller="Organizations" asp-action="Index">Build School</a>
+                <a asp-controller="Organizations" asp-action="Index" asp-route="">Build School</a>
                 <a href="" id="btn-Contact-organization">聯絡主辦單位</a>
             </div>
             <!-- 活動header頁 結束-->
@@ -140,9 +143,9 @@
                         <tr>
                             <td>@ticket.TicketTypeName</td>
                             <td class="period-time">
-                                <span class="timezoneSuffix">@ticket.TicketSalseBegin.ToString("yyyy/MM/dd HH:mm(+0800)")</span>
+                                <span class="timezoneSuffix">@ticket.TicketSalseBegin.ToString("yyyy/MM/dd HH:mm")</span>
                                 ~
-                                <span class="timezoneSuffix">@ticket.TicketSalseEnd.ToString("yyyy/MM/dd HH:mm(+0800)")</span>
+                                <span class="timezoneSuffix">@ticket.TicketSalseEnd.ToString("yyyy/MM/dd HH:mm")</span>
                             </td>
                             <td class="price">
                                 <span class="currency">TWD$</span>
@@ -163,19 +166,17 @@
             <h2><span>26</span> 報名人</h2>
             <div class="attendees-btn">
                 <div class="p-3 justify-content-center show-attendees">
-                    <a class="btn btn-outline-success attendee-display-switch  w-50" type="button" id="toggleAttendeesBtn">
+                    <div class="btn btn-outline-success attendee-display-switch  w-50" type="button" id="toggleAttendeesBtn">
                         顯示報名人
-                    </a>
+                    </div>
                 </div>
             </div>
             <ul class="attendees">
                 @foreach (var ParticipantPeople in @Model.AllParticipantPeoples)
                     {
                         <li>
-                             <a>
                                  <img src="@ParticipantPeople.ParticipantPeopleImage" alt="">@ParticipantPeople.ParticipantPeopleId
-					         </a>
-                         </li>
+                        </li>
                     }
                 <div class="more">
                     ...以及其他 19 人

@@ -2,6 +2,8 @@
 {
     public class EventDetailViewModel
     {
+       
+
         public string MainImage { get; set; }
         public string EventName { get; set; }
         public DateTime StartTime { get; set; }

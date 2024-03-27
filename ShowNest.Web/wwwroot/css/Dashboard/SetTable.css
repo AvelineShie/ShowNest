@@ -34,6 +34,8 @@
     color: #333333;
     flex-direction: column;
     margin-bottom: 90px;
+    padding-right: 30px;
+    padding-left: 30px;
 }
 
 /* 麵包屑 */
@@ -52,12 +54,12 @@
     margin-left: 10px;
 }
 
-a {
-    text-decoration: none;
+#set-table {
+    color: var(--light-green);
 }
 
-#set-table{
-    color: var(--light-green);
+a {
+    text-decoration: none;
 }
 
 /* 麵包屑吃完 */
@@ -183,27 +185,14 @@ button.btn-outline-secondary {
 }
 
 /* DESKTOP */
-@media (min-width:769px) {
+/*@media (min-width:769px) {
 
     @media (min-width:769px) and (max-width:1200px) {
 
-        #header-functions a {
-            padding: 14px 6px;
-        }
-
-        .input-group > .form-control {
-            width: 180px;
-            line-height: 15px;
-        }
     }
 
     @media (min-width:1201px) {
 
     }
 
-
-    .input-group > .form-control {
-        width: 180px;
-        line-height: 15px;
-    }
-}
+}*/

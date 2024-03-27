@@ -37,9 +37,10 @@
 
 .container {
     color: #333333;
-    margin-top: 5px;
-    justify-content: space-between;
-    
+/*    justify-content: space-between;*/
+    margin-bottom: 90px;
+    padding-right: 30px;
+    padding-left: 30px;
 }
 
 /*內容*/
@@ -296,4 +297,3 @@ button.btn-outline-secondary{
         width: 180px;
         line-height: 15px;
     }
-}

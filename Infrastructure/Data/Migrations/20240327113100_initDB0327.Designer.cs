@@ -12,15 +12,15 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace Infrastructure.Data.Migrations
 {
     [DbContext(typeof(DatabaseContext))]
-    [Migration("20240317113724_Test03171937")]
-    partial class Test03171937
+    [Migration("20240327113100_initDB0327")]
+    partial class initDB0327
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
-                .HasAnnotation("ProductVersion", "7.0.15")
+                .HasAnnotation("ProductVersion", "7.0.16")
                 .HasAnnotation("Relational:MaxIdentifierLength", 128);
 
             SqlServerModelBuilderExtensions.UseIdentityColumns(modelBuilder);
@@ -124,58 +124,6 @@ namespace Infrastructure.Data.Migrations
                         {
                             t.HasComment("偏好地區列表");
                         });
-
-                    b.HasData(
-                        new
-                        {
-                            Id = 1,
-                            Name = "北北基宜地區"
-                        },
-                        new
-                        {
-                            Id = 2,
-                            Name = "桃竹苗地區"
-                        },
-                        new
-                        {
-                            Id = 3,
-                            Name = "雲嘉南地區"
-                        },
-                        new
-                        {
-                            Id = 4,
-                            Name = "高屏地區"
-                        },
-                        new
-                        {
-                            Id = 5,
-                            Name = "中彰投地區"
-                        },
-                        new
-                        {
-                            Id = 6,
-                            Name = "花東地區"
-                        },
-                        new
-                        {
-                            Id = 7,
-                            Name = "澎金馬地區"
-                        },
-                        new
-                        {
-                            Id = 8,
-                            Name = "香港"
-                        },
-                        new
-                        {
-                            Id = 9,
-                            Name = "澳門"
-                        },
-                        new
-                        {
-                            Id = 10,
-                            Name = "其他地區"
-                        });
                 });
 
             modelBuilder.Entity("ApplicationCore.Entities.CategoryTag", b =>
@@ -195,8 +143,8 @@ namespace Infrastructure.Data.Migrations
                         .HasColumnType("datetime")
                         .HasComment("修改時間");
 
-                    b.Property<bool>("IsDeleted")
-                        .HasColumnType("bit")
+                    b.Property<int?>("IsDeleted")
+                        .HasColumnType("int")
                         .HasComment("標記刪除");
 
                     b.Property<string>("Name")
@@ -205,7 +153,7 @@ namespace Infrastructure.Data.Migrations
                         .HasColumnType("nvarchar(50)")
                         .HasComment("類別Tag名稱");
 
-                    b.Property<int>("Sort")
+                    b.Property<int?>("Sort")
                         .HasColumnType("int")
                         .HasComment("排序預設50");
 
@@ -263,7 +211,7 @@ namespace Infrastructure.Data.Migrations
                         .HasColumnType("nvarchar(150)")
                         .HasComment("活動簡介");
 
-                    b.Property<bool>("IsDeleted")
+                    b.Property<bool?>("IsDeleted")
                         .HasColumnType("bit")
                         .HasComment("資料封存或強制下架");
 
@@ -281,6 +229,7 @@ namespace Infrastructure.Data.Migrations
                         .HasComment("緯度");
 
                     b.Property<string>("LocationAddress")
+                        .IsRequired()
                         .HasMaxLength(200)
                         .HasColumnType("nvarchar(200)")
                         .HasComment("活動地址");
@@ -291,6 +240,7 @@ namespace Infrastructure.Data.Migrations
                         .HasComment("活動地點");
 
                     b.Property<string>("Longitude")
+                        .IsRequired()
                         .HasMaxLength(50)
                         .HasColumnType("nvarchar(50)")
                         .HasComment("經度");
@@ -302,7 +252,6 @@ namespace Infrastructure.Data.Migrations
                         .HasComment("主辦單位");
 
                     b.Property<string>("Name")
-                        .IsRequired()
                         .HasMaxLength(100)
                         .HasColumnType("nvarchar(100)")
                         .HasComment("活動名稱");
@@ -316,7 +265,7 @@ namespace Infrastructure.Data.Migrations
                         .HasColumnType("nvarchar(max)")
                         .HasComment("報名人欄位JSON");
 
-                    b.Property<int>("Sort")
+                    b.Property<int?>("Sort")
                         .HasColumnType("int")
                         .HasComment("預設值50");
 
@@ -344,7 +293,7 @@ namespace Infrastructure.Data.Migrations
 
                     b.HasKey("Id");
 
-                    b.HasIndex(new[] { "OrganizationId" }, "IX_Events_OrganizationId");
+                    b.HasIndex("OrganizationId");
 
                     b.ToTable("Events");
                 });
@@ -370,9 +319,9 @@ namespace Infrastructure.Data.Migrations
                     b.HasKey("Id")
                         .HasName("PK_EventAndTagMapping_1");
 
-                    b.HasIndex(new[] { "CategoryTagId" }, "IX_EventAndTagMapping_CategoryTagId");
+                    b.HasIndex("CategoryTagId");
 
-                    b.HasIndex(new[] { "EventId" }, "IX_EventAndTagMapping_EventID");
+                    b.HasIndex("EventId");
 
                     b.ToTable("EventAndTagMapping", null, t =>
                         {
@@ -531,7 +480,7 @@ namespace Infrastructure.Data.Migrations
 
                     b.HasKey("Id");
 
-                    b.HasIndex(new[] { "UserId" }, "IX_Orders_UserId");
+                    b.HasIndex("UserId");
 
                     b.ToTable("Orders", t =>
                         {
@@ -562,9 +511,9 @@ namespace Infrastructure.Data.Migrations
 
                     b.HasKey("Id");
 
-                    b.HasIndex(new[] { "OrganizationId" }, "IX_OrgFan_OrganizationId");
+                    b.HasIndex("OrganizationId");
 
-                    b.HasIndex(new[] { "UserId" }, "IX_OrgFan_UserId");
+                    b.HasIndex("UserId");
 
                     b.ToTable("OrgFan", null, t =>
                         {
@@ -632,7 +581,7 @@ namespace Infrastructure.Data.Migrations
                         .HasColumnName("ImgURL")
                         .HasComment("組織形象圖");
 
-                    b.Property<bool>("IsDeleted")
+                    b.Property<bool?>("IsDeleted")
                         .HasColumnType("bit")
                         .HasComment("標記封存");
 
@@ -660,7 +609,7 @@ namespace Infrastructure.Data.Migrations
                     b.HasKey("Id")
                         .HasName("PK_OrganizationInfo");
 
-                    b.HasIndex(new[] { "OwnerId" }, "IX_Organizations_OwnerId");
+                    b.HasIndex("OwnerId");
 
                     b.ToTable("Organizations", t =>
                         {
@@ -688,9 +637,9 @@ namespace Infrastructure.Data.Migrations
                     b.HasKey("Id")
                         .HasName("PK_OrganizationUserMapping");
 
-                    b.HasIndex(new[] { "OrganizationId" }, "IX_OrganizationAndUserMapping_OrganizationId");
+                    b.HasIndex("OrganizationId");
 
-                    b.HasIndex(new[] { "UserId" }, "IX_OrganizationAndUserMapping_UserId");
+                    b.HasIndex("UserId");
 
                     b.ToTable("OrganizationAndUserMapping", null, t =>
                         {
@@ -798,9 +747,9 @@ namespace Infrastructure.Data.Migrations
                     b.HasKey("Id")
                         .HasName("PK_PreferredActivityArea_1");
 
-                    b.HasIndex(new[] { "AreaId" }, "IX_PreferredActivityArea_AreaId");
+                    b.HasIndex("AreaId");
 
-                    b.HasIndex(new[] { "UserId" }, "IX_PreferredActivityArea_UserId");
+                    b.HasIndex("UserId");
 
                     b.ToTable("PreferredActivityArea", null, t =>
                         {
@@ -845,7 +794,7 @@ namespace Infrastructure.Data.Migrations
 
                     b.HasKey("Id");
 
-                    b.HasIndex(new[] { "SeatAreaId" }, "IX_Seats_SeatAreaId");
+                    b.HasIndex("SeatAreaId");
 
                     b.ToTable("Seats");
                 });
@@ -891,10 +840,8 @@ namespace Infrastructure.Data.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
 
-                    b.Property<string>("CheckCode")
-                        .IsRequired()
-                        .HasMaxLength(10)
-                        .HasColumnType("nvarchar(10)")
+                    b.Property<int?>("CheckCode")
+                        .HasColumnType("int")
                         .HasComment("檢查碼");
 
                     b.Property<DateTime>("CreatedAt")
@@ -932,11 +879,11 @@ namespace Infrastructure.Data.Migrations
 
                     b.HasKey("Id");
 
-                    b.HasIndex(new[] { "OrderId" }, "IX_Tickets_OrderId");
+                    b.HasIndex("OrderId");
 
-                    b.HasIndex(new[] { "SeatId" }, "IX_Tickets_SeatId");
+                    b.HasIndex("SeatId");
 
-                    b.HasIndex(new[] { "TicketTypeId" }, "IX_Tickets_TicketTypeId");
+                    b.HasIndex("TicketTypeId");
 
                     b.ToTable("Tickets");
                 });
@@ -970,12 +917,12 @@ namespace Infrastructure.Data.Migrations
                         .HasColumnType("int")
                         .HasComment("活動ID");
 
-                    b.Property<bool>("IsDeleted")
-                        .HasColumnType("bit")
+                    b.Property<int?>("IsDeleted")
+                        .HasColumnType("int")
                         .HasComment("強制下架");
 
-                    b.Property<bool>("IsDisplayed")
-                        .HasColumnType("bit")
+                    b.Property<int?>("IsDisplayed")
+                        .HasColumnType("int")
                         .HasComment("是否顯示");
 
                     b.Property<string>("Name")
@@ -988,8 +935,8 @@ namespace Infrastructure.Data.Migrations
                         .HasColumnType("money")
                         .HasComment("票價");
 
-                    b.Property<byte>("Sort")
-                        .HasColumnType("tinyint")
+                    b.Property<int?>("Sort")
+                        .HasColumnType("int")
                         .HasComment("預設值50");
 
                     b.Property<DateTime>("StartSaleTime")
@@ -998,7 +945,7 @@ namespace Infrastructure.Data.Migrations
 
                     b.HasKey("Id");
 
-                    b.HasIndex(new[] { "EventId" }, "IX_TicketTypes_EventId");
+                    b.HasIndex("EventId");
 
                     b.ToTable("TicketTypes");
                 });
@@ -1006,8 +953,11 @@ namespace Infrastructure.Data.Migrations
             modelBuilder.Entity("ApplicationCore.Entities.User", b =>
                 {
                     b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
                         .HasColumnType("int")
                         .HasComment("使用者ID");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
 
                     b.Property<DateTime>("Birthday")
                         .HasColumnType("date")
@@ -1064,51 +1014,6 @@ namespace Infrastructure.Data.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("Users");
-
-                    b.HasData(
-                        new
-                        {
-                            Id = 1,
-                            Birthday = new DateTime(1990, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            CreatedAt = new DateTime(2024, 3, 17, 19, 37, 24, 144, DateTimeKind.Local).AddTicks(3123),
-                            EditedAt = new DateTime(2024, 3, 17, 19, 37, 24, 144, DateTimeKind.Local).AddTicks(3123),
-                            EdmSubscription = true,
-                            Gender = (byte)1,
-                            Image = "https://image.com/alice.jpg",
-                            LastLogInAt = new DateTime(2024, 3, 17, 19, 37, 24, 144, DateTimeKind.Local).AddTicks(3109),
-                            Mobile = "0912345678",
-                            Nickname = "Alice",
-                            PersonalProfile = "I'm Alice!",
-                            PersonalUrl = "https://alice.com",
-                            Status = (byte)1
-                        },
-                        new
-                        {
-                            Id = 2,
-                            Birthday = new DateTime(1985, 7, 25, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            CreatedAt = new DateTime(2024, 3, 17, 19, 37, 24, 144, DateTimeKind.Local).AddTicks(3127),
-                            EdmSubscription = false,
-                            Gender = (byte)2,
-                            Mobile = "0987654321",
-                            Nickname = "Bob",
-                            Status = (byte)0
-                        },
-                        new
-                        {
-                            Id = 3,
-                            Birthday = new DateTime(1995, 10, 12, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            CreatedAt = new DateTime(2024, 3, 7, 19, 37, 24, 144, DateTimeKind.Local).AddTicks(3134),
-                            EditedAt = new DateTime(2024, 3, 15, 19, 37, 24, 144, DateTimeKind.Local).AddTicks(3135),
-                            EdmSubscription = true,
-                            Gender = (byte)2,
-                            Image = "https://image.com/charlie.png",
-                            LastLogInAt = new DateTime(2024, 3, 12, 19, 37, 24, 144, DateTimeKind.Local).AddTicks(3130),
-                            Mobile = "0955555555",
-                            Nickname = "Charlie",
-                            PersonalProfile = "Hello world!",
-                            PersonalUrl = "https://charlie.com",
-                            Status = (byte)1
-                        });
                 });
 
             modelBuilder.Entity("ApplicationCore.Entities.ArchiveOrder", b =>

@@ -14,7 +14,6 @@ namespace ShowNest.Web.ViewModels.Events
         public string EventLocation { get; set; }
         public string EventAddress { get; set; }
         public string EventHost { get; set; }
-        public string TicketCollectionChannel { get; set; }
         public string PaymentMethodName { get; set; }
 
         // Ticket Information
@@ -34,7 +33,6 @@ namespace ShowNest.Web.ViewModels.Events
     public class Tickets
     { 
         public string SeatArea { get; set; }
-        public string SeatRow { get; set; }
         public string SeatNumber { get; set; }
         public string TicketTypeName { get; set; }
         public decimal TicketPrice { get; set; }

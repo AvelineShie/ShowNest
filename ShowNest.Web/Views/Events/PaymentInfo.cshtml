@@ -4,11 +4,14 @@
     <link href="~/css/_Partial/_PurchaseStepsPartial.css" rel="stylesheet" />
     <link href="~/css/events/paymentinfo.css" rel="stylesheet" />
 }
-
+@section Scripts
+{
+    <script src="~/js/Events/PaymentInfo.js"></script>
+}
 
     <div class="count_down_group">
-        <div class="count_down_timer main_wrap width d-flex">
-            您的訂單已保留，請在 10:00 內完成填寫資料並確認訂單。若超過時限，系統將自動取消。
+        <div id="counterOnPayment" class="count_down_timer main_wrap width d-flex">
+            您的訂單已保留，請在 {{ counter }} 內完成填寫資料並確認訂單。若超過時限，系統將自動取消。
         </div>
 </div>
 <section class="section_wrap">

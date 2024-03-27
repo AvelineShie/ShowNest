@@ -3,12 +3,10 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 #nullable disable
 
-#pragma warning disable CA1814 // Prefer jagged arrays over multidimensional
-
 namespace Infrastructure.Data.Migrations
 {
     /// <inheritdoc />
-    public partial class Test03171937 : Migration
+    public partial class initDB0327 : Migration
     {
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)
@@ -34,8 +32,8 @@ namespace Infrastructure.Data.Migrations
                     Id = table.Column<int>(type: "int", nullable: false, comment: "類別TagID")
                         .Annotation("SqlServer:Identity", "1, 1"),
                     Name = table.Column<string>(type: "nvarchar(50)", maxLength: 50, nullable: false, comment: "類別Tag名稱"),
-                    Sort = table.Column<int>(type: "int", nullable: false, comment: "排序預設50"),
-                    IsDeleted = table.Column<bool>(type: "bit", nullable: false, comment: "標記刪除"),
+                    Sort = table.Column<int>(type: "int", nullable: true, comment: "排序預設50"),
+                    IsDeleted = table.Column<int>(type: "int", nullable: true, comment: "標記刪除"),
                     CreatedAt = table.Column<DateTime>(type: "datetime", nullable: false, comment: "新增時間"),
                     EditeAt = table.Column<DateTime>(type: "datetime", nullable: true, comment: "修改時間")
                 },
@@ -79,7 +77,8 @@ namespace Infrastructure.Data.Migrations
                 name: "Users",
                 columns: table => new
                 {
-                    Id = table.Column<int>(type: "int", nullable: false, comment: "使用者ID"),
+                    Id = table.Column<int>(type: "int", nullable: false, comment: "使用者ID")
+                        .Annotation("SqlServer:Identity", "1, 1"),
                     Nickname = table.Column<string>(type: "nvarchar(50)", maxLength: 50, nullable: true, comment: "暱稱"),
                     Mobile = table.Column<string>(type: "nvarchar(50)", maxLength: 50, nullable: true, comment: "手機號碼"),
                     Birthday = table.Column<DateTime>(type: "date", nullable: false, comment: "生日"),
@@ -210,7 +209,7 @@ namespace Infrastructure.Data.Migrations
                     ContactName = table.Column<string>(type: "nvarchar(50)", maxLength: 50, nullable: false, comment: "聯絡人姓名"),
                     ContactMobile = table.Column<string>(type: "nvarchar(50)", maxLength: 50, nullable: false, comment: "聯絡手機"),
                     ContactTelephone = table.Column<string>(type: "nvarchar(50)", maxLength: 50, nullable: false, comment: "連絡電話"),
-                    IsDeleted = table.Column<bool>(type: "bit", nullable: false, comment: "標記封存"),
+                    IsDeleted = table.Column<bool>(type: "bit", nullable: true, comment: "標記封存"),
                     CreatedAt = table.Column<DateTime>(type: "datetime", nullable: false, comment: "新增時間"),
                     EditedAt = table.Column<DateTime>(type: "datetime", nullable: true, comment: "修改時間")
                 },
@@ -319,13 +318,13 @@ namespace Infrastructure.Data.Migrations
                     Id = table.Column<int>(type: "int", nullable: false, comment: "活動ID")
                         .Annotation("SqlServer:Identity", "1, 1"),
                     OrganizationId = table.Column<int>(type: "int", nullable: false, comment: "組織ID"),
-                    Name = table.Column<string>(type: "nvarchar(100)", maxLength: 100, nullable: false, comment: "活動名稱"),
+                    Name = table.Column<string>(type: "nvarchar(100)", maxLength: 100, nullable: true, comment: "活動名稱"),
                     StartTime = table.Column<DateTime>(type: "datetime", nullable: false, comment: "開始時間"),
                     EndTime = table.Column<DateTime>(type: "datetime", nullable: false, comment: "結束時間"),
                     Type = table.Column<byte>(type: "tinyint", nullable: false, comment: "0線上1實體"),
                     LocationName = table.Column<string>(type: "nvarchar(100)", maxLength: 100, nullable: true, comment: "活動地點"),
-                    LocationAddress = table.Column<string>(type: "nvarchar(200)", maxLength: 200, nullable: true, comment: "活動地址"),
-                    Longitude = table.Column<string>(type: "nvarchar(50)", maxLength: 50, nullable: true, comment: "經度"),
+                    LocationAddress = table.Column<string>(type: "nvarchar(200)", maxLength: 200, nullable: false, comment: "活動地址"),
+                    Longitude = table.Column<string>(type: "nvarchar(50)", maxLength: 50, nullable: false, comment: "經度"),
                     Latitude = table.Column<string>(type: "nvarchar(50)", maxLength: 50, nullable: true, comment: "緯度"),
                     StreamingPlatform = table.Column<string>(type: "nvarchar(100)", maxLength: 100, nullable: true, comment: "串流平台"),
                     StreamingUrl = table.Column<string>(type: "nvarchar(500)", maxLength: 500, nullable: true, comment: "串流網址"),
@@ -340,8 +339,8 @@ namespace Infrastructure.Data.Migrations
                     IsPrivateEvent = table.Column<bool>(type: "bit", nullable: false, comment: "是否公開活動"),
                     IsFree = table.Column<bool>(type: "bit", nullable: false, comment: "是否免費"),
                     Status = table.Column<byte>(type: "tinyint", nullable: false, comment: "0未發佈1已發佈"),
-                    Sort = table.Column<int>(type: "int", nullable: false, comment: "預設值50"),
-                    IsDeleted = table.Column<bool>(type: "bit", nullable: false, comment: "資料封存或強制下架"),
+                    Sort = table.Column<int>(type: "int", nullable: true, comment: "預設值50"),
+                    IsDeleted = table.Column<bool>(type: "bit", nullable: true, comment: "資料封存或強制下架"),
                     CreatedAt = table.Column<DateTime>(type: "datetime", nullable: false, comment: "新增時間"),
                     EditedAt = table.Column<DateTime>(type: "datetime", nullable: true, comment: "修改時間")
                 },
@@ -443,9 +442,9 @@ namespace Infrastructure.Data.Migrations
                     EndSaleTime = table.Column<DateTime>(type: "datetime", nullable: false, comment: "結束販售時間"),
                     CapacityAmount = table.Column<int>(type: "int", nullable: false, comment: "票券數量"),
                     Price = table.Column<decimal>(type: "money", nullable: false, comment: "票價"),
-                    Sort = table.Column<byte>(type: "tinyint", nullable: false, comment: "預設值50"),
-                    IsDisplayed = table.Column<bool>(type: "bit", nullable: false, comment: "是否顯示"),
-                    IsDeleted = table.Column<bool>(type: "bit", nullable: false, comment: "強制下架"),
+                    Sort = table.Column<int>(type: "int", nullable: true, comment: "預設值50"),
+                    IsDisplayed = table.Column<int>(type: "int", nullable: true, comment: "是否顯示"),
+                    IsDeleted = table.Column<int>(type: "int", nullable: true, comment: "強制下架"),
                     CreatedAt = table.Column<DateTime>(type: "datetime", nullable: false, comment: "新增時間"),
                     EditedAt = table.Column<DateTime>(type: "datetime", nullable: true, comment: "修改時間")
                 },
@@ -473,7 +472,7 @@ namespace Infrastructure.Data.Migrations
                     IsDeleted = table.Column<bool>(type: "bit", nullable: false, comment: "作廢票券"),
                     CreatedAt = table.Column<DateTime>(type: "datetime", nullable: false, comment: "新增時間"),
                     EditedAt = table.Column<DateTime>(type: "datetime", nullable: true, comment: "修改時間"),
-                    CheckCode = table.Column<string>(type: "nvarchar(10)", maxLength: 10, nullable: false, comment: "檢查碼")
+                    CheckCode = table.Column<int>(type: "int", nullable: true, comment: "檢查碼")
                 },
                 constraints: table =>
                 {
@@ -493,33 +492,6 @@ namespace Infrastructure.Data.Migrations
                         column: x => x.TicketTypeId,
                         principalTable: "TicketTypes",
                         principalColumn: "Id");
-                });
-
-            migrationBuilder.InsertData(
-                table: "Area",
-                columns: new[] { "Id", "Name" },
-                values: new object[,]
-                {
-                    { 1, "北北基宜地區" },
-                    { 2, "桃竹苗地區" },
-                    { 3, "雲嘉南地區" },
-                    { 4, "高屏地區" },
-                    { 5, "中彰投地區" },
-                    { 6, "花東地區" },
-                    { 7, "澎金馬地區" },
-                    { 8, "香港" },
-                    { 9, "澳門" },
-                    { 10, "其他地區" }
-                });
-
-            migrationBuilder.InsertData(
-                table: "Users",
-                columns: new[] { "Id", "Birthday", "CreatedAt", "EditedAt", "EdmSubscription", "Gender", "Image", "LastLogInAt", "Mobile", "Nickname", "PersonalProfile", "PersonalURL", "Status" },
-                values: new object[,]
-                {
-                    { 1, new DateTime(1990, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), new DateTime(2024, 3, 17, 19, 37, 24, 144, DateTimeKind.Local).AddTicks(3123), new DateTime(2024, 3, 17, 19, 37, 24, 144, DateTimeKind.Local).AddTicks(3123), true, (byte)1, "https://image.com/alice.jpg", new DateTime(2024, 3, 17, 19, 37, 24, 144, DateTimeKind.Local).AddTicks(3109), "0912345678", "Alice", "I'm Alice!", "https://alice.com", (byte)1 },
-                    { 2, new DateTime(1985, 7, 25, 0, 0, 0, 0, DateTimeKind.Unspecified), new DateTime(2024, 3, 17, 19, 37, 24, 144, DateTimeKind.Local).AddTicks(3127), null, false, (byte)2, null, null, "0987654321", "Bob", null, null, (byte)0 },
-                    { 3, new DateTime(1995, 10, 12, 0, 0, 0, 0, DateTimeKind.Unspecified), new DateTime(2024, 3, 7, 19, 37, 24, 144, DateTimeKind.Local).AddTicks(3134), new DateTime(2024, 3, 15, 19, 37, 24, 144, DateTimeKind.Local).AddTicks(3135), true, (byte)2, "https://image.com/charlie.png", new DateTime(2024, 3, 12, 19, 37, 24, 144, DateTimeKind.Local).AddTicks(3130), "0955555555", "Charlie", "Hello world!", "https://charlie.com", (byte)1 }
                 });
 
             migrationBuilder.CreateIndex(

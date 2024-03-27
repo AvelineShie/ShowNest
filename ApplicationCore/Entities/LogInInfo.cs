@@ -9,7 +9,6 @@ public partial class LogInInfo
     /// <summary>
     /// 使用者ID
     /// </summary>
-    [Key]
     public int UserId { get; set; }
 
     /// <summary>
@@ -37,5 +36,5 @@ public partial class LogInInfo
     /// </summary>
     public DateTime? EditedAt { get; set; }
 
-    //public virtual User User { get; set; } = null!;
+    public virtual User User { get; set; } = null!;
 }

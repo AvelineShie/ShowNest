@@ -1,12 +1,30 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using ShowNest.Web.Services.Events;
+using ShowNest.Web.Services.Organization;
+using ShowNest.Web.ViewModels.Organization;
 
 namespace ShowNest.Web.Controllers
 {
     public class OrganizationsController : Controller
     {
-        public IActionResult Index()
+        private readonly OrganizationIndexService _organizationService;
+        
+
+        public OrganizationsController(OrganizationIndexService organizationService)
         {
-            return View();
+            _organizationService = organizationService;
+        }
+        
+        public IActionResult Index(int organizationId)
+        {
+            var organizationData = _organizationService.GetOrganizationDetails(organizationId);
+
+            if (organizationData == null)
+            {
+                return NotFound();
+            }
+
+            return View(organizationData);
         }
         public IActionResult ContactOrganization()
         {

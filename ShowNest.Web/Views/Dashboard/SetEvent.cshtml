@@ -7,6 +7,7 @@
     
     <link href="~/css/Dashboard/SetEvent.css" rel="stylesheet" />
     <script src="https://cdn.ckeditor.com/ckeditor5/41.1.0/classic/ckeditor.js"></script>
+    <script src="https://upload-widget.cloudinary.com/global/all.js" type="text/javascript"></script>
 }
 
 <body>
@@ -15,6 +16,7 @@
             組織名稱
         </div>
         <div class="name">
+            @* @Model.OrganizationName *@
             Mafia
         </div>
     </div>
@@ -24,9 +26,9 @@
             <div id="tabs">
                 <nav aria-label="breadcrumb" >
                     <ol class="breadcrumb">
-                        <li class="breadcrumb-item"><a href="~/Dashboard/Events?viewType=SetEvent">設定資料活動</a></li>
-                        <li class="breadcrumb-item"><a href="~/Dashboard/Events?viewType=SetTicket">設定票種</a></li>
-                        <li class="breadcrumb-item" aria-current="page"><a href="~/Dashboard/Events?viewType=SetTable">設定表單</a></li>
+                        <li class="breadcrumb-item"><a href="@Url.Action("SetEvent", "Dashboard")">設定資料活動</a></li>
+                        <li class="breadcrumb-item"><a href="@Url.Action("SetTicket", "Dashboard")">設定票種</a></li>
+                        <li class="breadcrumb-item" aria-current="page"><a href="@Url.Action("SetTable", "Dashboard")">設定表單</a></li>
                     </ol>
                 </nav>
             </div>
@@ -82,7 +84,7 @@
                     </div>
                     <div class="section">
                         <div class="mb-3">
-                            <h4 class="essential-input">協辦單位</h4>
+                            <h4 >協辦單位</h4>
                             <input type="text" class="form-control h-50" id="formGroupExampleInput" placeholder="若您的活動需告知協辦單位，請在此填寫">
                         </div>
                     </div>
@@ -164,21 +166,22 @@
                         </script>
                     </div>
                     <div class="pages-change">
-                        <button type="button" class="btn btn-outline-secondary" onclick="window.location.href='https://localhost:7156/Dashboard/Events?viewType=CreateEvent'">上一頁</button>
-                        <button type="button" class="btn btn-outline-secondary" onclick="window.location.href='https://localhost:7156/Dashboard/Events?viewType=SetTicket'">下一頁</button>
+                        <button type="button" class="btn btn-outline-secondary" onclick="window.location.href='@Url.Action("CreateEvent", "Dashboard")'">上一頁</button>
+                        <button type="button" class="btn btn-outline-secondary" onclick="window.location.href='@Url.Action("SetTicket", "Dashboard")'" value="Upload">下一頁</button>
                     </div>
                 </div>
 
 
                 <div class="other-setting">
                     <!-- (右邊)圖片上傳區 -->
+                    
                     <div class="section">
                         <h4>社群分享圖片</h4>
-                        <img id="uploadedImage" src="~/img/Dashboard/upload-img.png">
+                        <img id="uploadedImage" src='/img/Dashboard/upload-img.png' >
                         <div>
                             <!-- 添加文件上傳元素 -->
-                            <input type="file" id="uploadInput" accept="image/*" style="display: none;">
-                            <button type="button" class="btn btn-outline-secondary" onclick="document.getElementById('uploadInput').click()">選擇圖片</button>
+                            @* <input id="fileupload" type="file" name="images" multiple accept="image/gif, image/jpeg, image/png"> *@
+                            <button type="button" class="btn btn-outline-secondary" onclick="document.getElementById('uploadInput').click()" accept="image/gif, image/jpeg, image/png" id="fileupload" >選擇圖片</button>
                             <button type="button" class="btn btn-outline-secondary" id="restoreBtn">還原原圖</button>
                         </div>
                     </div>
@@ -230,7 +233,7 @@
     </div>
     @section Scripts {
         <script src="~/js/Dashboard/SetEvent.js"></script>
-
+        
     }
 </body>
 

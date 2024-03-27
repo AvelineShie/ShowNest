@@ -11,45 +11,36 @@ namespace ShowNest.Web.Controllers
             return View();
         }
 
-        public IActionResult NewEvent()
+
+        public async Task<IActionResult> CreateEvent()
         {
             return View();
         }
 
-        public IActionResult Events(string viewType)
+
+        public Task<IActionResult> SetEvent()
         {
-            if (viewType == "CreateEvent")
-            {
-                return View("CreateEvent");
-            }
-
-            if (viewType == "SetEvent")
-            {
-                return View("SetEvent");
-            }
-
-            if (viewType == "SetTicket")
-            {
-                return SetTicketPage();
-                //return View("SetTicket");
-            }
-
-            if(viewType == "SetTable")
-            {
-                return View("SetTable");
-            }
-
-            if (viewType == "EventHub")
-            {
-                return View("EventHub");
-            }
-            if (viewType == "RegistrationList")
-            {
-                return View("RegistrationList");
-            }
-
-            return BadRequest("Invalid view type.");
+            
+            return Task.FromResult<IActionResult>(View());
         }
+
+        public Task<IActionResult> SetTicket()
+        {
+
+            return Task.FromResult<IActionResult>(View());
+        }
+
+        public Task<IActionResult> SetTable()
+        {
+
+            return Task.FromResult<IActionResult>(View());
+        }
+
+        public IActionResult EventHub()
+        {
+            return View();
+        }
+
 
         public IActionResult SetTicketPage()
         {

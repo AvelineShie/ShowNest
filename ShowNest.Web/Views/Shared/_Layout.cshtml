@@ -44,8 +44,7 @@
                         </div>
                     </div>
                     <div id="header-functions-right" class="">
-                        <a id="new-event" class="" asp-controller="Dashboard" asp-action="Events"
-                            asp-route-viewType="CreateEvent">
+                        <a id="new-event" class="" asp-controller="Dashboard" asp-action="CreateEvent">
                             <i class="fa-solid fa-circle-plus"></i><span class="large-span">建立</span><span class="small-span">新</span>活動
                         </a>
                         <div id="org-select-wrap" class="d-block dropdown btn-group">
@@ -53,8 +52,7 @@
                                 aria-expanded="false"><span class="large-span">選擇</span>組織</a>
                             <ul class="dropdown-menu dropdown-menu-end">
                                 <p>組織列表</p>
-                                <li><a href="" class="dropdown-item org">BS</a></li>
-                                <li><a href="" class="dropdown-item org">BS2</a></li>
+                                <li><a href="/Dashboard/Organizations?viewType=Overview" class="dropdown-item org">深夜九點半搶銀行</a></li>
                                 <li>
                                     <a asp-controller="Organizations" asp-action="CreateOrganization" class="dropdown-item org">
                                         <i class="fa-solid fa-circle-plus"></i>建立新組織
@@ -86,7 +84,7 @@
                                     </a>
                                 </li>
                                 <li>
-                                    <a id="nav-logout" class="dropdown-item" href="#">
+                                    <a id="nav-logout" class="dropdown-item" asp-controller="Account" asp-action="Logout">
                                         <i class="fa-solid fa-right-from-bracket"></i>登出
                                     </a>
                                 </li>
@@ -157,6 +155,8 @@
     <script src="~/lib/jquery/dist/jquery.min.js"></script>
     <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
     <script src="~/js/site.js" asp-append-version="true"></script>
+    <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+    <script src="https://unpkg.com/vue-cookies@1.8.3/vue-cookies.js"></script>
     @await RenderSectionAsync("Scripts", required: false)
     @await RenderSectionAsync("endJS", required: false)
 </body>

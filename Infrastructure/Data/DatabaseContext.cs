@@ -139,8 +139,6 @@ public partial class DatabaseContext : DbContext
 
         modelBuilder.Entity<Event>(entity =>
         {
-            entity.HasIndex(e => e.OrganizationId, "IX_Events_OrganizationId");
-
             entity.Property(e => e.Id).HasComment("活動ID");
             entity.Property(e => e.Capacity).HasComment("可容納人數");
             entity.Property(e => e.CoOrganizer)
@@ -208,10 +206,6 @@ public partial class DatabaseContext : DbContext
             entity.HasKey(e => e.Id).HasName("PK_EventAndTagMapping_1");
 
             entity.ToTable("EventAndTagMapping", tb => tb.HasComment("活動與類別對照"));
-
-            entity.HasIndex(e => e.CategoryTagId, "IX_EventAndTagMapping_CategoryTagId");
-
-            entity.HasIndex(e => e.EventId, "IX_EventAndTagMapping_EventID");
 
             entity.Property(e => e.Id).HasComment("活動與類別對照ID");
             entity.Property(e => e.CategoryTagId).HasComment("類別TagID");
@@ -283,17 +277,15 @@ public partial class DatabaseContext : DbContext
                 .HasComment("電子郵件");
             entity.Property(e => e.Password).HasComment("密碼");
 
-            //entity.HasOne(d => d.User).WithOne(p => p.LogInInfo)
-            //    .HasForeignKey<LogInInfo>(d => d.UserId)
-            //    .OnDelete(DeleteBehavior.ClientSetNull)
-            //    .HasConstraintName("FK_LogInInfo_Users");
+            entity.HasOne(d => d.User).WithOne(p => p.LogInInfo)
+                .HasForeignKey<LogInInfo>(d => d.UserId)
+                .OnDelete(DeleteBehavior.ClientSetNull)
+                .HasConstraintName("FK_LogInInfo_Users");
         });
 
         modelBuilder.Entity<Order>(entity =>
         {
             entity.ToTable(tb => tb.HasComment("訂單"));
-
-            entity.HasIndex(e => e.UserId, "IX_Orders_UserId");
 
             entity.Property(e => e.Id).HasComment("訂單ID");
             entity.Property(e => e.ContactPerson).HasComment("聯絡人資料JSON");
@@ -324,10 +316,6 @@ public partial class DatabaseContext : DbContext
         {
             entity.ToTable("OrgFan", tb => tb.HasComment("組織粉絲"));
 
-            entity.HasIndex(e => e.OrganizationId, "IX_OrgFan_OrganizationId");
-
-            entity.HasIndex(e => e.UserId, "IX_OrgFan_UserId");
-
             entity.Property(e => e.Id).HasComment("入坑ID");
             entity.Property(e => e.FanTime)
                 .HasComment("成為粉絲時間")
@@ -351,8 +339,6 @@ public partial class DatabaseContext : DbContext
             entity.HasKey(e => e.Id).HasName("PK_OrganizationInfo");
 
             entity.ToTable(tb => tb.HasComment("組織"));
-
-            entity.HasIndex(e => e.OwnerId, "IX_Organizations_OwnerId");
 
             entity.Property(e => e.Id).HasComment("組織ID");
             entity.Property(e => e.ContactMobile)
@@ -408,10 +394,6 @@ public partial class DatabaseContext : DbContext
             entity.HasKey(e => e.Id).HasName("PK_OrganizationUserMapping");
 
             entity.ToTable("OrganizationAndUserMapping", tb => tb.HasComment("組織與使用者對照"));
-
-            entity.HasIndex(e => e.OrganizationId, "IX_OrganizationAndUserMapping_OrganizationId");
-
-            entity.HasIndex(e => e.UserId, "IX_OrganizationAndUserMapping_UserId");
 
             entity.Property(e => e.Id).HasComment("組織與使用者對照ID");
             entity.Property(e => e.OrganizationId).HasComment("組織ID");
@@ -481,10 +463,6 @@ public partial class DatabaseContext : DbContext
 
             entity.ToTable("PreferredActivityArea", tb => tb.HasComment("使用者偏好活動區域"));
 
-            entity.HasIndex(e => e.AreaId, "IX_PreferredActivityArea_AreaId");
-
-            entity.HasIndex(e => e.UserId, "IX_PreferredActivityArea_UserId");
-
             entity.Property(e => e.Id).HasComment("偏好區域ID");
             entity.Property(e => e.AreaId).HasComment("區域ID");
             entity.Property(e => e.UserId).HasComment("使用者ID");
@@ -502,8 +480,6 @@ public partial class DatabaseContext : DbContext
 
         modelBuilder.Entity<Seat>(entity =>
         {
-            entity.HasIndex(e => e.SeatAreaId, "IX_Seats_SeatAreaId");
-
             entity.Property(e => e.Id).HasComment("座位ID");
             entity.Property(e => e.CreatedAt)
                 .HasComment("新增時間")
@@ -541,16 +517,8 @@ public partial class DatabaseContext : DbContext
 
         modelBuilder.Entity<Ticket>(entity =>
         {
-            entity.HasIndex(e => e.OrderId, "IX_Tickets_OrderId");
-
-            entity.HasIndex(e => e.SeatId, "IX_Tickets_SeatId");
-
-            entity.HasIndex(e => e.TicketTypeId, "IX_Tickets_TicketTypeId");
-
             entity.Property(e => e.Id).HasComment("票券ID");
-            entity.Property(e => e.CheckCode)
-                .HasMaxLength(10)
-                .HasComment("檢查碼");
+            entity.Property(e => e.CheckCode).HasComment("檢查碼");
             entity.Property(e => e.CreatedAt)
                 .HasComment("新增時間")
                 .HasColumnType("datetime");
@@ -582,8 +550,6 @@ public partial class DatabaseContext : DbContext
 
         modelBuilder.Entity<TicketType>(entity =>
         {
-            entity.HasIndex(e => e.EventId, "IX_TicketTypes_EventId");
-
             entity.Property(e => e.Id).HasComment("票種ID");
             entity.Property(e => e.CapacityAmount).HasComment("票券數量");
             entity.Property(e => e.CreatedAt)
@@ -617,9 +583,7 @@ public partial class DatabaseContext : DbContext
 
         modelBuilder.Entity<User>(entity =>
         {
-            entity.Property(e => e.Id)
-                .ValueGeneratedNever()
-                .HasComment("使用者ID");
+            entity.Property(e => e.Id).HasComment("使用者ID");
             entity.Property(e => e.Birthday)
                 .HasComment("生日")
                 .HasColumnType("date");

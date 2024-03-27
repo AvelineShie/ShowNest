@@ -6,6 +6,10 @@ using ShowNest.Web.Services.General;
 using ShowNest.Web.Services.Home;
 using Microsoft.AspNetCore.Identity;
 using Infrastructure.Data;
+using ShowNest.Web.Configurations;
+using Microsoft.AspNetCore.Authentication.Cookies;
+using ShowNest.Web.Services.Organization;
+using ShowNest.Web.Services.Organizations;
 
 namespace ShowNest.Web
 {
@@ -15,30 +19,39 @@ namespace ShowNest.Web
         {
             var builder = WebApplication.CreateBuilder(args);
 
-            // ¨ú±o²ÕºA¤¤¸ê®Æ®w³s½u³]©w
+            // å–å¾—çµ„æ…‹ä¸­è³‡æ–™åº«é€£ç·šè¨­å®š
             string connectionString = builder.Configuration.GetConnectionString("DatabaseContext");
-            //¦bDI Containerµù¥UEF CoreªºDbContext
-            builder.Services.AddDbContext<DatabaseContext>(options => options.UseSqlServer(connectionString));
+            //åœ¨DI Containerè¨»å†ŠEF Coreçš„DbContext
+            builder.Services.AddDbContext<DatabaseContext>(options => options.UseSqlServer(connectionString).EnableSensitiveDataLogging());
 
             // Registration Service
-            builder.Services.AddScoped<RegistrationService, RegistrationService>();
-
-            // Add services to the container.
-            builder.Services.AddControllersWithViews();
-
+            builder.Services.AddScoped<OrderTicketService, OrderTicketService>();
             builder.Services.AddScoped<HomeCarouselService>();
             builder.Services.AddScoped<EventCardService>();
             builder.Services.AddScoped<CategoryTagService>();
             builder.Services.AddScoped<HomeService>();
             builder.Services.AddScoped<EventIndexService>();
+            builder.Services.AddScoped<EventDetailService>();
+            builder.Services.AddScoped<OrganizationIndexService>();
+            builder.Services.AddScoped<OrganizationDetailService>();
 
+            // Add services to the container.
+            builder.Services.AddControllersWithViews();
+            Infrastructure.Dependencies.ConfigureServices(builder.Configuration, builder.Services);
 
-            //// Facebook Data ´ú¸Õ¤¤
+            builder.Services
+               .AddApplicationCoreServices()
+               .AddWebServices();
+
+            //// Facebook Data æ¸¬è©¦ä¸­
             //builder.Services.AddAuthentication().AddFacebook(opt =>
             //{
             //    opt.ClientId = "";
             //    opt.ClientSecret = "";
             //});
+            
+            //ç™»å…¥é¤…ä¹¾
+            builder.Services.AddAuthentication(CookieAuthenticationDefaults.AuthenticationScheme).AddCookie();
 
             var app = builder.Build();
 
@@ -54,20 +67,52 @@ namespace ShowNest.Web
             app.UseStaticFiles();
 
             app.UseRouting();
+            //å…ˆé©—è­‰å†æˆæ¬Š
+            app.UseAuthentication();
+            app.UseAuthorization();
+
 
             app.UseAuthorization();
 
-            ///´ú¸Õ¥Î¸ô¥Ñ
+            ///æ¸¬è©¦ç”¨è·¯ç”±
             //app.MapControllerRoute(
             //    name: "organizationEvents",
             //    pattern: "{OrganizationId}/{controller=Events}/{action=Index}/{EventId?}");
-            ///¥H¤W´ú¸Õ¤¤--------------------------------------------------------------------------------------------
+            ///ä»¥ä¸Šæ¸¬è©¦ä¸­--------------------------------------------------------------------------------------------
+
+            app.MapControllerRoute(
+            name: "EventPages",
+            pattern: "Events/Explore/{page=1}",
+            defaults: new { controller = "Events", action = "Index" });
+
+            app.MapControllerRoute(
+            name: "NewEvent",
+            pattern: "Dashboard/CreateEvent",
+            defaults: new { controller = "Dashboard", action = "CreateEvent" });
+
+            app.MapControllerRoute(
+            name: "TicketSetting",
+            pattern: "Dashboard/CreateEvent/SetTicket",
+            defaults: new { controller = "Dashboard", Action = "SetTicket" }
+            );
+
+            app.MapControllerRoute(
+            name: "TableSetting",
+            pattern: "Dashboard/CreateEvent/SetTable",
+            defaults: new { controller = "Dashboard", Action = "SetTable" }
+            );
+
+            app.MapControllerRoute(
+            name: "EventSetting",
+            pattern: "Dashboard/CreateEvent/SetEvent",
+            defaults: new { controller = "Dashboard", Action = "SetEvent" }
+            );
+
 
             app.MapControllerRoute(
                 name: "default",
-                pattern: "{controller=Home}/{action=Index}/{id?}");
+                pattern: "{controller=Home}/{action=Index}");
 
-            
             app.Run();
         }
     }

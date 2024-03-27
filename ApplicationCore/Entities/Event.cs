@@ -1,5 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
+using System.Diagnostics.CodeAnalysis;
 
 namespace ApplicationCore.Entities;
 
@@ -8,22 +10,24 @@ public partial class Event
     /// <summary>
     /// 活動ID
     /// </summary>
-    public int Id { get; set; }
+    public int Id { get; set; } 
 
     /// <summary>
     /// 組織ID
     /// </summary>
-    public int OrganizationId { get; set; }
+    public int OrganizationId { get; set; } 
 
     /// <summary>
     /// 活動名稱
     /// </summary>
-    public string Name { get; set; } = null!;
+    public string? Name { get; set; } = null!;
+
 
     /// <summary>
     /// 開始時間
     /// </summary>
-    public DateTime StartTime { get; set; }
+    public DateTime StartTime { get; set; } 
+
 
     /// <summary>
     /// 結束時間
@@ -33,17 +37,19 @@ public partial class Event
     /// <summary>
     /// 0線上1實體
     /// </summary>
-    public byte Type { get; set; }
+    public byte Type { get; set; } 
 
     /// <summary>
     /// 活動地點
     /// </summary>
-    public string? LocationName { get; set; }
+    public string? LocationName { get; set; } = null!;
+
 
     /// <summary>
     /// 活動地址
     /// </summary>
-    public string? LocationAddress { get; set; }
+    public string? LocationAddress { get; set; } = null!;
+
 
     /// <summary>
     /// 經度
@@ -73,12 +79,12 @@ public partial class Event
     /// <summary>
     /// 聯絡人欄位JSON
     /// </summary>
-    public string ContactPerson { get; set; } = null!;
+    public required string ContactPerson { get; set; } = null!;
 
     /// <summary>
     /// 報名人欄位JSON
     /// </summary>
-    public string ParticipantPeople { get; set; } = null!;
+    public required string ParticipantPeople { get; set; } = null!;
 
     /// <summary>
     /// 活動主圖
@@ -98,42 +104,42 @@ public partial class Event
     /// <summary>
     /// 主辦單位
     /// </summary>
-    public string MainOrganizer { get; set; } = null!;
+    public required string MainOrganizer { get; set; } = null!;
 
     /// <summary>
     /// 協辦單位
     /// </summary>
-    public string? CoOrganizer { get; set; }
+    public string? CoOrganizer { get; set; } = null!;
 
     /// <summary>
     /// 是否公開活動
     /// </summary>
-    public bool IsPrivateEvent { get; set; }
+    public bool IsPrivateEvent { get; set; } 
 
     /// <summary>
     /// 是否免費
     /// </summary>
-    public bool IsFree { get; set; }
+    public bool IsFree { get; set; } 
 
     /// <summary>
     /// 0未發佈1已發佈
     /// </summary>
-    public byte Status { get; set; }
+    public byte Status { get; set; } 
 
     /// <summary>
     /// 預設值50
     /// </summary>
-    public int Sort { get; set; }
+    public int? Sort { get; set; }
 
     /// <summary>
     /// 資料封存或強制下架
     /// </summary>
-    public bool IsDeleted { get; set; }
+    public bool? IsDeleted { get; set; }
 
     /// <summary>
     /// 新增時間
     /// </summary>
-    public DateTime CreatedAt { get; set; }
+    public DateTime CreatedAt { get; set; } 
 
     /// <summary>
     /// 修改時間
