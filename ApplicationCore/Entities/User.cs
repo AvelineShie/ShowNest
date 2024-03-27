@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 
 namespace ApplicationCore.Entities;
 
@@ -8,6 +9,7 @@ public partial class User
     /// <summary>
     /// 使用者ID
     /// </summary>
+    [Key]
     public int Id { get; set; }
 
     /// <summary>

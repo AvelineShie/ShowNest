@@ -37,8 +37,10 @@
 
 .container {
     color: #333333;
-    justify-content: space-between;
-    
+/*    justify-content: space-between;*/
+    margin-bottom: 90px;
+    padding-right: 30px;
+    padding-left: 30px;
 }
 
 /*內容*/

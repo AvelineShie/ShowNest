@@ -8,6 +8,8 @@ using Microsoft.AspNetCore.Identity;
 using Infrastructure.Data;
 using ShowNest.Web.Configurations;
 using Microsoft.AspNetCore.Authentication.Cookies;
+using ShowNest.Web.Services.Organization;
+using ShowNest.Web.Services.Organizations;
 
 namespace ShowNest.Web
 {
@@ -20,10 +22,18 @@ namespace ShowNest.Web
             // 取得組態中資料庫連線設定
             string connectionString = builder.Configuration.GetConnectionString("DatabaseContext");
             //在DI Container註冊EF Core的DbContext
-            builder.Services.AddDbContext<DatabaseContext>(options => options.UseSqlServer(connectionString));
+            builder.Services.AddDbContext<DatabaseContext>(options => options.UseSqlServer(connectionString).EnableSensitiveDataLogging());
 
             // Registration Service
             builder.Services.AddScoped<OrderTicketService, OrderTicketService>();
+            builder.Services.AddScoped<HomeCarouselService>();
+            builder.Services.AddScoped<EventCardService>();
+            builder.Services.AddScoped<CategoryTagService>();
+            builder.Services.AddScoped<HomeService>();
+            builder.Services.AddScoped<EventIndexService>();
+            builder.Services.AddScoped<EventDetailService>();
+            builder.Services.AddScoped<OrganizationService>();
+            builder.Services.AddScoped<OrganizationDetailService>();
 
             // Add services to the container.
             builder.Services.AddControllersWithViews();
@@ -32,13 +42,6 @@ namespace ShowNest.Web
             builder.Services
                .AddApplicationCoreServices()
                .AddWebServices();
-
-            builder.Services.AddScoped<HomeCarouselService>();
-            builder.Services.AddScoped<EventCardService>();
-            builder.Services.AddScoped<CategoryTagService>();
-            builder.Services.AddScoped<HomeService>();
-            builder.Services.AddScoped<EventIndexService>();
-
 
             //// Facebook Data 測試中
             //builder.Services.AddAuthentication().AddFacebook(opt =>
@@ -101,7 +104,7 @@ namespace ShowNest.Web
 
             app.MapControllerRoute(
             name: "EventSetting",
-            pattern: "Dashboard/CreateEvent/{SetEvent}",
+            pattern: "Dashboard/CreateEvent/SetEvent",
             defaults: new { controller = "Dashboard", Action = "SetEvent" }
             );
 
