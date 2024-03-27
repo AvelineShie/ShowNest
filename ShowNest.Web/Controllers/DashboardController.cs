@@ -12,9 +12,9 @@ namespace ShowNest.Web.Controllers
         }
 
 
-        public Task<IActionResult> CreateEvent()
+        public async Task<IActionResult> CreateEvent()
         {
-            return Task.FromResult<IActionResult>(View());
+            return View();
         }
 
 
