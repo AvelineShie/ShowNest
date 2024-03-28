@@ -10,17 +10,26 @@ using System.Threading.Tasks;
 
 namespace Infrastructure.Services
 {
-    public class OrderQueryServiceByDbContext:IOrderQueryService
+    public class OrderQueryService:IOrderQueryService
     {
         private readonly DatabaseContext __context;
         private readonly string custormerId;
 
-        public OrderQueryServiceByDbContext(DatabaseContext context, string custormerId)
+        public OrderQueryService(DatabaseContext context, string custormerId)
         {
             __context = context;
             this.custormerId = custormerId;
         }
 
+        public decimal GetCustomerOrderTotalAmount(string customerId)
+        {
+            throw new NotImplementedException();
+        }
+
+        public List<OrderQueryDto> GetOrdersByUserId(string userId)
+        {
+            throw new NotImplementedException();
+        }
 
         List<Order> IOrderQueryService.GetOrders(string customerId)
         {
