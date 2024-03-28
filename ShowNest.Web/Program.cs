@@ -10,6 +10,7 @@ using ShowNest.Web.Configurations;
 using Microsoft.AspNetCore.Authentication.Cookies;
 using ShowNest.Web.Services.Organization;
 using ShowNest.Web.Services.Organizations;
+using ShowNest.Web.Services.Seats;
 
 namespace ShowNest.Web
 {
@@ -24,6 +25,9 @@ namespace ShowNest.Web
             //在DI Container註冊EF Core的DbContext
             builder.Services.AddDbContext<DatabaseContext>(options => options.UseSqlServer(connectionString).EnableSensitiveDataLogging());
 
+            // Registration Repository
+            builder.Services.AddScoped<ISeatRepository, SeatRepository>();
+            
             // Registration Service
             builder.Services.AddScoped<OrderTicketService, OrderTicketService>();
             builder.Services.AddScoped<HomeCarouselService>();
@@ -36,6 +40,8 @@ namespace ShowNest.Web
             builder.Services.AddScoped<OrganizationDetailService>();
             builder.Services.AddScoped<AccountService>();
             builder.Services.AddHttpContextAccessor();
+            builder.Services.AddScoped<ISeatsService, SeatsService>();
+            
             // Add services to the container.
             builder.Services.AddControllersWithViews();
             Infrastructure.Dependencies.ConfigureServices(builder.Configuration, builder.Services);
