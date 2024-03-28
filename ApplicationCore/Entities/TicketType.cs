@@ -18,7 +18,7 @@ public partial class TicketType
     /// <summary>
     /// 票種名稱
     /// </summary>
-    public string Name { get; set; } = null!;
+    public string Name { get; set; }
 
     /// <summary>
     /// 開始販售時間
@@ -65,7 +65,7 @@ public partial class TicketType
     /// </summary>
     public DateTime? EditedAt { get; set; }
 
-    public virtual Event Event { get; set; } = null!;
+    public virtual Event Event { get; set; }
 
     public virtual ICollection<Ticket> Tickets { get; set; } = new List<Ticket>();
 }

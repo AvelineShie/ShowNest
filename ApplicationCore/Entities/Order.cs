@@ -26,7 +26,7 @@ public partial class Order
     /// <summary>
     /// 座位號碼ex3排13號
     /// </summary>
-    public string? SeatNumber { get; set; }
+    public string SeatNumber { get; set; }
 
     /// <summary>
     /// 0免費1信用卡
@@ -56,21 +56,21 @@ public partial class Order
     /// <summary>
     /// 聯絡人資料JSON
     /// </summary>
-    public string ContactPerson { get; set; } = null!;
+    public string ContactPerson { get; set; }
 
     /// <summary>
     /// 報名人資料JSON
     /// </summary>
-    public string? ParticipantPeople { get; set; }
+    public string ParticipantPeople { get; set; }
 
     /// <summary>
     /// 0不顯示參加活動1顯示
     /// </summary>
     public bool IsDisplayed { get; set; }
 
-    public virtual ArchiveOrder? ArchiveOrder { get; set; }
+    public virtual ArchiveOrder ArchiveOrder { get; set; }
 
     public virtual ICollection<Ticket> Tickets { get; set; } = new List<Ticket>();
 
-    public virtual User User { get; set; } = null!;
+    public virtual User User { get; set; }
 }

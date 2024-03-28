@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.ComponentModel.DataAnnotations;
 
 namespace ApplicationCore.Entities;
 
@@ -9,18 +8,17 @@ public partial class User
     /// <summary>
     /// 使用者ID
     /// </summary>
-    [Key]
     public int Id { get; set; }
 
     /// <summary>
     /// 暱稱
     /// </summary>
-    public string? Nickname { get; set; }
+    public string Nickname { get; set; }
 
     /// <summary>
     /// 手機號碼
     /// </summary>
-    public string? Mobile { get; set; }
+    public string Mobile { get; set; }
 
     /// <summary>
     /// 生日
@@ -35,12 +33,12 @@ public partial class User
     /// <summary>
     /// 個人網址
     /// </summary>
-    public string? PersonalUrl { get; set; }
+    public string PersonalUrl { get; set; }
 
     /// <summary>
     /// 個人簡介
     /// </summary>
-    public string? PersonalProfile { get; set; }
+    public string PersonalProfile { get; set; }
 
     /// <summary>
     /// 訂閱電子報
@@ -50,7 +48,7 @@ public partial class User
     /// <summary>
     /// 帳號照片
     /// </summary>
-    public string? Image { get; set; }
+    public string Image { get; set; }
 
     /// <summary>
     /// 上次登入時間
@@ -74,7 +72,7 @@ public partial class User
 
     public virtual ICollection<HistoryPassword> HistoryPasswords { get; set; } = new List<HistoryPassword>();
 
-    public virtual LogInInfo? LogInInfo { get; set; }
+    public virtual LogInInfo LogInInfo { get; set; }
 
     public virtual ICollection<Order> Orders { get; set; } = new List<Order>();
 

@@ -13,7 +13,7 @@ public partial class SeatArea
     /// <summary>
     /// 座位區域名稱
     /// </summary>
-    public string Name { get; set; } = null!;
+    public string Name { get; set; }
 
     /// <summary>
     /// 新增時間
