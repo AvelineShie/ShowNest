@@ -18,22 +18,22 @@ namespace ShowNest.Web.Controllers
         }
 
 
-        public Task<IActionResult> SetEvent()
+        public async Task<IActionResult> SetEvent()
         {
             
-            return Task.FromResult<IActionResult>(View());
+            return View();
         }
 
-        public Task<IActionResult> SetTicket()
+        public async Task<IActionResult> SetTicket()
         {
 
-            return Task.FromResult<IActionResult>(View());
+            return View();
         }
 
-        public Task<IActionResult> SetTable()
+        public async Task<IActionResult> SetTable()
         {
 
-            return Task.FromResult<IActionResult>(View());
+            return View();
         }
 
         public IActionResult EventHub()
