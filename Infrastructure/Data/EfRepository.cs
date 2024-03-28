@@ -13,12 +13,19 @@ namespace Infrastructure.Data
     {
         private readonly DatabaseContext DbContext;
         protected readonly DbSet<TEntity> DbSet;
+        private DbContext dbContext;
+
         public EfRepository(DatabaseContext context)
         {
             DbContext = context;
             DbSet = DbContext.Set<TEntity>();
         }
-       
+
+        public EfRepository(DbContext dbContext)
+        {
+            this.dbContext = dbContext;
+        }
+
         public TEntity Add(TEntity entity)
         {
             DbSet.Add(entity);
@@ -47,7 +54,7 @@ namespace Infrastructure.Data
             return entities;
         }
 
-        public void Delete(TEntity entity)
+        public virtual void Delete(TEntity entity)
         {
             DbSet.Remove(entity);
             DbContext.SaveChanges();
