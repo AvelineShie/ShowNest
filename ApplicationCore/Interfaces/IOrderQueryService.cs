@@ -18,37 +18,38 @@ namespace ApplicationCore.Interfaces
     {
         public int OrderId { get; set; }
         public int UserId { get; set; }
-        public string UserName { get; set; }
         public int TicketId {  get; set; }
         public DateTime OrderDate { get; set; }
-        public List<OrderDetailQueryDto> OrderDetails { get; set; }
+       
     }
     public class OrderDetailQueryDto
     {
-        public int EvnetId { get; set; }       
-        public string EvnetName { get; set; }
-        public DateTime EventStartTime { get; set; }
-
-        // Event Status
-        public string OrderStatus { get; set; }
-
-        // Event Information
-        public string EventName { get; set; }
-        public string EventHost { get; set; }
-        public string EventLocation { get; set; }
-        public string LocationAddress { get; set; }  
-        public string LocationName {  get; set; }
-        public string StreamingPlatform { get; set; }
-        public string StreamingUrl { get; set; }
+        public int OrderId { get; set; }
+        public int UserId { get; set; }
         public int TicketId { get; set; }
+        public int EvnetId { get; set; }
+        public DateTime EventStartTime { get; set; }
+        public string MainOrganizer { get; set; }
+        public string OrganizationURL { get; set; }
+        public int TicketTypeId {  get; set; }
+        public string OrderStatus { get; set; }
+        public string EventName { get; set; }
+        public string EventImage { get; set; }
+        public string EventHost { get; set; }
+        public string LocationName { get; set; }
+        public string LocationAddress { get; set; }  
+        public string StreamingUrl { get; set; }
+        public int OrganizationId { get; set; }
         public string TicketTypeName { get; set; } 
         public string TicketNumber { get; set; }
         public string SeatNumber { get; set; }
         public decimal TicketPrice { get; set; }
         public int PurchaseAmount { get; set; }
         public byte PaymentType { get; set; }
-        public DateTime CreatedAt { get; set; }
+        public DateTime OrderDate { get; set; }
         public DateTime? EditedAt { get; set; }
+        public string OrganizationUrl { get; set; }
+
 
     }
 
