@@ -55,10 +55,12 @@ public partial class DatabaseContext : DbContext
     public virtual DbSet<User> Users { get; set; }
 
     protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
-        => optionsBuilder.UseSqlServer("Name=ConnectionStrings:DatabaseContext");
+        => optionsBuilder.UseSqlServer("Name=ConnectionStrings:ShowNestDb");
 
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
+        modelBuilder.UseCollation("Chinese_Taiwan_Stroke_CI_AS");
+
         modelBuilder.Entity<ArchiveOrder>(entity =>
         {
             entity.HasKey(e => e.OrderId);
@@ -73,6 +75,7 @@ public partial class DatabaseContext : DbContext
                 .HasComment("修改時間")
                 .HasColumnType("datetime");
             entity.Property(e => e.EventName)
+                .IsRequired()
                 .HasMaxLength(100)
                 .HasComment("活動名稱");
             entity.Property(e => e.EventStartTime)
@@ -100,6 +103,7 @@ public partial class DatabaseContext : DbContext
                 .HasComment("票價")
                 .HasColumnType("money");
             entity.Property(e => e.TicketTypeName)
+                .IsRequired()
                 .HasMaxLength(50)
                 .HasComment("票種名稱");
 
@@ -115,6 +119,7 @@ public partial class DatabaseContext : DbContext
 
             entity.Property(e => e.Id).HasComment("區域ID");
             entity.Property(e => e.Name)
+                .IsRequired()
                 .HasMaxLength(50)
                 .HasComment("地區名稱");
         });
@@ -132,6 +137,7 @@ public partial class DatabaseContext : DbContext
                 .HasColumnType("datetime");
             entity.Property(e => e.IsDeleted).HasComment("標記刪除");
             entity.Property(e => e.Name)
+                .IsRequired()
                 .HasMaxLength(50)
                 .HasComment("類別Tag名稱");
             entity.Property(e => e.Sort).HasComment("排序預設50");
@@ -139,12 +145,16 @@ public partial class DatabaseContext : DbContext
 
         modelBuilder.Entity<Event>(entity =>
         {
+            entity.HasIndex(e => e.OrganizationId, "IX_Events_OrganizationId");
+
             entity.Property(e => e.Id).HasComment("活動ID");
             entity.Property(e => e.Capacity).HasComment("可容納人數");
             entity.Property(e => e.CoOrganizer)
                 .HasMaxLength(50)
                 .HasComment("協辦單位");
-            entity.Property(e => e.ContactPerson).HasComment("聯絡人欄位JSON");
+            entity.Property(e => e.ContactPerson)
+                .IsRequired()
+                .HasComment("聯絡人欄位JSON");
             entity.Property(e => e.CreatedAt)
                 .HasComment("新增時間")
                 .HasColumnType("datetime");
@@ -163,6 +173,7 @@ public partial class DatabaseContext : DbContext
             entity.Property(e => e.IsFree).HasComment("是否免費");
             entity.Property(e => e.IsPrivateEvent).HasComment("是否公開活動");
             entity.Property(e => e.Latitude)
+                .IsRequired()
                 .HasMaxLength(50)
                 .HasComment("緯度");
             entity.Property(e => e.LocationAddress)
@@ -172,16 +183,21 @@ public partial class DatabaseContext : DbContext
                 .HasMaxLength(100)
                 .HasComment("活動地點");
             entity.Property(e => e.Longitude)
+                .IsRequired()
                 .HasMaxLength(50)
                 .HasComment("經度");
             entity.Property(e => e.MainOrganizer)
+                .IsRequired()
                 .HasMaxLength(50)
                 .HasComment("主辦單位");
             entity.Property(e => e.Name)
+                .IsRequired()
                 .HasMaxLength(100)
                 .HasComment("活動名稱");
             entity.Property(e => e.OrganizationId).HasComment("組織ID");
-            entity.Property(e => e.ParticipantPeople).HasComment("報名人欄位JSON");
+            entity.Property(e => e.ParticipantPeople)
+                .IsRequired()
+                .HasComment("報名人欄位JSON");
             entity.Property(e => e.Sort).HasComment("預設值50");
             entity.Property(e => e.StartTime)
                 .HasComment("開始時間")
@@ -207,6 +223,10 @@ public partial class DatabaseContext : DbContext
 
             entity.ToTable("EventAndTagMapping", tb => tb.HasComment("活動與類別對照"));
 
+            entity.HasIndex(e => e.CategoryTagId, "IX_EventAndTagMapping_CategoryTagId");
+
+            entity.HasIndex(e => e.EventId, "IX_EventAndTagMapping_EventID");
+
             entity.Property(e => e.Id).HasComment("活動與類別對照ID");
             entity.Property(e => e.CategoryTagId).HasComment("類別TagID");
             entity.Property(e => e.EventId)
@@ -228,13 +248,17 @@ public partial class DatabaseContext : DbContext
         {
             entity.ToTable("HistoryPassword");
 
+            entity.HasIndex(e => e.UserId, "IX_HistoryPassword_UserId");
+
             entity.Property(e => e.CreatedAt)
                 .HasComment("新增時間")
                 .HasColumnType("datetime");
             entity.Property(e => e.EditedAt)
                 .HasComment("修改時間")
                 .HasColumnType("datetime");
-            entity.Property(e => e.UsedPassword).HasComment("使用過的密碼");
+            entity.Property(e => e.UsedPassword)
+                .IsRequired()
+                .HasComment("使用過的密碼");
             entity.Property(e => e.UserId).HasComment("使用者ID");
 
             entity.HasOne(d => d.User).WithMany(p => p.HistoryPasswords)
@@ -264,6 +288,7 @@ public partial class DatabaseContext : DbContext
                 .ValueGeneratedNever()
                 .HasComment("使用者ID");
             entity.Property(e => e.Account)
+                .IsRequired()
                 .HasMaxLength(50)
                 .HasComment("帳號");
             entity.Property(e => e.CreatedAt)
@@ -273,9 +298,12 @@ public partial class DatabaseContext : DbContext
                 .HasComment("修改時間")
                 .HasColumnType("datetime");
             entity.Property(e => e.Email)
+                .IsRequired()
                 .HasMaxLength(100)
                 .HasComment("電子郵件");
-            entity.Property(e => e.Password).HasComment("密碼");
+            entity.Property(e => e.Password)
+                .IsRequired()
+                .HasComment("密碼");
 
             entity.HasOne(d => d.User).WithOne(p => p.LogInInfo)
                 .HasForeignKey<LogInInfo>(d => d.UserId)
@@ -287,8 +315,12 @@ public partial class DatabaseContext : DbContext
         {
             entity.ToTable(tb => tb.HasComment("訂單"));
 
+            entity.HasIndex(e => e.UserId, "IX_Orders_UserId");
+
             entity.Property(e => e.Id).HasComment("訂單ID");
-            entity.Property(e => e.ContactPerson).HasComment("聯絡人資料JSON");
+            entity.Property(e => e.ContactPerson)
+                .IsRequired()
+                .HasComment("聯絡人資料JSON");
             entity.Property(e => e.CreatedAt)
                 .HasComment("新增時間")
                 .HasColumnType("datetime");
@@ -316,6 +348,10 @@ public partial class DatabaseContext : DbContext
         {
             entity.ToTable("OrgFan", tb => tb.HasComment("組織粉絲"));
 
+            entity.HasIndex(e => e.OrganizationId, "IX_OrgFan_OrganizationId");
+
+            entity.HasIndex(e => e.UserId, "IX_OrgFan_UserId");
+
             entity.Property(e => e.Id).HasComment("入坑ID");
             entity.Property(e => e.FanTime)
                 .HasComment("成為粉絲時間")
@@ -340,14 +376,19 @@ public partial class DatabaseContext : DbContext
 
             entity.ToTable(tb => tb.HasComment("組織"));
 
+            entity.HasIndex(e => e.OwnerId, "IX_Organizations_OwnerId");
+
             entity.Property(e => e.Id).HasComment("組織ID");
             entity.Property(e => e.ContactMobile)
+                .IsRequired()
                 .HasMaxLength(50)
                 .HasComment("聯絡手機");
             entity.Property(e => e.ContactName)
+                .IsRequired()
                 .HasMaxLength(50)
                 .HasComment("聯絡人姓名");
             entity.Property(e => e.ContactTelephone)
+                .IsRequired()
                 .HasMaxLength(50)
                 .HasComment("連絡電話");
             entity.Property(e => e.CreatedAt)
@@ -373,9 +414,11 @@ public partial class DatabaseContext : DbContext
                 .HasColumnName("ImgURL");
             entity.Property(e => e.IsDeleted).HasComment("標記封存");
             entity.Property(e => e.Name)
+                .IsRequired()
                 .HasMaxLength(50)
                 .HasComment("組織名稱");
             entity.Property(e => e.OrganizationUrl)
+                .IsRequired()
                 .HasComment("站內連結")
                 .HasColumnName("OrganizationURL");
             entity.Property(e => e.OuterUrl)
@@ -394,6 +437,10 @@ public partial class DatabaseContext : DbContext
             entity.HasKey(e => e.Id).HasName("PK_OrganizationUserMapping");
 
             entity.ToTable("OrganizationAndUserMapping", tb => tb.HasComment("組織與使用者對照"));
+
+            entity.HasIndex(e => e.OrganizationId, "IX_OrganizationAndUserMapping_OrganizationId");
+
+            entity.HasIndex(e => e.UserId, "IX_OrganizationAndUserMapping_UserId");
 
             entity.Property(e => e.Id).HasComment("組織與使用者對照ID");
             entity.Property(e => e.OrganizationId).HasComment("組織ID");
@@ -415,6 +462,8 @@ public partial class DatabaseContext : DbContext
             entity.HasKey(e => e.Id).HasName("PK_Prefill_1");
 
             entity.ToTable("PreFill", tb => tb.HasComment("報名預填資料"));
+
+            entity.HasIndex(e => e.UserId, "IX_PreFill_UserId");
 
             entity.Property(e => e.Id).HasComment("預填資料ID");
             entity.Property(e => e.Address)
@@ -463,6 +512,10 @@ public partial class DatabaseContext : DbContext
 
             entity.ToTable("PreferredActivityArea", tb => tb.HasComment("使用者偏好活動區域"));
 
+            entity.HasIndex(e => e.AreaId, "IX_PreferredActivityArea_AreaId");
+
+            entity.HasIndex(e => e.UserId, "IX_PreferredActivityArea_UserId");
+
             entity.Property(e => e.Id).HasComment("偏好區域ID");
             entity.Property(e => e.AreaId).HasComment("區域ID");
             entity.Property(e => e.UserId).HasComment("使用者ID");
@@ -480,6 +533,8 @@ public partial class DatabaseContext : DbContext
 
         modelBuilder.Entity<Seat>(entity =>
         {
+            entity.HasIndex(e => e.SeatAreaId, "IX_Seats_SeatAreaId");
+
             entity.Property(e => e.Id).HasComment("座位ID");
             entity.Property(e => e.CreatedAt)
                 .HasComment("新增時間")
@@ -489,6 +544,7 @@ public partial class DatabaseContext : DbContext
                 .HasColumnType("datetime");
             entity.Property(e => e.IsDeleted).HasComment("標記封存");
             entity.Property(e => e.Number)
+                .IsRequired()
                 .HasMaxLength(50)
                 .HasComment("座位號碼ex3排13號");
             entity.Property(e => e.SeatAreaId).HasComment("座位區域ID");
@@ -511,12 +567,19 @@ public partial class DatabaseContext : DbContext
                 .HasColumnType("datetime");
             entity.Property(e => e.IsDeleted).HasComment("標記封存");
             entity.Property(e => e.Name)
+                .IsRequired()
                 .HasMaxLength(50)
                 .HasComment("座位區域名稱");
         });
 
         modelBuilder.Entity<Ticket>(entity =>
         {
+            entity.HasIndex(e => e.OrderId, "IX_Tickets_OrderId");
+
+            entity.HasIndex(e => e.SeatId, "IX_Tickets_SeatId");
+
+            entity.HasIndex(e => e.TicketTypeId, "IX_Tickets_TicketTypeId");
+
             entity.Property(e => e.Id).HasComment("票券ID");
             entity.Property(e => e.CheckCode).HasComment("檢查碼");
             entity.Property(e => e.CreatedAt)
@@ -550,6 +613,8 @@ public partial class DatabaseContext : DbContext
 
         modelBuilder.Entity<TicketType>(entity =>
         {
+            entity.HasIndex(e => e.EventId, "IX_TicketTypes_EventId");
+
             entity.Property(e => e.Id).HasComment("票種ID");
             entity.Property(e => e.CapacityAmount).HasComment("票券數量");
             entity.Property(e => e.CreatedAt)
@@ -565,6 +630,7 @@ public partial class DatabaseContext : DbContext
             entity.Property(e => e.IsDeleted).HasComment("強制下架");
             entity.Property(e => e.IsDisplayed).HasComment("是否顯示");
             entity.Property(e => e.Name)
+                .IsRequired()
                 .HasMaxLength(50)
                 .HasComment("票種名稱");
             entity.Property(e => e.Price)

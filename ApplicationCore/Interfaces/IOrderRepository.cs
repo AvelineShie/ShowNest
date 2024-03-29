@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace ApplicationCore.Interfaces
 {
-    public interface IOrderRepository:IRepository<Order>
+    public interface IOrderRepository : IRepository<Order>
     {
         IEnumerable<Order> GetAll();
     }

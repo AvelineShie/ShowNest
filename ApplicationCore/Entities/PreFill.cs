@@ -21,12 +21,12 @@ public partial class PreFill
     /// <summary>
     /// 姓名
     /// </summary>
-    public string? Name { get; set; }
+    public string Name { get; set; }
 
     /// <summary>
     /// 手機號碼
     /// </summary>
-    public string? Mobile { get; set; }
+    public string Mobile { get; set; }
 
     /// <summary>
     /// 郵遞區號
@@ -36,27 +36,27 @@ public partial class PreFill
     /// <summary>
     /// 縣市
     /// </summary>
-    public string? County { get; set; }
+    public string County { get; set; }
 
     /// <summary>
     /// 鄉鎮區域
     /// </summary>
-    public string? District { get; set; }
+    public string District { get; set; }
 
     /// <summary>
     /// 聯絡地址
     /// </summary>
-    public string? Address { get; set; }
+    public string Address { get; set; }
 
     /// <summary>
     /// 公司名稱
     /// </summary>
-    public string? CompanyName { get; set; }
+    public string CompanyName { get; set; }
 
     /// <summary>
     /// 職稱
     /// </summary>
-    public string? Title { get; set; }
+    public string Title { get; set; }
 
     /// <summary>
     /// 公司郵遞區號
@@ -66,7 +66,7 @@ public partial class PreFill
     /// <summary>
     /// 公司地址
     /// </summary>
-    public string? CompanyAddress { get; set; }
+    public string CompanyAddress { get; set; }
 
     /// <summary>
     /// 新增時間
@@ -78,5 +78,5 @@ public partial class PreFill
     /// </summary>
     public DateTime? EditedAt { get; set; }
 
-    public virtual User User { get; set; } = null!;
+    public virtual User User { get; set; }
 }

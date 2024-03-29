@@ -23,7 +23,7 @@ public partial class EventAndTagMapping
     /// </summary>
     public int EventId { get; set; }
 
-    public virtual CategoryTag CategoryTag { get; set; } = null!;
+    public virtual CategoryTag CategoryTag { get; set; }
 
-    public virtual Event Event { get; set; } = null!;
+    public virtual Event Event { get; set; }
 }
