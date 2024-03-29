@@ -11,7 +11,7 @@ namespace ShowNest.Web.ViewModels.Dashboard
         public string OrganizationName { get; set; } //組織名
         public string MainImageURL { get; set; } //圖片
 
-        [Required(ErrorMessage = "請輸入活動名稱")]
+        [Required]
         [StringLength(100)]
         public string EventName { get; set; }
         
@@ -25,9 +25,9 @@ namespace ShowNest.Web.ViewModels.Dashboard
 
         [Required]
         public DateTime StartTime { get; set; }
-        public DateTime EndTime { get; set; }
+        public DateTime EndTime { get; set; } 
         
-        [Required(ErrorMessage = "請輸入主辦單位名稱")]
+        [Required]
         public string MainOrganizer { get; set; }
         public string CoOrganizer { get; set; }
 
@@ -36,10 +36,10 @@ namespace ShowNest.Web.ViewModels.Dashboard
         public int EventStatus {  get; set; }//活動形式
         public string StreamingName { get; set; }//串流平台名稱
 
-        [Required(ErrorMessage = "請輸入活動場所名稱")]
+        [Required]
         [StringLength(100)]
         public string LocationName { get; set; }//場所名稱
-        [Required(ErrorMessage = "請輸入活動地址")]
+        [Required]
         [StringLength(200)]
         public string EventAddress { get; set; } //活動地址
         
