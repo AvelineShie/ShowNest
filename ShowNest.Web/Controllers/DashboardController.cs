@@ -1,11 +1,14 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using ShowNest.Web.ViewModels.Dashboard;
 using ShowNest.Web.ViewModels.Events;
+using System.Drawing.Text;
 
 namespace ShowNest.Web.Controllers
 {
     public class DashboardController : Controller
     {
+        //private readonly ShowNestContext _context;
+
         public IActionResult Index()
         {
             return View();
@@ -17,12 +20,29 @@ namespace ShowNest.Web.Controllers
             return View();
         }
 
-
+        [HttpGet]
         public async Task<IActionResult> SetEvent()
         {
             
+            
             return View();
         }
+
+        //[HttpPost]
+        //[ValidateAntiForgeryToken]
+        //public async Task<IActionResult> SetEvent(Event event)
+        //{
+        //    if (ModelState.IsValid)
+        //    {
+        //        _context.Add();
+        //        await _context.SaveChangesAsync();
+
+        //        return RedirectToAction(nameof());
+
+        //    }
+
+        //    return View();
+        //}
 
         public async Task<IActionResult> SetTicket()
         {

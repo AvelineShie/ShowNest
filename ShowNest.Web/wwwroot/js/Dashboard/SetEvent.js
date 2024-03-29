@@ -4,8 +4,26 @@ document.addEventListener("DOMContentLoaded", function () {
     const mapElement = document.querySelector('#map').closest('div');
     const mapNote = document.querySelector('.map-note');
     const placeLog = document.querySelector('.place-section');
+    const websiteLinkInput = document.getElementById("basic-url");
+    const okSpan = document.querySelector(".OK");
     hideOnlineElements();
 
+//網址列驗證
+    websiteLinkInput.addEventListener("change", function () {
+        var websiteLink = websiteLinkInput.value;
+        var regex = /^[a-z0-9]{3,16}$/;
+
+        if (regex.test(websiteLink)) {
+            websiteLinkInput.dataset.isValid = "true";
+            okSpan.style.display = "block";
+        } else {
+            websiteLinkInput.dataset.isValid = "false";
+            okSpan.style.display = "請輸入3 到 16 個小寫英文或數字";
+        }
+    });
+
+
+//線上或實體選項顯示
     function hideOnlineElements() {
         onlineActivityElement.style.display = 'none';
         mapElement.style.display = 'block';
