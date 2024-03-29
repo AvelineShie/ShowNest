@@ -46,6 +46,11 @@ namespace Infrastructure.Services
                 .Where(o=>o.UserId==userId)
                 .ToList();
         }
+
+        public List<OrderQueryDto> GetOrdersByUserId(int userId)
+        {
+            throw new NotImplementedException();
+        }
         //public List<OrderQueryDto> GetOrdersByUserId(int userId)
         //{
         //    var orders = GetOrders(userId);
@@ -61,7 +66,7 @@ namespace Infrastructure.Services
         //            PurchaseAmount=od.Order.PurchaseAmount,
         //            PurchaseDate=od.Order.PurchaseDate,
         //            PurchaseDetails=od.Order.PurchaseDetails
-                    
+
         //        }).ToList()
 
         //    }).ToList();
