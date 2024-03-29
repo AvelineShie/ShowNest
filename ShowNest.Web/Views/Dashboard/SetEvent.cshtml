@@ -1,4 +1,4 @@
-﻿
+﻿@using ShowNest.Web.ViewModels.Dashboard
 @{
     ViewData["Title"] = "SetEvent";
 }
@@ -33,14 +33,13 @@
                 </nav>
             </div>
             
-            <div class="dual-column-wrapper">
+            <form class="dual-column-wrapper" asp-controller="Dashboard" asp-action="SetEvent" method="post">
                 <div class="main-content">
-
                     <!-- 活動名稱 -->
                     <div class="section">
                         <div class="mb-3">
                             <h4 class="essential-input">活動名稱</h4>
-                            <input type="text" class="form-control h-50" id="formGroupExampleInput" placeholder=" ">
+                            <input type="text" class="form-control h-50" id="formGroupExampleInput" placeholder=" " asp-for="Name">
                         </div>
                     </div>
 
@@ -49,14 +48,14 @@
                         <h4 class="essential-input">網址</h4>
                         <div class="input-group mb-3 h-50 w-75">
                             <span class="input-group-text " id="basic-addon3">https://bs-test.shownest.cc/events/</span>
-                            <input type="text" class="form-control" id="basic-url" aria-describedby="basic-addon3">
+                            <input type="text" class="form-control" id="basic-url" aria-describedby="basic-addon3"">
                             <span class="OK">
                                 <i class="fa-solid fa-circle-check"></i> 可以使用
                             </span>
                         </div>
-                        <span class="note">
+@*                         <span class="note">
                             請輸入3 到 16 個小寫英文或數字。
-                        </span>
+                        </span> *@
                     </div>
 
                     <!-- 活動時間 -->
@@ -226,7 +225,7 @@
                         </div>
                     </div>
                 </div>
-            </div>
+            </form>
 
 
         </div>
