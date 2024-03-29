@@ -28,7 +28,7 @@ public partial class Ticket
     /// <summary>
     /// 票號
     /// </summary>
-    public string? Number { get; set; }
+    public string Number { get; set; }
 
     /// <summary>
     /// 0未驗票1驗票成功
@@ -55,9 +55,9 @@ public partial class Ticket
     /// </summary>
     public int? CheckCode { get; set; }
 
-    public virtual Order? Order { get; set; }
+    public virtual Order Order { get; set; }
 
-    public virtual Seat? Seat { get; set; }
+    public virtual Seat Seat { get; set; }
 
-    public virtual TicketType TicketType { get; set; } = null!;
+    public virtual TicketType TicketType { get; set; }
 }

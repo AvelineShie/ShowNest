@@ -18,42 +18,42 @@ public partial class ArchiveOrder
     /// <summary>
     /// 活動名稱
     /// </summary>
-    public string EventName { get; set; } = null!;
+    public string EventName { get; set; }
 
     /// <summary>
     /// 活動地點
     /// </summary>
-    public string? LocationName { get; set; }
+    public string LocationName { get; set; }
 
     /// <summary>
     /// 活動地址
     /// </summary>
-    public string? LocationAddress { get; set; }
+    public string LocationAddress { get; set; }
 
     /// <summary>
     /// 串流平台
     /// </summary>
-    public string? StreamingPlatform { get; set; }
+    public string StreamingPlatform { get; set; }
 
     /// <summary>
     /// 串流URL
     /// </summary>
-    public string? StreamingUrl { get; set; }
+    public string StreamingUrl { get; set; }
 
     /// <summary>
     /// 票種名稱
     /// </summary>
-    public string TicketTypeName { get; set; } = null!;
+    public string TicketTypeName { get; set; }
 
     /// <summary>
     /// 票號
     /// </summary>
-    public string? TicketNumber { get; set; }
+    public string TicketNumber { get; set; }
 
     /// <summary>
     /// 座位號碼ex3排13號
     /// </summary>
-    public string? SeatNumber { get; set; }
+    public string SeatNumber { get; set; }
 
     /// <summary>
     /// 票價
@@ -80,5 +80,5 @@ public partial class ArchiveOrder
     /// </summary>
     public DateTime? EditedAt { get; set; }
 
-    public virtual Order Order { get; set; } = null!;
+    public virtual Order Order { get; set; }
 }

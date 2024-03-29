@@ -18,7 +18,7 @@ public partial class Seat
     /// <summary>
     /// 座位號碼ex3排13號
     /// </summary>
-    public string Number { get; set; } = null!;
+    public string Number { get; set; }
 
     /// <summary>
     /// 0可選1已選2不可選
@@ -40,7 +40,7 @@ public partial class Seat
     /// </summary>
     public bool IsDeleted { get; set; }
 
-    public virtual SeatArea SeatArea { get; set; } = null!;
+    public virtual SeatArea SeatArea { get; set; }
 
     public virtual ICollection<Ticket> Tickets { get; set; } = new List<Ticket>();
 }
