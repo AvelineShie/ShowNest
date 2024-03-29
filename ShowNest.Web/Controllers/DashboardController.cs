@@ -30,7 +30,7 @@ namespace ShowNest.Web.Controllers
 
         //[HttpPost]
         //[ValidateAntiForgeryToken]
-        //public async Task<IActionResult> SetEvent(Bind["OrganizationName, MainImageURL, EventName"] Event event)
+        //public async Task<IActionResult> SetEvent(Event event)
         //{
         //    if (ModelState.IsValid)
         //    {
