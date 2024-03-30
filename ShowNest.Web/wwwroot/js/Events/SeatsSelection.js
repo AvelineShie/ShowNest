@@ -16,7 +16,7 @@ function CreateSeat() {
 }
 
 async function RenderSeat() {
-    let response = await fetch('/SeatsData.json');
+    let response = await fetch('/api/seats?seatAreaId=1');
     let seats = await response.json();
 
     for (let row of seats) {
