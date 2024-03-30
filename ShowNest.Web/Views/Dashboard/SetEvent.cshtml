@@ -1,4 +1,6 @@
-﻿
+﻿@using ShowNest.Web.ViewModels.Dashboard
+@model SetEventViewModel
+
 @{
     ViewData["Title"] = "SetEvent";
 }
@@ -33,38 +35,40 @@
                 </nav>
             </div>
             
-            <div class="dual-column-wrapper">
+            <form class="dual-column-wrapper" asp-controller="Dashboard" asp-action="SetTicket" method="post">
                 <div class="main-content">
-
                     <!-- 活動名稱 -->
                     <div class="section">
                         <div class="mb-3">
                             <h4 class="essential-input">活動名稱</h4>
-                            <input type="text" class="form-control h-50" id="formGroupExampleInput" placeholder=" ">
+                            <input type="text" class="form-control h-50" id="formGroupExampleInput" placeholder=" " asp-for="EventName">
+                            <div class="invalid-feedback">
+                                請輸入活動名稱!
+                            </div>
                         </div>
                     </div>
 
                     <!-- 網址 -->
                     <div class="section">
-                        <h4 class="essential-input">網址</h4>
+                        <h4 asp-for="MainImageURL" class="essential-input">網址</h4>
                         <div class="input-group mb-3 h-50 w-75">
-                            <span class="input-group-text " id="basic-addon3">https://bs-test.shownest.cc/events/</span>
-                            <input type="text" class="form-control" id="basic-url" aria-describedby="basic-addon3">
+                            <span class="input-group-text " id="basic-addon3" >https://bs-test.shownest.cc/events/</span>
+                            <input asp-for="MainImageURL" type="text" class="form-control" id="basic-url" aria-describedby="basic-addon3">
                             <span class="OK">
-                                <i class="fa-solid fa-circle-check"></i> 可以使用
+                                @* <i class="fa-solid fa-circle-check"></i> 可以使用 *@
                             </span>
                         </div>
-                        <span class="note">
+@*                         <span class="note">
                             請輸入3 到 16 個小寫英文或數字。
-                        </span>
+                        </span> *@
                     </div>
 
                     <!-- 活動時間 -->
                     <div class="section">
                         <h4 class="essential-input">活動舉辦時間</h4>
-                        <input type="datetime-local"  class="date-time">
+                        <input asp-for="StartTime" type="datetime-local" class="date-time" id="startTime">
                         <div class="space">至</div>
-                        <input type="datetime-local" class="date-time">
+                        <input asp-for="EndTime" type="datetime-local" class="date-time" id="endTime">
                         <div>
                             <!-- 勾選後時間截止日與預計時間長度會隱藏 -->
                             <div class="end-time">
@@ -73,32 +77,38 @@
                             </div>
                             <span class="note">如果你沒有提供結束時間，系統不會顯示結束時間。活動會在開始時間到時結束販售。</span>
                         </div>
+                        <div class="invalid-feedback" id="timeError" style="display: none;">
+                            請選擇活動舉辦時間!
+                        </div>
                     </div>
 
                     <!-- 主辦與協辦單位 -->
                     <div class="section">
                         <div class="mb-3">
-                            <h4 class="essential-input">主辦單位</h4>
-                            <input type="text" class="form-control h-50" id="formGroupExampleInput" placeholder="請輸入主辦單位名稱">
+                            <h4 asp-for="MainOrganizer" class="essential-input">主辦單位</h4>
+                            <input asp-for="MainOrganizer" type="text" class="form-control h-50" id="formGroupExampleInput" placeholder="請輸入主辦單位名稱">
+                            <div class="invalid-feedback">
+                                主辦單位名稱不可為空白!
+                            </div>
                         </div>
                     </div>
                     <div class="section">
                         <div class="mb-3">
-                            <h4 >協辦單位</h4>
-                            <input type="text" class="form-control h-50" id="formGroupExampleInput" placeholder="若您的活動需告知協辦單位，請在此填寫">
+                            <h4 asp-for="CoOrganizer">協辦單位</h4>
+                            <input asp-for="CoOrganizer" type="text" class="form-control h-50" id="formGroupExampleInput" placeholder="若您的活動需告知協辦單位，請在此填寫">
                         </div>
                     </div>
                     <!-- 活動人數 -->
                     <div class="section">
                         <h4>活動人數</h4>
-                        <input type="number" value="30" min="10" max="1000" step="10" class="number-of-people">
+                        <input asp-for="Attendance" type="number" value="30" min="10" max="1000" step="10" class="number-of-people">
                         <input type="checkbox" name="" class="unlimited">不限定數量
                     </div>
 
                     <!-- 活動形式：線上則活動地址欄，實體則關線上選項欄 -->
                     <div class="section">
                         <h4>活動形式</h4>
-                        <select class="form-select h-50" aria-label="Default select example">
+                        <select asp-for="EventStatus" class="form-select h-50" aria-label="Default select example">
                             <option selected>實體活動</option>
                             <option value="1">線上活動</option>
                         </select>
@@ -108,11 +118,13 @@
                     <div class="place-section">
                         <div class="section">
                             <h4 class="essential-input">場地名稱</h4>
-                            <input type="text" class="form-control h-50" id="formGroupExampleInput" placeholder=" ">
+                            <input asp-for="LocationName" type="text" class="form-control h-50" id="formGroupExampleInput" placeholder=" ">
+                            <div class="invalid-feedback">場地名稱不可空白唷!</div>
                         </div>
                         <div class="section">
                             <h4 class="essential-input">活動地址</h4>
-                            <input type="text" class="form-control w-50 h-50" id="formGroupExampleInput" placeholder=" ">
+                                <input asp-for=" EventAddress" type="text" class="form-control w-50 h-50" id="formGroupExampleInput" placeholder=" ">
+                                <div class="invalid-feedback">活動地點位置不可為空白喔！</div>
                             <button type="button" class="h-25 btn btn-outline-secondary " id="upadte-map">更新地圖</button>
                             <!-- <button type="button" class="update-map">更新地圖</button> -->
                         </div>
@@ -126,14 +138,14 @@
                     <!-- 線上活動欄 -->
                     <div class="online-section">
                         <div class="form-check">
-                            <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault1">
-                            <label class="form-check-label" for="flexRadioDefault1">
+                            <input asp-for="EventStatus" class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault1" value="0">
+                            <label asp-for="EventStatus" class="form-check-label" for="flexRadioDefault1">
                                 其他串流平台 (可於 主控台>活動地點 設定電子票券之線上活動連結)
                             </label>
                         </div>
                         <div class="form-check">
-                            <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault2" checked>
-                            <label class="form-check-label" for="flexRadioDefault2">
+                            <input asp-for="EventStatus" class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault2" value="1" checked>
+                            <label asp-for="EventStatus" class="form-check-label" for="flexRadioDefault2">
                                 SHOWNEST Live
                                 <span class="note">SHOWNEST Live 提供多元方案應援你的線上活動創意，點此查看詳情或請來信 biz@shownest.com 洽詢，將有專人提供報價</span>
                             </label>
@@ -142,9 +154,9 @@
 
                     <!-- 活動簡介欄 -->
                     <div class="section">
-                        <h4>活動簡介（填入100字以內的活動描述介紹你的活動吧！）</h4>
+                        <h4 asp-for="EventIntroduction">活動簡介（填入100字以內的活動描述介紹你的活動吧！）</h4>
                         <div class="form-floating">
-                            <textarea class="form-control" placeholder="" id="floatingTextarea2" style="height: 100px"></textarea>
+                                    <textarea asp-for="EventIntroduction" class="form-control" placeholder="" id="floatingTextarea2" style="height: 100px"></textarea>
                             <label for="floatingTextarea2">e.g. 今年陣容最堅強的演唱會。名額有限，錯過不再。快揪朋友一起報名！</label>
                         </div>
                         <span class="note">說明：輸入簡短活動描述能優化你的活動頁面，讓你的活動連結在社群網站分享時能更清楚宣傳你的資訊。<i class="fa-solid fa-circle-info"></i></span>
@@ -153,8 +165,8 @@
                     <!-- 描述欄位（CKeditor） -->
                     <div class="section" id="ckeditor-area">
                         <h4>描述</h4>
-                        <div id="editor"></div>
-                        <script>
+                        <div asp-for="EventDescription" id="editor"></div>
+                        <script asp-for="EventDescription">
                             ClassicEditor
                                 .create(document.querySelector('#editor'))
                                 .then(editor => {
@@ -167,7 +179,7 @@
                     </div>
                     <div class="pages-change">
                         <button type="button" class="btn btn-outline-secondary" onclick="window.location.href='@Url.Action("CreateEvent", "Dashboard")'">上一頁</button>
-                        <button type="button" class="btn btn-outline-secondary" onclick="window.location.href='@Url.Action("SetTicket", "Dashboard")'" value="Upload">下一頁</button>
+                        <button type="submit" class="btn btn-outline-secondary" onclick="window.location.href='@Url.Action("SetTicket", "Dashboard")'" value="Upload">下一頁</button>
                     </div>
                 </div>
 
@@ -226,9 +238,7 @@
                         </div>
                     </div>
                 </div>
-            </div>
-
-
+            </form>
         </div>
     </div>
     @section Scripts {

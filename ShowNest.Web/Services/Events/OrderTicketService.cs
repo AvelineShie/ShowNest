@@ -112,9 +112,6 @@ public class OrderTicketService
 
 
 
-
-
-
     public RegistrationViewModel GetRegistrationInfo(DatabaseContext context)
     {
         var ticketSeats = new List<Tickets>

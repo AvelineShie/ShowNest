@@ -4,8 +4,47 @@ document.addEventListener("DOMContentLoaded", function () {
     const mapElement = document.querySelector('#map').closest('div');
     const mapNote = document.querySelector('.map-note');
     const placeLog = document.querySelector('.place-section');
+    const websiteLinkInput = document.getElementById("basic-url");
+    const okSpan = document.querySelector('.OK');
+    const startTimeInput = document.getElementById("startTime");
+    const endTimeInput = document.getElementById("endTime");
+    const checkbox = document.getElementById("checkbox");
+    const timeError = document.getElementById("timeError");
     hideOnlineElements();
 
+    //時間選取驗證
+    function checkTimeSelection() {
+        if ((startTimeInput.value === "" && endTimeInput.value === "") || checkbox.checked) {
+            timeError.style.display = "none";
+        } else {
+            timeError.style.display = "block";
+        }
+    }
+    startTimeInput.addEventListener("change", checkTimeSelection);
+    endTimeInput.addEventListener("change", checkTimeSelection);
+    checkbox.addEventListener("change", checkTimeSelection);
+
+    // 初始檢查
+    checkTimeSelection();
+
+//網址列驗證
+    websiteLinkInput.addEventListener("change", function () {
+        var websiteLink = websiteLinkInput.value;
+        var regex = /^[a-z0-9]{3,16}$/;
+
+        if (regex.test(websiteLink)) {
+            websiteLinkInput.dataset.isValid = "true";
+            okSpan.innerHTML = '<i class="fa-solid fa-circle-check"></i> 可以使用'
+            okSpan.style.display = "block"; //顯示OK
+        } else {
+            websiteLinkInput.dataset.isValid = "false";
+            okSpan.textContent = "請輸入3 到 16 個小寫英文或數字"; // 顯示錯誤訊息
+            okSpan.style.display = "block";
+        }
+    });
+
+
+//線上或實體選項顯示
     function hideOnlineElements() {
         onlineActivityElement.style.display = 'none';
         mapElement.style.display = 'block';
@@ -63,19 +102,19 @@ initMap();
 /*Map end*/
 
 /*上傳圖片 */
-document.getElementById('uploadInput')
-    .addEventListener('change', function () {
-    const file = this.files[0];
-    if (file) {
-        const reader = new FileReader();
-        reader.onload = function () {
-            //render img on uploadInput
-            const uploadedImage = document.getElementById('uploadedImage');
-            uploadedImage.src = reader.result;
-        }
-        reader.readAsDataURL(file);
-    }
-});
+//document.getElementById('uploadInput')
+//    .addEventListener('change', function () {
+//    const file = this.files[0];
+//    if (file) {
+//        const reader = new FileReader();
+//        reader.onload = function () {
+//            //render img on uploadInput
+//            const uploadedImage = document.getElementById('uploadedImage');
+//            uploadedImage.src = reader.result;
+//        }
+//        reader.readAsDataURL(file);
+//    }
+//});
 
 // 還原原圖
 document.getElementById('restoreBtn')
