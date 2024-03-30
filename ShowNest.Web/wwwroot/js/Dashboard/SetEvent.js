@@ -81,19 +81,19 @@ initMap();
 /*Map end*/
 
 /*上傳圖片 */
-document.getElementById('uploadInput')
-    .addEventListener('change', function () {
-    const file = this.files[0];
-    if (file) {
-        const reader = new FileReader();
-        reader.onload = function () {
-            //render img on uploadInput
-            const uploadedImage = document.getElementById('uploadedImage');
-            uploadedImage.src = reader.result;
-        }
-        reader.readAsDataURL(file);
-    }
-});
+//document.getElementById('uploadInput')
+//    .addEventListener('change', function () {
+//    const file = this.files[0];
+//    if (file) {
+//        const reader = new FileReader();
+//        reader.onload = function () {
+//            //render img on uploadInput
+//            const uploadedImage = document.getElementById('uploadedImage');
+//            uploadedImage.src = reader.result;
+//        }
+//        reader.readAsDataURL(file);
+//    }
+//});
 
 // 還原原圖
 document.getElementById('restoreBtn')

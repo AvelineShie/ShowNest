@@ -28,8 +28,8 @@ namespace ShowNest.Web.Controllers
             return View();
         }
 
-        //[HttpPost]
-        //[ValidateAntiForgeryToken]
+        [HttpPost]
+        [ValidateAntiForgeryToken]
         //public async Task<IActionResult> SetEvent(Event event)
         //{
         //    if (ModelState.IsValid)
