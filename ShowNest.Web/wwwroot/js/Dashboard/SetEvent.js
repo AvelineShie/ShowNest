@@ -5,8 +5,27 @@ document.addEventListener("DOMContentLoaded", function () {
     const mapNote = document.querySelector('.map-note');
     const placeLog = document.querySelector('.place-section');
     const websiteLinkInput = document.getElementById("basic-url");
-    const okSpan = document.querySelector(".OK");
+    const okSpan = document.querySelector('.OK');
+    const startTimeInput = document.getElementById("startTime");
+    const endTimeInput = document.getElementById("endTime");
+    const checkbox = document.getElementById("checkbox");
+    const timeError = document.getElementById("timeError");
     hideOnlineElements();
+
+    //時間選取驗證
+    function checkTimeSelection() {
+        if ((startTimeInput.value === "" && endTimeInput.value === "") || checkbox.checked) {
+            timeError.style.display = "none";
+        } else {
+            timeError.style.display = "block";
+        }
+    }
+    startTimeInput.addEventListener("change", checkTimeSelection);
+    endTimeInput.addEventListener("change", checkTimeSelection);
+    checkbox.addEventListener("change", checkTimeSelection);
+
+    // 初始檢查
+    checkTimeSelection();
 
 //網址列驗證
     websiteLinkInput.addEventListener("change", function () {
@@ -15,10 +34,12 @@ document.addEventListener("DOMContentLoaded", function () {
 
         if (regex.test(websiteLink)) {
             websiteLinkInput.dataset.isValid = "true";
-            okSpan.style.display = "block";
+            okSpan.innerHTML = '<i class="fa-solid fa-circle-check"></i> 可以使用'
+            okSpan.style.display = "block"; //顯示OK
         } else {
             websiteLinkInput.dataset.isValid = "false";
-            okSpan.style.display = "請輸入3 到 16 個小寫英文或數字";
+            okSpan.textContent = "請輸入3 到 16 個小寫英文或數字"; // 顯示錯誤訊息
+            okSpan.style.display = "block";
         }
     });
 
