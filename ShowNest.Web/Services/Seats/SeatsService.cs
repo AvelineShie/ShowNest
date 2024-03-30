@@ -12,6 +12,7 @@ public class SeatsService : ISeatsService
     public async Task<SeatsSelectionViewModel> GetSeatsSelectionViewModelBySeatAreaId(int seatAreaId)
     {
         var seats = await this._seatRepository.GetSeatsBySeatAreaId(seatAreaId);
+        
         var seatViewModel = seats.Select(i => new SeatViewModel
             {
                 SeatId = i.Id,
@@ -24,6 +25,7 @@ public class SeatsService : ISeatsService
             .ToList();
             
         var viewModel = new SeatsSelectionViewModel();
+        viewModel.ExpireTime = DateTime.UtcNow;
         viewModel.Seats = seatViewModel;
 
         return viewModel;
