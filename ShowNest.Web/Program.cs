@@ -38,9 +38,9 @@ namespace ShowNest.Web
             builder.Services.AddScoped<EventDetailService>();
             builder.Services.AddScoped<OrganizationIndexService>();
             builder.Services.AddScoped<OrganizationDetailService>();
-            builder.Services.AddScoped<AccountService>();
-            builder.Services.AddHttpContextAccessor();
             builder.Services.AddScoped<ISeatsService, SeatsService>();
+            // builder.Services.AddScoped<AccountService>();
+            builder.Services.AddHttpContextAccessor();
             
             // Add services to the container.
             builder.Services.AddControllersWithViews();
