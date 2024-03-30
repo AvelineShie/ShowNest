@@ -8,11 +8,7 @@ namespace ShowNest.Web.Services.Organization
         private readonly EventDetailService _eventDetailService;
         private readonly DatabaseContext _context;
 
-        //public OrganizationIndexService(EventDetailService eventDetailService)
-        //{
-        //    _eventDetailService = eventDetailService;
-
-        //}
+        
         public OrganizationIndexService(DatabaseContext context)
         {
             _context = context;
@@ -22,11 +18,7 @@ namespace ShowNest.Web.Services.Organization
         public OrganizationIndexViewModel OrganizationIndexViewModel { get; set; }
 
 
-        public (IEnumerable<IGrouping<string, EventDetail>>, IEnumerable<IGrouping<string, EventDetail>>) GetGroupedEvents(int organizationId)
-        {
-            var groupedEvents = _eventDetailService.GetGroupedEvents(organizationId);
-            return (groupedEvents);
-        }
+        
         
         
         public OrganizationIndexViewModel GetOrganizationDetails(int organizationId) 
