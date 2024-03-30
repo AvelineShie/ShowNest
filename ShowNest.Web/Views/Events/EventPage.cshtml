@@ -1,15 +1,6 @@
-﻿@using ApplicationCore.Entities
-
-
-
-
-
+﻿
 @model EventPageViewModel
 
-
-@{
-    Layout = null;
-}
 @{
     Layout = "_LayoutForEventPage";
 }
@@ -23,8 +14,6 @@
 @section endJS {
     <script src="~/js/events/eventpage.js"></script>
 }
-
-
 
 <div class="warp">
     <!-- 活動頁 -->
@@ -72,21 +61,21 @@
                     </li>
                 </ul>
             </div>
-            <!-- --活動圖片-- -->
+            <!-- --活動圖片-- --> 
             <div class="og-banner">
                 <img src="@Model.MainImage" alt="ActivityMainImg">
             </div>
             <div class="organizers mobi-hide">
                 <i class="fa-solid fa-sitemap"></i>
                 主辦單位
-                <a asp-controller="Organizations" asp-action="Index" asp-route="">Build School</a>
+                <a asp-controller="Organizations" asp-action="Index" >Build School</a>
                 <a href="" id="btn-Contact-organization">聯絡主辦單位</a>
             </div>
             <!-- 活動header頁 結束-->
         </div>
         <!-- --手機板 下一步--- -->
         <div id="pc-btn-success" class="p-3 d-flex justify-content-center pc-hide">
-            <a asp-controller="Events" asp-action="TicketTypeSelection" class="btn btn-success w-50"
+            <a href="#" class="btn btn-success w-50"
                type="button">下一步</a>
         </div>
         <!-- 活動main 開始-->
@@ -158,7 +147,7 @@
             </table>
 
             <div id="pc-btn-success" class="p-3 d-flex justify-content-center">
-                <a asp-controller="Events" asp-action="TicketTypeSelection" class="btn btn-success w-50"
+                <a href="#" class="btn btn-success w-50"
                    type="button">下一步</a>
             </div>
         </div>
