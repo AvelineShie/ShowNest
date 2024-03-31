@@ -35,13 +35,13 @@
                 </nav>
             </div>
             
-            <form class="dual-column-wrapper" asp-controller="Dashboard" asp-action="SetTicket" method="post">
+            <form class="dual-column-wrapper" asp-controller="Dashboard" asp-action="SetTicket" method="post" onsubmit="return validateForm()">
                 <div class="main-content">
                     <!-- 活動名稱 -->
                     <div class="section">
                         <div class="mb-3">
                             <h4 class="essential-input">活動名稱</h4>
-                            <input type="text" class="form-control h-50" id="formGroupExampleInput" placeholder=" " asp-for="EventName">
+                            <input type="text" class="form-control h-50" id="EventNameInput" placeholder=" " asp-for="EventName">
                             <div class="invalid-feedback">
                                 請輸入活動名稱!
                             </div>
@@ -179,7 +179,7 @@
                     </div>
                     <div class="pages-change">
                         <button type="button" class="btn btn-outline-secondary" onclick="window.location.href='@Url.Action("CreateEvent", "Dashboard")'">上一頁</button>
-                        <button type="submit" class="btn btn-outline-secondary" onclick="window.location.href='@Url.Action("SetTicket", "Dashboard")'" value="Upload">下一頁</button>
+                        <button type="submit" class="btn btn-outline-secondary" value="Upload">下一頁</button>
                     </div>
                 </div>
 
@@ -188,8 +188,8 @@
                     <!-- (右邊)圖片上傳區 -->
                     
                     <div class="section">
-                        <h4>社群分享圖片</h4>
-                        <img id="uploadedImage" src='/img/Dashboard/upload-img.png' >
+                        <h4 asp-for="MainImageURL">社群分享圖片</h4>
+                        <img asp-for="MainImageURL" id="uploadedImage" src='/img/Dashboard/upload-img.png'>
                         <div>
                             <!-- 添加文件上傳元素 -->
                             @* <input id="fileupload" type="file" name="images" multiple accept="image/gif, image/jpeg, image/png"> *@
@@ -201,9 +201,9 @@
 
                     <!-- 隱私設定區 -->
                     <div class="section">
-                        <h4>活動隱私</h4>
+                        <h4 asp-for="IsPrivate">活動隱私</h4>
                         <div class="form-check form-check-inline">
-                            <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio1" value="option1">
+                            <input selected class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio1" value="option1">
                             <label class="form-check-label" for="inlineRadio1" >公開</label>
                         </div>
                         <div class="form-check form-check-inline">
