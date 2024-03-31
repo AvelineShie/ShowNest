@@ -55,7 +55,7 @@ public partial class DatabaseContext : DbContext
     public virtual DbSet<User> Users { get; set; }
 
     protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
-        => optionsBuilder.UseSqlServer("Name=ConnectionStrings:DatabaseContext");
+        => optionsBuilder.UseSqlServer("Name=ConnectionStrings:ShowNestDb");
 
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {

@@ -27,20 +27,19 @@ namespace ShowNest.Web.Controllers
             return View();
         }
 
-        //[HttpPost]
-        //[ValidateAntiForgeryToken]
-        //public async Task<IActionResult> SetEvent(EventViewModel model)
-        //{
-        //    if (ModelState.IsValid)
-        //    {
-                
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public async Task<IActionResult> SetEvent(SetEventViewModel model)
+        {
+            if (ModelState.IsValid)
+            {
 
-        //        return RedirectToAction(nameof(SetEvent));
+                return RedirectToAction(nameof(SetEvent));
 
-        //    }
+            }
 
-        //    return View(model);
-        //}
+            return View(model);
+        }
 
         public async Task<IActionResult> SetTicket()
         {
@@ -95,9 +94,9 @@ namespace ShowNest.Web.Controllers
 
         }
 
-        public IActionResult Organizations(string viewType)
+        public IActionResult Organizations(int id, string ViewType)
         {
-            switch (viewType)
+            switch (ViewType)
             {
                 case "Overview":
                     return View("Overview");

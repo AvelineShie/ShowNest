@@ -54,6 +54,9 @@
                         <div class="input-group mb-3 h-50 w-75">
                             <span class="input-group-text " id="basic-addon3" >https://bs-test.shownest.cc/events/</span>
                             <input asp-for="MainImageURL" type="text" class="form-control" id="basic-url" aria-describedby="basic-addon3">
+                            <div class="invalid-feedback">
+                                請輸入3 到 16 個小寫英文或數字。
+                            </div>
                             <span class="OK">
                                 @* <i class="fa-solid fa-circle-check"></i> 可以使用 *@
                             </span>
@@ -108,8 +111,8 @@
                     <!-- 活動形式：線上則活動地址欄，實體則關線上選項欄 -->
                     <div class="section">
                         <h4>活動形式</h4>
-                        <select asp-for="EventStatus" class="form-select h-50" aria-label="Default select example">
-                            <option selected>實體活動</option>
+                        <select asp-for="EventStatus" class="form-select h-50" aria-label="Default select example" id="EventStatus">
+                            <option selected value="0">實體活動</option>
                             <option value="1">線上活動</option>
                         </select>
                     </div>
@@ -118,12 +121,12 @@
                     <div class="place-section">
                         <div class="section">
                             <h4 class="essential-input">場地名稱</h4>
-                            <input asp-for="LocationName" type="text" class="form-control h-50" id="formGroupExampleInput" placeholder=" ">
+                            <input asp-for="LocationName" type="text" class="form-control h-50" id="LocationName" placeholder=" ">
                             <div class="invalid-feedback">場地名稱不可空白唷!</div>
                         </div>
                         <div class="section">
                             <h4 class="essential-input">活動地址</h4>
-                                <input asp-for=" EventAddress" type="text" class="form-control w-50 h-50" id="formGroupExampleInput" placeholder=" ">
+                            <input asp-for=" EventAddress" type="text" class="form-control w-50 h-50" id="EventAddress" placeholder=" ">
                                 <div class="invalid-feedback">活動地點位置不可為空白喔！</div>
                             <button type="button" class="h-25 btn btn-outline-secondary " id="upadte-map">更新地圖</button>
                             <!-- <button type="button" class="update-map">更新地圖</button> -->
