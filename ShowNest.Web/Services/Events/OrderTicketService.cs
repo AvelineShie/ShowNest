@@ -1,6 +1,7 @@
 ﻿
 using ApplicationCore.Entities;
 using System.Linq;
+using Ticket = ApplicationCore.Entities.Ticket;
 
 namespace ShowNest.Web.Services.Events
 {
