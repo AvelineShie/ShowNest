@@ -1,5 +1,6 @@
 ﻿using ApplicationCore.Entities;
 using ShowNest.Web.ViewModels.Shared;
+using System.Security.Claims;
 
 namespace ShowNest.Web.Services.Shared
 {
@@ -17,7 +18,7 @@ namespace ShowNest.Web.Services.Shared
         public HeaderNavInfoViewModel GetHeaderViewInfo()
         {
             
-            var userIdFromClaim = _httpContextAccessor.HttpContext.User.Claims.FirstOrDefault(c => c.Type == "UserId").Value;
+            var userIdFromClaim = _httpContextAccessor.HttpContext.User.Claims.FirstOrDefault(c => c.Type == ClaimTypes.NameIdentifier).Value;
             var info = _context.Users
                 .Include(u => u.OrganizationAndUserMappings)
                 .ThenInclude(ou => ou.Organization)

@@ -11,6 +11,7 @@ using Microsoft.AspNetCore.Authentication.Cookies;
 using ShowNest.Web.Services.Organization;
 using ShowNest.Web.Services.Organizations;
 using ShowNest.Web.Services.AccountService;
+using ShowNest.Web.Services.Shared;
 
 namespace ShowNest.Web
 {
@@ -42,6 +43,8 @@ namespace ShowNest.Web
             builder.Services.AddScoped<AccountService>();
             builder.Services.AddHttpContextAccessor();
             builder.Services.AddScoped<UserService>();
+            builder.Services.AddScoped<_LoggedInLayoutService>();
+            
             // Add services to the container.
             builder.Services.AddControllersWithViews();
             Infrastructure.Dependencies.ConfigureServices(builder.Configuration, builder.Services);
@@ -126,8 +129,8 @@ namespace ShowNest.Web
             );
 
             app.MapControllerRoute(
-            name: "DashboardOrganizationIdentifying",
-            pattern: "Dashboard/Organizations/{id=1}/{ViewType?}",
+            name: "DashboardOrganizationIdentifying", // 組織後台
+            pattern: "Dashboard/Organizations/{id}/{ViewType?}",
             defaults: new { controller = "Dashboard", Action = "Organizations" }
             );
 
