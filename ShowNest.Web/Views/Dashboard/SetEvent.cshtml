@@ -35,14 +35,14 @@
                 </nav>
             </div>
             
-            <form class="dual-column-wrapper" asp-controller="Dashboard" asp-action="SetTicket" method="post">
+            <form class="dual-column-wrapper" asp-controller="Dashboard" asp-action="SetTicket" method="post" onsubmit="return validateForm()">
                 <div class="main-content">
                     <!-- 活動名稱 -->
                     <div class="section">
                         <div class="mb-3">
                             <h4 class="essential-input">活動名稱</h4>
-                            <input type="text" class="form-control h-50" id="formGroupExampleInput" placeholder=" " asp-for="EventName">
-                            <div class="valid-feedback">
+                            <input type="text" class="form-control h-50" id="EventNameInput" placeholder=" " asp-for="EventName">
+                            <div class="invalid-feedback">
                                 請輸入活動名稱!
                             </div>
                         </div>
@@ -54,8 +54,11 @@
                         <div class="input-group mb-3 h-50 w-75">
                             <span class="input-group-text " id="basic-addon3" >https://bs-test.shownest.cc/events/</span>
                             <input asp-for="MainImageURL" type="text" class="form-control" id="basic-url" aria-describedby="basic-addon3">
+                            <div class="invalid-feedback">
+                                請輸入3 到 16 個小寫英文或數字。
+                            </div>
                             <span class="OK">
-                                <i class="fa-solid fa-circle-check"></i> 可以使用
+                                @* <i class="fa-solid fa-circle-check"></i> 可以使用 *@
                             </span>
                         </div>
 @*                         <span class="note">
@@ -66,16 +69,19 @@
                     <!-- 活動時間 -->
                     <div class="section">
                         <h4 class="essential-input">活動舉辦時間</h4>
-                        <input asp-for="StartTime" type="datetime-local" class="date-time">
+                        <input asp-for="StartTime" type="datetime-local" class="date-time" id="startTime">
                         <div class="space">至</div>
-                        <input asp-for="EndTime" type="datetime-local" class="date-time">
+                        <input asp-for="EndTime" type="datetime-local" class="date-time" id="endTime">
                         <div>
                             <!-- 勾選後時間截止日與預計時間長度會隱藏 -->
                             <div class="end-time">
-                                <input input type="checkbox" name="checkbox" id="checkbox">
+                                <input type="checkbox" name="checkbox" id="checkbox">
                                 不提供結束時間
                             </div>
                             <span class="note">如果你沒有提供結束時間，系統不會顯示結束時間。活動會在開始時間到時結束販售。</span>
+                        </div>
+                        <div class="invalid-feedback" id="timeError" style="display: none;">
+                            請選擇活動舉辦時間!
                         </div>
                     </div>
 
@@ -84,7 +90,7 @@
                         <div class="mb-3">
                             <h4 asp-for="MainOrganizer" class="essential-input">主辦單位</h4>
                             <input asp-for="MainOrganizer" type="text" class="form-control h-50" id="formGroupExampleInput" placeholder="請輸入主辦單位名稱">
-                            <div class="valid-feedback">
+                            <div class="invalid-feedback">
                                 主辦單位名稱不可為空白!
                             </div>
                         </div>
@@ -105,8 +111,8 @@
                     <!-- 活動形式：線上則活動地址欄，實體則關線上選項欄 -->
                     <div class="section">
                         <h4>活動形式</h4>
-                        <select asp-for="EventStatus" class="form-select h-50" aria-label="Default select example">
-                            <option selected>實體活動</option>
+                        <select asp-for="EventStatus" class="form-select h-50" aria-label="Default select example" id="EventStatus">
+                            <option selected value="0">實體活動</option>
                             <option value="1">線上活動</option>
                         </select>
                     </div>
@@ -115,13 +121,13 @@
                     <div class="place-section">
                         <div class="section">
                             <h4 class="essential-input">場地名稱</h4>
-                            <input asp-for="LocationName" type="text" class="form-control h-50" id="formGroupExampleInput" placeholder=" ">
-                            <div class="valid-feedback">場地名稱不可空白唷!</div>
+                            <input asp-for="LocationName" type="text" class="form-control h-50" id="LocationName" placeholder=" ">
+                            <div class="invalid-feedback">場地名稱不可空白唷!</div>
                         </div>
                         <div class="section">
                             <h4 class="essential-input">活動地址</h4>
-                                <input asp-for=" EventAddress" type="text" class="form-control w-50 h-50" id="formGroupExampleInput" placeholder=" ">
-                                <div class="valid-feedback">活動地點位置不可為空白喔！</div>
+                            <input asp-for=" EventAddress" type="text" class="form-control w-50 h-50" id="EventAddress" placeholder=" ">
+                                <div class="invalid-feedback">活動地點位置不可為空白喔！</div>
                             <button type="button" class="h-25 btn btn-outline-secondary " id="upadte-map">更新地圖</button>
                             <!-- <button type="button" class="update-map">更新地圖</button> -->
                         </div>
@@ -176,7 +182,7 @@
                     </div>
                     <div class="pages-change">
                         <button type="button" class="btn btn-outline-secondary" onclick="window.location.href='@Url.Action("CreateEvent", "Dashboard")'">上一頁</button>
-                        <button type="submit" class="btn btn-outline-secondary" onclick="window.location.href='@Url.Action("SetTicket", "Dashboard")'" value="Upload">下一頁</button>
+                        <button type="submit" class="btn btn-outline-secondary" value="Upload">下一頁</button>
                     </div>
                 </div>
 
@@ -185,8 +191,8 @@
                     <!-- (右邊)圖片上傳區 -->
                     
                     <div class="section">
-                        <h4>社群分享圖片</h4>
-                        <img id="uploadedImage" src='/img/Dashboard/upload-img.png' >
+                        <h4 asp-for="MainImageURL">社群分享圖片</h4>
+                        <img asp-for="MainImageURL" id="uploadedImage" src='/img/Dashboard/upload-img.png'>
                         <div>
                             <!-- 添加文件上傳元素 -->
                             @* <input id="fileupload" type="file" name="images" multiple accept="image/gif, image/jpeg, image/png"> *@
@@ -198,9 +204,9 @@
 
                     <!-- 隱私設定區 -->
                     <div class="section">
-                        <h4>活動隱私</h4>
+                        <h4 asp-for="IsPrivate">活動隱私</h4>
                         <div class="form-check form-check-inline">
-                            <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio1" value="option1">
+                            <input selected class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio1" value="option1">
                             <label class="form-check-label" for="inlineRadio1" >公開</label>
                         </div>
                         <div class="form-check form-check-inline">

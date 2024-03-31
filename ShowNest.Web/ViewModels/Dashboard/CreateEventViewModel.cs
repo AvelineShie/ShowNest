@@ -5,6 +5,7 @@ namespace ShowNest.Web.ViewModels.Dashboard
 {
     public class CreateEventViewModel
     {
+        [Required]
         public List <OrganizationList> OrgName { get; set; }
         public List <EventList> EventName { get; set; }
     }
