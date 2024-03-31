@@ -25,7 +25,7 @@ namespace ShowNest.Web
             builder.Services.AddDbContext<DatabaseContext>(options => options.UseSqlServer(connectionString).EnableSensitiveDataLogging());
 
             // Registration Service
-            builder.Services.AddScoped<OrderTicketService, OrderTicketService>();
+            builder.Services.AddScoped<OrderTicketService>();
             builder.Services.AddScoped<HomeCarouselService>();
             builder.Services.AddScoped<EventCardService>();
             builder.Services.AddScoped<CategoryTagService>();
