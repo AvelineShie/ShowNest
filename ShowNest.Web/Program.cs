@@ -10,6 +10,7 @@ using ShowNest.Web.Configurations;
 using Microsoft.AspNetCore.Authentication.Cookies;
 using ShowNest.Web.Services.Organization;
 using ShowNest.Web.Services.Organizations;
+using ShowNest.Web.Services.Seats;
 using ShowNest.Web.Services.Shared;
 
 namespace ShowNest.Web
