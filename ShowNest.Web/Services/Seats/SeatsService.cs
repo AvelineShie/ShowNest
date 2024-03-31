@@ -12,7 +12,7 @@ public class SeatsService : ISeatsService
     public async Task<SeatsSelectionViewModel> GetSeatsSelectionViewModelBySeatAreaId(int seatAreaId)
     {
         var seats = await this._seatRepository.GetSeatsBySeatAreaId(seatAreaId);
-        var seatViewModel = seats.Select(i => new Seat
+        var seatViewModel = seats.Select(i => new SeatViewModel
             {
                 SeatId = i.Id,
                 SeatAreaId = i.SeatAreaId,

@@ -4,11 +4,11 @@ namespace ShowNest.Web.ViewModels.Events
     {
         public DateTime ExpireTime { get; set; }
         public string SeatAreaName { get; set; }
-        public List<List<Seat>> Seats { get; set; }
-        public List<Ticket> Tickets { get; set; }
+        public List<List<SeatViewModel>> Seats { get; set; }
+        public List<TicketViewModel> Tickets { get; set; }
     }
 
-    public class Seat
+    public class SeatViewModel
     {
         public int SeatId { get; set; }
         public int SeatAreaId { get; set; }
@@ -16,7 +16,7 @@ namespace ShowNest.Web.ViewModels.Events
         public int SeatStatus { get; set; }
     }
 
-    public class Ticket
+    public class TicketViewModel
     {
         public decimal SubTotal { get; set; }
         public string TicketTypeName { get; set; }
