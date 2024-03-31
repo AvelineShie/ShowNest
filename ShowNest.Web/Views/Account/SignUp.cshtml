@@ -39,7 +39,6 @@
                         @Html.EditorFor(model => model.ConfirmPassword, new { htmlAttributes = new { @class = "passwords", placeholder = "請再輸入密碼", @id = "repass", @required = "required", @type = "password" } })
                         @Html.ValidationMessageFor(model => model.ConfirmPassword)
                     </div>
-                        @* <input type="text" name="birthday" id="birthday" placeholder="出生年月日" onfocus="(this.type='date')" required> *@
                     <div class="birthday">
                         @Html.EditorFor(model => model.Birthday, new { htmlAttributes = new { @class = "form-control", placeholder = "出生年月日", @id = "birthday", @required = "required", @type = "text", onfocus = "(this.type='date')" } })
                         @Html.ValidationMessageFor(model => model.Birthday, "", new { @class = "text-danger" })

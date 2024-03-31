@@ -10,6 +10,7 @@ using ShowNest.Web.Configurations;
 using Microsoft.AspNetCore.Authentication.Cookies;
 using ShowNest.Web.Services.Organization;
 using ShowNest.Web.Services.Organizations;
+using ShowNest.Web.Services.AccountService;
 
 namespace ShowNest.Web
 {
@@ -37,9 +38,10 @@ namespace ShowNest.Web
             builder.Services.AddScoped<EventDetailService>();
             builder.Services.AddScoped<OrganizationIndexService>();
             builder.Services.AddScoped<OrganizationDetailService>();
-            builder.Services.AddScoped<ISeatsService, SeatsService>();
-            // builder.Services.AddScoped<AccountService>();
+            //builder.Services.AddScoped<ISeatsService, SeatsService>();
+            builder.Services.AddScoped<AccountService>();
             builder.Services.AddHttpContextAccessor();
+            builder.Services.AddScoped<UserService>();
             // Add services to the container.
             builder.Services.AddControllersWithViews();
             Infrastructure.Dependencies.ConfigureServices(builder.Configuration, builder.Services);
