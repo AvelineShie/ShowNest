@@ -12,6 +12,9 @@
     <Content Remove="Services\Dashboard\**" />
     <EmbeddedResource Remove="Services\Dashboard\**" />
     <None Remove="Services\Dashboard\**" />
+    <None Include="wwwroot\js\API\api.js" />
+    <None Include="wwwroot\js\API\tools.js" />
+    <None Include="wwwroot\js\API\userAPI.js" />
     <None Include="wwwroot\SeatsData.json" />
   </ItemGroup>
 

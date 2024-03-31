@@ -12,6 +12,7 @@ using ShowNest.Web.Services;
 using ShowNest.Web.Services.Events;
 using ShowNest.Web.ViewModels.Events;
 using ShowNest.Web.ViewModels.Organization;
+using Ticket = ApplicationCore.Entities.Ticket;
 
 
 namespace ShowNest.Web.Controllers
