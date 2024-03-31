@@ -10,7 +10,6 @@ using ShowNest.Web.Configurations;
 using Microsoft.AspNetCore.Authentication.Cookies;
 using ShowNest.Web.Services.Organization;
 using ShowNest.Web.Services.Organizations;
-using ShowNest.Web.Services.AccountService;
 
 namespace ShowNest.Web
 {
@@ -123,6 +122,12 @@ namespace ShowNest.Web
             name: "EventSetting",
             pattern: "Dashboard/CreateEvent/SetEvent",
             defaults: new { controller = "Dashboard", Action = "SetEvent" }
+            );
+
+            app.MapControllerRoute(
+            name: "DashboardOrganizationIdentifying",
+            pattern: "Dashboard/Organizations/{id=1}/{ViewType?}",
+            defaults: new { controller = "Dashboard", Action = "Organizations" }
             );
 
 
