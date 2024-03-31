@@ -1,4 +1,6 @@
-﻿@{
+﻿@using ShowNest.Web.ViewModels.Organization
+@model OrganizationIndexViewModel
+@{
     Layout = null;
 }
 @{
@@ -64,7 +66,7 @@ https://cdn.jsdelivr.net/npm/fullcalendar@6.1.11/index.global.min.js
                 <ul class="org-event-list" id="eventList">
                     <!-- foreach  正在進行的活動-->
                     <li>
-                        @foreach (var CurrentEvents in Model.groupedCurrentEvents)
+                        @* @foreach (var CurrentEvents in Model.G)
                         {
                         <h2><a asp-controller="Events" asp-action="EventPage">@CurrentEvents.EventName</a></h2>
 
@@ -81,7 +83,7 @@ https://cdn.jsdelivr.net/npm/fullcalendar@6.1.11/index.global.min.js
                         <div class="description">
                                 @CurrentEvents.EventIntroduction
                         </div>
-                        }
+                        } *@
                     </li>
                     
                     <!--  -->
@@ -94,12 +96,12 @@ https://cdn.jsdelivr.net/npm/fullcalendar@6.1.11/index.global.min.js
             <div class="history-container">
                 <h2>曾舉辦的活動</h2>
                 <!-- 一個月份一組history-wrapper -->
-                @foreach (var GroupedpastMonth in Model.groupedPastEvents)
+    @*             @foreach (var GroupedpastMonth in Model.OrganizationImgUrl)
                 {
                 <div class="history-wrapper">
-                        <h3>@GroupedpastMonth.key</h3>
+                        <h3>@GroupedpastMonth</h3>
                     <ul class="history-list-past">
-                            @foreach (var PastEvents in Model.groupedPastEvents)
+                            @foreach (var PastEvents in Model.OrganizationImgUrl)
                         {
                         <li>
                             <div class="table-wrapp">
@@ -108,7 +110,7 @@ https://cdn.jsdelivr.net/npm/fullcalendar@6.1.11/index.global.min.js
                                         <a asp-controller="Events" asp-action="EventPage" asp-route-id="@PastEvents.Id">@PastEvents.EventName</a>
                                 </div>
                             </div>
-                        </li>
+                        </li> *@
                         <!--  -->
                         }
                     </ul>

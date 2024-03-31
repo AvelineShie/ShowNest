@@ -1,49 +1,93 @@
-document.addEventListener("DOMContentLoaded", function () {
-    const activityFormSelect = document.querySelector('.form-select');
-    const onlineActivityElement = document.querySelector('.online-section');
-    const mapElement = document.querySelector('#map').closest('div');
-    const mapNote = document.querySelector('.map-note');
-    const placeLog = document.querySelector('.place-section');
+    const eventNameInput = doucument.getElementById("EventNameInput");
+    const activityFormSelect = document.querySelector(".form-select");
+    const onlineActivityElement = document.querySelector(".online-section");
+    const mapElement = document.querySelector("#map").closest("div");
+    const mapNote = document.querySelector(".map-note");
+    const placeLog = document.querySelector(".place-section");
     const websiteLinkInput = document.getElementById("basic-url");
     const okSpan = document.querySelector(".OK");
+    const startTimeInput = document.getElementById("startTime");
+    const endTimeInput = document.getElementById("endTime");
+    const checkbox = document.getElementById("checkbox");
+    const timeError = document.getElementById("timeError");
     hideOnlineElements();
 
-//網址列驗證
-    websiteLinkInput.addEventListener("change", function () {
-        var websiteLink = websiteLinkInput.value;
-        var regex = /^[a-z0-9]{3,16}$/;
-
-        if (regex.test(websiteLink)) {
-            websiteLinkInput.dataset.isValid = "true";
-            okSpan.style.display = "block";
+    //欄位驗證
+    function validateForm() {
+        //活動名稱欄
+        if (eventNameInput.value === "") {
+            eventNameInput.classList.add('is-invalid'); // 添加 is-invalid 類別
+            return false; // 驗證失敗，阻止提交
         } else {
-            websiteLinkInput.dataset.isValid = "false";
-            okSpan.style.display = "請輸入3 到 16 個小寫英文或數字";
+            eventNameInput.classList.remove('is-invalid'); // 移除 is-invalid 類別
         }
-    });
 
 
-//線上或實體選項顯示
-    function hideOnlineElements() {
-        onlineActivityElement.style.display = 'none';
-        mapElement.style.display = 'block';
-        mapNote.style.display = 'block';
-        placeLog.style.display = 'block';
+        //網址列驗證
+        websiteLinkInput.addEventListener("change", function () {
+            let websiteLink = websiteLinkInput.value;
+            let regex = /^[a-z0-9]{3,16}$/;
+
+            // 檢查是否為空
+            if (websiteLink === "") {
+                websiteLinkInput.classList.add('is-invalid'); // 添加 is-invalid 類別
+                return false; // 驗證失敗，阻止提交
+            } else {
+                websiteLinkInput.classList.remove('is-invalid'); // 移除 is-invalid 類別
+            }
+
+            // 檢查網址是否符合規則
+            if (regex.test(websiteLink)) {
+                websiteLinkInput.dataset.isValid = "false";
+                okSpan.textContent = "請輸入3 到 16 個小寫英文或數字"; // 顯示錯誤訊息
+                okSpan.style.display = "block";
+                return false; //驗證失敗, 阻止提交
+
+            } else {
+
+                websiteLinkInput.dataset.isValid = "true";
+                okSpan.innerHTML = '<i class="fa-solid fa-circle-check"></i> 可以使用';
+                okSpan.style.display = "block"; //顯示OK
+            }
+        });
+
+        //時間欄位
+        if ((startTimeInput.value === "" && endTimeInput.value === "") || checkbox.checked) {
+            timeError.style.display = "none";
+        } else {
+            timeError.style.display = "block";
+            return false; // 驗證失敗，阻止提交
+        }
+
+        //startTimeInput.addEventListener("change", checkTimeSelection);
+        //endTimeInput.addEventListener("change", checkTimeSelection);
+        //checkbox.addEventListener("change", checkTimeSelection);
+        //checkTimeSelection();
+
+        return true;
     }
 
-    activityFormSelect.addEventListener('change', function () {
-        var selectedValue = activityFormSelect.value;
-        if (selectedValue === '實體活動') {
-            hideOnlineElements();
-        }
-        else {
-            onlineActivityElement.style.display = 'block';
-            mapElement.style.display = 'none';
-            mapNote.style.display = 'none';
-            placeLog.style.display = 'none';
-        }
+
+//線上或實體顯示
+    function hideOnlineElements() {
+        onlineActivityElement.style.display = "none";
+        mapElement.style.display = "block";
+        mapNote.style.display = "block";
+        placeLog.style.display = "block";
+    }
+
+activityFormSelect.addEventListener("change", function () {
+            if(activityFormSelect.value === "實體活動") {
+                hideOnlineElements();
+            }
+            else {
+                onlineActivityElement.style.display = "block";
+                mapElement.style.display = "none";
+                mapNote.style.display = "none";
+                placeLog.style.display = "none";
+            }
+        });
     });
-});
 
 /*地圖*/
 (g => { var h, a, k, p = "The Google Maps JavaScript API", c = "google", l = "importLibrary", q = "__ib__", m = document, b = window; b = b[c] || (b[c] = {}); var d = b.maps || (b.maps = {}), r = new Set, e = new URLSearchParams, u = () => h || (h = new Promise(async (f, n) => { await (a = m.createElement("script")); e.set("libraries", [...r] + ""); for (k in g) e.set(k.replace(/[A-Z]/g, t => "_" + t[0].toLowerCase()), g[k]); e.set("callback", c + ".maps." + q); a.src = `https://maps.${c}apis.com/maps/api/js?` + e; d[q] = f; a.onerror = () => h = n(Error(p + " could not load.")); a.nonce = m.querySelector("script[nonce]")?.nonce || ""; m.head.append(a) })); d[l] ? console.warn(p + " only loads once. Ignoring:", g) : d[l] = (f, ...n) => r.add(f) && u().then(() => d[l](f, ...n)) })

@@ -23,25 +23,23 @@ namespace ShowNest.Web.Controllers
         [HttpGet]
         public async Task<IActionResult> SetEvent()
         {
-            
-            
+
             return View();
         }
 
-        [HttpPost]
-        [ValidateAntiForgeryToken]
-        //public async Task<IActionResult> SetEvent(Event event)
+        //[HttpPost]
+        //[ValidateAntiForgeryToken]
+        //public async Task<IActionResult> SetEvent(EventViewModel model)
         //{
         //    if (ModelState.IsValid)
         //    {
-        //        _context.Add();
-        //        await _context.SaveChangesAsync();
+                
 
-        //        return RedirectToAction(nameof());
+        //        return RedirectToAction(nameof(SetEvent));
 
         //    }
 
-        //    return View();
+        //    return View(model);
         //}
 
         public async Task<IActionResult> SetTicket()

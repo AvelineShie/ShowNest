@@ -11,7 +11,7 @@ namespace Infrastructure.Data
 {
     public class EfRepository<TEntity> : IRepository<TEntity> where TEntity : class
     {
-        private readonly DatabaseContext DbContext;
+        protected readonly DatabaseContext DbContext;
         protected readonly DbSet<TEntity> DbSet;
         private DbContext dbContext;
 
