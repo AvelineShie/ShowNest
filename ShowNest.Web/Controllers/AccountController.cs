@@ -106,33 +106,30 @@ namespace ShowNest.Web.Controllers
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> LogIn(LoginViewModel Login)
         {
-            var claims = new List<Claim>
-            {
-                //new Claim(ClaimTypes.Name,"Dato"),
-                //new Claim(ClaimTypes.Role,"Admin")
-                //new Claim("UserId","")
-            };
-            var claimsIdentity = new ClaimsIdentity(claims, CookieAuthenticationDefaults.AuthenticationScheme);
-
-            await HttpContext.SignInAsync(CookieAuthenticationDefaults.AuthenticationScheme,
-                new ClaimsPrincipal(claimsIdentity),
-                new AuthenticationProperties()
-                {
-                    //是否儲存為持續性的cookie(記住我?[V])
-                    IsPersistent = true
-                }
-               );
-            //var passwordToSHA256 = Login.Password.ToSHA256();
-            //資料庫存入尚未加密，之後增加
-            //Account與Email擇一登入還沒完成，目前只能使用Account登入
-
             var dbUser = await _context.LogInInfos.
                 FirstOrDefaultAsync(a => a.Account == Login.Account && a.Password == Login.Password);
-        
-
 
             if (dbUser != null)
             {
+                var claims = new List<Claim>
+                {
+                    //new Claim(ClaimTypes.Name,"Dato"),
+                    //new Claim(ClaimTypes.Role,"Admin")
+                    new Claim("UserId",dbUser.UserId.ToString())
+                };
+                var claimsIdentity = new ClaimsIdentity(claims, CookieAuthenticationDefaults.AuthenticationScheme);
+
+                await HttpContext.SignInAsync(CookieAuthenticationDefaults.AuthenticationScheme,
+                    new ClaimsPrincipal(claimsIdentity),
+                    new AuthenticationProperties()
+                    {
+                        //是否儲存為持續性的cookie(記住我?[V])
+                        IsPersistent = true
+                    }
+                   );
+                //var passwordToSHA256 = Login.Password.ToSHA256();
+                //資料庫存入尚未加密，之後增加
+                //Account與Email擇一登入還沒完成，目前只能使用Account登入
 
                 // 登入成功，重定向到Privacy
                 return RedirectToAction("Privacy", "Home");
