@@ -33,7 +33,6 @@ namespace ShowNest.Web
             builder.Services.AddScoped<ISeatRepository, SeatRepository>();
 
             // Registration Service
-            
             builder.Services.AddScoped<HomeCarouselService>();
             builder.Services.AddScoped<EventCardService>();
             builder.Services.AddScoped<CategoryTagService>();

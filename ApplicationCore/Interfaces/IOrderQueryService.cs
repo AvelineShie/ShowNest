@@ -10,8 +10,8 @@ namespace ApplicationCore.Interfaces
 {
     public interface IOrderQueryService
     {
-        List<OrderQueryDto> GetOrdersByUserId(int userId);
-        List<Order> GetOrders(int userId);
+        //List<OrderQueryDto> GetOrdersByUserId(int userId);
+        //List<Order> GetOrders(int userId);
         decimal GetCustomerOrderTotalAmount(int userId);
     }
     public class OrderQueryDto

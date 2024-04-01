@@ -1,26 +1,21 @@
-﻿using ApplicationCore.Class;
-using ApplicationCore.Entities;
+﻿using ApplicationCore;
+using ApplicationCore.Helpers;
+using ApplicationCore.Interfaces;
 using Dapper;
 using Microsoft.Data.SqlClient;
 using Microsoft.Extensions.Configuration;
-using Microsoft.Extensions.Logging;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Text.RegularExpressions;
-using System.Threading.Tasks;
 
 namespace Infrastructure.Services
 {
-    public class UserAccountAPIService
+    public class UserAccountAPIService : IUserAccountAPIService
     {
         private readonly string _connectionStr;
-        public UserAccountAPIService(IConfiguration configuration) {
-            _connectionStr = configuration.GetConnectionString("DatabaseContext");
+        public UserAccountAPIService(IConfiguration configuration)
+        {
+            _connectionStr = configuration.GetConnectionString("ShowNestDb");
         }
 
-        public ReturnObj GetUserOrderDetailListByUserId(string userId)
+        public OperrionResult GetUserOrderDetailListByUserId(string userId)
 
         {
 
@@ -56,7 +51,7 @@ namespace Infrastructure.Services
                             AO.TicketPrice,
                             AO.PurchaseAmount,
                             SUM(AO.TicketPrice * AO.PurchaseAmount) AS TotalPrice,
-                                            U.Nickname as UserName,
+                            U.Nickname as UserName,
                             LI.Email AS UserEmail,
                             U.Mobile AS UserPhoneNumber
                             FROM Orders O
@@ -78,12 +73,12 @@ namespace Infrastructure.Services
 
                 try
                 {
-                    var data = connection.Query<Object>(sql, new { UserID = userId }).ToList();
-                    return ReturnClientService.ReturnSuccessData(data);
+                    var data = connection.Query(sql, new { UserID = userId }).ToList();
+                    return OpperationResultHelper.ReturnSuccessData(data);
                 }
                 catch (Exception ex)
                 {
-                    return ReturnClientService.ReturnErrorMsg(ex.Message);
+                    return OpperationResultHelper.ReturnErrorMsg(ex.Message);
                 }
             }
         }

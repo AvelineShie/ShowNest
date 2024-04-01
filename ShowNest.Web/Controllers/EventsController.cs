@@ -186,10 +186,10 @@ namespace ShowNest.Web.Controllers
         public IActionResult OrderDetail()
         {
            
-            var userId = 1;
-            var OrderDetail = _orderQueryService.GetMemberOrders(userId);
+            //var userId = 1;
+            //var OrderDetail = _orderQueryService.GetMemberOrders(userId);
            
-            return View(OrderDetail);
+            return View();
             //string name = string.Empty;
             //if (id.HasValue)
             //{
