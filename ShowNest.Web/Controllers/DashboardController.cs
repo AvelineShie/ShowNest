@@ -7,7 +7,7 @@ namespace ShowNest.Web.Controllers
 {
     public class DashboardController : Controller
     {
-        //private readonly ShowNestContext _context;
+        
 
         public IActionResult Index()
         {
