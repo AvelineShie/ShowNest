@@ -75,19 +75,19 @@ initMap();
 /*Map end*/
 
 /*上傳圖片 */
-//document.getElementById('uploadInput')
-//    .addEventListener('change', function () {
-//    const file = this.files[0];
-//    if (file) {
-//        const reader = new FileReader();
-//        reader.onload = function () {
-//            //render img on uploadInput
-//            const uploadedImage = document.getElementById('uploadedImage');
-//            uploadedImage.src = reader.result;
-//        }
-//        reader.readAsDataURL(file);
-//    }
-//});
+document.getElementById('uploadInput')
+    .addEventListener('change', function () {
+    const file = this.files[0];
+    if (file) {
+        const reader = new FileReader();
+        reader.onload = function () {
+            //render img on uploadInput
+            const uploadedImage = document.getElementById('uploadedImage');
+            uploadedImage.src = reader.result;
+        }
+        reader.readAsDataURL(file);
+    }
+});
 
 // 還原原圖
 document.getElementById('restoreBtn')
@@ -109,12 +109,13 @@ function validateForm() {
 
     //網址列驗證
     /*websiteLinkInput.addEventListener("change", function () {*/
+    let regex = /^[a-z0-9]{3,16}$/;
 
-    // 檢查是否為空
     if (websiteLinkInput === "") {
         websiteLinkInput.classList.add("is-invalid"); // 添加 is-invalid 類別
         return false; // 驗證失敗，阻止提交
-    } else {
+    }
+    else {
         websiteLinkInput.classList.remove("is-invalid"); // 移除 is-invalid 類別
     }
 
