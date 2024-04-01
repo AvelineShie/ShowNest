@@ -7,57 +7,84 @@ using Microsoft.AspNetCore.Authentication;
 using System.Security.Claims;
 using Microsoft.CodeAnalysis.Elfie.Extensions;
 using static System.Runtime.InteropServices.JavaScript.JSType;
+using ShowNest.Web.Services.AccountService;
+using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Identity;
+using Microsoft.EntityFrameworkCore;
 
 namespace ShowNest.Web.Controllers
 {
     public class AccountController : Controller
     {
-        private readonly DatabaseContext _context;
-        public AccountController(DatabaseContext context)
+        //登入
+        private readonly AccountService _accountService;
+        //註冊
+        private readonly UserService _userService;
+
+        public AccountController(AccountService accountService, UserService userService)
         {
-            _context = context;
-            //_context.Database.EnsureCreated();
+            _accountService = accountService;
+            _userService = userService;
+        }
+        [HttpGet]
+        public IActionResult LogIn()
+        {
+            return View();
+        }
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public async Task<IActionResult> LogIn(LoginViewModel Login)
+        {
+            var result = await _accountService.LogInAsync(Login);
+            if (result.IsSuccess)
+            {
+                //登入成功，導向頁面
+                return RedirectToAction("Index", "Home");
+            }
+            else
+            {
+                // 登入失敗，返回錯誤信息
+                ModelState.AddModelError("", result.ErrorMessage);
+                return View(Login);
+            }
+        }
+        
+
+        [HttpGet]
+        public IActionResult SignUp()
+        {
+            return View();
+        }
+        [HttpPost]
+        [AllowAnonymous]
+        [ValidateAntiForgeryToken]
+        public async Task<ActionResult> SignUp(RegisterModel SignUp)
+        {
+            if (ModelState.IsValid)
+            {
+                // 使用UserService進行註冊
+                bool isRegistered = await _userService.RegisterUserAsync(SignUp, ModelState.IsValid);
+                if (isRegistered)
+                {
+                    // 註冊成功後，重定向到登入頁面或其他適當的頁面
+                    return RedirectToAction("Login", "Account");
+                }
+                else
+                {
+                    // 註冊失敗，返回視圖以顯示錯誤訊息
+                    // 您可以選擇添加一個錯誤訊息到ModelState，以便在視圖中顯示
+                    ModelState.AddModelError("", "註冊失敗，請稍後再試。");
+                }
+            }
+
+            //如果模型狀態不正確，則返回視圖以顯示錯誤訊息
+            return View(SignUp);
         }
         public IActionResult UserEdit()
         {
-            var fb = new FacebookClient();
-            var loginUrl = fb.GetLoginUrl(new
-            {
-                client_id = "1346987129576805", //your_app_id
-                redirect_uri = "https://localhost:7156", //your_redirect_uri
-                scope = "public_profile,email"  //public_profile,email
-            });
-            ViewBag.Url = loginUrl;
             return View();
         }
-        public IActionResult FacebookRedirect(string code)
 
-        {
-            var fb = new FacebookClient();
-            dynamic result = fb.Get("/oauth/access_token", new
-            {
-                client_id = "1346987129576805", //your_app_id
-                client_secret = "a647392a10dd9c64d0153eb5eba5eae5",
-                redirect_uri = "https://localhost:7156", //your_redirect_uri
-
-                code = code
-
-            });
-
-            fb.AccessToken = result.access_token;
-
-            dynamic me = fb.Get("/me?fields=name,email");
-            string name = me.name;
-            string email = me.email;
-            var userData = new Dictionary<string, string>
-            {
-                {"Name",name },
-                {"Email",email}
-            };
-            string UserDataJson = JsonConvert.SerializeObject(userData, Formatting.Indented);
-            string filePath = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "UserData.json");
-            return RedirectToAction("UserEdit");
-        }
         public IActionResult Prefills()
         {
             return View();
@@ -95,68 +122,16 @@ namespace ShowNest.Web.Controllers
         {
             return View();
         }
-        ////登入起點
-        [HttpGet]
-        public IActionResult LogIn()
-        {
-            return View();
-        }
 
-        [HttpPost]
-        [ValidateAntiForgeryToken]
-        public async Task<IActionResult> LogIn(LoginViewModel Login)
-        {
-            var claims = new List<Claim>
-            {
-                //new Claim(ClaimTypes.Name,"Dato"),
-                //new Claim(ClaimTypes.Role,"Admin")
-                //new Claim("UserId","")
-            };
-            var claimsIdentity = new ClaimsIdentity(claims, CookieAuthenticationDefaults.AuthenticationScheme);
-
-            await HttpContext.SignInAsync(CookieAuthenticationDefaults.AuthenticationScheme,
-                new ClaimsPrincipal(claimsIdentity),
-                new AuthenticationProperties()
-                {
-                    //是否儲存為持續性的cookie(記住我?[V])
-                    IsPersistent = true
-                }
-               );
-            //var passwordToSHA256 = Login.Password.ToSHA256();
-            //資料庫存入尚未加密，之後增加
-            //Account與Email擇一登入還沒完成，目前只能使用Account登入
-
-            var dbUser = await _context.LogInInfos.
-                FirstOrDefaultAsync(a => a.Account == Login.Account && a.Password == Login.Password);
-        
-
-
-            if (dbUser != null)
-            {
-
-                // 登入成功，重定向到Privacy
-                return RedirectToAction("Privacy", "Home");
-            }
-            else
-            {
-                // 登入失敗，返回錯誤信息
-                //ModelState.AddModelError("", "帳號或密碼錯誤");
-                return RedirectToAction("Error", "Home");
-            }
-        }
         //登出
         public async Task<IActionResult> logout()
         {
             await HttpContext.SignOutAsync(CookieAuthenticationDefaults.AuthenticationScheme);
 
-            return RedirectToAction("Privacy", "Home");
-            //頁面還沒好
+            return RedirectToAction("Index", "Home");
+            
         }
-
-        public IActionResult SignUp()
-        {
-            return View();
-        }
+ 
 
         public IActionResult ForgetPassword()
         {

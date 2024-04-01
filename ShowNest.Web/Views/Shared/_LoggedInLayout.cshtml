@@ -1,4 +1,13 @@
-﻿<!DOCTYPE html>
+﻿@inject _LoggedInLayoutService loggedInLayoutService
+
+@{
+    var headerNavViewModel = loggedInLayoutService.GetHeaderViewInfo();
+    var userName = headerNavViewModel.UserName;
+    var userImg = headerNavViewModel.UserImgUrl;
+    var userOrg = headerNavViewModel.UserOrg;
+}
+
+<!DOCTYPE html>
 <html lang="en">
 
 <head>
@@ -26,7 +35,7 @@
             <input type="checkbox" id="nav-checkbox" class="d-none">
             <div id="header-nav-wrap" class="width">
                 <div id="header-nav-logo-and-menu-button-wrap"
-                    class="d-flex align-items-center justify-content-between">
+                     class="d-flex align-items-center justify-content-between">
                     <h1>
                         <a asp-controller="Home" asp-action="Index" id="header-nav-logo">
                             <img src="~/img/general/shownest-logo.png" />
@@ -49,10 +58,13 @@
                         </a>
                         <div id="org-select-wrap" class="d-block dropdown btn-group">
                             <a id="org-select" class="dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown"
-                                aria-expanded="false"><span class="large-span">選擇</span>組織</a>
+                               aria-expanded="false"><span class="large-span">選擇</span>組織</a>
                             <ul class="dropdown-menu dropdown-menu-end">
                                 <p>組織列表</p>
-                                <li><a href="/Dashboard/Organizations?viewType=Overview" class="dropdown-item org">深夜九點半搶銀行</a></li>
+                                @foreach (var org in userOrg)
+                                {
+                                    <li><a href="/Dashboard/Organizations/@org.UserOrgId?viewType=Overview" class="dropdown-item org">@org.UserOrgName</a></li>
+                                }
                                 <li>
                                     <a asp-controller="Organizations" asp-action="CreateOrganization" class="dropdown-item org">
                                         <i class="fa-solid fa-circle-plus"></i>建立新組織
@@ -62,24 +74,24 @@
                         </div>
                         <div id="user-account-wrap" class="d-block align-items-center dropdown btn-group">
                             <a id="user-account" class="dropdown-toggle" href="#" role="button"
-                                data-bs-toggle="dropdown" aria-expanded="false">
-                                <i class="fa-solid fa-user"></i><span>彭德・佛傑</span>
+                               data-bs-toggle="dropdown" aria-expanded="false">
+                                <i class="fa-solid fa-user"></i><span>@userName</span>
                             </a>
                             <ul class="dropdown-menu dropdown-menu-end">
                                 <li>
                                     <a id="user-name" class="dropdown-item d-inline-flex flex-column" href="#">
-                                        <img src="https://picsum.photos/300/200/?random=10" alt="user's photo">彭德・佛傑
+                                        <img src="@userImg" alt="user's photo">@userName
                                     </a>
                                 </li>
                                 <li>
                                     <a id="nav-user-setting" class="dropdown-item" asp-controller="Account"
-                                        asp-action="UserEdit">
+                                       asp-action="UserEdit">
                                         <i class="fa-solid fa-gear"></i>設定
                                     </a>
                                 </li>
                                 <li>
                                     <a id="nav-user-orders" class="dropdown-item" asp-controller="Account"
-                                        asp-action="Orders">
+                                       asp-action="Orders">
                                         <i class="fa-solid fa-ticket"></i>訂單
                                     </a>
                                 </li>
@@ -157,6 +169,7 @@
     <script src="~/js/site.js" asp-append-version="true"></script>
     <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
     <script src="https://unpkg.com/vue-cookies@1.8.3/vue-cookies.js"></script>
+    <script src="~/js/shared/_loggedinlayout.js"></script>
     @await RenderSectionAsync("Scripts", required: false)
     @await RenderSectionAsync("endJS", required: false)
 </body>

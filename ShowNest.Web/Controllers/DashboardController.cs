@@ -1,4 +1,5 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using ShowNest.Web.Services.Dashboard;
 using ShowNest.Web.ViewModels.Dashboard;
 using ShowNest.Web.ViewModels.Events;
 using System.Drawing.Text;
@@ -7,7 +8,12 @@ namespace ShowNest.Web.Controllers
 {
     public class DashboardController : Controller
     {
-        //private readonly ShowNestContext _context;
+        private readonly OverviewService _overviewService;
+
+        public DashboardController(OverviewService overviewService)
+        {
+            _overviewService = overviewService;
+        }
 
         public IActionResult Index()
         {
@@ -23,26 +29,23 @@ namespace ShowNest.Web.Controllers
         [HttpGet]
         public async Task<IActionResult> SetEvent()
         {
-            
-            
+
             return View();
         }
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        //public async Task<IActionResult> SetEvent(Event event)
-        //{
-        //    if (ModelState.IsValid)
-        //    {
-        //        _context.Add();
-        //        await _context.SaveChangesAsync();
+        public async Task<IActionResult> SetEvent(SetEventViewModel model)
+        {
+            if (ModelState.IsValid)
+            {
 
-        //        return RedirectToAction(nameof());
+                return RedirectToAction(nameof(SetEvent));
 
-        //    }
+            }
 
-        //    return View();
-        //}
+            return View(model);
+        }
 
         public async Task<IActionResult> SetTicket()
         {
@@ -97,12 +100,14 @@ namespace ShowNest.Web.Controllers
 
         }
 
-        public IActionResult Organizations(string viewType)
+        public IActionResult Organizations(int id, string ViewType)
         {
-            switch (viewType)
+            var overviewViewModel = _overviewService.GetOverviewViewModel(id);
+
+            switch (ViewType)
             {
                 case "Overview":
-                    return View("Overview");
+                    return View("Overview", overviewViewModel);
                 case "OrgAccount":
                     return View("OrgAccount");
                 case "OrgGeneralInfo":

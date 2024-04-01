@@ -1,6 +1,7 @@
 ﻿using System.Collections.Generic;
 using System.Drawing.Text;
 using System.Globalization;
+using ApplicationCore.Entities;
 using ApplicationCore.Interfaces;
 using Elfie.Serialization;
 using Infrastructure.Services;
@@ -11,6 +12,8 @@ using ShowNest.Web.Services;
 using ShowNest.Web.Services.Events;
 using ShowNest.Web.ViewModels.Events;
 using ShowNest.Web.ViewModels.Organization;
+using Ticket = ApplicationCore.Entities.Ticket;
+
 
 namespace ShowNest.Web.Controllers
 {
@@ -43,20 +46,25 @@ namespace ShowNest.Web.Controllers
         //以上測試中--------------------------------------------------------------
 
         private readonly EventIndexService _eventIndexService;
+        private readonly OrderTicketService _orderQueryService;
+        private readonly IRepository<ArchiveOrder> _archiveOrderRepo;
+        private readonly IRepository<ApplicationCore.Entities.Ticket> _ticket;
+        private readonly IOrderRepository _orderRepo;
         private readonly OrderTicketService _registrationService;
         private readonly EventPageService _eventPageService;
 
         //private readonly IOrderQueryService _orderQueryService;
 
-        public EventsController(EventIndexService eventIndexService, OrderTicketService registrationService, EventPageService eventPageService)
+
+        public EventsController(EventIndexService eventIndexService, OrderTicketService orderQueryService,
+            IRepository<ArchiveOrder> archiveOrderRepo, IRepository<ApplicationCore.Entities.Ticket> ticket, IOrderRepository orderRepo)
         {
             _eventIndexService = eventIndexService;
-            _registrationService = registrationService;
-            _eventPageService = eventPageService;
-
-
-
-
+            _orderQueryService = orderQueryService;
+            _archiveOrderRepo = archiveOrderRepo;
+            _ticket = ticket;
+            _orderRepo = orderRepo;
+          
         }
 
         public IActionResult Index(int page)
@@ -171,8 +179,9 @@ namespace ShowNest.Web.Controllers
 
         public IActionResult Registrations()
         {
-            var registration = _registrationService.GetRegistrationInfo();
-            return View(registration);
+            
+            var RegistrationsFakeData = _orderQueryService.GetRegistrationsFakeData();
+            return View(RegistrationsFakeData);
         }
 
         public IActionResult PaymentInfo()
@@ -182,7 +191,22 @@ namespace ShowNest.Web.Controllers
 
         public IActionResult OrderDetail()
         {
-            return View();
+           
+            var userId = 1;
+            var OrderDetail = _orderQueryService.GetMemberOrders(userId);
+           
+            return View(OrderDetail);
+            //string name = string.Empty;
+            //if (id.HasValue)
+            //{
+            //    var order = _orderRepo.FirstOrDefault(o => o.Id == id.Value);
+            //    if (order != null)
+            //    {
+            //        var ArchiveOrder = _archiveOrderRepo.List(ao => ao.OrderId == order.Id);
+            //        name = $"{order.Id} : {ArchiveOrder.Sum(ao => (ao.TicketPrice * ao.PurchaseAmount))}";
+            //    }
+            //}
+            //ViewData["OrderName"] = name;
         }
      
     }

@@ -1,5 +1,12 @@
 //Element
 const $seatsGroup = document.querySelector('.seats-group');
+const $currentArea = document.querySelector('.current-area');
+// let $selectedSeat = document.querySelector(.seat-id).dataset;
+
+//Add EventHandler
+// $selectedSeat.addEventListener('click', SeatsOnClicked);
+
+//function
 
 function CreateRow() {
     let $row = document.createElement('div');
@@ -15,19 +22,25 @@ function CreateSeat() {
     return $seat;
 }
 
-async function RenderSeat() {
-    let response = await fetch('/SeatsData.json');
-    let seats = await response.json();
+async function RenderSeatAreaAndSeats() {
+    let urlParams = new URLSearchParams(window.location.search);
+    let seatAreaId = urlParams.get("id")
+    let response = await fetch(`/api/seats?seatAreaId=${seatAreaId}`);
+    let viewModel = await response.json();
 
-    for (let row of seats) {
+    let $currentAreaName = document.createElement('p');
+    $currentAreaName.innerHTML = viewModel.seatAreaName;
+    $currentArea.appendChild($currentAreaName);
+        
+    for (let row of viewModel.seats) {
         let $row = CreateRow();
         $seatsGroup.appendChild($row);
         
         for (let seat of row) {
             let $seat = CreateSeat();
-            $seat.setAttribute('seat-id', seat.id);
-            $seat.setAttribute('data-bs-title', seat.Number);
-            $seat.setAttribute('seat-status', seat.Status);
+            $seat.setAttribute('seat-id', seat.seatId);
+            $seat.setAttribute('data-bs-title', seat.seatNumber);
+            $seat.setAttribute('seat-status', seat.seatStatus);
             $row.appendChild($seat);
         }
     }
@@ -37,4 +50,17 @@ async function RenderSeat() {
     const tooltipList = [...tooltipTriggerList].map(tooltipTriggerEl => new bootstrap.Tooltip(tooltipTriggerEl))
 }
 
-RenderSeat();
+RenderSeatAreaAndSeats();
+
+function SeatsOnClicked() {
+    
+    let $seatStatus = $selectedSeat.getAttribute('seat-status');
+
+    if ($seatStatus === '0') {
+        $selectedSeat.setAttribute('seat-status', '1');
+    } else if ($seatStatus === '1') {
+        $selectedSeat.setAttribute('seat-status', '0');
+    }
+
+    // $selectedSeat.setAttribute('seat-status', '0');
+}

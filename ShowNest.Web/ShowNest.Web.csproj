@@ -9,18 +9,21 @@
 
   <ItemGroup>
     <Compile Remove="Services\Dashboard\**" />
-    <Compile Remove="Services\NewFolder\**" />
     <Content Remove="Services\Dashboard\**" />
-    <Content Remove="Services\NewFolder\**" />
     <EmbeddedResource Remove="Services\Dashboard\**" />
-    <EmbeddedResource Remove="Services\NewFolder\**" />
     <None Remove="Services\Dashboard\**" />
-    <None Remove="Services\NewFolder\**" />
+    <None Include="wwwroot\js\API\api.js" />
+    <None Include="wwwroot\js\API\tools.js" />
+    <None Include="wwwroot\js\API\userAPI.js" />
     <None Include="wwwroot\SeatsData.json" />
   </ItemGroup>
 
   <ItemGroup>
     <Content Remove="wwwroot\img\Events\LINE_ALBUM_課程紀錄_240216_1.jpg" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Compile Include="Services\Dashboard\OverviewService.cs" />
   </ItemGroup>
 
   <ItemGroup>

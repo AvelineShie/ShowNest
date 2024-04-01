@@ -1,155 +1,129 @@
 ﻿
 using ApplicationCore.Entities;
-using Infrastructure.Data;
-using Microsoft.CodeAnalysis.CSharp.Syntax;
-using Microsoft.EntityFrameworkCore;
+using System.Linq;
+using Ticket = ApplicationCore.Entities.Ticket;
 
 namespace ShowNest.Web.Services.Events
 {
-    public interface ITicketOrderService
+    public interface IOrderCenterService
     {
-        RegistrationViewModel RegistrationTicketOrders();
+        OrderDetailViewModel GetMemberOrders(int userId);
     }
-    //public class OrderTicketService : ITicketOrderService
-    //{
-    //    private readonly DatabaseContext _context;
-    //    public OrderTicketService(DatabaseContext context)
-    //    {
-    //        _context = context;
-    //    }
-    //    public RegistrationViewModel RegistrationTicketOrders()//int eventId, int orderId
-    //    {
-    //        //var eventId = _context.Events.Any(e=>e.Id== orderId); // Assume this is the ID provided by the user
-    //        var eventInfo = _context.Events.FirstOrDefault();//e => e.Id == eventId
-    //        var order = _context.Order.FirstOrDefault();
-    //        var seats=_context.Seats.FirstOrDefault();
-    //        var seatArea=_context.SeatAreas.FirstOrDefault();
-    //        var archiveOrder = _context.ArchiveOrders.FirstOrDefault();
-    //        var userPreFillInfo = _context.PreFills.FirstOrDefault();
-    //        var logInInfo =_context.LogInInfos.FirstOrDefault();
-
-
-    //        if (eventInfo == null || order == null || seats == null || seatArea == null)
-    //        {
-    //            // 如果找不到事件資訊，則返回 null 或者拋出異常
-    //            return null;
-    //        }
-    //        // 將資料填充到 RegistrationViewModel 中
-    //        return new RegistrationViewModel
-    //        {
-    //            EventName = eventInfo.Name,
-    //            StartTime = eventInfo.StartTime,
-    //            EventId = eventInfo.Id.ToString(),
-    //            EventLocation = eventInfo.LocationAddress,
-    //            EventAddress = eventInfo.LocationAddress,
-    //            EventHost = eventInfo.MainOrganizer,
-    //            PaymentMethodName = order.PaymentType.ToString(),
-    //            TicketSeats = new List<Tickets>
-    //            {
-    //                new Tickets
-    //                {
-    //                    SeatArea=seatArea.Name,
-    //                    SeatNumber=seats.Number,
-    //                    TicketTypeName=archiveOrder.TicketTypeName,
-    //                    TicketPrice=archiveOrder.TicketPrice,
-    //                    PurchaseAmount=archiveOrder.PurchaseAmount
-    //                }
-                   
-    //            },
-    //            TotalPrice = archiveOrder.TicketPrice * archiveOrder.PurchaseAmount,
-    //            Name= userPreFillInfo.Name,
-    //            PhoneNumber = userPreFillInfo.Mobile,
-    //            Email = logInInfo.Email,
-    //            ShownParticipatedCampaign=order.IsDisplayed
-    //        }; 
-    //    }
-    //}
-
-
-public class OrderTicketService
-{
-    //private readonly OrderTicketService _registrationService;
-    //public OrderTicketService(OrderTicketService registrationService)
-    //{
-    //    _registrationService = registrationService;
-    //}
-
-    public RegistrationViewModel GetRegistrationInfo()
+    public interface IRregistrationFakedata
     {
-        return new RegistrationViewModel()
+        RegistrationViewModel GetRegistrationInfo();
+    }
+    public class OrderTicketService : IOrderCenterService
+    {
+        private readonly IOrderQueryService _orderQueryService;
+        private readonly int _userId;
+        private readonly IRepository<Order> _orderRepo;
+        private readonly IRepository<ArchiveOrder> _archiveOrderRepo;
+        private readonly IRepository<ApplicationCore.Entities.Ticket> _ticket;
+        public OrderTicketService(IOrderQueryService orderQueryService,
+            IRepository<Order> orderRepo,
+            IRepository<ArchiveOrder> archiveOrderRepo,
+            IRepository<ApplicationCore.Entities.Ticket> ticket)
         {
-            EventName = "【ALTA】theLOOP presents : PSY.P 臺灣個人巡演預熱戰",
-            StartTime = DateTime.Now,
-            EventLocation = "ALTA NIGHTCLUB",
-            EventAddress = "台中市西屯區青海南街59號",
-            EventHost = "歐達休閒娛樂有限公司",
-            PaymentMethodName = "ATM 虛擬帳號、信用卡",
-            TicketSeats = new List<Tickets>
-            {
-                new Tickets {
-                    SeatArea ="B2 區",
-                    SeatNumber="17 排 8 號",
-                    TicketTypeName="全票 ",
-                    TicketPrice=3680,
-                    PurchaseAmount=1,
-                },
-                 new Tickets {
-                    SeatArea ="B3 區",
-                    SeatNumber="15 排 88 號",
-                    TicketTypeName="半票 ",
-                    TicketPrice=3680,
-                    PurchaseAmount=1,
-                }
-            },
-            TotalPrice = 3680,
-            Name = "志明與春嬌",
-            PhoneNumber = "+88697812345",
-            Email = "1234@gmail.com"
+            _orderQueryService = orderQueryService;
 
-        };
-
-    }
-
-
-
-    public RegistrationViewModel GetRegistrationInfo(DatabaseContext context)
-    {
-        var ticketSeats = new List<Tickets>
-    {
-        new Tickets {
-            SeatArea ="B2 區",
-            SeatNumber="17 排 8 號",
-            TicketTypeName="全票 ",
-            TicketPrice=3680,
-            PurchaseAmount=1,
-        },
-        new Tickets {
-            SeatArea ="B3 區",
-            SeatNumber="15 排 88 號",
-            TicketTypeName="半票 ",
-            TicketPrice=3680,
-            PurchaseAmount=1,
+            //_userId = httpContextAccessor.HttpContext?.User?.Identity?.Name ?? string.Empty;
+            _userId = 1;
+            _orderRepo = orderRepo;
+            _archiveOrderRepo = archiveOrderRepo;
+            _ticket = ticket;
         }
-    };
 
-        var totalPrice = ticketSeats.Sum(t => t.TicketPrice * t.PurchaseAmount);
-
-        return new RegistrationViewModel()
+        public OrderDetailViewModel GetMemberOrders(int userId)
         {
-            EventName = "【ALTA】theLOOP presents : PSY.P 臺灣個人巡演預熱戰",
-            StartTime = DateTime.Now,
-            EventLocation = "ALTA NIGHTCLUB",
-            EventAddress = "台中市西屯區青海南街59號",
-            EventHost = "歐達休閒娛樂有限公司",
-            PaymentMethodName = "ATM 虛擬帳號、信用卡",
-            TicketSeats = ticketSeats,
-            TotalPrice = totalPrice,
-            Name = "塗翡",
-            PhoneNumber = "+88697812345",
-            Email = "1234@gmail.com"
-        };
+            var totalPrice = _orderQueryService.GetCustomerOrderTotalAmount(userId);
+            var orders = _orderQueryService.GetOrdersByUserId(userId);
+            var result = new OrderDetailViewModel
+            {
+                MemberCenterOrders = new List<MemberCenterOrders>()
+            };
+            foreach (var order in orders)
+            {
+                var orderDetailQueryDto = order.orderDetailQueryDtos?.SingleOrDefault();
+                if (orderDetailQueryDto != null)
+                {
+                    var tempResult = new MemberCenterOrders
+                    {
+                        OrderId = order.OrderId,
+                        UserId = order.UserId,
+                        OrderStatus = order.OrderStatus,
+                        EventName = order.EventName,
+                        EventHost = order.EventHost ?? string.Empty,
+                        StartTime = order.OrderDate,
+                        EventLocation = order.LocationName,
+                        EventAddress = order.LocationAddress,
+                        PaymentMethod = order.PaymentType,
+                        UserName = order.UserName,
+                        Email = order.UserEmail,
+                        PhoneNumber = order.UserPhoneNumber,
+                        AllTickets = new List<AllTickets>
+                        {
+                            new AllTickets
+                            {
+                                TicketId = orderDetailQueryDto.TicketId,
+                                TicketTypeId = orderDetailQueryDto.TicketTypeId,
+                                TicketTypeName = orderDetailQueryDto.TicketTypeName,
+                                TicketNumber = orderDetailQueryDto.TicketNumber,
+                                SeatAreaId = orderDetailQueryDto.SeatAreaId,
+                                SeatArea = orderDetailQueryDto.SeatArea,
+                                SeatsId = orderDetailQueryDto.SeatsId,
+                                SeatNumber = orderDetailQueryDto.SeatNumber,
+                                TicketPrice = orderDetailQueryDto.TicketPrice,
+                                PurchaseAmount = orderDetailQueryDto.PurchaseAmount
+                            }
+                        }
+                    };  
+                    result.MemberCenterOrders.Add(tempResult);
+                }
+            }
+            return result;
+        }
+
+        public RegistrationViewModel GetRegistrationsFakeData()
+        {
+            return new RegistrationViewModel()
+            {
+                EventName = "【ALTA】theLOOP presents : PSY.P 臺灣個人巡演預熱戰",
+                StartTime = DateTime.Now,
+                EventLocation = "ALTA NIGHTCLUB",
+                EventAddress = "台中市西屯區青海南街59號",
+                EventHost = "歐達休閒娛樂有限公司",
+                PaymentMethodName = "ATM 虛擬帳號、信用卡",
+                TicketSeats = new List<Tickets>
+                {
+                    new Tickets {
+                        SeatArea = "B2 區 17 排",
+                        SeatNumber = "8 號",
+                        TicketTypeName = "全票 ",
+                        TicketPrice = 3680,
+                        PurchaseAmount = 1,
+                    },
+                    new Tickets {
+                        SeatArea = "B3 區 15 排",
+                        SeatNumber = "88 號",
+                        TicketTypeName = "半票 ",
+                        TicketPrice = 3680,
+                        PurchaseAmount = 1,
+                    }
+                },
+                TotalPrice = 3680,
+                Name = "志明與春嬌",
+                PhoneNumber = "+88697812345",
+                Email = "1234@gmail.com"
+
+            };
+
+        }
+
     }
-}}
+}
+
+
 
 
 
