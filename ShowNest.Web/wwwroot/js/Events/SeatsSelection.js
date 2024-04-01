@@ -1,12 +1,23 @@
 //Element
 const $seatsGroup = document.querySelector('.seats-group');
 const $currentArea = document.querySelector('.current-area');
-// let $selectedSeat = document.querySelector(.seat-id).dataset;
 
 //Add EventHandler
-// $selectedSeat.addEventListener('click', SeatsOnClicked);
+// $seatsGroup.addEventListener('click', SeatsOnClicked);
 
 //function
+function SeatsOnClicked(e) {
+
+    let $SeatId = document.querySelector('[seat-id]');
+    if (e.target.classList.contains('seat') &&
+        e.target.getAttribute('seat-status', '0')) {
+        e.target($SeatId).setAttribute('seat-status', '1');
+    } else if (e.target.classList.contains('seat') &&
+        e.target.getAttribute('seat-status', '1')) {
+        e.target($SeatId).setAttribute('seat-status', '0');
+    }
+    
+}
 
 function CreateRow() {
     let $row = document.createElement('div');
@@ -52,15 +63,3 @@ async function RenderSeatAreaAndSeats() {
 
 RenderSeatAreaAndSeats();
 
-function SeatsOnClicked() {
-    
-    let $seatStatus = $selectedSeat.getAttribute('seat-status');
-
-    if ($seatStatus === '0') {
-        $selectedSeat.setAttribute('seat-status', '1');
-    } else if ($seatStatus === '1') {
-        $selectedSeat.setAttribute('seat-status', '0');
-    }
-
-    // $selectedSeat.setAttribute('seat-status', '0');
-}
