@@ -20,14 +20,6 @@ namespace ShowNest.Web.Services.Dashboard
             {
                 OrgId = orgId,
                 OrgName = org.Name,
-                OrgWebUrl = org.OrganizationUrl,
-                OrgDescription = org.Description,
-                OrgFbUrl = org.Fblink,
-                OrgIgUrl = org.Igaccount,
-                OrgEmail = org.Email,
-                OrgContactName = org.ContactName,
-                OrgContactCellphone = org.ContactMobile,
-                OrgContactTelepohone = org.ContactTelephone,
                 OrgEvents = new List<EventsForOverview>()
             };
 
