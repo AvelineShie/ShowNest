@@ -18,9 +18,11 @@ body {
     width: 100%;
     overflow: auto;
 }
-.bold{
+
+.bold {
     font-weight: bold;
 }
+
 .gap {
     padding: 20px 0;
 }
@@ -48,7 +50,7 @@ header.org_header {
 
 }
 
-.org-title{
+.org-title {
     font-size: 20px;
     font-weight: bold;
 }
@@ -56,7 +58,11 @@ header.org_header {
 /* --------event-list-title----------- */
 
 .event-list-title {
-    padding: 40px 20px 8px 20px;
+    padding: 30px 20px 8px 20px;
+}
+
+.list-title{
+    padding-top: 30px;
 }
 
 /* -------ongoing-event-list----------- */
@@ -73,6 +79,7 @@ header.org_header {
     padding-right: 10px;
     font-size: 24px;
 }
+
 /* -------button setting----------- */
 .btn-light {
     color: #333333;
@@ -119,13 +126,14 @@ header.org_header {
 }
 
 .events-box {
-    padding: 0 20px 0;
+    padding: 0 20px 30px;
 }
 
 /* ----------closed-events-------------- */
-.closed-event{
+.closed-event {
     padding: 40px 0;
 }
+
 .org-list-title {
     display: flex;
     flex-direction: row;
@@ -142,14 +150,15 @@ header.org_header {
 }
 
 .button-group {
-    padding-right: 10px;
-    padding-top: 10px;
+    padding: 0px 0px 20px 20px;
+    border-bottom: var(--common-border)
 }
 
 .btn i {
     padding-right: 5px;
 }
 
+/* 
 .closed-events p {
     display: inline-block;
     margin-top: 5px;
@@ -158,10 +167,12 @@ header.org_header {
     color: #333333;
     font-size: 15px;
     font-weight: bold;
-}
-.state p{
+} */
+
+.state p {
     color: #da712b;
 }
+
 .main-content {
     display: flex;
     flex-direction: column;
@@ -185,7 +196,7 @@ header.org_header {
     border: none;
 }
 
-.page-col{
+.page-col {
     padding-bottom: 55px;
 }
 
@@ -204,25 +215,31 @@ header.org_header {
     .col-4 {
         min-width: 90px;
     }
-    .btn-primary{
+
+    .btn-primary {
         width: 100%;
     }
-    .button-group button{
+
+    .button-group button {
         width: 100%;
         line-height: 1.5;
     }
-    .ongoing-event-list h3{
+
+    .ongoing-event-list h3 {
         padding: 10px 0;
         display: block;
     }
-    header.org_header{
-    padding: 20px 0px 20px 20px;
+
+    header.org_header {
+        padding: 20px 0px 20px 20px;
     }
-    .event-list-title{
+
+    /* .event-list-title{
         padding: 40px 0px 8px 20px;
-    }
+    } */
+
     .ongoing-event-list h3,
-    .closed-event h2{
+    .closed-event h2 {
         text-align: center;
     }
 

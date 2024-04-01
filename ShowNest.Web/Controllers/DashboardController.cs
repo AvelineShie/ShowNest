@@ -102,12 +102,16 @@ namespace ShowNest.Web.Controllers
 
         public IActionResult Organizations(int id, string ViewType)
         {
-            var overviewViewModel = _overviewService.GetOverviewViewModel(id);
 
             switch (ViewType)
             {
                 case "Overview":
-                    return View("Overview", overviewViewModel);
+                    {
+                        var overviewViewModel = _overviewService.GetOverviewViewModel(id);
+
+                        return View("Overview", overviewViewModel);
+                    }
+                    
                 case "OrgAccount":
                     return View("OrgAccount");
                 case "OrgGeneralInfo":
