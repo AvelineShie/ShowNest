@@ -44,13 +44,19 @@ namespace ShowNest.Web.Controllers
 
         private readonly EventIndexService _eventIndexService;
         private readonly OrderTicketService _registrationService;
+        private readonly EventPageService _eventPageService;
+
         //private readonly IOrderQueryService _orderQueryService;
 
-        public EventsController(EventIndexService eventIndexService, OrderTicketService registrationService)
+        public EventsController(EventIndexService eventIndexService, OrderTicketService registrationService, EventPageService eventPageService)
         {
             _eventIndexService = eventIndexService;
             _registrationService = registrationService;
-          
+            _eventPageService = eventPageService;
+
+
+
+
         }
 
         public IActionResult Index(int page)
@@ -74,6 +80,8 @@ namespace ShowNest.Web.Controllers
 
         public IActionResult EventPage(string OrganizationId, string EventId)
         {
+            var eventPageViewModel= _eventPageService.GetEventPageViewModel();
+
             return Content($"OrganizationId: {OrganizationId}, EventId: {EventId}");
         }
 
