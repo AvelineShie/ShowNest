@@ -18,11 +18,12 @@ namespace ShowNest.Web.ViewModels.Events
 
     public class TicketViewModel
     {
-        public decimal SubTotal { get; set; }
+        public int TicketTypeId { get; set; }
         public string TicketTypeName { get; set; }
         public string SeatAreaName { get; set; }
         public string SeatNumber { get; set; }
         public decimal TicketPrice { get; set; }
+        public decimal SubTotal { get; set; }
     }
     
 }
