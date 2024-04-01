@@ -1,4 +1,5 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using ShowNest.Web.Services.Dashboard;
 using ShowNest.Web.ViewModels.Dashboard;
 using ShowNest.Web.ViewModels.Events;
 using System.Drawing.Text;
@@ -7,7 +8,12 @@ namespace ShowNest.Web.Controllers
 {
     public class DashboardController : Controller
     {
-        
+        private readonly OverviewService _overviewService;
+
+        public DashboardController(OverviewService overviewService)
+        {
+            _overviewService = overviewService;
+        }
 
         public IActionResult Index()
         {
@@ -96,12 +102,12 @@ namespace ShowNest.Web.Controllers
 
         public IActionResult Organizations(int id, string ViewType)
         {
-
+            var overviewViewModel = _overviewService.GetOverviewViewModel(id);
 
             switch (ViewType)
             {
                 case "Overview":
-                    return View("Overview");
+                    return View("Overview", overviewViewModel);
                 case "OrgAccount":
                     return View("OrgAccount");
                 case "OrgGeneralInfo":

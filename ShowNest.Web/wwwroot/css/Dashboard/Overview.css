@@ -104,11 +104,18 @@ header.org_header {
     background-color: var(--light-green);
 }
 
-.events {
+.events p {
     padding: 20px;
-    background-color: var(--light-gray);
-    box-shadow: inset 0 1px 1px var(--dark-gray);
+    /*box-shadow: inset 0 1px 1px var(--dark-gray);*/
     border-radius: var(--common-border-radius);
+}
+
+.events .no-event {
+    background-color: var(--light-gray);
+}
+
+.events .has-event {
+    background-color: #fafafa;
 }
 
 .events-box {
