@@ -10,7 +10,10 @@ using ShowNest.Web.Configurations;
 using Microsoft.AspNetCore.Authentication.Cookies;
 using ShowNest.Web.Services.Organization;
 using ShowNest.Web.Services.Organizations;
+using ShowNest.Web.Services.AccountService;
+using ShowNest.Web.Services.Shared;
 using ShowNest.Web.Services.Seats;
+using Infrastructure.Services;
 
 namespace ShowNest.Web
 {
@@ -27,6 +30,8 @@ namespace ShowNest.Web
 
             // Registration Repository
             builder.Services.AddScoped<ISeatRepository, SeatRepository>();
+            builder.Services.AddScoped<ISeatAreaRepository, SeatAreaRepository>();
+            builder.Services.AddScoped<ITicketTypeRepository, TicketTypeRepository>();
             
             // Registration Service
             builder.Services.AddScoped<OrderTicketService>();
@@ -39,8 +44,11 @@ namespace ShowNest.Web
             builder.Services.AddScoped<OrganizationIndexService>();
             builder.Services.AddScoped<OrganizationDetailService>();
             builder.Services.AddScoped<ISeatsService, SeatsService>();
-            // builder.Services.AddScoped<AccountService>();
+            
+            builder.Services.AddScoped<AccountService>();
             builder.Services.AddHttpContextAccessor();
+            builder.Services.AddScoped<UserService>();
+            builder.Services.AddScoped<_LoggedInLayoutService>();
             
             // Add services to the container.
             builder.Services.AddControllersWithViews();
@@ -123,6 +131,12 @@ namespace ShowNest.Web
             name: "EventSetting",
             pattern: "Dashboard/CreateEvent/SetEvent",
             defaults: new { controller = "Dashboard", Action = "SetEvent" }
+            );
+
+            app.MapControllerRoute(
+            name: "DashboardOrganizationIdentifying", // 組織後台
+            pattern: "Dashboard/Organizations/{id}/{ViewType?}",
+            defaults: new { controller = "Dashboard", Action = "Organizations" }
             );
 
 

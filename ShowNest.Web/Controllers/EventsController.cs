@@ -12,6 +12,7 @@ using ShowNest.Web.Services;
 using ShowNest.Web.Services.Events;
 using ShowNest.Web.ViewModels.Events;
 using ShowNest.Web.ViewModels.Organization;
+using Ticket = ApplicationCore.Entities.Ticket;
 
 
 namespace ShowNest.Web.Controllers
@@ -47,12 +48,12 @@ namespace ShowNest.Web.Controllers
         private readonly EventIndexService _eventIndexService;
         private readonly OrderTicketService _orderQueryService;
         private readonly IRepository<ArchiveOrder> _archiveOrderRepo;
-        private readonly IRepository<Ticket> _ticket;
+        private readonly IRepository<ApplicationCore.Entities.Ticket> _ticket;
         private readonly IOrderRepository _orderRepo;
 
 
         public EventsController(EventIndexService eventIndexService, OrderTicketService orderQueryService,
-            IRepository<ArchiveOrder> archiveOrderRepo, IRepository<Ticket> ticket, IOrderRepository orderRepo)
+            IRepository<ArchiveOrder> archiveOrderRepo, IRepository<ApplicationCore.Entities.Ticket> ticket, IOrderRepository orderRepo)
         {
             _eventIndexService = eventIndexService;
             _orderQueryService = orderQueryService;

@@ -94,9 +94,11 @@ namespace ShowNest.Web.Controllers
 
         }
 
-        public IActionResult Organizations(string viewType)
+        public IActionResult Organizations(int id, string ViewType)
         {
-            switch (viewType)
+
+
+            switch (ViewType)
             {
                 case "Overview":
                     return View("Overview");

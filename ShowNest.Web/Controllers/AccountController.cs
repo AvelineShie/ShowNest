@@ -10,19 +10,22 @@ using static System.Runtime.InteropServices.JavaScript.JSType;
 using ShowNest.Web.Services.AccountService;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
+using Microsoft.EntityFrameworkCore;
 
 namespace ShowNest.Web.Controllers
 {
     public class AccountController : Controller
     {
+        //登入
         private readonly AccountService _accountService;
+        //註冊
+        private readonly UserService _userService;
 
-        public AccountController(AccountService accountService)
+        public AccountController(AccountService accountService, UserService userService)
         {
             _accountService = accountService;
+            _userService = userService;
         }
-
-
         [HttpGet]
         public IActionResult LogIn()
         {
@@ -35,7 +38,6 @@ namespace ShowNest.Web.Controllers
             var result = await _accountService.LogInAsync(Login);
             if (result.IsSuccess)
             {
-
                 //登入成功，導向頁面
                 return RedirectToAction("Index", "Home");
             }
@@ -45,7 +47,38 @@ namespace ShowNest.Web.Controllers
                 ModelState.AddModelError("", result.ErrorMessage);
                 return View(Login);
             }
+        }
+        
 
+        [HttpGet]
+        public IActionResult SignUp()
+        {
+            return View();
+        }
+        [HttpPost]
+        [AllowAnonymous]
+        [ValidateAntiForgeryToken]
+        public async Task<ActionResult> SignUp(RegisterModel SignUp)
+        {
+            if (ModelState.IsValid)
+            {
+                // 使用UserService進行註冊
+                bool isRegistered = await _userService.RegisterUserAsync(SignUp, ModelState.IsValid);
+                if (isRegistered)
+                {
+                    // 註冊成功後，重定向到登入頁面或其他適當的頁面
+                    return RedirectToAction("Login", "Account");
+                }
+                else
+                {
+                    // 註冊失敗，返回視圖以顯示錯誤訊息
+                    // 您可以選擇添加一個錯誤訊息到ModelState，以便在視圖中顯示
+                    ModelState.AddModelError("", "註冊失敗，請稍後再試。");
+                }
+            }
+
+            //如果模型狀態不正確，則返回視圖以顯示錯誤訊息
+            return View(SignUp);
         }
         public IActionResult UserEdit()
         {
@@ -98,32 +131,7 @@ namespace ShowNest.Web.Controllers
             return RedirectToAction("Index", "Home");
             
         }
-        [HttpGet]
-        public IActionResult SignUp()
-        {
-            return View();
-        }
-        [HttpPost]
-        [AllowAnonymous]
-        [ValidateAntiForgeryToken]
-        public async Task<ActionResult> SignUp(RegisterModel model)
-        {
-            //if (ModelState.IsValid)
-            //{
-            //    var userName = new ApplicationUser { UserName = model.Email, Email = model.Email };
-            //    var email = new
-            //    var result = await UserManager.CreateAsync(user, model.Password);
-            //    if (result.Succeeded)
-            //    {
-            //        // 進行註冊成功後的邏輯，例如：發送確認郵件
-            //        return RedirectToAction("Index", "Home");
-            //    }
-            //    AddErrors(result);
-            //}
-
-            //如果模型狀態不正確，則返回視圖以顯示錯誤訊息
-            return View(model);
-        }
+ 
 
         public IActionResult ForgetPassword()
         {
