@@ -34,7 +34,7 @@ namespace ShowNest.Web.Services.Shared
 
                 result.UserName = info.Nickname;
                 result.UserOrg = new List<UserOrgInfo>();
-                foreach (var org in info.Organizations)
+                foreach (var org in info.Organizations.OrderBy(o => o.Id))
                 {
                     var orgToAdd = new UserOrgInfo
                     {
