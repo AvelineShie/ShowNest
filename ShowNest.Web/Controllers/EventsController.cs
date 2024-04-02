@@ -50,6 +50,10 @@ namespace ShowNest.Web.Controllers
         private readonly IRepository<ArchiveOrder> _archiveOrderRepo;
         private readonly IRepository<ApplicationCore.Entities.Ticket> _ticket;
         private readonly IOrderRepository _orderRepo;
+        private readonly OrderTicketService _registrationService;
+        private readonly EventPageService _eventPageService;
+
+        //private readonly IOrderQueryService _orderQueryService;
 
 
         public EventsController(EventIndexService eventIndexService, OrderTicketService orderQueryService,
@@ -84,6 +88,8 @@ namespace ShowNest.Web.Controllers
 
         public IActionResult EventPage(string OrganizationId, string EventId)
         {
+            var eventPageViewModel= _eventPageService.GetEventPageViewModel();
+
             return Content($"OrganizationId: {OrganizationId}, EventId: {EventId}");
         }
 
@@ -186,10 +192,10 @@ namespace ShowNest.Web.Controllers
         public IActionResult OrderDetail()
         {
            
-            var userId = 1;
-            var OrderDetail = _orderQueryService.GetMemberOrders(userId);
+            //var userId = 1;
+            //var OrderDetail = _orderQueryService.GetMemberOrders(userId);
            
-            return View(OrderDetail);
+            return View();
             //string name = string.Empty;
             //if (id.HasValue)
             //{

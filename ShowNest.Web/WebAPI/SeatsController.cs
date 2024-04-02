@@ -1,7 +1,7 @@
 using Microsoft.AspNetCore.Mvc;
 using ShowNest.Web.Services.Seats;
 
-namespace ShowNest.Web.Controllers.api;
+namespace ShowNest.Web.WebAPI;
 
 [ApiController]
 [Route("api/seats")]

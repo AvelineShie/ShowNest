@@ -13,7 +13,7 @@ namespace ShowNest.Web.Services.Events
     {
         RegistrationViewModel GetRegistrationInfo();
     }
-    public class OrderTicketService : IOrderCenterService
+    public class OrderTicketService 
     {
         private readonly IOrderQueryService _orderQueryService;
         private readonly int _userId;
@@ -34,55 +34,55 @@ namespace ShowNest.Web.Services.Events
             _ticket = ticket;
         }
 
-        public OrderDetailViewModel GetMemberOrders(int userId)
-        {
-            var totalPrice = _orderQueryService.GetCustomerOrderTotalAmount(userId);
-            var orders = _orderQueryService.GetOrdersByUserId(userId);
-            var result = new OrderDetailViewModel
-            {
-                MemberCenterOrders = new List<MemberCenterOrders>()
-            };
-            foreach (var order in orders)
-            {
-                var orderDetailQueryDto = order.orderDetailQueryDtos?.SingleOrDefault();
-                if (orderDetailQueryDto != null)
-                {
-                    var tempResult = new MemberCenterOrders
-                    {
-                        OrderId = order.OrderId,
-                        UserId = order.UserId,
-                        OrderStatus = order.OrderStatus,
-                        EventName = order.EventName,
-                        EventHost = order.EventHost ?? string.Empty,
-                        StartTime = order.OrderDate,
-                        EventLocation = order.LocationName,
-                        EventAddress = order.LocationAddress,
-                        PaymentMethod = order.PaymentType,
-                        UserName = order.UserName,
-                        Email = order.UserEmail,
-                        PhoneNumber = order.UserPhoneNumber,
-                        AllTickets = new List<AllTickets>
-                        {
-                            new AllTickets
-                            {
-                                TicketId = orderDetailQueryDto.TicketId,
-                                TicketTypeId = orderDetailQueryDto.TicketTypeId,
-                                TicketTypeName = orderDetailQueryDto.TicketTypeName,
-                                TicketNumber = orderDetailQueryDto.TicketNumber,
-                                SeatAreaId = orderDetailQueryDto.SeatAreaId,
-                                SeatArea = orderDetailQueryDto.SeatArea,
-                                SeatsId = orderDetailQueryDto.SeatsId,
-                                SeatNumber = orderDetailQueryDto.SeatNumber,
-                                TicketPrice = orderDetailQueryDto.TicketPrice,
-                                PurchaseAmount = orderDetailQueryDto.PurchaseAmount
-                            }
-                        }
-                    };  
-                    result.MemberCenterOrders.Add(tempResult);
-                }
-            }
-            return result;
-        }
+        //public OrderDetailViewModel GetMemberOrders(int userId)
+        //{
+        //    var totalPrice = _orderQueryService.GetCustomerOrderTotalAmount(userId);
+        //    var orders = _orderQueryService.GetOrdersByUserId(userId);
+        //    var result = new OrderDetailViewModel
+        //    {
+        //        MemberCenterOrders = new List<MemberCenterOrders>()
+        //    };
+        //    foreach (var order in orders)
+        //    {
+        //        var orderDetailQueryDto = order.orderDetailQueryDtos?.SingleOrDefault();
+        //        if (orderDetailQueryDto != null)
+        //        {
+        //            var tempResult = new MemberCenterOrders
+        //            {
+        //                OrderId = order.OrderId,
+        //                UserId = order.UserId,
+        //                OrderStatus = order.OrderStatus,
+        //                EventName = order.EventName,
+        //                EventHost = order.EventHost ?? string.Empty,
+        //                StartTime = order.OrderDate,
+        //                EventLocation = order.LocationName,
+        //                EventAddress = order.LocationAddress,
+        //                PaymentMethod = order.PaymentType,
+        //                UserName = order.UserName,
+        //                Email = order.UserEmail,
+        //                PhoneNumber = order.UserPhoneNumber,
+        //                AllTickets = new List<AllTickets>
+        //                {
+        //                    new AllTickets
+        //                    {
+        //                        TicketId = orderDetailQueryDto.TicketId,
+        //                        TicketTypeId = orderDetailQueryDto.TicketTypeId,
+        //                        TicketTypeName = orderDetailQueryDto.TicketTypeName,
+        //                        TicketNumber = orderDetailQueryDto.TicketNumber,
+        //                        SeatAreaId = orderDetailQueryDto.SeatAreaId,
+        //                        SeatArea = orderDetailQueryDto.SeatArea,
+        //                        SeatsId = orderDetailQueryDto.SeatsId,
+        //                        SeatNumber = orderDetailQueryDto.SeatNumber,
+        //                        TicketPrice = orderDetailQueryDto.TicketPrice,
+        //                        PurchaseAmount = orderDetailQueryDto.PurchaseAmount
+        //                    }
+        //                }
+        //            };  
+        //            result.MemberCenterOrders.Add(tempResult);
+        //        }
+        //    }
+        //    return result;
+        //}
 
         public RegistrationViewModel GetRegistrationsFakeData()
         {

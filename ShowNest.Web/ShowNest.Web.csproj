@@ -23,6 +23,11 @@
   </ItemGroup>
 
   <ItemGroup>
+    <Compile Include="Services\Dashboard\OrgGeneralInfoService.cs" />
+    <Compile Include="Services\Dashboard\OverviewService.cs" />
+  </ItemGroup>
+
+  <ItemGroup>
     <PackageReference Include="Dapper" Version="2.1.35" />
     <PackageReference Include="Facebook" Version="7.0.6" />
     <PackageReference Include="Jil.StrongName" Version="2.17.0" />

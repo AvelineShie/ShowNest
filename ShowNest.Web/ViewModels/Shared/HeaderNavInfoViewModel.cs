@@ -9,6 +9,7 @@
 
     public class UserOrgInfo
     {
+        public string UserOrgId { get; set; }
         public string UserOrgName { get; set; }
         public string UserOrgUrl { get; set; }
     }
