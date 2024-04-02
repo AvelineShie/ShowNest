@@ -13,6 +13,7 @@
     const locationName = document.getElementById("LocationName");
     const eventAddress = document.getElementById("EventAddress");
     const eventStatus = document.getElementById("EventStatus");
+    const mainOrganizerInput = document.getElementById("MainOrganizerInput");
 
     hideOnlineElements();
 
@@ -75,19 +76,19 @@ initMap();
 /*Map end*/
 
 /*上傳圖片 */
-document.getElementById('uploadInput')
-    .addEventListener('change', function () {
-    const file = this.files[0];
-    if (file) {
-        const reader = new FileReader();
-        reader.onload = function () {
-            //render img on uploadInput
-            const uploadedImage = document.getElementById('uploadedImage');
-            uploadedImage.src = reader.result;
-        }
-        reader.readAsDataURL(file);
-    }
-});
+//document.getElementById('uploadInput')
+//    .addEventListener('change', function () {
+//    const file = this.files[0];
+//    if (file) {
+//        const reader = new FileReader();
+//        reader.onload = function () {
+//            //render img on uploadInput
+//            const uploadedImage = document.getElementById('uploadedImage');
+//            uploadedImage.src = reader.result;
+//        }
+//        reader.readAsDataURL(file);
+//    }
+//});
 
 // 還原原圖
 document.getElementById('restoreBtn')
@@ -109,19 +110,18 @@ function validateForm() {
 
     //網址列驗證
     /*websiteLinkInput.addEventListener("change", function () {*/
-    let regex = /^[a-z0-9]{3,16}$/;
 
     if (websiteLinkInput === "") {
-        websiteLinkInput.classList.add("is-invalid"); // 添加 is-invalid 類別
-        return false; // 驗證失敗，阻止提交
+        websiteLinkInput.classList.add("is-invalid"); 
+        return false; 
     }
     else {
-        websiteLinkInput.classList.remove("is-invalid"); // 移除 is-invalid 類別
+        websiteLinkInput.classList.remove("is-invalid"); 
     }
 
     // 檢查網址是否符合規則
     let regex = /^[a-z0-9]{3,16}$/;
-    if (regex.test(websiteLink)) {
+    if (regex.test(websiteLinkInput)) {
         websiteLinkInput.dataset.isValid = "false";
         okSpan.textContent = "請輸入3 到 16 個小寫英文或數字"; // 顯示錯誤訊息
         okSpan.style.display = "block";
@@ -132,7 +132,15 @@ function validateForm() {
         okSpan.innerHTML = '<i class="fa-solid fa-circle-check"></i> 可以使用';
         okSpan.style.display = "block"; //顯示OK
     }
-   /* });*/
+    /*});*/
+
+    //主辦單位
+    if (mainOrganizerInput.value === "") {
+        mainOrganizerInput.classList.add("is-invalid"); // 添加 is-invalid 類別
+        return false; // 驗證失敗，阻止提交
+    } else {
+        mainOrganizerInput.classList.remove("is-invalid"); // 移除 is-invalid 類別
+    }
 
     //時間欄位
     if ((startTimeInput.value === "" && endTimeInput.value === "") || checkbox.checked) {
@@ -142,21 +150,17 @@ function validateForm() {
         return false; // 驗證失敗，阻止提交
     }
 
-    //startTimeInput.addEventListener("change", checkTimeSelection);
-    //endTimeInput.addEventListener("change", checkTimeSelection);
-    //checkbox.addEventListener("change", checkTimeSelection);
-    //checkTimeSelection();
-
     //活動類型&活動地點驗證
-    // 清除所有驗證錯誤
-    //locationName.classList.remove("is-invalid");
-    //eventAddress.classList.remove("is-invalid");
-
     // 實體活動
+    //如果是線上,則沒有必填
+    //如果選擇實體,若實體的場地名稱跟地址為空白,則阻止提交
     if (eventStatus.value === "0" && locationName.value === "" || eventAddress.value === "") { 
             locationName.classList.add("is-invalid");
             return false;
     }
+
+    locationName.classList.remove("is-invalid");
+    eventAddress.classList.remove("is-invalid");
 
     return true;
 }
