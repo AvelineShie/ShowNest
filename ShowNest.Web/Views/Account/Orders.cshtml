@@ -9,7 +9,7 @@
     <link rel="stylesheet" href="~/css/_Partial/_AccountNavBarPartial.css">
 }
 
-<div class="wrap width">
+<div id="app" class="wrap width">
     <!-- account navigation -->
     <div class="account-navigation-wrap">
     @await Html.PartialAsync("_AccountNavBarPartial", new List<TabStatusViewModel>
@@ -32,64 +32,69 @@
             <p>活動名稱 / 描述</p>
         </div>
     </div>
-    <div class="order-detail">
-        <div class="order-id-with-pic">
-            <div class="order-id">#645920</div>
-            <div class="event-pic"><img src="https://picsum.photos/250/131/?random=10" alt="event image"></div>
+    <div v-for="userOrder in userOrderList">
+        <div class="order-detail">
+            <div class="order-id-with-pic">
+                <div class="order-id">#645920</div>
+                <div class="event-pic"><img v-bind:src="userOrder.EventImage" width="250" height="130" alt="event image"></div>
+            </div>
+            <div class="order-event-detail">
+                <div class="event-title">
+                    <a href="#">{{userOrder.EventName}}</a>
+                </div>
+                <div class="event-detail">
+                    <table>
+                        <tr>
+                            <th>開始時間</th>
+                            <td>{{dateformatter(userOrder.EventStartTime)}}</td>
+                        </tr>
+                        <tr>
+                            <th>活動地點</th>
+                            <td>{{userOrder.LocationName}} / {{userOrder.LocationAddress}}</td>
+                        </tr>
+                        <tr>
+                            <th>主辦單位</th>
+                            <td>{{userOrder.MainOrganizer}}</td>
+                        </tr>
+                        <tr>
+                            <th>狀態</th>
+                            <td v-if="OrderStatus==0" class="ticket-payment-pending">待付款</td>
+                            <td v-else-if="OrderStatus==1" class="ticket-cancel">取消</td>
+                            <td v-else class="ticket-paid">已付款</td>
+                        </tr>
+                        <tr>
+                            <th>票劵類型</th>
+                            <td>{{userOrder.TicketTypeName}}</td>
+                        </tr>
+                        <tr>
+                            <th>票劵數量</th>
+                            <td>1</td>
+                        </tr>
+                        <tr>
+                            <th>總價</th>
+                            <td>{{moneyformatter(userOrder.TotalPrice)}}</td>
+                        </tr>
+                    </table>
+                </div>
+            </div>
+            <div class="order-btns">
+                <div class="btn-edit-order">
+                    <a asp-controller="Events" asp-action="OrderDetail">查看/修改資料</a>
+                </div>
+                <div class="btn-contact-organizer">
+                    <a asp-controller="Organizations" asp-action="ContactOrganization">聯絡主辦單位</a>
+                </div>
+                <div class="btn-contact-customer-service">
+                    <a href="#">聯絡客服</a>
+                </div>
+                <div class="btn-cancel-order">
+                    <a href="#">取消訂單</a>
+                </div>
+            </div>
         </div>
-        <div class="order-event-detail">
-            <div class="event-title">
-                <a href="#">WebConf Taiwan 2013</a>
-            </div>
-            <div class="event-detail">
-                <table>
-                    <tr>
-                        <th>開始時間</th>
-                        <td>2013/01/12 09:00</td>
-                    </tr>
-                    <tr>
-                        <th>活動地點</th>
-                        <td>中央研究院人文社會科學館 / 台北市南港區研究院路二段128號</td>
-                    </tr>
-                    <tr>
-                        <th>主辦單位</th>
-                        <td>WebConf Taiwan</td>
-                    </tr>
-                    <tr>
-                        <th>狀態</th>
-                        <td class="ticket-payment-pending">待付款</td>
-                    </tr>
-                    <tr>
-                        <th>票劵類型</th>
-                        <td>電子票券</td>
-                    </tr>
-                    <tr>
-                        <th>票劵數量</th>
-                        <td>1</td>
-                    </tr>
-                    <tr>
-                        <th>總價</th>
-                        <td>TWD$1,300</td>
-                    </tr>
-                </table>
-            </div>
-        </div>
-        <div class="order-btns">
-            <div class="btn-edit-order">
-                <a asp-controller="Events" asp-action="OrderDetail">查看/修改資料</a>
-            </div>
-            <div class="btn-contact-organizer">
-                <a asp-controller="Organizations" asp-action="ContactOrganization">聯絡主辦單位</a>
-            </div>
-            <div class="btn-contact-customer-service">
-                <a href="#">聯絡客服</a>
-            </div>
-            <div class="btn-cancel-order">
-                <a href="#">取消訂單</a>
-            </div>
-        </div>
+        <hr>
     </div>
-    <hr>
+    @* 
     <div class="order-detail">
         <div class="order-id-with-pic">
             <div class="order-id">#645920</div>
@@ -206,5 +211,38 @@
             </div>
         </div>
     </div>
-    <hr>
+    <hr> *@
 </div>
+
+
+<script type="module">
+    import { user } from "/js/api/userAPI.js";
+    import { tools } from "/js/api/tools.js";
+
+    const app = Vue.createApp({
+        data() {
+            return {
+                userOrderList: []
+            }
+        },
+
+        mounted() {
+            user.GetUserOrderList(this.getUserOrderListSuccess);
+        },
+
+        methods: {
+            moneyformatter(value) { return tools.moneyformatter(value) },
+            dateformatter(value) { return tools.dateformatter(value) },
+
+            getUserOrderListSuccess(res) {
+                console.log(res);
+                if (res.status) {
+                    this.userOrderList = res.data;
+                    console.log(this.userOrderList);
+                }else{
+                    console.log(res.msg);
+                }
+            }
+        }
+    }).mount('#app');
+</script>

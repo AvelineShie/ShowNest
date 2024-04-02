@@ -1,22 +1,17 @@
-﻿using ShowNest.Web.ViewModels.Events;
+﻿using Microsoft.AspNetCore.Mvc.Rendering;
+using ShowNest.Web.ViewModels.Events;
 using ShowNest.Web.ViewModels.UserAccount;
 
 namespace ShowNest.Web.ViewModels.Dashboard
 {
+    
     public class CreateEventViewModel
     {
-        public List <OrganizationList> OrgName { get; set; }
-        public List <EventList> EventName { get; set; }
+       
+        public List<SelectListItem> OrgName { get; set; }
+        public List<SelectListItem> EventName { get; set; }
     }
 
-    public class EventList
-    {
-
-    }
-
-    public class OrganizationList
-    {
-    }
 }
 
 

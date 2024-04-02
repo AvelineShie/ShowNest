@@ -1,3 +1,14 @@
-﻿@{
-    Layout = "_Layout";
+﻿@inject _LoggedInLayoutService loggedInLayoutService
+
+@{
+    var result = loggedInLayoutService.GetHeaderViewInfo();
+
+    if (!Context.User.Identity.IsAuthenticated || result == null)
+    {
+        Layout = "_UnLoggedInLayout";
+    }
+    else
+    {
+        Layout = "_LoggedInLayout";
+    }
 }

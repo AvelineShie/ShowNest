@@ -9,13 +9,12 @@
 
   <ItemGroup>
     <Compile Remove="Services\Dashboard\**" />
-    <Compile Remove="Services\NewFolder\**" />
     <Content Remove="Services\Dashboard\**" />
-    <Content Remove="Services\NewFolder\**" />
     <EmbeddedResource Remove="Services\Dashboard\**" />
-    <EmbeddedResource Remove="Services\NewFolder\**" />
     <None Remove="Services\Dashboard\**" />
-    <None Remove="Services\NewFolder\**" />
+    <None Include="wwwroot\js\API\api.js" />
+    <None Include="wwwroot\js\API\tools.js" />
+    <None Include="wwwroot\js\API\userAPI.js" />
     <None Include="wwwroot\SeatsData.json" />
   </ItemGroup>
 
@@ -24,6 +23,13 @@
   </ItemGroup>
 
   <ItemGroup>
+    <Compile Include="Services\Dashboard\CreateEventServive.cs" />
+    <Compile Include="Services\Dashboard\OrgGeneralInfoService.cs" />
+    <Compile Include="Services\Dashboard\OverviewService.cs" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Dapper" Version="2.1.35" />
     <PackageReference Include="Facebook" Version="7.0.6" />
     <PackageReference Include="Jil.StrongName" Version="2.17.0" />
     <PackageReference Include="Microsoft.EntityFrameworkCore" Version="7.0.16" />

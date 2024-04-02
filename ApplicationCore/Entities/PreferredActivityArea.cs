@@ -23,7 +23,7 @@ public partial class PreferredActivityArea
     /// </summary>
     public int AreaId { get; set; }
 
-    public virtual Area Area { get; set; } = null!;
+    public virtual Area Area { get; set; }
 
-    public virtual User User { get; set; } = null!;
+    public virtual User User { get; set; }
 }

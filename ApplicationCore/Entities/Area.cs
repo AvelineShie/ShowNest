@@ -16,7 +16,7 @@ public partial class Area
     /// <summary>
     /// 地區名稱
     /// </summary>
-    public string Name { get; set; } = null!;
+    public string Name { get; set; }
 
     public virtual ICollection<PreferredActivityArea> PreferredActivityAreas { get; set; } = new List<PreferredActivityArea>();
 }

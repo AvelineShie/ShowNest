@@ -1,11 +1,22 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using ShowNest.Web.Services.Dashboard;
 using ShowNest.Web.ViewModels.Dashboard;
 using ShowNest.Web.ViewModels.Events;
+using System.Drawing.Text;
 
 namespace ShowNest.Web.Controllers
 {
     public class DashboardController : Controller
     {
+        private readonly OverviewService _overviewService;
+        private readonly OrgGeneralInfoService _orgGeneralInfoService;
+
+        public DashboardController(OverviewService overviewService, OrgGeneralInfoService orgGeneralInfoService)
+        {
+            _overviewService = overviewService;
+            _orgGeneralInfoService = orgGeneralInfoService;
+        }
+
         public IActionResult Index()
         {
             return View();
@@ -17,23 +28,37 @@ namespace ShowNest.Web.Controllers
             return View();
         }
 
-
-        public Task<IActionResult> SetEvent()
+        [HttpGet]
+        public async Task<IActionResult> SetEvent()
         {
-            
-            return Task.FromResult<IActionResult>(View());
+
+            return View();
         }
 
-        public Task<IActionResult> SetTicket()
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public async Task<IActionResult> SetEvent(SetEventViewModel model)
         {
+            if (ModelState.IsValid)
+            {
 
-            return Task.FromResult<IActionResult>(View());
+                return RedirectToAction(nameof(SetEvent));
+
+            }
+
+            return View(model);
         }
 
-        public Task<IActionResult> SetTable()
+        public async Task<IActionResult> SetTicket()
         {
 
-            return Task.FromResult<IActionResult>(View());
+            return View();
+        }
+
+        public async Task<IActionResult> SetTable()
+        {
+
+            return View();
         }
 
         public IActionResult EventHub()
@@ -77,16 +102,25 @@ namespace ShowNest.Web.Controllers
 
         }
 
-        public IActionResult Organizations(string viewType)
+        public IActionResult Organizations(int id, string ViewType)
         {
-            switch (viewType)
+
+            switch (ViewType)
             {
                 case "Overview":
-                    return View("Overview");
+                    {
+                        var overviewViewModel = _overviewService.GetOverviewViewModel(id);
+                        return View("Overview", overviewViewModel);
+                    }
+                    
                 case "OrgAccount":
                     return View("OrgAccount");
                 case "OrgGeneralInfo":
-                    return View("OrgGeneralInfo");
+                    {
+                        var orgGeneralInfoViewModel = _orgGeneralInfoService.GetOrgGeneralInfoViewModel(id);
+                        return View("OrgGeneralInfo", orgGeneralInfoViewModel);
+                    }
+                    
                 case "OrgAuthority":
                     return View("OrgAuthority");
 

@@ -15,7 +15,7 @@ public partial class HistoryPassword
     /// <summary>
     /// 使用過的密碼
     /// </summary>
-    public string UsedPassword { get; set; } = null!;
+    public string UsedPassword { get; set; }
 
     /// <summary>
     /// 新增時間
@@ -27,5 +27,5 @@ public partial class HistoryPassword
     /// </summary>
     public DateTime? EditedAt { get; set; }
 
-    public virtual User User { get; set; } = null!;
+    public virtual User User { get; set; }
 }

@@ -3,7 +3,7 @@ namespace ShowNest.Web.ViewModels.Events
 {
     public class EventPageViewModel
     {
-        //public int EventId { get; set; } //整個Event的ID
+        public int EventId { get; set; } //整個Event的ID
         public string MainImage { get; set; }
         public string EventName { get; set; }
         public DateTime EventTime { get; set; }

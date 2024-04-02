@@ -1,30 +1,55 @@
 ﻿using ApplicationCore.Entities;
 using ApplicationCore.Interfaces;
+using Dapper;
 using Infrastructure.Data;
-using Microsoft.EntityFrameworkCore.Storage;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using Microsoft.Data.SqlClient;
+using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.Configuration;
 
 namespace Infrastructure.Services
 {
-    public class OrderQueryServiceByDbContext:IOrderQueryService
+    public class OrderQueryService : IOrderQueryService
     {
-        private readonly DatabaseContext __context;
-        private readonly string custormerId;
+        private readonly DatabaseContext _context;
+        private readonly string _connectionStr;
 
-        public OrderQueryServiceByDbContext(DatabaseContext context, string custormerId)
+        public OrderQueryService(DatabaseContext context, IConfiguration configuration)
         {
-            __context = context;
-            this.custormerId = custormerId;
+            _context = context;
+            _connectionStr = configuration.GetConnectionString("DatabaseContext");
         }
 
-
-        List<Order> IOrderQueryService.GetOrders(string customerId)
+        public decimal GetCustomerOrderTotalAmount(int userId)
         {
-            return __context.Orders.ToList();
+            var temp = _context.Orders
+                .Include(o => o.ArchiveOrder)
+                .Where(o => o.UserId == (userId))
+                .SelectMany(o => o.Tickets)
+                .Select(x => new
+                {
+                    x.Order.ArchiveOrder.TicketPrice,
+                    x.Order.ArchiveOrder.PurchaseAmount
+                })
+                .ToList();
+            return temp
+                   .Sum(od => od.PurchaseAmount * od.TicketPrice);
         }
     }
 }
+
+
+        //public List<Order> GetOrders(int userId)
+        //{
+        //    using (var context = new SqlConnection(_connectionStr))
+        //    {
+
+        //        return _context.Orders
+        //            .Include(o => o.ArchiveOrder)
+        //            .ThenInclude(od => od.Order.Tickets)
+        //            .Where(o => o.UserId == userId)
+        //            .ToList();
+        //    }
+        //}
+
+       
+
