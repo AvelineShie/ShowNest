@@ -47,7 +47,6 @@ header.org_header {
 .org-title {
     color: var(--main-green);
     font-weight: bold;
-
 }
 
 .org-title {
@@ -61,24 +60,24 @@ header.org_header {
     padding: 30px 20px 8px 20px;
 }
 
-.list-title{
+.list-title {
     padding-top: 30px;
 }
 
 /* -------ongoing-event-list----------- */
 
 .ongoing-event-list {
-    padding: 0px 20px 8px 20px;
+    padding: 0px 20px 0px 20px;
 }
 
-.ongoing-event-list h3 {
-    display: inline-block;
-    vertical-align: middle;
-    font-weight: normal;
-    color: var(--dark-gray);
-    padding-right: 10px;
-    font-size: 24px;
-}
+    .ongoing-event-list h3 {
+        display: inline-block;
+        vertical-align: middle;
+        font-weight: normal;
+        color: var(--dark-gray);
+        padding-right: 10px;
+        font-size: 24px;
+    }
 
 /* -------button setting----------- */
 .btn-light {
@@ -118,6 +117,7 @@ header.org_header {
 }
 
 .events .no-event {
+    margin-top: 20px;
     background-color: var(--light-gray);
 }
 
@@ -145,9 +145,9 @@ header.org_header {
     flex-direction: row;
 }
 
-.list-names p {
-    font-weight: 400;
-}
+    .list-names p {
+        font-weight: 400;
+    }
 
 .button-group {
     padding: 0px 0px 20px 20px;
@@ -191,10 +191,10 @@ header.org_header {
     border: none;
 }
 
-.btn-warning:hover {
-    background-color: #f7cb49;
-    border: none;
-}
+    .btn-warning:hover {
+        background-color: #f7cb49;
+        border: none;
+    }
 
 .page-col {
     padding-bottom: 55px;
@@ -242,5 +242,4 @@ header.org_header {
     .closed-event h2 {
         text-align: center;
     }
-
 }

@@ -9,10 +9,12 @@ namespace ShowNest.Web.Controllers
     public class DashboardController : Controller
     {
         private readonly OverviewService _overviewService;
+        private readonly OrgGeneralInfoService _orgGeneralInfoService;
 
-        public DashboardController(OverviewService overviewService)
+        public DashboardController(OverviewService overviewService, OrgGeneralInfoService orgGeneralInfoService)
         {
             _overviewService = overviewService;
+            _orgGeneralInfoService = orgGeneralInfoService;
         }
 
         public IActionResult Index()
@@ -108,14 +110,17 @@ namespace ShowNest.Web.Controllers
                 case "Overview":
                     {
                         var overviewViewModel = _overviewService.GetOverviewViewModel(id);
-
                         return View("Overview", overviewViewModel);
                     }
                     
                 case "OrgAccount":
                     return View("OrgAccount");
                 case "OrgGeneralInfo":
-                    return View("OrgGeneralInfo");
+                    {
+                        var orgGeneralInfoViewModel = _orgGeneralInfoService.GetOrgGeneralInfoViewModel(id);
+                        return View("OrgGeneralInfo", orgGeneralInfoViewModel);
+                    }
+                    
                 case "OrgAuthority":
                     return View("OrgAuthority");
 

@@ -26,6 +26,7 @@ namespace ShowNest.Web.Controllers
             _accountService = accountService;
             _userService = userService;
         }
+        //登入
         [HttpGet]
         public IActionResult LogIn()
         {
@@ -43,13 +44,13 @@ namespace ShowNest.Web.Controllers
             }
             else
             {
-                // 登入失敗，返回錯誤信息
+                // 登入失敗，返回錯誤信息 (待修)
                 ModelState.AddModelError("", result.ErrorMessage);
                 return View(Login);
             }
         }
         
-
+        //註冊
         [HttpGet]
         public IActionResult SignUp()
         {
@@ -66,13 +67,13 @@ namespace ShowNest.Web.Controllers
                 bool isRegistered = await _userService.RegisterUserAsync(SignUp, ModelState.IsValid);
                 if (isRegistered)
                 {
-                    // 註冊成功後，重定向到登入頁面或其他適當的頁面
+                    // 註冊成功後，重定向到登入後頁面(待修)
                     return RedirectToAction("Login", "Account");
                 }
                 else
                 {
-                    // 註冊失敗，返回視圖以顯示錯誤訊息
-                    // 您可以選擇添加一個錯誤訊息到ModelState，以便在視圖中顯示
+                    // 註冊失敗，返回VIEW以顯示錯誤訊息
+                    // 要加一個錯誤訊息到
                     ModelState.AddModelError("", "註冊失敗，請稍後再試。");
                 }
             }

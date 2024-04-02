@@ -21,27 +21,27 @@
 
                     <div class="user-name">
                         @Html.EditorFor(model => model.Account, new { htmlAttributes = new { @class = "form-control", placeholder = "使用者名稱", @id = "userName", @required = "required" } })
-                        @Html.ValidationMessageFor(model => model.Account, "", new { @class = "text-danger" })
+                        @Html.ValidationMessageFor(model => model.Account, "", new { @class = "error-message text-danger" })
                     </div>
                     <div class="email">
-                        @Html.EditorFor(model => model.Email, new { htmlAttributes = new { @class = "email", placeholder = "請輸入Email", @id = "email", @required = "required" } })
-                        @Html.ValidationMessageFor(model => model.Email)
+                        @Html.EditorFor(model => model.Email, new { htmlAttributes = new { @class = "form-control", placeholder = "請輸入Email", @id = "email", @required = "required" } })
+                        @Html.ValidationMessageFor(model => model.Email, "", new { @class = "error-message text-danger" })
                     </div>
 
                     <div class="passwords">
 
-                        @Html.EditorFor(model => model.Password, new { htmlAttributes = new { @class = "passwords", placeholder = "請輸入密碼", @id = "pass", @required = "required", @type = "password" } })
-                        @Html.ValidationMessageFor(model => model.Password)
+                        @Html.EditorFor(model => model.Password, new { htmlAttributes = new { @class = "form-control", placeholder = "請輸入密碼", @id = "pass", @required = "required", @type = "password" } })
+                        @Html.ValidationMessageFor(model => model.Password, "", new { @class = "error-message text-danger" })
                     </div>
 
                     <div class="passwords">
 
-                        @Html.EditorFor(model => model.ConfirmPassword, new { htmlAttributes = new { @class = "passwords", placeholder = "請再輸入密碼", @id = "repass", @required = "required", @type = "password" } })
-                        @Html.ValidationMessageFor(model => model.ConfirmPassword)
+                        @Html.EditorFor(model => model.ConfirmPassword, new { htmlAttributes = new { @class = "form-control", placeholder = "請再輸入密碼", @id = "repass", @required = "required", @type = "password" } })
+                        @Html.ValidationMessageFor(model => model.ConfirmPassword, "", new { @class = "error-message text-danger" })
                     </div>
                     <div class="birthday">
                         @Html.EditorFor(model => model.Birthday, new { htmlAttributes = new { @class = "form-control", placeholder = "出生年月日", @id = "birthday", @required = "required", @type = "text", onfocus = "(this.type='date')" } })
-                        @Html.ValidationMessageFor(model => model.Birthday, "", new { @class = "text-danger" })
+                        @Html.ValidationMessageFor(model => model.Birthday, "", new { @class = "error-message text-danger" })
                     </div>
 
                     <div class="submit">
@@ -57,3 +57,4 @@
         </div>
     </div>
 </div>
+
