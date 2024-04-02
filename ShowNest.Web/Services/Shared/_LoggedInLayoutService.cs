@@ -17,29 +17,38 @@ namespace ShowNest.Web.Services.Shared
 
         public HeaderNavInfoViewModel GetHeaderViewInfo()
         {
-            
-            var userIdFromClaim = _httpContextAccessor.HttpContext.User.Claims.FirstOrDefault(c => c.Type == ClaimTypes.NameIdentifier).Value;
-            var info = _context.Users
-                .Include(u => u.OrganizationAndUserMappings)
-                .ThenInclude(ou => ou.Organization)
-                .FirstOrDefault(x => x.Id == int.Parse(userIdFromClaim));
 
-            var result = new HeaderNavInfoViewModel();
-
-            result.UserName = info.Nickname;
-            result.UserOrg = new List<UserOrgInfo>();
-            foreach(var org in info.Organizations)
+            var userIdFromClaim = _httpContextAccessor.HttpContext.User.Claims.FirstOrDefault(c => c.Type == ClaimTypes.NameIdentifier);
+            if (userIdFromClaim == null)
             {
-                var orgToAdd = new UserOrgInfo
-                {
-                    UserOrgName = org.Name,
-                    UserOrgUrl = $"{org.Name}URL"
-                };
-                result.UserOrg.Add(orgToAdd);
+                return null;
             }
-            result.UserImgUrl = "https://picsum.photos/300/200/?random=10";
+            else
+            {
+                var info = _context.Users
+                                .Include(u => u.OrganizationAndUserMappings)
+                                .ThenInclude(ou => ou.Organization)
+                                .FirstOrDefault(x => x.Id == int.Parse(userIdFromClaim.Value));
 
-            return result;
+                var result = new HeaderNavInfoViewModel();
+
+                result.UserName = info.Nickname;
+                result.UserOrg = new List<UserOrgInfo>();
+                foreach (var org in info.Organizations)
+                {
+                    var orgToAdd = new UserOrgInfo
+                    {
+                        UserOrgId = org.Id.ToString(),
+                        UserOrgName = org.Name,
+                        UserOrgUrl = $"{org.Name}URL"
+                    };
+                    result.UserOrg.Add(orgToAdd);
+                }
+                result.UserImgUrl = "https://picsum.photos/300/200/?random=10";
+
+                return result;
+            }
+
         }
     }
 }
