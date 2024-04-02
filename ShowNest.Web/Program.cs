@@ -37,7 +37,6 @@ namespace ShowNest.Web
 
 
             // Registration Service
-            builder.Services.AddScoped<OrderTicketService>();
             builder.Services.AddScoped<HomeCarouselService>();
             builder.Services.AddScoped<EventCardService>();
             builder.Services.AddScoped<CategoryTagService>();
