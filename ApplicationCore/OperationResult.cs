@@ -6,9 +6,9 @@ using System.Threading.Tasks;
 
 namespace ApplicationCore
 {
-    public class OperrionResult
+    public class OperationResult
     {
-        public OperrionResult(bool status, Object data, string message = "")
+        public OperationResult(bool status, Object data, string message = "")
         {
             this.Status = status;
             this.Data = data;

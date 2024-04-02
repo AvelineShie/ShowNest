@@ -2,6 +2,6 @@
 {
     public interface IUserAccountAPIService
     {
-        OperrionResult GetUserOrderDetailListByUserId(string userId);
+        OperationResult GetUserOrderDetailListByUserId(string userId);
     }
 }

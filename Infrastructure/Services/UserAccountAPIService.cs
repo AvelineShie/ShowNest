@@ -15,7 +15,7 @@ namespace Infrastructure.Services
             _connectionStr = configuration.GetConnectionString("ShowNestDb");
         }
 
-        public OperrionResult GetUserOrderDetailListByUserId(string userId)
+        public OperationResult GetUserOrderDetailListByUserId(string userId)
 
         {
 
