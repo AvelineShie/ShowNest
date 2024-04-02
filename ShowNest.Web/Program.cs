@@ -30,7 +30,7 @@ namespace ShowNest.Web
             builder.Services.AddDbContext<DatabaseContext>(options => options.UseSqlServer(connectionString).EnableSensitiveDataLogging());
 
             // Registration Repository
-            builder.Services.AddScoped<ISeatRepository, SeatRepository>();
+            // builder.Services.AddScoped<ISeatRepository, SeatRepository>();
             builder.Services.AddScoped<ISeatAreaRepository, SeatAreaRepository>();
             builder.Services.AddScoped<ITicketTypeRepository, TicketTypeRepository>();
             builder.Services.AddScoped<IOrganizationRepository, OrganizationRepository>();
