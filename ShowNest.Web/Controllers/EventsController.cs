@@ -5,6 +5,7 @@ using ApplicationCore.Entities;
 using ApplicationCore.Interfaces;
 using Elfie.Serialization;
 using Infrastructure.Services;
+using Microsoft.AspNetCore.Components;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 using ShowNest.Web.Models;
@@ -17,6 +18,7 @@ using Ticket = ApplicationCore.Entities.Ticket;
 
 namespace ShowNest.Web.Controllers
 {
+    
     public class EventsController : Controller
     {
 
@@ -86,9 +88,14 @@ namespace ShowNest.Web.Controllers
             return View(eventIndexViewModel);
         }
 
+        public IActionResult Search([FromQuery] QueryParameters parameters)
+        {
+            ///Events/Search?Id=1&Name=SSS&MaxPrice=300&MinPrice=10&StartTime=0&EndTime=0&CategoryTag=2
+            return View();
+        }
         public IActionResult EventPage(string OrganizationId, string EventId)
         {
-            var eventPageViewModel= _eventPageService.GetEventPageViewModel();
+            //var eventPageViewModel= _eventPageService.GetEventPageViewModel();
 
             return Content($"OrganizationId: {OrganizationId}, EventId: {EventId}");
         }
