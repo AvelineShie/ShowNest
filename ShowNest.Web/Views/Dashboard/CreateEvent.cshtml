@@ -19,9 +19,9 @@
                 <p>您尚未選擇組織，請選取此活動所屬之組織：</p>
                 <select name="所屬組織" id="organizeList" class=".form-select">
                     <option selected value ='option1'> === 請選擇組織 === </option>
-                    @Html.DropDownListFor(model => model.OrgName, Model.OrgName)
+                    @* @Html.DropDownListFor(model => model.OrgName, Model.OrgName) *@
                     @* 實際渲染:<option value="1">深夜九點半搶銀行</option> *@
-                    @* <option>深夜九點半搶銀行</option> *@
+                    <option>深夜九點半搶銀行</option>
 
                 </select>
                 <!-- Hide the organizations while not selected below -->
