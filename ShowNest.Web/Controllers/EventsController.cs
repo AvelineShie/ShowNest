@@ -59,14 +59,14 @@ namespace ShowNest.Web.Controllers
 
 
         public EventsController(EventIndexService eventIndexService, OrderTicketService orderQueryService,
-            IRepository<ArchiveOrder> archiveOrderRepo, IRepository<ApplicationCore.Entities.Ticket> ticket, IOrderRepository orderRepo)
+            IRepository<ArchiveOrder> archiveOrderRepo, IRepository<ApplicationCore.Entities.Ticket> ticket, IOrderRepository orderRepo, EventPageService eventPageService)
         {
             _eventIndexService = eventIndexService;
             _orderQueryService = orderQueryService;
             _archiveOrderRepo = archiveOrderRepo;
             _ticket = ticket;
             _orderRepo = orderRepo;
-          
+            _eventPageService = eventPageService;
         }
 
         public IActionResult Index(int page)
@@ -93,7 +93,7 @@ namespace ShowNest.Web.Controllers
             ///Events/Search?Id=1&Name=SSS&MaxPrice=300&MinPrice=10&StartTime=0&EndTime=0&CategoryTag=2
             return View();
         }
-        public IActionResult EventPage(string EventId)
+        public IActionResult EventPage(int EventId)
         {
             var eventPageViewModel = _eventPageService.GetEventPageViewModel(EventId);
 
