@@ -1,31 +1,45 @@
-﻿//using System.Diagnostics;
-//using ApplicationCore.Entities;
-//using Azure.Core;
-//using Microsoft.AspNetCore.Mvc.Rendering;
+﻿using System.Diagnostics;
+using System.Security.Cryptography;
+using ApplicationCore.Entities;
+using Azure.Core;
+using Microsoft.AspNetCore.Mvc.Rendering;
+using Microsoft.CodeAnalysis.CSharp;
+using ShowNest.Web.ViewModels.Dashboard;
 
-//namespace ShowNest.Web.Services.Dashboard
-//{
-//    public class CreateEventServive : IEventService
-//    {
-//        private readonly DbContext _dbContext;
+namespace ShowNest.Web.Services.Dashboard
+{
+    public class CreateEventService
+    {
+        private readonly IEventRepository _eventRepository;
 
-//        public CreateEventServive(DbContext dbContext)
-//        {
-//            _dbContext = dbContext;
-//        }
+        public CreateEventService(IEventRepository eventRepository)
+        {
+            _eventRepository = eventRepository;
+        }
 
-//        public IEnumerable<Event> GetEventsByOrgId(int orgId)
-//        {
+        //1. 撈擁有人底下的所有OrgId, OrgName組成VM
+        public CreateEventViewModel GetOrgByOwner(int OwnerId)
+        {
+            var orgNames = _eventRepository.GetOrgIdByOwnerId(OwnerId);
+            var evetNames = _eventRepository.GetEventIdByOrgId(OrgId);
 
-//            //找出資料庫當中所有組織名稱，並依據使用者點選，將相同組織名稱的活動,渲染上去
+            foreach (OrgName in orgNames) 
+            {
+                var result = new CreateEventViewModel
+                {
+                    OrgNames = 
+                }
+
+            }
             
-//                //var events = DbContext.Events.
-//                //    Include(e => e.Organization)
-//                //    .Where(e => e.OrganizationId == orgId);
 
-//                //return events;
-            
-//        }
+        }
 
-//    }
-//}
+        //2.撈組織下面所有活動，組成VM
+        //public IEnumerable<Event> GetEventIdByOrgId(int orgId)
+        //{
+
+        //}
+
+    }
+}
