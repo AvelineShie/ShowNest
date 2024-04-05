@@ -1,24 +1,45 @@
 ﻿using ApplicationCore;
+using ApplicationCore.Entities;
 using ApplicationCore.Helpers;
 using ApplicationCore.Interfaces;
 using Dapper;
+using Infrastructure.Data;
 using Microsoft.Data.SqlClient;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
+using System;
 
 namespace Infrastructure.Services
 {
-    public class UserAccountAPIService : IUserAccountAPIService
+    public class OrderAPIService : IOrderQueryService
     {
+        private readonly DatabaseContext _context;
         private readonly string _connectionStr;
-        public UserAccountAPIService(IConfiguration configuration)
+
+        public OrderAPIService(DatabaseContext context, IConfiguration configuration)
         {
+            _context = context;
             _connectionStr = configuration.GetConnectionString("DatabaseContext");
         }
 
-        public OperationResult GetUserOrderDetailListByUserId(string userId)
-
+        public decimal GetCustomerOrderTotalAmount(int userId)
         {
+            var temp = _context.Orders
+                .Include(o => o.ArchiveOrder)
+                .Where(o => o.UserId == (userId))
+                .SelectMany(o => o.Tickets)
+                .Select(x => new
+                {
+                    x.Order.ArchiveOrder.TicketPrice,
+                    x.Order.ArchiveOrder.PurchaseAmount
+                })
+                .ToList();
+            return temp
+                   .Sum(od => od.PurchaseAmount * od.TicketPrice);
+        }
 
+        public OperationResult GetOrderDetailByOrderId(string userId, int orderId)
+        {
             using (SqlConnection connection = new SqlConnection(_connectionStr))
             {
                 var sql = @"
@@ -64,7 +85,7 @@ namespace Infrastructure.Services
                             LEFT JOIN Organizations ORG ON ORG.Id = E.OrganizationId
                             LEFT JOIN Users U ON ORG.OwnerId = U.Id
                             LEFT JOIN LogInInfo LI ON U.Id = LI.UserId
-                            WHERE U.Id = @UserId
+                            WHERE U.Id = @UserId AND O.Id=@OrderId
 
                             GROUP BY O.Id,U.Id,T.Id,E.Id,E.EventImage,E.StartTime,E.Name,E.MainOrganizer,S.SeatAreaId,SA.Name,S.Id,S.Number,AO.TicketPrice,
                             E.OrganizationId,ORG.OrganizationURL,E.LocationAddress,E.LocationName,E.StreamingUrl,TT.Id,U.Nickname,LI.Email,U.Mobile,
@@ -73,7 +94,7 @@ namespace Infrastructure.Services
 
                 try
                 {
-                    var data = connection.Query(sql, new { UserID = userId }).ToList();
+                    var data = connection.Query(sql, new { UserID = userId, OrderID = orderId }).First();
                     return OpperationResultHelper.ReturnSuccessData(data);
                 }
                 catch (Exception ex)
@@ -82,5 +103,12 @@ namespace Infrastructure.Services
                 }
             }
         }
+       
+
+
     }
+
 }
+
+       
+

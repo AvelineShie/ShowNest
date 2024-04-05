@@ -22,6 +22,7 @@ namespace ApplicationCore.Interfaces
         bool Any(Expression<Func<TEntity, bool>> expression);
         List<TEntity> List(Expression<Func<TEntity, bool>> expression);
         List<TEntity> All();
-
+        Task<TEntity> UpdateAsync(TEntity entity);
+        Task<TEntity> GetByIdAsync<TEntityId>(TEntityId id);
     }
 }

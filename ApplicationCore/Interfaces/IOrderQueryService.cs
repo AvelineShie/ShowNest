@@ -1,4 +1,5 @@
 ﻿using ApplicationCore.Entities;
+using DemoShop.ApplicationCore.Interfaces.TodoService.Dto;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
@@ -13,7 +14,8 @@ namespace ApplicationCore.Interfaces
         //List<OrderQueryDto> GetOrdersByUserId(int userId);
         //List<Order> GetOrders(int userId);
         decimal GetCustomerOrderTotalAmount(int userId);
-    }
+        OperationResult GetOrderDetailByOrderId(string userId, int orderId);
+    };
     public class OrderQueryDto
     {
         public int OrderId { get; set; }
