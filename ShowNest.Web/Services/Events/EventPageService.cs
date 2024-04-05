@@ -1,11 +1,23 @@
 ﻿
+using ApplicationCore.Entities;
+using Microsoft.EntityFrameworkCore;
+
 namespace ShowNest.Web.Services.Events
 {
     public class EventPageService
     {
-        public List<string> GetEventPageViewModel()
+        private readonly DatabaseContext _databaseContext;
+
+        public EventPageService(DatabaseContext databaseContext)
         {
-            throw new NotImplementedException();
+            _databaseContext = databaseContext;
+        }
+        public EventPageViewModel GetEventPageViewModel(string EventId)
+        {
+            var EventPage= _databaseContext.Events;
+            return new EventPageViewModel {
+               
+            };
         }
     }
 }
