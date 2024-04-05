@@ -52,7 +52,6 @@ namespace ShowNest.Web
 
             builder.Services.AddScoped<AccountService>();
             builder.Services.AddHttpContextAccessor();
-            builder.Services.AddScoped<UserService>();
             builder.Services.AddScoped<_LoggedInLayoutService>();
             
             // Add services to the container.
