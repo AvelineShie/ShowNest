@@ -1,6 +1,7 @@
 ﻿global using ApplicationCore.Interfaces;
 global using Facebook;
 global using Infrastructure.Data;
+global using Infrastructure.Services;
 global using Microsoft.EntityFrameworkCore;
 global using Newtonsoft.Json;
 global using ShowNest.Web.Models;

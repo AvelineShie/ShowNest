@@ -1,4 +1,5 @@
 ﻿using ApplicationCore.Entities;
+using ApplicationCore.DTOs;
 using ApplicationCore.Interfaces;
 using Infrastructure.Data;
 using Microsoft.EntityFrameworkCore;
@@ -23,25 +24,44 @@ namespace Infrastructure.Services
         public async Task<List<CategoryTag>> GetAllCardsByCategoryId(int categoryId)
         {
             // 因為輸入的是categoryId，所以從CategoryTags出發，關連EventAndTagMappings，再關連Event (順序很重要)
-            var categoryTagsQueries = await DbContext.CategoryTags
+            var categoryTagsQuery = await DbContext.CategoryTags
+                .Where(c => c.Id == categoryId)
                 .Include(c => c.EventAndTagMappings)
                 .ThenInclude(et => et.Event)
-                .Where(c => c.Id == categoryId)
                 .ToListAsync();
 
-            return categoryTagsQueries;
+            return categoryTagsQuery;
         }
 
         public async Task<List<CategoryTag>> GetNumbersOfCardsByCategoryId(int cardAmount, int categoryId)
         {
-            var categoryTagsQueries = await DbContext.CategoryTags
-                .Include(c => c.EventAndTagMappings)
-                .ThenInclude(et => et.Event)
+            var categoryTagsQuery = await DbContext.CategoryTags
                 .Where(c => c.Id == categoryId)
-                //.Take(cardAmount)
+                .Include(c => c.EventAndTagMappings.Take(cardAmount))
+                .ThenInclude(et => et.Event)
                 .ToListAsync();
 
-            return categoryTagsQueries;
+            return categoryTagsQuery;
+        }
+
+        public async Task<List<EventIndexDto>> GetEventIndexCards()
+        {
+            var query = await DbContext.EventAndTagMappings
+                .Include(et => et.Event)
+                .Include(et => et.CategoryTag)
+                .OrderBy(et => et.CategoryTagId)
+                .ThenBy(et => et.EventId)
+                .Select(et => new EventIndexDto
+                {
+                    EventId = et.Event.Id.ToString(),
+                    EventName = et.Event.Name,
+                    EventImgUrl = et.Event.EventImage,
+                    CategoryName = et.CategoryTag.Name,
+                    EventTime = et.Event.StartTime,
+                })
+                .ToListAsync();
+
+            return query;
         }
     }
 }

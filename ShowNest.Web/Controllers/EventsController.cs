@@ -69,23 +69,23 @@ namespace ShowNest.Web.Controllers
             _eventPageService = eventPageService;
         }
 
-        public IActionResult Index(int page)
+        public async Task<IActionResult> Index(int page)
         {
-            //var eventIndexViewModel = _eventIndexService.GetEventIndexViewModel();
+            var eventIndexViewModel = await _eventIndexService.GetEventIndexViewModel();
 
-            //int CardsPerPage = 9;
-            //int TotalPages = (int)Math.Ceiling((double)eventIndexViewModel.EventEventCards.Count / CardsPerPage);
-            //page = Math.Max(1, Math.Min(page, TotalPages));
+            int CardsPerPage = 9;
+            int TotalPages = (int)Math.Ceiling((double)eventIndexViewModel.EventEventCards.Count / CardsPerPage);
+            page = Math.Max(1, Math.Min(page, TotalPages));
 
-            //eventIndexViewModel.EventEventCards = eventIndexViewModel.EventEventCards
-            //                                        .Skip((page - 1) * CardsPerPage)
-            //                                        .Take(CardsPerPage)
-            //                                        .ToList();
+            eventIndexViewModel.EventEventCards = eventIndexViewModel.EventEventCards
+                                                    .Skip((page - 1) * CardsPerPage)
+                                                    .Take(CardsPerPage)
+                                                    .ToList();
 
-            //ViewData["TotalPages"] = TotalPages;
-            //ViewData["CurrentPage"] = page;
-           
-            return View();
+            ViewData["TotalPages"] = TotalPages;
+            ViewData["CurrentPage"] = page;
+
+            return View(eventIndexViewModel);
         }
 
         public IActionResult Search([FromQuery] QueryParametersViewModel parameters)
