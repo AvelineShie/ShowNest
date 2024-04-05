@@ -49,6 +49,9 @@ namespace ShowNest.Web
             builder.Services.AddScoped<OverviewService>();
             builder.Services.AddScoped<OrgGeneralInfoService>();
 
+            builder.Services.AddScoped<IEventRepository, EventRepository>();
+            builder.Services.AddScoped<CreateEventService>();
+
 
             builder.Services.AddScoped<AccountService>();
             builder.Services.AddHttpContextAccessor();
@@ -72,6 +75,8 @@ namespace ShowNest.Web
             
             //登入餅乾
             builder.Services.AddAuthentication(CookieAuthenticationDefaults.AuthenticationScheme).AddCookie();
+
+
 
             var app = builder.Build();
 

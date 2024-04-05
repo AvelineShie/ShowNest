@@ -1,20 +1,27 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using ApplicationCore.Interfaces;
+using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 using ShowNest.Web.Services.Dashboard;
 using ShowNest.Web.ViewModels.Dashboard;
 using ShowNest.Web.ViewModels.Events;
 using System.Drawing.Text;
+using System.Security.Claims;
 
 namespace ShowNest.Web.Controllers
 {
+    //[Authorize]
     public class DashboardController : Controller
     {
         private readonly OverviewService _overviewService;
         private readonly OrgGeneralInfoService _orgGeneralInfoService;
+        private readonly CreateEventService _createEventService;
 
-        public DashboardController(OverviewService overviewService, OrgGeneralInfoService orgGeneralInfoService)
+        public DashboardController(OverviewService overviewService, OrgGeneralInfoService orgGeneralInfoService, CreateEventService createEventService)
         {
             _overviewService = overviewService;
             _orgGeneralInfoService = orgGeneralInfoService;
+            _createEventService = createEventService;
         }
 
         public IActionResult Index()
@@ -22,10 +29,13 @@ namespace ShowNest.Web.Controllers
             return View();
         }
 
-
         public async Task<IActionResult> CreateEvent()
         {
-            return View();
+            //var userIdentifier = HttpContext.User.FindFirstValue(ClaimTypes.NameIdentifier);
+            //HttpContext?.User.Identities.FirstOrDefault()
+            var userId = 1;
+            var vm = _createEventService.GetOrgByOwner(userId);
+            return View(vm);
         }
 
         [HttpGet]
@@ -35,19 +45,13 @@ namespace ShowNest.Web.Controllers
             return View();
         }
 
-        [HttpPost]
-        [ValidateAntiForgeryToken]
-        public async Task<IActionResult> SetEvent(SetEventViewModel model)
-        {
-            if (ModelState.IsValid)
-            {
+        //[HttpPost]
+        //[ValidateAntiForgeryToken]
+        //public async Task<IActionResult> SetEvent()
+        //{
 
-                return RedirectToAction(nameof(SetEvent));
-
-            }
-
-            return View(model);
-        }
+        //    return View();
+        //}
 
         public async Task<IActionResult> SetTicket()
         {
