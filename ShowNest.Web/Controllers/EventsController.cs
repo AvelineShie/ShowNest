@@ -59,33 +59,33 @@ namespace ShowNest.Web.Controllers
 
 
         public EventsController(EventIndexService eventIndexService, OrderTicketService orderQueryService,
-            IRepository<ArchiveOrder> archiveOrderRepo, IRepository<ApplicationCore.Entities.Ticket> ticket, IOrderRepository orderRepo)
+            IRepository<ArchiveOrder> archiveOrderRepo, IRepository<ApplicationCore.Entities.Ticket> ticket, IOrderRepository orderRepo, EventPageService eventPageService)
         {
             _eventIndexService = eventIndexService;
             _orderQueryService = orderQueryService;
             _archiveOrderRepo = archiveOrderRepo;
             _ticket = ticket;
             _orderRepo = orderRepo;
-          
+            _eventPageService = eventPageService;
         }
 
-        public IActionResult Index(int page)
+        public async Task<IActionResult> Index(int page)
         {
-            //var eventIndexViewModel = _eventIndexService.GetEventIndexViewModel();
+            var eventIndexViewModel = await _eventIndexService.GetEventIndexViewModel();
 
-            //int CardsPerPage = 9;
-            //int TotalPages = (int)Math.Ceiling((double)eventIndexViewModel.EventEventCards.Count / CardsPerPage);
-            //page = Math.Max(1, Math.Min(page, TotalPages));
+            int CardsPerPage = 9;
+            int TotalPages = (int)Math.Ceiling((double)eventIndexViewModel.EventEventCards.Count / CardsPerPage);
+            page = Math.Max(1, Math.Min(page, TotalPages));
 
-            //eventIndexViewModel.EventEventCards = eventIndexViewModel.EventEventCards
-            //                                        .Skip((page - 1) * CardsPerPage)
-            //                                        .Take(CardsPerPage)
-            //                                        .ToList();
+            eventIndexViewModel.EventEventCards = eventIndexViewModel.EventEventCards
+                                                    .Skip((page - 1) * CardsPerPage)
+                                                    .Take(CardsPerPage)
+                                                    .ToList();
 
-            //ViewData["TotalPages"] = TotalPages;
-            //ViewData["CurrentPage"] = page;
-           
-            return View();
+            ViewData["TotalPages"] = TotalPages;
+            ViewData["CurrentPage"] = page;
+
+            return View(eventIndexViewModel);
         }
 
         public IActionResult Search([FromQuery] QueryParametersViewModel parameters)
@@ -93,7 +93,7 @@ namespace ShowNest.Web.Controllers
             ///Events/Search?Id=1&Name=SSS&MaxPrice=300&MinPrice=10&StartTime=0&EndTime=0&CategoryTag=2
             return View();
         }
-        public IActionResult EventPage(string EventId)
+        public IActionResult EventPage(int EventId)
         {
             var eventPageViewModel = _eventPageService.GetEventPageViewModel(EventId);
 

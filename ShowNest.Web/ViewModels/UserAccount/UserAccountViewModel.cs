@@ -28,24 +28,24 @@ namespace ShowNest.Web.ViewModels.UserAccount
     }
     public enum Gender
     {
-        Male=0,
-        Female=1,
-        Other=2
+        Male = 0,
+        Female = 1,
+        Other = 2
     };
 
     public enum ActivityRegion
     {
-        Region1=0,
-        Region2=1,
-        Region3=2
+        Region1 = 0,
+        Region2 = 1,
+        Region3 = 2
     }
     public class ThirdPartyLink
     {
         public string Id { get; set; }
         public string Url { get; set; }
         public string Scope { get; set; }
-        public string  Redirect_uri_encode { get; set; }
-        public string  State { get; set; }
+        public string Redirect_uri_encode { get; set; }
+        public string State { get; set; }
     }
 
 }

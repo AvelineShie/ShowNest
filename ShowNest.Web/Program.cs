@@ -16,6 +16,7 @@ using ShowNest.Web.Services.Seats;
 using Infrastructure.Services;
 using ShowNest.Web.Services.Dashboard;
 
+
 namespace ShowNest.Web
 {
     public class Program
@@ -34,6 +35,7 @@ namespace ShowNest.Web
             builder.Services.AddScoped<ISeatAreaRepository, SeatAreaRepository>();
             builder.Services.AddScoped<ITicketTypeRepository, TicketTypeRepository>();
             builder.Services.AddScoped<IOrganizationRepository, OrganizationRepository>();
+            builder.Services.AddScoped<CategoryTagsRepository>();
 
 
             // Registration Service
@@ -48,6 +50,7 @@ namespace ShowNest.Web
             builder.Services.AddScoped<ISeatsService, SeatsService>();
             builder.Services.AddScoped<OverviewService>();
             builder.Services.AddScoped<OrgGeneralInfoService>();
+            builder.Services.AddScoped<EventPageService>();
 
             builder.Services.AddScoped<IEventRepository, EventRepository>();
             builder.Services.AddScoped<CreateEventService>();
@@ -55,7 +58,6 @@ namespace ShowNest.Web
 
             builder.Services.AddScoped<AccountService>();
             builder.Services.AddHttpContextAccessor();
-            builder.Services.AddScoped<UserService>();
             builder.Services.AddScoped<_LoggedInLayoutService>();
             
             // Add services to the container.
@@ -117,13 +119,13 @@ namespace ShowNest.Web
 
             app.MapControllerRoute(
             name: "EventMainPages",//活動主頁面
-            pattern: "Events/EventPage/OrganizationId={OrganizationId}&EventId={EventId}",
-            defaults: new { controller = "Events", action = "EventPages" });
+            pattern: "Events/EventPage/{EventId}",
+            defaults: new { controller = "Events", action = "EventPage" });
 
-            app.MapControllerRoute(
-            name: "OrganizationMainPages",//組織主頁面
-            pattern: "Organizations/Index/OrganizationId={OrganizationId}/",
-            defaults: new { controller = "Organizations", action = "Index" });
+            //app.MapControllerRoute(
+            //name: "OrganizationMainPages",//組織主頁面
+            //pattern: "Organizations/Index/OrganizationId={OrganizationId}/",
+            //defaults: new { controller = "Organizations", action = "Index" });
 
             app.MapControllerRoute(
             name: "NewEvent",

@@ -7,8 +7,8 @@
     color: red;
     display: block;
     margin: -10px 0 5px; /*½Õ¾ã¶¡¶Z */
-    
 }
+
 .wallpaper {
     background-image: url("https://res.cloudinary.com/dwn2iafcc/image/upload/v1708967807/concert-768722_1280_zzxptp.jpg");
     background-size: cover;
@@ -51,9 +51,9 @@
     background-color: var(--main-green);
 }
 
-.log-in a {
-    color: #fff;
-}
+    .log-in a {
+        color: #fff;
+    }
 
 
 .input-area {
@@ -114,7 +114,7 @@ h3 {
     margin-bottom: 15px;
 }
 
-#submit{
+#submit {
     color: #fff;
     background-color: var(--main-green);
     padding: 10px 135px;
@@ -128,25 +128,25 @@ h3 {
     flex-direction: row;
 }
 
-.other-log-in-methods::before,
-.other-log-in-methods::after {
-    content: '';
-    flex: 1 1;
-    border-bottom: var(--common-border);
-    margin: auto;
-    width: 100px;
-}
+    .other-log-in-methods::before,
+    .other-log-in-methods::after {
+        content: '';
+        flex: 1 1;
+        border-bottom: var(--common-border);
+        margin: auto;
+        width: 100px;
+    }
 
 .third-party-log-in {
     display: flex;
     justify-content: center;
 }
 
-.third-party-log-in img {
-    width: 3em;
-    height: 3em;
-    margin: 20px;
-}
+    .third-party-log-in img {
+        width: 3em;
+        height: 3em;
+        margin: 20px;
+    }
 
 @media screen and (max-width: 768px) {
 
@@ -175,29 +175,28 @@ h3 {
         padding: 10px 125px;
     }
 
-    .submit a:hover {
-        background-color: var(--function-color-hover);
-    }
+        .submit a:hover {
+            background-color: var(--function-color-hover);
+        }
 }
 
 @media screen and (max-width: 300px) {
     .wrap {
         width: 260px;
     }
+
     .input-area {
         width: 260px;
     }
+
     .user-name input,
     .passwords input,
     .email input,
     .birthday input {
         width: 240px;
     }
+
     .submit a {
         padding: 10px 105px;
     }
-    
 }
-
-
-    
