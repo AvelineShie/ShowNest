@@ -20,9 +20,9 @@ namespace ShowNest.Web.Controllers
 
         public async Task<IActionResult> Index()
         {
-            //var homeViewModel = await _homeService.GetHomeViewModel();
+            var homeViewModel = await _homeService.GetHomeViewModel();
 
-            return View();
+            return View(homeViewModel);
         }
 
         public IActionResult Privacy()
