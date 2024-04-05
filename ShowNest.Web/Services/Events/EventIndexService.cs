@@ -13,12 +13,12 @@ namespace ShowNest.Web.Services.Events
             _eventCardService = eventCardService;
         }
 
-        public EventIndexViewModel GetEventIndexViewModel()
+        public async Task<EventIndexViewModel> GetEventIndexViewModel()
         {
             return new EventIndexViewModel
             {
                 EventCategoryTags = _categoryTagService.GetAllCategoryTags(),
-                EventEventCards = _eventCardService.GetAllEventCards().ToList()
+                EventEventCards = await _eventCardService.GetAllEventCardsViewModelByCategoryId(10)
             };
         }
     }

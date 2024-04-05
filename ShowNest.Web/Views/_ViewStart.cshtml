@@ -1,7 +1,7 @@
 ﻿@inject _LoggedInLayoutService loggedInLayoutService
 
 @{
-    var result = loggedInLayoutService.GetHeaderViewInfo();
+    var result = await loggedInLayoutService.GetHeaderViewInfo();
 
     if (!Context.User.Identity.IsAuthenticated || result == null)
     {
@@ -12,3 +12,4 @@
         Layout = "_LoggedInLayout";
     }
 }
+s

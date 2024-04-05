@@ -2,9 +2,10 @@
 
 @{
     ViewData["Title"] = "Home";
-    var focusedActivities = Model.HomeEventCards.Take(6).ToList();
-    var selectedActivities = Model.HomeEventCards.Skip(6).Take(6).ToList();
-    var featuredActivities = Model.HomeEventCards.Skip(12).Take(6).ToList();
+    var tag1Activities = Model.MainSectionTag1Cards;
+    var tag2Activities = Model.MainSectionTag2Cards;
+    var tag3Activities = Model.MainSectionTag3Cards;
+    var subActivities = Model.SubSectionCards;
     @* var myModel = System.Text.Json.JsonSerializer.Serialize(focusedActivities); *@
 }
 
@@ -74,21 +75,21 @@
         <ul class="cards-type-tags nav-fill nav nav-tabs" id="myTab" role="tablist">
             <li class="nav-item" role="presentation">
                 <button class="nav-link active" id="focused-tab" data-bs-toggle="tab" data-bs-target="#focused" type="button"
-                    role="tab" aria-controls="focused" aria-selected="true">焦點活動</button>
+                    role="tab" aria-controls="focused" aria-selected="true">焦點演唱會</button>
             </li>
             <li class="nav-item" role="presentation">
                 <button class="nav-link" id="selected-tab" data-bs-toggle="tab" data-bs-target="#selected" type="button"
-                    role="tab" aria-controls="selected" aria-selected="false">精選活動</button>
+                    role="tab" aria-controls="selected" aria-selected="false">精選展覽</button>
             </li>
             <li class="nav-item" role="presentation">
                 <button class="nav-link" id="featurerd-tab" data-bs-toggle="tab" data-bs-target="#featurerd" type="button"
-                    role="tab" aria-controls="featurerd" aria-selected="false">特色活動</button>
+                    role="tab" aria-controls="featurerd" aria-selected="false">特色戲劇</button>
             </li>
         </ul>
         <div class="tab-content" id="myTabContent">
             <div class="tab-pane fade show active" id="focused" role="tabpanel" aria-labelledby="focused-tab">
                 <div class="cards">
-                    @foreach (var card in focusedActivities)
+                    @foreach (var card in tag1Activities)
                     {
                         @await Html.PartialAsync("~/PartialViews/_EventCards_Partial.cshtml", card)
                         ;
@@ -97,7 +98,7 @@
             </div>
             <div class="tab-pane fade" id="selected" role="tabpanel" aria-labelledby="selected-tab">
                 <div class="cards">
-                    @foreach (var card in selectedActivities)
+                    @foreach (var card in tag2Activities)
                     {
                         @await Html.PartialAsync("~/PartialViews/_EventCards_Partial.cshtml", card)
                         ;
@@ -106,7 +107,7 @@
             </div>
             <div class="tab-pane fade" id="featurerd" role="tabpanel" aria-labelledby="featurerd-tab">
                 <div class="cards">
-                    @foreach (var card in featuredActivities)
+                    @foreach (var card in tag3Activities)
                     {
                         @await Html.PartialAsync("~/PartialViews/_EventCards_Partial.cshtml", card)
                         ;
@@ -123,7 +124,7 @@
             <h3>香港精選活動</h3>
         </div>
         <div class="cards">
-            @foreach (var card in selectedActivities)
+            @foreach (var card in subActivities)
             {
                 @await Html.PartialAsync("~/PartialViews/_EventCards_Partial.cshtml", card)
                 ;
