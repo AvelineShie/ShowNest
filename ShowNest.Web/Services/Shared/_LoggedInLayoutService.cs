@@ -15,7 +15,7 @@ namespace ShowNest.Web.Services.Shared
             _httpContextAccessor = httpContextAccessor;
         }
 
-        public HeaderNavInfoViewModel GetHeaderViewInfo()
+        public async Task<HeaderNavInfoViewModel> GetHeaderViewInfo()
         {
 
             var userIdFromClaim = _httpContextAccessor.HttpContext.User.Claims.FirstOrDefault(c => c.Type == ClaimTypes.NameIdentifier);
@@ -25,10 +25,10 @@ namespace ShowNest.Web.Services.Shared
             }
             else
             {
-                var info = _context.Users
+                var info = await  _context.Users
                                 .Include(u => u.OrganizationAndUserMappings)
                                 .ThenInclude(ou => ou.Organization)
-                                .FirstOrDefault(x => x.Id == int.Parse(userIdFromClaim.Value));
+                                .FirstOrDefaultAsync(x => x.Id == int.Parse(userIdFromClaim.Value));
 
                 var result = new HeaderNavInfoViewModel();
 

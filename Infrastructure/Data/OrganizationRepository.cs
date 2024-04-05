@@ -25,8 +25,8 @@ namespace Infrastructure.Data
 
         public IEnumerable<Event> GetOrgEventsByOrgId(int orgId)
         {
-            var events = DbContext.Events.
-                Include(e => e.Organization)
+            var events = DbContext.Events
+                .Include(e => e.Organization)
                 .Where(e => e.OrganizationId == orgId);
 
             return events;
