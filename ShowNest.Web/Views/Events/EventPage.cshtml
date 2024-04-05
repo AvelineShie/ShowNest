@@ -86,10 +86,10 @@
             </div>
             <ul class="tags-item ">
                 <li>
-                    @foreach (var tag in Model.EventCategoryTags)
+                    @* @foreach (var tag in Model.EventCategoryTags)
                     {
                         @await Html.PartialAsync("~/PartialViews/_CategoryTags_Partial.cshtml", tag);
-                    }
+                    } *@
                 </li>
             </ul>
         </div>
@@ -127,7 +127,7 @@
                     </tr>
                 </thead>
                 <tbody>
-                    @foreach (var ticket in @Model.AllTickets)
+                    @foreach (var ticket in @Model.EventTicketTypes)
                     {
                         <tr>
                             <td>@ticket.TicketTypeName</td>
@@ -138,7 +138,7 @@
                             </td>
                             <td class="price">
                                 <span class="currency">TWD$</span>
-                                <span class="currency-value">@ticket.TicketPrice.ToString("N0")</span>
+                                <span class="currency-value">@ticket.TicketPrice.ToString()</span>
                             </td>
                         </tr>
                     }

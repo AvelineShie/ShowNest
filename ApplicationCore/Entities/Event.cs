@@ -5,6 +5,8 @@ namespace ApplicationCore.Entities;
 
 public partial class Event
 {
+    public readonly object TicketType;
+
     /// <summary>
     /// 活動ID
     /// </summary>
