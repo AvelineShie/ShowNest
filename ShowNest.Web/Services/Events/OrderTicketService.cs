@@ -1,5 +1,8 @@
 ﻿
 using ApplicationCore.Entities;
+using DemoShop.ApplicationCore.Interfaces.TodoService.Dto;
+using Microsoft.AspNetCore.Mvc;
+using System;
 using System.Linq;
 using Ticket = ApplicationCore.Entities.Ticket;
 
@@ -69,8 +72,44 @@ namespace ShowNest.Web.Services.Events
 
         }
 
+        //更新訂單明細聯絡人資訊 UpdateOrder details contact information
+        //根據orderID
+        //傳入姓名email 手機 參數
+        //不回傳值 void
+        /*public async Task<Order> UpdateOrderDetailContactInfoByOrderId(string name,string email,string phone,int orderid)
+        {
+            //根據orderID找到那筆order
+            var targetOrder = await _orderRepo.GetByIdAsync(orderid);
+            if (targetOrder is null )
+            {
+                return null;
+            }
+            //更新聯絡人資訊
+            var contactInfo = new ContactInfo
+            {
+                Name = name,
+                Email = email,
+                PhoneNumber = phone
+            };
+            
+            string contactJsonString = JsonConvert.SerializeObject(contactInfo);
+            targetOrder.ContactPerson = contactJsonString;
+            return await _orderRepo.UpdateAsync(targetOrder);
 
 
+
+           
+
+        }*/
+        public async Task<Order> UpdateOrderDetailContactInfoByOrderId(string contactJsonString, int orderid)
+        {
+            //根據orderID找到那筆order
+            var targetOrder = await _orderRepo.GetByIdAsync(orderid);
+           
+            targetOrder.ContactPerson = contactJsonString;
+            return await _orderRepo.UpdateAsync(targetOrder);
+
+        }
         //public OrderDetailViewModel GetMemberOrders(int userId)
         //{
         //    var totalPrice = _orderQueryService.GetCustomerOrderTotalAmount(userId);
@@ -120,6 +159,7 @@ namespace ShowNest.Web.Services.Events
         //    }
         //    return result;
         //}
+        //
 
 
     }

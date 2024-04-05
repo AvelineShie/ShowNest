@@ -14,12 +14,15 @@
     <None Remove="Services\Dashboard\**" />
     <None Include="wwwroot\js\API\api.js" />
     <None Include="wwwroot\js\API\tools.js" />
+    <None Include="wwwroot\js\API\orderAPI.js" />
     <None Include="wwwroot\js\API\userAPI.js" />
+    <None Include="wwwroot\js\Events\Comps\headinfo.js" />
     <None Include="wwwroot\SeatsData.json" />
   </ItemGroup>
 
   <ItemGroup>
     <Content Remove="wwwroot\img\Events\LINE_ALBUM_課程紀錄_240216_1.jpg" />
+    <Content Remove="wwwroot\js\API\orderAPI.js" />
   </ItemGroup>
 
   <ItemGroup>
