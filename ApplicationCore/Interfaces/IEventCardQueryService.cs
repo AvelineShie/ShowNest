@@ -1,4 +1,5 @@
 ﻿using ApplicationCore.Entities;
+using ApplicationCore.DTOs;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -12,5 +13,6 @@ namespace ApplicationCore.Interfaces
         Task<List<CategoryTag>> GetAllCardsByCategoryId(int categoryId);
 
         Task<List<CategoryTag>> GetNumbersOfCardsByCategoryId(int cardAmount, int categoryId);
+        Task<List<EventIndexDto>> GetEventIndexCards();
     }
 }

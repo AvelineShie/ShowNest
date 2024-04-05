@@ -16,6 +16,7 @@ using ShowNest.Web.Services.Seats;
 using Infrastructure.Services;
 using ShowNest.Web.Services.Dashboard;
 
+
 namespace ShowNest.Web
 {
     public class Program
@@ -34,6 +35,7 @@ namespace ShowNest.Web
             builder.Services.AddScoped<ISeatAreaRepository, SeatAreaRepository>();
             builder.Services.AddScoped<ITicketTypeRepository, TicketTypeRepository>();
             builder.Services.AddScoped<IOrganizationRepository, OrganizationRepository>();
+            builder.Services.AddScoped<CategoryTagsRepository>();
 
 
             // Registration Service
