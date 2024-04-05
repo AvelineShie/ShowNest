@@ -4,7 +4,7 @@ public class RegisterViewModel
 {
     [Required]
     [AccountRegex]
-    public string Account { get; set; } 
+    public string Account { get; set; }
 
     [Required]
     [EmailAddress]

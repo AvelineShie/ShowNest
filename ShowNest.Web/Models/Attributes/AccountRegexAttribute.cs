@@ -3,7 +3,7 @@
 namespace ShowNest.Web.Models.Attributes
 {
     public class AccountRegexAttribute : ValidationAttribute
-    {   
+    {
         protected override ValidationResult IsValid(object value, ValidationContext validationContext)
         {
             if (value == null)
