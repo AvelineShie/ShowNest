@@ -19,9 +19,9 @@ namespace ShowNest.Web.Controllers
         //登入
         private readonly AccountService _accountService;
         //註冊
-        private readonly UserService _userService;
+        private readonly AccountService _userService;
 
-        public AccountController(AccountService accountService, UserService userService)
+        public AccountController(AccountService accountService, AccountService userService)
         {
             _accountService = accountService;
             _userService = userService;
@@ -49,7 +49,7 @@ namespace ShowNest.Web.Controllers
                 return View(Login);
             }
         }
-        
+
         //註冊
         [HttpGet]
         public IActionResult SignUp()
@@ -59,26 +59,35 @@ namespace ShowNest.Web.Controllers
         [HttpPost]
         [AllowAnonymous]
         [ValidateAntiForgeryToken]
-        public async Task<ActionResult> SignUp(RegisterModel SignUp)
+        public async Task<ActionResult> SignUp(RegisterViewModel SignUp)
         {
             if (ModelState.IsValid)
             {
                 // 使用UserService進行註冊
-                bool isRegistered = await _userService.RegisterUserAsync(SignUp, ModelState.IsValid);
-                if (isRegistered)
+                var result = await _userService.RegisterUserAsync(SignUp, ModelState.IsValid);
+                if (result.IsSuccess)
                 {
-                    // 註冊成功後，重定向到登入後頁面(待修)
-                    return RedirectToAction("Login", "Account");
+                    // 註冊成功後，將用戶登入
+                    var loginResult = await _accountService.LogInAsync(new LoginViewModel { Account = SignUp.Account, Password = SignUp.Password });
+                    if (loginResult.IsSuccess)
+                    {
+                        // 登入成功後，重定向到首頁
+                        return RedirectToAction("Index", "Home");
+                    }
+                    else
+                    {
+                        // 登入失敗，返回VIEW以顯示錯誤訊息
+                        ModelState.AddModelError("", loginResult.ErrorMessage);
+                    }
                 }
                 else
                 {
                     // 註冊失敗，返回VIEW以顯示錯誤訊息
-                    // 要加一個錯誤訊息到
-                    ModelState.AddModelError("", "註冊失敗，請稍後再試。");
+                    ModelState.AddModelError("", result.ErrorMessage);
                 }
             }
 
-            //如果模型狀態不正確，則返回視圖以顯示錯誤訊息
+            //如果MODEL狀態不正確，則返回VIEW以顯示錯誤訊息
             return View(SignUp);
         }
         public IActionResult UserEdit()
@@ -130,9 +139,9 @@ namespace ShowNest.Web.Controllers
             await HttpContext.SignOutAsync(CookieAuthenticationDefaults.AuthenticationScheme);
 
             return RedirectToAction("Index", "Home");
-            
+
         }
- 
+
 
         public IActionResult ForgetPassword()
         {
