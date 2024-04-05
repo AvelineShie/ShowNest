@@ -2,7 +2,7 @@
 
 namespace ShowNest.Web.ViewModels.Events
 {
-    public class QueryParameters
+    public class QueryParametersViewModel
     {
         public int Id { get; set; }//可null
 
