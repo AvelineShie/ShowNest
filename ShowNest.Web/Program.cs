@@ -30,7 +30,7 @@ namespace ShowNest.Web
             builder.Services.AddDbContext<DatabaseContext>(options => options.UseSqlServer(connectionString).EnableSensitiveDataLogging());
 
             // Registration Repository
-            builder.Services.AddScoped<ISeatRepository, SeatRepository>();
+            // builder.Services.AddScoped<ISeatRepository, SeatRepository>();
             builder.Services.AddScoped<ISeatAreaRepository, SeatAreaRepository>();
             builder.Services.AddScoped<ITicketTypeRepository, TicketTypeRepository>();
             builder.Services.AddScoped<IOrganizationRepository, OrganizationRepository>();
@@ -101,9 +101,14 @@ namespace ShowNest.Web
             ///以上測試中--------------------------------------------------------------------------------------------
 
             app.MapControllerRoute(
-            name: "EventPages",//探索活動頁
+            name: "SwitchExploreEventPages",//探索活動頁>切換活動頁籤
             pattern: "Events/Explore/{page=1}",
             defaults: new { controller = "Events", action = "Index" });
+
+            //app.MapControllerRoute(
+            //name: "SearchEventPages",//探索活動頁>搜尋功能
+            //pattern: "Events/Explore",
+            //defaults: new { controller = "Events", action = "Search" });
 
             app.MapControllerRoute(
             name: "EventMainPages",//活動主頁面

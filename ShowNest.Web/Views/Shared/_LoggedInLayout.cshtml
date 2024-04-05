@@ -1,7 +1,7 @@
 ﻿@inject _LoggedInLayoutService loggedInLayoutService
 
 @{
-    var headerNavViewModel = loggedInLayoutService.GetHeaderViewInfo();
+    var headerNavViewModel = await loggedInLayoutService.GetHeaderViewInfo();
     var userName = headerNavViewModel.UserName;
     var userImg = headerNavViewModel.UserImgUrl;
     var userOrg = headerNavViewModel.UserOrg;

@@ -18,11 +18,9 @@ namespace ShowNest.Web.Controllers
             _logger = logger;
         }
 
-        public IActionResult Index()
+        public async Task<IActionResult> Index()
         {
-            var homeViewModel = _homeService.HomeViewModel;
-            _homeService.GetHomeCarouselImg(homeViewModel.HomeCarousels);
-            _homeService.GetHomeCards(homeViewModel.HomeEventCards);
+            var homeViewModel = await _homeService.GetHomeViewModel();
 
             return View(homeViewModel);
         }

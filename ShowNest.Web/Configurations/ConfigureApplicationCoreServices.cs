@@ -9,6 +9,7 @@ namespace ShowNest.Web.Configurations
             services.AddScoped(typeof(IRepository<>), typeof(EfRepository<>));
             services.AddScoped<IOrderRepository, OrderRepository>();
             services.AddScoped<IOrderQueryService, OrderQueryService>();
+            services.AddScoped<IEventCardQueryService, EventCardQueryServiceByEf>();
 
             return services;
         }

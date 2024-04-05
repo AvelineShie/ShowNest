@@ -1,12 +1,14 @@
+using ApplicationCore.Entities;
+
 namespace ShowNest.Web.Services.Seats;
 
 public class SeatsService : ISeatsService
 {
-    private readonly ISeatRepository _seatRepository;
+    private readonly IRepository<Seat> _seatRepository;
     private readonly ISeatAreaRepository _seatAreaRepository;
     private readonly ITicketTypeRepository _ticketTypeRepository;
 
-    public SeatsService(ISeatRepository seatRepository, ISeatAreaRepository seatAreaRepository, ITicketTypeRepository ticketTypeRepository)
+    public SeatsService(IRepository<Seat> seatRepository, ISeatAreaRepository seatAreaRepository, ITicketTypeRepository ticketTypeRepository)
     {
         this._seatRepository = seatRepository;
         this._seatAreaRepository = seatAreaRepository;
@@ -17,7 +19,8 @@ public class SeatsService : ISeatsService
     {
         var seatArea = this._seatAreaRepository.GetById(seatAreaId);
         
-        var seats = await this._seatRepository.GetSeatsBySeatAreaId(seatAreaId);
+        // var seats = await _seatRepository.GetSeatsBySeatAreaId(seatAreaId);
+        var seats = _seatRepository.List(s => s.SeatAreaId == seatAreaId);
         var seatViewModel = seats.Select(i => new SeatViewModel
             {
                 SeatId = i.Id,

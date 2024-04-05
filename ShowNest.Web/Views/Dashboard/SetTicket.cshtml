@@ -77,7 +77,7 @@
                     </tbody>
                 </table>
                 <div class="changeTicketSection">
-                    <div class="section">
+                    @* <div class="section">
                         <div class="mb-3">
                             <h4 class="sectionTitle">票種名稱</h4>
                             <input type="text" class="form-control h-50" id="formGroupExampleInput" placeholder=" ">
@@ -88,6 +88,34 @@
                             <h4 class="sectionTitle">價格</h4>
                             <input type="text" class="form-control h-50" id="formGroupExampleInput" placeholder=" ">
                         </div>
+                    </div> *@
+
+                    @* =====Step1: 選擇票種跟價格, 數量, 販售時間====== *@
+                    <div class="row">
+                        <div class="col-3">
+                            <h4 class="sectionTitle">票種選項</h4>
+                            <draggable class="list-group" :list="list1" group="people" @* @change="log" *@>
+                                <div class="list-group-item"
+                                     v-for="(element, index) in list1"
+                                     :key="element.name">
+                                    {{ element.name }} {{ index }}
+                                </div>
+                            </draggable>
+                        </div>
+
+                        <div class="col-3">
+                            <h4 class="sectionTitle">想加入的票種</h4>
+                            <draggable class="list-group" :list="list2" group="people" @* @change="log" *@>
+                                <div class="list-group-item"
+                                     v-for="(element, index) in list2"
+                                     :key="element.name">
+                                    {{ element.name }} {{ index }}
+                                </div>
+                            </draggable>
+                        </div>
+
+                        <rawDisplayer class="col-3" :value="list1" title="List 1" />
+                        <rawDisplayer class="col-3" :value="list2" title="List 2" />
                     </div>
                     <div class="section">
                         <div class="mb-3">
@@ -104,8 +132,38 @@
                         <input type="datetime-local" class="date-time">
                     </div>
 
+                    @*  =====票區選項======
+                    上面按下儲存後,隱藏欄位,並顯示票區選項 *@
+                    <div class="row">
+                        <div class="col-3">
+                            <h4 class="sectionTitle">票區選項</h4>
+                            <draggable class="list-group" :list="list1" group="people" @* @change="log" *@>
+                                <div class="list-group-item"
+                                     v-for="(element, index) in list1"
+                                     :key="element.name">
+                                    {{ element.name }} {{ index }}
+                                </div>
+                            </draggable>
+                        </div>
+
+                        <div class="col-3">
+                            <h4 class="sectionTitle">想要選取的票區</h4>
+                            <draggable class="list-group" :list="list2" group="people" @* @change="log" *@>
+                                <div class="list-group-item"
+                                     v-for="(element, index) in list2"
+                                     :key="element.name">
+                                    {{ element.name }} {{ index }}
+                                </div>
+                            </draggable>
+                        </div>
+
+                        <rawDisplayer class="col-3" :value="list1" title="List 1" />
+                        <rawDisplayer class="col-3" :value="list2" title="List 2" />
+                    </div>
+
+                    @* 按鍵一直都在,分別在第一階段與第二階段新增物件 *@
                     <div class="section">
-                        <button type="button" class="btn btn-outline-secondary btn-sm" id="submit">新增</button>
+                        <button type="button" class="btn btn-outline-secondary btn-sm" id="submit">儲存</button>
                         <button type="button" class="btn btn-outline-secondary btn-sm" id="cancel">取消</button>
                     </div>
                     

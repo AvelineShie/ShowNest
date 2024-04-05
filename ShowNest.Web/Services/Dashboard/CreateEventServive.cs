@@ -1,5 +1,7 @@
-﻿using System.Diagnostics;
-using Azure.Core;
+﻿//using System.Diagnostics;
+//using ApplicationCore.Entities;
+//using Azure.Core;
+//using Microsoft.AspNetCore.Mvc.Rendering;
 
 //namespace ShowNest.Web.Services.Dashboard
 //{
@@ -12,21 +14,17 @@ using Azure.Core;
 //            _dbContext = dbContext;
 //        }
 
-//        public IEnumerable<Activity> GetEventsByOrganizationId(int organizationId)
+//        public IEnumerable<Event> GetEventsByOrgId(int orgId)
 //        {
-//            //用組織ID去列出活動名稱
-//            //get使用者選擇的項目，傳到下一個action
 
+//            //找出資料庫當中所有組織名稱，並依據使用者點選，將相同組織名稱的活動,渲染上去
+            
+//                //var events = DbContext.Events.
+//                //    Include(e => e.Organization)
+//                //    .Where(e => e.OrganizationId == orgId);
 
-                //var selectedActivityId = Request.Form["ActivityId"];
-                //var activity = _context.Activities.Find(selectedActivityId);
-                // 使用 activity 變數進行後續操作
-
-
-
-//            return _dbContext.Activities
-//                .Where(x => x.OrganizationId == organizationId)
-//                .ToList();
+//                //return events;
+            
 //        }
 
 //    }

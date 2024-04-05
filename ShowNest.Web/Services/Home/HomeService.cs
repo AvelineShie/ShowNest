@@ -15,31 +15,19 @@ namespace ShowNest.Web.Services.Home
         {
             _homeCarouselService = homeCarouselService;
             _eventCardService = eventCardService;
-            HomeViewModel = new HomeViewModel();
-            HomeViewModel.HomeCarousels = new List<HomeCarouselViewModel>();
-            HomeViewModel.HomeEventCards = new List<EventCardViewModel>();
         }
 
-        public List<HomeCarouselViewModel> GetHomeCarouselImg(List<HomeCarouselViewModel> input)
+        public async Task<HomeViewModel> GetHomeViewModel()
         {
-            var imgsToAdd = _homeCarouselService.Carousels;
-            foreach (var img in imgsToAdd)
-            {
-                input.Add(img);
-            }
+            var homeViewModel = new HomeViewModel();
 
-            return input;
-        }
+            homeViewModel.HomeCarousels = _homeCarouselService.GetCarouselViewModel();
+            homeViewModel.MainSectionTag1Cards = await _eventCardService.GetNumbersOfCardsViewModelByCategoryId(6, 10);
+            homeViewModel.MainSectionTag2Cards = await _eventCardService.GetNumbersOfCardsViewModelByCategoryId(6, 3);
+            homeViewModel.MainSectionTag3Cards = await _eventCardService.GetNumbersOfCardsViewModelByCategoryId(6, 2);
+            homeViewModel.SubSectionCards = await _eventCardService.GetNumbersOfCardsViewModelByCategoryId(9, 4);
 
-        public List<EventCardViewModel> GetHomeCards(List<EventCardViewModel> input)
-        {
-            var cardsToAdd = _eventCardService.GetAllEventCards();
-            foreach (var card in cardsToAdd)
-            {
-                input.Add(card);
-            }
-
-            return input;
+            return homeViewModel;
         }
 
     }
