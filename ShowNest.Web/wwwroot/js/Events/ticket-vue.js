@@ -54,7 +54,7 @@ const options = {
                     seatNumber: "1-2"
                 }
             ],
-            editTicket:{
+            editTicket: {
                 id: 1,
                 name: "全票",
                 seatArea: "B1特一",
@@ -64,6 +64,11 @@ const options = {
             //counter
             counter: '',
             remainTime: 0,
+            //SeatSelection
+            dialog: false,
+            notifications: false,
+            sound: true,
+            widgets: false
         }
     },
     mounted() {
@@ -77,7 +82,7 @@ const options = {
         }
 
         const remainTimeMs = expireTime - new Date().getTime();
-        if (remainTimeMs <= 0 ) {
+        if (remainTimeMs <= 0) {
             window.alert('選位已截止，請重新購票');
             window.location.href = 'TicketTypeSelection';
             $cookies.remove('expireTimeOnSelection');
@@ -100,8 +105,7 @@ const options = {
 
                 if (this.remainTime > 0) {
                     this.remainTime--;
-                }
-                else {
+                } else {
                     clearInterval();
                 }
 
@@ -112,7 +116,16 @@ const options = {
         },
         getExpireTime() {
             return $cookies.get("expireTimeOnSelection");
-        }
+        },
+        async toggleSeatSelection(id) {
+            this.dialog = !this.dialog
+            console.log(id)
+            const response = await fetch(`/api/seats?seatAreaId=${id}`);
+            const viewModel = await response.json();
+            this.seatAreaName = viewModel.seatAreaName;
+            this.seats = viewModel.seats;
+            console.log(viewModel)
+        },
     }
 }
 const app = createApp(options)
