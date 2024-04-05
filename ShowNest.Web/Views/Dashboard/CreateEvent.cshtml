@@ -19,9 +19,10 @@
                 <p>您尚未選擇組織，請選取此活動所屬之組織：</p>
                 <select name="所屬組織" id="organizeList" class=".form-select">
                     <option selected value ='option1'> === 請選擇組織 === </option>
-                    @* @Html.DropDownListFor(model => model.OrgName, Model.OrgName) *@
+                    @* <option>
+                        <label><input type="radio" id="ActivityItem"> @Model.OrgName</label>
+                    </option> *@
                     @* 實際渲染:<option value="1">深夜九點半搶銀行</option> *@
-                    <option>深夜九點半搶銀行</option>
 
                 </select>
                 <!-- Hide the organizations while not selected below -->
@@ -37,10 +38,7 @@
                         <!-- Display blank when no activities exist -->
                         <!-- <p>尚無活動可做樣板</p> -->
                         <label><input type="radio" id="ActivityItem"> 相揪搶銀行(暫)</label>
-                        @* @foreach (var eventName in Model.EventName)
-                        {
-                            <label><input type="radio" id="ActivityItem"> @eventName</label>
-                        } *@
+                           @* <label><input type="radio" id="ActivityItem"> @Model.EventName</label> *@
                     </div>
                 </div>
                 <div class="TOSzone">
