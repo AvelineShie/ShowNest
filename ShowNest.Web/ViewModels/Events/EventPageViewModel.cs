@@ -14,8 +14,8 @@ namespace ShowNest.Web.ViewModels.Events
         public string Longitude {  get; set; }//經度<地圖>
         public string Latitude { get; set; }//緯度<地圖>
 
-        public string EventRegistered { get; set; } // 參與人數，從Ticket table 
-        public string EventCapacity { get; set; } // 活動人數
+        public int EventRegistered { get; set; } // 參與人數，從Ticket table 
+        public int EventCapacity { get; set; } // 活動人數
         public string OrganizationName { get; set; }
         public int OrganizationId { get; set; }
 
