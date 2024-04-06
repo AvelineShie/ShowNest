@@ -103,7 +103,35 @@ namespace Infrastructure.Services
                 }
             }
         }
-       
+
+        public OperationResult UpdateOrderContactPerson(string contactPersonJson, int orderId)
+        {
+            using (SqlConnection connection = new SqlConnection(_connectionStr))
+            {
+                var sql = @"
+                            UPDATE Orders
+                            SET ContactPerson=@ContactPersonJson
+                            WHERE id=@OrderID;
+                            ";
+
+                try
+                {
+                    connection.Query(sql, new { ContactPersonJson = contactPersonJson, OrderID = orderId });
+                    return OpperationResultHelper.ReturnSuccessData("Update Success!");
+                }
+                catch (Exception ex)
+                {
+                    return OpperationResultHelper.ReturnErrorMsg(ex.Message);
+                }
+            }
+        }
+
+        public class OrderContactPerson
+        {
+            public string ContactPersonJson { get; set; }
+            public int OrderID { get; set; }
+        }
+
 
 
     }
