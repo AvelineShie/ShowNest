@@ -33,7 +33,7 @@ createApp({
                 }
             }
           
-            const redirectUrl = `/events/selectarea?${params.toString()}`
+            const redirectUrl = `/events/seatSelector?${params.toString()}`
             window.location = redirectUrl;
         }
 
