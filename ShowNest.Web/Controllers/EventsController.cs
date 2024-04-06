@@ -49,24 +49,20 @@ namespace ShowNest.Web.Controllers
 
         private readonly EventIndexService _eventIndexService;
         private readonly OrderTicketService _orderQueryService;
-        private readonly IRepository<ArchiveOrder> _archiveOrderRepo;
-        private readonly IRepository<ApplicationCore.Entities.Ticket> _ticket;
         private readonly IOrderRepository _orderRepo;
-        private readonly OrderTicketService _registrationService;
+        private readonly IOrderCenterService _orderService;
         private readonly EventPageService _eventPageService;
 
-        //private readonly IOrderQueryService _orderQueryService;
 
 
-        public EventsController(EventIndexService eventIndexService, OrderTicketService orderQueryService,
-            IRepository<ArchiveOrder> archiveOrderRepo, IRepository<ApplicationCore.Entities.Ticket> ticket, IOrderRepository orderRepo, EventPageService eventPageService)
+        public EventsController(EventIndexService eventIndexService, OrderTicketService orderQueryService, 
+            IOrderRepository orderRepo, EventPageService eventPageService,IOrderCenterService orderService)
         {
             _eventIndexService = eventIndexService;
             _orderQueryService = orderQueryService;
-            _archiveOrderRepo = archiveOrderRepo;
-            _ticket = ticket;
             _orderRepo = orderRepo;
             _eventPageService = eventPageService;
+            _orderService = orderService;
         }
 
         public async Task<IActionResult> Index(int page)
@@ -199,9 +195,6 @@ namespace ShowNest.Web.Controllers
         public IActionResult OrderDetail()
         {
            
-            //var userId = 1;
-            //var OrderDetail = _orderQueryService.GetMemberOrders(userId);
-           
             return View();
             //string name = string.Empty;
             //if (id.HasValue)
@@ -286,6 +279,10 @@ namespace ShowNest.Web.Controllers
             };
             return View(model);
         }
-     
+        public async Task <IActionResult> Ecpay()
+        {
+            var GenerateOrderToEcpay = await _orderService.GenerateOrderAsync();
+            return View(GenerateOrderToEcpay);
+        }
     }
 }

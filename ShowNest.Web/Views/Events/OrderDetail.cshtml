@@ -225,7 +225,6 @@
                         </div>
                     </div>
                 </div>
-                <!-- <button class="btn_print btn" id="btn_print">列印報名資料</button> -->
                 <button class="btn_print btn" id="btn_modify" v-if="edit" v-on:click="edit = false">
                     <i class="fa fa-pencil" aria-hidden="true"></i> 修改表單內容
                 </button>
@@ -235,7 +234,7 @@
                 </button>
 
                 <button class="btn_print btn btn_cancelled" id="btn_cancelled"> 取消訂單</button>
-                <button class="btn_print btn btn_payment" id="btn_payment" v-if="NotFree"> 快去繳錢</button>
+                <button class="btn_print btn btn_payment" id="btn_payment" v-if="NotFree"> 重新繳費</button>
                 <div class="contact_info_contaner">
                     <div class="contact_info">
                         <h3 class="contact_title">聯絡人資料</h3>

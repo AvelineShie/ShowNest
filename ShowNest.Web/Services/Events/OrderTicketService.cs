@@ -8,10 +8,7 @@ using Ticket = ApplicationCore.Entities.Ticket;
 
 namespace ShowNest.Web.Services.Events
 {
-    public interface IOrderCenterService
-    {
-        OrderDetailViewModel GetMemberOrders(int userId);
-    }
+   
     public interface IRregistrationFakedata
     {
         RegistrationViewModel GetRegistrationInfo();
@@ -22,7 +19,7 @@ namespace ShowNest.Web.Services.Events
         private readonly int _userId;
         private readonly IRepository<Order> _orderRepo;
         private readonly IRepository<ArchiveOrder> _archiveOrderRepo;
-        private readonly IRepository<ApplicationCore.Entities.Ticket> _ticket;
+        private readonly IRepository<Ticket> _ticket;
         public OrderTicketService(IOrderQueryService orderQueryService,
             IRepository<Order> orderRepo,
             IRepository<ArchiveOrder> archiveOrderRepo,
