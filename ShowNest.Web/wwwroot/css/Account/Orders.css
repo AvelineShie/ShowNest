@@ -89,7 +89,7 @@ td {
 
 .event-pic img {
     min-width: 100%;
-    vertical-align: center;
+    vertical-align: middle;
     padding: 5px;
     border: 1px solid #E5E5E5;
 }
