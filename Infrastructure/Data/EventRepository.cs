@@ -17,7 +17,7 @@ namespace Infrastructure.Data
         {
             var Organizations = DbContext.Organizations
                         .Where(e => e.OwnerId == OwnerId)
-                        .AsNoTracking()
+                        .AsNoTracking() //停止追蹤上述這些實體的狀態
                         .ToList();
             return Organizations;
         }

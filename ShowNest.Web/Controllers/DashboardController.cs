@@ -33,7 +33,8 @@ namespace ShowNest.Web.Controllers
         {
             //var userIdentifier = HttpContext.User.FindFirstValue(ClaimTypes.NameIdentifier);
             //HttpContext?.User.Identities.FirstOrDefault()
-            var userId = 1;
+            //之後以HttpContext的登入訊息取得資料
+            var userId = 1; 
             var vm = _createEventService.GetOrgByOwner(userId);
             return View(vm);
         }
