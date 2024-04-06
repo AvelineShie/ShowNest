@@ -8,8 +8,8 @@ createApp({
         }
     },
     methods: {
-        async fetchTicketTypes() {
-            const response = await fetch('/api/tickettypes/gettickettypeselection?eventId=100');
+        async fetchTicketTypes(eventId) {
+            const response = await fetch(`/api/tickettypes/gettickettypeselection?eventId=${eventId}`);
             const data = await response.json()
 
             this.ticketTypeSelection = data
@@ -39,6 +39,9 @@ createApp({
         },
     },
     async mounted() {
-        await this.fetchTicketTypes();
+        const urlParams = new URLSearchParams(window.location.search);
+        const eventId = urlParams.get('eventId');
+
+        await this.fetchTicketTypes(eventId);
     }
 }).mount('#app')
