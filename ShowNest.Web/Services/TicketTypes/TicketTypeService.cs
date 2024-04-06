@@ -1,3 +1,5 @@
+using ShowNest.Web.ViewModels.Tickets;
+
 namespace ShowNest.Web.Services.TicketTypes;
 
 public class TicketTypeService : ITicketTypeService
@@ -57,6 +59,36 @@ public class TicketTypeService : ITicketTypeService
                 }
             },
             TicketPriceRow = ticketTypes
+        };
+    }
+
+    public async Task<AutoSeatSelectionResponseViewModel> GetAutoSelectedSeats(
+        AutoSeatSelectionRequestViewModel request)
+    {
+        var tickets = new List<AutoSelectedSeatViewModel>();
+
+        foreach (var criteria in request.Criteria)
+        {
+            var query = from ticketType in _dbContext.TicketTypes
+                join ticket in _dbContext.Tickets on ticketType.Id equals ticket.TicketTypeId
+                join seat in _dbContext.Seats on ticket.SeatId.Value equals seat.Id
+                where seat.Status == 0 && ticketType.Id == criteria.TicketTypeId
+                orderby seat.Id
+                select new AutoSelectedSeatViewModel
+                {
+                    Price = ticketType.Price,
+                    SeatAreaName = seat.SeatArea.Name,
+                    SeatNumber = seat.Number,
+                    TicketTypeName = ticketType.Name
+                };
+            var result = await query.Take(criteria.TicketCount).ToListAsync();
+
+            tickets.AddRange(result);
+        }
+
+        return new AutoSeatSelectionResponseViewModel
+        {
+            Tickets = tickets
         };
     }
 }
