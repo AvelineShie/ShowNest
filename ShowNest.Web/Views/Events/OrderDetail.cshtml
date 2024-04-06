@@ -1,9 +1,7 @@
-﻿
-@section topCSS {
+﻿@section topCSS {
     <link href="~/css/events/orderdetail.css" rel="stylesheet" />
 
 }
-
 
 <div id="orderDetail">
     <section class="section_wrap">
@@ -12,7 +10,7 @@
                 <div class="register_message">
 
                     <!-- 未繳款 -->
-                    <div class="display-table-row" v-if="status===0">
+                    <div class="display-table-row" v-if="PaymentPendingStep">
                         <div class="icon_wrapper order_pay">
                             <i class="fa fa-exclamation-circle"></i>
                         </div>
@@ -23,7 +21,7 @@
                     </div>
 
                     <!-- 取消訂單 -->
-                    <div class="display-table-row" v-if="status===1">
+                    <div class="display-table-row" v-if="PaymentCancelStep">
                         <div class="icon_wrapper order_canceled">
                             <i class="fa fa-info-circle"></i>
                         </div>
@@ -33,7 +31,7 @@
                         </div>
                     </div>
                     <!-- 訂單完成 -->
-                    <div class="display-table-row" v-if="status===2">
+                    <div class="display-table-row" v-if="PaymentSuccessStep">
                         <div class="icon_wrapper order_finished">
                             <i class="fa fa-check"></i>
                         </div>
@@ -44,18 +42,18 @@
                     </div>
                 </div>
             </div>
-            <headinfo :title="'【ALTA】theLOOP presents : PSY.P 臺灣個人巡演預熱戰'"
-                      :step="0" :start-time="'2024/02/16 22:30 (+0800)'"
-                      :event-location="'ALTA NIGHTCLUB'"
-                      :event-address="'台中市西屯區青海南街59號'"
-                      :event-host="'歐達休閒娛樂有限公司'"
-                      :ticket-collection-channel="'台灣全家 FamiPort 取票'"
-                      :payment-method-name="'ATM 虛擬帳號、信用卡'"></headinfo>
+            <headinfo :title="EventName"
+                      :step="0" :start-time="dateformatter(EventStartTime)"
+                      :event-location="LocationName"
+                      :event-address="LocationAddress"
+                      :event-host="MainOrganizer"
+                      :ticket-collection-channel="'網路取票'"
+                      :payment-method-name="'信用卡'"></headinfo>
 
 
             <div class="event_details">
                 <div class="order_number ">
-                    <h2>訂單編號 : #135502876</h2>
+                    <h2>訂單編號 : #{{OrderId}}</h2>
                 </div>
                 <div class="collapse_group">
                     <p class="d-inline-flex gap-1">
@@ -72,23 +70,17 @@
                                     <td colspan="2" class="ticket_wrapper_td">
                                         <table class="cart-ticket-list">
                                             <tbody>
-                                                <tr>
-                                                    <td class="ticket_name ">全票</td>
+                                                <tr v-for="Ticket in TicketList">
+                                                    <td class="ticket_name ">{{Ticket.TicketTypeName}}</td>
                                                     <td class="ticket-data" colspan="2">
                                                         <table class="cart-ticket-list-subtable with-seat">
                                                             <tbody>
                                                                 <tr>
                                                                     <td>
-                                                                        <ul>
-                                                                            <li class="seat">
-                                                                                B2 區 16 排 4 號
-                                                                            </li>
-                                                                        </ul>
+
+                                                                        {{Ticket.SeatAreaName}} {{Ticket.SeatNumber}}
                                                                     </td>
-                                                                    <td class="price_count ">
-                                                                        <span class="price">TWD$3,680</span> x 1
-                                                                    </td>
-                                                                    <td class="price_total ">TWD$3,680</td>
+                                                                    <td class="price_total ">{{moneyformatter(Ticket.TicketPrice)}}</td>
                                                                 </tr>
                                                             </tbody>
                                                         </table>
@@ -106,19 +98,19 @@
                                         <div class="purchase-options">
                                             <div class="data-body">
                                                 <div class="pickup ">
-                                                    台灣全家 FamiPort 取票
+                                                    網路取票
                                                 </div>
                                             </div>
                                         </div>
                                     </td>
                                 </tr>
-                                <tr class="payment_method">
+                                <tr class="payment_method" v-if="NotFree">
                                     <th class="payment">付款方式</th>
                                     <td class="" colspan="2">
                                         <div class="purchase_options">
                                             <div class="data-body">
                                                 <div class="paymentMethodType">
-                                                    ATM 虛擬帳號
+                                                    信用卡
                                                 </div>
                                             </div>
                                         </div>
@@ -129,7 +121,7 @@
                                 <tr class="highlight">
                                     <th class="total">總金額</th>
                                     <td class="total_price " colspan="2">
-                                        <strong>TWD$3,680</strong>
+                                        <strong>{{moneyformatter(TotalPrice)}}</strong>
                                     </td>
                                 </tr>
                             </tfoot>
@@ -138,9 +130,9 @@
                 </div>
 
                 <!-- 待繳款 -->
-                <div class="unpay_payment_info" v-if="status===0">
+                <div class="unpay_payment_info" v-if="OrderStatus===0">
                     <div class="pickup_info">
-                        <h3 class="pickup_text">
+                        @* <h3 class="pickup_text">
                             付款方式：ATM 虛擬帳號
                         </h3>
                         <dl class="info-list">
@@ -170,7 +162,7 @@
                                     系統以款項實際入帳時間為準，繳費期限前未入帳者訂單皆一律取消。因為各家銀行轉帳入帳時間不同，為保障您的權益，請及早付款。
                                 </div>
                             </dd>
-                        </dl>
+                        </dl> *@
                         <h3 class="pickup_type">取票方式：電子票券</h3>
                         <hr>
                         <div class="pickup_caption">
@@ -195,7 +187,7 @@
 
 
                 <!-- 訂單完成 -->
-                <div class="finished_pickup_payment_info" v-if="status===2">
+                <div class="finished_pickup_payment_info" v-if="PaymentSuccessStep">
                     <div class="pickup_info">
                         <h3 class="pickup_type">取票方式：電子票券</h3>
                         <p class="pickup_text">
@@ -236,11 +228,16 @@
                     </div>
                 </div>
                 <!-- <button class="btn_print btn" id="btn_print">列印報名資料</button> -->
-
-                <button class="btn_print btn" id="btn_modify" v-on:click="edit = !edit">
+                <button class="btn_print btn" id="btn_modify" v-if="edit" v-on:click="edit = false">
                     <i class="fa fa-pencil" aria-hidden="true"></i> 修改表單內容
                 </button>
+
+                <button class="btn_print btn" id="btn_modify" v-else v-on:click="changeContactPerson()">
+                    <i class="fa fa-paper-plane" aria-hidden="true"></i> 送出表單內容
+                </button>
+
                 <button class="btn_print btn btn_cancelled" id="btn_cancelled"> 取消訂單</button>
+                <button class="btn_print btn btn_payment" id="btn_payment" v-if="NotFree"> 快去繳錢</button>
                 <div class="contact_info_contaner">
                     <div class="contact_info">
                         <h3 class="contact_title">聯絡人資料</h3>
@@ -250,8 +247,8 @@
                                     <span v-if="!edit">*</span> 姓名
                                 </label>
                                 <div id="contact_name" name="contact_name" class="contact_name">
-                                    <span v-if="edit" class="name">{{name}}</span>
-                                    <input v-else type="text" v-model="name" />
+                                    <span v-if="edit" class="name">{{Name}}</span>
+                                    <input v-else type="text" v-model="Name" />
                                 </div>
                             </div>
                             <div class="email">
@@ -259,8 +256,8 @@
                                     <span v-if="!edit">*</span> Email
                                 </label>
                                 <div id="contact_email" name="contact_email" class="contact_email">
-                                    <span v-if="edit" class="email">{{mail}}</span>
-                                    <input v-else type="text" v-model="mail" />
+                                    <span v-if="edit" class="email">{{Email}}</span>
+                                    <input v-else type="text" v-model="Email" />
                                 </div>
                             </div>
                             <div class="tel">
@@ -268,28 +265,28 @@
                                     <span v-if="!edit">*</span> 手機
                                 </label>
                                 <div id="contact_tel" name="contact_tel" class="contact_tel">
-                                    <span v-if="edit" class="tel">{{tel}}</span>
-                                    <input v-else type="text" v-model="tel" />
+                                    <span v-if="edit" class="tel">{{Phone}}</span>
+                                    <input v-else type="text" v-model="Phone" />
                                 </div>
                             </div>
                         </div>
                     </div>
                 </div>
-                <div class="tickets_with_info_contaner">
+                <div class="tickets_with_info_contaner" v-for="(Ticket,index) in TicketList">
                     <ul class="tickets_with_info ">
                         <li class=" icon">
                             <div>
                                 <div class="attendee-info">
                                     <h3 class="Header">
-                                        全票 第 1 張
+                                        {{Ticket.TicketTypeName}} 第 {{index+1}} 張
                                     </h3>
                                     <!-- <div class="ticket-status cancelled" >
                                         已退票
                                     </div> -->
                                     <div class="ticket-number">
-                                        票號：#99153964 @Url.Action("Ticket", "Events", new { id = 99153964 });
+                                        票號：#{{Ticket.TicketNumber}}
                                     </div>
-                                    <div class="ticket-info" v-if="status==2">
+                                    <div class="ticket-info" v-if="PaymentSuccessStep">
                                         @* <div class="ticket_wrap">
                                         <h2>電子票券</h2>請先至我的票券中 <a href="#">票券資料</a> 頁，點「顯示 QR Code」驗票入場
                                         </div> *@
@@ -300,19 +297,19 @@
                                     <div class="">
                                         <div class="control-group">
                                             <label class="control-label">活動名稱</label>
-                                            <div class="controls">【ALTA】theLOOP presents : PSY.P 臺灣個人巡演預熱戰</div>
+                                            <div class="controls">{{EventName}}</div>
                                         </div>
                                     </div>
                                     <div class="">
                                         <div class="control-group">
                                             <label class="control-label ">座位資訊</label>
-                                            <div class="controls  ">B2 區 16 排 4 號</div>
+                                            <div class="controls  ">{{Ticket.SeatAreaName}} {{Ticket.SeatNumber}}</div>
                                         </div>
                                     </div>
-                                    <div class="number_check">
+                                    <div class="">
                                         <div class="control-group">
                                             <label class="control-label ">檢查碼</label>
-                                            <div class="controls ">7288</div>
+                                            <div class="controls ">{{Ticket.CheckCode}}</div>
                                         </div>
                                     </div>
                                     <div class="fee_tex">
@@ -327,7 +324,7 @@
                                         <div class="control-group">
                                             <label class="control-label " for="">注意事項</label>
                                             <div class="controls ">
-                                                主辦：EVE FUN TOGETHER/星月文創執行
+                                                主辦：{{MainOrganizer}}
                                                 <br>
                                                 禁止外食及違禁物，禁止全場錄影及直播，未盡事宜詳閱開售頁面。
                                                 <br>
@@ -339,7 +336,7 @@
                                     </div>
                                 </div>
                             </div>
-                            <div class="ticket-status cancelled" v-if="status==1">
+                            <div class="ticket-status cancelled" v-if="PaymentCancelStep">
                                 已退票
                             </div>
                         </li>
@@ -355,42 +352,149 @@
 </div>
 
 <script type="module">
-    //import { headinfo } from "/js/Events/Comps/headinfo.js";
+    import { headinfo } from "/js/Events/Comps/headinfo.js";
     import { order } from "/js/api/orderAPI.js";
-    //import { tools } from "/js/api/tools.js";
+    import { tools } from "/js/api/tools.js";
+
     const orderDetail = Vue.createApp({
         data() {
             return {
-                userOrderList: [],
                 paymentMethodType: null,
                 edit: true,
-                name: "張靚瑩",
-                mail: "1234@gmail.com",
-                tel: "0912345678",
-                status: 0
+                Name: "",
+                Email: "",
+                Phone: "",
+
+
+                OrderId: 0,
+                PaymentType: 0,
+                OrderStatus: 0, //定單狀態 0待付款1成功2付款失敗3取消
+                OrderDate: "", //定單成立日期
+                UserId: 2, //使用者id
+                EventId: 2, //活動id
+                EventName: "", //活動名稱
+                EventStartTime: "", //活動開始日期
+                MainOrganizer: "",//主辦單位
+                OrganizationId: 2,//
+                LocationAddress: "",//活動地址
+                LocationName: "",//活動地名
+                StreamingUrl: null,
+
+                TicketPrice: 0,
+                PurchaseAmount: 2,
+                TotalPrice: 0,
+                ContactPerson: {},
+                ParticipantPeople: null,
+
+                TicketList: []
+            }
+        }, computed: {
+            //0待付款1成功2付款失敗3取消
+            PaymentPendingStep() { return this.OrderStatus == 0 },
+            PaymentSuccessStep() { return this.OrderStatus == 1 },
+            PaymentFailStep() { return this.OrderStatus == 2 },
+            PaymentCancelStep() { return this.OrderStatus == 3 },
+
+            NotFree() {
+                return this.TotalPrice > 0;
             }
         },
-        //components: { headinfo },
+        components: { headinfo },
         mounted() {
-            console.log("Order ID:"+this.$route.query.id)
-            order.GetOrderDetailByOrderId(2, this.getGetOrderDetailByOrderIdSuccess);
+            const searchParams = new URLSearchParams(window.location.search);
+            let orderId;
+            if (searchParams.has('id')) {
+                orderId = searchParams.get('id')
+            } else {
+                //沒有ID要如何處理
+            }
+
+            console.log(orderId);
+            order.GetOrderDetailByOrderId(orderId, this.getGetOrderDetailByOrderIdSuccess);
         },
         methods: {
-            //moneyformatter(value) { return tools.moneyformatter(value) },
-            //dateformatter(value) { return tools.dateformatter(value) },
+            moneyformatter(value) { return tools.moneyformatter(value) },
+            dateformatter(value) { return tools.dateformatter(value) },
+
+
             getGetOrderDetailByOrderIdSuccess(res) {
                 console.log(res);
                 if (res.status) {
                     //this.userOrderList = res.data;
-                    console.log(res.data);
+                    //console.log(res.data);
+
+                    this.OrderId = res.data.OrderId;
+                    this.PaymentType = res.data.PaymentType;
+                    this.OrderStatus = res.data.OrderStatus;
+                    this.OrderDate = res.data.OrderDate;
+                    this.UserId = res.data.UserId;
+                    this.EventId = res.data.EventId;
+                    this.EventName = res.data.EventName;
+                    this.EventStartTime = res.data.EventStartTime;
+                    this.MainOrganizer = res.data.MainOrganizer;
+                    this.OrganizationIdntName = res.data.OrganizationId;
+                    this.LocationAddress = res.data.LocationAddress;
+                    this.LocationName = res.data.LocationName;
+                    this.StreamingUrl = res.data.StreamingUrl;
+
+
+                    this.TicketPrice = res.data.TicketPrice;
+                    this.PurchaseAmount = res.data.PurchaseAmount;
+
+                    this.ContactPerson = JSON.parse(res.data.ContactPerson);
+                    this.ParticipantPeople = res.data.ParticipantPeople;
+
+                    this.Name = this.ContactPerson.Name;
+                    this.Email = this.ContactPerson.Email;
+                    this.Phone = this.ContactPerson.Phone;
+
+
+                    this.TicketList = JSON.parse(res.data.TicketList);
+
+                    this.TotalPrice = this.TicketList.reduce((n, { TicketPrice }) => n + TicketPrice, 0);
+
+                    console.log("TicketList:", this.TicketList);
                 } else {
                     console.log(res.msg);
                 }
             },
-            /*completeCountdown() {
-                alert('時程已到');
-                this.toEventPage();
-            },*/
+            changeContactPerson() {
+                //alert('時程已到');
+                //this.toEventPage();
+                if (this.Name == "") {
+                    alert("Input Name"); return;
+                }
+
+                if (this.Email == "") {
+                    alert("Input Email"); return;
+                }
+
+                if (this.Phone == "") {
+                    alert("Input Phone"); return;
+                }
+
+                this.ContactPerson.Name = this.Name;
+                this.ContactPerson.Email = this.Email;
+                this.ContactPerson.Phone = this.Phone;
+
+
+                let param = {};
+                param.OrderID = this.OrderId;
+                param.ContactPersonJson = JSON.stringify(this.ContactPerson);
+                this.edit = true;
+                console.log("param:", param);
+                order.UpdateOrderDetail(param,
+                    function (res) {
+
+                        console.log(res);
+                    },
+                    function (res) {
+                        console.log(res);
+                    }
+
+                );
+            },
+
             cancel() {
                 if (confirm("是否要取消")) {
                     this.toEventPage();
@@ -402,6 +506,9 @@
         }
     }).mount('#orderDetail');
 </script>
+
+
+
 
 
 
