@@ -170,6 +170,11 @@ namespace ShowNest.Web.Controllers
             return View(model);
         }
 
+        public IActionResult SeatSelector()
+        {
+            return View();
+        }
+
         public IActionResult SelectArea()
         {
             return View();
