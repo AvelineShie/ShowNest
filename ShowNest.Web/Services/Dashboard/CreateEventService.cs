@@ -14,21 +14,35 @@ namespace ShowNest.Web.Services.Dashboard
         
         public CreateEventViewModel GetOrgByOwner(int OwnerId)
         {
-            var organizations = _eventRepository.GetOrgsByOwnerId(OwnerId);
+            // 根據 userID 找到它底下所有組織
+            var organizations = _eventRepository.GetOrgsByOwnerId(OwnerId).ToList();
             //var events = _eventRepository.GetEventsByOrgId(OrgId);
 
-            //1. 撈擁有人底下的所有OrgId, OrgName組成VM
-            var result = new OrgNameList
+            // userID 所有組織 OrgId, OrgName組成VM
+            var result = new CreateEventViewModel
             {
-                OrgName = organizations.FirstOrDefault().Name,
+                OrgNames = new List<OrgNameList>()
             };
 
-            return new CreateEventViewModel { };
+            
+            if (result.OrgNames == null)
+            {
+                throw new NullReferenceException("OrgNames 屬性為空");
+            }
 
-            //2.撈組織下面所有活動，組成VM
+            foreach (var org in organizations)
+            {
+                var newOrgNameList = new OrgNameList()
+                {
+                    OrgId = org.Id,
+                    OrgName = org.Name,
+                };
+
+                result.OrgNames.Add(newOrgNameList);
+            }
+
+            return result;
         }
-
-
 
 
     }
