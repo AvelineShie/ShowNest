@@ -649,19 +649,17 @@ public partial class DatabaseContext : DbContext
 
         modelBuilder.Entity<TicketTypeAndSeatAreaMapping>(entity =>
         {
-            entity
-                .HasNoKey()
-                .ToTable("TicketTypeAndSeatAreaMapping");
+            entity.ToTable("TicketTypeAndSeatAreaMapping");
 
-            entity.HasOne(d => d.TicketType).WithMany()
-                .HasForeignKey(d => d.TicketTypeId)
-                .OnDelete(DeleteBehavior.ClientSetNull)
-                .HasConstraintName("FK_TicketTypeAndSeatAreaMapping_TicketTypes");
-
-            entity.HasOne(d => d.SeatArea).WithMany()
+            entity.HasOne(d => d.SeatArea).WithMany(p => p.TicketTypeAndSeatAreaMappings)
                 .HasForeignKey(d => d.SeatAreaId)
                 .OnDelete(DeleteBehavior.ClientSetNull)
                 .HasConstraintName("FK_TicketTypeAndSeatAreaMapping_SeatAreas");
+
+            entity.HasOne(d => d.TicketType).WithMany(p => p.TicketTypeAndSeatAreaMappings)
+                .HasForeignKey(d => d.TicketTypeId)
+                .OnDelete(DeleteBehavior.ClientSetNull)
+                .HasConstraintName("FK_TicketTypeAndSeatAreaMapping_TicketTypes");
         });
 
         modelBuilder.Entity<User>(entity =>

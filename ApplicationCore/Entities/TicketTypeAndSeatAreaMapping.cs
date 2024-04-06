@@ -11,7 +11,7 @@ public partial class TicketTypeAndSeatAreaMapping
 
     public int SeatAreaId { get; set; }
 
-    public virtual TicketType TicketType { get; set; }
-
     public virtual SeatArea SeatArea { get; set; }
+
+    public virtual TicketType TicketType { get; set; }
 }
