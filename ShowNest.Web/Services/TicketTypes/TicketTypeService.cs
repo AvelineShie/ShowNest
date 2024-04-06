@@ -16,6 +16,23 @@ public class TicketTypeService : ITicketTypeService
             .Where(i => i.Id == eventId)
             .FirstOrDefaultAsync();
 
+        var ticketTypes = await _dbContext.TicketTypes
+            .Include(i => i.TicketTypeAndSeatAreaMappings)
+            .Where(i => i.EventId == eventId)
+            .Select(i => new TicketPriceViewModel()
+            {
+                Id = i.Id,
+                SeatArea = string.Join(",", i.TicketTypeAndSeatAreaMappings
+                    .Select(j => j.SeatArea.Name).ToList()),
+                SeatSelectionMethod = "自行選位",
+                Tickets = new TicketsViewModel()
+                {
+                    TicketTypeName = i.Name,
+                    TicketPrice = i.Price,
+                }
+            })
+            .ToListAsync();
+
         return new TicketTypeSelectionViewModel()
         {
             EventDetail = new EventDetailViewModel()
@@ -39,53 +56,7 @@ public class TicketTypeService : ITicketTypeService
                     PaymentMethodName = "ATM"
                 }
             },
-            TicketPriceRow = new List<TicketPriceViewModel>
-            {
-                new TicketPriceViewModel()
-                {
-                    Id = 1,
-                    SeatArea = "B1特一, B1特二",
-                    SeatSelectionMethod = "自行選位",
-                    Tickets = new TicketsViewModel()
-                    {
-                        TicketTypeName = "全票",
-                        TicketPrice = 3000
-                    }
-                },
-                new TicketPriceViewModel()
-                {
-                    Id = 2,
-                    SeatArea = "紫1D, 紫1B, 黃2C, 紫1A, 紫1C, 紅1A, 紅1B, 紅1C, 紅1D",
-                    SeatSelectionMethod = "自行選位",
-                    Tickets = new TicketsViewModel()
-                    {
-                        TicketTypeName = "全票",
-                        TicketPrice = 2600
-                    }
-                },
-                new TicketPriceViewModel()
-                {
-                    Id = 3,
-                    SeatArea = "紫2C, 紅2B, 紫1E, 紅2D, 紅2C, 紫2B, 紫2D, 黃2B, 紅1E, 黃2D",
-                    SeatSelectionMethod = "自行選位",
-                    Tickets = new TicketsViewModel()
-                    {
-                        TicketTypeName = "全票",
-                        TicketPrice = 2400
-                    }
-                },
-                new TicketPriceViewModel()
-                {
-                    Id = 4,
-                    SeatArea = "紫2C, 紅2B, 紅2D, 紅2C, 紫2B, 紫2D, 紫2E, 紅2E, 黃2A, 黃2E",
-                    SeatSelectionMethod = "自行選位",
-                    Tickets = new TicketsViewModel()
-                    {
-                        TicketTypeName = "全票",
-                        TicketPrice = 2200
-                    }
-                }
-            }
+            TicketPriceRow = ticketTypes
         };
     }
 }
