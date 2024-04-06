@@ -1,0 +1,88 @@
+@section topCSS {
+    <link href="https://cdn.jsdelivr.net/npm/vuetify@3.5.14/dist/vuetify.min.css" rel="stylesheet">
+}
+
+<body>
+    <div class="wrap" id="app">
+    <v-app>
+        <v-container>
+          <v-stepper :items="['建立活動', 'Step 2', 'Step 3', 'Step 4']">
+            <template v-slot:item.1>
+              <v-card title="建立活動" flat>
+              <v-select
+                      v-model="selectedOrganization"
+                      item-title="name"
+                      item-value="id"
+                      :items="organizations"
+                      label="請選擇組織"
+                      required
+                    ></v-select>
+             
+              </v-card>
+            </template>
+    
+            <template v-slot:item.2>
+              <v-card title="Step Two" flat>
+              <v-form>
+                  <v-container>
+                    <v-row>
+                      <v-col
+                        cols="12"
+                        md="6"
+                      >
+                        <v-text-field
+                          label="活動名稱"
+                          hide-details
+                          required
+                          class="mb-4"
+                        ></v-text-field>
+                        <v-text-field
+                          label="網址"
+                          hide-details
+                          required
+                          class="mb-4"
+                        ></v-text-field>
+                        <v-text-field
+                          label="活動舉辦時間"
+                          hide-details
+                          required
+                        ></v-text-field>
+                      </v-col>
+              
+                      <v-col
+                        cols="12"
+                        md="6"
+                      >
+                        <v-text-field
+                          label="Last name"
+                          hide-details
+                          required
+                        ></v-text-field>
+                      </v-col>
+                    </v-row>
+                  </v-container>
+                </v-form>
+              </v-card>
+            </template>
+    
+            <template v-slot:item.3>
+              <v-card title="Step Three" flat>...</v-card>
+            </template>
+            
+            
+            <template v-slot:item.4>
+              <v-card title="Step Four" flat>...</v-card>
+            </template>
+          </v-stepper>
+        </v-container>
+      </v-app>
+    </div>
+
+    @section Scripts {
+        <script src="https://cdn.jsdelivr.net/npm/vuetify@3.5.14/dist/vuetify.min.js"></script>
+    }
+    @section EndJS {
+        <script src="/js/Dashboard/CreateNewEvent.js"></script>
+    }
+</body>
+
