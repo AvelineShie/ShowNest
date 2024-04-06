@@ -54,6 +54,8 @@ namespace ShowNest.Web
 
             builder.Services.AddScoped<IEventRepository, EventRepository>();
             builder.Services.AddScoped<CreateEventService>();
+            
+            builder.Services.AddScoped<EventsApiService>();
 
 
             builder.Services.AddScoped<AccountService>();

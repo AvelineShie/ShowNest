@@ -68,7 +68,7 @@
             <div class="organizers mobi-hide">
                 <i class="fa-solid fa-sitemap"></i>
                 主辦單位
-                <a asp-controller="Organizations" asp-action="Index" >Build School</a>
+                <a asp-controller="Organizations" asp-action="Index">@Model.MainOrganizer</a>
                 <a href="" id="btn-Contact-organization">聯絡主辦單位</a>
             </div>
             <!-- 活動header頁 結束-->
@@ -161,11 +161,11 @@
                 </div>
             </div>
             <ul class="attendees">
-                @foreach (var ParticipantPeople in @Model.AllParticipantPeoples)
+               @*  @foreach (var ParticipantPeople in @Model.AllParticipantPeoples)
                     {
                         <li>
                                  <img src="" alt="">@ParticipantPeople                        </li>
-                    }
+                    } *@
                 <div class="more">
                     ...以及其他 19 人
                 </div>

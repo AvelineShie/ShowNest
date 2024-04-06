@@ -41,6 +41,7 @@ namespace ShowNest.Web.Services.Events
             {
                 EventId = EventPage.Id,
                 MainImage = EventPage.EventImage,
+                MainOrganizer=EventPage.MainOrganizer,
                 EventName = EventPage.Name,
                 EventTime = EventPage.StartTime,
                 EventLocationName = EventPage.LocationName,

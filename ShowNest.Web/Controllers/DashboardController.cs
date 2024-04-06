@@ -134,5 +134,10 @@ namespace ShowNest.Web.Controllers
             }
 
         }
+
+        public IActionResult CreateNewEvent()
+        {
+            return View();
+        }
     }
 }
