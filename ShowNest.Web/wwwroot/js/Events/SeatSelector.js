@@ -9,7 +9,8 @@ createApp({
             showModal: false,
             seatAreaId: 1,
             seatViewModel: {},
-            selectedSeats: []
+            selectedSeats: [],
+            tickets: []
         }
     },
     methods: {
@@ -26,8 +27,7 @@ createApp({
 
                 if (this.remainTime > 0) {
                     this.remainTime--;
-                }
-                else {
+                } else {
                     clearInterval();
                 }
 
@@ -44,7 +44,7 @@ createApp({
         },
         async onAreaSelected(areaId) {
             this.mode = "selectSeat";
-            
+
             this.seatAreaId = areaId;
 
             await this.fetchSeats();
@@ -62,6 +62,27 @@ createApp({
                 this.seatViewModel.seats[rowIndex][seatIndex] = {...seat, seatStatus: 0}
             }
         },
+        async fetchTickets() {
+            const params = new URLSearchParams(window.location.search);
+            const criteria = []
+            for (const [key, value] of params) {
+                criteria.push({
+                    TicketTypeId: key,
+                    TicketCount: value
+                })
+            }
+
+            const response = await fetch('/api/TicketTypes/GetAutoSelectedSeats', {
+                method: 'POST',
+                headers: {
+                    "content-type": "application/json"
+                },
+                body: JSON.stringify({
+                    Criteria: criteria
+                })
+            });
+            this.tickets = (await response.json()).tickets;
+        },
         async fetchSeats() {
             const response = await fetch(`/api/seats?seatAreaId=${this.seatAreaId}`);
             this.seatViewModel = await response.json();
@@ -78,9 +99,16 @@ createApp({
         },
         isSeatMode() {
             return this.mode === 'selectSeat'
+        },
+        subtotalTicketsPrice() {
+            if (this.tickets.length === 0) {
+                return 0;
+            }
+
+            return this.tickets.reduce((total, ticket) => total + ticket.price, 0);
         }
     },
-    mounted() {
+    async mounted() {
         let expireTime = this.getExpireTime();
         let setTimer = 600000;
         if (!expireTime) {
@@ -90,7 +118,7 @@ createApp({
         }
 
         const remainTimeMs = expireTime - new Date().getTime();
-        if (remainTimeMs <= 0 ) {
+        if (remainTimeMs <= 0) {
             window.alert('選位已截止，請重新購票');
             window.location.href = 'TicketTypeSelection';
             $cookies.remove('expireTimeOnSelection');
@@ -98,6 +126,8 @@ createApp({
             this.remainTime = remainTimeMs / 1000;
             this.startCountdown();
         }
+
+        await this.fetchTickets();
     },
 }).mount('#app')
 

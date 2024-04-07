@@ -24,7 +24,7 @@
         您還有 {{ counter }} 可以選擇座位
     </div>
     <div
-        @@click="onConfirmSeatClicked"       
+        @@click="onConfirmSeatClicked"
         class="btn-confirm">
         <a href="#">確認座位</a>
     </div>
@@ -36,7 +36,7 @@
         <div class="display-total-amount">
             <div class="total-amount">
                 <span>總金額</span>
-                <p>TWD$3,800</p>
+                <p>TWD${{subtotalTicketsPrice}}</p>
             </div>
             <div class="seats-selection-complete">
                 <a asp-controller="Events" asp-action="Registrations">完成選位</a>
@@ -45,11 +45,11 @@
         <div class="selected-tickets">
             選購的票券
         </div>
-        <div class="ticket-detail">
-            <div class="price">TWD$3,800</div>
+        <div class="ticket-detail" v-for="ticket in tickets">
+            <div class="price">TWD${{ ticket.price }}</div>
             <div class="ticket-with-seat-detail">
-                <div class="seat-location">紫 2D 區 3 排 14 號</div>
-                <div class="ticket-type">全票</div>
+                <div class="seat-location">{{ ticket.seatAreaName }} {{ ticket.seatNumber }}</div>
+                <div class="ticket-type">{{ ticket.ticketTypeName }}</div>
             </div>
         </div>
     </div>
