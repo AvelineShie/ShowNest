@@ -44,7 +44,7 @@ namespace ShowNest.Web.Controllers
             }
             else
             {
-                // 登入失敗，返回錯誤信息 (待修)
+                // 登入失敗，返回錯誤信息
                 ModelState.AddModelError("", result.ErrorMessage);
                 return View(Login);
             }
@@ -118,7 +118,7 @@ namespace ShowNest.Web.Controllers
                     // 密碼更換成功，重定向到成功頁面或者提示用戶
                     await HttpContext.SignOutAsync(CookieAuthenticationDefaults.AuthenticationScheme);
 
-                    TempData["Message"] = "請重新登入";
+                    TempData["Message"] = "修改成功，請重新登入";
 
                     return RedirectToAction("LogIn");
                 }
