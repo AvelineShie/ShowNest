@@ -69,6 +69,12 @@ namespace ShowNest.Web.Controllers
             _eventPageService = eventPageService;
         }
 
+        //public IActionResult Index()
+        //{
+        //    return View();
+        //}
+
+        // 舊方法，先註解
         public async Task<IActionResult> Index(int page)
         {
             var eventIndexViewModel = await _eventIndexService.GetEventIndexViewModel();

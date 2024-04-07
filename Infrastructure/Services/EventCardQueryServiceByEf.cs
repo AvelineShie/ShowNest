@@ -44,6 +44,7 @@ namespace Infrastructure.Services
             return categoryTagsQuery;
         }
 
+        // 一次拿取全部卡片，太耗效能，這個方法目前不用
         public async Task<List<EventIndexDto>> GetEventIndexCards()
         {
             var query = await DbContext.EventAndTagMappings

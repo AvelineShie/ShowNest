@@ -9,6 +9,8 @@ namespace ShowNest.Web.Configurations
             //services.AddScoped<IMemberCenterViewModelService, MemberCenterViewModelService>();
             services.AddScoped<IUserAccountAPIService,UserAccountAPIService>();
             services.AddScoped<OrderTicketService>();
+            services.AddScoped<EventsIndexCardsAPIServiceByEf>();
+            
 
             return services;
         }
