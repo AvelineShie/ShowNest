@@ -3,13 +3,45 @@ const {createApp} = Vue
 createApp({
     data() {
         return {
+            counter: '',
+            remainTime: 0,
             mode: 'selectArea',
+            showModal: false,
             seatAreaId: 1,
             seatViewModel: {},
             selectedSeats: []
         }
     },
     methods: {
+        startCountdown() {
+            setInterval(() => {
+
+                let minutes = Math.floor(this.remainTime / 60);
+                let seconds = Math.floor(this.remainTime % 60);
+
+                minutes = minutes < 10 ? '0' + minutes : minutes;
+                seconds = seconds < 10 ? '0' + seconds : seconds;
+
+                this.counter = minutes + ':' + seconds;
+
+                if (this.remainTime > 0) {
+                    this.remainTime--;
+                }
+                else {
+                    clearInterval();
+                }
+
+            }, 1000);
+        },
+        setExpireTime(timesUp) {
+            $cookies.set("expireTimeOnSelection", timesUp)
+        },
+        getExpireTime() {
+            return $cookies.get("expireTimeOnSelection");
+        },
+        onConfirmSeatClicked() {
+            this.showModal = !this.showModal;
+        },
         async onAreaSelected(areaId) {
             this.mode = "selectSeat";
             
@@ -49,6 +81,23 @@ createApp({
         }
     },
     mounted() {
+        let expireTime = this.getExpireTime();
+        let setTimer = 600000;
+        if (!expireTime) {
+            expireTime = new Date().getTime() + setTimer * 1000;
+
+            this.setExpireTime(expireTime);
+        }
+
+        const remainTimeMs = expireTime - new Date().getTime();
+        if (remainTimeMs <= 0 ) {
+            window.alert('選位已截止，請重新購票');
+            window.location.href = 'TicketTypeSelection';
+            $cookies.remove('expireTimeOnSelection');
+        } else {
+            this.remainTime = remainTimeMs / 1000;
+            this.startCountdown();
+        }
     },
 }).mount('#app')
 
