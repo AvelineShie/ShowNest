@@ -95,11 +95,11 @@ namespace Infrastructure.Services
                 try
                 {
                     var data = connection.Query(sql, new { UserID = userId, OrderID = orderId }).First();
-                    return OpperationResultHelper.ReturnSuccessData(data);
+                    return OperationResultHelper.ReturnSuccessData(data);
                 }
                 catch (Exception ex)
                 {
-                    return OpperationResultHelper.ReturnErrorMsg(ex.Message);
+                    return OperationResultHelper.ReturnErrorMsg(ex.Message);
                 }
             }
         }
@@ -117,11 +117,11 @@ namespace Infrastructure.Services
                 try
                 {
                     connection.Query(sql, new { ContactPersonJson = contactPersonJson, OrderID = orderId });
-                    return OpperationResultHelper.ReturnSuccessData("Update Success!");
+                    return OperationResultHelper.ReturnSuccessData("Update Success!");
                 }
                 catch (Exception ex)
                 {
-                    return OpperationResultHelper.ReturnErrorMsg(ex.Message);
+                    return OperationResultHelper.ReturnErrorMsg(ex.Message);
                 }
             }
         }
