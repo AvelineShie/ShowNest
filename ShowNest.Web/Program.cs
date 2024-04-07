@@ -15,6 +15,7 @@ using ShowNest.Web.Services.Shared;
 using ShowNest.Web.Services.Seats;
 using Infrastructure.Services;
 using ShowNest.Web.Services.Dashboard;
+using ShowNest.Web.Services.TicketTypes;
 
 
 namespace ShowNest.Web
@@ -56,6 +57,7 @@ namespace ShowNest.Web
             builder.Services.AddScoped<CreateEventService>();
             
             builder.Services.AddScoped<EventsApiService>();
+            builder.Services.AddScoped<ITicketTypeService, TicketTypeService>();
 
 
             builder.Services.AddScoped<AccountService>();

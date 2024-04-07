@@ -30,6 +30,14 @@
                     <div class="submit"><input type="submit" value="登入" /></div>
 
                 </form>
+                
+                @if (TempData["Message"] != null)
+                {
+                    <div class="alert alert-info">
+                        @TempData["Message"]
+                    </div>
+                }
+
                 <div class="forget-passwords"><a asp-controller="Account" asp-action="ForgetPassword">忘記密碼</a></div>
                 <div class="other-log-in-methods">使用第三方帳號進行登入</div>
                 <div class="third-party-log-in">

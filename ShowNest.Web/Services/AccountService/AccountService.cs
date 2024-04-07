@@ -3,6 +3,7 @@ using Microsoft.AspNetCore.Authentication;
 using Microsoft.AspNetCore.Authentication.Cookies;
 using Microsoft.AspNetCore.Http;
 using Microsoft.EntityFrameworkCore;
+using NuGet.Protocol.Plugins;
 using System;
 using System.Collections.Generic;
 using System.Data;
@@ -16,24 +17,24 @@ namespace ShowNest.Web.Services.AccountService
     public class AccountService
     {
         private readonly DatabaseContext _context;
-        private readonly HttpContext _httpContext;
+        private readonly IHttpContextAccessor _httpContextAccessor;
 
-        //設定一個帳戶異常狀態
+        // 設定一個帳戶異常狀態
         public class AccountException : Exception
         {
             public AccountException(string message) : base(message)
             {
             }
         }
+
         public AccountService(DatabaseContext context, IHttpContextAccessor httpContextAccessor)
         {
             _context = context;
-            _httpContext = httpContextAccessor.HttpContext;
+            _httpContextAccessor = httpContextAccessor;
         }
 
+
         //註冊
-
-
         public async Task<(bool IsSuccess, string ErrorMessage)> RegisterUserAsync(RegisterViewModel model, bool isValid)
         {
             if (!isValid)
@@ -81,6 +82,7 @@ namespace ShowNest.Web.Services.AccountService
                 return (false, ex.Message);
             }
         }
+        //登入
         public async Task<(bool IsSuccess, string ErrorMessage)> LogInAsync(LoginViewModel login)
         {
             //先檢查帳號
@@ -111,6 +113,7 @@ namespace ShowNest.Web.Services.AccountService
                 {
                     new Claim(ClaimTypes.Name, user.Nickname),
                     new Claim(ClaimTypes.NameIdentifier, user.Id.ToString()),
+                    //new Claim(ClaimTypes.Sid, user.Id.ToString())
                    // new Claim(ClaimTypes.Role, role.OrganizationId.ToString())
                 };
                     // 只有在角色存在時才添加角色相關的Claim
@@ -120,7 +123,7 @@ namespace ShowNest.Web.Services.AccountService
                     }
                     var claimsIdentity = new ClaimsIdentity(claims, CookieAuthenticationDefaults.AuthenticationScheme);
 
-                    await _httpContext.SignInAsync(CookieAuthenticationDefaults.AuthenticationScheme,
+                    await _httpContextAccessor.HttpContext.SignInAsync(CookieAuthenticationDefaults.AuthenticationScheme,
                         new ClaimsPrincipal(claimsIdentity),
                         new AuthenticationProperties()
                         {
@@ -133,6 +136,76 @@ namespace ShowNest.Web.Services.AccountService
 
         }
 
+        //修改密碼
+        public async Task<(bool IsSuccess, string ErrorMessage)> ChangePassword(ChangePasswordViewModel model, bool isValid)
+        {
+            // VIEWMODEL已擋，不確定會不會有錯誤狀況，保險寫
+            if (!isValid)
+            {
+                return (false, "請確認輸入是否正確。");
+            }
+
+            // 從HttpContext中獲取當前使用者的ID
+            var userIdClaim = _httpContextAccessor.HttpContext.User.Claims.FirstOrDefault(c => c.Type == ClaimTypes.NameIdentifier);
+            if (userIdClaim == null)
+            {
+                // 如果找不到使用者ID宣告，則可能是用戶未登入
+                return (false, "用戶未登入。");
+            }
+
+            // 比對舊密碼
+            bool isOldPasswordCorrect = await VerifyOldPassword(userIdClaim.Value, model.Password);
+            if (!isOldPasswordCorrect)
+            {
+                return (false, "舊密碼不正確。");
+            }
+
+            // 如果舊密碼比對成功，則進行密碼更新的操作
+            var dbUser = await _context.LogInInfos.FirstOrDefaultAsync(u => u.UserId == int.Parse(userIdClaim.Value));
+            if (dbUser == null)
+            {
+                // 如果找不到對應的使用者，則返回失敗
+                return (false, "找不到對應的使用者。");
+            }
+
+            // 更新密碼
+            dbUser.Password = HashPassword(model.NewPassword);
+            dbUser.EditedAt = DateTime.Now; // 更新編輯時間
+
+            await _context.SaveChangesAsync();
+
+            return (true, null);
+        }
+        //比對舊密碼
+        private async Task<bool> VerifyOldPassword(string userId, string oldPassword)
+        {
+            // 從HttpContext中獲取當前使用者的ID
+            var userIdClaim = _httpContextAccessor.HttpContext.User.Claims.FirstOrDefault(c => c.Type == ClaimTypes.NameIdentifier);
+            if (userIdClaim == null)
+            {
+                // 如果找不到使用者ID宣告，則可能是用戶未登入
+                return false;
+            }
+
+            // 使用獲取到的使用者ID來查詢資料庫
+            var dbUser = await _context.LogInInfos.FirstOrDefaultAsync(u => u.UserId == int.Parse(userIdClaim.Value));
+            if (dbUser == null)
+            {
+                // 如果找不到對應的使用者，則返回失敗
+                return false;
+            }
+
+            // 假設您的資料庫中存儲的密碼雜湊欄位名稱為PasswordHash
+            string storedHash = dbUser.Password;
+            string hashedOldPassword = HashPassword(oldPassword); // 假設您有一個HashPassword方法來進行密碼雜湊
+
+            // 比對雜湊後的舊密碼與資料庫中的密碼雜湊
+            return storedHash == hashedOldPassword;
+        }
+
+
+
+        //雜湊
         private string HashPassword(string password)
         {
             using (SHA256 sha256Hash = SHA256.Create())

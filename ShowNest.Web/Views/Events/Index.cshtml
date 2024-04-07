@@ -108,19 +108,7 @@
 </section>
 
 <script>
-	@* var pageIndexs = document.querySelectorAll('#page-index a')
-	pageIndexs.forEach(function (eachindex) {
-		eachindex.addEventListener('click', function (event) {
-	event.preventDefault()
-			var currentScrollPosition = window.pageYOffset || document.documentElement.scrollTop;
-			setTimeout(function () {
-				window.scrollTo(0, currentScrollPosition)
-			}, 0)
-		})
-	}) *@
+	var page = 1;
+	var cardsPerPage = 9;
 
-	var pageIndex = document.querySelector('#page-index')
-	pageIndex.addEventListener('click', function(event){
-		@* event.preventDefault() *@
-	})
 </script>

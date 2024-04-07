@@ -74,11 +74,11 @@ namespace Infrastructure.Services
                 try
                 {
                     var data = connection.Query(sql, new { UserID = userId }).ToList();
-                    return OpperationResultHelper.ReturnSuccessData(data);
+                    return OperationResultHelper.ReturnSuccessData(data);
                 }
                 catch (Exception ex)
                 {
-                    return OpperationResultHelper.ReturnErrorMsg(ex.Message);
+                    return OperationResultHelper.ReturnErrorMsg(ex.Message);
                 }
             }
         }
