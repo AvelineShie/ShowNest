@@ -99,10 +99,37 @@ namespace ShowNest.Web.Controllers
         {
             return View();
         }
-
+        //修改密碼
+        [HttpGet]
         public IActionResult ChangePassword()
         {
             return View();
+        }
+        [HttpPost]
+        [AllowAnonymous]
+        [ValidateAntiForgeryToken]
+        public async Task<IActionResult> ChangePassword(ChangePasswordViewModel model)
+        {
+            if (ModelState.IsValid)
+            {
+                var result = await _accountService.ChangePassword(model, true);
+                if (result.IsSuccess)
+                {
+                    // 密碼更換成功，重定向到成功頁面或者提示用戶
+                    await HttpContext.SignOutAsync(CookieAuthenticationDefaults.AuthenticationScheme);
+
+                    TempData["Message"] = "請重新登入";
+
+                    return RedirectToAction("LogIn");
+                }
+                else
+                {
+                    // 密碼更換失敗，顯示錯誤訊息
+                    ModelState.AddModelError(string.Empty, result.ErrorMessage);
+                }
+            }
+            // 如果模型無效，則返回視圖以顯示錯誤訊息
+            return View(model);
         }
         public IActionResult Identities()
         {
