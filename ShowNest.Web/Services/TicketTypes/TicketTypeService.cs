@@ -77,6 +77,7 @@ public class TicketTypeService : ITicketTypeService
                 select new AutoSelectedSeatViewModel
                 {
                     Price = ticketType.Price,
+                    SeatAreaId = seat.SeatArea.Id,
                     SeatAreaName = seat.SeatArea.Name,
                     SeatNumber = seat.Number,
                     TicketTypeName = ticketType.Name

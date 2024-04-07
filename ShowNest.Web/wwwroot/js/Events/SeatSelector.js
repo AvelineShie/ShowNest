@@ -55,11 +55,26 @@ createApp({
         },
         onSeatSelected(rowIndex, seatIndex) {
             const seat = this.seatViewModel.seats[rowIndex][seatIndex];
+            // Select seat
             if (seat.seatStatus === 0) {
-                this.seatViewModel.seats[rowIndex][seatIndex] = {...seat, seatStatus: 1}
+                for (let i = 0; i < this.tickets.length; i++) {
+                    const ticket = this.tickets[i];
+                    if (seat.seatAreaId === ticket.seatAreaId && !ticket.seatNumber) {
+                        ticket.seatNumber = seat.seatNumber;
+                        this.seatViewModel.seats[rowIndex][seatIndex] = {...seat, seatStatus: 1}
+                    }
+                }
             }
+            // Remove seat
             if (seat.seatStatus === 1) {
                 this.seatViewModel.seats[rowIndex][seatIndex] = {...seat, seatStatus: 0}
+
+                for (let i = 0; i < this.tickets.length; i++) {
+                    const ticket = this.tickets[i];
+                    if (seat.seatAreaId === ticket.seatAreaId && seat.seatNumber === ticket.seatNumber) {
+                        ticket.seatNumber = null;
+                    }
+                }
             }
         },
         async fetchTickets() {
@@ -86,6 +101,19 @@ createApp({
         async fetchSeats() {
             const response = await fetch(`/api/seats?seatAreaId=${this.seatAreaId}`);
             this.seatViewModel = await response.json();
+
+            this.refreshSeats();
+        },
+        refreshSeats() {
+            for (const row of this.seatViewModel.seats) {
+                for (const seat of row) {
+                    for (const ticket of this.tickets) {
+                        if (seat.seatAreaId === ticket.seatAreaId && seat.seatNumber === ticket.seatNumber) {
+                            seat.seatStatus = 1;
+                        }
+                    }
+                }
+            }
         },
         mountBSTooltips() {
             //Bootstrap tooltip trigger

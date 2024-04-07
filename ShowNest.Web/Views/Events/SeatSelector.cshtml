@@ -46,8 +46,8 @@
             選購的票券
         </div>
         <div class="ticket-detail" v-for="ticket in tickets">
-            <div class="price">TWD${{ ticket.price }}</div>
-            <div class="ticket-with-seat-detail">
+            <div class="price" v-if="ticket.seatNumber">TWD${{ ticket.price }}</div>
+            <div class="ticket-with-seat-detail" v-if="ticket.seatNumber">
                 <div class="seat-location">{{ ticket.seatAreaName }} {{ ticket.seatNumber }}</div>
                 <div class="ticket-type">{{ ticket.ticketTypeName }}</div>
             </div>
