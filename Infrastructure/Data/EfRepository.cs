@@ -113,5 +113,16 @@ namespace Infrastructure.Data
         {
             return DbSet.Where(expression).ToList();
         }
+        public async Task<TEntity> UpdateAsync(TEntity entity)
+        {
+            DbSet.Update(entity);
+            await DbContext.SaveChangesAsync();
+            return entity;
+        }
+        public async Task<TEntity> GetByIdAsync<TId>(TId id)
+        {
+            return await DbSet.FindAsync(new object[] { id });
+        }
+
     }
 }

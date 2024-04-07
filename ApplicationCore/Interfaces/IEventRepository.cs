@@ -11,10 +11,10 @@ namespace ApplicationCore.Interfaces
     public interface IEventRepository
     {
         //Owners' all Orgs
-        public IEnumerable<Organization> GetOrgIdByOwnerId(int OwnerId);
+        IEnumerable<Organization> GetOrgsByOwnerId(int OwnerId);
 
         //All Events in Each Org
-        public IEnumerable<Event> GetEventIdByOrgId(int OrgId);
+        IEnumerable<Event> GetEventsByOrgId(int OrgId);
 
     }
 }

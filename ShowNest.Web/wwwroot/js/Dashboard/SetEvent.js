@@ -4,16 +4,7 @@
     const mapElement = document.querySelector("#map").closest("div");
     const mapNote = document.querySelector(".map-note");
     const placeLog = document.querySelector(".place-section");
-    const websiteLinkInput = document.getElementById("basic-url");
-    const okSpan = document.querySelector(".OK");
-    const startTimeInput = document.getElementById("startTime");
-    const endTimeInput = document.getElementById("endTime");
-    const checkbox = document.getElementById("checkbox");
-    const timeError = document.getElementById("timeError");
-    const locationName = document.getElementById("LocationName");
-    const eventAddress = document.getElementById("EventAddress");
-    const eventStatus = document.getElementById("EventStatus");
-    const mainOrganizerInput = document.getElementById("MainOrganizerInput");
+
 
     hideOnlineElements();
 
@@ -98,70 +89,26 @@ document.getElementById('restoreBtn')
 });
 
 /*欄位驗證*/
-//function validateForm() {
-//    //活動名稱欄
-//    if (eventNameInput.value === "") {
-//        eventNameInput.classList.add("is-invalid"); // 添加 is-invalid 類別
-//        return false; // 驗證失敗，阻止提交
-//    } else {
-//        eventNameInput.classList.remove("is-invalid"); // 移除 is-invalid 類別
-//    }
+//不符合以下驗證鎖下一頁按鍵
+
+    //活動名稱欄
+
+    //網址列驗證
 
 
-//    //網址列驗證
-//    /*websiteLinkInput.addEventListener("change", function () {*/
+    // 檢查網址是否符合規則
+    //let regex = /^[a-z0-9]{3,16}$/;
 
-//    if (websiteLinkInput === "") {
-//        websiteLinkInput.classList.add("is-invalid"); 
-//        return false; 
-//    }
-//    else {
-//        websiteLinkInput.classList.remove("is-invalid"); 
-//    }
 
-//    // 檢查網址是否符合規則
-//    let regex = /^[a-z0-9]{3,16}$/;
-//    if (regex.test(websiteLinkInput)) {
-//        websiteLinkInput.dataset.isValid = "false";
-//        okSpan.textContent = "請輸入3 到 16 個小寫英文或數字"; // 顯示錯誤訊息
-//        okSpan.style.display = "block";
-//        return false; //驗證失敗, 阻止提交
+    //主辦單位必填
 
-//    } else {
-//        websiteLinkInput.dataset.isValid = "true";
-//        okSpan.innerHTML = '<i class="fa-solid fa-circle-check"></i> 可以使用';
-//        okSpan.style.display = "block"; //顯示OK
-//    }
-//    /*});*/
 
-//    //主辦單位
-//    if (mainOrganizerInput.value === "") {
-//        mainOrganizerInput.classList.add("is-invalid"); // 添加 is-invalid 類別
-//        return false; // 驗證失敗，阻止提交
-//    } else {
-//        mainOrganizerInput.classList.remove("is-invalid"); // 移除 is-invalid 類別
-//    }
+    //時間欄位
 
-//    //時間欄位
-//    if ((startTimeInput.value === "" && endTimeInput.value === "") || checkbox.checked) {
-//        timeError.style.display = "none";
-//    } else {
-//        timeError.style.display = "block";
-//        return false; // 驗證失敗，阻止提交
-//    }
+    //活動類型&活動地點驗證
+    // 實體活動
+    //如果是線上,則沒有必填
+    //如果選擇實體,若實體的場地名稱跟地址為空白,則阻止提交
 
-//    //活動類型&活動地點驗證
-//    // 實體活動
-//    //如果是線上,則沒有必填
-//    //如果選擇實體,若實體的場地名稱跟地址為空白,則阻止提交
-//    if (eventStatus.value === "0" && locationName.value === "" || eventAddress.value === "") { 
-//            locationName.classList.add("is-invalid");
-//            return false;
-//    }
 
-//    locationName.classList.remove("is-invalid");
-//    eventAddress.classList.remove("is-invalid");
-
-//    return true;
-//}
 

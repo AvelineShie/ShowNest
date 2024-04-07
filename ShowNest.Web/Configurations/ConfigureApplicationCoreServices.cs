@@ -1,4 +1,5 @@
-﻿using Infrastructure.Services;
+﻿using ApplicationCore.Interfaces;
+using Infrastructure.Services;
 
 namespace ShowNest.Web.Configurations
 {
@@ -8,11 +9,9 @@ namespace ShowNest.Web.Configurations
         {
             services.AddScoped(typeof(IRepository<>), typeof(EfRepository<>));
             services.AddScoped<IOrderRepository, OrderRepository>();
-            services.AddScoped<IOrderQueryService, OrderQueryService>();
+            services.AddScoped<IOrderQueryService, OrderAPIService>();
+            services.AddScoped<IOrderCenterService, OrderCenterService>();
             services.AddScoped<IEventCardQueryService, EventCardQueryServiceByEf>();
-            services.AddScoped<IEventCardQueryService, EventCardQueryServiceByEf>();
-            services.AddScoped<ICategoryTagsRepository, CategoryTagsRepository>();
-
 
             return services;
         }

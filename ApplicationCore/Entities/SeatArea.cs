@@ -31,4 +31,6 @@ public partial class SeatArea
     public bool IsDeleted { get; set; }
 
     public virtual ICollection<Seat> Seats { get; set; } = new List<Seat>();
+
+    public virtual ICollection<TicketTypeAndSeatAreaMapping> TicketTypeAndSeatAreaMappings { get; set; } = new List<TicketTypeAndSeatAreaMapping>();
 }

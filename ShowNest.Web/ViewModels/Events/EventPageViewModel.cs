@@ -5,6 +5,7 @@ namespace ShowNest.Web.ViewModels.Events
     {
         public int EventId { get; set; } //整個Event的ID
         public string MainImage { get; set; }
+        public string MainOrganizer { get; set; } //主辦單位
         public string EventName { get; set; }
         public DateTime EventTime { get; set; }
         public string EventLocationName { get; set; }
@@ -19,12 +20,12 @@ namespace ShowNest.Web.ViewModels.Events
         public string OrganizationName { get; set; }
         public int OrganizationId { get; set; }
 
-        public List<EventTicket> AllTickets { get; set; }
+        public List<EventTicketType> EventTicketTypes { get; set; }
         public List<ParticipantPeople> AllParticipantPeoples { get; set; }//抓UserID、Image
         public List<CategoryTags> EventCategoryTags { get; set; }
     }
 
-    public class EventTicket
+    public class EventTicketType
     {
         
         public string TicketTypeName { get; set; }

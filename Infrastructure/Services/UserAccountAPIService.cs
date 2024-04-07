@@ -12,7 +12,7 @@ namespace Infrastructure.Services
         private readonly string _connectionStr;
         public UserAccountAPIService(IConfiguration configuration)
         {
-            _connectionStr = configuration.GetConnectionString("ShowNestDb");
+            _connectionStr = configuration.GetConnectionString("DatabaseContext");
         }
 
         public OperationResult GetUserOrderDetailListByUserId(string userId)

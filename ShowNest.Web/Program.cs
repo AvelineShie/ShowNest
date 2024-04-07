@@ -15,6 +15,7 @@ using ShowNest.Web.Services.Shared;
 using ShowNest.Web.Services.Seats;
 using Infrastructure.Services;
 using ShowNest.Web.Services.Dashboard;
+using ShowNest.Web.Services.TicketTypes;
 
 
 namespace ShowNest.Web
@@ -52,6 +53,13 @@ namespace ShowNest.Web
             builder.Services.AddScoped<OrgGeneralInfoService>();
             builder.Services.AddScoped<EventPageService>();
 
+            builder.Services.AddScoped<IEventRepository, EventRepository>();
+            builder.Services.AddScoped<CreateEventService>();
+            
+            builder.Services.AddScoped<EventsApiService>();
+            builder.Services.AddScoped<ITicketTypeService, TicketTypeService>();
+
+
             builder.Services.AddScoped<AccountService>();
             builder.Services.AddHttpContextAccessor();
             builder.Services.AddScoped<_LoggedInLayoutService>();
@@ -73,6 +81,8 @@ namespace ShowNest.Web
             
             //登入餅乾
             builder.Services.AddAuthentication(CookieAuthenticationDefaults.AuthenticationScheme).AddCookie();
+
+
 
             var app = builder.Build();
 

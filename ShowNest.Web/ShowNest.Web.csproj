@@ -14,23 +14,28 @@
     <None Remove="Services\Dashboard\**" />
     <None Include="wwwroot\js\API\api.js" />
     <None Include="wwwroot\js\API\tools.js" />
+    <None Include="wwwroot\js\API\orderAPI.js" />
     <None Include="wwwroot\js\API\userAPI.js" />
+    <None Include="wwwroot\js\Events\Comps\headinfo.js" />
     <None Include="wwwroot\SeatsData.json" />
   </ItemGroup>
 
   <ItemGroup>
     <Content Remove="wwwroot\img\Events\LINE_ALBUM_課程紀錄_240216_1.jpg" />
+    <Content Remove="wwwroot\js\API\orderAPI.js" />
   </ItemGroup>
 
   <ItemGroup>
-    <Compile Include="Services\Dashboard\CreateEventServive.cs" />
+    <Compile Include="Services\Dashboard\CreateEventService.cs" />
     <Compile Include="Services\Dashboard\OrgGeneralInfoService.cs" />
     <Compile Include="Services\Dashboard\OverviewService.cs" />
   </ItemGroup>
 
   <ItemGroup>
     <PackageReference Include="Dapper" Version="2.1.35" />
+    <PackageReference Include="ECPay.Payment.Integration" Version="1.0.0.8" />
     <PackageReference Include="Facebook" Version="7.0.6" />
+    <PackageReference Include="FluentEcpay" Version="1.2.1" />
     <PackageReference Include="Jil.StrongName" Version="2.17.0" />
     <PackageReference Include="Microsoft.EntityFrameworkCore" Version="7.0.16" />
     <PackageReference Include="Microsoft.EntityFrameworkCore.Design" Version="7.0.16">
