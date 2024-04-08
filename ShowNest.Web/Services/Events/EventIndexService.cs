@@ -7,11 +7,13 @@ namespace ShowNest.Web.Services.Events
     {
         private readonly EventCardService _eventCardService;
         private readonly CategoryTagService _categoryTagService;
+        private readonly EventsIndexCardsAPIServiceByEf _eventsIndexCardsAPIServiceByEf;
 
-        public EventIndexService(EventCardService eventCardService, CategoryTagService categoryTagService)
+        public EventIndexService(EventCardService eventCardService, CategoryTagService categoryTagService, EventsIndexCardsAPIServiceByEf eventsIndexCardsAPIServiceByEf)
         {
             _eventCardService = eventCardService;
             _categoryTagService = categoryTagService;
+            _eventsIndexCardsAPIServiceByEf = eventsIndexCardsAPIServiceByEf;
         }
 
         public async Task<EventIndexViewModel> GetEventIndexViewModel()
@@ -24,5 +26,18 @@ namespace ShowNest.Web.Services.Events
 
             return result;
         }
+
+        public async Task<EventIndexViewModel> GetEventIndexCategoryTags()
+        {
+            var result = new EventIndexViewModel
+            {
+                // 卡片用fetch獲取的話，EventIndexViewModel剩下category tag
+                EventCategoryTags = await _categoryTagService.GetAllCategoryTags()
+            };
+
+            return result;
+        }
+
+
     }
 }

@@ -14,9 +14,9 @@ namespace ShowNest.Web.WebAPI
             _eventsIndexCardsAPIServiceByEf = eventsIndexCardsAPIServiceByEf;
         }
 
-        public IActionResult GetEventsIndexCards(int page, int cardsPerPage)
+        public async Task<IActionResult> GetEventsIndexCardsByApi(int page, int cardsPerPage)
         {
-            return Ok(_eventsIndexCardsAPIServiceByEf.GetCardsByPagesize(page, cardsPerPage));
+            return Ok(await _eventsIndexCardsAPIServiceByEf.GetCardsByPagesize(page, cardsPerPage));
         }
     }
 }

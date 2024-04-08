@@ -1,12 +1,16 @@
 @section topCSS {
     <link href="https://cdn.jsdelivr.net/npm/vuetify@3.5.14/dist/vuetify.min.css" rel="stylesheet">
+    <link href="/css/Dashboard/CreateEventTest.css" rel="stylesheet">
 }
 
 <body>
     <div class="wrap" id="app">
     <v-app>
         <v-container>
-          <v-stepper :items="['建立活動', 'Step 2', 'Step 3', 'Step 4']">
+          <v-stepper 
+            prev-text="上一步"
+            next-text="下一步"
+            :items="['建立活動', 'Step 2', 'Step 3', 'Step 4']">
             <template v-slot:item.1>
               <v-card title="建立活動" flat>
               <v-select
@@ -17,7 +21,6 @@
                       label="請選擇組織"
                       required
                     ></v-select>
-             
               </v-card>
             </template>
     
@@ -26,6 +29,7 @@
               <v-form>
                   <v-container>
                     <v-row>
+                     @* right field *@
                       <v-col
                         cols="12"
                         md="6"
@@ -48,7 +52,8 @@
                           required
                         ></v-text-field>
                       </v-col>
-              
+
+                        @* left field *@
                       <v-col
                         cols="12"
                         md="6"
