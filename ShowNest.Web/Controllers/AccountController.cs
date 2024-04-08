@@ -63,7 +63,7 @@ namespace ShowNest.Web.Controllers
         {
             if (ModelState.IsValid)
             {
-                // 使用UserService進行註冊
+                // 使用AccountService進行註冊
                 var result = await _userService.RegisterUserAsync(SignUp, ModelState.IsValid);
                 if (result.IsSuccess)
                 {
@@ -169,7 +169,7 @@ namespace ShowNest.Web.Controllers
 
         }
 
-
+        //忘記密碼
         public IActionResult ForgetPassword()
         {
             return View();
