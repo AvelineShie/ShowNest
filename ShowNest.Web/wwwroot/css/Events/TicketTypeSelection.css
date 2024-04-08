@@ -168,7 +168,7 @@ h2 {
 #btn-plus {
     width: 2em;
     height: 2em;
-    margin-inline: -6px;
+    margin-inline: -1px;
     padding-inline: 0px 0px;
     background: #FFF;
     border: 1px solid #999999;
@@ -177,7 +177,7 @@ h2 {
 
 #btn-minus {
     border-radius: 4px 0px 0px 4px;
-    opacity: 0.5;
+    /*opacity: 0.5;*/
 }
 
 #btn-plus {
@@ -225,12 +225,12 @@ input[type=button] {
 .btn-next-step {
     text-align: center;
     margin-bottom: 50px;
+    color: #fff;
 }
 
 .btn-next-step a {
     display: inline-block;
     background-color: var(--main-green);
-    color: #fff;
     height: 2.5em;
     line-height: 1em;
     width: 30%;
@@ -240,6 +240,7 @@ input[type=button] {
     margin: 0 auto;
     text-align: center;
     vertical-align: middle;
+    cursor: pointer;
 }
 
 @media only screen and (max-width:768px) {

@@ -32,12 +32,12 @@ a {
     line-height: 3em;
     border-radius: 4px;
     margin-left: 10px;
+    color: #fff;
 }
 
 .display-seat-area a {
     display: inline-block;
     background-color: var(--main-green);
-    color: #fff;
     height: 2.5em;
     line-height: 1em;
     width: 100px;
