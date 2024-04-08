@@ -52,17 +52,19 @@ namespace ShowNest.Web.Controllers
         private readonly IOrderRepository _orderRepo;
         private readonly IOrderCenterService _orderService;
         private readonly EventPageService _eventPageService;
+        private readonly SearchEventService _searchEventService;
 
 
 
         public EventsController(EventIndexService eventIndexService, OrderTicketService orderQueryService, 
-            IOrderRepository orderRepo, EventPageService eventPageService,IOrderCenterService orderService)
+            IOrderRepository orderRepo, EventPageService eventPageService,IOrderCenterService orderService, SearchEventService searchEventService)
         {
             _eventIndexService = eventIndexService;
             _orderQueryService = orderQueryService;
             _orderRepo = orderRepo;
             _eventPageService = eventPageService;
             _orderService = orderService;
+            _searchEventService = searchEventService;
         }
 
         //public IActionResult Index()
@@ -90,11 +92,18 @@ namespace ShowNest.Web.Controllers
             return View(eventIndexViewModel);
         }
 
-        public IActionResult Search([FromQuery] QueryParametersViewModel parameters)
+        [HttpPost]
+        public IActionResult Search(string inputstring)
         {
             ///Events/Search?Id=1&Name=SSS&MaxPrice=300&MinPrice=10&StartTime=0&EndTime=0&CategoryTag=2
-            return View();
+
+            var searchResults = _searchEventService.SearchEventString(inputstring);
+
+            return RedirectToAction("Index", "Events", new { searchResults });
         }
+    
+       
+
         public IActionResult EventPage(int EventId)
         {
             var eventPageViewModel = _eventPageService.GetEventPageViewModel(EventId);

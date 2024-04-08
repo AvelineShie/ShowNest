@@ -52,6 +52,7 @@ namespace ShowNest.Web
             builder.Services.AddScoped<OverviewService>();
             builder.Services.AddScoped<OrgGeneralInfoService>();
             builder.Services.AddScoped<EventPageService>();
+            builder.Services.AddScoped<SearchEventService>();
 
             builder.Services.AddScoped<IEventRepository, EventRepository>();
             builder.Services.AddScoped<CreateEventService>();
@@ -118,7 +119,7 @@ namespace ShowNest.Web
 
             //app.MapControllerRoute(
             //name: "SearchEventPages",//探索活動頁>搜尋功能
-            //pattern: "Events/Explore",
+            //pattern: "Events/{inputstring}",
             //defaults: new { controller = "Events", action = "Search" });
 
             app.MapControllerRoute(
