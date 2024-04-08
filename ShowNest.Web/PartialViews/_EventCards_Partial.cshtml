@@ -1,7 +1,7 @@
 @model EventCardViewModel
 
 @* <a asp-controller="Events" asp-action="EventPage" class="single-card selling"> *@
-<a href="#" class="single-card @Model.EventStatusCssClass">
+<a href="~/Events/EventPage/@Model.EventId" class="single-card @Model.EventStatusCssClass">
     <div class="card-name">
         <img src="@Model.EventImgUrl " asp-route-id="@Model.EventId" alt="">
         <span>@Model.CategoryName</span>
