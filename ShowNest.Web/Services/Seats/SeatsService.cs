@@ -24,6 +24,7 @@ public class SeatsService : ISeatsService
         var seatViewModel = seats.Select(i => new SeatViewModel
             {
                 SeatId = i.Id,
+                SeatAreaName = i.SeatArea.Name,
                 SeatAreaId = i.SeatAreaId,
                 SeatNumber = i.Number,
                 SeatStatus = i.Status

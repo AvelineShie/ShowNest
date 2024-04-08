@@ -9,6 +9,8 @@ public class AutoSelectedSeatViewModel
 {
     public decimal Price { get; set; }
 
+    public int SeatAreaId { get; set; }
+
     public string SeatAreaName { get; set; }
 
     public string SeatNumber { get; set; }
