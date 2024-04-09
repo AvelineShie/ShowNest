@@ -13,19 +13,19 @@ namespace ShowNest.Web.Services.Events
 
 
         public List<EventDetail> AllEvents => _context.Events.Select(e => new EventDetail
-         {
-             Id = e.Id,
-             EventImage = e.EventImage,
-             EventName = e.Name,
-             StartTime = e.StartTime,
-             EndTime = e.EndTime,
-             EventIntroduction = e.Introduction,
-         })
+        {
+            Id = e.Id,
+            EventImage = e.EventImage,
+            EventName = e.Name,
+            StartTime = e.StartTime,
+            EndTime = e.EndTime,
+            EventIntroduction = e.Introduction,
+        })
          .ToList();
         public List<EventDetail> GetCurrentEvents(int organizationId)
         {
 
-            var CurrentEvents= AllEvents
+            var CurrentEvents = AllEvents
         .Where(e => e.OrganizationId == organizationId && e.EndTime >= DateTime.Now)
         .OrderByDescending(e => e.StartTime)
         .ToList();
@@ -38,11 +38,11 @@ namespace ShowNest.Web.Services.Events
         .OrderByDescending(e => e.StartTime)
         .ToList();
             var groupedPastEvents = pastEvents.GroupBy(e => e.StartTime.ToString("yyyy/MM")).OrderByDescending(g => g.Key);
-            
+
             return (groupedPastEvents);
         }
 
-        
+
     }
 
 }

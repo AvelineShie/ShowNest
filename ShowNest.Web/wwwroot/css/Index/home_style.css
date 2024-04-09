@@ -13,18 +13,18 @@
         grid-template-columns: repeat(3, 1fr);
     }
 
-    #categories a:first-of-type {
-        grid-row: 1;
-        grid-column: 1 / -1;
-    }
+        #categories a:first-of-type {
+            grid-row: 1;
+            grid-column: 1 / -1;
+        }
 
-    #categories a:nth-of-type(n+2):nth-of-type(-n+4) {
-        grid-row: 2;
-    }
+        #categories a:nth-of-type(n+2):nth-of-type(-n+4) {
+            grid-row: 2;
+        }
 
-    #categories a:nth-of-type(n+5):nth-of-type(-n+7) {
-        grid-row: 3;
-    }
+        #categories a:nth-of-type(n+5):nth-of-type(-n+7) {
+            grid-row: 3;
+        }
 
     #categories-section #categories a:last-of-type {
         grid-row: 4;
@@ -53,9 +53,9 @@
         grid-template-columns: 1fr 1fr;
     }
 
-    #event-places a {
-        margin: 40px 30px;
-    }
+        #event-places a {
+            margin: 40px 30px;
+        }
 
     /* end ----- MOBILE-event-place ----- */
 
@@ -216,12 +216,12 @@
     position: relative;
 }
 
-#event-slides .carousel-item img {
-    height: 100%;
-    position: absolute;
-    inset: 0;
-    margin: auto;
-}
+    #event-slides .carousel-item img {
+        height: 100%;
+        position: absolute;
+        inset: 0;
+        margin: auto;
+    }
 
 .carousel-control-prev:hover {
     background: linear-gradient(to left, transparent, #aaa);
@@ -254,15 +254,15 @@
     height: 100%;
 }
 
-#categories a:hover i{
-    color:var(--main-green);
-    transition: .25s ease;
-}
+    #categories a:hover i {
+        color: var(--main-green);
+        transition: .25s ease;
+    }
 
-#categories a:first-of-type,
-#categories a:last-of-type {
-    color: var(--main-green);
-}
+    #categories a:first-of-type,
+    #categories a:last-of-type {
+        color: var(--main-green);
+    }
 
 /* end ----- categories ----- */
 
@@ -272,20 +272,20 @@
     padding: 50px 0px 40px;
 }
 
-#annoucement a {
-    color: var(--main-green);
-}
+    #annoucement a {
+        color: var(--main-green);
+    }
 
-#annoucement i {
-    color: var(--main-green);
-    padding-right: 10px;
-}
+    #annoucement i {
+        color: var(--main-green);
+        padding-right: 10px;
+    }
 
 /* end ----- annoucement ----- */
 
 /* start ----- cards ----- */
 
-h2,h3{
+h2, h3 {
     text-align: center;
 }
 
@@ -298,15 +298,15 @@ h2,h3{
     border-bottom: none;
 }
 
-.cards-type-tags .nav-link {
-    color: #000;
-    flex-grow: 1;
-    text-align: center;
-    padding: 12px 0px;
-    border-bottom: var(--common-border);
-}
+    .cards-type-tags .nav-link {
+        color: #000;
+        flex-grow: 1;
+        text-align: center;
+        padding: 12px 0px;
+        border-bottom: var(--common-border);
+    }
 
-#main-card-group .cards-type-tags .active{
+#main-card-group .cards-type-tags .active {
     background-color: inherit;
     border: var(--common-border);
     border-bottom: none;
@@ -324,19 +324,19 @@ h2,h3{
     position: relative;
     display: flex;
     flex-direction: column;
-    margin:80px 0px 20px;
+    margin: 80px 0px 20px;
 }
 
-.h3-wrap::before {
-    content: '';
-    display: inline-block;
-    position: absolute;
-    top: 50%;
-    width: 100%;
-    height: 1px;
-    background-color: #ddd;
-    z-index: -1;
-}
+    .h3-wrap::before {
+        content: '';
+        display: inline-block;
+        position: absolute;
+        top: 50%;
+        width: 100%;
+        height: 1px;
+        background-color: #ddd;
+        z-index: -1;
+    }
 
 h3 {
     font-size: 26px;
@@ -368,14 +368,14 @@ h3 {
     transition: .2s ease;
 }
 
-#more-events-button span {
-    margin-left: 15px;
-}
+    #more-events-button span {
+        margin-left: 15px;
+    }
 
-#more-events-button:hover {
-    background-color: #f8f8f8;
-    transition: .2s ease;
-}
+    #more-events-button:hover {
+        background-color: #f8f8f8;
+        transition: .2s ease;
+    }
 
 /* end ----- more events button ----- */
 
@@ -386,10 +386,10 @@ h3 {
     padding: 50px 0px;
 }
 
-#event-place-section h3 {
-    color: #999;
-    padding-bottom: 50px;
-}
+    #event-place-section h3 {
+        color: #999;
+        padding-bottom: 50px;
+    }
 
 #event-places img {
     width: 100%;
@@ -398,17 +398,17 @@ h3 {
     padding-bottom: 20px;
 }
 
-#event-places a{
+#event-places a {
     text-align: center;
     color: #fff;
     opacity: .6;
     transition: .25s ease;
 }
 
-#event-places a:hover{
-    opacity: 1;
-    transition: .25s ease;
-}
+    #event-places a:hover {
+        opacity: 1;
+        transition: .25s ease;
+    }
 
 /* end ----- event place ----- */
 
@@ -436,34 +436,33 @@ h3 {
     border-radius: var(--common-border-radius);
 }
 
-#event-search-search-div i {
-    height: 100%;
-    line-height: 40px;
+    #event-search-search-div i {
+        height: 100%;
+        line-height: 40px;
+    }
 
-}
+    #event-search-search-div input {
+        height: 100%;
+        border: none;
+        background-color: transparent;
+    }
 
-#event-search-search-div input {
-    height: 100%;
-    border: none;
-    background-color: transparent;
-}
-
-#event-search-search-div input:focus {
-    outline: none;
-}
+        #event-search-search-div input:focus {
+            outline: none;
+        }
 
 #event-search-filter ul {
     padding: 0;
 }
 
-#event-search-filter ul a {
-    padding: 15px 0px 15px 20px;
-    border-radius: var(--common-border-radius);
-}
+    #event-search-filter ul a {
+        padding: 15px 0px 15px 20px;
+        border-radius: var(--common-border-radius);
+    }
 
-#event-search-filter ul a:hover {
-    background-color: #eee;
-}
+        #event-search-filter ul a:hover {
+            background-color: #eee;
+        }
 
 #filter-fee,
 #filter-time {
@@ -495,17 +494,20 @@ h3 {
     margin: 40px auto;
 }
 
-#page-index .index {
-    color: inherit;
-    padding: 8px 16px;
-    border-bottom: 3px #ddd solid;
-    box-sizing: border-box;
-}
+    #page-index .index {
+        color: inherit;
+        background-color: #f6f6f7;
+        padding: 8px 16px;
+        border: none;
+        border-bottom: 3px #ddd solid;
+        box-sizing: border-box;
+        cursor: pointer;
+    }
 
-#page-index .active-index {
-    color: #fff;
-    background-color: #c07525;
-    border-bottom: none;
-}
+    #page-index .active-index {
+        color: #fff;
+        background-color: #c07525;
+        border-bottom: none;
+    }
 
 /* end ----- events-cards ----- */
