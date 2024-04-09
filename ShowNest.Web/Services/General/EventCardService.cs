@@ -1,236 +1,112 @@
-﻿using ShowNest.Web.Interfaces;
+﻿using ApplicationCore.Entities;
+using ShowNest.Web.Interfaces;
 using ShowNest.Web.ViewModels.General;
 
 namespace ShowNest.Web.Services.General
 {
     public class EventCardService
     {
-        public List<EventCardViewModel> EventCards { get; }
+        private readonly IEventCardQueryService _eventCardQueryService;
 
-        public EventCardService()
+        public EventCardService(IEventCardQueryService eventCardQueryService)
         {
-            EventCards = new List<EventCardViewModel>
+            _eventCardQueryService = eventCardQueryService;
+        }
+
+        List<string> GetEventStatusAndCssClassName(DateTime input)
+        {
+            if (DateTime.Now < input)
             {
-                new EventCardViewModel {
-                    EventName = "Build School Demo Test Activity",
-                    EventLink = "/Events/EventPage",
-                    EventImgUrl ="https://picsum.photos/300/200/?random=50",
-                    CategoryNameZh = "講座",
-                    EventTime = "2024/04/24(三)",
-                    EventStatus = EventStatus.Selling
-                },
-                new EventCardViewModel {
-                    EventName = "BORN NAKED KINO LIVE IN HONG KONG",
-                    EventLink = "/Events/EventPage",
-                    EventImgUrl ="https://picsum.photos/300/200/?random=51",
-                    CategoryNameZh = "演唱會",
-                    EventTime = "2024/04/20(六)",
-                    EventStatus = EventStatus.Selling
-                },
-                new EventCardViewModel {
-                    EventName = "Tattour HK 2024",
-                    EventLink = "/Events/EventPage",
-                    EventImgUrl ="https://picsum.photos/300/200/?random=52",
-                    CategoryNameZh = "演唱會",
-                    EventTime = "2024/05/03(五)",
-                    EventStatus = EventStatus.ViewEvent
-                },
-                new EventCardViewModel {
-                    EventName = "Clockenflap Presents: Slowdive + special guest Ichiko Aoba",
-                    EventLink = "/Events/EventPage",
-                    EventImgUrl ="https://picsum.photos/300/200/?random=53",
-                    CategoryNameZh = "藝術",
-                    EventTime = "2024/03/14(四)",
-                    EventStatus = EventStatus.Selling
-                },
-                new EventCardViewModel {
-                    EventName = "DRUM TAO 30周年紀念-夢幻響2024台北站",
-                    EventLink = "/Events/EventPage",
-                    EventImgUrl ="https://picsum.photos/300/200/?random=54",
-                    CategoryNameZh = "音樂",
-                    EventTime = "2024/06/08(六)",
-                    EventStatus = EventStatus.ViewEvent
-                },
-                new EventCardViewModel {
-                    EventName = "黃玠-最好的朋友演唱會",
-                    EventLink = "/Events/EventPage",
-                    EventImgUrl ="https://picsum.photos/300/200/?random=55",
-                    CategoryNameZh = "演唱會",
-                    EventTime = "2024/05/05(日)",
-                    EventStatus = EventStatus.Selling
-                },
-                new EventCardViewModel {
-                    EventName = "Build School Demo Test Activity 2",
-                    EventLink = "/Events/EventPage",
-                    EventImgUrl ="https://picsum.photos/300/200/?random=56",
-                    CategoryNameZh = "講座",
-                    EventTime = "2024/04/24(三)",
-                    EventStatus = EventStatus.Selling
-                },
-                new EventCardViewModel {
-                    EventName = "BORN NAKED KINO LIVE IN HONG KONG 2",
-                    EventLink = "/Events/EventPage",
-                    EventImgUrl ="https://picsum.photos/300/200/?random=57",
-                    CategoryNameZh = "演唱會",
-                    EventTime = "2024/04/20(六)",
-                    EventStatus = EventStatus.Selling
-                },
-                new EventCardViewModel {
-                    EventName = "Tattour HK 2024 2",
-                    EventLink = "/Events/EventPage",
-                    EventImgUrl ="https://picsum.photos/300/200/?random=58",
-                    CategoryNameZh = "演唱會",
-                    EventTime = "2024/05/03(五)",
-                    EventStatus = EventStatus.ViewEvent
-                },
-                new EventCardViewModel {
-                    EventName = "Clockenflap Presents: Slowdive + special guest Ichiko Aoba 2",
-                    EventLink = "/Events/EventPage",
-                    EventImgUrl ="https://picsum.photos/300/200/?random=59",
-                    CategoryNameZh = "藝術",
-                    EventTime = "2024/03/14(四)",
-                    EventStatus = EventStatus.Selling
-                },
-                new EventCardViewModel {
-                    EventName = "DRUM TAO 30周年紀念-夢幻響2024台北站 2",
-                    EventLink = "/Events/EventPage",
-                    EventImgUrl ="https://picsum.photos/300/200/?random=60",
-                    CategoryNameZh = "音樂",
-                    EventTime = "2024/06/08(六)",
-                    EventStatus = EventStatus.ViewEvent
-                },
-                new EventCardViewModel {
-                    EventName = "黃玠-最好的朋友演唱會 2",
-                    EventLink = "/Events/EventPage",
-                    EventImgUrl ="https://picsum.photos/300/200/?random=61",
-                    CategoryNameZh = "演唱會",
-                    EventTime = "2024/05/05(日)",
-                    EventStatus = EventStatus.Selling
-                },
-                new EventCardViewModel {
-                    EventName = "Build School Demo Test Activity 3",
-                    EventLink = "/Events/EventPage",
-                    EventImgUrl ="https://picsum.photos/300/200/?random=62",
-                    CategoryNameZh = "講座",
-                    EventTime = "2024/04/24(三)",
-                    EventStatus = EventStatus.Selling
-                },
-                new EventCardViewModel {
-                    EventName = "BORN NAKED KINO LIVE IN HONG KONG 3",
-                    EventLink = "   /Events/EventPage",
-                    EventImgUrl ="https://picsum.photos/300/200/?random=63",
-                    CategoryNameZh = "演唱會",
-                    EventTime = "2024/04/20(六)",
-                    EventStatus = EventStatus.Selling
-                },
-                new EventCardViewModel {
-                    EventName = "Tattour HK 2024 3",
-                    EventLink = "/Events/EventPage",
-                    EventImgUrl ="https://picsum.photos/300/200/?random=64",
-                    CategoryNameZh = "演唱會",
-                    EventTime = "2024/05/03(五)",
-                    EventStatus = EventStatus.ViewEvent
-                },
-                new EventCardViewModel {
-                    EventName = "Clockenflap Presents: Slowdive + special guest Ichiko Aoba 3",
-                    EventLink = "/Events/EventPage",
-                    EventImgUrl ="https://picsum.photos/300/200/?random=65",
-                    CategoryNameZh = "藝術",
-                    EventTime = "2024/03/14(四)",
-                    EventStatus = EventStatus.Selling
-                },
-                new EventCardViewModel {
-                    EventName = "DRUM TAO 30周年紀念-夢幻響2024台北站 3",
-                    EventLink = "/Events/EventPage",
-                    EventImgUrl ="https://picsum.photos/300/200/?random=66",
-                    CategoryNameZh = "音樂",
-                    EventTime = "2024/06/08(六)",
-                    EventStatus = EventStatus.ViewEvent
-                },
-                new EventCardViewModel {
-                    EventName = "黃玠-最好的朋友演唱會 3",
-                    EventLink = "/Events/EventPage",
-                    EventImgUrl ="https://picsum.photos/300/200/?random=67",
-                    CategoryNameZh = "演唱會",
-                    EventTime = "2024/05/05(日)",
-                    EventStatus = EventStatus.Selling
-                },
-                new EventCardViewModel {
-                    EventName = "Build School Demo Test Activity 4",
-                    EventLink = "/Events/EventPage",
-                    EventImgUrl ="https://picsum.photos/300/200/?random=68",
-                    CategoryNameZh = "講座",
-                    EventTime = "2024/04/24(三)",
-                    EventStatus = EventStatus.Selling
-                },
-                new EventCardViewModel {
-                    EventName = "BORN NAKED KINO LIVE IN HONG KONG 4",
-                    EventLink = "/Events/EventPage",
-                    EventImgUrl ="https://picsum.photos/300/200/?random=69",
-                    CategoryNameZh = "演唱會",
-                    EventTime = "2024/04/20(六)",
-                    EventStatus = EventStatus.Selling
-                },
-                new EventCardViewModel {
-                    EventName = "Tattour HK 2024 4",
-                    EventLink = "/Events/EventPage",
-                    EventImgUrl ="https://picsum.photos/300/200/?random=70",
-                    CategoryNameZh = "演唱會",
-                    EventTime = "2024/05/03(五)",
-                    EventStatus = EventStatus.ViewEvent
-                },
-                new EventCardViewModel {
-                    EventName = "Clockenflap Presents: Slowdive + special guest Ichiko Aoba 4",
-                    EventLink = "/Events/EventPage",
-                    EventImgUrl ="https://picsum.photos/300/200/?random=71",
-                    CategoryNameZh = "藝術",
-                    EventTime = "2024/03/14(四)",
-                    EventStatus = EventStatus.Selling
-                },
-                new EventCardViewModel {
-                    EventName = "DRUM TAO 30周年紀念-夢幻響2024台北站 4",
-                    EventLink = "/Events/EventPage",
-                    EventImgUrl ="https://picsum.photos/300/200/?random=72",
-                    CategoryNameZh = "音樂",
-                    EventTime = "2024/06/08(六)",
-                    EventStatus = EventStatus.ViewEvent
-                },
-                new EventCardViewModel {
-                    EventName = "黃玠-最好的朋友演唱會 4",
-                    EventLink = "/Events/EventPage",
-                    EventImgUrl ="https://picsum.photos/300/200/?random=73",
-                    CategoryNameZh = "演唱會",
-                    EventTime = "2024/05/05(日)",
-                    EventStatus = EventStatus.Selling
+                return new List<string> { "開賣中", "green-status" };
+            }
+            else
+            {
+                return new List<string> { "已結束", "black-status" };
+            }
+        }
+
+        public async Task<List<EventCardViewModel>> GetAllEventCardsViewModelByCategoryId(int categoryId)
+        {
+            var queryResult = await _eventCardQueryService.GetAllCardsByCategoryId(categoryId);
+
+            var result = new List<EventCardViewModel>();
+
+            // 先到總查詢結果裡找categoryTag (按照順序的第一層)
+            foreach (var categoryTag in queryResult)
+            {
+                // categoryName都一樣，先在這邊設定好
+                var categoryName = categoryTag.Name;
+
+                // 再到categoryTag裡找eventAndTagMapping (按照順序的第二層)
+                foreach (var eventAndTagMapping in categoryTag.EventAndTagMappings)
+                {
+                    result.Add(new EventCardViewModel
+                    {
+                        // 再到eventAndTagMapping裡找Event (按照順序的第三層)
+                        EventId = eventAndTagMapping.Event.Id.ToString(),
+                        EventName = eventAndTagMapping.Event.Name,
+                        EventImgUrl = eventAndTagMapping.Event.EventImage,
+                        CategoryName = categoryName,
+                        EventTime = eventAndTagMapping.Event.StartTime,
+                        EventStatus = GetEventStatusAndCssClassName(eventAndTagMapping.Event.StartTime)[0],
+                        EventStatusCssClass = GetEventStatusAndCssClassName(eventAndTagMapping.Event.StartTime)[1],
+                    });
                 }
-            };
+            }
+
+            return result;
         }
 
-        public EventCardViewModel GetEventCard(string name, string link, string imgUrl, string eventTime, EventStatus status)
+        public async Task<List<EventCardViewModel>> GetNumbersOfCardsViewModelByCategoryId(int cardAmount, int categoryId)
         {
-            return new EventCardViewModel
+            var queryResult = await _eventCardQueryService.GetNumbersOfCardsByCategoryId(cardAmount, categoryId);
+
+            var result = new List<EventCardViewModel>();
+
+            foreach (var categoryTag in queryResult)
             {
-                EventName = name,
-                EventLink = link,
-                EventImgUrl = imgUrl,
-                EventTime = eventTime,
-                EventStatus = status
-            };
+                var categoryName = categoryTag.Name;
+
+                foreach (var eventAndTagMapping in categoryTag.EventAndTagMappings)
+                {
+                    result.Add(new EventCardViewModel
+                    {
+                        EventId = eventAndTagMapping.Event.Id.ToString(),
+                        EventName = eventAndTagMapping.Event.Name,
+                        EventImgUrl = eventAndTagMapping.Event.EventImage,
+                        CategoryName = categoryName,
+                        EventTime = eventAndTagMapping.Event.StartTime,
+                        EventStatus = GetEventStatusAndCssClassName(eventAndTagMapping.Event.StartTime)[0],
+                        EventStatusCssClass = GetEventStatusAndCssClassName(eventAndTagMapping.Event.StartTime)[1],
+                    });
+                }
+            }
+
+            return result;
         }
 
-        public IEnumerable<EventCardViewModel> GetAllEventCards()
+        public async Task<List<EventCardViewModel>> GetEventIndexCardsViewModel()
         {
-            return EventCards;
+            var queryResult = await _eventCardQueryService.GetEventIndexCards();
+            var result = new List<EventCardViewModel>();
+
+            foreach (var eventIndexDto in queryResult)
+            {
+                result.Add(new EventCardViewModel
+                {
+                    EventId = eventIndexDto.EventId,
+                    EventName = eventIndexDto.EventName,
+                    EventImgUrl = eventIndexDto.EventImgUrl,
+                    CategoryName = eventIndexDto.CategoryName,
+                    EventTime = eventIndexDto.EventTime,
+                    EventStatus = GetEventStatusAndCssClassName(eventIndexDto.EventTime)[0],
+                    EventStatusCssClass = GetEventStatusAndCssClassName(eventIndexDto.EventTime)[1],
+                });
+            }
+
+            return result;
         }
 
-        public IEnumerable<EventCardViewModel> GetSixEventCards()
-        {
-            return EventCards.Take(6);
-        }
 
-        public IEnumerable<EventCardViewModel> GetSixEventCards(int start)
-        {
-            return EventCards.Skip(start - 1).Take(6);
-        }
     }
 }

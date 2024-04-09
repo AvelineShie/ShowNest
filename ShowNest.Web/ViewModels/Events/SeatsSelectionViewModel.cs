@@ -11,6 +11,7 @@ namespace ShowNest.Web.ViewModels.Events
     public class SeatViewModel
     {
         public int SeatId { get; set; }
+        public string SeatAreaName { get; set; }
         public int SeatAreaId { get; set; }
         public string SeatNumber { get; set; }
         public int SeatStatus { get; set; }
@@ -25,6 +26,4 @@ namespace ShowNest.Web.ViewModels.Events
         public decimal TicketPrice { get; set; }
         public decimal SubTotal { get; set; }
     }
-    
 }
-

@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace ApplicationCore.Helpers
 {
-    public static class OpperationResultHelper
+    public static class OperationResultHelper
     {
         public static OperationResult ReturnSuccessData(Object data)
         {

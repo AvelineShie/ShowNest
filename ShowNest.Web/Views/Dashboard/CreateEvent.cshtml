@@ -17,13 +17,24 @@
                 <h2>建立活動</h2>
                 <h3 class="select-organizer">選擇活動舉辦單位</h3>
                 <p>您尚未選擇組織，請選取此活動所屬之組織：</p>
-                <select name="所屬組織" id="organizeList" class=".form-select">
-                    <option selected value ='option1'> === 請選擇組織 === </option>
-                    @Html.DropDownListFor(model => model.OrgName, Model.OrgName)
-                    @* 實際渲染:<option value="1">深夜九點半搶銀行</option> *@
-                    @* <option>深夜九點半搶銀行</option> *@
-
+                <select name="所屬組織" id="organizeList" class=".form-select" onchange="onOrgChange(event)">
+                    <option selected value=""> === 請選擇組織 === </option>
+                    <option value=" ">
+                        @if(Model.OrgNames != null)
+                        {
+                            @foreach (var orgNameList in Model.OrgNames)
+                            {
+                                <li>@orgNameList.OrgName</li>
+                            }
+                        }
+                        else
+                        {
+                            <li class="invalid-feedback"> 尚未擁有組織，請先建立組織 </li>
+                        }
+                        
+                    </option>
                 </select>
+
                 <!-- Hide the organizations while not selected below -->
                 <div class="new-activity">
                     <input type="radio" class="new-activiy-radio">
@@ -37,10 +48,7 @@
                         <!-- Display blank when no activities exist -->
                         <!-- <p>尚無活動可做樣板</p> -->
                         <label><input type="radio" id="ActivityItem"> 相揪搶銀行(暫)</label>
-                        @foreach (var eventName in Model.EventName)
-                        {
-                            <label><input type="radio" id="ActivityItem"> @eventName</label>
-                        }
+                           @* <label><input type="radio" id="ActivityItem"> @Model.EventName</label> *@
                     </div>
                 </div>
                 <div class="TOSzone">

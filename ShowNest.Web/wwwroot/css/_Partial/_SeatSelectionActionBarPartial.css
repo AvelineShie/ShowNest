@@ -108,7 +108,8 @@ h6 {
     display: inline-block;
     color: var(--main-green);
     font-weight: bold;
-    content: counter(name);
+    counter-reset: price 0; /* 初始化計數器 */
+    content: counter(price);
     border: 1px #fff solid;
     background-color: #fff;
     height: 18px;
@@ -195,6 +196,7 @@ h6 {
     background-color: var(--main-green);
     padding: 20px 10px;
     margin-left: -1px;
+    counter-increment: price; /* 遞增計數器 */
 }
 
 .ticket-with-seat-detail {

@@ -5,6 +5,7 @@ using ApplicationCore.Entities;
 using ApplicationCore.Interfaces;
 using Elfie.Serialization;
 using Infrastructure.Services;
+using Microsoft.AspNetCore.Components;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 using ShowNest.Web.Models;
@@ -17,6 +18,7 @@ using Ticket = ApplicationCore.Entities.Ticket;
 
 namespace ShowNest.Web.Controllers
 {
+    
     public class EventsController : Controller
     {
 
@@ -47,56 +49,123 @@ namespace ShowNest.Web.Controllers
 
         private readonly EventIndexService _eventIndexService;
         private readonly OrderTicketService _orderQueryService;
-        private readonly IRepository<ArchiveOrder> _archiveOrderRepo;
-        private readonly IRepository<ApplicationCore.Entities.Ticket> _ticket;
         private readonly IOrderRepository _orderRepo;
-        private readonly OrderTicketService _registrationService;
+        private readonly IOrderCenterService _orderService;
         private readonly EventPageService _eventPageService;
+        private readonly SearchEventService _searchEventService;
 
-        //private readonly IOrderQueryService _orderQueryService;
 
 
-        public EventsController(EventIndexService eventIndexService, OrderTicketService orderQueryService,
-            IRepository<ArchiveOrder> archiveOrderRepo, IRepository<ApplicationCore.Entities.Ticket> ticket, IOrderRepository orderRepo)
+        public EventsController(EventIndexService eventIndexService, OrderTicketService orderQueryService, 
+            IOrderRepository orderRepo, EventPageService eventPageService,IOrderCenterService orderService, SearchEventService searchEventService)
         {
             _eventIndexService = eventIndexService;
             _orderQueryService = orderQueryService;
-            _archiveOrderRepo = archiveOrderRepo;
-            _ticket = ticket;
             _orderRepo = orderRepo;
-          
+            _eventPageService = eventPageService;
+            _orderService = orderService;
+            _searchEventService = searchEventService;
         }
 
-        public IActionResult Index(int page)
+        //public IActionResult Index()
+        //{
+        //    return View();
+        //}
+
+        // 舊方法，先註解
+        public async Task<IActionResult> Index()
         {
-            var eventIndexViewModel = _eventIndexService.GetEventIndexViewModel();
+            //var eventIndexViewModel = await _eventIndexService.GetEventIndexViewModel();
 
-            int CardsPerPage = 9;
-            int TotalPages = (int)Math.Ceiling((double)eventIndexViewModel.EventEventCards.Count / CardsPerPage);
-            page = Math.Max(1, Math.Min(page, TotalPages));
+            //int CardsPerPage = 9;
+            //int TotalPages = (int)Math.Ceiling((double)eventIndexViewModel.EventEventCards.Count / CardsPerPage);
+            //page = Math.Max(1, Math.Min(page, TotalPages));
 
-            eventIndexViewModel.EventEventCards = eventIndexViewModel.EventEventCards
-                                                    .Skip((page - 1) * CardsPerPage)
-                                                    .Take(CardsPerPage)
-                                                    .ToList();
+            //eventIndexViewModel.EventEventCards = eventIndexViewModel.EventEventCards
+            //                                        .Skip((page - 1) * CardsPerPage)
+            //                                        .Take(CardsPerPage)
+            //                                        .ToList();
 
-            ViewData["TotalPages"] = TotalPages;
-            ViewData["CurrentPage"] = page;
-           
-            return View(eventIndexViewModel);
+            //ViewData["TotalPages"] = TotalPages;
+            //ViewData["CurrentPage"] = page;
+
+            var eventIndexCategoryTags = await _eventIndexService.GetEventIndexCategoryTags();
+
+            return View(eventIndexCategoryTags);
         }
 
-        public IActionResult EventPage(string OrganizationId, string EventId)
+        [HttpPost]
+        public IActionResult Search(string inputstring)
         {
-            var eventPageViewModel= _eventPageService.GetEventPageViewModel();
+            ///Events/Search?Id=1&Name=SSS&MaxPrice=300&MinPrice=10&StartTime=0&EndTime=0&CategoryTag=2
 
-            return Content($"OrganizationId: {OrganizationId}, EventId: {EventId}");
+            var searchResults = _searchEventService.SearchEventString(inputstring);
+
+            return RedirectToAction("Index", "Events", new { searchResults });
+        }
+    
+       
+
+        public IActionResult EventPage(int EventId)
+        {
+            var eventPageViewModel = _eventPageService.GetEventPageViewModel(EventId);
+
+            return View(eventPageViewModel);
         }
 
 
 
 
         public IActionResult TicketTypeSelection()
+        {
+            return View();
+        }
+
+        public IActionResult SeatSelector()
+        {
+            return View();
+        }
+
+        public IActionResult SelectArea()
+        {
+            return View();
+        }
+
+        public IActionResult SeatsSelection()
+        {
+            return View();
+        }
+
+        public IActionResult Registrations()
+        {
+            
+            var RegistrationsFakeData = _orderQueryService.GetRegistrationsFakeData();
+            return View(RegistrationsFakeData);
+        }
+
+        public IActionResult PaymentInfo()
+        {
+            return View();
+        }
+
+        public IActionResult OrderDetail()
+        {
+           
+            return View();
+            //string name = string.Empty;
+            //if (id.HasValue)
+            //{
+            //    var order = _orderRepo.FirstOrDefault(o => o.Id == id.Value);
+            //    if (order != null)
+            //    {
+            //        var ArchiveOrder = _archiveOrderRepo.List(ao => ao.OrderId == order.Id);
+            //        name = $"{order.Id} : {ArchiveOrder.Sum(ao => (ao.TicketPrice * ao.PurchaseAmount))}";
+            //    }
+            //}
+            //ViewData["OrderName"] = name;
+        }
+
+        public IActionResult BuyTicket()
         {
             var model = new TicketTypeSelectionViewModel()
             {
@@ -166,48 +235,10 @@ namespace ShowNest.Web.Controllers
             };
             return View(model);
         }
-
-        public IActionResult SelectArea()
+        public async Task <IActionResult> Ecpay()
         {
-            return View();
+            var GenerateOrderToEcpay = await _orderService.GenerateOrderAsync();
+            return View(GenerateOrderToEcpay);
         }
-
-        public IActionResult SeatsSelection()
-        {
-            return View();
-        }
-
-        public IActionResult Registrations()
-        {
-            
-            var RegistrationsFakeData = _orderQueryService.GetRegistrationsFakeData();
-            return View(RegistrationsFakeData);
-        }
-
-        public IActionResult PaymentInfo()
-        {
-            return View();
-        }
-
-        public IActionResult OrderDetail()
-        {
-           
-            //var userId = 1;
-            //var OrderDetail = _orderQueryService.GetMemberOrders(userId);
-           
-            return View();
-            //string name = string.Empty;
-            //if (id.HasValue)
-            //{
-            //    var order = _orderRepo.FirstOrDefault(o => o.Id == id.Value);
-            //    if (order != null)
-            //    {
-            //        var ArchiveOrder = _archiveOrderRepo.List(ao => ao.OrderId == order.Id);
-            //        name = $"{order.Id} : {ArchiveOrder.Sum(ao => (ao.TicketPrice * ao.PurchaseAmount))}";
-            //    }
-            //}
-            //ViewData["OrderName"] = name;
-        }
-     
     }
 }

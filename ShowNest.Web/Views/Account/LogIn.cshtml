@@ -8,15 +8,16 @@
     <link rel="stylesheet" href="~/css/Account/LogIn.css">
 }
 
+
 <div class="wallpaper">
 
-        <div class="container">
-            <div class="wrap">
-                <div class="tab">
-                    <div class="log-in">登入</div>
-                    <div class="sign-up"><a asp-controller="Account" asp-action="SignUp">註冊</a></div>
-                </div>
-                <div class="input-area">
+    <div class="container">
+        <div class="wrap">
+            <div class="tab">
+                <div class="log-in">登入</div>
+                <div class="sign-up"><a asp-controller="Account" asp-action="SignUp">註冊</a></div>
+            </div>
+            <div class="input-area">
 
                 <form method="post" asp-controller="Account" asp-action="LogIn">
                     <div class="user-name-or-email">
@@ -25,15 +26,25 @@
                     <div class="passwords">
                         <input id="password" type="password" name="Password" minlength="8" required placeholder="密碼" />
                     </div>
+                    @Html.ValidationSummary(true, "", new { @class = "text-danger" })
                     <div class="submit"><input type="submit" value="登入" /></div>
+
                 </form>
-                    <div class="forget-passwords"><a asp-controller="Account" asp-action="ForgetPassword">忘記密碼</a></div>
-                    <div class="other-log-in-methods">使用第三方帳號進行登入</div>
-                    <div class="third-party-log-in">
+                
+                @if (TempData["Message"] != null)
+                {
+                    <div class="alert alert-info">
+                        @TempData["Message"]
+                    </div>
+                }
+
+                <div class="forget-passwords"><a asp-controller="Account" asp-action="ForgetPassword">忘記密碼</a></div>
+                <div class="other-log-in-methods">使用第三方帳號進行登入</div>
+                <div class="third-party-log-in">
                     <div class="FB-icon"><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/b/b9/2023_Facebook_icon.svg/225px-2023_Facebook_icon.svg.png" alt="third-party-signup:FB"></div>
                     <div class="google-icon"><img src="https://res.cloudinary.com/dwn2iafcc/image/upload/v1708967805/google-web-light-rd-na_wtcjhg.svg" alt="third-party-signup:Google"></div>
-                </div>
                 </div>
             </div>
         </div>
     </div>
+</div>

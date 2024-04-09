@@ -3,8 +3,8 @@ using ApplicationCore.Entities;
 
 namespace ApplicationCore.Interfaces
 {
-    public interface ISeatRepository : IRepository<Seat>
-    {
-        Task<List<Seat>> GetSeatsBySeatAreaId(int seatAreaID);
-    }
+    // public interface ISeatRepository : IRepository<Seat>
+    // {
+    //     Task<List<Seat>> GetSeatsBySeatAreaId(int seatAreaID);
+    // }
 }

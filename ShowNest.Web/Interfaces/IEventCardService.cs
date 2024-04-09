@@ -6,6 +6,6 @@ namespace ShowNest.Web.Interfaces
     {
         IEnumerable<EventCardViewModel> EventCards { get;  }
 
-        EventCardViewModel GetEventCard(string name, string link, string imgUrl, string eventTime, EventStatus status);
+        EventCardViewModel GetEventCard(string name, string link, string imgUrl, string eventTime);
     }
 }

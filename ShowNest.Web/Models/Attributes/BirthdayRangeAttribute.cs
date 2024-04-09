@@ -1,6 +1,6 @@
-﻿namespace ShowNest.Web.Models
+﻿namespace ShowNest.Web.Models.Attributes
 {
-    public class BirthdayRangeAttribute:ValidationAttribute
+    public class BirthdayRangeAttribute : ValidationAttribute
     {
         protected override ValidationResult IsValid(object value, ValidationContext validationContext)
         {

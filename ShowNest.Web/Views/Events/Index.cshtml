@@ -2,8 +2,8 @@
 
 @{
 	ViewData["Title"] = "Index";
-	int viewDataPage = int.Parse(ViewData["CurrentPage"].ToString());
-	int viewDataTotalPages = int.Parse(ViewData["TotalPages"].ToString());
+	// int viewDataPage = int.Parse(ViewData["CurrentPage"].ToString());
+	// int viewDataTotalPages = int.Parse(ViewData["TotalPages"].ToString());
 }
 
 @section topCSS {
@@ -83,15 +83,15 @@
 <section>
 	<div class="cards-wrap width">
 		<div class="cards">
-			@foreach (var card in Model.EventEventCards)
+			@* @foreach (var card in Model.EventEventCards)
 			{
 				@await Html.PartialAsync("~/PartialViews/_EventCards_Partial.cshtml", card)
 				;
-			}
+			} *@
 		</div>
 	</div>
 	<div id="page-index" class="width">
-		@if (viewDataPage > 1)
+		@* @if (viewDataPage > 1)
 		{
 			<a href="@Url.Action("Index","Events", new {page = viewDataPage - 1})" class="index">⭠</a>
 		}
@@ -103,24 +103,25 @@
 		@if (viewDataPage < viewDataTotalPages)
 		{
 			<a href="@Url.Action("Index","Events", new {page = viewDataPage + 1})" class="index">⭢</a>
-		}
+		} *@
 	</div>
 </section>
 
-<script>
-	@* var pageIndexs = document.querySelectorAll('#page-index a')
-	pageIndexs.forEach(function (eachindex) {
-		eachindex.addEventListener('click', function (event) {
-	event.preventDefault()
-			var currentScrollPosition = window.pageYOffset || document.documentElement.scrollTop;
-			setTimeout(function () {
-				window.scrollTo(0, currentScrollPosition)
-			}, 0)
-		})
-	}) *@
+<template class="card-template">
+	<a class="single-card">
+		<div class="card-name">
+			<img src="EventImgUrl " alt="">
+			<span>CategoryName</span>
+			<p>EventName</p>
+		</div>
+		<div class="card-info">
+			<p class="card-event-date"><i class="fa-regular fa-calendar-days"></i></p>
+			<p class="card-ticket-status"></p>
+		</div>
+	</a>
+</template>
 
-	var pageIndex = document.querySelector('#page-index')
-	pageIndex.addEventListener('click', function(event){
-		@* event.preventDefault() *@
-	})
-</script>
+<script src="~/lib/jquery/dist/jquery.min.js"></script>
+<script src="~/lib/jquery/dist/jquery.js"></script>
+
+<script src="~/js/events/eventsindex.js"></script>

@@ -52,10 +52,12 @@ public partial class DatabaseContext : DbContext
 
     public virtual DbSet<TicketType> TicketTypes { get; set; }
 
+    public virtual DbSet<TicketTypeAndSeatAreaMapping> TicketTypeAndSeatAreaMappings { get; set; }
+
     public virtual DbSet<User> Users { get; set; }
 
-    protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
-        => optionsBuilder.UseSqlServer("Name=ConnectionStrings:ShowNestDb");
+    //protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
+    //    => optionsBuilder.UseSqlServer("Name=ConnectionStrings:ShowNestDb");
 
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
@@ -173,7 +175,6 @@ public partial class DatabaseContext : DbContext
             entity.Property(e => e.IsFree).HasComment("是否免費");
             entity.Property(e => e.IsPrivateEvent).HasComment("是否公開活動");
             entity.Property(e => e.Latitude)
-                .IsRequired()
                 .HasMaxLength(50)
                 .HasComment("緯度");
             entity.Property(e => e.LocationAddress)
@@ -183,7 +184,6 @@ public partial class DatabaseContext : DbContext
                 .HasMaxLength(100)
                 .HasComment("活動地點");
             entity.Property(e => e.Longitude)
-                .IsRequired()
                 .HasMaxLength(50)
                 .HasComment("經度");
             entity.Property(e => e.MainOrganizer)
@@ -645,6 +645,21 @@ public partial class DatabaseContext : DbContext
                 .HasForeignKey(d => d.EventId)
                 .OnDelete(DeleteBehavior.ClientSetNull)
                 .HasConstraintName("FK_TicketTypes_Events");
+        });
+
+        modelBuilder.Entity<TicketTypeAndSeatAreaMapping>(entity =>
+        {
+            entity.ToTable("TicketTypeAndSeatAreaMapping");
+
+            entity.HasOne(d => d.SeatArea).WithMany(p => p.TicketTypeAndSeatAreaMappings)
+                .HasForeignKey(d => d.SeatAreaId)
+                .OnDelete(DeleteBehavior.ClientSetNull)
+                .HasConstraintName("FK_TicketTypeAndSeatAreaMapping_SeatAreas");
+
+            entity.HasOne(d => d.TicketType).WithMany(p => p.TicketTypeAndSeatAreaMappings)
+                .HasForeignKey(d => d.TicketTypeId)
+                .OnDelete(DeleteBehavior.ClientSetNull)
+                .HasConstraintName("FK_TicketTypeAndSeatAreaMapping_TicketTypes");
         });
 
         modelBuilder.Entity<User>(entity =>
