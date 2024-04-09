@@ -7,7 +7,9 @@
 
 @section topCSS {
     <link href="~/css/Dashboard/CreateEvent.css" rel="stylesheet" />
+    @* <link href="https://cdn.jsdelivr.net/npm/vuetify@3.5.14/dist/vuetify.min.css" rel="stylesheet"> *@
 }
+
 
 <body>
     <div class="wrap">
@@ -30,8 +32,7 @@
                         else
                         {
                             <li class="invalid-feedback"> 尚未擁有組織，請先建立組織 </li>
-                        }
-                        
+                        }  
                     </option>
                 </select>
 
@@ -48,6 +49,19 @@
                         <!-- Display blank when no activities exist -->
                         <!-- <p>尚無活動可做樣板</p> -->
                         <label><input type="radio" id="ActivityItem"> 相揪搶銀行(暫)</label>
+                        @* <label>
+                            @if (Model.EventName != null)
+                            {
+                                @foreach (var eventNameList in Model.EventNames)
+                                {
+                                    <li>@EventNameList.EventName</li>
+                                }
+                            }
+                            else
+                            {
+                                <li class="invalid-feedback"> 尚未擁有活動，請先選擇全新活動 </li>
+                            }
+                        </label> *@
                            @* <label><input type="radio" id="ActivityItem"> @Model.EventName</label> *@
                     </div>
                 </div>
@@ -58,14 +72,15 @@
                     </label>
                 </div>
 
-                <input class="establishBtn" type="button" value="建立" onclick="window.location.href='https://localhost:7156/Dashboard/CreateEvent/SetEvent'" />
+                <input class="establishBtn" type="button" value="建立" onclick="window.location.href='@Url.Action("SetEvent", "Dashboard")'" />
             </div>
         </div>
     </div>
 
+
     @section Scripts {
         <script src="~/js/Dashboard/CreateEvent.js"></script>
-
+        @* <script src="https://cdn.jsdelivr.net/npm/vuetify@3.5.14/dist/vuetify.min.js"></script> *@
     }
 </body>
 
