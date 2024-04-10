@@ -61,7 +61,7 @@ namespace Infrastructure.Services
                     EventTime = et.Event.StartTime,
                     EventStatus = GetEventStatusAndCssClassName(et.Event.StartTime)[0],
                     EventStatusCssClass = GetEventStatusAndCssClassName(et.Event.StartTime)[1],
-                    TotalPages = GetTotalEventsCount()
+                    TotalEvents = GetTotalEventsCount()
                 })
                 .ToListAsync();
 
