@@ -1,14 +1,12 @@
-    const eventNameInput = document.getElementById("EventNameInput");
-    const activityFormSelect = document.querySelector(".form-select");
-    const onlineActivityElement = document.querySelector(".online-section");
-    const mapElement = document.querySelector("#map").closest("div");
-    const mapNote = document.querySelector(".map-note");
-    const placeLog = document.querySelector(".place-section");
+const eventNameInput = document.getElementById("EventNameInput");
+const activityFormSelect = document.querySelector(".form-select");
+const onlineActivityElement = document.querySelector(".online-section");
+const mapElement = document.querySelector("#map").closest("div");
+const mapNote = document.querySelector(".map-note");
+const placeLog = document.querySelector(".place-section");
 
 
-    hideOnlineElements();
-
-
+hideOnlineElements();
 
 //線上或實體顯示
     function hideOnlineElements() {
@@ -28,10 +26,9 @@
                 mapNote.style.display = "none";
                 placeLog.style.display = "none";
             }
-        });
-   /* });*/
+    });
 
-/*地圖*/
+/*map start*/
 (g => { var h, a, k, p = "The Google Maps JavaScript API", c = "google", l = "importLibrary", q = "__ib__", m = document, b = window; b = b[c] || (b[c] = {}); var d = b.maps || (b.maps = {}), r = new Set, e = new URLSearchParams, u = () => h || (h = new Promise(async (f, n) => { await (a = m.createElement("script")); e.set("libraries", [...r] + ""); for (k in g) e.set(k.replace(/[A-Z]/g, t => "_" + t[0].toLowerCase()), g[k]); e.set("callback", c + ".maps." + q); a.src = `https://maps.${c}apis.com/maps/api/js?` + e; d[q] = f; a.onerror = () => h = n(Error(p + " could not load.")); a.nonce = m.querySelector("script[nonce]")?.nonce || ""; m.head.append(a) })); d[l] ? console.warn(p + " only loads once. Ignoring:", g) : d[l] = (f, ...n) => r.add(f) && u().then(() => d[l](f, ...n)) })
     ({ key: "AIzaSyBPB4VPZKkuM469YuZcRdGGKnsItE1C7ik", v: "beta" });
 
@@ -91,7 +88,6 @@ document.getElementById('restoreBtn')
 /*欄位驗證*/
 //不符合以下驗證鎖下一頁按鍵
 
-    //活動名稱欄
 
     //網址列驗證
 
@@ -101,9 +97,6 @@ document.getElementById('restoreBtn')
 
 
     //主辦單位必填
-
-
-    //時間欄位
 
     //活動類型&活動地點驗證
     // 實體活動
