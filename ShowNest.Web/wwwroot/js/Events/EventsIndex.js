@@ -2,13 +2,14 @@
 let cardsPerPage = 9
 let pageIndexContainer = $('#page-index')[0]
 let cardTemplate = $('.card-template')[0].content
+let totalPages = 0
+let totalEventsCount = 0
 
 $(function () {
-    getTotalEvetnsCount()
     loadCards()
 })
 
-function loadCards() {
+async function loadCards() {
     let cardsContainer = $('.cards')[0]
     cardsContainer.innerHTML = ''
     // for checking
@@ -20,7 +21,7 @@ function loadCards() {
     console.log(pageIndexContainer)
 
     // for checking
-    fetch(`/api/EventsIndex/GetEventsIndexCardsByApi?page=${page}&cardsPerPage=${cardsPerPage}`)
+    await fetch(`/api/EventsIndex/GetEventsIndexCardsByApi?page=${page}&cardsPerPage=${cardsPerPage}`)
         .then(res => res.json())
         .then(cards => {
             console.log('cards')
@@ -36,20 +37,11 @@ function loadCards() {
                 $(cardToAppend).find('.card-event-date').html(`<i class="fa-regular fa-calendar-days"></i>${convertEventTime(data.eventTime)}`)
                 $(cardToAppend).find('.card-ticket-status').text(data.eventStatus)
                 cardsContainer.append(cardToAppend)
+                totalEventsCount = data.totalEvents
             })
         })
 
     renderPagination()
-}
-
-function getTotalEvetnsCount() {
-    fetch(`/api/EventsIndex/GetTotalEventsCount`)
-        .then(res => res.json())
-        .then(data => {
-            let totalEventsCount = parseInt(data)
-            console.log('totalEventsCount :')
-            console.log(totalEventsCount)
-        })
 }
 
 function convertEventTime(datetimeString) {
@@ -69,6 +61,7 @@ function convertEventTime(datetimeString) {
 function renderPagination() {
 
     const $paginationContainer = $('#page-index')
+    $paginationContainer.html('')
 
     // previous page button
     const $prevPageButton = $('<button>', {
@@ -85,10 +78,27 @@ function renderPagination() {
     })
 
     $paginationContainer.append($prevPageButton)
+    console.log('totalEventsCount at render pagination() :')
+    console.log(totalEventsCount)
+    // numbers page button
+    totalPages = Math.ceil(totalEventsCount / cardsPerPage)
+    console.log('totalPages :')
+    console.log(totalPages)
+
+    for (let i = 1; i <= totalPages; i++) {
+        const $pageButton = $('<button>', {
+            text: i,
+            class: 'index'
+        })
+        i === page ? $pageButton.addClass('active-index') : {}
+        $pageButton.on('click',function(){
+            page = i
+            loadCards()
+        })
+        $paginationContainer.append($pageButton)
+    }
 
     // next page button
-    let totalPages = Math.ceil(totalEventsCount / cardsPerPage)
-
     const $nextPageButton = $('<button>', {
         text: '⭢',
         class: 'index'
@@ -97,16 +107,11 @@ function renderPagination() {
     $nextPageButton.attr('class', 'index')
 
     $nextPageButton.on('click', function () {
-        if (page < totalPages>) {
+        if (page < totalPages) {
             page++
             loadCards()
         }
     })
 
     $paginationContainer.append($nextPageButton)
-
-    // numbers page button
-    const $pageButton = $('<button>', {
-
-    })
 }
