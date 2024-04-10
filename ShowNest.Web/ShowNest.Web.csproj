@@ -59,6 +59,7 @@
 
   <ItemGroup>
     <Folder Include="Views\Events\Test\" />
+    <Folder Include="wwwroot\UploadFiles\" />
   </ItemGroup>
 
 </Project>
