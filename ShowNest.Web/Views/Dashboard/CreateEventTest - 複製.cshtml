@@ -1,0 +1,169 @@
+﻿@{
+    ViewData["Title"] = "CreateEventTest";
+}
+
+@section topCSS {
+    <link href="https://cdn.jsdelivr.net/npm/vuetify@3.5.14/dist/vuetify.min.css" rel="stylesheet">
+    <link href="~/css/Dashboard/CreateEventTest.css" rel="stylesheet" />
+}
+
+<body>
+    <div class="wrap" id="app">
+        <v-app>
+
+            <v-container>
+                <v-stepper prev-text="上一步"
+                           next-text="下一步"
+                           :items="['建立活動', '設定資料', '設定票種', '設定表單']">
+                    @* 第一頁 *@
+                    <template v-slot:item.1>
+                        <div class="wrap">
+                            <div class="container">
+                                <!-- 從首頁導覽列進入的建立活動 -->
+                                <div class="ActivityContainer">
+                                    <h2>建立活動</h2>
+                                    <h3 class="select-organizer">選擇活動舉辦單位</h3>
+                                    <p>您尚未選擇組織，請選取此活動所屬之組織：</p>
+                                    <v-select item-title="name"
+                                              item-value="id"
+                                              v-model="selectedOrganization"
+                                              class="w-25"
+                                              :items="organizations"
+                                              label="選擇一個組織"></v-select>
+
+                                    <!-- Hide the organizations while not selected below -->
+                                    <div v-show="displaySelectActivityType">
+                                        @* <div class="new-activity">
+                                        <input type="radio" class="new-activiy-radio">
+                                        <label> 全新的活動</label>
+                                        </div> *@
+                                        <v-select v-model="selectedActivityType"
+                                                  class="w-25"
+                                                  :items="activityTypes"
+                                                  label="選擇一個活動類別"></v-select>
+                                        <div class="activity-select" v-if="displayExistingActivities">
+                                            <p class="notice">您也可以直接套用既有的活動設定（基本資料、表單、票種），節省您寶貴的時間</p>
+                                            <h3 class="lined">以最近舉辦的活動做為樣板</h3>
+                                            <!-- Show activity items when the activities exist-->
+                                            <div class="activity-item">
+                                            </div>
+                                        </div>
+                                        <div class="TOSzone">
+                                            <label for="">
+                                                <input type="checkbox" class="checkbox"> 我已經閱讀並同意
+                                                <a href="">主辦單位服務條款</a> 與 <a href="">隱私權政策</a>
+                                            </label>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </template>
+
+                    @* 第二頁 *@
+                    <template v-slot:item.2>
+                        <v-card title="設定資料" flat>
+                            <v-form>
+                                <v-row>
+                                    <v-col cols="12"
+                                           md="6">
+                                        <v-text-field label="活動名稱"
+                                                      required
+                                                      class="mb-4"
+                                                      density="compact">
+                                        </v-text-field>
+
+                                        <v-col cols="6">
+                                            <v-text-field label="請輸入網址"
+                                                          density="compact"
+                                                          model-value="eventUrl"
+                                                          prefix="&https://bs-test.shownest.cc/events/">
+                                            </v-text-field>
+                                        </v-col>
+                                        <div class="invalid-feedback">
+                                            請輸入3 到 16 個小寫英文或數字。
+                                        </div>
+                                        <span class="OK">
+                                            <i class="fa-solid fa-circle-check"></i> 可以使用
+                                        </span>
+
+                                        <v-text-field label="活動開始時間"
+                                                      type="datetime-local"
+                                                      required
+                                                      density="compact">
+                                        </v-text-field>
+                                        <v-text-field label="活動結束時間"
+                                                      type="datetime-local"
+                                                      density="compact">
+                                        </v-text-field>
+                                        <v-checkbox label="不提供結束時間"></v-checkbox>
+                                        <p>如果你沒有提供結束時間，系統不會顯示結束時間。活動會在開始時間到時結束販售。</p>
+
+                                        <v-text-field label="主辦單位"
+                                                      required
+                                                      class="mb-4"
+                                                      density="compact">
+                                        </v-text-field>
+                                        <v-text-field label="協辦單位"
+                                                      class="mb-4"
+                                                      density="compact">
+                                        </v-text-field>
+
+
+                                        <v-col cols="12" md="4" sm="4">
+                                            <h5>活動人數</h5>
+                                            <v-number-input control-variant="split"></v-number-input>
+                                        </v-col>
+
+
+                                        <v-checkbox label="不限定數量"></v-checkbox>
+                                        <v-select :items="items"
+                                                  density="compact"></v-select>
+                                        <v-text-field label="場地名稱"
+                                                      required
+                                                      class="mb-4"
+                                                      density="compact">
+                                        </v-text-field>
+
+                                    </v-col>
+
+
+
+                                    @* left field *@
+                                    <v-col cols="12"
+                                           md="6">
+                                        <v-text-field label="Last name"
+                                                      hide-details
+                                                      required></v-text-field>
+                                    </v-col>
+                                </v-row>
+                            </v-form>
+                        </v-card>
+                    </template>
+
+                    @* 第三頁 *@
+                    <template v-slot:item.3>
+                        <v-card title="設定票種" flat>...</v-card>
+                    </template>
+
+                    @* 第四頁 *@
+                    <template v-slot:item.4>
+                        <v-card title="設定表單" flat>...</v-card>
+                    </template>
+
+                </v-stepper>
+            </v-container>
+        </v-app>
+    </div>
+
+    @section Scripts {
+        <script src="https://cdn.jsdelivr.net/npm/vuetify@3.5.14/dist/vuetify.min.js"></script>
+        <script src="/js/Dashboard/CreateEventTest.js"></script>
+        <script async defer
+                src="https://maps.googleapis.com/maps/api/js?key=YOUR_API_KEY">
+        </script>
+    }
+</body>
+
+
+
