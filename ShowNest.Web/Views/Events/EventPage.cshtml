@@ -153,7 +153,7 @@
             </div>
         </div>
         <div class="event-attendees ">
-            <h2><span>26</span> 報名人</h2>
+            <h2><span>@Model.countOfParticipants</span> 報名人</h2>
             <div class="attendees-btn">
                 <div class="p-3 justify-content-center show-attendees">
                     <div class="btn btn-outline-success attendee-display-switch  w-50" type="button" id="toggleAttendeesBtn">
@@ -162,14 +162,18 @@
                 </div>
             </div>
             <ul class="attendees">
-               @*  @foreach (var ParticipantPeople in @Model.AllParticipantPeoples)
+                @foreach (var ParticipantPeople in @Model.AllParticipantPeoples.Take(10))
                     {
-                        <li>
-                                 <img src="" alt="">@ParticipantPeople                        </li>
-                    } *@
-                <div class="more">
-                    ...以及其他 19 人
-                </div>
+                     <li>
+                        <img src="@ParticipantPeople.UserImage" alt="">@ParticipantPeople.UserNickname
+                    </li>
+                    }
+                @if (Model.AllParticipantPeoples.Count > 10)
+                {
+                    <div class="more">
+                        ...以及其他 @(Model.AllParticipantPeoples.Count - 10) 人
+                    </div>
+                }
             </ul>
         </div>
     </div>

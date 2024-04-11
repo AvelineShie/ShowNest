@@ -25,6 +25,8 @@ namespace ShowNest.Web.Services.Events
                     .ThenInclude(ct => ct.CategoryTag)
                 .Include(t => t.TicketTypes)
                     .ThenInclude(t => t.Tickets)
+                    .ThenInclude(o=>o.Order)
+                    .ThenInclude(u=>u.User)
                 .AsNoTracking()
                 .FirstOrDefault(e=>e.Id== EventId);
             if (EventPage == null)
@@ -44,7 +46,19 @@ namespace ShowNest.Web.Services.Events
                 Id= eatm.Id,
                 CategoryName = eatm.CategoryTag.Name
             }).ToList();
-
+            
+            var AllParticipantPeoples = EventPage.TicketTypes
+            .SelectMany(tt => tt.Tickets)
+            .GroupBy(t => t.Order.User.Id) 
+            .Select(group => group.First()) 
+            .Select(t => new ParticipantPeople
+            {
+                Id = t.Order.User.Id,
+                UserImage = t.Order.User.Image,
+                UserNickname = t.Order.User.Nickname
+            })
+            .ToList();
+            var countOfParticipants = AllParticipantPeoples.Count;
             var result = new EventPageViewModel
             {
                 EventId = EventPage.Id,
@@ -63,6 +77,8 @@ namespace ShowNest.Web.Services.Events
                 OrganizationName = EventPage.Organization.Name,
                 EventTicketTypes = eventTicketTypes,
                 EventCategoryTags = eventCategoryTags,
+                AllParticipantPeoples= AllParticipantPeoples,
+                countOfParticipants= countOfParticipants,
             };
 
             return result;

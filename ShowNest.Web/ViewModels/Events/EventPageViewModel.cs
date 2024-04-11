@@ -19,6 +19,7 @@ namespace ShowNest.Web.ViewModels.Events
         public int EventCapacity { get; set; } // 活動人數
         public string OrganizationName { get; set; }
         public int OrganizationId { get; set; }
+        public int countOfParticipants { get; set; }
 
         public List<EventTicketType> EventTicketTypes { get; set; }
         public List<ParticipantPeople> AllParticipantPeoples { get; set; }//抓UserID、Image
@@ -36,6 +37,7 @@ namespace ShowNest.Web.ViewModels.Events
     }
     public class ParticipantPeople
     {
+        public int Id { get; set; }
         public string UserImage { get; set; }
         public string UserNickname { get; set; }
        
