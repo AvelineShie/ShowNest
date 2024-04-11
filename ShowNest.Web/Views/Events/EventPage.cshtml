@@ -1,6 +1,7 @@
 ﻿
 @model EventPageViewModel
 
+
 @{
     Layout = "_LayoutForEventPage";
 }
@@ -86,10 +87,10 @@
             </div>
             <ul class="tags-item ">
                 <li>
-                    @* @foreach (var tag in Model.EventCategoryTags)
+                    @foreach (var tag in Model.EventCategoryTags)
                     {
                         @await Html.PartialAsync("~/PartialViews/_CategoryTags_Partial.cshtml", tag);
-                    } *@
+                    }
                 </li>
             </ul>
         </div>
