@@ -3,10 +3,8 @@ using Microsoft.AspNetCore.Authentication;
 using Microsoft.AspNetCore.Authentication.Cookies;
 using Microsoft.AspNetCore.Http;
 using Microsoft.EntityFrameworkCore;
-using NuGet.Protocol.Plugins;
 using System;
 using System.Collections.Generic;
-using System.Data;
 using System.Security.Claims;
 using System.Security.Cryptography;
 using System.Text;
@@ -203,8 +201,94 @@ namespace ShowNest.Web.Services.AccountService
             return storedHash == hashedOldPassword;
         }
 
+        //取得使用者資料
+        public async Task<(bool IsSuccess, UserAccountViewModel UserAccount, string ErrorMessage)> GetUserAccountByIdAsync(int userId)
+        {
+            try
+            {
+                var user = await _context.Users
+                    .Include(u => u.LogInInfo)
+                    .Include(u => u.PreferredActivityAreas)
+                    .FirstOrDefaultAsync(u => u.Id == userId);
 
+                if (user == null)
+                {
+                    return (false, null, "找不到對應的使用者。");
+                }
 
+                var userAccountViewModel = new UserAccountViewModel
+                {
+                    Id = user.Id,
+                    Account = user.LogInInfo.Account,
+                    Nickname = user.Nickname,
+                    Email = user.LogInInfo.Email,
+                    Mobile = user.Mobile,
+                    Birthday = user.Birthday,
+                    Gender = user.Gender,
+                    PersonalURL = user.PersonalUrl,
+                    PersonalProfile = user.PersonalProfile,
+                    EdmSubscription = user.EdmSubscription,
+                    Image = user.Image,
+                    //LastLogInAt = user.LogInInfo.LastLogInAt,
+                    Status = user.Status,
+                    CreatedAt = user.CreatedAt,
+                    EditedAt = user.EditedAt
+                };
+
+                return (true, userAccountViewModel, null);
+            }
+            catch (Exception ex)
+            {
+                return (false, null, ex.Message);
+            }
+        }
+        //測試用
+        public async Task<(bool IsSuccess, string ErrorMessage)> UpdateUserAccountByIdAsync(int userId, UserAccountViewModel model)
+        {
+            try
+            {
+                var user = await _context.Users
+                    .Include(u => u.LogInInfo)
+                    .FirstOrDefaultAsync(u => u.Id == userId);
+
+                if (user == null)
+                {
+                    return (false, "找不到對應的使用者。");
+                }
+
+                // 更新使用者資料
+                user.Nickname = model.Nickname;
+                user.LogInInfo.Email = model.Email;
+                user.Mobile = model.Mobile;
+                user.Birthday = model.Birthday;
+                user.Gender = (byte?)model.Gender;
+                user.PersonalUrl = model.PersonalURL;
+                user.PersonalProfile = model.PersonalProfile;
+                user.EdmSubscription = model.EdmSubscription;
+                user.Image = model.Image; // 注意：這裡假設你有一個方法來處理圖片上傳
+                user.EditedAt = DateTime.Now;
+
+                await _context.SaveChangesAsync();
+
+                return (true, null);
+            }
+            catch (Exception ex)
+            {
+                return (false, ex.Message);
+            }
+        }
+        //取得地區資料
+        //public List<Area> GetAllAreas()
+        //{
+        //    return _context.Areas.ToList();
+        //}
+        //public List<int> GetPreferredAreasByUserId(int userId)
+        //{
+        //    return _context.PreferredActivityAreas
+        //        .Where(p => p.UserId == userId)
+        //        .Select(p => p.AreaId)
+        //        .ToList();
+        //}
         //雜湊
         private string HashPassword(string password)
         {

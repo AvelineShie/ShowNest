@@ -9,7 +9,7 @@ namespace ShowNest.Web.ViewModels.Dashboard
     {
         //照mobile RWD順序
         public string OrganizationName { get; set; } //組織名
-        public string MainImageURL { get; set; } //圖片
+        public string EventImage { get; set; } //圖片
 
         [Required]
         [StringLength(100)]
