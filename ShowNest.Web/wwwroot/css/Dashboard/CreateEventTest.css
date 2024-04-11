@@ -467,27 +467,29 @@ html body #SetTicket .table-log {
     padding-left: 30px;
 }
 
+.data-collection {
+    margin-bottom:25px;
+}
 
 .data-type {
     display: inline-block;
     margin: 15px;
-    margin-bottom: 15px;
     padding: 3px;
     font-weight: bold;
     border-bottom: #ccc solid 2px;
 }
 
-#SetTable.data-log {
+.data-log {
     display: flex;
     flex-direction: column;
     box-sizing: border-box;
 }
 
-#SetTable.contact-person, .applicants {
+.contact-person, .applicants {
     margin-bottom: 50px;
 }
 
-#SetTable h3 {
+.contact-person > h3, .applicants > h3 {
     display: block;
     padding: 10px;
     background-color: #edecec;
@@ -496,30 +498,31 @@ html body #SetTicket .table-log {
     border-radius: 5px;
 }
 
-html body #SetTable.table-log {
-    display: flex;
-    flex-direction: row;
-}
+    .table-log {
+        display: flex;
+        flex-direction: row
+    }
 
-#SetTable.list-group {
+.list-group {
     width: 50%;
     border-radius: 0%;
 }
 
-#SetTable.table {
+.contactInformationForm {
     margin-bottom: 0;
     margin-left: 30px;
     border: #ccc solid 1px;
 }
 
+
 /* ¤p¼Ð²ÊÅé */
-#SetTable thead > tr > th {
+thead > tr > th {
     font-weight: bold;
     border-bottom: #ccc solid 1px;
     ;
 }
 
-#SetTable.table > tbody > tr > th {
+tbody > tr > th {
     background-color: #5ec4db;
 }
 
