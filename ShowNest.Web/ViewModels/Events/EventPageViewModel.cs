@@ -22,7 +22,7 @@ namespace ShowNest.Web.ViewModels.Events
 
         public List<EventTicketType> EventTicketTypes { get; set; }
         public List<ParticipantPeople> AllParticipantPeoples { get; set; }//抓UserID、Image
-        public List<CategoryTags> EventCategoryTags { get; set; }
+        public List<CategoryTagsViewModel> EventCategoryTags { get; set; }
     }
 
     public class EventTicketType
@@ -41,8 +41,5 @@ namespace ShowNest.Web.ViewModels.Events
        
 
     }
-    public class CategoryTags
-    {
-        public string Name { get; set; }
-    }
+    
 }

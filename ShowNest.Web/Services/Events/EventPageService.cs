@@ -20,7 +20,9 @@ namespace ShowNest.Web.Services.Events
         {
             var test = _databaseContext.Events.FirstOrDefault(x =>x.Id == EventId);
             var EventPage= _databaseContext.Events
-                .Include(e=>e.Organization)
+                .Include(o=>o.Organization)
+                .Include(ea => ea.EventAndTagMappings) 
+                    .ThenInclude(ct => ct.CategoryTag)
                 .Include(t => t.TicketTypes)
                     .ThenInclude(t => t.Tickets)
                 .AsNoTracking()
@@ -35,6 +37,12 @@ namespace ShowNest.Web.Services.Events
                 TicketPrice = t.Price,
                 TicketSalseBegin = t.StartSaleTime,
                 TicketSalseEnd = t.EndSaleTime
+            }).ToList();
+
+            var eventCategoryTags = EventPage.EventAndTagMappings.Select(eatm => new CategoryTagsViewModel
+            {
+                Id= eatm.Id,
+                CategoryName = eatm.CategoryTag.Name
             }).ToList();
 
             var result = new EventPageViewModel
@@ -53,7 +61,8 @@ namespace ShowNest.Web.Services.Events
                 EventCapacity = (int)EventPage.Capacity,
                 OrganizationId = EventPage.OrganizationId,
                 OrganizationName = EventPage.Organization.Name,
-                EventTicketTypes = eventTicketTypes
+                EventTicketTypes = eventTicketTypes,
+                EventCategoryTags = eventCategoryTags,
             };
 
             return result;
