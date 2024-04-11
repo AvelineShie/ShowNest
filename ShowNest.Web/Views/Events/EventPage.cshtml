@@ -69,13 +69,13 @@
                 <i class="fa-solid fa-sitemap"></i>
                 主辦單位
                 <a asp-controller="Organizations" asp-action="Index">@Model.MainOrganizer</a>
-                <a href="" id="btn-Contact-organization">聯絡主辦單位</a>
+                <a href="~/Organizations/Index/@Model.OrganizationId" id="btn-Contact-organization">聯絡主辦單位</a>
             </div>
             <!-- 活動header頁 結束-->
         </div>
         <!-- --手機板 下一步--- -->
         <div id="pc-btn-success" class="p-3 d-flex justify-content-center pc-hide">
-            <a href="#" class="btn btn-success w-50"
+            <a href="~/Events/BuyTicket/@Model.EventId" class="btn btn-success w-50"
                type="button">下一步</a>
         </div>
         <!-- 活動main 開始-->
@@ -147,7 +147,7 @@
             </table>
 
             <div id="pc-btn-success" class="p-3 d-flex justify-content-center">
-                <a href="#" class="btn btn-success w-50"
+                <a href="~/Events/BuyTicket/@Model.EventId" class="btn btn-success w-50"
                    type="button">下一步</a>
             </div>
         </div>
