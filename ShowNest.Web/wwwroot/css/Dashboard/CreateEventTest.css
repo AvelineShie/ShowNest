@@ -370,7 +370,8 @@ html body #SetTicket.delete {
     margin-left: 5px;
 }
 
-html body #SetTicket .table-log {
+.ticketTable {
+    flex-direction:column;
     margin-bottom: 30px;
 }
 
@@ -498,10 +499,10 @@ html body #SetTicket .table-log {
     border-radius: 5px;
 }
 
-    .table-log {
-        display: flex;
-        flex-direction: row
-    }
+.table-log {
+    display: flex;
+    flex-direction: row;
+}
 
 .list-group {
     width: 50%;
@@ -509,6 +510,7 @@ html body #SetTicket .table-log {
 }
 
 .contactInformationForm {
+    flex-direction: row;
     margin-bottom: 0;
     margin-left: 30px;
     border: #ccc solid 1px;
