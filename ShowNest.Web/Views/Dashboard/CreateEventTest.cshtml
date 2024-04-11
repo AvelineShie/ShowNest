@@ -10,7 +10,6 @@
 <body>
     <div class="wrap" id="app">
         <v-app>
-
             <v-container>
                 <v-form @@下一步.prevent>
                     <v-stepper prev-text="上一步"
@@ -46,12 +45,12 @@
                                             <div class="activity-select" v-if="displayExistingActivities">
                                                 <p class="notice">您也可以直接套用既有的活動設定（基本資料、表單、票種），節省您寶貴的時間</p>
                                                 <h3 class="lined">以最近舉辦的活動做為樣板</h3>
-                                                <div class="evetItem" v-model="selectedEvent">
-                                                    <input type="radio" for="eventName"> </input>
+                                                <div>
+                                                    <input type="radio" for="eventItem1" v-model="radioCheck" name="eventRadio"> </input>
                                                     <label id="eventItem1">Model.EventName </label>
                                                 </div>
                                                 <div>
-                                                    <input type="radio" for="eventName" v-model="radioCheck"> </input>
+                                                    <input type="radio" for="eventItem2" v-model="radioCheck" name="eventRadio"> </input>
                                                     <label id="eventItem2">Model.EventName2 </label>
                                                 </div>
 
@@ -477,7 +476,7 @@
                                 <div class="container">
                                     <div class="data-collection">
                                         <!-- 如果只需聯絡人資料，報名人資料會隱藏 -->
-                                        <h4>收集資料類型</h4>
+                                        <h4 class="data-type">收集資料類型</h4>
                                         <div class="form-check">
                                             <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault1">
                                             <label class="form-check-label" for="flexRadioDefault1">

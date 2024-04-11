@@ -72,11 +72,11 @@ div.v-selection-control-group {
 }
 
 
-.evetItem {
+/*.evetItem {
     margin-top: 15px;
     margin-bottom: 10px;
 }
-
+*/
 .TOSzone{
     margin-top: 20px;
     
@@ -349,12 +349,12 @@ html body #SetTicket.name {
 }
 
 /* 表單 */
-html body #SetTicket th {
+#SetTicket th {
     font-weight: bold;
     border-bottom: #999 solid 1px;
 }
 
-html body #SetTicket td > button {
+#SetTicket td > button {
     border: #ccc 1px solid;
     box-shadow: #f2f2f2 0 -3px 0 inset;
     background-color: #fff;
@@ -453,13 +453,13 @@ html body #SetTicket .table-log {
 
 /* 正式版面 */
 #SetTable .wrap {
-    /*width: 75%;*/
     display: flex;
     flex-direction: column;
     margin: 0 auto;
 }
 
 #SetTable.container {
+    max-width: 0;
     color: #333333;
     flex-direction: column;
     margin-bottom: 90px;
@@ -468,7 +468,7 @@ html body #SetTicket .table-log {
 }
 
 
-#SetTable h4 {
+.data-type {
     display: inline-block;
     margin: 15px;
     margin-bottom: 15px;
@@ -496,7 +496,7 @@ html body #SetTicket .table-log {
     border-radius: 5px;
 }
 
-#SetTable.table-log {
+html body #SetTable.table-log {
     display: flex;
     flex-direction: row;
 }
@@ -513,7 +513,7 @@ html body #SetTicket .table-log {
 }
 
 /* 小標粗體 */
-#SetTable>thead > tr > th {
+#SetTable thead > tr > th {
     font-weight: bold;
     border-bottom: #ccc solid 1px;
     ;
@@ -551,7 +551,7 @@ html body #SetTicket .table-log {
 }
 
 
-#SetTable.note {
+.map-note {
     color: var(--main-green);
 }
 
@@ -561,7 +561,6 @@ html body #SetTicket .table-log {
 }
 
 #SetTable.form-check {
-    /*vertical-align:central;*/
     height: 1.5em;
     line-height: 1.5em;
     margin: 5px;
