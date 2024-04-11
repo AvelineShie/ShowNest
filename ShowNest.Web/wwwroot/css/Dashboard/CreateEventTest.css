@@ -72,11 +72,11 @@ div.v-selection-control-group {
 }
 
 
-.evetItem {
+/*.evetItem {
     margin-top: 15px;
     margin-bottom: 10px;
 }
-
+*/
 .TOSzone{
     margin-top: 20px;
     
@@ -349,12 +349,12 @@ html body #SetTicket.name {
 }
 
 /* 表單 */
-html body #SetTicket th {
+#SetTicket th {
     font-weight: bold;
     border-bottom: #999 solid 1px;
 }
 
-html body #SetTicket td > button {
+#SetTicket td > button {
     border: #ccc 1px solid;
     box-shadow: #f2f2f2 0 -3px 0 inset;
     background-color: #fff;
@@ -453,13 +453,13 @@ html body #SetTicket .table-log {
 
 /* 正式版面 */
 #SetTable .wrap {
-    /*width: 75%;*/
     display: flex;
     flex-direction: column;
     margin: 0 auto;
 }
 
 #SetTable.container {
+    max-width: 0;
     color: #333333;
     flex-direction: column;
     margin-bottom: 90px;
@@ -467,27 +467,29 @@ html body #SetTicket .table-log {
     padding-left: 30px;
 }
 
+.data-collection {
+    margin-bottom:25px;
+}
 
-#SetTable h4 {
+.data-type {
     display: inline-block;
     margin: 15px;
-    margin-bottom: 15px;
     padding: 3px;
     font-weight: bold;
     border-bottom: #ccc solid 2px;
 }
 
-#SetTable.data-log {
+.data-log {
     display: flex;
     flex-direction: column;
     box-sizing: border-box;
 }
 
-#SetTable.contact-person, .applicants {
+.contact-person, .applicants {
     margin-bottom: 50px;
 }
 
-#SetTable h3 {
+.contact-person > h3, .applicants > h3 {
     display: block;
     padding: 10px;
     background-color: #edecec;
@@ -496,30 +498,31 @@ html body #SetTicket .table-log {
     border-radius: 5px;
 }
 
-#SetTable.table-log {
-    display: flex;
-    flex-direction: row;
-}
+    .table-log {
+        display: flex;
+        flex-direction: row
+    }
 
-#SetTable.list-group {
+.list-group {
     width: 50%;
     border-radius: 0%;
 }
 
-#SetTable.table {
+.contactInformationForm {
     margin-bottom: 0;
     margin-left: 30px;
     border: #ccc solid 1px;
 }
 
+
 /* 小標粗體 */
-#SetTable>thead > tr > th {
+thead > tr > th {
     font-weight: bold;
     border-bottom: #ccc solid 1px;
     ;
 }
 
-#SetTable.table > tbody > tr > th {
+tbody > tr > th {
     background-color: #5ec4db;
 }
 
@@ -551,7 +554,7 @@ html body #SetTicket .table-log {
 }
 
 
-#SetTable.note {
+.map-note {
     color: var(--main-green);
 }
 
@@ -561,7 +564,6 @@ html body #SetTicket .table-log {
 }
 
 #SetTable.form-check {
-    /*vertical-align:central;*/
     height: 1.5em;
     line-height: 1.5em;
     margin: 5px;
