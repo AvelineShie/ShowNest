@@ -35,7 +35,6 @@ namespace ShowNest.Web
             // builder.Services.AddScoped<ISeatRepository, SeatRepository>();
             builder.Services.AddScoped<ISeatAreaRepository, SeatAreaRepository>();
             builder.Services.AddScoped<ITicketTypeRepository, TicketTypeRepository>();
-            builder.Services.AddScoped<IOrganizationRepository, OrganizationRepository>();
             builder.Services.AddScoped<CategoryTagsRepository>();
 
 
@@ -164,7 +163,7 @@ namespace ShowNest.Web
 
             app.MapControllerRoute(
                 name: "default",
-                pattern: "{controller=Home}/{action=Index}");
+                pattern: "{controller=Home}/{action=Index}/{id?}");
 
             app.Run();
         }

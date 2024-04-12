@@ -12,6 +12,7 @@ namespace ShowNest.Web.Configurations
             services.AddScoped<IOrderQueryService, OrderAPIService>();
             services.AddScoped<IOrderCenterService, OrderCenterService>();
             services.AddScoped<IEventCardQueryService, EventCardQueryServiceByEf>();
+            services.AddScoped<IOrganizationRepository, OrganizationRepository>();
 
             return services;
         }
