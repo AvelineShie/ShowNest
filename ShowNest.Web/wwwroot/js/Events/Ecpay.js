@@ -9,7 +9,7 @@
     //step3 : 新增訂單到資料庫
     $.ajax({
         type: 'POST',
-        url: 'https://5f3c-1-164-230-54.ngrok-free.app/api/Ecpay/AddOrders',
+        url: '/api/Ecpay/AddOrders',
         contentType: 'application/json; charset=utf-8',
         data: JSON.stringify(json),
         success: function (res) {
