@@ -33,7 +33,7 @@ namespace Infrastructure.Services
             var orderId = Guid.NewGuid().ToString().Replace("-", "").Substring(0, 20);
             var eventName = await GetCustomerOrderNameAsync( customerOrderId);
             //需填入你的網址
-            var website = $"https://f956-1-164-236-187.ngrok-free.app";
+            var website = $"https://0eec-1-164-250-93.ngrok-free.app";
            
             int totalAmount = await GetCustomerOrderTotalAmountAsync( customerOrderId);
             var order = new Dictionary<string, string>
@@ -52,7 +52,7 @@ namespace Infrastructure.Services
             { "ReturnURL", $"{website}/api/Ecpay/AddPayInfo" },
             { "OrderResultURL", $"{website}/Events/PayInfo/{orderId}" },
             { "PaymentInfoURL", $"{website}/api/Ecpay/AddAccountInfo" },
-            { "ClientRedirectURL", $"{website}/Events/AccountInfo/{orderId}" },
+            { "ClientRedirectURL", $"{website}/Events/PayInfo/{orderId}" },
             { "MerchantID", "3002607" },
             { "IgnorePayment", "GooglePay#WebATM#CVS#BARCODE" },
             { "PaymentType", "aio" },
@@ -78,7 +78,6 @@ namespace Infrastructure.Services
             //    ChoosePayment = "ALL",
             //    EncryptType= 1,
             //};
-
             //return order;
         }
 
@@ -100,7 +99,6 @@ namespace Infrastructure.Services
         public async Task<string> GetCheckMacValue(Dictionary<string, string> order)
         {
 
-            var param = order.Keys.OrderBy(x => x).Select(key => key + "=" + order[key]).ToList();
             //// 使用反射獲取 OrderDto 的所有公共實例屬性
             //var properties = typeof(OrderDto).GetProperties(BindingFlags.Public | BindingFlags.Instance);
 
@@ -109,6 +107,7 @@ namespace Infrastructure.Services
             //                      .Select(p => p.Name + "=" + p.GetValue(order))
             //                      .ToList();
 
+            var param = order.Keys.OrderBy(x => x).Select(key => key + "=" + order[key]).ToList();
             var checkValue = string.Join("&", param);
 
             //測試用的 HashKey

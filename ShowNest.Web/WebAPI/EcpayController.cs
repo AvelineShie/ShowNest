@@ -53,11 +53,11 @@ namespace ShowNest.Web.WebAPI
 
         [HttpPost]
         [Route("api/Ecpay/AddPayInfo")]
-        public HttpResponseMessage AddPayInfo([FromForm]IFormCollection info)
+        public HttpResponseMessage AddPayInfo(JObject info)
         {
             try
             {
-                //_cache.Set(info.Value<string>("MerchantTradeNo"), info, DateTime.Now.AddMinutes(60));
+                _cache.Set(info.Value<string>("MerchantTradeNo"), info, DateTime.Now.AddMinutes(60));
                 return _ecpayHttpHelpers.ResponseOK();
             }
             catch (Exception e)

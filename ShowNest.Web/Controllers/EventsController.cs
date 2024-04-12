@@ -100,15 +100,15 @@ namespace ShowNest.Web.Controllers
             return View(eventIndexCategoryTags);
         }
 
-        [HttpGet]
-        public IActionResult Search(string inputstring)
-        {
-            ///Events/Search?Id=1&Name=SSS&MaxPrice=300&MinPrice=10&StartTime=0&EndTime=0&CategoryTag=2
+        //[HttpGet]
+        //public IActionResult Search(string inputstring)
+        //{
+        //    ///Events/Search?Id=1&Name=SSS&MaxPrice=300&MinPrice=10&StartTime=0&EndTime=0&CategoryTag=2
 
-            var searchResults = _searchEventService.SearchEventString(inputstring);
+        //    var searchResults = _searchEventService.SearchEventString(inputstring);
 
-            return RedirectToAction("Index", "Events", new { searchResults });
-        }
+        //    return RedirectToAction("Index", "Events", new { searchResults });
+        //}
 
 
 
@@ -159,21 +159,11 @@ namespace ShowNest.Web.Controllers
             return View(GenerateOrderToEcpay);
         }
 
-        public IActionResult OrderDetail()
+        public async Task<IActionResult> OrderDetail(string customerOrderId)
         {
 
-            return View();
-            //string name = string.Empty;
-            //if (formData.HasValue)
-            //{
-            //    var order = _orderRepo.FirstOrDefault(o => o.Id == formData.Value);
-            //    if (order != null)
-            //    {
-            //        var ArchiveOrder = _archiveOrderRepo.List(ao => ao.OrderId == order.Id);
-            //        name = $"{order.Id} : {ArchiveOrder.Sum(ao => (ao.TicketPrice * ao.PurchaseAmount))}";
-            //    }
-            //}
-            //ViewData["OrderName"] = name;
+            var GenerateOrderToEcpay = await _ecpayOrderService.GenerateOrderAsync(customerOrderId);
+            return View(GenerateOrderToEcpay);
         }
 
         public IActionResult BuyTicket()
@@ -246,14 +236,6 @@ namespace ShowNest.Web.Controllers
             };
             return View(model);
         }
-        [HttpGet]
-        public async Task<IActionResult> Ecpay(string customerOrderId)
-        {
-            var userId = _httpContextAccessor.HttpContext.User.Claims.FirstOrDefault(c => c.Type == ClaimTypes.NameIdentifier).Value;
-
-            var GenerateOrderToEcpay = await _ecpayOrderService.GenerateOrderAsync(customerOrderId);
-            return View(GenerateOrderToEcpay);
-        }
         /// step5 : 取得付款資訊，更新資料庫
         [HttpPost]
         [Route("Events/PayInfo/{id}")]
@@ -277,6 +259,14 @@ namespace ShowNest.Web.Controllers
             }
 
             return View("EcpayView", data);
+        }
+        [HttpGet]
+        public async Task<IActionResult> Ecpay(string customerOrderId)
+        {
+            var userId = _httpContextAccessor.HttpContext.User.Claims.FirstOrDefault(c => c.Type == ClaimTypes.NameIdentifier).Value;
+
+            var GenerateOrderToEcpay = await _ecpayOrderService.GenerateOrderAsync(customerOrderId);
+            return View(GenerateOrderToEcpay);
         }
     }
 }
