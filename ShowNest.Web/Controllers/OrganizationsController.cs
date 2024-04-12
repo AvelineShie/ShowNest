@@ -26,14 +26,20 @@ namespace ShowNest.Web.Controllers
 
             return View(organizationData);
         }
+
         public IActionResult ContactOrganization()
         {
             return View();
         }
+
         public IActionResult CreateOrganization()
         {
             return View();
         }
 
+        public IActionResult EditOrganization(string id)
+        {
+            return View("CreateOrganization");
+        }
     }
 }

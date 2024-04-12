@@ -56,12 +56,13 @@ namespace ShowNest.Web.Controllers
         private readonly EventPageService _eventPageService;
         private readonly IHttpContextAccessor _httpContextAccessor;
         private readonly DatabaseContext _context;
+        private readonly SearchEventService _searchEventService;
 
 
 
         public EventsController(EventIndexService eventIndexService, OrderTicketService orderQueryService,
             IOrderRepository orderRepo, EventPageService eventPageService, IEcpayOrderService ecpayOrderService,
-            IHttpContextAccessor httpContextAccessor, DatabaseContext context)
+            IHttpContextAccessor httpContextAccessor, DatabaseContext context, SearchEventService searchEventService)
         {
             _eventIndexService = eventIndexService;
             _orderQueryService = orderQueryService;
@@ -70,7 +71,8 @@ namespace ShowNest.Web.Controllers
             _ecpayOrderService = ecpayOrderService;
             _httpContextAccessor = httpContextAccessor;
             _context = context;
-
+            _searchEventService=
+            _searchEventService = searchEventService;
         }
 
         //public IActionResult Index()

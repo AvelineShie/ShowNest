@@ -144,13 +144,10 @@ padding-top: 5px;
 .ck-editor__editable_inline {
     min-height: 300px;
 }
-
-/*#ckeditor-area {
-    background-color:red;
-    border-bottom: 1px solid #dee2e6
-}*/
-
-
+#privacy-warning{
+    font-size: 14px;
+    color: #b21212;
+}
 
 /* 右欄 */
 .log > img {
