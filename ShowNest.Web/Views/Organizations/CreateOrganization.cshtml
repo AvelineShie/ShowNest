@@ -53,16 +53,6 @@
                     <label for="" class="form-label">描述</label>
                     <div id="editor"></div>
                     <ckeditor :editor="editor" v-model="description" :config="editorConfig"></ckeditor>
-                    @* <script>
-                        ClassicEditor
-                            .create(document.querySelector('#editor'))
-                            .then(editor => {
-                                console.log(editor);
-                            })
-                            .catch(error => {
-                                console.error(error);
-                            });
-                    </script> *@
                     <!-- Facebook 粉絲團網址 -->
                     <div class="facebook log">
                         <div class="mb-3">
@@ -86,16 +76,17 @@
                     </div>
                     
                     <div class="privacy log">
-                        <input type="checkbox" name="agree_terms" id="agree_consent_check" value="agree_consent_check">
+                        <input type="checkbox" name="agree_terms" id="agree_consent_check" value="agree_consent_check" v-model="isChecked">
                         <label class="agree_check" for="agree_consent_check">我已經閱讀並同意</label>
                         <a href="/org_terms.html" target="_blank">主辦單位服務條款</a>
                         與
                         <a href="/policy.html" target="_blank">隱私權政策</a>
+                        <p v-if="!isChecked" id="privacy-warning">請勾選同意即可送出</p>
+                        <p v-else="isChecked" id="privacy-warning">&nbsp;</p>
                     </div>
                 </div>
                 <div class="button-submit mt-4 mb-4">
-                    <a v-on:click="createOrganization" class="btn btn-success">送出</a>
-
+                    <a id="submit" v-on:click="createOrganization" class="btn btn-success" :style="{pointerEvents: isChecked ? 'auto' : 'none' }">送出</a>
                 </div>
             </div>
             <div class="rightContainer">
@@ -104,7 +95,7 @@
                     <div class="imageUpload log">
                         <h4>社群分享圖片</h4>
                         <img src="https://picsum.photos/300/200/?random=10">
-                        <a class="file-input ">
+                        <a class="file-input">
                             <input class="file-upload form-control form-control-sm" type="file" id="form-control-sm">
                         </a>
                         @* <div>
