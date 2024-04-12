@@ -9,12 +9,12 @@ public class EventsApiService
         _context = context;
     }
 
-    public List<ApplicationCore.Entities.Organization> GetOrganizationsById(int userId)
-    {
-        var organizations = _context.Organizations
-            .Where(x => x.OwnerId == userId)
-            .AsNoTracking()
-            .ToList();
-        return organizations;
-    }
+    //public List<ApplicationCore.Entities.Organization> GetOrganizationsById(int userId)
+    //{
+    //    var organizations = _context.Organizations
+    //        .Where(x => x.OwnerId == userId)
+    //        .AsNoTracking()
+    //        .ToList();
+    //    return organizations;
+    //}
 }
