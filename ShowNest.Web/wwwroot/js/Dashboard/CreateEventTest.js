@@ -4,21 +4,42 @@ const { createVuetify } = Vuetify
 
 const vuetify = createVuetify();
 
+//const form = ref();
+
+//const checkbox = ref(false);
+//async function validate() {
+//    const { valid } = await form.value.validate()
+
+//    if (valid) alert('Form is valid')
+//}
+//function reset() {
+//    form.value.reset()
+//}
+//function resetValidation() {
+//    form.value.resetValidation()
+//}
+
 const options = {
     data() {
         return {
-            e1: 1,
+            //CreateEvent
+            e1: 1, //???
+            selectedOrganization: {},
+            organizations: [],
             displaySelectActivityType: false,
             activityTypes: ["全新的活動", "既有的活動"],
             selectedActivityType: "全新的活動",
             displayExistingActivities: false,
-            selectedOrganization: {},
-            organizations: [],
-            selectedEvent: {},
+            selectedEvent: {}, //勾選的活動
+
+            //SetEvent
+            /*OrganizationName:*/
+
             events: [],
             userId: 1,
             radio: 'Option 1',
-            items: ['實體活動', '線上活動']
+            items: ['實體活動', '線上活動'],
+            checkbox: false, // 同意書
         }
     },
     mounted() {
@@ -51,7 +72,20 @@ const options = {
         },
         getEventsByOrganizationId() {
             console.log(this.selectedOrganization)
-        }
+        },
+
+        //async validate() {
+        //    const { valid } = await this.$refs.form.validate()
+
+        //    if (valid) alert('Form is valid')
+        //},
+        //reset() {
+        //    this.$refs.form.reset()
+        //},
+        //resetValidation() {
+        //    this.$refs.form.resetValidation()
+        //},
+    /*},*/
     },
     watch: {
         'selectedOrganization': {

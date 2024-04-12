@@ -9,13 +9,13 @@
     margin-top: 80px;
 }
 
-.ActivityContainer > * {
-    padding: 10px;
-}
+    .ActivityContainer > * {
+        padding: 10px;
+    }
 
-.ActivityContainer:not(h1,h3){
-    font-size: var(--main-font-size);
-}
+    .ActivityContainer:not(h1,h3) {
+        font-size: var(--main-font-size);
+    }
 
 .CreateEventTitle {
     font-size: 30px;
@@ -77,17 +77,16 @@ div.v-selection-control-group {
     margin-bottom: 10px;
 }
 */
-.TOSzone{
+.TOSzone {
     margin-top: 20px;
-    
 }
 
-.TOSzone a {
-    color: var(--light-green);
-    display: inline-block;
-    margin-bottom: 5px;
-    margin-top: 5px;
-}
+    .TOSzone a {
+        color: var(--light-green);
+        display: inline-block;
+        margin-bottom: 5px;
+        margin-top: 5px;
+    }
 
 
 /*========================SetEvent=======================*/
@@ -317,11 +316,11 @@ button.btn-outline-secondary {
     margin: 3px;
 }
 
-.tag:hover {
-    box-shadow: 0 1px 1px rgba(0,0,0,0.06);
-    background-color: var(--light-green);
-    cursor: pointer;
-}
+    .tag:hover {
+        box-shadow: 0 1px 1px rgba(0,0,0,0.06);
+        background-color: var(--light-green);
+        cursor: pointer;
+    }
 
 
 /*========================SetTicket===========================*/
@@ -371,7 +370,7 @@ html body #SetTicket.delete {
 }
 
 .ticketTable {
-    flex-direction:column;
+    flex-direction: column;
     margin-bottom: 30px;
 }
 
@@ -412,7 +411,7 @@ html body #SetTicket.delete {
     margin-right: 15px;
     border: 1px solid #ced4da;
     border-radius: 5px;
-    background-color:white;
+    background-color: white;
 }
 
 #SetTicket.space .sectionTitle {
@@ -443,7 +442,7 @@ html body #SetTicket.delete {
     margin-right: 10px;
 }
 
-#SetTicket>button.btn-outline-secondary {
+#SetTicket > button.btn-outline-secondary {
     margin-right: 10px;
     background-color: var(--main-green);
     color: #fff;
@@ -469,7 +468,7 @@ html body #SetTicket.delete {
 }
 
 .data-collection {
-    margin-bottom:25px;
+    margin-bottom: 25px;
 }
 
 .data-type {
@@ -490,45 +489,56 @@ html body #SetTicket.delete {
     margin-bottom: 50px;
 }
 
-.contact-person > h3, .applicants > h3 {
-    display: block;
-    padding: 10px;
-    background-color: #edecec;
-    margin-bottom: 20px;
-    margin-top: 20px;
-    border-radius: 5px;
-}
+    .contact-person > h3, .applicants > h3 {
+        display: block;
+        padding: 10px;
+        background-color: #edecec;
+        margin-bottom: 20px;
+        margin-top: 20px;
+        border-radius: 5px;
+    }
 
 .table-log {
-    display: flex;
-    flex-direction: row;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 30px;
+    /*flex-direction: row;*/
 }
 
-.list-group {
-    width: 50%;
-    border-radius: 0%;
+.table-log .list-group {
+    max-width: unset;
+}
+
+.table-log .list-group .list-group-item {
+
+    /*border-radius: 0.25em;*/
 }
 
 .contactInformationForm {
-    flex-direction: row;
     margin-bottom: 0;
-    margin-left: 30px;
     border: #ccc solid 1px;
+    
+    
 }
 
 
 /* ¤p¼Ð²ÊÅé */
-thead > tr > th {
-    font-weight: bold;
-    border-bottom: #ccc solid 1px;
-    ;
-}
+    .contactInformationForm thead > tr {
+        font-weight: bold;
+        border-bottom: #ccc solid 1px;
+        line-height: 20px;
+        height: 2em;
 
-tbody > tr > th {
-    background-color: #5ec4db;
-}
+    }
 
-#SetTable>td .delete {
+    .contactInformationForm tbody > tr > th {
+        background-color: #5ec4db;
+        width: 30px;
+        height: 2em;
+        
+    }
+
+.contactInformationForm td .delete {
     padding: 5px 10px;
     font-size: 13px;
     line-height: 1.5;
@@ -538,19 +548,21 @@ tbody > tr > th {
     background-color: #fff;
 }
 
-#SetTable.delete:hover {
+.contactInformationForm td .delete:hover {
     background-color: #f2f2f2;
 }
 
-#SetTable.delete i {
+.contactInformationForm td .delete i {
     color: #b1564a;
 }
 
-#SetTable>li.list-group-item:first-child {
+
+
+li.list-group-item:first-child {
     font-weight: bold;
 }
 
-#SetTable>td > span {
+.contactInformationForm td > span {
     color: #737373;
     margin-left: 15px;
 }
@@ -565,26 +577,13 @@ tbody > tr > th {
     border: solid #b0b0b0 1px;
 }
 
-#SetTable.form-check {
-    height: 1.5em;
-    line-height: 1.5em;
-    margin: 5px;
-}
-
-#SetTable.list-group-item:nth-child(n+2) {
+.list-group-item:nth-child(n+2) {
     height: 2.5em;
     line-height: 23px;
 }
 
-.pages-change {
-    margin-top: 20px;
-}
-
-#SetTable>button.btn-outline-secondary {
+button.btn-outline-secondary {
     margin-right: 10px;
     background-color: var(--main-green);
     color: #fff;
 }
-
-
-
