@@ -10,7 +10,7 @@ namespace ShowNest.Web.Configurations
         {
            
             services.AddScoped<IUserAccountAPIService,UserAccountAPIService>();
-            services.AddScoped<IOrderCenterService, OrderCenterService>();
+            services.AddScoped<IEcpayOrderService, EcpayOrderService>();
             services.AddScoped<OrderTicketService>();
             services.AddScoped<EventsIndexCardsAPIServiceByEf>();
             

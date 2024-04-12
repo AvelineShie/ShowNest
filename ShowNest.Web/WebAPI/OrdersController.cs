@@ -4,7 +4,6 @@ using Microsoft.AspNetCore.Mvc;
 using System.Security.Claims;
 using static Infrastructure.Services.OrderAPIService;
 
-// For more information on enabling Web API for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
 
 namespace ShowNest.Web.WebAPI
 {
@@ -16,6 +15,7 @@ namespace ShowNest.Web.WebAPI
         private readonly IHttpContextAccessor _httpContextAccessor;
         private readonly OrderTicketService _orderTicketService;
 
+
         public OrdersController(IOrderQueryService orderAPIService, IHttpContextAccessor httpContextAccessor, OrderTicketService orderTicketService)
         {
             _orderAPIService = orderAPIService;
@@ -26,8 +26,8 @@ namespace ShowNest.Web.WebAPI
         [HttpGet]
         public IActionResult GetOrderDetail(int orderId)
         {
-            //string userId = "2";
-            var userId = _httpContextAccessor.HttpContext.User.Claims.FirstOrDefault(c => c.Type == ClaimTypes.NameIdentifier).Value;
+            string userId = "2";
+            //var userId = _httpContextAccessor.HttpContext.User.Claims.FirstOrDefault(c => c.Type == ClaimTypes.NameIdentifier).Value;
             return Ok(_orderAPIService.GetOrderDetailByOrderId(userId,orderId));
         }
 
