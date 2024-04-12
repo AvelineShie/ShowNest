@@ -116,20 +116,20 @@ namespace ShowNest.Web
             pattern: "Events/Explore/{page=1}",
             defaults: new { controller = "Events", action = "Index" });
 
-            //app.MapControllerRoute(
-            //name: "SearchEventPages",//探索活動頁>搜尋功能
-            //pattern: "Events/{inputstring}",
-            //defaults: new { controller = "Events", action = "Search" });
+            app.MapControllerRoute(
+            name: "SearchEventPages",//探索活動頁>搜尋功能
+            pattern: "Events/Search/{inputstring}",
+            defaults: new { controller = "Events", action = "Search" });
 
             app.MapControllerRoute(
             name: "EventMainPages",//活動主頁面
             pattern: "Events/EventPage/{EventId}",
             defaults: new { controller = "Events", action = "EventPage" });
 
-            //app.MapControllerRoute(
-            //name: "OrganizationMainPages",//組織主頁面
-            //pattern: "Organizations/Index/OrganizationId={OrganizationId}/",
-            //defaults: new { controller = "Organizations", action = "Index" });
+            app.MapControllerRoute(
+            name: "OrganizationMainPages",//組織主頁面
+            pattern: "Organizations/Index/OrganizationId={OrganizationId}/",
+            defaults: new { controller = "Organizations", action = "Index" });
 
             app.MapControllerRoute(
             name: "NewEvent",

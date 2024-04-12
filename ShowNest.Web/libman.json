@@ -3,6 +3,12 @@
   "defaultProvider": "cdnjs",
   "libraries": [
     {
+      "library": "vuetify@3.5.14",
+      "destination": "wwwroot/lib/vuetify/"
+    },
+    {
+      "library": "ckeditor5@41.2.1",
+      "destination": "wwwroot/lib/ckeditor5/"
       "library": "vue@3.4.21",
       "destination": "wwwroot/lib/vue/"
     }
