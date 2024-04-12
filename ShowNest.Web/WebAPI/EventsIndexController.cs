@@ -18,5 +18,10 @@ namespace ShowNest.Web.WebAPI
         {
             return Ok(await _eventsIndexCardsAPIServiceByEf.GetCardsByPagesize(page, cardsPerPage));
         }
+
+        public IActionResult GetTotalEventsCount()
+        {
+            return Ok(_eventsIndexCardsAPIServiceByEf.GetTotalEventsCount());
+        }
     }
 }

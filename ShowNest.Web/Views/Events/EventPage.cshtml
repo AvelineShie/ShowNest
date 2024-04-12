@@ -1,6 +1,7 @@
 ﻿
 @model EventPageViewModel
 
+
 @{
     Layout = "_LayoutForEventPage";
 }
@@ -69,13 +70,13 @@
                 <i class="fa-solid fa-sitemap"></i>
                 主辦單位
                 <a asp-controller="Organizations" asp-action="Index">@Model.MainOrganizer</a>
-                <a href="" id="btn-Contact-organization">聯絡主辦單位</a>
+                <a href="~/Organizations/Index/@Model.OrganizationId" id="btn-Contact-organization">聯絡主辦單位</a>
             </div>
             <!-- 活動header頁 結束-->
         </div>
         <!-- --手機板 下一步--- -->
         <div id="pc-btn-success" class="p-3 d-flex justify-content-center pc-hide">
-            <a href="#" class="btn btn-success w-50"
+            <a href="~/Events/BuyTicket/@Model.EventId" class="btn btn-success w-50"
                type="button">下一步</a>
         </div>
         <!-- 活動main 開始-->
@@ -86,10 +87,10 @@
             </div>
             <ul class="tags-item ">
                 <li>
-                    @* @foreach (var tag in Model.EventCategoryTags)
+                    @foreach (var tag in Model.EventCategoryTags)
                     {
                         @await Html.PartialAsync("~/PartialViews/_CategoryTags_Partial.cshtml", tag);
-                    } *@
+                    }
                 </li>
             </ul>
         </div>
@@ -147,12 +148,12 @@
             </table>
 
             <div id="pc-btn-success" class="p-3 d-flex justify-content-center">
-                <a href="#" class="btn btn-success w-50"
+                <a href="~/Events/BuyTicket/@Model.EventId" class="btn btn-success w-50"
                    type="button">下一步</a>
             </div>
         </div>
         <div class="event-attendees ">
-            <h2><span>26</span> 報名人</h2>
+            <h2><span>@Model.countOfParticipants</span> 報名人</h2>
             <div class="attendees-btn">
                 <div class="p-3 justify-content-center show-attendees">
                     <div class="btn btn-outline-success attendee-display-switch  w-50" type="button" id="toggleAttendeesBtn">
@@ -161,14 +162,18 @@
                 </div>
             </div>
             <ul class="attendees">
-               @*  @foreach (var ParticipantPeople in @Model.AllParticipantPeoples)
+                @foreach (var ParticipantPeople in @Model.AllParticipantPeoples.Take(10))
                     {
-                        <li>
-                                 <img src="" alt="">@ParticipantPeople                        </li>
-                    } *@
-                <div class="more">
-                    ...以及其他 19 人
-                </div>
+                     <li>
+                        <img src="@ParticipantPeople.UserImage" alt="">@ParticipantPeople.UserNickname
+                    </li>
+                    }
+                @if (Model.AllParticipantPeoples.Count > 10)
+                {
+                    <div class="more">
+                        ...以及其他 @(Model.AllParticipantPeoples.Count - 10) 人
+                    </div>
+                }
             </ul>
         </div>
     </div>

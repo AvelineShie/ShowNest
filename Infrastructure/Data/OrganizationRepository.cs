@@ -1,4 +1,5 @@
-﻿using ApplicationCore.Entities;
+﻿using ApplicationCore.DTOs;
+using ApplicationCore.Entities;
 using ApplicationCore.Interfaces;
 using Microsoft.EntityFrameworkCore;
 using System;
@@ -30,6 +31,54 @@ namespace Infrastructure.Data
                 .Where(e => e.OrganizationId == orgId);
 
             return events;
+        }
+
+        public Organization CreateOrganization(CreateOrganizationDto request)
+        {
+            using (var transcation = DbContext.Database.BeginTransaction())
+                try
+                {
+
+                    var organization = new Organization
+                    {
+                        OwnerId = request.OwnerId,
+                        Name = request.Name,
+                        OrganizationUrl = request.OrganizationUrl,
+                        Description = request.Description,
+                        Fblink = request.FBLink,
+                        Igaccount = request.IGAccount,
+                        Email = request.Email,
+                        ImgUrl = request.ImgUrl,
+                        ContactName = request.ContactName,
+                        ContactMobile = request.ContactMobile,
+                        ContactTelephone = request.ContactTelephone,
+                        IsDeleted = false,
+                        CreatedAt = request.CreatedAt,
+                        EditedAt = request.EditedAt,
+                    };
+
+                    DbContext.Organizations.Add(organization);
+                    DbContext.SaveChanges();
+
+                    var orgAndUserMapping = new OrganizationAndUserMapping
+                    {
+                        OrganizationId = organization.Id,
+                        UserId = organization.OwnerId
+                    };
+
+                    DbContext.OrganizationAndUserMappings.Add(orgAndUserMapping);
+                    DbContext.SaveChanges();
+
+                    transcation.Commit();
+
+                    return organization;
+
+                }
+                catch (Exception ex)
+                {
+                    transcation.Rollback();
+                    throw new Exception(ex.Message);
+                }
         }
     }
 }

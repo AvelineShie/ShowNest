@@ -1,13 +1,15 @@
-﻿var page = 1
-var cardsPerPage = 9
-var pageIndexContainer = $('#page-index')[0]
-var cardTemplate = $('.card-template')[0].content
+﻿let page = 1
+let cardsPerPage = 9
+let pageIndexContainer = $('#page-index')[0]
+let cardTemplate = $('.card-template')[0].content
+let totalPages = 0
+let totalEventsCount = 0
 
-window.onload = function(){
+$(function () {
     loadCards()
-}
+})
 
-function loadCards() {
+async function loadCards() {
     let cardsContainer = $('.cards')[0]
     cardsContainer.innerHTML = ''
     // for checking
@@ -17,9 +19,9 @@ function loadCards() {
     console.log(cardsContainer)
     console.log('pageIndexContainer')
     console.log(pageIndexContainer)
-    
+
     // for checking
-    fetch(`/api/EventsIndex/GetEventsIndexCardsByApi?page=${page}&cardsPerPage=${cardsPerPage}`)
+    await fetch(`/api/EventsIndex/GetEventsIndexCardsByApi?page=${page}&cardsPerPage=${cardsPerPage}`)
         .then(res => res.json())
         .then(cards => {
             console.log('cards')
@@ -35,8 +37,11 @@ function loadCards() {
                 $(cardToAppend).find('.card-event-date').html(`<i class="fa-regular fa-calendar-days"></i>${convertEventTime(data.eventTime)}`)
                 $(cardToAppend).find('.card-ticket-status').text(data.eventStatus)
                 cardsContainer.append(cardToAppend)
+                totalEventsCount = data.totalEvents
             })
         })
+
+    renderPagination()
 }
 
 function convertEventTime(datetimeString) {
@@ -50,4 +55,63 @@ function convertEventTime(datetimeString) {
     })
     let convertedDate = new Date(datetimeString)
     return formatter.format(convertedDate).replace(/,/, '').replace(/(\d{2}:\d{2}):\d{2} (\w+)/, '$1 $2');
+}
+
+// pagination
+function renderPagination() {
+
+    const $paginationContainer = $('#page-index')
+    $paginationContainer.html('')
+
+    // previous page button
+    const $prevPageButton = $('<button>', {
+        text: '⭠',
+        class: 'index'
+    })
+    $prevPageButton.prop('disabled', page === 1)
+    $prevPageButton.attr('class', 'index')
+    $prevPageButton.on('click', function () {
+        if (page > 1) {
+            page--
+            loadCards()
+        }
+    })
+
+    $paginationContainer.append($prevPageButton)
+    console.log('totalEventsCount at render pagination() :')
+    console.log(totalEventsCount)
+    // numbers page button
+    totalPages = Math.ceil(totalEventsCount / cardsPerPage)
+    console.log('totalPages :')
+    console.log(totalPages)
+
+    for (let i = 1; i <= totalPages; i++) {
+        const $pageButton = $('<button>', {
+            text: i,
+            class: 'index'
+        })
+        i === page ? $pageButton.addClass('active-index') : {}
+        $pageButton.on('click',function(){
+            page = i
+            loadCards()
+        })
+        $paginationContainer.append($pageButton)
+    }
+
+    // next page button
+    const $nextPageButton = $('<button>', {
+        text: '⭢',
+        class: 'index'
+    })
+    $nextPageButton.prop('disabled', page === totalPages)
+    $nextPageButton.attr('class', 'index')
+
+    $nextPageButton.on('click', function () {
+        if (page < totalPages) {
+            page++
+            loadCards()
+        }
+    })
+
+    $paginationContainer.append($nextPageButton)
 }

@@ -90,10 +90,65 @@ namespace ShowNest.Web.Controllers
             //如果MODEL狀態不正確，則返回VIEW以顯示錯誤訊息
             return View(SignUp);
         }
-        public IActionResult UserEdit()
+        [HttpGet]
+        public async Task<IActionResult> UserEdit()
         {
-            return View();
+            // 從HttpContext中獲取當前使用者的ID
+            var userIdClaim = User.Claims.FirstOrDefault(c => c.Type == ClaimTypes.NameIdentifier);
+            if (userIdClaim == null)
+            {
+                return RedirectToAction("LogIn"); // 如果用戶未登入，則重定向到登入頁面
+            }
+
+            // 從Claim中取得使用者的ID並轉換為整數
+            var userId = int.Parse(userIdClaim.Value);
+
+            // 使用Service來取得使用者資料
+            var result = await _accountService.GetUserAccountByIdAsync(userId);
+            if (!result.IsSuccess)
+            {
+                // 如果資料庫操作失敗，顯示錯誤訊息
+                ModelState.AddModelError(string.Empty, result.ErrorMessage);
+                return View(); // 返回空的View，因為我們不再需要傳遞ViewModel
+            }
+
+            // 從Service的結果中獲取UserAccountViewModel實例
+            var viewModel = result.UserAccount;
+
+            return View(viewModel); // 將ViewModel傳遞給View
         }
+
+        [HttpPost]
+        public async Task<IActionResult> UserEdit(UserAccountViewModel model)
+        {
+            if (ModelState.IsValid)
+            {
+                // 從HttpContext中獲取當前使用者的ID
+                var userIdClaim = User.Claims.FirstOrDefault(c => c.Type == ClaimTypes.NameIdentifier);
+                if (userIdClaim == null)
+                {
+                    return RedirectToAction("LogIn"); // 如果用戶未登入，則重定向到登入頁面
+                }
+
+                // 從Claim中取得使用者的ID並轉換為整數
+                var userId = int.Parse(userIdClaim.Value);
+
+                // 使用Service來更新使用者資料
+                var result = await _accountService.UpdateUserAccountByIdAsync(userId, model);
+                if (result.IsSuccess)
+                {
+                    TempData["SuccessMessage"] = "您的資料已成功更新。";
+                    return RedirectToAction("UserEdit");
+                }
+                else
+                {
+                    ModelState.AddModelError(string.Empty, result.ErrorMessage);
+                }
+            }
+
+            return View(model);
+        }
+
 
         public IActionResult Prefills()
         {

@@ -35,10 +35,12 @@ namespace Infrastructure.Services
             }
         }
 
-        //static string ConvertEventTime(DateTime input)
-        //{
+        public int GetTotalEventsCount()
+        {
+            var result = _databaseContext.Events.Count();
 
-        //}
+            return result;
+        }
 
         public async Task<OperationResult> GetCardsByPagesize(int page, int cardsPerPage)
         {
@@ -59,6 +61,7 @@ namespace Infrastructure.Services
                     EventTime = et.Event.StartTime,
                     EventStatus = GetEventStatusAndCssClassName(et.Event.StartTime)[0],
                     EventStatusCssClass = GetEventStatusAndCssClassName(et.Event.StartTime)[1],
+                    TotalEvents = GetTotalEventsCount()
                 })
                 .ToListAsync();
 

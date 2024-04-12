@@ -15,7 +15,7 @@ namespace ShowNest.Web.ViewModels.Dashboard
     {
         public int OrgId {get; set;}
         public string OrgName { get; set; }
-        //public List<EventNameList> EventNames { get; set; } //Each Event in Each Org 
+        public List<EventNameList> EventNames { get; set; } //Each Event in Each Org 
     }
 
     public class EventNameList
