@@ -25,7 +25,7 @@ namespace ShowNest.Web.WebAPI
             try
             {
                 var organizationResult = _organizationRepository.CreateOrganization(request);
-                var successResult = OperationResultHelper.ReturnSuccessData(organizationResult);
+                var successResult = OperationResultHelper.ReturnSuccessData(organizationResult.Id);
                 return Ok(successResult);
             }
             catch (Exception ex)
