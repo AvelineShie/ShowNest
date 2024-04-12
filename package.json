@@ -3,6 +3,8 @@
     "@ckeditor/ckeditor5-build-classic": "^41.3.0",
     "@cloudinary/url-gen": "^1.19.0",
     "@cloudinary/vue": "^1.12.1",
-    "cloudinary": "^2.1.0"
+    "@fawmi/vue-google-maps": "^0.9.79",
+    "cloudinary": "^2.1.0",
+    "vue2-google-maps": "^0.10.7"
   }
 }

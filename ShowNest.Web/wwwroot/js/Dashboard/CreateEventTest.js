@@ -1,23 +1,7 @@
+
 const { createApp } = Vue
 const { createVuetify } = Vuetify
-
-
 const vuetify = createVuetify();
-
-//const form = ref();
-
-//const checkbox = ref(false);
-//async function validate() {
-//    const { valid } = await form.value.validate()
-
-//    if (valid) alert('Form is valid')
-//}
-//function reset() {
-//    form.value.reset()
-//}
-//function resetValidation() {
-//    form.value.resetValidation()
-//}
 
 const options = {
     data() {
@@ -73,19 +57,6 @@ const options = {
         getEventsByOrganizationId() {
             console.log(this.selectedOrganization)
         },
-
-        //async validate() {
-        //    const { valid } = await this.$refs.form.validate()
-
-        //    if (valid) alert('Form is valid')
-        //},
-        //reset() {
-        //    this.$refs.form.reset()
-        //},
-        //resetValidation() {
-        //    this.$refs.form.resetValidation()
-        //},
-    /*},*/
     },
     watch: {
         'selectedOrganization': {
@@ -107,28 +78,43 @@ const options = {
         }
     }
 }
-const app = createApp(options);
-
+const app = createApp(options); // 創建一個 Vue 應用實例，使用 options 作為配置選項
 app.use(vuetify).mount('#app');
 
-// /*EventType*/
-// export default {
-//     data: () => ({
-//         items: ['實體活動', '線上活動'],
-//     }),
-// }
 
-
-/*Event dropdown list menu*/
-//import { ref } from 'vue'
-
-//const radio = ref('Option 1')
-
-//export default {
+/*==========google map=============*/
+//import VueGoogleMaps from '@fawmi/vue-google-maps';
+//const mapOptions = {
 //    data() {
 //        return {
-//            radio: 'Option 1',
-//        }
+//            // 地圖的中心點
+//            center: { lat: 51.093048, lng: 6.842120 },
+//            // 地圖的縮放級別
+//            zoom: 7,
+//            // 地圖的類型
+//            mapTypeId: 'terrain',
+//        };
 //    },
-//}
+//    template: `
+//    <GMapMap
+//      :center="center"
+//      :zoom="zoom"
+//      :map-type-id="mapTypeId"
+//      style="width: 100vw; height: 900px"
+//    >
+//    </GMapMap>
+// `,
+//};
+
+//const mapApp = createApp(mapOptions);
+
+////安裝地圖套件
+//mapApp.use(VueGoogleMaps, {
+//    load: {
+//        key: 'AIzaSyBPB4VPZKkuM469YuZcRdGGKnsItE1C7ik',
+//    },
+//    autobindAllEvents: true,
+//});
+//mapApp.use(vuetify).mount('#mapApp'); // 掛載應用到 DOM 元素上
+
 

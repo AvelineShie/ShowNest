@@ -20,6 +20,16 @@ const options = {
             userId: 1,
             radio: 'Option 1',
             items: ['實體活動', '線上活動']
+
+            /*基本上你VM內的這裡都要有*/
+            EventName: "",
+            Url: "",
+            Typeame: "",
+            description: "",
+            enventURL: "",
+            OnlineURL: "",
+            Tag: {三個}
+
         }
     },
     mounted() {

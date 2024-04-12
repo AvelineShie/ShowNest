@@ -509,16 +509,9 @@ html body #SetTicket.delete {
     max-width: unset;
 }
 
-.table-log .list-group .list-group-item {
-
-    /*border-radius: 0.25em;*/
-}
-
 .contactInformationForm {
     margin-bottom: 0;
     border: #ccc solid 1px;
-    
-    
 }
 
 
@@ -526,16 +519,21 @@ html body #SetTicket.delete {
     .contactInformationForm thead > tr {
         font-weight: bold;
         border-bottom: #ccc solid 1px;
-        line-height: 20px;
+        line-height: 30px;
         height: 2em;
-
+        padding: 5px;
     }
 
+    .contactInformationForm tbody > tr > td{
+        line-height: 40px;
+        height: 2em;
+    }
+
+
+    /*¦â¼Ð*/
     .contactInformationForm tbody > tr > th {
         background-color: #5ec4db;
-        width: 30px;
-        height: 2em;
-        
+        width: 35px;
     }
 
 .contactInformationForm td .delete {
