@@ -103,13 +103,13 @@ namespace ShowNest.Web.Controllers
         }
 
         [HttpGet]
-        public IActionResult Search(string inputstring)
+        public IActionResult Search( string inputstring)
         {
             ///Events/Search?Id=1&Name=SSS&MaxPrice=300&MinPrice=10&StartTime=0&EndTime=0&CategoryTag=2
 
-            var searchResults = _searchEventService.SearchEventString(inputstring);
+            //var searchResults = _searchEventService.SearchEventString(inputstring);
 
-            return RedirectToAction("Index", "Events", new { searchResults });
+            return RedirectToAction("Index", "Events", new { inputstring });
         }
 
 

@@ -115,3 +115,13 @@ function renderPagination() {
 
     $paginationContainer.append($nextPageButton)
 }
+
+
+
+(function () {
+    const searchString = localStorage.getItem('searchString'); // 从 localStorage 中获取搜索字符串
+    const searchInput = document.getElementById("event-search-search-input");
+    if (searchString) {
+        searchInput.placeholder = searchString; // 设置输入框的 placeholder 为搜索字符串
+    }
+})();
