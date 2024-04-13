@@ -90,6 +90,7 @@ namespace ShowNest.Web.Controllers
             //如果MODEL狀態不正確，則返回VIEW以顯示錯誤訊息
             return View(SignUp);
         }
+        //編輯
         [HttpGet]
         public async Task<IActionResult> UserEdit()
         {
@@ -109,7 +110,7 @@ namespace ShowNest.Web.Controllers
             {
                 // 如果資料庫操作失敗，顯示錯誤訊息
                 ModelState.AddModelError(string.Empty, result.ErrorMessage);
-                return View(); // 返回空的View，因為我們不再需要傳遞ViewModel
+                return View();
             }
 
             // 從Service的結果中獲取UserAccountViewModel實例

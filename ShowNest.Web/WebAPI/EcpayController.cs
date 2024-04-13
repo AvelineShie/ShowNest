@@ -25,6 +25,10 @@ namespace ShowNest.Web.WebAPI
         [Route("api/Ecpay/AddOrders")]
         public string AddOrders([FromBody] OrderDto json)
         {
+            if (json == null)
+            {
+                return "Error: json object is null.";
+            }
             string num = "0";
             try
             {
@@ -53,7 +57,7 @@ namespace ShowNest.Web.WebAPI
 
         [HttpPost]
         [Route("api/Ecpay/AddPayInfo")]
-        public HttpResponseMessage AddPayInfo([FromForm]IFormCollection info)
+        public HttpResponseMessage AddPayInfo(IFormCollection  info)
         {
             try
             {

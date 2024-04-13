@@ -26,6 +26,7 @@ namespace ShowNest.Web.Controllers
             _createEventService = createEventService;
         }
 
+        //圖床
         public class CloudinaryController : Controller
         {
             private readonly IConfiguration _config;
@@ -141,22 +142,22 @@ namespace ShowNest.Web.Controllers
             {
                 OrganizationName = "MafiaQQ",
 
-                SetTickets = new List<SetTicketViewModel> {
-                    new SetTicketViewModel {
+                SetTickets = new List<TicketDetail> {
+                    new TicketDetail {
                         TicketName = "一般套票",
                         StartTime = new DateTime(2024, 2, 2, 5, 0, 0), // 使用 DateTime 型別
                         EndTime = new DateTime(2024, 2, 6, 8, 0, 0),
                         Price  = 750,
                         Quantity = "300",
                     },
-                    new SetTicketViewModel {
+                    new TicketDetail {
                         TicketName = "搖滾區",
                         StartTime = new DateTime(2024, 2, 2, 5, 0, 0),
                         EndTime = new DateTime(2024, 2, 6, 8, 0, 0),
                         Price  = 8000,
                         Quantity = "100",
                     },
-                    new SetTicketViewModel {
+                    new TicketDetail {
                         TicketName = "包廂區",
                         StartTime = new DateTime(2024, 2, 2, 5, 0, 0),
                         EndTime = new DateTime(2024, 2, 6, 8, 0, 0),
@@ -167,7 +168,6 @@ namespace ShowNest.Web.Controllers
 
             };
             return View("SetTicket", model);
-
         }
 
         public IActionResult Organizations(int id, string ViewType)
@@ -199,7 +199,7 @@ namespace ShowNest.Web.Controllers
 
         }
 
-        public IActionResult CreateNewEvent()
+        public IActionResult CreateNewEvent() //範例
         {
             return View();
         }

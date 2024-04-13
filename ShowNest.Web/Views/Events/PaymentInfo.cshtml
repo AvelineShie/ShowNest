@@ -366,12 +366,10 @@
      </div>
   </div>
    
-    <form id="form" name="form" method="POST" action="https://payment-stage.ecpay.com.tw/Cashier/AioCheckOut/V5" style="display:none; >
-        <!--step2 : 收到後端的值印出來-->
-        @foreach (var key in @Model.Keys.ToList())
+    <form id="form" name="form" method="POST" action="https://payment-stage.ecpay.com.tw/Cashier/AioCheckOut/V5" style="display:none;" >
+        @foreach (var item in Model)
         {
-            @(key) <input type="text" name="@key" value="@Model[key]" />
-
+        <input type="text" name="@item.Key" value="@item.Value" />
             <br />
         }
         <button type="submit" id="checkoutBtn">送出</button>
@@ -388,7 +386,6 @@
                             確認訂單並繳費
                         </span>
                         TWD$3,680
-                  
                 </a>
             </label>
         </div>
@@ -400,11 +397,11 @@
 <script src="https://code.jquery.com/jquery-3.5.1.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/jquery-twzipcode@1.7.14/jquery.twzipcode.min.js"></script>
 <!-- 自己的 -->
-<script >
+<script>
     $("#checkoutBtn").on('click', (e) => {
-        //e.preventDefault(); //因為送出就跳轉到綠界，這個可以停住確認自己的console.log的內容
+        //因為送出就跳轉到綠界，這個可以停住確認自己的console.log的內容
         let formData = $("#form").serializeArray();
-        var json = {};
+        const json = {};
         $.each(formData, function () {
             json[this.name] = this.value || "";
         });
@@ -421,7 +418,6 @@
             error: function (err) { console.log(err); },
         });
     });
-
 </script>
 @*  <form id="form" name="form" method="POST" action="https://payment-stage.ecpay.com.tw/Cashier/AioCheckOut/V5" style="display:;">
         <!--step2 : 收到後端的值印出來-->

@@ -25,5 +25,7 @@ public partial class EcpayOrder
 
     public string TradeDate { get; set; }
 
-    public int? SimulatePaid { get; set; }
+    public int SimulatePaid { get; set; }
+
+    public virtual ICollection<Order> Orders { get; set; } = new List<Order>();
 }

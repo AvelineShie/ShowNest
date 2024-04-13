@@ -58,22 +58,30 @@
                             </td>
                         </tr>
 
-                        @* @foreach (var ticket in Model.SetTickets)
+                        @* @if (Model.SetTickets != null && Model.SetTickets.Count > 0)
                         {
-                            <tr>
-                                <td class="color-label"></td>
-                                <td>@ticket.TicketName</td>
-                                <td>@ticket.StartTime.ToString("yyyy/MM/dd HH:mm") ~
-                                @ticket.EndTime.ToString("yyyy/MM/dd HH:mm")</td>
-                                <td>TWD$ @ticket.Price</td>
-                                <td>@ticket.Quantity</td>
-                                <td>
-                                <button class="edit">編輯</button>
-                                    <button class="delete">刪除</button>
-                                </td>
-                            </tr>
-           
-                        }  *@
+                            @foreach (var ticket in Model.SetTickets)
+                            {
+                                <tr>
+                                    <td class="color-label"></td>
+                                    <td>@ticket.TicketName</td>
+                                    <td>
+                                        @ticket.StartTime.ToString("yyyy/MM/dd HH:mm") ~
+                                        @ticket.EndTime.ToString("yyyy/MM/dd HH:mm")
+                                    </td>
+                                    <td>TWD$ @ticket.Price</td>
+                                    <td>@ticket.Quantity</td>
+                                    <td>
+                                        <button class="edit">編輯</button>
+                                        <button class="delete">刪除</button>
+                                    </td>
+                                </tr>
+                            }
+                        }
+                        else
+                        {
+                            <p>沒有任何套票可供顯示。</p>
+                        } *@
                     </tbody>
                 </table>
                 <div class="changeTicketSection">

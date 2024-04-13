@@ -161,21 +161,11 @@ namespace ShowNest.Web.Controllers
             return View(GenerateOrderToEcpay);
         }
 
-        public IActionResult OrderDetail()
+        public async Task<IActionResult> OrderDetail(string customerOrderId)
         {
 
-            return View();
-            //string name = string.Empty;
-            //if (formData.HasValue)
-            //{
-            //    var order = _orderRepo.FirstOrDefault(o => o.Id == formData.Value);
-            //    if (order != null)
-            //    {
-            //        var ArchiveOrder = _archiveOrderRepo.List(ao => ao.OrderId == order.Id);
-            //        name = $"{order.Id} : {ArchiveOrder.Sum(ao => (ao.TicketPrice * ao.PurchaseAmount))}";
-            //    }
-            //}
-            //ViewData["OrderName"] = name;
+            var GenerateOrderToEcpay = await _ecpayOrderService.GenerateOrderAsync(customerOrderId);
+            return View(GenerateOrderToEcpay);
         }
 
         public IActionResult BuyTicket()
@@ -248,18 +238,10 @@ namespace ShowNest.Web.Controllers
             };
             return View(model);
         }
-        [HttpGet]
-        public async Task<IActionResult> Ecpay(string customerOrderId)
-        {
-            var userId = _httpContextAccessor.HttpContext.User.Claims.FirstOrDefault(c => c.Type == ClaimTypes.NameIdentifier).Value;
-
-            var GenerateOrderToEcpay = await _ecpayOrderService.GenerateOrderAsync(customerOrderId);
-            return View(GenerateOrderToEcpay);
-        }
         /// step5 : 取得付款資訊，更新資料庫
         [HttpPost]
         [Route("Events/PayInfo/{id}")]
-        public ActionResult PayInfo(IFormCollection formData, string id)
+        public ActionResult PayInfo(IFormCollection formData)
         {
             var data = new Dictionary<string, string>();
             foreach (string key in formData.Keys)
@@ -269,16 +251,34 @@ namespace ShowNest.Web.Controllers
 
             string temp = formData["MerchantTradeNo"]; //寫在LINQ(下一行)會出錯，
             var ecpayOrder = _context.EcpayOrders.Where(m => m.MerchantTradeNo == temp).FirstOrDefault();
+            
             if (ecpayOrder != null)
             {
                 ecpayOrder.RtnCode = int.Parse(formData["RtnCode"]);
-                if (formData["RtnMsg"] == "Succeeded") ecpayOrder.RtnMsg = "已付款";
+                if (formData["RtnMsg"] == "Succeeded")
+                {
+                    ecpayOrder.RtnMsg = "已付款";
+                    var orderToUpdate = _context.Orders.FirstOrDefault(o => o.EcpayTradeNo == temp);
+                    if (orderToUpdate != null)
+                    {
+                        orderToUpdate.Status = 1;
+                        _context.SaveChanges(); // 保存變更到資料庫
+                    }
+                }
                 ecpayOrder.PaymentDate = Convert.ToDateTime(formData["PaymentDate"]);
                 ecpayOrder.SimulatePaid = int.Parse(formData["SimulatePaid"]);
                 _context.SaveChanges();
             }
 
             return View("EcpayView", data);
+        }
+        [HttpGet]
+        public async Task<IActionResult> Ecpay(string customerOrderId)
+        {
+            var userId = _httpContextAccessor.HttpContext.User.Claims.FirstOrDefault(c => c.Type == ClaimTypes.NameIdentifier).Value;
+
+            var GenerateOrderToEcpay = await _ecpayOrderService.GenerateOrderAsync(customerOrderId);
+            return View(GenerateOrderToEcpay);
         }
     }
 }
