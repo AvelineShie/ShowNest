@@ -10,7 +10,8 @@ createApp({
             seatAreaId: 1,
             seatViewModel: {},
             selectedSeats: [],
-            tickets: []
+            tickets: [],
+            data: null
         }
     },
     methods: {
@@ -41,6 +42,17 @@ createApp({
         },
         onConfirmSeatClicked() {
             this.showModal = !this.showModal;
+        },
+        onConfirmationClicked() {
+            const params = new URLSearchParams(window.location.search);
+            const flowId = params.get("flowId");
+
+            this.data = {...this.data, tickets: this.tickets};
+
+            this.saveData(flowId, this.data);
+
+            const redirectUrl = `/events/registrations?${params.toString()}`
+            window.location = redirectUrl;
         },
         async onAreaSelected(areaId) {
             this.mode = "selectSeat";
@@ -79,13 +91,8 @@ createApp({
         },
         async fetchTickets() {
             const params = new URLSearchParams(window.location.search);
-            const criteria = []
-            for (const [key, value] of params) {
-                criteria.push({
-                    TicketTypeId: key,
-                    TicketCount: value
-                })
-            }
+            const flowId = params.get("flowId");
+            this.data = this.getData(flowId);
 
             const response = await fetch('/api/TicketTypes/GetAutoSelectedSeats', {
                 method: 'POST',
@@ -93,7 +100,7 @@ createApp({
                     "content-type": "application/json"
                 },
                 body: JSON.stringify({
-                    Criteria: criteria
+                    Criteria: this.data.selectedTickets
                 })
             });
             this.tickets = (await response.json()).tickets;
@@ -119,6 +126,12 @@ createApp({
             //Bootstrap tooltip trigger
             const tooltipTriggerList = document.querySelectorAll('[data-bs-toggle="tooltip"]')
             const tooltipList = [...tooltipTriggerList].map(tooltipTriggerEl => new bootstrap.Tooltip(tooltipTriggerEl))
+        },
+        getData(key) {
+            return JSON.parse(sessionStorage.getItem(key))
+        },
+        saveData(key, data) {
+            sessionStorage.setItem(key, JSON.stringify(data));
         }
     },
     computed: {

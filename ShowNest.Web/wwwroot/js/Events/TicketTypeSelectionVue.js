@@ -21,19 +21,27 @@ createApp({
 
             ticketPriceRow.tickets.purchaseAmount += num
         },
+        save(key, data) {
+            console.log('Save Data:', key, data);
+            sessionStorage.setItem(key, JSON.stringify(data));
+        },
         onNextStepClicked() {
             if (!this.isAgreed) {
                 alert('Not agreed');
                 return;
             }
 
-            const params = new URLSearchParams();
-            for (const ticketPriceRow of this.ticketTypeSelection.ticketPriceRow) {
-                if (ticketPriceRow.tickets.purchaseAmount !== 0) {
-                    params.append(ticketPriceRow.id, ticketPriceRow.tickets.purchaseAmount);
-                }
-            }
+            const flowId = new Date().getTime();
+            const selectedTickets = this.ticketTypeSelection.ticketPriceRow
+                .filter(i => i.tickets.purchaseAmount !== 0)
+                .map(i => ({
+                    TicketTypeId: i.id,
+                    TicketCount: i.tickets.purchaseAmount
+                }));
+            this.save(flowId, {selectedTickets});
 
+            const params = new URLSearchParams();
+            params.append("flowId", flowId);
             const redirectUrl = `/events/seatSelector?${params.toString()}`
             window.location = redirectUrl;
         },
