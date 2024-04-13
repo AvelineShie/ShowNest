@@ -1,6 +1,6 @@
-﻿namespace ShowNest.Web.Models
+﻿namespace ShowNest.ApplicationCore.DTOs
 {
-    public class get_localStorage
+    public class OrderDto
     {
         public string MerchantID { get; set; }
         public string MerchantTradeNo { get; set; }
@@ -11,13 +11,13 @@
         public string ItemName { get; set; }
         public string ChoosePayment { get; set; }
         public string ReturnURL { get; set; }
+        public string PaymentInfoURL { get; set; }
         public string ClientBackURL { get; set; }
         public string OrderResultURL { get; set; }
-        public string IgnorePayment { get; set; }
-        public string EncryptType { get; set; }
-        public string CheckMacValue { get; set; }
+        public int EncryptType { get; set; }
+       
     }
-    /*
+    /* public string CheckMacValue { get; set; }
             //特店交易編號
             { "MerchantTradeNo",  orderId},
             //特店交易時間 yyyy/MM/dd HH:mm:ss

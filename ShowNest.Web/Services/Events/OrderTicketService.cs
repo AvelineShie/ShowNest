@@ -20,18 +20,20 @@ namespace ShowNest.Web.Services.Events
         private readonly IRepository<Order> _orderRepo;
         private readonly IRepository<ArchiveOrder> _archiveOrderRepo;
         private readonly IRepository<Ticket> _ticket;
+        
         public OrderTicketService(IOrderQueryService orderQueryService,
             IRepository<Order> orderRepo,
             IRepository<ArchiveOrder> archiveOrderRepo,
-            IRepository<ApplicationCore.Entities.Ticket> ticket)
+            IRepository<Ticket> ticket)
         {
             _orderQueryService = orderQueryService;
 
             //_userId = httpContextAccessor.HttpContext?.User?.Identity?.Name ?? string.Empty;
-            _userId = 1;
+            //_userId = 1;
             _orderRepo = orderRepo;
             _archiveOrderRepo = archiveOrderRepo;
             _ticket = ticket;
+           
         }
         public RegistrationViewModel GetRegistrationsFakeData()
         {

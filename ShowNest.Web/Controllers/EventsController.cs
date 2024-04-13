@@ -1,12 +1,14 @@
 ﻿using System.Collections.Generic;
 using System.Drawing.Text;
 using System.Globalization;
+using System.Security.Claims;
 using ApplicationCore.Entities;
 using ApplicationCore.Interfaces;
 using Elfie.Serialization;
 using Infrastructure.Services;
-using Microsoft.AspNetCore.Components;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore.ChangeTracking;
 using Microsoft.Extensions.Logging;
 using ShowNest.Web.Models;
 using ShowNest.Web.Services;
@@ -18,7 +20,7 @@ using Ticket = ApplicationCore.Entities.Ticket;
 
 namespace ShowNest.Web.Controllers
 {
-    
+
     public class EventsController : Controller
     {
 
@@ -50,20 +52,26 @@ namespace ShowNest.Web.Controllers
         private readonly EventIndexService _eventIndexService;
         private readonly OrderTicketService _orderQueryService;
         private readonly IOrderRepository _orderRepo;
-        private readonly IOrderCenterService _orderService;
+        private readonly IEcpayOrderService _ecpayOrderService;
         private readonly EventPageService _eventPageService;
+        private readonly IHttpContextAccessor _httpContextAccessor;
+        private readonly DatabaseContext _context;
         private readonly SearchEventService _searchEventService;
 
 
 
-        public EventsController(EventIndexService eventIndexService, OrderTicketService orderQueryService, 
-            IOrderRepository orderRepo, EventPageService eventPageService,IOrderCenterService orderService, SearchEventService searchEventService)
+        public EventsController(EventIndexService eventIndexService, OrderTicketService orderQueryService,
+            IOrderRepository orderRepo, EventPageService eventPageService, IEcpayOrderService ecpayOrderService,
+            IHttpContextAccessor httpContextAccessor, DatabaseContext context, SearchEventService searchEventService)
         {
             _eventIndexService = eventIndexService;
             _orderQueryService = orderQueryService;
             _orderRepo = orderRepo;
             _eventPageService = eventPageService;
-            _orderService = orderService;
+            _ecpayOrderService = ecpayOrderService;
+            _httpContextAccessor = httpContextAccessor;
+            _context = context;
+            _searchEventService=
             _searchEventService = searchEventService;
         }
 
@@ -94,17 +102,17 @@ namespace ShowNest.Web.Controllers
             return View(eventIndexCategoryTags);
         }
 
-        [HttpGet]
-        public IActionResult Search(string inputstring)
-        {
-            ///Events/Search?Id=1&Name=SSS&MaxPrice=300&MinPrice=10&StartTime=0&EndTime=0&CategoryTag=2
+        //[HttpGet]
+        //public IActionResult Search(string inputstring)
+        //{
+        //    ///Events/Search?Id=1&Name=SSS&MaxPrice=300&MinPrice=10&StartTime=0&EndTime=0&CategoryTag=2
 
-            var searchResults = _searchEventService.SearchEventString(inputstring);
+        //    var searchResults = _searchEventService.SearchEventString(inputstring);
 
-            return RedirectToAction("Index", "Events", new { searchResults });
-        }
-    
-       
+        //    return RedirectToAction("Index", "Events", new { searchResults });
+        //}
+
+
 
         public IActionResult EventPage(int EventId)
         {
@@ -138,31 +146,26 @@ namespace ShowNest.Web.Controllers
 
         public IActionResult Registrations()
         {
-            
+
             var RegistrationsFakeData = _orderQueryService.GetRegistrationsFakeData();
             return View(RegistrationsFakeData);
         }
 
-        public IActionResult PaymentInfo()
+        public async Task<IActionResult> PaymentInfo(string customerOrderId)
         {
-            return View();
+            var userId = _httpContextAccessor.HttpContext.User.Claims.FirstOrDefault(c => c.Type == ClaimTypes.NameIdentifier).Value;
+
+            var GenerateOrderToEcpay = await _ecpayOrderService.GenerateOrderAsync(customerOrderId);
+            // var checkMacValue = await _ecpayOrderService.GetCheckMacValue(GenerateOrderToEcpay);
+            // ViewData["CheckMacValue"] = checkMacValue;
+            return View(GenerateOrderToEcpay);
         }
 
-        public IActionResult OrderDetail()
+        public async Task<IActionResult> OrderDetail(string customerOrderId)
         {
-           
-            return View();
-            //string name = string.Empty;
-            //if (id.HasValue)
-            //{
-            //    var order = _orderRepo.FirstOrDefault(o => o.Id == id.Value);
-            //    if (order != null)
-            //    {
-            //        var ArchiveOrder = _archiveOrderRepo.List(ao => ao.OrderId == order.Id);
-            //        name = $"{order.Id} : {ArchiveOrder.Sum(ao => (ao.TicketPrice * ao.PurchaseAmount))}";
-            //    }
-            //}
-            //ViewData["OrderName"] = name;
+
+            var GenerateOrderToEcpay = await _ecpayOrderService.GenerateOrderAsync(customerOrderId);
+            return View(GenerateOrderToEcpay);
         }
 
         public IActionResult BuyTicket()
@@ -235,9 +238,36 @@ namespace ShowNest.Web.Controllers
             };
             return View(model);
         }
-        public async Task <IActionResult> Ecpay()
+        /// step5 : 取得付款資訊，更新資料庫
+        [HttpPost]
+        [Route("Events/PayInfo/{id}")]
+        public ActionResult PayInfo(IFormCollection formData, string id)
         {
-            var GenerateOrderToEcpay = await _orderService.GenerateOrderAsync();
+            var data = new Dictionary<string, string>();
+            foreach (string key in formData.Keys)
+            {
+                data.Add(key, formData[key]);
+            }
+
+            string temp = formData["MerchantTradeNo"]; //寫在LINQ(下一行)會出錯，
+            var ecpayOrder = _context.EcpayOrders.Where(m => m.MerchantTradeNo == temp).FirstOrDefault();
+            if (ecpayOrder != null)
+            {
+                ecpayOrder.RtnCode = int.Parse(formData["RtnCode"]);
+                if (formData["RtnMsg"] == "Succeeded") ecpayOrder.RtnMsg = "已付款";
+                ecpayOrder.PaymentDate = Convert.ToDateTime(formData["PaymentDate"]);
+                ecpayOrder.SimulatePaid = int.Parse(formData["SimulatePaid"]);
+                _context.SaveChanges();
+            }
+
+            return View("EcpayView", data);
+        }
+        [HttpGet]
+        public async Task<IActionResult> Ecpay(string customerOrderId)
+        {
+            var userId = _httpContextAccessor.HttpContext.User.Claims.FirstOrDefault(c => c.Type == ClaimTypes.NameIdentifier).Value;
+
+            var GenerateOrderToEcpay = await _ecpayOrderService.GenerateOrderAsync(customerOrderId);
             return View(GenerateOrderToEcpay);
         }
     }
