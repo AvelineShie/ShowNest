@@ -2,9 +2,11 @@
     ViewData["Title"] = "CreateEventTest";
 }
 
+
 @section topCSS {
-    <link href="~/lib/vuetify/vuetify-labs.min.css" rel="stylesheet">
-    <link href="~/css/Dashboard/CreateEventTest.css" rel="stylesheet" />
+    <link href="~/lib/vuetify/vuetify-labs.min.css" rel="stylesheet"/>
+    <link href="~/css/Dashboard/CreateEventTest.css" rel="stylesheet"/>
+    <link href="~/css/_partial/_categorytags_partial.css" rel="stylesheet"/>
 }
 
 <body>
@@ -14,7 +16,8 @@
                 <v-form @@下一步.prevent>
                     <v-stepper prev-text="上一步"
                                next-text="下一步" 
-                               :items="['建立活動', '設定資料', '設定票種', '設定表單']">
+                               :items="['建立活動', '設定資料', '設定票種', '設定表單']"
+                               v-model="stepButton">
                         @* 第一頁 *@
                         <template v-slot:item.1>
                             <div class="wrap" id="CreateEvent">
@@ -25,10 +28,10 @@
                                         <h3 class="select-organizer">選擇活動舉辦單位</h3>
                                         <p>您尚未選擇組織，請選取此活動所屬之組織：</p>
                                         <v-select item-title="name"
+                                                  v-model="selectedOrganization" 
                                                   item-value="id"
-                                                  v-model="selectedOrganization"
                                                   class="w-25"
-                                                  :items="organizations"
+                                                  :items="organizations" 
                                                   density="compact"
                                                   label="選擇一個組織"
                                                   variant="outlined"></v-select>
@@ -54,17 +57,6 @@
                                                     <input type="radio" for="eventItem2" v-model="radioCheck" name="eventRadio"> </input>
                                                     <label id="eventItem2">Model.EventName2 </label>
                                                 </div>
-
-
-                                                @* <div class="checkbox" >
-                                                <v-list-item v-for=" event in EventNames"
-                                                :key="event.return">
-                                                </v-list-item>
-                                                </div> *@
-
-                                                <!-- Show activity items when the activities exist-->
-                                                <div class="activity-item">
-                                                </div>
                                             </div>
 
                                             <div class="TOSzone">
@@ -74,6 +66,9 @@
                                                            :rules="[v => !!v || '請勾選同意後進行!']"
                                                            required> 我已經閱讀並同意
                                                     <a href="">主辦單位服務條款</a> 與 <a href="">隱私權政策</a>
+                                                    <div class="invalid-feedback">
+                                                        {{checkboxErrorMsg}}
+                                                    </div>
                                                 </label>
                                             </div>
                                         </div>
@@ -96,7 +91,7 @@
                                         </div>
                                     </div>
 
-                                    <form class="dual-column-wrapper" asp-controller="Dashboard" asp-action="SetTicket" method="post" onsubmit="return validateForm()">
+                                    <div class="dual-column-wrapper" asp-controller="Dashboard" asp-action="SetTicket" method="post" onsubmit="return validateForm()">
                                         <div class="main-content">
                                             <!-- 活動名稱 -->
                                             <div class="section">
@@ -193,9 +188,10 @@
                                                     <!-- <button type="button" class="update-map">更新地圖</button> -->
                                                 </div>
                                                 <!--------地圖 -------->
-                                                <div id="mapApp">
-                                                    
-                                                </div>
+                                                <google-map api-key="AIzaSyBPB4VPZKkuM469YuZcRdGGKnsItE1C7ik" style="width: 545px; height: 400px" :center="center" :zoom="15">
+                                                    <google-map-marker :options="{ position: center }" />
+                                                </google-map>
+
                                                 <span class="map-note">
                                                     位置不對怎麼辦？您可以手動拖曳地圖上的標示，移動到指定位置
                                                 </span>
@@ -252,11 +248,12 @@
                                             <div class="section">
                                                 <h4 asp-for="MainImageURL">社群分享圖片</h4>
                                                 <img asp-for="MainImageURL" id="uploadedImage" src='/img/Dashboard/upload-img.png'>
+
                                                 <div>
                                                     <!-- 添加文件上傳元素 -->
                                                     @* <input id="fileupload" type="file" name="images" multiple accept="image/gif, image/jpeg, image/png"> *@
-                                                    <button type="button" class="btn btn-outline-secondary" onclick="document.getElementById('uploadInput').click()" accept="image/gif, image/jpeg, image/png" id="fileupload">選擇圖片</button>
-                                                    <button type="button" class="btn btn-outline-secondary" id="restoreBtn">還原原圖</button>
+                                                    <button class="btn btn-outline-secondary" accept="image/gif, image/jpeg, image/png" id="fileupload">選擇圖片</button>
+                                                    <button class="btn btn-outline-secondary" id="restoreImg">還原圖片</button>
                                                 </div>
                                             </div>
                                             <span class="note">請提供尺寸為600x400px以內 且 檔案格式為 png.、jpg. 之圖片。</span>
@@ -282,6 +279,10 @@
                                                 <h4>活動分類</h4>
                                                 <span class="note">你可以選擇最多 3 個分類。</span>
                                                 <div class="tag-pool">
+                                                    @* @foreach (var tag in Model.CategoryTagsViewModel)
+                                                    {
+                                                        @await Html.PartialAsync("~/PartialViews/_CategoryTags_Partial.cshtml", tag);
+                                                    } *@
                                                     <div class="tag">演唱會</div>
                                                     <div class="tag">課程講座</div>
                                                     <div class="tag">研討會</div>
@@ -300,7 +301,7 @@
                                                 </div>
                                             </div>
                                         </div>
-                                    </form>
+                                    </div>
                                 </div>
                             </div>
                         </template>
@@ -379,10 +380,10 @@
                                             </div> *@
 
                                             @* =====Step1: 選擇票種跟價格, 數量, 販售時間====== *@
-                                            <div class="row">
+                                            <div class="TicketTypeRow">
                                                 <div class="col-3">
-                                                    <h4 class="sectionTitle">票種選項</h4>
-                                                    <draggable class="list-group" :list="list1" group="people" @* @change="log" *@>
+                                                    <h3>票種選項</h3>
+                                                    <draggable class="list-group" :list="list1" group="people" @@change="log">
                                                         <div class="list-group-item"
                                                              v-for="(element, index) in list1"
                                                              :key="element.name">
@@ -392,8 +393,8 @@
                                                 </div>
 
                                                 <div class="col-3">
-                                                    <h4 class="sectionTitle">想加入的票種</h4>
-                                                    <draggable class="list-group" :list="list2" group="people" @* @change="log" *@>
+                                                    <h3>欲選擇的票種</h3>
+                                                    <draggable class="list-group" :list="list2" group="people" @@change="log">
                                                         <div class="list-group-item"
                                                              v-for="(element, index) in list2"
                                                              :key="element.name">
@@ -402,15 +403,15 @@
                                                     </draggable>
                                                 </div>
 
-                                                <rawDisplayer class="col-3" :value="list1" title="List 1" />
-                                                <rawDisplayer class="col-3" :value="list2" title="List 2" />
+                                                <rawDisplayer class="col-3" :value="list1" title="票種選項" />
+                                                <rawDisplayer class="col-3" :value="list2" title="欲選擇的票種" />
                                             </div>
+
                                             <div class="section">
                                                 <div class="mb-3">
                                                     <h4 class="sectionTitle">數量</h4>
                                                     <input type="text" class="form-control h-50" id="formGroupExampleInput" placeholder=" ">
                                                 </div>
-
                                             </div>
 
                                             <div class="timeSection">
@@ -419,37 +420,39 @@
                                                 <div class="space">至</div>
                                                 <input type="datetime-local" class="date-time">
                                             </div>
-
-                                            @*  =====票區選項======
-                                            上面按下儲存後,隱藏欄位,並顯示票區選項 *@
-                                            <div class="row">
-                                                <div class="col-3">
-                                                    <h4 class="sectionTitle">票區選項</h4>
-                                                    <draggable class="list-group" :list="list1" group="people" @* @change="log" *@>
-                                                        <div class="list-group-item"
-                                                             v-for="(element, index) in list1"
-                                                             :key="element.name">
-                                                            {{ element.name }} {{ index }}
-                                                        </div>
-                                                    </draggable>
-                                                </div>
-
-                                                <div class="col-3">
-                                                    <h4 class="sectionTitle">想要選取的票區</h4>
-                                                    <draggable class="list-group" :list="list2" group="people" @* @change="log" *@>
-                                                        <div class="list-group-item"
-                                                             v-for="(element, index) in list2"
-                                                             :key="element.name">
-                                                            {{ element.name }} {{ index }}
-                                                        </div>
-                                                    </draggable>
-                                                </div>
-
-                                                <rawDisplayer class="col-3" :value="list1" title="List 1" />
-                                                <rawDisplayer class="col-3" :value="list2" title="List 2" />
+                                            <div class="section">
+                                                <button type="button" class="btn btn-outline-secondary btn-sm" id="submit">儲存</button>
+                                                <button type="button" class="btn btn-outline-secondary btn-sm" id="cancel">取消</button>
                                             </div>
 
-                                            @* 按鍵一直都在,分別在第一階段與第二階段新增物件 *@
+                                            @*  =====票區選項======
+                                            Step2: 上面按下儲存後,隱藏欄位,並顯示票區選項 *@
+                                            <div class="TicketAreaRow">
+                                                <div class="col-3">
+                                                    <h3>票區選項</h3>
+                                                    <draggable class="list-group" :list="list1" group="people" @@change="log">
+                                                        <div class="list-group-item"
+                                                                v-for="(element, index) in list1"
+                                                                :key="element.name">
+                                                            {{ element.name }} {{ index }}
+                                                        </div>
+                                                    </draggable>
+                                                </div>
+
+                                                <div class="col-3">
+                                                    <h3>欲選擇的票區</h3>
+                                                    <draggable class="list-group" :list="list2" group="people" @@change="log">
+                                                        <div class="list-group-item"
+                                                                v-for="(element, index) in list2"
+                                                                :key="element.name">
+                                                            {{ element.name }} {{ index }}
+                                                        </div>
+                                                    </draggable>
+                                                </div>
+
+                                                <rawDisplayer class="col-3" :value="list1" title="票種選項" />
+                                                <rawDisplayer class="col-3" :value="list2" title="欲選擇的票種" />
+                                            </div>
                                             <div class="section">
                                                 <button type="button" class="btn btn-outline-secondary btn-sm" id="submit">儲存</button>
                                                 <button type="button" class="btn btn-outline-secondary btn-sm" id="cancel">取消</button>
@@ -726,10 +729,7 @@
 
     @section Scripts {
         <script src="~/lib/vuetify/vuetify.min.js"></script>
-        <script async defer
-                src="https://maps.googleapis.com/maps/api/js?key=YOUR_API_KEY">
-        </script>
-        <script src="/js/Dashboard/CreateEventTest.js" asp-append-version="true"></script>
+        <script  src="/js/Dashboard/CreateEventTest.js" asp-append-version="true"></script>
     }
 </body>
 
