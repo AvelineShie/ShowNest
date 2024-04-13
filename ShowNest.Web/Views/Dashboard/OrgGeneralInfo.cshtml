@@ -22,14 +22,15 @@
         </nav>
     </div>
 
-    <div class="main-content">
+    <div id="app" class="main-content">
         <header class="org_header">
             <span class="org-name">組織名稱</span>
             <span class="org-title bold">@Model.OrgName</span>
         </header>
         <div class="org-info-title">
             <h2 class="general-title">一般資訊</h2>
-            <button class="btn btn-success"><i class="fa-regular fa-pen-to-square"></i>編輯</button>
+            <button class="btn btn-success" @@click="redirectToEditOrganizationPage" orgId="@Model.OrgId"><i class="fa-regular fa-pen-to-square"></i>編輯 @Model.OrgId</button>
+            @* <span v-text="@Model.OrgId"></span> *@
         </div>
 
         <div class="info-container">
@@ -108,3 +109,7 @@
                 </div>
             </div>
 </section>
+
+@section endJS {
+    <script src="~/js/dashboard/orggeneralinfo.js"></script>
+}
