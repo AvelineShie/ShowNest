@@ -209,13 +209,24 @@ namespace ShowNest.Web.Services.AccountService
                 var user = await _context.Users
                     .Include(u => u.LogInInfo)
                     .Include(u => u.PreferredActivityAreas)
+                    .ThenInclude(p => p.Area)
                     .FirstOrDefaultAsync(u => u.Id == userId);
 
                 if (user == null)
                 {
                     return (false, null, "找不到對應的使用者。");
                 }
-
+                // 檢查PreferredActivityAreas是否為null
+                if (user.PreferredActivityAreas == null)
+                {
+                    // 如果PreferredActivityAreas為null，則返回一個空列表
+                    var selectedAreas = new List<string>();
+                }
+                else
+                {
+                    // 嘗試訪問Area屬性
+                    var selectedAreas = user.PreferredActivityAreas.Select(p => p.Area.Name).ToList();
+                }
                 var userAccountViewModel = new UserAccountViewModel
                 {
                     Id = user.Id,
@@ -232,7 +243,9 @@ namespace ShowNest.Web.Services.AccountService
                     //LastLogInAt = user.LogInInfo.LastLogInAt,
                     Status = user.Status,
                     CreatedAt = user.CreatedAt,
-                    EditedAt = user.EditedAt
+                    EditedAt = user.EditedAt,
+                 //   SelectedAreas = user.PreferredActivityAreas.Select(p => p.Area.Name)
+                  
                 };
 
                 return (true, userAccountViewModel, null);
@@ -242,7 +255,7 @@ namespace ShowNest.Web.Services.AccountService
                 return (false, null, ex.Message);
             }
         }
-        //測試用
+        //更新使用者資料
         public async Task<(bool IsSuccess, string ErrorMessage)> UpdateUserAccountByIdAsync(int userId, UserAccountViewModel model)
         {
             try
@@ -265,7 +278,7 @@ namespace ShowNest.Web.Services.AccountService
                 user.PersonalUrl = model.PersonalURL;
                 user.PersonalProfile = model.PersonalProfile;
                 user.EdmSubscription = model.EdmSubscription;
-                user.Image = model.Image; // 注意：這裡假設你有一個方法來處理圖片上傳
+                user.Image = model.Image; 
                 user.EditedAt = DateTime.Now;
 
                 await _context.SaveChangesAsync();
@@ -277,19 +290,7 @@ namespace ShowNest.Web.Services.AccountService
                 return (false, ex.Message);
             }
         }
-        //取得地區資料
-        //public List<Area> GetAllAreas()
-        //{
-        //    return _context.Areas.ToList();
-        //}
-        //public List<int> GetPreferredAreasByUserId(int userId)
-        //{
-        //    return _context.PreferredActivityAreas
-        //        .Where(p => p.UserId == userId)
-        //        .Select(p => p.AreaId)
-        //        .ToList();
-        //}
-        //雜湊
+
         private string HashPassword(string password)
         {
             using (SHA256 sha256Hash = SHA256.Create())

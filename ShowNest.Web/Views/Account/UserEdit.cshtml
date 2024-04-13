@@ -1,10 +1,8 @@
-﻿@model UserAccountViewModel
+﻿@* @model UserAccountViewModel
 @section topCSS {
     <link href="~/css/_partial/_accountnavbarpartial.css" rel="stylesheet" />
     <link href="~/css/account/useredit.css" rel="stylesheet" />
 }
-
-
 <section class="section_wrap">
     <div id="UserEdit" class="width">
         <div class="account-navigation-wrap">
@@ -19,73 +17,20 @@
             new TabStatusViewModel { IsActive = false}
             })
         </div>
-        <!----------- Title------------>
-        <div class="title">
-            <h2 id="title">修改帳號設定</h2>
-        </div>
-
-        <!----------- Form------------>
         <form asp-action="UserEdit" method="post" enctype="multipart/form-data">
-            <div>
-                <label for="Account">使用者名稱</label>
-                <input asp-for="Account" type="text" />
-            </div>
-            <div>
-                <label for="Nickname">暱稱</label>
-                <input asp-for="Nickname" type="text" />
-            </div>
-            <div>
-                <label for="Email">Email</label>
-                <input asp-for="Email" type="email" />
-            </div>
-            <div>
-                <label for="Mobile">手機號碼</label>
-                <input asp-for="Mobile" type="tel" />
-            </div>
-            <div>
-                <label for="Birthday">出生年月日</label>
-                <input asp-for="Birthday" type="date" />
-            </div>
-            <div>
-                <label for="Gender">生理性別</label>
-                <select asp-for="Gender" asp-items="Html.GetEnumSelectList<Gender>()"></select>
-            </div>
-            <div>
-                <label for="PersonalURL">個人網站</label>
-                <input asp-for="PersonalURL" type="url" />
-            </div>
-            <div>
-                <label for="PersonalProfile">個人簡介</label>
-                <textarea asp-for="PersonalProfile"></textarea>
-            </div>
-            <div>
-                <label for="EdmSubscription">訂閱 ShowNest 的最新消息</label>
-                <input asp-for="EdmSubscription" type="checkbox" />
-            </div>
-            <div>
-                <label for="Image">圖片</label>
-                <input asp-for="Image" type="file" />
-            </div>
-            <button type="submit">儲存個人資料</button>
-        </form>
-
-        <!---->
-        <form asp-action="UserEdit" method="post" enctype="multipart/form-data">
-            <!-- <div class="main-form col-8 form-horizontal"> -->
             <div class="main-form">
                 <div class="content-wrapper">
                     <div class="form_contaner">
                         <!-- ----------------使用者名稱----------------  -->
                         <label for="">使用者名稱</label>
                         <div class="form-content input-group-sm">
-                            
-                            <input class="form-control col-12" id="" asp-for="Account" type="text" name="" placeholder="">
+                            <input class="form-control col-12" id="" asp-for="Account" type="text" name="Account" placeholder="">
                             <p class="caption">您可以用此帳號登入 ShowNest 帳號只能使用字母、數字或底線且不能與其他 會員重複。</p>
                         </div>
                         <!-- -------------------暱稱-------------------  -->
                         <label for="">暱稱</label>
                         <div class="form-content input-group-sm">
-                            <input class="form-control col-12" id="" asp-for="Nickname" type="text" name="" placeholder="">
+                            <input class="form-control col-12" id="" asp-for="Nickname" type="text" name="Nickname" placeholder="">
                             <p class="caption">您的暱稱會顯示在個人頁面、活動頁面等地方</p>
                         </div>
                         <!--  ----------------聯絡方式------------------  -->
@@ -93,22 +38,16 @@
                         <div class="form-content">
                             <div class="contect-group input-group-sm">
                                 <label class="email" for="Email">Email</label>
-                                <input asp-for="Email" type="email" class="form-control mb-4" id="" name=""
+                                <input asp-for="Email" type="email" class="form-control mb-4" id="" name="Email"
                                        placeholder="Email">
                                 <p></p>
                             </div>
-
                             <div class="contect-group">
                                 <label for="phone-number">手機號碼</label>
                                 <div class="num-group">
                                     <div class="phone-num">
-                                        @*  <span class="Country-codes">
-                                        <select name="" id="" aria-placeholder="">
-                                        <option value="+886">+886</option>
-                                        </select>
-                                        </span> *@
                                         <span class="numbers input-group-sm">
-                                            <input class="form-control" asp-for="Mobile" type="tel" id="" name=""
+                                            <input class="form-control" asp-for="Mobile" type="tel" id="" name="Mobile"
                                                    placeholder="phone number">
                                         </span>
                                     </div>
@@ -119,18 +58,12 @@
                         <!-- ---------------出生年月日------------------  -->
                         <label for="">出生年月日</label>
                         <div class="form-content input-group-sm">
-                            <input class="form-control" id="birthday" asp-for="Birthday" type="date" name="">
+                            <input class="form-control" id="birthday" asp-for="Birthday" type="date" name="Birthday">
                         </div>
                         <!-- ----------------生理性別-------------------- -->
-
-
-
                         <label for="">生理性別</label>
                         <div class="form-content input-group-sm">
-                            <select asp-for="Gender" asp-items="Html.GetEnumSelectList<Gender>()" name="sex" id="sex">
-                                
-                                <option value="男">男</option>
-                                <option value="女">女</option>
+                            <select asp-for="Gender" asp-items="Html.GetEnumSelectList<Gender>()" name="Gender" id="sex">
                             </select>
                         </div>
                         <!-- ------------------偏好活動地區-------------- -->
@@ -139,91 +72,60 @@
                             <div class="option-group">
                                 <ul>
                                     <li>
-                                        <input class="add-option" id="northern-region" type="checkbox" name="address-option" value="northern">
+                                        <input class="add-option" id="northern-region" type="checkbox" name="SelectedAreaIds" value="1" @(Model.SelectedAreaIds.Contains(1) ? "checked" : "")>
                                         <label for="northern-region">北北基宜地區</label>
                                     </li>
-
                                     <li>
-                                        <input class="add-option" id="taozhumiao-area" type="checkbox"
-                                               name="address-option" value="taozhumiao">
+                                        <input class="add-option" id="taozhumiao-area" type="checkbox" name="SelectedAreaIds" value="2" @(Model.SelectedAreaIds.Contains(2) ? "checked" : "")>
                                         <label for="taozhumiao-area">桃竹苗地區</label>
                                     </li>
-
                                     <li>
-                                        <input class="add-option" id="yunjianan-area" type="checkbox"
-                                               name="address-option" value="yunjianan-area">
+                                        <input class="add-option" id="yunjianan-area" type="checkbox" name="SelectedAreaIds" value="3" @(Model.SelectedAreaIds.Contains(3) ? "checked" : "")>
                                         <label for="yunjianan-area">雲嘉南地區</label>
                                     </li>
                                     <li>
-                                        <input class="add-option" id="southern-region " type="checkbox"
-                                               name="address-option" value="southern-region "><label for="southern-region ">高屏地區</label>
+                                        <input class="add-option" id="high-mountain-region" type="checkbox" name="SelectedAreaIds" value="4" @(Model.SelectedAreaIds.Contains(4) ? "checked" : "")>
+                                        <label for="high-mountain-region">高屏地區</label>
                                     </li>
                                     <li>
-                                        <input class="add-option" id="central-region" type="checkbox"
-                                               name="address-option" value="central-region"><label for="central-region">中彰投地區</label>
+                                        <input class="add-option" id="central-taiwan-region" type="checkbox" name="SelectedAreaIds" value="5" @(Model.SelectedAreaIds.Contains(5) ? "checked" : "")>
+                                        <label for="central-taiwan-region">中彰投地區</label>
                                     </li>
                                     <li>
-                                        <input class="add-option" id="east-area" type="checkbox" name="address-option"
-                                               value="east-area"><label for="east-area">花東地區</label>
+                                        <input class="add-option" id="flower-island-region" type="checkbox" name="SelectedAreaIds" value="6" @(Model.SelectedAreaIds.Contains(6) ? "checked" : "")>
+                                        <label for="flower-island-region">花東地區</label>
                                     </li>
                                     <li>
-                                        <input class="add-option" id="outer-island-area" type="checkbox"
-                                               name="address-option" value="outer-island-area"><label for="outer-island-area">澎金馬地區</label>
+                                        <input class="add-option" id="outer-island-region" type="checkbox" name="SelectedAreaIds" value="7" @(Model.SelectedAreaIds.Contains(7) ? "checked" : "")>
+                                        <label for="outer-island-region">澎金馬地區</label>
                                     </li>
                                     <li>
-                                        <input class="add-option" id="hong-kong" type="checkbox" name="address-option"
-                                               value="hong-kong"><label for="hong-kong">香港</label>
+                                        <input class="add-option" id="hong-kong" type="checkbox" name="SelectedAreaIds" value="8" @(Model.SelectedAreaIds.Contains(8) ? "checked" : "")>
+                                        <label for="hong-kong">香港</label>
                                     </li>
                                     <li>
-                                        <input class="add-option" id="macao" type="checkbox" name="address-option"
-                                               value="macao"><label for="macao">澳門</label>
+                                        <input class="add-option" id="macao" type="checkbox" name="SelectedAreaIds" value="9" @(Model.SelectedAreaIds.Contains(9) ? "checked" : "")>
+                                        <label for="macao">澳門</label>
                                     </li>
                                     <li>
-                                        <input class="add-option" id="other" type="checkbox" name="address-option"
-                                               value="other"><label for="other">其他地區</label>
+                                        <input class="add-option" id="other-region" type="checkbox" name="SelectedAreaIds" value="10" @(Model.SelectedAreaIds.Contains(10) ? "checked" : "")>
+                                        <label for="other-region">其他地區</label>
                                     </li>
                                 </ul>
                             </div>
                             <p>我們將以此為您推薦該地區活動</p>
                         </div>
-
-
                         <!-- ------------------個人網站------------------ -->
                         <label class="website" for="">個人網站</label>
                         <div class="form-content input-group-sm">
-                            <input class="form-control" id="" asp-for="PersonalURL" type="url" name="" placeholder="">
+                            <input class="form-control" id="" asp-for="PersonalURL" type="url" name="PersonalURL" placeholder="">
                         </div>
                         <!-- ------------------個人簡介------------------ -->
                         <label for="">個人簡介</label>
                         <div class="form-content form-floating input-group-sm">
-                            <textarea asp-for="PersonalProfile" name="" class="description-content form-control" placeholder="個人簡介輸入這裡"
+                            <textarea asp-for="PersonalProfile" name="PersonalProfile" class="description-content form-control" placeholder="個人簡介輸入這裡"
                                       id="floating-textarea" rows="6"></textarea>
-                            <label for="floating-textarea">個人簡介輸入這裡</label>
-                            <p id="" class="caption">剩餘160字</p>
                         </div>
-                        <!-- ----------------國家與時區----------------- -->
-                        @* <label class="time_zone" for="">國家與時區</label>
-                        <div class="form-content input-group-sm time_zone">
-                        <select name="area" id="area">
-                        <option value="台灣">台灣</option>
-                        </select>
-                        <select name="GMT" id="">
-                        <option value="GMT08">(GMT+08:00)</option>
-                        </select>
-                        </div> *@
-                        @*                         <!-- -------------------連結-------------------- -->
-                        <label class="media_link" for="">連結</label>
-                        <div class="form-content input-group-sm media_link_group">
-                        <div class="link-oauth link-fb">
-                        <span class="name">Facebook</span>
-                        <a href="@ViewBag.Url" class="btn btn-primary fb-login-button"
-                        data-auto-logout-link="false" data-use-continue-as="false">連結</a>
-                        </div>
-                        <div class="link-oauth link-google">
-                        <span class="name">Google</span>
-                        <a href="#" type="button" class="google btn btn-info">連結</a>
-                        </div>
-                        </div> *@
                         <!-- ---------------進階帳號管理----------------- -->
                         <label for="">進階帳號管理</label>
                         <div class="form-content input-group-sm">
@@ -233,52 +135,38 @@
                                     <ul>
                                         <li>
                                             <input class="sub-option" id="sub-news" asp-for="EdmSubscription" type="checkbox"
-                                                   name="subscribe-option" value="sub-news"><label class=""
-                                                                                                   for="sub-news">訂閱 ShowNest 的最新消息</label>
+                                                   name="EdmSubscription" value="sub-news">
+                                            <label class="" for="sub-news">訂閱 ShowNest 的最新消息</label>
                                         </li>
-
-                                        @* <li>
-                                        <input class="sub-option" id="restric-opt" type="checkbox"
-                                        name="Search-restric-option" value="restric-opt"><label class=""
-                                        for="restric-opt">搜尋時，排除限制級活動</label>
-                                        </li>
-                                        <li>
-                                        <input class="sub-option" id="pers-page" type="checkbox"
-                                        name="personal-page" value="pers-page"><label class=""
-                                        for="pers-page">啟用個人頁面</label>
-                                        </li> *@
                                     </ul>
                                 </div>
                             </div>
                         </div>
                     </div>
                 </div>
+                <!-- 右邊 -->
                 <div class="image-upload">
                     <div class="img-container">
                         <img src="https://picsum.photos/200/150/?random=10">
                     </div>
                     <a class="file-input ">
-                        <input class="file-upload form-control form-control-sm" type="file" id="form-control-sm">
+                        <input class="file-upload form-control form-control-sm" asp-for="Image" type="file" name="Image" id="form-control-sm">
                     </a>
                     <span class="help-block pb-4">
                         <p>建議圖片尺寸為 250x250 以上正方形圖片，最大檔案容量為2MB。如果沒有上傳，會使用系統預設圖片。</p>
                     </span>
                 </div>
-
             </div>
-        
-        <!---->
-
-
-        <div class="border"></div>
-        <!-- ---------------儲存個人資料按鈕-------------- -->
-        <div class="div-wrap">
-            <div class="btn-save">
-                <button type="submit" class="btn " style="background-color:var(--main-green);color: white;border:none;">
-                    儲存個人資料
-                </button>
+            <!---->
+            <div class="border"></div>
+            <!-- ---------------儲存個人資料按鈕-------------- -->
+            <div class="div-wrap">
+                <div class="btn-save">
+                    <button type="submit" class="btn " style="background-color:var(--main-green);color: white;border:none;">
+                        儲存個人資料
+                    </button>
+                </div>
             </div>
-        </div>
         </form>
     </div>
-</section>
+</section> *@
