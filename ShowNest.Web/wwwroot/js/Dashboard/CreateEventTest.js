@@ -1,5 +1,5 @@
-
-const { createApp } = Vue
+/*import SetTicket from "./SetTicket";*/
+const { createApp, ref } = Vue
 const { createVuetify } = Vuetify
 const vuetify = createVuetify();
 
@@ -7,27 +7,51 @@ const options = {
     data() {
         return {
             //CreateEvent
-            e1: 1, //???
-            selectedOrganization: {},
-            organizations: [],
-            displaySelectActivityType: false,
-            activityTypes: ["全新的活動", "既有的活動"],
-            selectedActivityType: "全新的活動",
-            displayExistingActivities: false,
-            selectedEvent: {}, //勾選的活動
+            e1: 1,
+            selectedOrganization: {}, //組織下拉v-model
+            organizations: [], //下拉items
+            displaySelectActivityType: false, /*隱藏*/
+            activityTypes: ["全新的活動", "既有的活動"], //活動下拉item
+            selectedActivityType: "全新的活動", //活動下拉式v-model
+            displayExistingActivities: false, //既有活動後打開
+            radioCheck: {}, //所選任一活動
+            checkbox: false, //初始未勾選
+            stepButton: false, //初始不可按
 
             //SetEvent
-            /*OrganizationName:*/
+            el: 2,
+            OrganizationName: {},
+            EventName: {},
+            WebsiteLink: {},
+            StartTime: {},
+            EndTime: {},
+            NoEndTime: false, //就關閉Endtime
+            MainOrganizer: {},
+            CoOrganizer: {},
+            Attendance: {}, //活動人數
+            UmlimitAttendance: false, //不限人數
+            EventStatus: {},
+            StreamingName: {},//所選串流平台
+            LocationName: {},
+            EventAddress: {},
+            EventIntroduction: {},
+            EventDescription: {},
+            EventImage: {},
+            IsPrivateEvent: [0, 1],
+            EventType: [],
 
-            events: [],
-            userId: 1,
-            radio: 'Option 1',
-            items: ['實體活動', '線上活動'],
-            checkbox: false, // 同意書
+
+
+            //SetTicket
+
+
+            //SetTable
+
         }
     },
     mounted() {
         this.getOrganizationsById()
+        
     },
     methods: {
         getOrganizationsById() {
@@ -57,6 +81,8 @@ const options = {
         getEventsByOrganizationId() {
             console.log(this.selectedOrganization)
         },
+        
+
     },
     watch: {
         'selectedOrganization': {
@@ -75,46 +101,147 @@ const options = {
                     this.getEventsByOrganizationId()
                 }
             }
-        }
+        },
+        'checkbox': {
+            handler: function (newVal) {
+                // 透過 newVal, prevVal 取得監聽前後變數的值
+                if (newVal == preVal) {
+                    this.stepButton = false;
+                    this.checkboxErrorMsg = "請勾選同意後進行!";
+                }
+                else {
+                    this.stepButton = true;
+                    this.checkboxErrorMsg = "";
+                }
+            },
+            immediate: false
+        },
     }
 }
 const app = createApp(options); // 創建一個 Vue 應用實例，使用 options 作為配置選項
 app.use(vuetify).mount('#app');
 
 
-/*==========google map=============*/
-//import VueGoogleMaps from '@fawmi/vue-google-maps';
-//const mapOptions = {
+
+/*=============票區選擇===============*/
+//import draggable from "@@/vuedraggable";
+//const SelectTicketArea = createApp({
+//    name: "two-lists",
+//    components: {
+//        draggable
+//    },
 //    data() {
 //        return {
-//            // 地圖的中心點
-//            center: { lat: 51.093048, lng: 6.842120 },
-//            // 地圖的縮放級別
-//            zoom: 7,
-//            // 地圖的類型
-//            mapTypeId: 'terrain',
+//            list1: [
+//              { name: "特1A", id: 1 },
+                //{ name: "特1B", id: 2 },
+                //{ name: "2A區", id: 3 },
+                //{ name: "2B區", id: 4 },
+                //{ name: "2C區", id: 5 },
+                //{ name: "2D區", id: 6 },
+                //{ name: "2E區", id: 7 },
+                //{ name: "2F區", id: 8 },
+                //{ name: "2G區", id: 9 },
+                //{ name: "3A區", id: 10 },
+                //{ name: "3B區", id: 11 },
+                //{ name: "3C區", id: 12 },
+                //{ name: "3D區", id: 13 },
+                //{ name: "3E區", id: 14 },
+                //{ name: "3F區", id: 15 },
+                //{ name: "3G區", id: 16 }
+//            ],
+//            list2: [],
+//            新增一個變數來儲存使用者輸入的選項名稱
+//            newOptionName: ''
 //        };
 //    },
-//    template: `
-//    <GMapMap
-//      :center="center"
-//      :zoom="zoom"
-//      :map-type-id="mapTypeId"
-//      style="width: 100vw; height: 900px"
-//    >
-//    </GMapMap>
-// `,
-//};
-
-//const mapApp = createApp(mapOptions);
-
-////安裝地圖套件
-//mapApp.use(VueGoogleMaps, {
-//    load: {
-//        key: 'AIzaSyBPB4VPZKkuM469YuZcRdGGKnsItE1C7ik',
+//    methods: {
+//        add: function () {
+//            this.list1.push({ name: this.newOptionName, id: this.list1.length + 1 });
+//        },
+//        replace: function () {
+//            list1.length = 0; 
+//            list2.push({ name: this.newOptionName, id: 1 }); //因為list清空, 所以加入的是id=1
+//        },
+//        clone: function (el) {
+//            return {
+//                name: el.name
+//            };
+//        },
+//        log: function (evt) {
+//            console.log(evt);
+//        }
 //    },
-//    autobindAllEvents: true,
-//});
-//mapApp.use(vuetify).mount('#mapApp'); // 掛載應用到 DOM 元素上
+//}).mount('#app');
+
+//<ul>
+//  <li>特1A</li>
+//  <li>特1B</li>
+//  <li>2A區</li>
+//  <li>2B區</li>
+//  <li>2C區</li>
+//  <li>2D區</li>
+//  <li>2E區</li>
+//  <li>2F區</li>
+//  <li>2G區</li>
+//  <li>3A區</li>
+//  <li>3B區</li>
+//  <li>3C區</li>
+//  <li>3D區</li>
+//  <li>3E區</li>
+//  <li>3F區</li>
+//  <li>3G區</li>
+//</ul>
+
+/*===========票種選擇===========*/
+
+//const SelectTicketType = createApp({
+//    name: "two-lists",
+//    components: {
+//        draggable
+//    },
+//    data() {
+//        return {
+//            list1: [
+//                { name: "全票", id: 100 },
+//            ],
+//            list2: []
+//        };
+//    },
+//    methods: {
+//        add: function () {
+//            this.list1.push({ name: "全票" });
+//        },
+//        replace: function () {
+//            list1.length = 0; // 清空 list1
+//            list2.push({ name: "全票" }); // list2添加新的全票
+//        },
+//        clone: function (el) {
+//            return {
+//                name: el.name
+//            };
+//        },
+//        log: function (evt) {
+//            console.log(evt);
+//        }
+//    },
+//}).mount('#app');
 
 
+/*=============google map ==============*/
+const { GoogleMap, Marker } = Vue3GoogleMap
+
+const map = createApp({
+  setup() {
+    const center = { lat: 40.689247, lng: -74.044502 };
+
+    return {
+      center
+    }
+  }
+})
+
+map.component('GoogleMap', GoogleMap)
+map.component('GoogleMapMarker', Marker)
+
+map.mount('#app')

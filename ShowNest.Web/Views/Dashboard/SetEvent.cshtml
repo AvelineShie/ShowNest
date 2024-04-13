@@ -192,9 +192,9 @@
                     
                     <div class="section">
                         <h4 >社群分享圖片</h4>
-                        @* <img id="uploadedImage" src='https://res.cloudinary.com/dl42higsa/image/upload/v1710816990/upload-img_ofm2yc.png'> *@
+                        <img id="uploadedImage" src='https://res.cloudinary.com/dl42higsa/image/upload/v1710816990/upload-img_ofm2yc.png'>
                         <div>
-                            <div id="app">
+                            @* <div id="app">
                                 <!-- 使用v-if條件渲染，如果imageUrl存在，則顯示imageUrl的圖片 -->
                                 <img v-if="imageUrl" id="uploadedImage" :src="imageUrl">
                                 <!-- 使用v-else條件渲染，如果imageUrl不存在，則顯示預設圖片 -->
@@ -204,7 +204,7 @@
                                 <!-- 自定義的上傳按鈕 -->
                                 <button @@click="triggerFileInput">上傳圖片</button>
                                 <button class="btn btn-outline-secondary" id="restoreBtn">還原原圖</button>
-                            </div>
+                            </div> *@
                             @* <button type="button" id="fileupload" class="btn btn-outline-secondary" onclick="document.getElementById('uploadInput').click()" accept="image/gif, image/jpeg, image/png">選擇圖片</button> *@
                             
                         </div>

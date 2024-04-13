@@ -25,6 +25,10 @@ namespace ShowNest.Web.WebAPI
         [Route("api/Ecpay/AddOrders")]
         public string AddOrders([FromBody] OrderDto json)
         {
+            if (json == null)
+            {
+                return "Error: json object is null.";
+            }
             string num = "0";
             try
             {
@@ -53,11 +57,11 @@ namespace ShowNest.Web.WebAPI
 
         [HttpPost]
         [Route("api/Ecpay/AddPayInfo")]
-        public HttpResponseMessage AddPayInfo(JObject info)
+        public HttpResponseMessage AddPayInfo(IFormCollection  info)
         {
             try
             {
-                _cache.Set(info.Value<string>("MerchantTradeNo"), info, DateTime.Now.AddMinutes(60));
+                //_cache.Set(info.Value<string>("MerchantTradeNo"), info, DateTime.Now.AddMinutes(60));
                 return _ecpayHttpHelpers.ResponseOK();
             }
             catch (Exception e)

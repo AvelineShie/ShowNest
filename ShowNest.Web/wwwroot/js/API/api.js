@@ -54,7 +54,6 @@ export const api = {
             $.ajax({
                 url: fixedUrl,
                 method: 'POST',
-                headers: headers,
                 data: !formMode ? JSON.stringify(data) : fdata,
                 dataType: formMode ? 'html' : 'json',
                 contentType: formMode ? false : 'application/json',

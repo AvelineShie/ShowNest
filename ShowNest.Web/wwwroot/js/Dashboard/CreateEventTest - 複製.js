@@ -1,6 +1,5 @@
 const { createApp } = Vue
 const { createVuetify } = Vuetify
-const TOSzone = document.querySelector(".TOSzone");
 
 
 const vuetify = createVuetify();
@@ -22,13 +21,13 @@ const options = {
             items: ['實體活動', '線上活動']
 
             /*基本上你VM內的這裡都要有*/
-            EventName: "",
-            Url: "",
-            Typeame: "",
-            description: "",
-            enventURL: "",
-            OnlineURL: "",
-            Tag: {三個}
+            //EventName: "",
+            //Url: "",
+            //Typeame: "",
+            //description: "",
+            //enventURL: "",
+            //OnlineURL: "",
+            //Tag: {三個}
 
         }
     },

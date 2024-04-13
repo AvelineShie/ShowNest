@@ -79,7 +79,7 @@
             </div>
             <div class="order-btns">
                 <div class="btn-edit-order">
-                    <a asp-controller="Events" asp-action="OrderDetail">查看/修改資料</a>
+                    <a v-on:click="gotoOrderDetailPage(userOrder.OrderId)">查看/修改資料</a>
                 </div>
                 <div class="btn-contact-organizer">
                     <a asp-controller="Organizations" asp-action="ContactOrganization">聯絡主辦單位</a>
@@ -233,6 +233,10 @@
         methods: {
             moneyformatter(value) { return tools.moneyformatter(value) },
             dateformatter(value) { return tools.dateformatter(value) },
+
+            gotoOrderDetailPage(id){
+                window.location.href = `https://${window.location.host}/Events/OrderDetail?id=${id}`;
+            },
 
             getUserOrderListSuccess(res) {
                 console.log(res);

@@ -1,10 +1,6 @@
-﻿using Microsoft.AspNetCore.Mvc.Rendering;
-using ShowNest.Web.ViewModels.Events;
-using ShowNest.Web.ViewModels.UserAccount;
-
-namespace ShowNest.Web.ViewModels.Dashboard
+﻿namespace ShowNest.Web.ViewModels.Dashboard
 {
-    
+
     public class CreateEventViewModel
     {
         public List<OrgNameList> OrgNames { get; set; } //Owner's OrgId

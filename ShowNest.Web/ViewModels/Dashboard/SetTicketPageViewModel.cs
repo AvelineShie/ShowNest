@@ -4,11 +4,11 @@
     {
         public string OrganizationName { get; set; }
 
-        public List<SetTicketViewModel> SetTickets {  get; set; }
+        public List<TicketDetail> SetTickets {  get; set; }
 
     }
 
-    public class SetTicketViewModel
+    public class TicketDetail
     {
         public string TicketName { get; set; }
         public DateTime StartTime { get; set; }
