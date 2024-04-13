@@ -134,39 +134,8 @@
                 </div>
 
                 <!-- 待繳款 -->
-                <div class="unpay_payment_info" v-if="OrderStatus===0">
+                <div class="unpay_payment_info" v-if="PaymentPendingStep">
                     <div class="pickup_info">
-                        @* <h3 class="pickup_text">
-                            付款方式：ATM 虛擬帳號
-                        </h3>
-                        <dl class="info-list">
-                            <dt class="bank_number">銀行代碼</dt>
-                            <dd>808</dd>
-                            <dt class="bank_id">銀行帳號</dt>
-                            <dd>
-                                9555804923573789
-                                <div class="note_block">
-                                    本虛擬帳號僅對應到您的報名資料，請勿重複轉入到同一帳號
-                                </div>
-                            </dd>
-                            <dt class="area">分行名稱</dt>
-                            <dd class="area_address">
-                                玉山銀行營業部
-                            </dd>
-                            <dt class="company_name">帳戶名稱</dt>
-                            <dd>
-                                華娛網路娛樂股份有限公司
-                            </dd>
-                            <dt class="money">金額</dt>
-                            <dd>TWD$500</dd>
-                            <dt>繳款期限</dt>
-                            <dd>
-                                2024/02/18 22:33 (+0800)
-                                <div class="note_block">
-                                    系統以款項實際入帳時間為準，繳費期限前未入帳者訂單皆一律取消。因為各家銀行轉帳入帳時間不同，為保障您的權益，請及早付款。
-                                </div>
-                            </dd>
-                        </dl> *@
                         <h3 class="pickup_type">取票方式：電子票券</h3>
                         <hr>
                         <div class="pickup_caption">
@@ -239,7 +208,7 @@
 
                 <button class="btn_print btn btn_cancelled" id="btn_cancelled"> 取消訂單</button>
                 <label for="checkoutBtn">
-                    <button class="btn_print btn btn_payment" id="btn_payment" v-if="NotFree"> 重新繳費</button>
+                    <button class="btn_print btn btn_payment" id="btn_payment" v-if="PaymentPendingStep"> 重新繳費</button>
                 </label>
                 <div class="contact_info_contaner">
                     <div class="contact_info">
