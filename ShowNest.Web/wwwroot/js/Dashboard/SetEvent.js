@@ -64,19 +64,19 @@ initMap();
 /*Map end*/
 
 /*上傳圖片 */
-new Vue({
-    el: '#app',
-    data: {
-        imageUrl: null // 初始化為null，表示還沒有上傳圖片
-    },
-    methods: {
-        triggerFileInput: function (file) {
-            // 這裡假設你有一個方法來處理圖片上傳，並返回圖片的URL
-            var uploadedImageUrl = uploadResult.Url;
-            this.imageUrl = uploadedImageUrl; // 更新imageUrl的值
-        }
-    }
-});
+//new Vue({
+//    el: '#app',
+//    data: {
+//        imageUrl: null // 初始化為null，表示還沒有上傳圖片
+//    },
+//    methods: {
+//        triggerFileInput: function (file) {
+//            // 這裡假設你有一個方法來處理圖片上傳，並返回圖片的URL
+//            var uploadedImageUrl = uploadResult.Url;
+//            this.imageUrl = uploadedImageUrl; // 更新imageUrl的值
+//        }
+//    }
+//});
 
 
 // 還原原圖
