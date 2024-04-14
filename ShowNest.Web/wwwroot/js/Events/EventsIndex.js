@@ -129,3 +129,92 @@ function renderPagination() {
         localStorage.removeItem('searchString');
     });
 })();
+
+
+
+document.querySelectorAll(".dropdown-item").forEach(item => {
+    item.addEventListener("click", function (event) {
+        event.preventDefault();
+        const filterValue = item.textContent.trim(); // 獲取選擇的篩選值
+        let minPrice = 0;
+        let maxPrice = 0;
+        let priceValue = '';
+        let timeValue = '';
+        let startTime = '';
+        let endTime = '';
+
+        // 根據選擇的篩選值設置相應的查詢參數值
+        switch (filterValue) {
+            case "全部費用":
+                // 不需要設置查詢參數值
+                break;
+            case "免費":
+                // 設置 Price 參數值為 free
+                priceValue = "free";
+                break;
+            case "1 - 1000":
+                minPrice = 1;
+                maxPrice = 1000;
+                break;
+            case "1000 - 2000":
+                minPrice = 1000;
+                maxPrice = 2000;
+                break;
+            case "2000 - 3000":
+                minPrice = 2000;
+                maxPrice = 3000;
+                break;
+            case "3000 up":
+                minPrice = 3000;
+                maxPrice = Infinity; // 使用 Infinity 表示無限大
+                break;
+            case "今天":
+                // 設置 startTime 參數值為 today
+                timeValue = "today";
+                break;
+            case "一周內":
+                // 獲取一周後的日期
+                const oneWeekLater = new Date();
+                oneWeekLater.setDate(oneWeekLater.getDate() + 7);
+                startTime = new Date().toISOString().split('T')[0];
+                endTime = oneWeekLater.toISOString().split('T')[0];
+                break;
+            case "一個月內":
+                // 獲取一個月後的日期
+                const oneMonthLater = new Date();
+                oneMonthLater.setMonth(oneMonthLater.getMonth() + 1);
+                startTime = new Date().toISOString().split('T')[0];
+                endTime = oneMonthLater.toISOString().split('T')[0];
+                break;
+            case "兩個月內":
+                // 獲取兩個月後的日期
+                const twoMonthsLater = new Date();
+                twoMonthsLater.setMonth(twoMonthsLater.getMonth() + 2);
+                startTime = new Date().toISOString().split('T')[0];
+                endTime = twoMonthsLater.toISOString().split('T')[0];
+                break;
+            default:
+                break;
+        }
+
+        // 構建新的URL，僅包含更新後的查詢參數
+        let newUrl = window.location.origin + window.location.pathname;
+
+        if (priceValue !== '') {
+            newUrl += "?Price=" + priceValue;
+        } else if (minPrice !== 0 || maxPrice !== 0) {
+            newUrl += "?MinPrice=" + minPrice + "&MaxPrice=" + maxPrice;
+        } else if (timeValue !=='') {
+            newUrl += "?startTime=" + timeValue;
+        }
+        else if (startTime !== '' && endTime !== '') {
+            newUrl += "?StartTime=" + startTime + "&EndTime=" + endTime;
+        }
+
+        // 重定向到新的URL
+        window.location.href = newUrl;
+    });
+});
+
+
+

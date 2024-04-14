@@ -71,7 +71,6 @@ namespace ShowNest.Web.Controllers
             _ecpayOrderService = ecpayOrderService;
             _httpContextAccessor = httpContextAccessor;
             _context = context;
-            _searchEventService=
             _searchEventService = searchEventService;
         }
 
@@ -103,14 +102,23 @@ namespace ShowNest.Web.Controllers
         }
 
         [HttpGet]
-        public IActionResult Search( string inputstring)
+		[Route("Events/Explore")]
+		public IActionResult Search(QueryParametersViewModel queryParameters)
         {
-            ///Events/Search?Id=1&Name=SSS&MaxPrice=300&MinPrice=10&StartTime=0&EndTime=0&CategoryTag=2
+			Console.WriteLine($"Name: {queryParameters.inputstring}, MinPrice: {queryParameters.MinPrice}, MaxPrice: {queryParameters.MaxPrice}, StartTime: {queryParameters.StartTime}, EndTime: {queryParameters.EndTime}");
+			///Events/Explore?inputstring=play&MaxPrice=300&MinPrice=10&StartTime=0&EndTime=0&CategoryTag=2
+			var searchResults = _searchEventService.SearchEventString(
+			queryParameters.inputstring,
+			queryParameters.MinPrice,
+			queryParameters.MaxPrice,
+			queryParameters.StartTime,
+			queryParameters.EndTime
+		    );
+			
+			
 
-            //var searchResults = _searchEventService.SearchEventString(inputstring);
-
-            return RedirectToAction("Index", "Events", new { inputstring });
-        }
+			return RedirectToAction("Index", "Events", searchResults);
+		}
 
 
 
