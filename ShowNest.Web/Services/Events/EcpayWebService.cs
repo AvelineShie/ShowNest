@@ -26,10 +26,6 @@ namespace ShowNest.Web.Services
             _ecpayOrderService = ecpayOrderService;
             _httpContextAccessor = httpContextAccessor;
         }
-       //public string GetUserId()
-       // {
-       //     string Id = _httpContextAccessor.HttpContext.User.Claims.FirstOrDefault(c => c.Type == ClaimTypes.NameIdentifier).Value;
-       //     return Id;
-       // }
+      
     }
 }

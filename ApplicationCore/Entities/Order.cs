@@ -68,7 +68,11 @@ public partial class Order
     /// </summary>
     public bool IsDisplayed { get; set; }
 
+    public string EcpayTradeNo { get; set; }
+
     public virtual ArchiveOrder ArchiveOrder { get; set; }
+
+    public virtual EcpayOrder EcpayTradeNoNavigation { get; set; }
 
     public virtual ICollection<Ticket> Tickets { get; set; } = new List<Ticket>();
 

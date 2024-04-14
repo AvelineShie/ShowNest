@@ -90,6 +90,7 @@ namespace ShowNest.Web.Controllers
             //如果MODEL狀態不正確，則返回VIEW以顯示錯誤訊息
             return View(SignUp);
         }
+        //編輯
         [HttpGet]
         public async Task<IActionResult> UserEdit()
         {
@@ -109,7 +110,7 @@ namespace ShowNest.Web.Controllers
             {
                 // 如果資料庫操作失敗，顯示錯誤訊息
                 ModelState.AddModelError(string.Empty, result.ErrorMessage);
-                return View(); // 返回空的View，因為我們不再需要傳遞ViewModel
+                return View();
             }
 
             // 從Service的結果中獲取UserAccountViewModel實例
@@ -133,6 +134,12 @@ namespace ShowNest.Web.Controllers
                 // 從Claim中取得使用者的ID並轉換為整數
                 var userId = int.Parse(userIdClaim.Value);
 
+                // 從表單提交的資料中提取出所有選中的區域ID
+                var selectedAreaIds = Request.Form["SelectedAreaIds"].ToString().Split(',').Select(int.Parse).ToList();
+
+                // 將selectedAreaIds賦值給model的SelectedAreas屬性
+                model.SelectedAreas = selectedAreaIds;
+
                 // 使用Service來更新使用者資料
                 var result = await _accountService.UpdateUserAccountByIdAsync(userId, model);
                 if (result.IsSuccess)
@@ -147,12 +154,6 @@ namespace ShowNest.Web.Controllers
             }
 
             return View(model);
-        }
-
-
-        public IActionResult Prefills()
-        {
-            return View();
         }
         //修改密碼
         [HttpGet]

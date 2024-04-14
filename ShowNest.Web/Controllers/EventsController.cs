@@ -102,15 +102,15 @@ namespace ShowNest.Web.Controllers
             return View(eventIndexCategoryTags);
         }
 
-        //[HttpGet]
-        //public IActionResult Search(string inputstring)
-        //{
-        //    ///Events/Search?Id=1&Name=SSS&MaxPrice=300&MinPrice=10&StartTime=0&EndTime=0&CategoryTag=2
+        [HttpGet]
+        public IActionResult Search( string inputstring)
+        {
+            ///Events/Search?Id=1&Name=SSS&MaxPrice=300&MinPrice=10&StartTime=0&EndTime=0&CategoryTag=2
 
-        //    var searchResults = _searchEventService.SearchEventString(inputstring);
+            //var searchResults = _searchEventService.SearchEventString(inputstring);
 
-        //    return RedirectToAction("Index", "Events", new { searchResults });
-        //}
+            return RedirectToAction("Index", "Events", new { inputstring });
+        }
 
 
 
@@ -241,7 +241,7 @@ namespace ShowNest.Web.Controllers
         /// step5 : 取得付款資訊，更新資料庫
         [HttpPost]
         [Route("Events/PayInfo/{id}")]
-        public ActionResult PayInfo(IFormCollection formData, string id)
+        public ActionResult PayInfo(IFormCollection formData)
         {
             var data = new Dictionary<string, string>();
             foreach (string key in formData.Keys)
@@ -251,10 +251,20 @@ namespace ShowNest.Web.Controllers
 
             string temp = formData["MerchantTradeNo"]; //寫在LINQ(下一行)會出錯，
             var ecpayOrder = _context.EcpayOrders.Where(m => m.MerchantTradeNo == temp).FirstOrDefault();
+            
             if (ecpayOrder != null)
             {
                 ecpayOrder.RtnCode = int.Parse(formData["RtnCode"]);
-                if (formData["RtnMsg"] == "Succeeded") ecpayOrder.RtnMsg = "已付款";
+                if (formData["RtnMsg"] == "Succeeded")
+                {
+                    ecpayOrder.RtnMsg = "已付款";
+                    var orderToUpdate = _context.Orders.FirstOrDefault(o => o.EcpayTradeNo == temp);
+                    if (orderToUpdate != null)
+                    {
+                        orderToUpdate.Status = 1;
+                        _context.SaveChanges(); // 保存變更到資料庫
+                    }
+                }
                 ecpayOrder.PaymentDate = Convert.ToDateTime(formData["PaymentDate"]);
                 ecpayOrder.SimulatePaid = int.Parse(formData["SimulatePaid"]);
                 _context.SaveChanges();
