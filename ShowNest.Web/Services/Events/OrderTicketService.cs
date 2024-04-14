@@ -175,6 +175,7 @@ namespace ShowNest.Web.Services.Events
             var order = new Order
             {
                 UserId = userId,
+                EventId = request.EventId,
                 PaymentType = 1,
                 Status = 0,
                 IsDeleted = false,

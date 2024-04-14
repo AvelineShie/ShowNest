@@ -4,6 +4,7 @@ using Newtonsoft.Json.Linq;
 using ShowNest.Web.Helpers;
 using Microsoft.Extensions.Caching.Memory;
 using ShowNest.ApplicationCore.DTOs;
+using ShowNest.Web.ViewModels.Orders;
 
 
 namespace ShowNest.Web.WebAPI
@@ -14,13 +15,18 @@ namespace ShowNest.Web.WebAPI
         private readonly DatabaseContext _dbContext;
         private readonly IMemoryCache _cache;
         private readonly EcpayHttpHelpers _ecpayHttpHelpers;
-     
-        public EcpayController(DatabaseContext dbContext, EcpayHttpHelpers ecpayHttpHelpers, IMemoryCache cache)
+        private readonly IEcpayOrderService _ecpayOrderService;
+
+        public EcpayController(DatabaseContext dbContext, EcpayHttpHelpers ecpayHttpHelpers, IMemoryCache cache,
+            IEcpayOrderService ecpayOrderService)
         {
             _dbContext = dbContext;
             _ecpayHttpHelpers = ecpayHttpHelpers;
             _cache = cache;
+
+            _ecpayOrderService = ecpayOrderService;
         }
+
         [HttpPost]
         [Route("api/Ecpay/AddOrders")]
         public string AddOrders([FromBody] OrderDto json)
@@ -29,6 +35,7 @@ namespace ShowNest.Web.WebAPI
             {
                 return "Error: json object is null.";
             }
+
             string num = "0";
             try
             {
@@ -70,12 +77,14 @@ namespace ShowNest.Web.WebAPI
             {
                 num = ex.ToString();
             }
+
             return num;
         }
 
         [HttpPost]
         [Route("api/Ecpay/AddPayInfo")]
         public HttpResponseMessage AddPayInfo(IFormCollection info ,string id)
+        public HttpResponseMessage AddPayInfo(IFormCollection info)
         {
             try
             {
@@ -86,7 +95,15 @@ namespace ShowNest.Web.WebAPI
             {
                 return _ecpayHttpHelpers.ResponseError();
             }
+        }
 
+        [HttpPost]
+        [Route("api/Ecpay/GetEcpayOrderInfo")]
+        public async Task<IActionResult> GetEcpayOrderInfo(CreateEcpayOrderRequest request)
+        {
+            var result = await _ecpayOrderService.GenerateEcpayOrderAsync(request.OrderId);
+
+            return Ok(result);
         }
     }
 }

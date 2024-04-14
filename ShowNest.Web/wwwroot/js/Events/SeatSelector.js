@@ -74,6 +74,7 @@ createApp({
                     if (seat.seatAreaId === ticket.seatAreaId && !ticket.seatNumber) {
                         ticket.seatNumber = seat.seatNumber;
                         this.seatViewModel.seats[rowIndex][seatIndex] = {...seat, seatStatus: 1}
+                        break;
                     }
                 }
             }
@@ -85,6 +86,7 @@ createApp({
                     const ticket = this.tickets[i];
                     if (seat.seatAreaId === ticket.seatAreaId && seat.seatNumber === ticket.seatNumber) {
                         ticket.seatNumber = null;
+                        break;
                     }
                 }
             }

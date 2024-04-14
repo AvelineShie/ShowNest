@@ -238,7 +238,9 @@ div.border {
     width: 85%;
 }
 
-
+.field-validation-error {
+    color: red;
+}
 
 @media screen and (max-width:768px) {
     .main-form {

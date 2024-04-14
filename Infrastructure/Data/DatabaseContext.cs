@@ -360,6 +360,11 @@ public partial class DatabaseContext : DbContext
                 .HasForeignKey(d => d.EventId)
                 .OnDelete(DeleteBehavior.ClientSetNull)
                 .HasConstraintName("FK_Orders_Events");
+
+            entity.HasOne(d => d.User).WithMany(p => p.Orders)
+                .HasForeignKey(d => d.UserId)
+                .OnDelete(DeleteBehavior.ClientSetNull)
+                .HasConstraintName("FK_Orders_Users");
         });
 
         modelBuilder.Entity<OrgFan>(entity =>
@@ -543,7 +548,7 @@ public partial class DatabaseContext : DbContext
                 .OnDelete(DeleteBehavior.ClientSetNull)
                 .HasConstraintName("FK_PreferredActivityArea_Area");
 
-            entity.HasOne(d => d.User).WithMany(p => p.PreferredActivityAreas)
+            entity.HasOne(d => d.User).WithMany(p => p.PreferredActivityArea)
                 .HasForeignKey(d => d.UserId)
                 .OnDelete(DeleteBehavior.ClientSetNull)
                 .HasConstraintName("FK_PreferredActivityArea_Users");
