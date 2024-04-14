@@ -1,4 +1,5 @@
-﻿using System;
+﻿using ShowNest.Web.Models.Attributes;
+using System;
 using System.Collections.Generic;
 
 namespace ShowNest.Web.ViewModels.UserAccount
@@ -6,9 +7,14 @@ namespace ShowNest.Web.ViewModels.UserAccount
 {
     public class UserAccountViewModel
     {
-
+        public UserAccountViewModel()
+        {
+            // 初始化SelectedAreas為一個空列表
+            SelectedAreas = new List<int>();
+        }
 
         public int Id { get; set; }
+        [AccountRegex]
         public string Account { get; set; }
         public string Nickname { get; set; }
         public string Email { get; set; }
@@ -47,7 +53,7 @@ namespace ShowNest.Web.ViewModels.UserAccount
         public string Redirect_uri_encode { get; set; }
         public string State { get; set; }
     }
-    public class PreferredActivityArea
+    public class PreferredActivityAreas
     {
         public int Id { get; set; }
         public int UserId { get; set; }
