@@ -49,7 +49,8 @@ namespace ShowNest.Web.Services.Events
             
             var AllParticipantPeoples = EventPage.TicketTypes
             .SelectMany(tt => tt.Tickets)
-            .GroupBy(t => t.Order.User.Id) 
+			.Where(t => t.Order != null)
+			.GroupBy(t => t.Order.UserId) 
             .Select(group => group.First()) 
             .Select(t => new ParticipantPeople
             {
