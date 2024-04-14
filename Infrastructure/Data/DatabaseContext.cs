@@ -550,7 +550,7 @@ public partial class DatabaseContext : DbContext
                 .OnDelete(DeleteBehavior.ClientSetNull)
                 .HasConstraintName("FK_PreferredActivityArea_Area");
 
-            entity.HasOne(d => d.User).WithMany(p => p.PreferredActivityAreas)
+            entity.HasOne(d => d.User).WithMany(p => p.PreferredActivityArea)
                 .HasForeignKey(d => d.UserId)
                 .OnDelete(DeleteBehavior.ClientSetNull)
                 .HasConstraintName("FK_PreferredActivityArea_Users");
