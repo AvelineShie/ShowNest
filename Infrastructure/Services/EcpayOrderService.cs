@@ -44,7 +44,7 @@ namespace Infrastructure.Services
             {
                 {"MerchantTradeNo", tradeNo},
                 {"MerchantTradeDate", DateTime.Now.ToString("yyyy/MM/dd HH:mm:ss")},
-                {"TotalAmount", $"{totalAmount}"},
+                {"TotalAmount", $"{(int)totalAmount}"},
                 {"TradeDesc", "無"},
                 {"ItemName", $"{eventName}"},
                 {"ExpireDate", "1"},
@@ -64,21 +64,25 @@ namespace Infrastructure.Services
             };
             ecpayData.Add("CheckMacValue", await GetCheckMacValue(ecpayData).ConfigureAwait(false));
 
-            var ecpayOrder = new EcpayOrder();
-            ecpayOrder.MemberId = ecpayData["MerchantID"];
-            ecpayOrder.MerchantTradeNo = ecpayData["MerchantTradeNo"];
-            ecpayOrder.RtnCode = 0; //未付款
-            ecpayOrder.RtnMsg = "訂單成功尚未付款";
-            ecpayOrder.TradeNo = ecpayData["MerchantTradeNo"];
-            ecpayOrder.TradeAmt = Convert.ToInt32(totalAmount);
-            ecpayOrder.PaymentDate = Convert.ToDateTime(ecpayData["MerchantTradeDate"]);
-            ecpayOrder.PaymentType = ecpayData["PaymentType"];
-            ecpayOrder.PaymentTypeChargeFee = "0";
-            ecpayOrder.TradeDate = ecpayData["MerchantTradeDate"];
-            ecpayOrder.SimulatePaid = 0;
+            var ecpayOrder = await _context.EcpayOrders.Where(i => i.MerchantTradeNo == tradeNo).FirstOrDefaultAsync();
+            if (ecpayOrder == null)
+            {
+                ecpayOrder = new EcpayOrder();
+                ecpayOrder.MemberId = ecpayData["MerchantID"];
+                ecpayOrder.MerchantTradeNo = ecpayData["MerchantTradeNo"];
+                ecpayOrder.RtnCode = 0; //未付款
+                ecpayOrder.RtnMsg = "訂單成功尚未付款";
+                ecpayOrder.TradeNo = ecpayData["MerchantTradeNo"];
+                ecpayOrder.TradeAmt = Convert.ToInt32(totalAmount);
+                ecpayOrder.PaymentDate = Convert.ToDateTime(ecpayData["MerchantTradeDate"]);
+                ecpayOrder.PaymentType = ecpayData["PaymentType"];
+                ecpayOrder.PaymentTypeChargeFee = "0";
+                ecpayOrder.TradeDate = ecpayData["MerchantTradeDate"];
+                ecpayOrder.SimulatePaid = 0;
 
-            _context.EcpayOrders.Add(ecpayOrder);
-            await _context.SaveChangesAsync();
+                _context.EcpayOrders.Add(ecpayOrder);
+                await _context.SaveChangesAsync();
+            }
 
             return ecpayData;
         }
