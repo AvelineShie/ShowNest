@@ -46,6 +46,24 @@ namespace ShowNest.Web.WebAPI
                 Orders.SimulatePaid = 0;
                 _dbContext.EcpayOrders.Add(Orders);
                 _dbContext.SaveChanges();
+
+                // 假設您已經知道要更新的訂單的唯一識別碼（例如 Id）
+                int orderId = 1; // 這裡只是示例，您需要根據實際情況提供正確的訂單識別碼
+
+                // 找到該訂單並更新 EcpayTradeNo 欄位
+                var orderToUpdate = _dbContext.Orders.FirstOrDefault(o => o.Id == orderId);
+                if (orderToUpdate != null)
+                {
+                    orderToUpdate.EcpayTradeNo = json.MerchantTradeNo;
+                    _dbContext.SaveChanges();
+                }
+                else
+                {
+                    // 如果找不到訂單，處理錯誤情況
+                    num = "Error: Order not found.";
+                }
+
+
                 num = "OK";
             }
             catch (Exception ex)
@@ -57,7 +75,7 @@ namespace ShowNest.Web.WebAPI
 
         [HttpPost]
         [Route("api/Ecpay/AddPayInfo")]
-        public HttpResponseMessage AddPayInfo(IFormCollection  info)
+        public HttpResponseMessage AddPayInfo(IFormCollection info ,string id)
         {
             try
             {

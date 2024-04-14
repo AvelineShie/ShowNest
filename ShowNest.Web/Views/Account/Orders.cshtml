@@ -35,7 +35,7 @@
     <div v-for="userOrder in userOrderList">
         <div class="order-detail">
             <div class="order-id-with-pic">
-                <div class="order-id">#645920</div>
+                <div class="order-id">#{{userOrder.EcpayTradeNo}}</div>
                 <div class="event-pic"><img v-bind:src="userOrder.EventImage" width="250" height="130" alt="event image"></div>
             </div>
             <div class="order-event-detail">
@@ -68,7 +68,7 @@
                         </tr>
                         <tr>
                             <th>票劵數量</th>
-                            <td>1</td>
+                            <td>{{userOrder.TicketAmount}}</td>
                         </tr>
                         <tr>
                             <th>總價</th>
