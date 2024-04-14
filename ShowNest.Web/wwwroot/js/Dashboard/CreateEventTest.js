@@ -50,34 +50,34 @@ const options = {
         }
     },
     mounted() {
-        this.getOrganizationsById()
+        /*this.getOrganizationsById()*/
         
     },
     methods: {
-        getOrganizationsById() {
-            fetch('/api/Events/GetOrganizationsById',
-                {
-                    method: 'POST', // 設定請求方法為 POST
-                    headers: { 'Content-Type': 'application/json' }, // 設定內容類型為 JSON
-                    body: JSON.stringify({ userId: this.userId }) // 將資料轉換成 JSON 字串
-                })
-                .then(response => {
-                    return response.json()
-                })
-                .then(data => {
-                    if (!data.isSuccess) {
-                        this.selectedOrganization = { id: 0, name: '沒有組織，請先建立組織' }
-                        throw new Error(data.message)
-                    }
-                    this.organizations = data.body.organizations.map(x => {
-                        return { id: x.id, name: x.name }
-                    })
-                    this.selectedOrganization = null
-                })
-                .catch(err => {
-                    console.error(err)
-                })
-        },
+        //getOrganizationsById() {
+        //    fetch('/api/Events/GetOrganizationsById',
+        //        {
+        //            method: 'POST', // 設定請求方法為 POST
+        //            headers: { 'Content-Type': 'application/json' }, // 設定內容類型為 JSON
+        //            body: JSON.stringify({ userId: this.userId }) // 將資料轉換成 JSON 字串
+        //        })
+        //        .then(response => {
+        //            return response.json()
+        //        })
+        //        .then(data => {
+        //            if (!data.isSuccess) {
+        //                this.selectedOrganization = { id: 0, name: '沒有組織，請先建立組織' }
+        //                throw new Error(data.message)
+        //            }
+        //            this.organizations = data.body.organizations.map(x => {
+        //                return { id: x.id, name: x.name }
+        //            })
+        //            this.selectedOrganization = null
+        //        })
+        //        .catch(err => {
+        //            console.error(err)
+        //        })
+        //},
         getEventsByOrganizationId() {
             console.log(this.selectedOrganization)
         },
