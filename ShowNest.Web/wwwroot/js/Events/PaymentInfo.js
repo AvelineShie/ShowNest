@@ -66,6 +66,40 @@ createApp({
         getData(key) {
             return JSON.parse(sessionStorage.getItem(key));
         },
+        async onCheckoutClicked() {
+            const params = new URLSearchParams(window.location.search);
+            const orderId = params.get("orderId");
+
+            const response = await fetch('/api/Ecpay/GetEcpayOrderInfo', {
+                method: 'POST',
+                headers: {
+                    "content-type": "application/json"
+                },
+                body: JSON.stringify({
+                    orderId: +orderId
+                })
+            });
+            const ecpayOrder = await response.json();
+            console.log(ecpayOrder);
+
+            const form = document.createElement('form');
+            form.method = 'POST';
+            form.action = 'https://payment-stage.ecpay.com.tw/Cashier/AioCheckOut/V5';
+
+            for (const key in ecpayOrder) {
+                if (ecpayOrder.hasOwnProperty(key)) {
+                    const hiddenField = document.createElement('input');
+                    hiddenField.type = 'hidden';
+                    hiddenField.name = key;
+                    hiddenField.value = ecpayOrder[key];
+
+                    form.appendChild(hiddenField);
+                }
+            }
+
+            document.body.appendChild(form);
+            form.submit();
+        },
     },
     computed: {
         totalPrice() {
