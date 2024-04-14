@@ -67,4 +67,6 @@ public partial class Order
     public virtual Event Event { get; set; }
 
     public virtual ICollection<Ticket> Tickets { get; set; } = new List<Ticket>();
+
+    public virtual User User { get; set; }
 }
