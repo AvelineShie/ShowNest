@@ -30,10 +30,10 @@ namespace Infrastructure.Services
 
         public async Task<Dictionary<string,string>> GenerateOrderAsync(string customerOrderId)
         {
-            var orderId = Guid.NewGuid().ToString().Replace("-", "").Substring(0, 20);
+            var orderId = GenerateOrderIdAsync();
             var eventName = await GetCustomerOrderNameAsync( customerOrderId);
             //需填入你的網址
-            var website = $"https://e6b5-211-22-119-160.ngrok-free.app";
+            var website = $"https://67b5-1-164-250-93.ngrok-free.app";
            
             int totalAmount = await GetCustomerOrderTotalAmountAsync( customerOrderId);
             var order = new Dictionary<string, string>
@@ -124,11 +124,11 @@ namespace Infrastructure.Services
 
             return await Task.FromResult(checkValue.ToUpper());
         }
-        //public string GenerateOrderIdAsync()
-        //{
-        //    var orderId = Guid.NewGuid().ToString().Replace("-", "").Substring(0, 20);
-        //    return orderId;
-        //}
+        public string GenerateOrderIdAsync()
+        {
+            var orderId = Guid.NewGuid().ToString().Replace("-", "").Substring(0, 20);
+            return orderId;
+        }
 
         public async Task<string> GetCustomerOrderNameAsync( string customerOrderId)
         {
