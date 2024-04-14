@@ -82,7 +82,12 @@ createApp({
                     ContactInformation: this.contactInformation
                 })
             });
-            console.log(response)
+            const result = await response.json();
+            
+            const params = new URLSearchParams(window.location.search);
+            params.append("orderId", result.orderId);
+            const redirectUrl = `/events/paymentInfo?${params.toString()}`
+            window.location = redirectUrl;
         }
     },
     computed: {

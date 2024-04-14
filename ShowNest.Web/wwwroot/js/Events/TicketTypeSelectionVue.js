@@ -38,7 +38,10 @@ createApp({
                     TicketTypeId: i.id,
                     TicketCount: i.tickets.purchaseAmount
                 }));
-            this.save(flowId, {selectedTickets});
+            this.save(flowId, {
+                eventDetail: this.ticketTypeSelection.eventDetail, 
+                selectedTickets
+            });
 
             const params = new URLSearchParams();
             params.append("flowId", flowId);

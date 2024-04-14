@@ -75,9 +75,9 @@ namespace ShowNest.Web.WebAPI
                 .FirstOrDefault(c => c.Type == ClaimTypes.NameIdentifier).Value;
             var userId = Convert.ToInt32(userIdString);
 
-            var response = _orderTicketService.CreateOrder(userId, request);
+            var response = await _orderTicketService.CreateOrder(userId, request);
             
-            return Ok();
+            return Ok(response);
         }
     }
 }
