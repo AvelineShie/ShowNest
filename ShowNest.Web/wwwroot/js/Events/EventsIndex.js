@@ -119,9 +119,13 @@ function renderPagination() {
 
 
 (function () {
-    const searchString = localStorage.getItem('searchString'); // 从 localStorage 中获取搜索字符串
+    const searchString = localStorage.getItem('searchString'); 
     const searchInput = document.getElementById("event-search-search-input");
     if (searchString) {
-        searchInput.placeholder = searchString; // 设置输入框的 placeholder 为搜索字符串
+        searchInput.value = searchString; 
     }
+    window.addEventListener('unload', function (event) {
+        
+        localStorage.removeItem('searchString');
+    });
 })();
