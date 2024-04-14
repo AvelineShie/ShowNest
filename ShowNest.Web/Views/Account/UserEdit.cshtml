@@ -1,4 +1,4 @@
-﻿@* @model UserAccountViewModel
+﻿@model UserAccountViewModel
 @section topCSS {
     <link href="~/css/_partial/_accountnavbarpartial.css" rel="stylesheet" />
     <link href="~/css/account/useredit.css" rel="stylesheet" />
@@ -72,43 +72,43 @@
                             <div class="option-group">
                                 <ul>
                                     <li>
-                                        <input class="add-option" id="northern-region" type="checkbox" name="SelectedAreaIds" value="1" @(Model.SelectedAreaIds.Contains(1) ? "checked" : "")>
+                                        <input class="add-option" id="northern-region" type="checkbox" name="SelectedAreaIds" value="1" @(Model.SelectedAreas.Contains(1) ? "checked" : "")>
                                         <label for="northern-region">北北基宜地區</label>
                                     </li>
                                     <li>
-                                        <input class="add-option" id="taozhumiao-area" type="checkbox" name="SelectedAreaIds" value="2" @(Model.SelectedAreaIds.Contains(2) ? "checked" : "")>
+                                        <input class="add-option" id="taozhumiao-area" type="checkbox" name="SelectedAreaIds" value="2" @(Model.SelectedAreas.Contains(2) ? "checked" : "")>
                                         <label for="taozhumiao-area">桃竹苗地區</label>
                                     </li>
                                     <li>
-                                        <input class="add-option" id="yunjianan-area" type="checkbox" name="SelectedAreaIds" value="3" @(Model.SelectedAreaIds.Contains(3) ? "checked" : "")>
+                                        <input class="add-option" id="yunjianan-area" type="checkbox" name="SelectedAreaIds" value="3" @(Model.SelectedAreas.Contains(3) ? "checked" : "")>
                                         <label for="yunjianan-area">雲嘉南地區</label>
                                     </li>
                                     <li>
-                                        <input class="add-option" id="high-mountain-region" type="checkbox" name="SelectedAreaIds" value="4" @(Model.SelectedAreaIds.Contains(4) ? "checked" : "")>
+                                        <input class="add-option" id="high-mountain-region" type="checkbox" name="SelectedAreaIds" value="4" @(Model.SelectedAreas.Contains(4) ? "checked" : "")>
                                         <label for="high-mountain-region">高屏地區</label>
                                     </li>
                                     <li>
-                                        <input class="add-option" id="central-taiwan-region" type="checkbox" name="SelectedAreaIds" value="5" @(Model.SelectedAreaIds.Contains(5) ? "checked" : "")>
+                                        <input class="add-option" id="central-taiwan-region" type="checkbox" name="SelectedAreaIds" value="5" @(Model.SelectedAreas.Contains(5) ? "checked" : "")>
                                         <label for="central-taiwan-region">中彰投地區</label>
                                     </li>
                                     <li>
-                                        <input class="add-option" id="flower-island-region" type="checkbox" name="SelectedAreaIds" value="6" @(Model.SelectedAreaIds.Contains(6) ? "checked" : "")>
+                                        <input class="add-option" id="flower-island-region" type="checkbox" name="SelectedAreaIds" value="6" @(Model.SelectedAreas.Contains(6) ? "checked" : "")>
                                         <label for="flower-island-region">花東地區</label>
                                     </li>
                                     <li>
-                                        <input class="add-option" id="outer-island-region" type="checkbox" name="SelectedAreaIds" value="7" @(Model.SelectedAreaIds.Contains(7) ? "checked" : "")>
+                                        <input class="add-option" id="outer-island-region" type="checkbox" name="SelectedAreaIds" value="7" @(Model.SelectedAreas.Contains(7) ? "checked" : "")>
                                         <label for="outer-island-region">澎金馬地區</label>
                                     </li>
                                     <li>
-                                        <input class="add-option" id="hong-kong" type="checkbox" name="SelectedAreaIds" value="8" @(Model.SelectedAreaIds.Contains(8) ? "checked" : "")>
+                                        <input class="add-option" id="hong-kong" type="checkbox" name="SelectedAreaIds" value="8" @(Model.SelectedAreas.Contains(8) ? "checked" : "")>
                                         <label for="hong-kong">香港</label>
                                     </li>
                                     <li>
-                                        <input class="add-option" id="macao" type="checkbox" name="SelectedAreaIds" value="9" @(Model.SelectedAreaIds.Contains(9) ? "checked" : "")>
+                                        <input class="add-option" id="macao" type="checkbox" name="SelectedAreaIds" value="9" @(Model.SelectedAreas.Contains(9) ? "checked" : "")>
                                         <label for="macao">澳門</label>
                                     </li>
                                     <li>
-                                        <input class="add-option" id="other-region" type="checkbox" name="SelectedAreaIds" value="10" @(Model.SelectedAreaIds.Contains(10) ? "checked" : "")>
+                                        <input class="add-option" id="other-region" type="checkbox" name="SelectedAreaIds" value="10" @(Model.SelectedAreas.Contains(10) ? "checked" : "")>
                                         <label for="other-region">其他地區</label>
                                     </li>
                                 </ul>
@@ -169,4 +169,4 @@
             </div>
         </form>
     </div>
-</section> *@
+</section>
