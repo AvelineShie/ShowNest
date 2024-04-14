@@ -26,63 +26,6 @@ namespace ShowNest.Web.Controllers
             _createEventService = createEventService;
         }
 
-        //圖床
-        public class CloudinaryController : Controller
-        {
-            private readonly IConfiguration _config;
-            private readonly Cloudinary _cloudinary;
-            public CloudinaryController(IConfiguration config)
-            {
-                _config = config;
-
-                string cloudname = _config["Cloudinary:cloudname"];
-                string apikey = _config["Cloudinary:apikey"];
-                string apisecret = _config["Cloudinary:apisecret"];
-
-                Account account = new Account(cloudname, apikey, apisecret);
-
-                _cloudinary = new Cloudinary(account);
-                _cloudinary.Api.Secure = true;
-            }
-
-            [HttpGet]
-            public IActionResult CloudinaryUploadFile()
-            {
-                return View();
-            }
-
-            [HttpPost]
-            public async Task<IActionResult> UploadToCloudinary(string filePath)
-            {
-                try
-                {
-                    var uploadParams = new ImageUploadParams()
-                    {
-                        File = new FileDescription(filePath),
-                        PublicId = Path.GetFileName(filePath)
-                    };
-
-                    var uploadResult = _cloudinary.Upload(uploadParams);
-
-                    // 將Cloudinary的圖片URL儲存到ViewBag或ViewData中
-                    ViewBag.ImageUrl = uploadResult.Url;
-
-                    return View("SetEvent");
-                }
-                catch (Exception ex)
-                {
-                    ViewData["UploadMessage"] = "上傳失敗:" + ex.ToString();
-                    return View("CloudinaryUploadResult");
-                }
-            }
-
-
-        }
-
-
-
-
-
         public IActionResult Index()
         {
             return View();
