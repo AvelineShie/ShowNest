@@ -343,6 +343,7 @@ public partial class DatabaseContext : DbContext
                 .HasComment("新增時間")
                 .HasColumnType("datetime");
             entity.Property(e => e.EcpayTradeNo)
+                .IsRequired()
                 .HasMaxLength(50)
                 .HasComment("");
             entity.Property(e => e.EditedAt)
@@ -352,21 +353,13 @@ public partial class DatabaseContext : DbContext
             entity.Property(e => e.IsDisplayed).HasComment("0不顯示參加活動1顯示");
             entity.Property(e => e.ParticipantPeople).HasComment("報名人資料JSON");
             entity.Property(e => e.PaymentType).HasComment("0免費1信用卡");
-            entity.Property(e => e.SeatNumber)
-                .HasMaxLength(50)
-                .HasComment("座位號碼ex3排13號");
             entity.Property(e => e.Status).HasComment("0待付款1成功2付款失敗3取消");
-            entity.Property(e => e.TicketId).HasComment("票券ID");
             entity.Property(e => e.UserId).HasComment("使用者ID");
 
-            entity.HasOne(d => d.EcpayTradeNoNavigation).WithMany(p => p.Orders)
-                .HasForeignKey(d => d.EcpayTradeNo)
-                .HasConstraintName("FK_Orders_EcpayOrders1");
-
-            entity.HasOne(d => d.User).WithMany(p => p.Orders)
-                .HasForeignKey(d => d.UserId)
+            entity.HasOne(d => d.Event).WithMany(p => p.Orders)
+                .HasForeignKey(d => d.EventId)
                 .OnDelete(DeleteBehavior.ClientSetNull)
-                .HasConstraintName("FK_Orders_Users1");
+                .HasConstraintName("FK_Orders_Events");
         });
 
         modelBuilder.Entity<OrgFan>(entity =>

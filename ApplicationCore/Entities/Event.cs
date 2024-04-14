@@ -142,6 +142,8 @@ public partial class Event
 
     public virtual ICollection<EventAndTagMapping> EventAndTagMappings { get; set; } = new List<EventAndTagMapping>();
 
+    public virtual ICollection<Order> Orders { get; set; } = new List<Order>();
+
     public virtual Organization Organization { get; set; }
 
     public virtual ICollection<TicketType> TicketTypes { get; set; } = new List<TicketType>();

@@ -74,8 +74,6 @@ public partial class User
 
     public virtual LogInInfo LogInInfo { get; set; }
 
-    public virtual ICollection<Order> Orders { get; set; } = new List<Order>();
-
     public virtual ICollection<OrgFan> OrgFans { get; set; } = new List<OrgFan>();
 
     public virtual ICollection<OrganizationAndUserMapping> OrganizationAndUserMappings { get; set; } = new List<OrganizationAndUserMapping>();

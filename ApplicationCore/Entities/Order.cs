@@ -19,16 +19,6 @@ public partial class Order
     public int UserId { get; set; }
 
     /// <summary>
-    /// 票券ID
-    /// </summary>
-    public int TicketId { get; set; }
-
-    /// <summary>
-    /// 座位號碼ex3排13號
-    /// </summary>
-    public string SeatNumber { get; set; }
-
-    /// <summary>
     /// 0免費1信用卡
     /// </summary>
     public byte PaymentType { get; set; }
@@ -70,11 +60,11 @@ public partial class Order
 
     public string EcpayTradeNo { get; set; }
 
+    public int EventId { get; set; }
+
     public virtual ArchiveOrder ArchiveOrder { get; set; }
 
-    public virtual EcpayOrder EcpayTradeNoNavigation { get; set; }
+    public virtual Event Event { get; set; }
 
     public virtual ICollection<Ticket> Tickets { get; set; } = new List<Ticket>();
-
-    public virtual User User { get; set; }
 }
