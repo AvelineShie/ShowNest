@@ -9,6 +9,7 @@ using System.Reflection;
 using System.Security.Cryptography;
 using System.Text;
 using System.Web;
+using ApplicationCore.Entities;
 
 
 namespace Infrastructure.Services
@@ -38,9 +39,9 @@ namespace Infrastructure.Services
             var eventName = order.Event.Name;
             var website = "http://localhost:5171";
 
-            var ecpayOrder = new Dictionary<string, string>
+            //綠界需要的參數
+            var ecpayData = new Dictionary<string, string>
             {
-                //綠界需要的參數
                 {"MerchantTradeNo", tradeNo},
                 {"MerchantTradeDate", DateTime.Now.ToString("yyyy/MM/dd HH:mm:ss")},
                 {"TotalAmount", $"{totalAmount}"},
@@ -61,10 +62,25 @@ namespace Infrastructure.Services
                 {"ChoosePayment", "ALL"},
                 {"EncryptType", "1"},
             };
+            ecpayData.Add("CheckMacValue", await GetCheckMacValue(ecpayData).ConfigureAwait(false));
 
-            ecpayOrder.Add("CheckMacValue", await GetCheckMacValue(ecpayOrder));
+            var ecpayOrder = new EcpayOrder();
+            ecpayOrder.MemberId = ecpayData["MerchantID"];
+            ecpayOrder.MerchantTradeNo = ecpayData["MerchantTradeNo"];
+            ecpayOrder.RtnCode = 0; //未付款
+            ecpayOrder.RtnMsg = "訂單成功尚未付款";
+            ecpayOrder.TradeNo = ecpayData["MerchantTradeNo"];
+            ecpayOrder.TradeAmt = Convert.ToInt32(totalAmount);
+            ecpayOrder.PaymentDate = Convert.ToDateTime(ecpayData["MerchantTradeDate"]);
+            ecpayOrder.PaymentType = ecpayData["PaymentType"];
+            ecpayOrder.PaymentTypeChargeFee = "0";
+            ecpayOrder.TradeDate = ecpayData["MerchantTradeDate"];
+            ecpayOrder.SimulatePaid = 0;
 
-            return ecpayOrder;
+            _context.EcpayOrders.Add(ecpayOrder);
+            await _context.SaveChangesAsync();
+
+            return ecpayData;
         }
 
         public async Task<Dictionary<string, string>> GenerateOrderAsync(string customerOrderId)
