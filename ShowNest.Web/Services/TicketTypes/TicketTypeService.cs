@@ -39,6 +39,7 @@ public class TicketTypeService : ITicketTypeService
         {
             EventDetail = new EventDetailViewModel()
             {
+                EventId = eventDetails.Id,
                 MainImage = eventDetails.EventImage,
                 EventName = eventDetails.Name,
                 StartTime = eventDetails.StartTime,

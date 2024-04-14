@@ -79,7 +79,8 @@ createApp({
                 },
                 body: JSON.stringify({
                     Tickets: this.data.tickets,
-                    ContactInformation: this.contactInformation
+                    ContactInformation: this.contactInformation,
+                    EventId: this.data.eventDetail.eventId
                 })
             });
             const result = await response.json();
