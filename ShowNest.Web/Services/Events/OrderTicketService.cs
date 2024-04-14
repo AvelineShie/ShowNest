@@ -17,6 +17,7 @@ namespace ShowNest.Web.Services.Events
     public class OrderTicketService
     {
         private readonly IOrderQueryService _orderQueryService;
+        private readonly IEcpayOrderService _ecpayOrderServcie;
         private readonly int _userId;
         private readonly IRepository<Order> _orderRepo;
         private readonly IRepository<ArchiveOrder> _archiveOrderRepo;
@@ -24,12 +25,14 @@ namespace ShowNest.Web.Services.Events
         private readonly DatabaseContext _dbContext;
 
         public OrderTicketService(IOrderQueryService orderQueryService,
+            IEcpayOrderService ecpayOrderService,
             IRepository<Order> orderRepo,
             IRepository<ArchiveOrder> archiveOrderRepo,
             IRepository<Ticket> ticket,
             DatabaseContext dbContext)
         {
             _orderQueryService = orderQueryService;
+            _ecpayOrderServcie = ecpayOrderService;
 
             //_userId = httpContextAccessor.HttpContext?.User?.Identity?.Name ?? string.Empty;
             //_userId = 1;
@@ -178,6 +181,7 @@ namespace ShowNest.Web.Services.Events
                 ContactPerson = JsonConvert.SerializeObject(request.ContactInformation),
                 IsDisplayed = false,
                 CreatedAt = DateTime.UtcNow,
+                EcpayTradeNo = _ecpayOrderServcie.GenerateOrderIdAsync()
             };
             _dbContext.Orders.Add(order);
             _dbContext.SaveChanges();
