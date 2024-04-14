@@ -71,9 +71,18 @@ createApp({
         getData(key) {
             return JSON.parse(sessionStorage.getItem(key));
         },
-        onConfirmationClicked() {
-            console.log(this.data)
-            console.log(this.contactInformation)
+        async onConfirmationClicked() {
+            const response = await fetch('/api/Orders/CreateOrder', {
+                method: 'POST',
+                headers: {
+                    "content-type": "application/json"
+                },
+                body: JSON.stringify({
+                    Tickets: this.data.tickets,
+                    ContactInformation: this.contactInformation
+                })
+            });
+            console.log(response)
         }
     },
     computed: {
