@@ -352,11 +352,7 @@ public partial class DatabaseContext : DbContext
             entity.Property(e => e.IsDisplayed).HasComment("0不顯示參加活動1顯示");
             entity.Property(e => e.ParticipantPeople).HasComment("報名人資料JSON");
             entity.Property(e => e.PaymentType).HasComment("0免費1信用卡");
-            entity.Property(e => e.SeatNumber)
-                .HasMaxLength(50)
-                .HasComment("座位號碼ex3排13號");
             entity.Property(e => e.Status).HasComment("0待付款1成功2付款失敗3取消");
-            entity.Property(e => e.TicketId).HasComment("票券ID");
             entity.Property(e => e.UserId).HasComment("使用者ID");
 
             entity.HasOne(d => d.EcpayTradeNoNavigation).WithMany(p => p.Orders)
