@@ -21,8 +21,7 @@ createApp({
 
                 if (this.remainTime > 0) {
                     this.remainTime--;
-                }
-                else {
+                } else {
                     clearInterval();
                 }
 
@@ -37,7 +36,7 @@ createApp({
     },
     mounted() {
         let expireTime = this.getExpireTime();
-        let setTimer = 900;
+        let setTimer = 600000;
         if (!expireTime) {
             expireTime = new Date().getTime() + setTimer * 1000;
 
@@ -46,7 +45,7 @@ createApp({
 
         const remainTimeMs = expireTime - new Date().getTime();
 
-        if (remainTimeMs <= 0 ) {
+        if (remainTimeMs <= 0) {
             window.alert('付款時間已截止，請重新購票');
             window.location.href = 'TicketTypeSelection';
             $cookies.remove('expireTimeOnPayment');
@@ -56,3 +55,64 @@ createApp({
         }
     },
 }).mount('#counterOnPayment')
+
+createApp({
+    data() {
+        return {
+            data: {},
+        }
+    },
+    methods: {
+        getData(key) {
+            return JSON.parse(sessionStorage.getItem(key));
+        },
+        async onCheckoutClicked() {
+            const params = new URLSearchParams(window.location.search);
+            const orderId = params.get("orderId");
+
+            const response = await fetch('/api/Ecpay/GetEcpayOrderInfo', {
+                method: 'POST',
+                headers: {
+                    "content-type": "application/json"
+                },
+                body: JSON.stringify({
+                    orderId: +orderId
+                })
+            });
+            const ecpayOrder = await response.json();
+            console.log(ecpayOrder);
+
+            const form = document.createElement('form');
+            form.method = 'POST';
+            form.action = 'https://payment-stage.ecpay.com.tw/Cashier/AioCheckOut/V5';
+
+            for (const key in ecpayOrder) {
+                if (ecpayOrder.hasOwnProperty(key)) {
+                    const hiddenField = document.createElement('input');
+                    hiddenField.type = 'hidden';
+                    hiddenField.name = key;
+                    hiddenField.value = ecpayOrder[key];
+
+                    form.appendChild(hiddenField);
+                }
+            }
+
+            document.body.appendChild(form);
+            form.submit();
+        },
+    },
+    computed: {
+        totalPrice() {
+            if (!this.data.tickets)
+                return 0;
+
+            return this.data.tickets.reduce((total, ticket) => total + ticket.price, 0);
+        }
+    },
+    mounted() {
+        // Load data
+        const params = new URLSearchParams(window.location.search);
+        const flowId = params.get("flowId");
+        this.data = this.getData(flowId);
+    }
+}).mount('#paymentInfo')

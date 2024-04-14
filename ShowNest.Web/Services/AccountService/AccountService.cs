@@ -244,8 +244,8 @@ namespace ShowNest.Web.Services.AccountService
                     Status = user.Status,
                     CreatedAt = user.CreatedAt,
                     EditedAt = user.EditedAt,
-                 //   SelectedAreas = user.PreferredActivityAreas.Select(p => p.Area.Name)
-                  
+                    SelectedAreas = user.PreferredActivityAreas.Select(p => p.AreaId).ToList()
+
                 };
 
                 return (true, userAccountViewModel, null);

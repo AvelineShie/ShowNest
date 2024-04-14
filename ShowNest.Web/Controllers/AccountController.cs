@@ -134,6 +134,12 @@ namespace ShowNest.Web.Controllers
                 // 從Claim中取得使用者的ID並轉換為整數
                 var userId = int.Parse(userIdClaim.Value);
 
+                // 從表單提交的資料中提取出所有選中的區域ID
+                var selectedAreaIds = Request.Form["SelectedAreaIds"].ToString().Split(',').Select(int.Parse).ToList();
+
+                // 將selectedAreaIds賦值給model的SelectedAreas屬性
+                model.SelectedAreas = selectedAreaIds;
+
                 // 使用Service來更新使用者資料
                 var result = await _accountService.UpdateUserAccountByIdAsync(userId, model);
                 if (result.IsSuccess)
@@ -148,12 +154,6 @@ namespace ShowNest.Web.Controllers
             }
 
             return View(model);
-        }
-
-
-        public IActionResult Prefills()
-        {
-            return View();
         }
         //修改密碼
         [HttpGet]

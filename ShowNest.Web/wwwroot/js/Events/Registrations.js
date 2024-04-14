@@ -21,11 +21,10 @@ createApp({
 
                 if (this.remainTime > 0) {
                     this.remainTime--;
-                }
-                else {
+                } else {
                     clearInterval();
                 }
-                
+
             }, 1000);
         },
         setExpireTime(timesUp) {
@@ -37,7 +36,7 @@ createApp({
     },
     mounted() {
         let expireTime = this.getExpireTime();
-        let setTimer = 900;
+        let setTimer = 600000;
         if (!expireTime) {
             expireTime = new Date().getTime() + setTimer * 1000;
 
@@ -45,8 +44,8 @@ createApp({
         }
 
         const remainTimeMs = expireTime - new Date().getTime();
-        
-        if (remainTimeMs <= 0 ) {
+
+        if (remainTimeMs <= 0) {
             window.alert('填寫時間已截止，請重新購票');
             window.location.href = 'TicketTypeSelection';
             $cookies.remove('expireTimeOnRegistration');
@@ -56,3 +55,54 @@ createApp({
         }
     },
 }).mount('#countdownOnRegistration')
+
+createApp({
+    data() {
+        return {
+            data: {},
+            contactInformation: {
+                name: undefined,
+                email: undefined,
+                phone: undefined
+            }
+        }
+    },
+    methods: {
+        getData(key) {
+            return JSON.parse(sessionStorage.getItem(key));
+        },
+        async onConfirmationClicked() {
+            const response = await fetch('/api/Orders/CreateOrder', {
+                method: 'POST',
+                headers: {
+                    "content-type": "application/json"
+                },
+                body: JSON.stringify({
+                    Tickets: this.data.tickets,
+                    ContactInformation: this.contactInformation,
+                    EventId: this.data.eventDetail.eventId
+                })
+            });
+            const result = await response.json();
+            
+            const params = new URLSearchParams(window.location.search);
+            params.append("orderId", result.orderId);
+            const redirectUrl = `/events/paymentInfo?${params.toString()}`
+            window.location = redirectUrl;
+        }
+    },
+    computed: {
+        totalPrice() {
+            if (!this.data.tickets)
+                return 0;
+
+            return this.data.tickets.reduce((total, ticket) => total + ticket.price, 0);
+        }
+    },
+    mounted() {
+        // Load data
+        const params = new URLSearchParams(window.location.search);
+        const flowId = params.get("flowId");
+        this.data = this.getData(flowId);
+    }
+}).mount('#registrations')
