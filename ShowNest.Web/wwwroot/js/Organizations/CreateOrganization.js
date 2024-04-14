@@ -44,7 +44,7 @@ createApp({
         }
     },
     methods: {
-        createOrganization() {
+        submit() {
             console.log('createOrganization')
             axios.post('/api/CreateOrganization/CreateOrganization', {
                 name: this.name,
