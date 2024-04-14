@@ -122,10 +122,20 @@ namespace ShowNest.Web.Controllers
         [HttpPost]
         public async Task<IActionResult> UserEdit(UserAccountViewModel model)
         {
+            // 從表單提交的資料中提取出所有選中的區域ID
+            var selectedAreaIdsString = Request.Form["SelectedAreaIds"].ToString();
+            var selectedAreaIds = string.IsNullOrEmpty(selectedAreaIdsString)
+                ? new List<int>()
+                : selectedAreaIdsString.Split(',').Select(int.Parse).ToList();
+
+            // 將selectedAreaIds賦值給model的SelectedAreas屬性
+            model.SelectedAreas = selectedAreaIds;
+
             if (ModelState.IsValid)
             {
                 // 從HttpContext中獲取當前使用者的ID
                 var userIdClaim = User.Claims.FirstOrDefault(c => c.Type == ClaimTypes.NameIdentifier);
+
                 if (userIdClaim == null)
                 {
                     return RedirectToAction("LogIn"); // 如果用戶未登入，則重定向到登入頁面
@@ -134,13 +144,7 @@ namespace ShowNest.Web.Controllers
                 // 從Claim中取得使用者的ID並轉換為整數
                 var userId = int.Parse(userIdClaim.Value);
 
-                // 從表單提交的資料中提取出所有選中的區域ID
-                var selectedAreaIds = Request.Form["SelectedAreaIds"].ToString().Split(',').Select(int.Parse).ToList();
-
-                // 將selectedAreaIds賦值給model的SelectedAreas屬性
-                model.SelectedAreas = selectedAreaIds;
-
-                // 使用Service來更新使用者資料
+                // 使用Service來更新使用者資料，包含偏好設定
                 var result = await _accountService.UpdateUserAccountByIdAsync(userId, model);
                 if (result.IsSuccess)
                 {
@@ -187,6 +191,11 @@ namespace ShowNest.Web.Controllers
             // 如果模型無效，則返回視圖以顯示錯誤訊息
             return View(model);
         }
+        public IActionResult Prefills()
+        {
+            return View();
+        }
+        
         public IActionResult Identities()
         {
             return View();

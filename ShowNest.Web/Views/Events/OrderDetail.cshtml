@@ -57,7 +57,7 @@
 
             <div class="event_details">
                 <div class="order_number ">
-                    <h2>訂單編號 : #{{OrderId}}</h2>
+                    <h2>訂單編號 : #{{EcpayTradeNo}}</h2>
                 </div>
                 <div class="collapse_group">
                     <p class="d-inline-flex gap-1">
@@ -318,14 +318,14 @@
 
 
         </div>
-        <form id="form" name="form" method="POST" action="https://payment-stage.ecpay.com.tw/Cashier/AioCheckOut/V5" style="display:none;">
+        @* <form id="form" name="form" method="POST" action="https://payment-stage.ecpay.com.tw/Cashier/AioCheckOut/V5" style="display:none;">
             @foreach (var item in Model)
             {
                 <input type="text" name="@item.Key" value="@item.Value" />
                 <br />
             }
             <button type="submit" id="checkoutBtn">送出</button>
-        </form>
+        </form> *@
 
     </section>
 
@@ -353,6 +353,7 @@
 
 
                 OrderId: 0,
+                EcpayTradeNo: "",
                 PaymentType: 0,
                 OrderStatus: 0, //定單狀態 0待付款1成功2付款失敗3取消
                 OrderDate: "", //定單成立日期
@@ -410,6 +411,7 @@
                     //console.log(res.data);
 
                     this.OrderId = res.data.OrderId;
+                    this.EcpayTradeNo = res.data.EcpayTradeNo;
                     this.PaymentType = res.data.PaymentType;
                     this.OrderStatus = res.data.OrderStatus;
                     this.OrderDate = res.data.OrderDate;
