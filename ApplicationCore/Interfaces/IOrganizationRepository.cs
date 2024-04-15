@@ -12,6 +12,8 @@ namespace ApplicationCore.Interfaces
     {
         Organization GetOrgById(int orgId);
         IEnumerable<Event> GetOrgEventsByOrgId(int orgId);
-        Organization CreateOrganization(CreateOrganizationDto request);
+        int CreateOrganization(CreateOrganizationDto request);
+        int UpdateOrganization(CreateOrganizationDto request);
+        CreateOrganizationDto EditOrganizationDataFilling(int orgid);
     }
 }
