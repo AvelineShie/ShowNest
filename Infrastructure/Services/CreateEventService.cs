@@ -8,7 +8,7 @@ using Microsoft.Extensions.DependencyInjection;
 using System.Security.Cryptography;
 using static ApplicationCore.DTOs.CreateEventDto;
 
-namespace ShowNest.Web.Services.Dashboard
+namespace Infrastructure.Services
 {
 
     public class CreateEventService : EfRepository<Organization>
