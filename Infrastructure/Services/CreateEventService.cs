@@ -4,6 +4,7 @@ using ApplicationCore.Interfaces;
 using Azure.Core;
 using Infrastructure.Data;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore.Metadata.Conventions;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
 using Newtonsoft.Json;
@@ -100,31 +101,35 @@ namespace Infrastructure.Services
                     DbContext.SaveChanges();
 
                     //活動標籤
-                    //活動與tag關係的表:EventAndTagMapping
                     var eventTags = new EventAndTagMapping
                     {
                         EventId = require.EventId,
-                        //CategoryTagId = require.EventCategoryTags.CategoryId,
+                        CategoryTagId = require.CategoryId,
                     };
+
 
                     DbContext.EventAndTagMappings.Add(eventTags);
                     DbContext.SaveChanges();
 
                     //票卷
                     //票種,票區,張數,販售開始時間,結束時間,金額
-                    var ticket = new Ticket
+                    //TicketTypes: 活動與票卷的關係
+                    //TicketType線上是複數啊!!!
+
+                    
+                    var ticketDetail = new TicketType
                     {
+                        EventId = require.EventId,
+                        Name = require.TicketName,
+                        StartSaleTime = require.StartSaleTime,
+                        EndSaleTime = require.EndSaleTime,
+                        Price = require.Prince,
+                        CapacityAmount = require.Amount,
 
                     };
 
-                    //欄位?
-
-
                     //不用丟給活動主頁,那就?
                     return activity;
-
-
-
                     
                 }
                 catch (Exception ex) {

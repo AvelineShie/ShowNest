@@ -38,6 +38,7 @@ namespace ApplicationCore.DTOs
         public bool IsPrivateEvent { get; set; }
         public bool IsFree {  get; set; }
 
+
         public List<ContactPersonVM> ContactPerson { get; set; }
         public class ContactPersonVM
         {
@@ -54,13 +55,7 @@ namespace ApplicationCore.DTOs
             public string Phone { get; set; } //名稱還未定
         }
 
-
-        public List<CategoryTagsViewModel> EventCategoryTags { get; set; }
-        public class CategoryTagsViewModel
-        {
-            public int CategoryId { get; set;}
-            public string CategoryName { get; set; }
-        }
+        public int CategoryId { get; set; }
         
         public int Sort {  get; set; }//這會用到嗎?資料庫排序?但每次只會有一筆進去?
         public bool? IsDeleted { get; set; }
@@ -69,21 +64,18 @@ namespace ApplicationCore.DTOs
 
         //SetTicket
         //票可能會有好幾張不同的資料
-        public List<TicketDetailViewModel> TicketDetail { get; set; }
-        public class TicketDetailViewModel
-        {
+        //public List<TicketDetailViewModel> TicketDetail { get; set; }
+        //public class TicketDetailViewModel
+        //{
             public int TicketTypeId { get; set; }
             public string TicketName { get; set; }
             public string TicketType { get; set; }
             public DateTime StartSaleTime { get; set; }
             public DateTime EndSaleTime { get; set; }
             public int Prince { get; set; }
-            public int Amount { get; set; }
-        }
-
-
-
-        
+            public int Amount { get; set; } //數量
+        //}
+ 
     }
 
     
