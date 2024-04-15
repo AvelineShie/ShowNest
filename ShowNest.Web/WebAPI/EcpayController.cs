@@ -83,7 +83,7 @@ namespace ShowNest.Web.WebAPI
 
         [HttpPost]
         [Route("api/Ecpay/AddPayInfo")]
-        public HttpResponseMessage AddPayInfo(IFormCollection info ,string id)
+        //public HttpResponseMessage AddPayInfo(IFormCollection info, string id);
         public HttpResponseMessage AddPayInfo(IFormCollection info)
         {
             try
