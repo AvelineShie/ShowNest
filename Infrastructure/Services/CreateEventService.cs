@@ -56,13 +56,14 @@ namespace ShowNest.Web.Services.Dashboard
         //    //但不同資料要給不同的資料表,分開?
         //    using (var transcation = DbContext.Database.BeginTransaction())
         //        try
-        //        {       Id = require.EventId,
+        //        {
+        //            Id = require.EventId,
         //                Name = request.Name,
         //                OrganizationId = require.OrgId,
         //                StartTime = require.StartTime,
-        //                EndTime =require.EndTime,
+        //                EndTime = require.EndTime,
         //                Type = require.EventStatus,
-        //                LocationName =require.LocationName,
+        //                LocationName = require.LocationName,
         //                LocationAdress = require.EventAddress,
         //                Longitude = require.Longitude,
         //                Latitude = require.Latitude,
@@ -85,12 +86,25 @@ namespace ShowNest.Web.Services.Dashboard
         //                IsDeleted = false,
         //                CreatedAt = request.CreatedAt,
         //                EditedAt = request.EditedAt
-        //                //糟糕小標籤是不同的資料表,要獨立寫嗎?
 
 
         //        }
         //        catch (Exception ex) { }
-        //} 
+        //}
+
+        //糟糕小標籤是不同的資料表,要獨立寫嗎? 要吧?寫成巢狀的try catch?
+        //Id = request.CategoryId
+        //Name = request.CategoryName
+
+        ////票,票種不同資料表應該要另外寫交易?
+        //Id = request.TicketId
+
+
+        //Id = request.TicketTypeId
+
+
+
+
     };
 };
         //public CreateEventViewModel GetOrgByOwner(int OwnerId)
