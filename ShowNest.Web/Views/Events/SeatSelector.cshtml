@@ -39,7 +39,7 @@
                 <p>TWD${{subtotalTicketsPrice}}</p>
             </div>
             <div class="seats-selection-complete">
-                <a asp-controller="Events" asp-action="Registrations">完成選位</a>
+                <a @@click="onConfirmationClicked">完成選位</a>
             </div>
         </div>
         <div class="selected-tickets">
@@ -138,7 +138,7 @@
                     <p>TWD$3,800</p>
                 </div>
                 <div class="seats-selection-complete">
-                    <a asp-controller="Events" asp-action="Registrations">完成選位</a>
+                    <a @@="onConfirmationClicked">完成選位</a>
                 </div>
             </div>
         </div>

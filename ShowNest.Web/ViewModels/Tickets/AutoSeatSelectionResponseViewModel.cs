@@ -16,4 +16,7 @@ public class AutoSelectedSeatViewModel
     public string SeatNumber { get; set; }
 
     public string TicketTypeName { get; set; }
+
+    public int TicketId { get; set; }
+    public int SeatId { get; set; }
 }

@@ -4,6 +4,7 @@ using Newtonsoft.Json.Linq;
 using ShowNest.Web.Helpers;
 using Microsoft.Extensions.Caching.Memory;
 using ShowNest.ApplicationCore.DTOs;
+using ShowNest.Web.ViewModels.Orders;
 
 
 namespace ShowNest.Web.WebAPI
@@ -14,13 +15,18 @@ namespace ShowNest.Web.WebAPI
         private readonly DatabaseContext _dbContext;
         private readonly IMemoryCache _cache;
         private readonly EcpayHttpHelpers _ecpayHttpHelpers;
-     
-        public EcpayController(DatabaseContext dbContext, EcpayHttpHelpers ecpayHttpHelpers, IMemoryCache cache)
+        private readonly IEcpayOrderService _ecpayOrderService;
+
+        public EcpayController(DatabaseContext dbContext, EcpayHttpHelpers ecpayHttpHelpers, IMemoryCache cache,
+            IEcpayOrderService ecpayOrderService)
         {
             _dbContext = dbContext;
             _ecpayHttpHelpers = ecpayHttpHelpers;
             _cache = cache;
+
+            _ecpayOrderService = ecpayOrderService;
         }
+
         [HttpPost]
         [Route("api/Ecpay/AddOrders")]
         public string AddOrders([FromBody] OrderDto json)
@@ -29,6 +35,7 @@ namespace ShowNest.Web.WebAPI
             {
                 return "Error: json object is null.";
             }
+
             string num = "0";
             try
             {
@@ -46,18 +53,38 @@ namespace ShowNest.Web.WebAPI
                 Orders.SimulatePaid = 0;
                 _dbContext.EcpayOrders.Add(Orders);
                 _dbContext.SaveChanges();
+
+                // 假設您已經知道要更新的訂單的唯一識別碼（例如 Id）
+                int orderId = 1; // 這裡只是示例，您需要根據實際情況提供正確的訂單識別碼
+
+                // 找到該訂單並更新 EcpayTradeNo 欄位
+                var orderToUpdate = _dbContext.Orders.FirstOrDefault(o => o.Id == orderId);
+                if (orderToUpdate != null)
+                {
+                    orderToUpdate.EcpayTradeNo = json.MerchantTradeNo;
+                    _dbContext.SaveChanges();
+                }
+                else
+                {
+                    // 如果找不到訂單，處理錯誤情況
+                    num = "Error: Order not found.";
+                }
+
+
                 num = "OK";
             }
             catch (Exception ex)
             {
                 num = ex.ToString();
             }
+
             return num;
         }
 
         [HttpPost]
         [Route("api/Ecpay/AddPayInfo")]
-        public HttpResponseMessage AddPayInfo(IFormCollection  info)
+        //public HttpResponseMessage AddPayInfo(IFormCollection info, string id);
+        public HttpResponseMessage AddPayInfo(IFormCollection info)
         {
             try
             {
@@ -68,7 +95,15 @@ namespace ShowNest.Web.WebAPI
             {
                 return _ecpayHttpHelpers.ResponseError();
             }
+        }
 
+        [HttpPost]
+        [Route("api/Ecpay/GetEcpayOrderInfo")]
+        public async Task<IActionResult> GetEcpayOrderInfo(CreateEcpayOrderRequest request)
+        {
+            var result = await _ecpayOrderService.GenerateEcpayOrderAsync(request.OrderId);
+
+            return Ok(result);
         }
     }
 }

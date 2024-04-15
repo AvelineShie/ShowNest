@@ -21,7 +21,7 @@
 	<div id="event-search" class="width d-flex">
 		<div id="event-search-search-div" class="d-flex align-items-center">
 			<i class="fa-solid fa-magnifying-glass" id="header-nav-magnifier-icon"></i>
-			<input type="text" id="event-search-search-input" placeholder="搜索一場精彩活動">
+			<input type="text" id="event-search-search-input" placeholder="搜索一場精彩活動" value="">
 		</div>
 		<div id="event-search-filter">
 			<div id="filter-fee-wrap" class="d-inline-block align-items-center dropdown btn-group">
@@ -83,6 +83,21 @@
 <section>
 	<div class="cards-wrap width">
 		<div class="cards">
+			@* @if (Model != null && Model.EventEventCards.Any())
+			{
+				foreach (var srarcheventCard in Model.EventEventCards)
+				{
+					@await Html.PartialAsync("~/PartialViews/_EventCards_Partial.cshtml", srarcheventCard)
+				}
+			}
+			else
+			{
+				<p>没有找到匹配的事件。</p>
+			} *@
+
+
+
+
 			@* @foreach (var card in Model.EventEventCards)
 			{
 				@await Html.PartialAsync("~/PartialViews/_EventCards_Partial.cshtml", card)

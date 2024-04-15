@@ -13,9 +13,10 @@
     <div class="wrap" id="app">
         <v-app>
             <v-container>
-                <v-form @@下一步.prevent>
                     <v-stepper prev-text="上一步"
-                               next-text="下一步" 
+                               next-text="下一步"
+                               editable
+                               hide-actions
                                :items="['建立活動', '設定資料', '設定票種', '設定表單']"
                                v-model="stepButton">
                         @* 第一頁 *@
@@ -34,7 +35,8 @@
                                                   :items="organizations" 
                                                   density="compact"
                                                   label="選擇一個組織"
-                                                  variant="outlined"></v-select>
+                                                  variant="outlined">
+                                        </v-select>
 
                                         <!-- Hide the organizations while not selected below -->
                                         <div v-show="displaySelectActivityType">
@@ -105,7 +107,7 @@
                                             </div>
 
                                             <!-- 網址 -->
-                                            <div class="section">
+                                            @* <div class="section">
                                                 <h4 class="essential-input">網址</h4>
                                                 <div class="input-group mb-3 h-50 w-75" id="basic-url">
                                                     <span class="input-group-text " id="basic-addon3">https://bs-test.shownest.cc/events/</span>
@@ -114,13 +116,13 @@
                                                         請輸入3 到 16 個小寫英文或數字。
                                                     </div>
                                                     <span class="OK">
-                                                        @* <i class="fa-solid fa-circle-check"></i> 可以使用 *@
+                                                        @* <i class="fa-solid fa-circle-check"></i> 可以使用 
                                                     </span>
                                                 </div>
-                                                @*                         <span class="note">
+                                                                        <span class="note">
                                                 請輸入3 到 16 個小寫英文或數字。
-                                                </span> *@
-                                            </div>
+                                                </span>
+                                            </div> *@
 
                                             <!-- 活動時間 -->
                                             <div class="section">
@@ -367,45 +369,27 @@
                                             </tbody>
                                         </table>
                                         <div class="changeTicketSection">
-                                            @* <div class="section">
-                                            <div class="mb-3">
-                                            <h4 class="sectionTitle">票種名稱</h4>
-                                            <input type="text" class="form-control h-50" id="formGroupExampleInput" placeholder=" ">
-                                            </div>
-                                            </div>
-                                            <div class="section">
-                                            <div class="mb-3">
-                                            <h4 class="sectionTitle">價格</h4>
-                                            <input type="text" class="form-control h-50" id="formGroupExampleInput" placeholder=" ">
-                                            </div>
-                                            </div> *@
+                                            
 
-                                            @* =====Step1: 選擇票種跟價格, 數量, 販售時間====== *@
+                                            @* ===== 選擇票種 ====== *@
                                             <div class="TicketTypeRow">
                                                 <div class="col-3">
                                                     <h3>票種選項</h3>
-                                                    <draggable class="list-group" :list="list1" group="people" @@change="log">
-                                                        <div class="list-group-item"
-                                                             v-for="(element, index) in list1"
-                                                             :key="element.name">
-                                                            {{ element.name }} {{ index }}
-                                                        </div>
+                                                    <draggable class="TicketTypeList" :list="TicketTypeList" @@change="log" itemKey="name">
+                                                        <template #item="{ element, index }">
+                                                            <div class="list-group-item">{{ element.name }} {{ index }}</div>
+                                                        </template>
                                                     </draggable>
                                                 </div>
 
                                                 <div class="col-3">
                                                     <h3>欲選擇的票種</h3>
-                                                    <draggable class="list-group" :list="list2" group="people" @@change="log">
-                                                        <div class="list-group-item"
-                                                             v-for="(element, index) in list2"
-                                                             :key="element.name">
-                                                            {{ element.name }} {{ index }}
-                                                        </div>
+                                                    <draggable class="selectedTicketTypeList" :list="selectedTicketTypeList" @@change="log" itemKey="name">
+                                                        <template #item="{ element, index }">
+                                                            <div class="list-group-item">{{ element.name }} {{ index }}</div>
+                                                        </template>
                                                     </draggable>
                                                 </div>
-
-                                                <rawDisplayer class="col-3" :value="list1" title="票種選項" />
-                                                <rawDisplayer class="col-3" :value="list2" title="欲選擇的票種" />
                                             </div>
 
                                             <div class="section">
@@ -421,38 +405,26 @@
                                                 <div class="space">至</div>
                                                 <input type="datetime-local" class="date-time">
                                             </div>
-                                            <div class="section">
-                                                <button type="button" class="btn btn-outline-secondary btn-sm" id="submit">儲存</button>
-                                                <button type="button" class="btn btn-outline-secondary btn-sm" id="cancel">取消</button>
-                                            </div>
 
-                                            @*  =====票區選項======
-                                            Step2: 上面按下儲存後,隱藏欄位,並顯示票區選項 *@
+                                            @*  =====票區選項====== *@
                                             <div class="TicketAreaRow">
                                                 <div class="col-3">
                                                     <h3>票區選項</h3>
-                                                    <draggable class="list-group" :list="list1" group="people" @@change="log">
-                                                        <div class="list-group-item"
-                                                                v-for="(element, index) in list1"
-                                                                :key="element.name">
-                                                            {{ element.name }} {{ index }}
-                                                        </div>
+                                                    <draggable class="ticketAreaList" :list="ticketAreaList" @@change="log" itemKey="name">
+                                                        <template #item="{ element, index }">
+                                                            <div class="list-group-item">{{ element.name }} {{ index }}</div>
+                                                        </template>
                                                     </draggable>
                                                 </div>
 
                                                 <div class="col-3">
                                                     <h3>欲選擇的票區</h3>
-                                                    <draggable class="list-group" :list="list2" group="people" @@change="log">
-                                                        <div class="list-group-item"
-                                                                v-for="(element, index) in list2"
-                                                                :key="element.name">
-                                                            {{ element.name }} {{ index }}
-                                                        </div>
+                                                    <draggable class="selectedTicketAreaList" :list="selectedTicketAreaList" @@change="log" itemKey="name">
+                                                        <template #item="{ element, index }">
+                                                            <div class="list-group-item">{{ element.name }} {{ index }}</div>
+                                                        </template>
                                                     </draggable>
                                                 </div>
-
-                                                <rawDisplayer class="col-3" :value="list1" title="票種選項" />
-                                                <rawDisplayer class="col-3" :value="list2" title="欲選擇的票種" />
                                             </div>
                                             <div class="section">
                                                 <button type="button" class="btn btn-outline-secondary btn-sm" id="submit">儲存</button>
@@ -517,11 +489,11 @@
                                                     </li>
                                                     <li class="list-group-item">
                                                         <input class="form-check-input me-1" type="checkbox" value="" aria-label="...">
-                                                        身分證字號
-                                                    </li>
-                                                    <li class="list-group-item">
-                                                        <input class="form-check-input me-1" type="checkbox" value="" aria-label="...">
                                                         手機
+                                                    </li>
+                                                    @* <li class="list-group-item">
+                                                        <input class="form-check-input me-1" type="checkbox" value="" aria-label="...">
+                                                        身分證字號
                                                     </li>
                                                     <li class="list-group-item">
                                                         <input class="form-check-input me-1" type="checkbox" value="" aria-label="...">
@@ -534,7 +506,7 @@
                                                     <li class="list-group-item">
                                                         <input class="form-check-input me-1" type="checkbox" value="" aria-label="...">
                                                         地址
-                                                    </li>
+                                                    </li> *@
                                                 </ul>
                                                 <!-- 欄位選項 -->
                                                 <table class="contactInformationForm">
@@ -560,14 +532,14 @@
                                                         </tr>
                                                         <tr>
                                                             <th scope="row"></th>
-                                                            <td>身分證字號<span>身分證字號</span></td>
-                                                            <td><input class="form-check-input me-1" type="checkbox" value="身分證字號" aria-label="..."></td>
-                                                            <td><button class="delete"><i class="fa-solid fa-x"></i></button></td>
-                                                        </tr>
-                                                        <tr>
-                                                            <th scope="row"></th>
                                                             <td>手機<span>單行文字</span></td>
                                                             <td><input class="form-check-input me-1" type="checkbox" value="手機" aria-label="..."></td>
+                                                            <td><button class="delete"><i class="fa-solid fa-x"></i></button></td>
+                                                        </tr>
+                                                        @* <tr>
+                                                            <th scope="row"></th>
+                                                            <td>身分證字號<span>身分證字號</span></td>
+                                                            <td><input class="form-check-input me-1" type="checkbox" value="身分證字號" aria-label="..."></td>
                                                             <td><button class="delete"><i class="fa-solid fa-x"></i></button></td>
                                                         </tr>
                                                         <tr>
@@ -587,7 +559,7 @@
                                                             <td>地址<span>單行文字</span></td>
                                                             <td><input class="form-check-input me-1" type="checkbox" value="" aria-label="..."></td>
                                                             <td><button class="delete"><i class="fa-solid fa-x"></i></button></td>
-                                                        </tr>
+                                                        </tr> *@
 
                                                     </tbody>
                                                 </table>
@@ -723,12 +695,15 @@
                             </div>
                         </template>
                     </v-stepper>
-                </v-form>
             </v-container>
         </v-app>
     </div>
 
     @section Scripts {
+        <!-- 引入 Vue 3 -->
+        <script src="https://cdn.jsdelivr.net/npm/sortablejs@1.10.2/Sortable.min.js"></script>
+        <!-- 引入 vue3-draggable -->
+        <script src="https://www.unpkg.com/vuedraggable@4.1.0/dist/vuedraggable.umd.js"></script>
         <script src="~/lib/vuetify/vuetify.min.js"></script>
         <script  src="/js/Dashboard/CreateEventTest.js" asp-append-version="true"></script>
     }

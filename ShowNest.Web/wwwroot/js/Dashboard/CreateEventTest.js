@@ -20,29 +20,57 @@ const options = {
 
             //SetEvent
             el: 2,
-            OrganizationName: {},
-            EventName: {},
-            WebsiteLink: {},
-            StartTime: {},
-            EndTime: {},
-            NoEndTime: false, //就關閉Endtime
-            MainOrganizer: {},
-            CoOrganizer: {},
-            Attendance: {}, //活動人數
-            UmlimitAttendance: false, //不限人數
-            EventStatus: {},
-            StreamingName: {},//所選串流平台
-            LocationName: {},
-            EventAddress: {},
-            EventIntroduction: {},
-            EventDescription: {},
-            EventImage: {},
-            IsPrivateEvent: [0, 1],
-            EventType: [],
+            //OrganizationName: {},
+            //EventName: {},
+            //WebsiteLink: {},
+            //StartTime: {},
+            //EndTime: {},
+            //NoEndTime: false, //就關閉Endtime
+            //MainOrganizer: {},
+            //CoOrganizer: {},
+            //Attendance: {}, //活動人數
+            //UmlimitAttendance: false, //不限人數
+            //EventStatus: {},
+            //StreamingName: {},//所選串流平台
+            //LocationName: {},
+            //EventAddress: {},
+            //EventIntroduction: {},
+            //EventDescription: {},
+            //EventImage: {},
+            //IsPrivateEvent: [0, 1],
+            //EventType: [],
 
 
 
             //SetTicket
+            //選票種
+            TicketTypeList: [
+                { id:1, name:"全票" }
+            ],
+            selectedTicketType: [],
+
+            //選票區
+            TicketAreaList:
+            [
+                { id: 1, name: "特1A" },
+                { id: 2, name: "特1B" },
+                { id: 3, name: "2A區" },
+                { id: 4, name: "2B區" },
+                { id: 5, name: "2C區" },
+                { id: 6, name: "2D區" },
+                { id: 7, name: "2E區" },
+                { id: 8, name: "2F區" },
+                { id: 9, name: "2G區" },
+                { id: 10, name: "3A區" },
+                { id: 11, name: "3B區" },
+                { id: 12, name: "3C區" },
+                { id: 13, name: "3D區" },
+                { id: 14, name: "3E區" },
+                { id: 15, name: "3F區" },
+                { id: 16, name: "3G區" }
+            ],
+            selectedTicketAreaList: [],
+
 
 
             //SetTable
@@ -55,7 +83,7 @@ const options = {
     },
     methods: {
         getOrganizationsById() {
-            fetch('/api/Events/GetOrganizationsById',
+            fetch('/api/CreateEvent/GetOrganizationsById',
                 {
                     method: 'POST', // 設定請求方法為 POST
                     headers: { 'Content-Type': 'application/json' }, // 設定內容類型為 JSON
@@ -82,6 +110,7 @@ const options = {
             console.log(this.selectedOrganization)
         },
         
+        
 
     },
     watch: {
@@ -94,31 +123,32 @@ const options = {
             immediate: false,
             deep: true
         },
-        'selectedActivityType': {
-            handler: function (val) {
-                if (val === "既有的活動") {
-                    this.displayExistingActivities = true
-                    this.getEventsByOrganizationId()
-                }
-            }
-        },
-        'checkbox': {
-            handler: function (newVal) {
-                // 透過 newVal, prevVal 取得監聽前後變數的值
-                if (newVal == preVal) {
-                    this.stepButton = false;
-                    this.checkboxErrorMsg = "請勾選同意後進行!";
-                }
-                else {
-                    this.stepButton = true;
-                    this.checkboxErrorMsg = "";
-                }
-            },
-            immediate: false
-        },
+        //'selectedActivityType': {
+        //    handler: function (val) {
+        //        if (val === "既有的活動") {
+        //            this.displayExistingActivities = true
+        //            this.getEventsByOrganizationId()
+        //        }
+        //    }
+        //},
+        //'checkbox': {
+        //    handler: function (newVal) {
+        //        // 透過 newVal, prevVal 取得監聽前後變數的值
+        //        if (newVal == preVal) {
+        //            this.stepButton = false;
+        //            this.checkboxErrorMsg = "請勾選同意後進行!";
+        //        }
+        //        else {
+        //            this.stepButton = true;
+        //            this.checkboxErrorMsg = "";
+        //        }
+        //    },
+        //    immediate: false
+        //},
     }
 }
 const app = createApp(options); // 創建一個 Vue 應用實例，使用 options 作為配置選項
+app.component('draggable', vuedraggable);
 app.use(vuetify).mount('#app');
 
 
@@ -229,19 +259,19 @@ app.use(vuetify).mount('#app');
 
 
 /*=============google map ==============*/
-const { GoogleMap, Marker } = Vue3GoogleMap
+//const { GoogleMap, Marker } = Vue3GoogleMap
 
-const map = createApp({
-  setup() {
-    const center = { lat: 40.689247, lng: -74.044502 };
+//const map = createApp({
+//  setup() {
+//    const center = { lat: 40.689247, lng: -74.044502 };
 
-    return {
-      center
-    }
-  }
-})
+//    return {
+//      center
+//    }
+//  }
+//})
 
-map.component('GoogleMap', GoogleMap)
-map.component('GoogleMapMarker', Marker)
+//map.component('GoogleMap', GoogleMap)
+//map.component('GoogleMapMarker', Marker)
 
-map.mount('#app')
+//map.mount('#app')

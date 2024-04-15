@@ -2,6 +2,7 @@
 using Infrastructure.Services;
 using Microsoft.AspNetCore.Mvc;
 using System.Security.Claims;
+using ShowNest.Web.ViewModels.Orders;
 using static Infrastructure.Services.OrderAPIService;
 
 
@@ -15,8 +16,8 @@ namespace ShowNest.Web.WebAPI
         private readonly IHttpContextAccessor _httpContextAccessor;
         private readonly OrderTicketService _orderTicketService;
 
-
-        public OrdersController(IOrderQueryService orderAPIService, IHttpContextAccessor httpContextAccessor, OrderTicketService orderTicketService)
+        public OrdersController(IOrderQueryService orderAPIService, IHttpContextAccessor httpContextAccessor,
+            OrderTicketService orderTicketService)
         {
             _orderAPIService = orderAPIService;
             _httpContextAccessor = httpContextAccessor;
@@ -28,7 +29,7 @@ namespace ShowNest.Web.WebAPI
         {
             string userId = "2";
             //var userId = _httpContextAccessor.HttpContext.User.Claims.FirstOrDefault(c => c.Type == ClaimTypes.NameIdentifier).Value;
-            return Ok(_orderAPIService.GetOrderDetailByOrderId(userId,orderId));
+            return Ok(_orderAPIService.GetOrderDetailByOrderId(userId, orderId));
         }
 
         //[HttpPost]
@@ -45,13 +46,14 @@ namespace ShowNest.Web.WebAPI
         //    }
         //    return Ok(order);
         //}
-        [HttpPost]
+        [HttpPatch]
         public async Task<IActionResult> UpdateOrderDetail(OrderContactPerson param)
         {
             if (!ModelState.IsValid)
             {
                 return BadRequest(ModelState);
             }
+
             int orderId = param.OrderID;
             string contactPersonJson = param.ContactPersonJson;
             var order = await _orderTicketService.UpdateOrderDetailContactInfoByOrderId(contactPersonJson, orderId);
@@ -64,7 +66,18 @@ namespace ShowNest.Web.WebAPI
             {
                 return Ok(ex);
             }
+        }
 
+        [HttpPost()]
+        public async Task<IActionResult> CreateOrder(CreateOrderRequest request)
+        {
+            var userIdString = _httpContextAccessor.HttpContext.User.Claims
+                .FirstOrDefault(c => c.Type == ClaimTypes.NameIdentifier).Value;
+            var userId = Convert.ToInt32(userIdString);
+
+            var response = await _orderTicketService.CreateOrder(userId, request);
+            
+            return Ok(response);
         }
     }
 }

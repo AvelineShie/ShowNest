@@ -39,6 +39,7 @@ public class TicketTypeService : ITicketTypeService
         {
             EventDetail = new EventDetailViewModel()
             {
+                EventId = eventDetails.Id,
                 MainImage = eventDetails.EventImage,
                 EventName = eventDetails.Name,
                 StartTime = eventDetails.StartTime,
@@ -79,8 +80,10 @@ public class TicketTypeService : ITicketTypeService
                     Price = ticketType.Price,
                     SeatAreaId = seat.SeatArea.Id,
                     SeatAreaName = seat.SeatArea.Name,
+                    SeatId = seat.Id,
                     SeatNumber = seat.Number,
-                    TicketTypeName = ticketType.Name
+                    TicketTypeName = ticketType.Name,
+                    TicketId = ticket.Id
                 };
             var result = await query.Take(criteria.TicketCount).ToListAsync();
 
