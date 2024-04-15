@@ -5,8 +5,12 @@ using Azure.Core;
 using Infrastructure.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.DependencyInjection;
+using Microsoft.Extensions.Logging;
+using Newtonsoft.Json;
+using System.Diagnostics.Tracing;
 using System.Security.Cryptography;
 using static ApplicationCore.DTOs.CreateEventDto;
+
 
 namespace Infrastructure.Services
 {
@@ -50,47 +54,85 @@ namespace Infrastructure.Services
         //如果後面要跳轉到活動頁面,活動主頁已經有API，類型可以直接設string，
         //然後讓return為result.id（如果活動頁面是用id去撈）
 
-        //public Event CreateEvent(CreateEventDto require)
-        //{
-        //    //四頁包一個交易?
-        //    //但不同資料要給不同的資料表,分開?
-        //    using (var transcation = DbContext.Database.BeginTransaction())
-        //        try
-        //        {
-        //            Id = require.EventId,
-        //                Name = request.Name,
-        //                OrganizationId = require.OrgId,
-        //                StartTime = require.StartTime,
-        //                EndTime = require.EndTime,
-        //                Type = require.EventStatus,
-        //                LocationName = require.LocationName,
-        //                LocationAdress = require.EventAddress,
-        //                Longitude = require.Longitude,
-        //                Latitude = require.Latitude,
-        //                //本來還有一欄給使用者自填活動主頁網址,先不放
-        //                StreamingPlatform = require.StreamingName
-        //                StreamingUrl = require.StreamingUrl
-        //                Capacity = require.Attendance
-        //                ContactPerson = require.ContactPerson
-        //                ParticipantPeople = require.ParticipantPeople
-        //                EventImage = require.EventImage
-        //                Introduction = require.EventIntroduction
-        //                Description = require.EventDescription
-        //                MainOrganizer = require.MainOrganizer
-        //                CoOrganizer = require.CoOrganizer
-        //                IsPrivateEvent = require.IsPrivateEvent
-        //                isFree = require.IsFree
+        public  Event CreateEvent(CreateEventDto require)
+        {
+            //四頁包一個交易?
+            //但不同資料要給不同的資料表,分開?
+            using (var transcation = DbContext.Database.BeginTransaction())
+                try
+                {
+                    // 將列表轉 JSON 字串
+                    var contactPersonJson = JsonConvert.SerializeObject(require.ContactPerson);
+                    var participantPeopleJson = JsonConvert.SerializeObject(require.ParticipantPeople);
+
+                    //活動
+                    var activity = new Event
+                    {
+                        Id = require.EventId,
+                        Name = require.EventName,
+                        OrganizationId = require.OrgId,
+                        StartTime = require.StartTime,
+                        EndTime = require.EndTime,
+                        Type = require.EventStatus,
+                        LocationName = require.LocationName,
+                        LocationAddress = require.EventAddress,
+                        Longitude = require.Longitude,
+                        Latitude = require.Latitude,
+                        //本來還有一欄給使用者自填活動主頁網址,先不放
+                        StreamingPlatform = require.StreamingName,
+                        StreamingUrl = require.StreamingUrl,
+                        Capacity = require.Attendance,
+                        ContactPerson = contactPersonJson,
+                        ParticipantPeople = participantPeopleJson,
+                        EventImage = require.EventImage,
+                        Introduction = require.EventIntroduction,
+                        Description = require.EventDescription,
+                        MainOrganizer = require.MainOrganizer,
+                        CoOrganizer = require.CoOrganizer,
+                        IsPrivateEvent = require.IsPrivateEvent,
+                        IsFree = require.IsFree,
+                        Sort = require.Sort, //排序
+                        IsDeleted = false,
+                        CreatedAt = require.CreatedAt,
+                        EditedAt = require.EditedAt
+                    };
+                    DbContext.Events.Add(activity); 
+                    DbContext.SaveChanges();
+
+                    //活動標籤
+                    //活動與tag關係的表:EventAndTagMapping
+                    var eventTags = new EventAndTagMapping
+                    {
+                        EventId = require.EventId,
+                        //CategoryTagId = require.EventCategoryTags.CategoryId,
+                    };
+
+                    DbContext.EventAndTagMappings.Add(eventTags);
+                    DbContext.SaveChanges();
+
+                    //票卷
+                    //票種,票區,張數,販售開始時間,結束時間,金額
+                    var ticket = new Ticket
+                    {
+
+                    };
+
+                    //欄位?
 
 
-        //                Sort = require.Sort //排序
-        //                IsDeleted = false,
-        //                CreatedAt = request.CreatedAt,
-        //                EditedAt = request.EditedAt
+                    //不用丟給活動主頁,那就?
+                    return activity;
 
 
-        //        }
-        //        catch (Exception ex) { }
-        //}
+
+                    
+                }
+                catch (Exception ex) {
+                    transcation.Rollback();
+                    throw new Exception(ex.Message);
+                }
+            
+        }
 
         //糟糕小標籤是不同的資料表,要獨立寫嗎? 要吧?寫成巢狀的try catch?
         //Id = request.CategoryId
