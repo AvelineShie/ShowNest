@@ -46,7 +46,7 @@ namespace ApplicationCore.DTOs
             public string CategoryName { get; set; }
         }
         
-        public int Sort {  get; set; }
+        public int Sort {  get; set; }//這會用到嗎?資料庫排序?但每次只會有一筆進去?
         public bool? IsDeleted { get; set; }
         public DateTime CreatedAt { get; set; }
         public DateTime? EditedAt { get; set; }
