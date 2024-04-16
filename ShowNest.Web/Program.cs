@@ -111,10 +111,10 @@ namespace ShowNest.Web
             //    pattern: "{OrganizationId}/{controller=Events}/{action=Index}/{EventId?}");
             ///以上測試中--------------------------------------------------------------------------------------------
 
-            app.MapControllerRoute(
-            name: "SwitchExploreEventPages",//探索活動頁>切換活動頁籤
-            pattern: "Events/Explore/{page=1}",
-            defaults: new { controller = "Events", action = "Index" });
+            //app.MapControllerRoute(
+            //name: "SwitchExploreEventPages",//探索活動頁>切換活動頁籤
+            //pattern: "Events/Explore",
+            //defaults: new { controller = "Events", action = "Index" });
 
             //app.MapControllerRoute(
             //name: "SearchEventPages",//探索活動頁>搜尋功能
