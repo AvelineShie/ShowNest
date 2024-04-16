@@ -51,7 +51,7 @@ namespace Infrastructure.Services
                             LEFT JOIN Users U ON O.UserId = U.Id
                             LEFT JOIN Organizations ORG ON E.OrganizationId = ORG.Id
 
-                            WHERE U.Id = 2
+                            WHERE U.Id = @userId
 
 
                             GROUP BY O.Id, O.EcpayTradeNo, O.PaymentType, O.Status, O.CreatedAt, O.EditedAt, U.Id, E.Id, E.EventImage, 

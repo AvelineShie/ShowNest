@@ -26,4 +26,8 @@ public partial class EcpayOrder
     public string TradeDate { get; set; }
 
     public int SimulatePaid { get; set; }
+
+    public int OrderId { get; set; }
+
+    public virtual Order Order { get; set; }
 }

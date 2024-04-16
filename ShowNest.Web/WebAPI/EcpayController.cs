@@ -27,6 +27,7 @@ namespace ShowNest.Web.WebAPI
             _ecpayOrderService = ecpayOrderService;
         }
 
+      //-----------------------------------原始粗暴版綠界新增訂單在DB------------------------------------------------
         [HttpPost]
         [Route("api/Ecpay/AddOrders")]
         public string AddOrders([FromBody] OrderDto json)
@@ -83,8 +84,7 @@ namespace ShowNest.Web.WebAPI
 
         [HttpPost]
         [Route("api/Ecpay/AddPayInfo")]
-        //public HttpResponseMessage AddPayInfo(IFormCollection info, string id);
-        public HttpResponseMessage AddPayInfo(IFormCollection info)
+        public HttpResponseMessage AddPayInfo(IFormCollection info ,string id)
         {
             try
             {

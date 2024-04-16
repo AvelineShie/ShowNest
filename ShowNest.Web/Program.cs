@@ -98,7 +98,7 @@ namespace ShowNest.Web
                 app.UseHsts();
             }
             //測試ECPay需要註解app.UseHttpsRedirection
-            app.UseHttpsRedirection();
+            //app.UseHttpsRedirection();
             app.UseStaticFiles();
 
             app.UseRouting();
