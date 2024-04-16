@@ -75,7 +75,11 @@ namespace ApplicationCore.DTOs
             public int Prince { get; set; }
             public int Amount { get; set; } //數量
         //}
- 
+
+        //票區
+        public int SeatAreaId {  get; set; }
+
+
     }
 
     
