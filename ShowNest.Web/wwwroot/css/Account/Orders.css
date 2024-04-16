@@ -19,6 +19,7 @@ body {
 
 a {
     text-decoration: none;
+    cursor: pointer;
 }
 
 .title {
@@ -149,6 +150,7 @@ td {
     margin-top: -1px;
     padding: 10px 10px;
     text-decoration: none;
+    cursor:pointer;
 }
 
 .order-btns a:hover {
