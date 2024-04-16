@@ -6,10 +6,10 @@ let totalPages = 0
 let totalEventsCount = 0
 
 $(function () {
-    loadCards()
+    loadAllCards()
 })
 
-async function loadCards() {
+async function loadAllCards() {
     let cardsContainer = $('.cards')[0]
     cardsContainer.innerHTML = ''
     // for checking

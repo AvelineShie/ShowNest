@@ -2,6 +2,7 @@
 {
     public class CreateOrganizationDto
     {
+        public int OrgId { get; set; }
         public int OwnerId { get; set; }
         public string Name { get; set; }
         public string OrganizationUrl { get; set; }
