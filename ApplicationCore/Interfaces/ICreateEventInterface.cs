@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace ApplicationCore.Interfaces
 {
-    internal interface ICreateEventInterface: IRepository<Event>
+    public interface ICreateEventInterface: IRepository<Event>
     {
         IEnumerable<Organization> GetOrgById(int userId);
         IEnumerable<Event> GetOrgEventsByOrgId(int orgId);
