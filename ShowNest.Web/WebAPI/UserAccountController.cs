@@ -22,8 +22,8 @@ namespace ShowNest.Web.WebAPI
         //[HttpGet]
         public IActionResult GetUserOrderList()
         {
-            string userId = "2";
-           //var userId = _httpContextAccessor.HttpContext.User.Claims.FirstOrDefault(c => c.Type == ClaimTypes.NameIdentifier).Value;
+            //string userId = "2";
+           var userId = _httpContextAccessor.HttpContext.User.Claims.FirstOrDefault(c => c.Type == ClaimTypes.NameIdentifier).Value;
             return Ok(_userAccountAPIService.GetUserOrderDetailListByUserId(userId));
         }
     }

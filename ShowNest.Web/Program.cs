@@ -54,8 +54,10 @@ namespace ShowNest.Web
             builder.Services.AddScoped<SearchEventService>();
 
             builder.Services.AddScoped<IEventRepository, EventRepository>();
-            builder.Services.AddScoped<CreateEventService>();
-            
+            builder.Services.AddScoped<ICreateEventService, CreateEventService>();
+
+
+
             builder.Services.AddScoped<EventsApiService>();
             builder.Services.AddScoped<ITicketTypeService, TicketTypeService>();
 
@@ -82,6 +84,8 @@ namespace ShowNest.Web
             //登入餅乾
             builder.Services.AddAuthentication(CookieAuthenticationDefaults.AuthenticationScheme).AddCookie();
 
+           
+            
 
 
             var app = builder.Build();
@@ -94,7 +98,7 @@ namespace ShowNest.Web
                 app.UseHsts();
             }
             //測試ECPay需要註解app.UseHttpsRedirection
-            app.UseHttpsRedirection();
+            //app.UseHttpsRedirection();
             app.UseStaticFiles();
 
             app.UseRouting();

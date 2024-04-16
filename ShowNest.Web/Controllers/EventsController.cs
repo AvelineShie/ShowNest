@@ -146,18 +146,18 @@ namespace ShowNest.Web.Controllers
         public async Task<IActionResult> PaymentInfo(string customerOrderId)
         {
             // var userId = _httpContextAccessor.HttpContext.User.Claims.FirstOrDefault(c => c.Type == ClaimTypes.NameIdentifier).Value;
-
-            var GenerateOrderToEcpay = await _ecpayOrderService.GenerateOrderAsync(customerOrderId);
+            
+             //var GenerateOrderToEcpay = await _ecpayOrderService.GenerateOrderAsync(customerOrderId);
             // var checkMacValue = await _ecpayOrderService.GetCheckMacValue(GenerateOrderToEcpay);
             // ViewData["CheckMacValue"] = checkMacValue;
-            return View(GenerateOrderToEcpay);
+            return View();
         }
 
         public async Task<IActionResult> OrderDetail(string customerOrderId)
         {
 
-            var GenerateOrderToEcpay = await _ecpayOrderService.GenerateOrderAsync(customerOrderId);
-            return View(GenerateOrderToEcpay);
+            //var GenerateOrderToEcpay = await _ecpayOrderService.GenerateOrderAsync(customerOrderId);
+            return View();
         }
 
         public IActionResult BuyTicket()
@@ -264,13 +264,6 @@ namespace ShowNest.Web.Controllers
 
             return View("EcpayView", data);
         }
-        [HttpGet]
-        public async Task<IActionResult> Ecpay(string customerOrderId)
-        {
-            var userId = _httpContextAccessor.HttpContext.User.Claims.FirstOrDefault(c => c.Type == ClaimTypes.NameIdentifier).Value;
-
-            var GenerateOrderToEcpay = await _ecpayOrderService.GenerateOrderAsync(customerOrderId);
-            return View(GenerateOrderToEcpay);
-        }
+       
     }
 }

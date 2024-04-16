@@ -1,9 +1,4 @@
 ﻿using ApplicationCore.Entities;
-using DemoShop.ApplicationCore.Interfaces.TodoService.Dto;
-using Microsoft.AspNetCore.Mvc;
-using System;
-using System.Linq;
-using System.Transactions;
 using ShowNest.Web.ViewModels.Orders;
 using Ticket = ApplicationCore.Entities.Ticket;
 
@@ -115,56 +110,7 @@ namespace ShowNest.Web.Services.Events
             targetOrder.ContactPerson = contactJsonString;
             return await _orderRepo.UpdateAsync(targetOrder);
         }
-        //public OrderDetailViewModel GetMemberOrders(int userId)
-        //{
-        //    var totalPrice = _orderQueryService.GetCustomerOrderTotalAmount(userId);
-        //    var orders = _orderQueryService.GetOrdersByUserId(userId);
-        //    var result = new OrderDetailViewModel
-        //    {
-        //        MemberCenterOrders = new List<MemberCenterOrders>()
-        //    };
-        //    foreach (var order in orders)
-        //    {
-        //        var orderDetailQueryDto = order.orderDetailQueryDtos?.SingleOrDefault();
-        //        if (orderDetailQueryDto != null)
-        //        {
-        //            var tempResult = new MemberCenterOrders
-        //            {
-        //                OrderId = order.OrderId,
-        //                UserId = order.UserId,
-        //                OrderStatus = order.OrderStatus,
-        //                EventName = order.EventName,
-        //                EventHost = order.EventHost ?? string.Empty,
-        //                StartTime = order.OrderDate,
-        //                EventLocation = order.LocationName,
-        //                EventAddress = order.LocationAddress,
-        //                PaymentMethod = order.PaymentType,
-        //                UserName = order.UserName,
-        //                Email = order.UserEmail,
-        //                PhoneNumber = order.UserPhoneNumber,
-        //                AllTickets = new List<AllTickets>
-        //                {
-        //                    new AllTickets
-        //                    {
-        //                        TicketId = orderDetailQueryDto.TicketId,
-        //                        TicketTypeId = orderDetailQueryDto.TicketTypeId,
-        //                        TicketTypeName = orderDetailQueryDto.TicketTypeName,
-        //                        TicketNumber = orderDetailQueryDto.TicketNumber,
-        //                        SeatAreaId = orderDetailQueryDto.SeatAreaId,
-        //                        SeatArea = orderDetailQueryDto.SeatArea,
-        //                        SeatsId = orderDetailQueryDto.SeatsId,
-        //                        SeatNumber = orderDetailQueryDto.SeatNumber,
-        //                        TicketPrice = orderDetailQueryDto.TicketPrice,
-        //                        PurchaseAmount = orderDetailQueryDto.PurchaseAmount
-        //                    }
-        //                }
-        //            };  
-        //            result.MemberCenterOrders.Add(tempResult);
-        //        }
-        //    }
-        //    return result;
-        //}
-        //
+      
 
 
         public async Task<CreateOrderResponse> CreateOrder(int userId, CreateOrderRequest request)

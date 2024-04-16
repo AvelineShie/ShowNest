@@ -1,8 +1,6 @@
-﻿using DemoShop.ApplicationCore.Interfaces.TodoService.Dto;
-using Infrastructure.Services;
-using Microsoft.AspNetCore.Mvc;
-using System.Security.Claims;
+﻿using Microsoft.AspNetCore.Mvc;
 using ShowNest.Web.ViewModels.Orders;
+using System.Security.Claims;
 using static Infrastructure.Services.OrderAPIService;
 
 
@@ -27,8 +25,8 @@ namespace ShowNest.Web.WebAPI
         [HttpGet]
         public IActionResult GetOrderDetail(int orderId)
         {
-            string userId = "2";
-            //var userId = _httpContextAccessor.HttpContext.User.Claims.FirstOrDefault(c => c.Type == ClaimTypes.NameIdentifier).Value;
+            //string userId = "2";
+            var userId = _httpContextAccessor.HttpContext.User.Claims.FirstOrDefault(c => c.Type == ClaimTypes.NameIdentifier).Value;
             return Ok(_orderAPIService.GetOrderDetailByOrderId(userId, orderId));
         }
 
