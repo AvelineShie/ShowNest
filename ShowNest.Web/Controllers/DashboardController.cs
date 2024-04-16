@@ -33,10 +33,10 @@ namespace ShowNest.Web.Controllers
 
         //public async Task<IActionResult> CreateEvent()
         //{
-            //var userIdentifier = HttpContext.User.FindFirstValue(ClaimTypes.NameIdentifier);
+        //    //var userIdentifier = HttpContext.User.FindFirstValue(ClaimTypes.NameIdentifier);
             //HttpContext?.User.Identities.FirstOrDefault()
             //之後以HttpContext的登入訊息取得資料
-            //var userId = 2; 
+            //var userId = 2;
             //var vm = _createEventService.GetOrgByOwner(userId);
             //return View(vm);
         //}

@@ -1,4 +1,3 @@
-/*import SetTicket from "./SetTicket";*/
 const { createApp, ref } = Vue
 const { createVuetify } = Vuetify
 const vuetify = createVuetify();
@@ -19,7 +18,7 @@ const options = {
             stepButton: false, //初始不可按
 
             //SetEvent
-            el: 2,
+            /*el: 2,*/
             //OrganizationName: {},
             //EventName: {},
             //WebsiteLink: {},
@@ -78,37 +77,37 @@ const options = {
         }
     },
     mounted() {
-        this.getOrganizationsById()
+        /*this.getOrganizationsById()*/
         
     },
     methods: {
-        getOrganizationsById() {
-            fetch('/api/CreateEvent/GetOrganizationsById',
-                {
-                    method: 'POST', // 設定請求方法為 POST
-                    headers: { 'Content-Type': 'application/json' }, // 設定內容類型為 JSON
-                    body: JSON.stringify({ userId: this.userId }) // 將資料轉換成 JSON 字串
-                })
-                .then(response => {
-                    return response.json()
-                })
-                .then(data => {
-                    if (!data.isSuccess) {
-                        this.selectedOrganization = { id: 0, name: '沒有組織，請先建立組織' }
-                        throw new Error(data.message)
-                    }
-                    this.organizations = data.body.organizations.map(x => {
-                        return { id: x.id, name: x.name }
-                    })
-                    this.selectedOrganization = null
-                })
-                .catch(err => {
-                    console.error(err)
-                })
-        },
-        getEventsByOrganizationId() {
-            console.log(this.selectedOrganization)
-        },
+        //getOrganizationsById() {
+        //    fetch('/api/CreateEvent/GetOrganizationsById',
+        //        {
+        //            method: 'POST', // 設定請求方法為 POST
+        //            headers: { 'Content-Type': 'application/json' }, // 設定內容類型為 JSON
+        //            body: JSON.stringify({ userId: this.userId }) // 將資料轉換成 JSON 字串
+        //        })
+        //        .then(response => {
+        //            return response.json()
+        //        })
+        //        .then(data => {
+        //            if (!data.isSuccess) {
+        //                this.selectedOrganization = { id: 0, name: '沒有組織，請先建立組織' }
+        //                throw new Error(data.message)
+        //            }
+        //            this.organizations = data.body.organizations.map(x => {
+        //                return { id: x.id, name: x.name }
+        //            })
+        //            this.selectedOrganization = null
+        //        })
+        //        .catch(err => {
+        //            console.error(err)
+        //        })
+        //},
+        //getEventsByOrganizationId() {
+        //    console.log(this.selectedOrganization)
+        //},
         
         
 
@@ -123,6 +122,7 @@ const options = {
             immediate: false,
             deep: true
         },
+
         //'selectedActivityType': {
         //    handler: function (val) {
         //        if (val === "既有的活動") {

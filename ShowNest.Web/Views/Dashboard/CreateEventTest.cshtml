@@ -1,6 +1,9 @@
-﻿@{
+﻿@using ShowNest.Web.ViewModels.Dashboard
+@model CreateEventDto
+@{
     ViewData["Title"] = "CreateEventTest";
 }
+
 
 
 @section topCSS {
@@ -33,6 +36,7 @@
                                                   item-value="id"
                                                   class="w-25"
                                                   :items="organizations" 
+                                                  <!--CreatEventService同名即可?-->
                                                   density="compact"
                                                   label="選擇一個組織"
                                                   variant="outlined">
@@ -73,6 +77,7 @@
                                                     </div>
                                                 </label>
                                             </div>
+                                            <input class="establishBtn" type="button" value="建立" onclick="window.location.href='@Url.Action("SetEvent", "Dashboard")'" />
                                         </div>
                                     </div>
                                 </div>
@@ -281,11 +286,15 @@
                                             <div class="section">
                                                 <h4>活動分類</h4>
                                                 <span class="note">你可以選擇最多 3 個分類。</span>
-                                                <div class="tag-pool">
-                                                    @* @foreach (var tag in Model.CategoryTagsViewModel)
-                                                    {
-                                                        @await Html.PartialAsync("~/PartialViews/_CategoryTags_Partial.cshtml", tag);
-                                                    } *@
+                                               
+                                                @* <ul class="tag-pool">
+                                                    <li>
+                                                        @foreach (var tag in Model.EventCategoryTags)
+                                                        {
+                                                            @await Html.PartialAsync("~/PartialViews/_CategoryTags_Partial.cshtml", tag);
+                                                        }
+                                                    </li>
+                                                </ul> *@
                                                     <div class="tag">演唱會</div>
                                                     <div class="tag">課程講座</div>
                                                     <div class="tag">研討會</div>
@@ -300,10 +309,13 @@
                                                     <div class="tag">科技資訊</div>
                                                     <div class="tag">休閒</div>
                                                     <div class="tag">運動</div>
-                                                    <div class="tag">心靈成長</div>
-                                                </div>
+                                                
                                             </div>
                                         </div>
+                                    </div>
+                                    <div class="pages-change">
+                                        <button type="button" class="btn btn-outline-secondary" onclick="window.location.href='@Url.Action("CreateEvent", "Dashboard")'">上一頁</button>
+                                        <button type="submit" class="btn btn-outline-secondary" value="Upload">下一頁</button>
                                     </div>
                                 </div>
                             </div>
@@ -435,7 +447,10 @@
 
                                         <button type="button" class="btn btn-outline-secondary btn-sm" id="add-ticket">新增票種</button>
                                     </div>
-
+                                    <div class="pages-change">
+                                        <button type="button" class="btn btn-outline-secondary" onclick="window.location.href='@Url.Action("SetEvent", "Dashboard")'">上一頁</button>
+                                        <button type="button" class="btn btn-outline-secondary" onclick="window.location.href='@Url.Action("SetTable", "Dashboard")'">下一頁</button>
+                                    </div>
                                 </div>
                             </div>
                         </template>
@@ -575,26 +590,26 @@
                                                         個人資料選項
                                                     </li>
                                                     <li class="list-group-item">
-                                                        <input class="form-check-input me-1" type="checkbox" value="" aria-label="...">
+                                                        @* <input class="form-check-input me-1" type="checkbox" value="" aria-label="..."> *@
                                                         姓名
                                                     </li>
                                                     <li class="list-group-item">
-                                                        <input class="form-check-input me-1" type="checkbox" value="" aria-label="...">
+                                                        @* <input class="form-check-input me-1" type="checkbox" value="" aria-label="..."> *@
                                                         Email
                                                     </li>
                                                     <li class="list-group-item">
+                                                        @* <input class="form-check-input me-1" type="checkbox" value="" aria-label="..."> *@
+                                                        手機
+                                                    </li>
+                                                    @* <li class="list-group-item">
                                                         <input class="form-check-input me-1" type="checkbox" value="" aria-label="...">
                                                         身分證字號
                                                     </li>
                                                     <li class="list-group-item">
                                                         <input class="form-check-input me-1" type="checkbox" value="" aria-label="...">
                                                         暱稱
-                                                    </li>
-                                                    <li class="list-group-item">
-                                                        <input class="form-check-input me-1" type="checkbox" value="" aria-label="...">
-                                                        手機
-                                                    </li>
-                                                    <li class="list-group-item">
+                                                    </li> *@
+                                                    @* <li class="list-group-item">
                                                         <input class="form-check-input me-1" type="checkbox" value="" aria-label="...">
                                                         聯絡電話
                                                     </li>
@@ -605,7 +620,7 @@
                                                     <li class="list-group-item">
                                                         <input class="form-check-input me-1" type="checkbox" value="" aria-label="...">
                                                         地址
-                                                    </li>
+                                                    </li> *@
                                                 </ul>
                                                 <!-- 欄位選項 -->
                                                 <table class="contactInformationForm">
@@ -631,17 +646,17 @@
                                                         </tr>
                                                         <tr>
                                                             <th scope="row"></th>
-                                                            <td>身分證字號<span>身分證字號</span></td>
-                                                            <td><input class="form-check-input me-1" type="checkbox" value="" aria-label="..."></td>
-                                                            <td><button class="delete"><i class="fa-solid fa-x"></i></button></td>
-                                                        </tr>
-                                                        <tr>
-                                                            <th scope="row"></th>
                                                             <td>手機<span>單行文字</span></td>
                                                             <td><input class="form-check-input me-1" type="checkbox" value="" aria-label="..."></td>
                                                             <td><button class="delete"><i class="fa-solid fa-x"></i></button></td>
                                                         </tr>
-                                                        <tr>
+                                                       @*  <tr>
+                                                            <th scope="row"></th>
+                                                            <td>身分證字號<span>身分證字號</span></td>
+                                                            <td><input class="form-check-input me-1" type="checkbox" value="" aria-label="..."></td>
+                                                            <td><button class="delete"><i class="fa-solid fa-x"></i></button></td>
+                                                        </tr> *@
+                                                        @* <tr>
                                                             <th scope="row"></th>
                                                             <td>連絡電話<span>單行文字</span></td>
                                                             <td><input class="form-check-input me-1" type="checkbox" value="" aria-label="..."></td>
@@ -682,7 +697,7 @@
                                                             <td>公司電話<span>單行文字</span></td>
                                                             <td><input class="form-check-input me-1" type="checkbox" value="" aria-label="..."></td>
                                                             <td><button class="delete"><i class="fa-solid fa-x"></i></button></td>
-                                                        </tr>
+                                                        </tr> *@
 
                                                     </tbody>
                                                 </table>
