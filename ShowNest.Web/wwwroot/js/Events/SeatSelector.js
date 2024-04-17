@@ -134,6 +134,13 @@ createApp({
         },
         saveData(key, data) {
             sessionStorage.setItem(key, JSON.stringify(data));
+        },
+        onCancelPurchaseClicked() {
+            const params = new URLSearchParams(window.location.search);
+            const flowId = params.get("flowId");
+            sessionStorage.removeItem(flowId);
+            $cookies.remove('expireTimeOnSelection');
+            window.location.href = `TicketTypeSelection?eventId=${this.data.eventDetail.eventId}`;
         }
     },
     computed: {
@@ -158,7 +165,7 @@ createApp({
     },
     async mounted() {
         let expireTime = this.getExpireTime();
-        let setTimer = 600000;
+        let setTimer = 600;
         if (!expireTime) {
             expireTime = new Date().getTime() + setTimer * 1000;
 

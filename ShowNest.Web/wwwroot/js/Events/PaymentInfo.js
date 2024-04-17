@@ -36,7 +36,7 @@ createApp({
     },
     mounted() {
         let expireTime = this.getExpireTime();
-        let setTimer = 600000;
+        let setTimer = 900;
         if (!expireTime) {
             expireTime = new Date().getTime() + setTimer * 1000;
 
@@ -60,6 +60,7 @@ createApp({
     data() {
         return {
             data: {},
+            orderId: null
         }
     },
     methods: {
@@ -100,6 +101,15 @@ createApp({
             document.body.appendChild(form);
             form.submit();
         },
+        onCancelPurchaseClicked() {
+            const params = new URLSearchParams(window.location.search);
+            const flowId = params.get("flowId");
+            sessionStorage.removeItem(flowId);
+            $cookies.remove('expireTimeOnSelection');
+            $cookies.remove('expireTimeOnRegistration');
+            $cookies.remove('expireTimeOnPayment');
+            `TicketTypeSelection?eventId=${this.data.eventDetail.eventId}`;
+        }
     },
     computed: {
         totalPrice() {
@@ -113,6 +123,8 @@ createApp({
         // Load data
         const params = new URLSearchParams(window.location.search);
         const flowId = params.get("flowId");
+        const orderId = params.get("orderId");
         this.data = this.getData(flowId);
+        this.orderId = orderId;
     }
 }).mount('#paymentInfo')
