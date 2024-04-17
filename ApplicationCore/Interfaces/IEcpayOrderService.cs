@@ -13,6 +13,7 @@ namespace ApplicationCore.Interfaces
         Task<int> GetCustomerOrderTotalAmountAsync(string customerOrderId);
         Task<string> GetCustomerOrderNameAsync(string customerOrderId);
         Task<string> GetCheckMacValue(Dictionary<string, string> order);
+        string GetCalculatedMac();
 
         public string GenerateOrderIdAsync();
         //Task<string> GetCheckMacValue(OrderDto order);

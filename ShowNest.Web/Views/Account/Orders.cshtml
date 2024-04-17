@@ -57,8 +57,9 @@
                         <tr>
                             <th>狀態</th>
                             <td v-if="userOrder.OrderStatus==0" class="ticket-payment-pending">待付款</td>
-                            <td v-else-if="userOrder.OrderStatus==1" class="ticket-cancel">取消</td>
-                            <td v-else class="ticket-paid">已付款</td>
+                            <td v-else-if="userOrder.OrderStatus==1" class="ticket-paid">已付款</td>
+                            <td v-else-if="userOrder.OrderStatus==2" class="ticket-payment-pending">付款失敗</td>
+                            <td v-else class="ticket-cancel">取消</td>
                         </tr>
                         <tr>
                             <th>票劵類型</th>
@@ -92,7 +93,47 @@
         </div>
         <hr>
     </div>
-    @* 
+   
+</div>
+
+
+<script type="module">
+    import { user } from "/js/api/userAPI.js";
+    import { tools } from "/js/api/tools.js";
+
+    const app = Vue.createApp({
+        data() {
+            return {
+                userOrderList: []
+            }
+        },
+
+        mounted() {
+            user.GetUserOrderList(this.getUserOrderListSuccess);
+        },
+
+        methods: {
+            moneyformatter(value) { return tools.moneyformatter(value) },
+            dateformatter(value) { return tools.dateformatter(value) },
+
+            gotoOrderDetailPage(id){
+                window.location.href = `https://${window.location.host}/Events/OrderDetail?id=${id}`;
+            },
+
+            getUserOrderListSuccess(res) {
+                console.log(res);
+                if (res.status) {
+                    this.userOrderList = res.data;
+                    console.log(userOrderList,this.userOrderList);
+                }else{
+                    console.log(res.msg);
+                }
+            }
+        }
+    }).mount('#app');
+</script>
+
+@*
     <div class="order-detail">
         <div class="order-id-with-pic">
             <div class="order-id">#645920</div>
@@ -210,41 +251,3 @@
         </div>
     </div>
     <hr> *@
-</div>
-
-
-<script type="module">
-    import { user } from "/js/api/userAPI.js";
-    import { tools } from "/js/api/tools.js";
-
-    const app = Vue.createApp({
-        data() {
-            return {
-                userOrderList: []
-            }
-        },
-
-        mounted() {
-            user.GetUserOrderList(this.getUserOrderListSuccess);
-        },
-
-        methods: {
-            moneyformatter(value) { return tools.moneyformatter(value) },
-            dateformatter(value) { return tools.dateformatter(value) },
-
-            gotoOrderDetailPage(id){
-                window.location.href = `https://${window.location.host}/Events/OrderDetail?id=${id}`;
-            },
-
-            getUserOrderListSuccess(res) {
-                console.log(res);
-                if (res.status) {
-                    this.userOrderList = res.data;
-                    console.log(userOrderList,this.userOrderList);
-                }else{
-                    console.log(res.msg);
-                }
-            }
-        }
-    }).mount('#app');
-</script>

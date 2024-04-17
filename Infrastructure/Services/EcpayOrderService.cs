@@ -10,6 +10,7 @@ using System.Security.Cryptography;
 using System.Text;
 using System.Web;
 using ApplicationCore.Entities;
+using System.Collections;
 
 
 namespace Infrastructure.Services
@@ -48,10 +49,6 @@ namespace Infrastructure.Services
                 {"TradeDesc", "無"},
                 {"ItemName", $"{eventName}"},
                 {"ExpireDate", "1"},
-                {"CustomField1", ""},
-                {"CustomField2", ""},
-                {"CustomField3", ""},
-                {"CustomField4", ""},
                 {"ReturnURL", $"{website}/api/Ecpay/AddPayInfo"},
                 {"OrderResultURL", $"{website}/Events/PayInfo/{orderId}"},
                 {"PaymentInfoURL", $"{website}/api/Ecpay/AddAccountInfo"},
@@ -63,12 +60,10 @@ namespace Infrastructure.Services
                 {"EncryptType", "1"},
             };
             ecpayData.Add("CheckMacValue", await GetCheckMacValue(ecpayData).ConfigureAwait(false));
-
+            
             //var ecpayOrder = await _context.EcpayOrders.Where(i => i.MerchantTradeNo == tradeNo).FirstOrDefaultAsync();
-            var ecpayOrder = await _context.EcpayOrders.Where(i => i.OrderId == orderId).FirstOrDefaultAsync();
-            if (ecpayOrder == null)
-            {
-                ecpayOrder = new EcpayOrder();
+            
+                var ecpayOrder = new EcpayOrder();
                 ecpayOrder.MemberId = ecpayData["MerchantID"];
                 ecpayOrder.MerchantTradeNo = ecpayData["MerchantTradeNo"];
                 ecpayOrder.RtnCode = 0; //未付款
@@ -82,14 +77,12 @@ namespace Infrastructure.Services
                 ecpayOrder.SimulatePaid = 0;
                 ecpayOrder.OrderId = orderId;
 
-
-
                 _context.EcpayOrders.Add(ecpayOrder);
                 await _context.SaveChangesAsync();
-            }
 
             return ecpayData;
         }
+
 
         //-----------------------------------原始粗暴版綠界------------------------------------------------
         
@@ -161,7 +154,15 @@ namespace Infrastructure.Services
 
             checkValue = await GetSHA256(checkValue);
 
-            return await Task.FromResult(checkValue.ToUpper());
+            Mac = checkValue;
+
+            return checkValue.ToUpper();
+        }
+        public string Mac { get; private set; }
+
+        public string GetCalculatedMac()
+        {
+            return Mac;
         }
 
         public string GenerateOrderIdAsync()

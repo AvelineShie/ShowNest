@@ -26,6 +26,5 @@ namespace ShowNest.Web.Services
             _ecpayOrderService = ecpayOrderService;
             _httpContextAccessor = httpContextAccessor;
         }
-      
     }
 }
