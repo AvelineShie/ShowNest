@@ -18,7 +18,6 @@ namespace ShowNest.Web.Services.Events
         }
         public EventPageViewModel GetEventPageViewModel(int EventId)
         {
-            var test = _databaseContext.Events.FirstOrDefault(x =>x.Id == EventId);
             var EventPage= _databaseContext.Events
                 .Include(o=>o.Organization)
                 .Include(ea => ea.EventAndTagMappings) 
@@ -72,7 +71,7 @@ namespace ShowNest.Web.Services.Events
                 EventLocationAddress = EventPage.LocationAddress,
                 Longitude = EventPage.Longitude,
                 Latitude = EventPage.Latitude,
-                EventRegistered = 1,//?
+                EventRegistered = 1,//計算已經報名的人數，未處理
                 EventCapacity = (int)EventPage.Capacity,
                 OrganizationId = EventPage.OrganizationId,
                 OrganizationName = EventPage.Organization.Name,

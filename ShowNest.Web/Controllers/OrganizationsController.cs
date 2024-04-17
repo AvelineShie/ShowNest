@@ -20,10 +20,6 @@ namespace ShowNest.Web.Controllers
         {
             var organizationData = _organizationService.GetOrganizationDetails(organizationId);
 
-            if (organizationData == null)
-            {
-                return NotFound();
-            }
 
             return View(organizationData);
         }

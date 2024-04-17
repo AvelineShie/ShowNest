@@ -44,7 +44,7 @@ namespace ShowNest.Web
             builder.Services.AddScoped<CategoryTagService>();
             builder.Services.AddScoped<HomeService>();
             builder.Services.AddScoped<EventIndexService>();
-            builder.Services.AddScoped<EventDetailService>();
+            
             builder.Services.AddScoped<OrganizationIndexService>();
             builder.Services.AddScoped<OrganizationDetailService>();
             builder.Services.AddScoped<ISeatsService, SeatsService>();
