@@ -1,10 +1,14 @@
 ﻿using ApplicationCore.DTOs;
 using ApplicationCore.Entities;
 using ApplicationCore.Interfaces;
+using Azure.Core;
 using Infrastructure.Data;
 using Microsoft.EntityFrameworkCore;
 using Newtonsoft.Json;
+using System;
+using System.Diagnostics.Tracing;
 using System.Linq.Expressions;
+using System.Security.Cryptography;
 
 namespace Infrastructure.Services
 {
@@ -40,7 +44,7 @@ namespace Infrastructure.Services
 
         //如果要跳轉到活動頁面,活動主頁設定用id去撈, 目前已經有API，類型可以直接設string，
 
-        public int CreateEvent(CreateEventDto require)
+        public int CreateEvent(CreateEventDto request)
         {
 
             //會用到不同資料表的部分分開寫
@@ -48,48 +52,48 @@ namespace Infrastructure.Services
                 try
                 {
                     // 將列表轉 JSON 字串
-                    var contactPersonJson = JsonConvert.SerializeObject(require.ContactPerson);
-                    var participantPeopleJson = JsonConvert.SerializeObject(require.ParticipantPeople);
+                    var contactPersonJson = JsonConvert.SerializeObject(request.ContactPerson);
+                    var participantPeopleJson = JsonConvert.SerializeObject(request.ParticipantPeople);
 
                     //設定活動資料
                     var activity = new Event
                     {
-                        Id = require.EventId,
-                        Name = require.EventName,
-                        OrganizationId = require.OrgId,
-                        StartTime = require.StartTime,
-                        EndTime = require.EndTime,
-                        Type = require.EventStatus,
-                        LocationName = require.LocationName,
-                        LocationAddress = require.EventAddress,
-                        Longitude = require.Longitude,
-                        Latitude = require.Latitude,
+                        Id = request.EventId,
+                        Name = request.EventName,
+                        OrganizationId = request.OrgId,
+                        StartTime = request.StartTime,
+                        EndTime = request.EndTime,
+                        Type = request.EventStatus,
+                        LocationName = request.LocationName,
+                        LocationAddress = request.EventAddress,
+                        Longitude = request.Longitude,
+                        Latitude = request.Latitude,
                         //還有一欄給使用者自填活動主頁網址,視情況再放
-                        StreamingPlatform = require.StreamingName,
-                        StreamingUrl = require.StreamingUrl,
-                        Capacity = require.Attendance,
+                        StreamingPlatform = request.StreamingName,
+                        StreamingUrl = request.StreamingUrl,
+                        Capacity = request.Attendance,
                         ContactPerson = contactPersonJson,
                         ParticipantPeople = participantPeopleJson,
-                        EventImage = require.EventImage,
-                        Introduction = require.EventIntroduction,
-                        Description = require.EventDescription,
-                        MainOrganizer = require.MainOrganizer,
-                        CoOrganizer = require.CoOrganizer,
-                        IsPrivateEvent = require.IsPrivateEvent,
-                        IsFree = require.IsFree,
-                        Sort = require.Sort, //排序
+                        EventImage = request.EventImage,
+                        Introduction = request.EventIntroduction,
+                        Description = request.EventDescription,
+                        MainOrganizer = request.MainOrganizer,
+                        CoOrganizer = request.CoOrganizer,
+                        IsPrivateEvent = request.IsPrivateEvent,
+                        IsFree = request.IsFree,
+                        Sort = request.Sort, //排序
                         IsDeleted = false,
-                        CreatedAt = require.CreatedAt,
-                        EditedAt = require.EditedAt
+                        CreatedAt = request.CreatedAt,
+                        EditedAt = request.EditedAt
                     };
-                    DbContext.Events.Add(activity); 
+                    DbContext.Events.Add(activity);
                     DbContext.SaveChanges();
 
                     //活動標籤
                     var eventTags = new EventAndTagMapping
                     {
-                        EventId = require.EventId,
-                        CategoryTagId = require.CategoryId,
+                        EventId = request.EventId,
+                        CategoryTagId = request.CategoryId,
                     };
 
 
@@ -99,12 +103,12 @@ namespace Infrastructure.Services
                     //TicketTypes: 活動與票卷的關係
                     var ticketDetail = new TicketType
                     {
-                        EventId = require.EventId,
-                        Name = require.TicketName,
-                        StartSaleTime = require.StartSaleTime,
-                        EndSaleTime = require.EndSaleTime,
-                        Price = require.Prince,
-                        CapacityAmount = require.Amount,
+                        EventId = request.EventId,
+                        Name = request.TicketName,
+                        StartSaleTime = request.StartSaleTime,
+                        EndSaleTime = request.EndSaleTime,
+                        Price = request.Prince,
+                        CapacityAmount = request.Amount,
 
                     };
                     DbContext.TicketTypes.Add(ticketDetail);
@@ -113,8 +117,8 @@ namespace Infrastructure.Services
                     //票區與票的對應
                     var ticketAndSeatAreaMapping = new TicketTypeAndSeatAreaMapping
                     {
-                        TicketTypeId = require.TicketTypeId,
-                        SeatAreaId = require.SeatAreaId,
+                        TicketTypeId = request.TicketTypeId,
+                        SeatAreaId = request.SeatAreaId,
                     };
                     DbContext.TicketTypeAndSeatAreaMappings.Add(ticketAndSeatAreaMapping);
                     DbContext.SaveChanges();
@@ -122,102 +126,152 @@ namespace Infrastructure.Services
                     transcation.Commit();
 
                     return activity.Id;
-                    
-                }
-                catch (Exception ex) {
-                    transcation.Rollback();
-                    throw new Exception(ex.Message);
-                }
-            
-        }
-
-        public int UpdateEvent(CreateEventDto require)
-        {
-            using (var tanscation = DbContext.Database.BeginTransaction())
-                try {
-                    var selectedEvent = DbContext.Events
-                        .FirstOrDefault(e => e.Id == require.EventId);
-
-                    var contactPersonJson = JsonConvert.SerializeObject(require.ContactPerson);
-                    var participantPeopleJson = JsonConvert.SerializeObject(require.ParticipantPeople);
-
-                    //只取欄位所需
-                    selectedEvent.Name = require.EventName;
-                    selectedEvent.OrganizationId = require.OrgId;
-                    selectedEvent.StartTime = require.StartTime;
-                    selectedEvent.EndTime = require.EndTime;
-                    selectedEvent.Type = require.EventStatus;
-                    selectedEvent.LocationName = require.LocationName;
-                    selectedEvent.LocationAddress = require.EventAddress;
-                    selectedEvent.Longitude = require.Longitude;
-                    selectedEvent.Latitude = require.Latitude;
-                    //還有一欄給使用者自填活動主頁網址,視情況再放
-                    selectedEvent.StreamingPlatform = require.StreamingName;
-                    selectedEvent.StreamingUrl = require.StreamingUrl;
-                    selectedEvent.Capacity = require.Attendance;
-                    selectedEvent.ContactPerson = contactPersonJson;
-                    selectedEvent.ParticipantPeople = participantPeopleJson;
-                    selectedEvent.EventImage = require.EventImage;
-                    selectedEvent.Introduction = require.EventIntroduction;
-                    selectedEvent.Description = require.EventDescription;
-                    selectedEvent.MainOrganizer = require.MainOrganizer;
-                    selectedEvent.CoOrganizer = require.CoOrganizer;
-                    selectedEvent.IsPrivateEvent = require.IsPrivateEvent;
-                    selectedEvent.IsFree = require.IsFree;
-
-                    //Tag: 尋找同活動下的標籤
-                    var sameEventTag = DbContext.EventAndTagMappings
-                        .Where(t => t.EventId == require.EventId)
-                        .Select(t => t.CategoryTagId == require.CategoryId);
-
-                    
-
-                    //票種樣式
-                    //找活動id相同的票
-                    var selectedTicket = DbContext.TicketTypes
-                        .FirstOrDefault(t => t.EventId == require.EventId);
-
-                    selectedTicket.Name = require.TicketName;
-                    selectedTicket.StartSaleTime = require.StartSaleTime;
-                    selectedTicket.EndSaleTime = require.EndSaleTime;
-                    selectedTicket.Price = require.Prince;
-                    selectedTicket.CapacityAmount = require.Amount;
-
-                    //票區與票的對應
-
-                    //var selectedArea = DbContext.TicketTypeAndSeatAreaMappings
-                    //    .FirstOrDefault(sa => sa.)
-                    //var ticketAndSeatAreaMapping = new TicketTypeAndSeatAreaMapping
-                    //{
-                    //    TicketTypeId = require.TicketTypeId,
-                    //    SeatAreaId = require.SeatAreaId,
-                    //};
-
-
-                    //DbContext.SaveChanges();
-                    //transcation.Commit();
-
-                    return selectedEvent.Id;
 
                 }
                 catch (Exception ex)
                 {
-                    //transcation.Rollback();
+                    transcation.Rollback();
                     throw new Exception(ex.Message);
                 }
 
         }
 
-        //public CreateEventDto RenderEventData(int eventId)
-        //{
+        public int UpdateEvent(CreateEventDto request)
+        {
+            using (var tanscation = DbContext.Database.BeginTransaction())
+                try
+                { //同一活動內容
+                    var selectedEvent = DbContext.Events
+                        .FirstOrDefault(e => e.Id == request.EventId);
 
-        //}
+                    var contactPersonJson = JsonConvert.SerializeObject(request.ContactPerson);
+                    var participantPeopleJson = JsonConvert.SerializeObject(request.ParticipantPeople);
+
+                    //取欄位所需
+                    selectedEvent.Name = request.EventName;
+                    selectedEvent.OrganizationId = request.OrgId;
+                    selectedEvent.StartTime = request.StartTime;
+                    selectedEvent.EndTime = request.EndTime;
+                    selectedEvent.Type = request.EventStatus;
+                    selectedEvent.LocationName = request.LocationName;
+                    selectedEvent.LocationAddress = request.EventAddress;
+                    selectedEvent.Longitude = request.Longitude;
+                    selectedEvent.Latitude = request.Latitude;
+                    //還有一欄給使用者自填活動主頁網址,視情況再放
+                    selectedEvent.StreamingPlatform = request.StreamingName;
+                    selectedEvent.StreamingUrl = request.StreamingUrl;
+                    selectedEvent.Capacity = request.Attendance;
+                    selectedEvent.ContactPerson = contactPersonJson;
+                    selectedEvent.ParticipantPeople = participantPeopleJson;
+                    selectedEvent.EventImage = request.EventImage;
+                    selectedEvent.Introduction = request.EventIntroduction;
+                    selectedEvent.Description = request.EventDescription;
+                    selectedEvent.MainOrganizer = request.MainOrganizer;
+                    selectedEvent.CoOrganizer = request.CoOrganizer;
+                    selectedEvent.IsPrivateEvent = request.IsPrivateEvent;
+                    selectedEvent.IsFree = request.IsFree;
+
+                    DbContext.SaveChanges();
+
+                    //Tag: 尋找同一個活動下的標籤
+                    var sameEventTag = DbContext.EventAndTagMappings
+                        .Where(t => t.EventId == request.EventId).ToList(); ;
+
+                    sameEventTag.ForEach(tag => tag.CategoryTagId = request.CategoryId);
+                    DbContext.SaveChanges();
+
+                    //票名,時間,價格,數量
+                    //同一活動下的票種內容
+                    var sameEventTicketTypes = DbContext.TicketTypes
+                        .Where(t => t.EventId == request.EventId).ToList();
+
+                    sameEventTicketTypes.ForEach(
+                        tt =>
+                        {
+                            tt.Name = request.TicketName;
+                            tt.StartSaleTime = request.StartSaleTime;
+                            tt.EndSaleTime = request.EndSaleTime;
+                            tt.Price = request.Prince;
+                            tt.CapacityAmount = request.Amount;
+                        }
+                    );
+                    DbContext.SaveChanges();
+
+                    //票區與票種:找出每一張票對應的票區,票種                    
+                    //同一特定活動(eventId)下的每個票種對應的票區
+
+                    foreach (var ticketType in sameEventTicketTypes)
+                    {
+                        var sameTicketTypeSeatAreas = DbContext.TicketTypeAndSeatAreaMappings
+                            .Where(t => t.TicketTypeId == ticketType.Id).ToList();
+                        foreach (var item in sameTicketTypeSeatAreas)
+                        {
+                            item.SeatAreaId = request.SeatAreaId;
+                        }
+                    }
+
+                    DbContext.SaveChanges();
+                    tanscation.Commit();
+
+                    return selectedEvent.Id;
+                }
+                catch (Exception ex)
+                {
+                    tanscation.Rollback();
+                    throw new Exception(ex.Message);
+                }
+        }
+
+        public CreateEventDto RenderEventData(int eventId)
+        {
+
+            var activity = GetById(eventId);
+            
+
+            // JSON轉物件
+            var contactPersonDeserialize = JsonConvert.DeserializeObject(activity.ContactPerson);
+            var participantPeopleDeserialize = JsonConvert.DeserializeObject(activity.ParticipantPeople);
+
+            var result = new CreateEventDto
+            {
+                EventId = activity.Id,
+                EventName = activity.Name,
+                OrgId = activity.OrganizationId,
+                StartTime = activity.StartTime,
+                EndTime = activity.EndTime,
+                EventStatus = activity.Status,
+                LocationName = activity.LocationName,
+                EventAddress = activity.LocationAddress,
+                Longitude = activity.Longitude,
+                Latitude = activity.Latitude,
+                //還有一欄給使用者自填活動主頁網址,視情況再放
+                StreamingName = activity.StreamingPlatform,
+                StreamingUrl = activity.StreamingUrl,
+                Attendance = activity.Capacity,
+                //ContactPerson = activity.ContactPerson,
+                //ParticipantPeople = participantPeopleJson,
+
+                EventImage = activity.EventImage,
+                EventIntroduction = activity.Introduction,
+                EventDescription = activity.Description,
+                MainOrganizer = activity.MainOrganizer,
+                CoOrganizer = activity.CoOrganizer,
+                IsPrivateEvent = activity.IsPrivateEvent,
+                IsFree = activity.IsFree,
+
+                //=========Ticket==========
+                
+
+            };
+
+            DbContext.SaveChanges();
+            //transaction.Commit();
+
+            return result;
+        }
 
 
-
-
-
-        //===========自動實作==============
+        //===自動實作====
         public EventAndTagMapping Add(EventAndTagMapping entity)
         {
             throw new NotImplementedException();
@@ -287,14 +341,11 @@ namespace Infrastructure.Services
         {
             throw new NotImplementedException();
         }
+    }
+}
+        
 
-        public CreateEventDto RenderEventData(int eventId)
-        {
-            throw new NotImplementedException();
-        }
-    };
-};
-
+        
 //public CreateEventViewModel GetOrgByOwner(int OwnerId)
 //{
 //    // 根據 userID 找到它底下所有組織

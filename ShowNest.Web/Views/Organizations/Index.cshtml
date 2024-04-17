@@ -43,9 +43,7 @@ https://cdn.jsdelivr.net/npm/fullcalendar@6.1.11/index.global.min.js
                 </div>
                 <div class="description-block">
                     @Model.OrganizationDescription
-                    @* <p>Live BS Club TAIPEI程式俱樂部</p>
-
-                    <p>是一群專注於實戰演練 / 經驗豐富的教學團隊。</p> *@
+                    
 
                 </div>
             </div>
@@ -66,24 +64,23 @@ https://cdn.jsdelivr.net/npm/fullcalendar@6.1.11/index.global.min.js
                 <ul class="org-event-list" id="eventList">
                     <!-- foreach  正在進行的活動-->
                     <li>
-                        @* @foreach (var CurrentEvents in Model.G)
+                        @foreach (var CurrentEvents in Model.CurrentEvents)
                         {
-                        <h2><a asp-controller="Events" asp-action="EventPage">@CurrentEvents.EventName</a></h2>
-
+                            <h2><a asp-controller="Events" asp-action="EventPage" asp-route-id="@CurrentEvents.Id">@CurrentEvents.EventName </a></h2>
 
                         <div class="date">
                             <i class="fa fa-calendar"></i>
                                 <span class="timezoneSuffix">@CurrentEvents.StartTime.ToString("yyyy/MM/dd HH:mm")</span>
                         </div>
                             <a asp-controller="Events" asp-action="EventPage" asp-route-id="@CurrentEvents.Id class="img-wrapper">
-                                <img src="@CurrentEvents.OrganizationImgUrl">
+                                <img src="@CurrentEvents.EventImage">
                             <div class="img-btn">立即購票</div>
 
                         </a>
                         <div class="description">
                                 @CurrentEvents.EventIntroduction
                         </div>
-                        } *@
+                        }
                     </li>
                     
                     <!--  -->
@@ -96,21 +93,21 @@ https://cdn.jsdelivr.net/npm/fullcalendar@6.1.11/index.global.min.js
             <div class="history-container">
                 <h2>曾舉辦的活動</h2>
                 <!-- 一個月份一組history-wrapper -->
-    @*             @foreach (var GroupedpastMonth in Model.OrganizationImgUrl)
+                @foreach (var GroupedpastMonth in Model.GroupedPastEvents)
                 {
                 <div class="history-wrapper">
-                        <h3>@GroupedpastMonth</h3>
+                        <h3>@GroupedpastMonth.Month</h3>
                     <ul class="history-list-past">
-                            @foreach (var PastEvents in Model.OrganizationImgUrl)
+                            @foreach (var PastEvents in Model.GroupedPastEvents)
                         {
                         <li>
                             <div class="table-wrapp">
-                                    <div class="date-wrapp cell-wrapp"><span class="date">@PastEvents.StartTime.Day</span></div>
+                                        <div class="date-wrapp cell-wrapp"><span class="date">@PastEvents.StartTime.ToString("yyyy/MM/dd HH:mm")</span></div>
                                 <div class="title-wrapp cell-wrapp">
-                                        <a asp-controller="Events" asp-action="EventPage" asp-route-id="@PastEvents.Id">@PastEvents.EventName</a>
+                                            <a asp-controller="Events" asp-action="EventPage" asp-route-id="@PastEvents.Id">@PastEvents.EventIntroduction</a>
                                 </div>
                             </div>
-                        </li> *@
+                        </li>
                         <!--  -->
                         }
                     </ul>

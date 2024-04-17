@@ -31,20 +31,21 @@ namespace ShowNest.Web.Controllers
             return View();
         }
 
-        //public async Task<IActionResult> CreateEvent()
-        //{
-        //    //var userIdentifier = HttpContext.User.FindFirstValue(ClaimTypes.NameIdentifier);
-            //HttpContext?.User.Identities.FirstOrDefault()
+        public async Task<IActionResult> CreateEvent()
+        {
+            //var userIdentifier = HttpContext.User.FindFirstValue(ClaimTypes.NameIdentifier);
+            //    HttpContext?.User.Identities.FirstOrDefault()
             //之後以HttpContext的登入訊息取得資料
             //var userId = 2;
-            //var vm = _createEventService.GetOrgByOwner(userId);
+            //    var vm = _createEventService.GetOrgByOwner(userId);
             //return View(vm);
-        //}
-
-        public async Task<IActionResult> CreateEventTest() //測試
-        {
             return View();
         }
+
+        //public async Task<IActionResult> CreateEventTest() //測試用
+        //{
+        //    return View();
+        //}
 
         [HttpGet]
         public async Task<IActionResult> SetEvent()
