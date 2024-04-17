@@ -93,7 +93,7 @@ namespace ShowNest.Web.WebAPI
             string receivedCheckMacValue = info["CheckMacValue"];
             string temp = info["MerchantTradeNo"];
             var eventName = _dbContext.Orders.Select(e => e.Event.Name);
-            var website = "https://77b4-1-164-227-63.ngrok-free.app";
+            //var website = "https://77b4-1-164-227-63.ngrok-free.app";
             var orderId = _dbContext.EcpayOrders.Select(o => o.OrderId);
             //var order = _dbContext.EcpayOrders.Where(m => m.MerchantTradeNo == temp).Select(x => x.OrderId).FirstOrDefault();
             var ecpayOrder = _dbContext.EcpayOrders.Where(m => m.MerchantTradeNo == temp).FirstOrDefault();
