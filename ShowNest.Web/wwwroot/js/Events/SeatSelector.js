@@ -148,7 +148,12 @@ createApp({
                 return 0;
             }
 
-            return this.tickets.reduce((total, ticket) => total + ticket.price, 0);
+            return this.tickets
+                .filter(ticket => ticket.seatNumber)
+                .reduce((total, ticket) => total + ticket.price, 0);
+        },
+        subtotalTicketCount() {
+            return this.tickets.filter(ticket => ticket.seatNumber).length;
         }
     },
     async mounted() {
