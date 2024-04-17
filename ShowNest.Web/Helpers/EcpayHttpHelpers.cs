@@ -8,7 +8,7 @@ namespace ShowNest.Web.Helpers
         {
             var response = new HttpResponseMessage();
             response.Content = new StringContent("0|Error");
-            response.Content.Headers.ContentType = new System.Net.Http.Headers.MediaTypeHeaderValue("text/html");
+            response.Content.Headers.ContentType = new MediaTypeHeaderValue("text/html");
             return response;
         }
 

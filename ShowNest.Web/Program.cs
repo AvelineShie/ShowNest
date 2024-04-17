@@ -44,14 +44,14 @@ namespace ShowNest.Web
             builder.Services.AddScoped<CategoryTagService>();
             builder.Services.AddScoped<HomeService>();
             builder.Services.AddScoped<EventIndexService>();
-            builder.Services.AddScoped<EventDetailService>();
+            
             builder.Services.AddScoped<OrganizationIndexService>();
             builder.Services.AddScoped<OrganizationDetailService>();
             builder.Services.AddScoped<ISeatsService, SeatsService>();
             builder.Services.AddScoped<OverviewService>();
             builder.Services.AddScoped<OrgGeneralInfoService>();
             builder.Services.AddScoped<EventPageService>();
-            builder.Services.AddScoped<SearchEventService>();
+            //builder.Services.AddScoped<SearchEventService>();
 
             builder.Services.AddScoped<IEventRepository, EventRepository>();
             builder.Services.AddScoped<ICreateEventService, CreateEventService>();

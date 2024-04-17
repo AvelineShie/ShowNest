@@ -6,6 +6,7 @@ using ApplicationCore.Entities;
 using ApplicationCore.Interfaces;
 using Elfie.Serialization;
 using Infrastructure.Services;
+using Microsoft.AspNetCore.Authentication;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.ChangeTracking;
@@ -56,13 +57,13 @@ namespace ShowNest.Web.Controllers
         private readonly EventPageService _eventPageService;
         private readonly IHttpContextAccessor _httpContextAccessor;
         private readonly DatabaseContext _context;
-        private readonly SearchEventService _searchEventService;
+        //private readonly SearchEventService _searchEventService;
 
 
 
         public EventsController(EventIndexService eventIndexService, OrderTicketService orderQueryService,
             IOrderRepository orderRepo, EventPageService eventPageService, IEcpayOrderService ecpayOrderService,
-            IHttpContextAccessor httpContextAccessor, DatabaseContext context, SearchEventService searchEventService)
+            IHttpContextAccessor httpContextAccessor, DatabaseContext context)
         {
             _eventIndexService = eventIndexService;
             _orderQueryService = orderQueryService;
@@ -71,7 +72,7 @@ namespace ShowNest.Web.Controllers
             _ecpayOrderService = ecpayOrderService;
             _httpContextAccessor = httpContextAccessor;
             _context = context;
-            _searchEventService = searchEventService;
+            
         }
 
         [Route("Events/Explore")]
@@ -241,29 +242,29 @@ namespace ShowNest.Web.Controllers
                 data.Add(key, formData[key]);
             }
 
-            string temp = formData["MerchantTradeNo"]; //寫在LINQ(下一行)會出錯，
-            var ecpayOrder = _context.EcpayOrders.Where(m => m.MerchantTradeNo == temp).FirstOrDefault();
-
-            if (ecpayOrder != null)
-            {
-                ecpayOrder.RtnCode = int.Parse(formData["RtnCode"]);
-                if (formData["RtnMsg"] == "Succeeded")
-                {
-                    ecpayOrder.RtnMsg = "已付款";
-                    var orderToUpdate = _context.Orders.FirstOrDefault(o => o.EcpayTradeNo == temp);
-                    if (orderToUpdate != null)
-                    {
-                        orderToUpdate.Status = 1;
-                        _context.SaveChanges(); // 保存變更到資料庫
-                    }
-                }
-                ecpayOrder.PaymentDate = Convert.ToDateTime(formData["PaymentDate"]);
-                ecpayOrder.SimulatePaid = int.Parse(formData["SimulatePaid"]);
-                _context.SaveChanges();
-            }
+            //string temp = formData["MerchantTradeNo"]; //寫在LINQ(下一行)會出錯，
+            //string checkCode = formData["CheckMacValue"];
+            //var ecpayOrder = _context.EcpayOrders.Where(m => m.MerchantTradeNo == temp).FirstOrDefault();
+           
+           
 
             return View("EcpayView", data);
         }
-       
+
+        //檢查登入狀態BY大頭
+        [HttpGet("checkLoginStatus")]
+        public async Task<IActionResult> CheckLoginStatus()
+        {
+            var result = await HttpContext.AuthenticateAsync();
+            if (result.Succeeded)
+            {
+                return Ok(new { isLoggedIn = true });
+            }
+            else
+            {
+                return Ok(new { isLoggedIn = false });
+            }
+        }
+
     }
 }
