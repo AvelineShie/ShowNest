@@ -6,6 +6,7 @@ using ApplicationCore.Entities;
 using ApplicationCore.Interfaces;
 using Elfie.Serialization;
 using Infrastructure.Services;
+using Microsoft.AspNetCore.Authentication;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.ChangeTracking;
@@ -264,6 +265,21 @@ namespace ShowNest.Web.Controllers
 
             return View("EcpayView", data);
         }
-       
+
+        //檢查登入狀態BY大頭
+        [HttpGet("checkLoginStatus")]
+        public async Task<IActionResult> CheckLoginStatus()
+        {
+            var result = await HttpContext.AuthenticateAsync();
+            if (result.Succeeded)
+            {
+                return Ok(new { isLoggedIn = true });
+            }
+            else
+            {
+                return Ok(new { isLoggedIn = false });
+            }
+        }
+
     }
 }
