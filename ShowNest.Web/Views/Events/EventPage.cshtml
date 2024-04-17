@@ -69,7 +69,7 @@
             <div class="organizers mobi-hide">
                 <i class="fa-solid fa-sitemap"></i>
                 主辦單位
-                <a asp-controller="Organizations" asp-action="Index" asp-route-OrganizationId="@Model.OrganizationId">@Model.MainOrganizer</a>
+                <a asp-controller="Organizations" asp-action="Index" asp-route-OrganizationId="@Model.OrganizationId">@Model.OrganizationName</a>
                 <a href="~/Organizations/Index/@Model.OrganizationId" id="btn-Contact-organization">聯絡主辦單位</a>
             </div>
             <!-- 活動header頁 結束-->
