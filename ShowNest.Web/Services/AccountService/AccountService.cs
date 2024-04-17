@@ -208,7 +208,7 @@ namespace ShowNest.Web.Services.AccountService
             {
                 var user = await _context.Users
                     .Include(u => u.LogInInfo)
-                    .Include(u => u.PreferredActivityArea)
+                    .Include(u => u.PreferredActivityAreas)
                     .ThenInclude(p => p.Area)
                     .FirstOrDefaultAsync(u => u.Id == userId);
 
@@ -217,7 +217,7 @@ namespace ShowNest.Web.Services.AccountService
                     return (false, null, "找不到對應的使用者。");
                 }
                 // 檢查PreferredActivityAreas是否為null
-                if (user.PreferredActivityArea == null)
+                if (user.PreferredActivityAreas == null)
                 {
                     // 如果PreferredActivityAreas為null，則返回一個空列表
                     var selectedAreas = new List<string>();
@@ -225,7 +225,7 @@ namespace ShowNest.Web.Services.AccountService
                 else
                 {
                     // 嘗試訪問Area屬性
-                    var selectedAreas = user.PreferredActivityArea.Select(p => p.Area.Name).ToList();
+                    var selectedAreas = user.PreferredActivityAreas.Select(p => p.Area.Name).ToList();
                 }
                 var userAccountViewModel = new UserAccountViewModel
                 {
@@ -243,7 +243,7 @@ namespace ShowNest.Web.Services.AccountService
                     Status = user.Status,
                     CreatedAt = user.CreatedAt,
                     EditedAt = user.EditedAt,
-                    SelectedAreas = user.PreferredActivityArea.Select(p => p.AreaId).ToList()
+                    SelectedAreas = user.PreferredActivityAreas.Select(p => p.AreaId).ToList()
 
                 };
 
@@ -261,7 +261,7 @@ namespace ShowNest.Web.Services.AccountService
             {
                 var user = await _context.Users
                     .Include(u => u.LogInInfo)
-                    .Include(u => u.PreferredActivityArea)
+                    .Include(u => u.PreferredActivityAreas)
                     .FirstOrDefaultAsync(u => u.Id == userId);
                 if (user == null)
                 {
@@ -311,7 +311,7 @@ namespace ShowNest.Web.Services.AccountService
                 // 確保不會NULL
                 model.SelectedAreas = model.SelectedAreas ?? new List<int>();
                 // 將現有的偏好設定轉換成一個集合，以便於查詢
-                var existingAreaIds = user.PreferredActivityArea.Select(p => p.AreaId).ToList();
+                var existingAreaIds = user.PreferredActivityAreas.Select(p => p.AreaId).ToList();
 
                 // 根據選擇的區域更新偏好設定
                 foreach (var areaId in model.SelectedAreas)
@@ -326,7 +326,7 @@ namespace ShowNest.Web.Services.AccountService
                     var area = await _context.Areas.FindAsync(areaId);
                     if (area != null)
                     {
-                        user.PreferredActivityArea.Add(new PreferredActivityArea
+                        user.PreferredActivityAreas.Add(new PreferredActivityArea
                         {
                             UserId = user.Id,
                             AreaId = area.Id
@@ -334,7 +334,7 @@ namespace ShowNest.Web.Services.AccountService
                     }
                 }
                 // 從資料庫中刪除已取消選擇的區域的偏好設定
-                var areasToRemove = user.PreferredActivityArea.Where(p => existingAreaIds.Contains(p.AreaId)).ToList();
+                var areasToRemove = user.PreferredActivityAreas.Where(p => existingAreaIds.Contains(p.AreaId)).ToList();
                 _context.PreferredActivityAreas.RemoveRange(areasToRemove);
 
                 // 更新LoginInfo的EditedAt欄位
