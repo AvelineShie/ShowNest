@@ -12,14 +12,14 @@ using CloudinaryDotNet.Actions;
 namespace ShowNest.Web.WebAPI
 {
     [ApiController]
-    public class EcpayController : ControllerBase
+    public class EcpayApiController : ControllerBase
     {
         private readonly DatabaseContext _dbContext;
         private readonly IMemoryCache _cache;
         private readonly EcpayHttpHelpers _ecpayHttpHelpers;
         private readonly IEcpayOrderService _ecpayOrderService;
 
-        public EcpayController(DatabaseContext dbContext, EcpayHttpHelpers ecpayHttpHelpers, IMemoryCache cache,
+        public EcpayApiController(DatabaseContext dbContext, EcpayHttpHelpers ecpayHttpHelpers, IMemoryCache cache,
             IEcpayOrderService ecpayOrderService)
         {
             _dbContext = dbContext;
