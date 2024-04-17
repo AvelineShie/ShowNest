@@ -90,7 +90,7 @@ namespace ShowNest.Web.Controllers
             //如果MODEL狀態不正確，則返回VIEW以顯示錯誤訊息
             return View(SignUp);
         }
-        //編輯
+        //編輯取得資料
         [HttpGet]
         public async Task<IActionResult> UserEdit()
         {
@@ -118,7 +118,7 @@ namespace ShowNest.Web.Controllers
 
             return View(viewModel); // 將ViewModel傳遞給View
         }
-
+        //編輯寫入資料
         [HttpPost]
         public async Task<IActionResult> UserEdit(UserAccountViewModel model)
         {
@@ -153,7 +153,19 @@ namespace ShowNest.Web.Controllers
                 }
                 else
                 {
-                    ModelState.AddModelError(string.Empty, result.ErrorMessage);
+                    if (result.ErrorMessage.Contains("帳號已存在"))
+                    {
+                        ModelState.AddModelError("Account", "帳號已存在");
+                    }
+                    else if (result.ErrorMessage.Contains("Email已存在"))
+                    {
+                        ModelState.AddModelError("Email", "Email已存在");
+                    }
+                    else
+                    {
+                        ModelState.AddModelError(string.Empty, result.ErrorMessage);
+                    }
+                   
                 }
             }
 

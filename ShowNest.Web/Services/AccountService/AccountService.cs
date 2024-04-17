@@ -42,7 +42,7 @@ namespace ShowNest.Web.Services.AccountService
 
             try
             {
-                var existingUser = await _context.LogInInfos
+                var existingUser = await _context.LogInInfo
                     .FirstOrDefaultAsync(u => u.Account == model.Account || u.Email == model.Email);
 
                 if (existingUser != null)
@@ -70,7 +70,7 @@ namespace ShowNest.Web.Services.AccountService
                     CreatedAt = DateTime.Now
                 };
 
-                _context.LogInInfos.Add(loginInfo);
+                _context.LogInInfo.Add(loginInfo);
                 await _context.SaveChangesAsync();
 
                 return (true, null);
@@ -84,7 +84,7 @@ namespace ShowNest.Web.Services.AccountService
         public async Task<(bool IsSuccess, string ErrorMessage)> LogInAsync(LoginViewModel login)
         {
             //先檢查帳號
-            var dbUser = await _context.LogInInfos
+            var dbUser = await _context.LogInInfo
                 .FirstOrDefaultAsync(a => a.Account == login.Account || a.Email == login.Account);
 
             if (dbUser == null)
@@ -159,7 +159,7 @@ namespace ShowNest.Web.Services.AccountService
             }
 
             // 如果舊密碼比對成功，則進行密碼更新的操作
-            var dbUser = await _context.LogInInfos.FirstOrDefaultAsync(u => u.UserId == int.Parse(userIdClaim.Value));
+            var dbUser = await _context.LogInInfo.FirstOrDefaultAsync(u => u.UserId == int.Parse(userIdClaim.Value));
             if (dbUser == null)
             {
                 // 如果找不到對應的使用者，則返回失敗
@@ -186,7 +186,7 @@ namespace ShowNest.Web.Services.AccountService
             }
 
             // 使用獲取到的使用者ID來查詢資料庫
-            var dbUser = await _context.LogInInfos.FirstOrDefaultAsync(u => u.UserId == int.Parse(userIdClaim.Value));
+            var dbUser = await _context.LogInInfo.FirstOrDefaultAsync(u => u.UserId == int.Parse(userIdClaim.Value));
             if (dbUser == null)
             {
                 // 如果找不到對應的使用者，則返回失敗
@@ -257,6 +257,7 @@ namespace ShowNest.Web.Services.AccountService
         //更新使用者資料
         public async Task<(bool IsSuccess, string ErrorMessage)> UpdateUserAccountByIdAsync(int userId, UserAccountViewModel model)
         {
+
             try
             {
                 var user = await _context.Users
@@ -272,7 +273,7 @@ namespace ShowNest.Web.Services.AccountService
                 if (user.LogInInfo.Account != model.Account)
                 {
                     // 檢查新的Account是否重複
-                    var existingAccountUser = await _context.LogInInfos
+                    var existingAccountUser = await _context.LogInInfo
                         .FirstOrDefaultAsync(u => u.Account == model.Account && u.UserId != user.Id);
                     if (existingAccountUser != null)
                     {
@@ -281,13 +282,13 @@ namespace ShowNest.Web.Services.AccountService
                     // 如果新的Account與原本的不同且不存在重複，則更新
                     user.LogInInfo.Account = model.Account;
                 }
-
                 // 檢查Email是否需要更新
                 if (user.LogInInfo.Email != model.Email)
                 {
                     // 檢查新的Email是否重複
-                    var existingEmailUser = await _context.LogInInfos
+                    var existingEmailUser = await _context.LogInInfo
                         .FirstOrDefaultAsync(u => u.Email == model.Email && u.UserId != user.Id);
+
                     if (existingEmailUser != null)
                     {
                         return (false, "Email已存在");
@@ -349,7 +350,6 @@ namespace ShowNest.Web.Services.AccountService
                 return (false, ex.Message);
             }
         }
-
 
 
         private string HashPassword(string password)
