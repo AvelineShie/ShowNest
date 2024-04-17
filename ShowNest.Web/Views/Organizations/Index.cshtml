@@ -72,7 +72,7 @@ https://cdn.jsdelivr.net/npm/fullcalendar@6.1.11/index.global.min.js
                             <i class="fa fa-calendar"></i>
                                 <span class="timezoneSuffix">@CurrentEvents.StartTime.ToString("yyyy/MM/dd HH:mm")</span>
                         </div>
-                            <a asp-controller="Events" asp-action="EventPage" asp-route-id="@CurrentEvents.Id class="img-wrapper">
+                            <a asp-controller="Events" asp-action="EventPage" asp-route-id="@CurrentEvents.Id" class="img-wrapper">
                                 <img src="@CurrentEvents.EventImage">
                             <div class="img-btn">立即購票</div>
 
