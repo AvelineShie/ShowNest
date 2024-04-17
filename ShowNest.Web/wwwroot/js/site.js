@@ -3,7 +3,7 @@
         event.preventDefault();
         const searchString = document.getElementById("header-nav-search-input").value;
         localStorage.setItem('searchString', searchString);
-        window.location.href = `/events/Explore/search?inputString=${searchString}`;
+        window.location.href = `/events/Explore/`;
 
     }
 });
