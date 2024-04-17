@@ -36,9 +36,7 @@ namespace ShowNest.Web.Controllers
 
         public IActionResult EditOrganization(string id)
         {
-            var orgInfo = _organizationRepository.GetOrgById(int.Parse(id));
-
-            return View("CreateOrganization", orgInfo);
+            return View("CreateOrganization");
         }
     }
 }

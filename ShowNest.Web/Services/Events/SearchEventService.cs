@@ -32,6 +32,7 @@
                 .ThenInclude(o => o.Order)
                 .ThenInclude(u => u.User)
             .AsNoTracking();
+			inputstring = "美食";
         
         if (!string.IsNullOrEmpty(inputstring))
         {

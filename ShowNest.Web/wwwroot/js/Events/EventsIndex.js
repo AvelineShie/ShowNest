@@ -1,4 +1,5 @@
-﻿let page = 1
+﻿
+let page = 1
 let cardsPerPage = 9
 let pageIndexContainer = $('#page-index')[0]
 let cardTemplate = $('.card-template')[0].content
@@ -6,12 +7,13 @@ let totalPages = 0
 let totalEventsCount = 0
 
 $(function () {
-    loadCards()
+    loadAllCards()
 })
 
-async function loadCards() {
+async function loadAllCards() {
     let cardsContainer = $('.cards')[0]
     cardsContainer.innerHTML = ''
+
     // for checking
     console.log('cardTemplate')
     console.log(cardTemplate)
@@ -19,27 +21,41 @@ async function loadCards() {
     console.log(cardsContainer)
     console.log('pageIndexContainer')
     console.log(pageIndexContainer)
-
     // for checking
-    await fetch(`/api/EventsIndex/GetEventsIndexCardsByApi?page=${page}&cardsPerPage=${cardsPerPage}`)
-        .then(res => res.json())
-        .then(cards => {
-            console.log('cards')
-            console.log(cards)
-            cards.data.forEach(function (data) {
-                var cardToAppend = cardTemplate.cloneNode(true)
-                console.log(data.eventId)
-                $(cardToAppend).find('a').attr('href', `/Events/EventPage/${data.eventId}`)
-                $(cardToAppend).find('a').addClass(data.eventStatusCssClass)
-                $(cardToAppend).find('img').attr('src', data.eventImgUrl)
-                $(cardToAppend).find('.card-name span').text(data.categoryName)
-                $(cardToAppend).find('.card-name p').text(data.eventName)
-                $(cardToAppend).find('.card-event-date').html(`<i class="fa-regular fa-calendar-days"></i>${convertEventTime(data.eventTime)}`)
-                $(cardToAppend).find('.card-ticket-status').text(data.eventStatus)
-                cardsContainer.append(cardToAppend)
-                totalEventsCount = data.totalEvents
-            })
+
+    let queryParametersDto = {
+        id: 0,
+        inputString: '',
+        maxPrice: 0,
+        minPrice: 0,
+        startTime: '0001-01-01T00:00:00',
+        endTime: '9999-12-31T23:59:59.9999999',
+        categoryTag: 0,
+        page: page,
+        cardsPerPage: cardsPerPage
+    }
+
+    await axios.post(`/api/EventsIndex/GetEventsIndexCardsByApi`,queryParametersDto)
+    .then(res => {
+        console.log(res)
+        cards = res.data.data
+        cards.forEach(function (data) {
+            var cardToAppend = cardTemplate.cloneNode(true)
+            console.log(data.eventId)
+            $(cardToAppend).find('a').attr('href', `/Events/EventPage/${data.eventId}`)
+            $(cardToAppend).find('a').addClass(data.eventStatusCssClass)
+            $(cardToAppend).find('img').attr('src', data.eventImgUrl)
+            $(cardToAppend).find('.card-name span').text(data.categoryName)
+            $(cardToAppend).find('.card-name p').text(data.eventName)
+            $(cardToAppend).find('.card-event-date').html(`<i class="fa-regular fa-calendar-days"></i>${convertEventTime(data.eventTime)}`)
+            $(cardToAppend).find('.card-ticket-status').text(data.eventStatus)
+            cardsContainer.append(cardToAppend)
+            totalEventsCount = data.totalEvents
         })
+    })
+    .catch(err => {
+        console.error(err); 
+    })
 
     renderPagination()
 }
@@ -73,7 +89,7 @@ function renderPagination() {
     $prevPageButton.on('click', function () {
         if (page > 1) {
             page--
-            loadCards()
+            loadAllCards()
         }
     })
 
@@ -91,9 +107,9 @@ function renderPagination() {
             class: 'index'
         })
         i === page ? $pageButton.addClass('active-index') : {}
-        $pageButton.on('click',function(){
+        $pageButton.on('click', function () {
             page = i
-            loadCards()
+            loadAllCards()
         })
         $paginationContainer.append($pageButton)
     }
@@ -109,7 +125,7 @@ function renderPagination() {
     $nextPageButton.on('click', function () {
         if (page < totalPages) {
             page++
-            loadCards()
+            loadAllCards()
         }
     })
 
@@ -119,13 +135,13 @@ function renderPagination() {
 
 
 (function () {
-    const searchString = localStorage.getItem('searchString'); 
+    const searchString = localStorage.getItem('searchString');
     const searchInput = document.getElementById("event-search-search-input");
     if (searchString) {
-        searchInput.value = searchString; 
+        searchInput.value = searchString;
     }
     window.addEventListener('unload', function (event) {
-        
+
         localStorage.removeItem('searchString');
     });
 })();
@@ -204,7 +220,7 @@ document.querySelectorAll(".dropdown-item").forEach(item => {
             newUrl += "?Price=" + priceValue;
         } else if (minPrice !== 0 || maxPrice !== 0) {
             newUrl += "?MinPrice=" + minPrice + "&MaxPrice=" + maxPrice;
-        } else if (timeValue !=='') {
+        } else if (timeValue !== '') {
             newUrl += "?startTime=" + timeValue;
         }
         else if (startTime !== '' && endTime !== '') {

@@ -1,5 +1,6 @@
 ﻿using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using ShowNest.ApplicationCore.DTOs;
 
 namespace ShowNest.Web.WebAPI
 {
@@ -14,14 +15,15 @@ namespace ShowNest.Web.WebAPI
             _eventsIndexCardsAPIServiceByEf = eventsIndexCardsAPIServiceByEf;
         }
 
-        public async Task<IActionResult> GetEventsIndexCardsByApi(int page, int cardsPerPage)
+        //public async Task<IActionResult> GetEventsIndexCardsByApi(int page, int cardsPerPage)
+        //{
+        //    return Ok(await _eventsIndexCardsAPIServiceByEf.GetCardsByPagesize(page, cardsPerPage));
+        //}
+
+        public async Task<IActionResult> GetEventsIndexCardsByApi([FromBody]QueryParametersDto request)
         {
-            return Ok(await _eventsIndexCardsAPIServiceByEf.GetCardsByPagesize(page, cardsPerPage));
+            return Ok(await _eventsIndexCardsAPIServiceByEf.GetCardsByPagesize(request));
         }
 
-        public IActionResult GetTotalEventsCount()
-        {
-            return Ok(_eventsIndexCardsAPIServiceByEf.GetTotalEventsCount());
-        }
     }
 }

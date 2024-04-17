@@ -21,11 +21,11 @@ namespace ApplicationCore.DTOs
         //SetEvent
         public string WebsiteLink { get; set; }
         public DateTime StartTime { get; set; }
-        public DateTime EndTime { get; set; }
+        public DateTime? EndTime { get; set; }
         public string MainOrganizer { get; set; }
         public string CoOrganizer { get; set; }
-        public int Attendance { get; set; } //活動人數
-        public int EventStatus { get; set; }//線上實體
+        public int? Attendance { get; set; } //活動人數
+        public byte EventStatus { get; set; }//線上實體
         public string StreamingName { get; set; }
         public string StreamingUrl {  get; set; }
         public string LocationName { get; set; }
@@ -37,14 +37,25 @@ namespace ApplicationCore.DTOs
         public string EventImage { get; set; }
         public bool IsPrivateEvent { get; set; }
         public bool IsFree {  get; set; }
-        public int Status {  get; set; } //發布狀態
 
-        public List<CategoryTagsViewModel> EventCategoryTags { get; set; }
-        public class CategoryTagsViewModel
+
+        public List<ContactPersonVM> ContactPerson { get; set; }
+        public class ContactPersonVM
         {
-            public int CategoryId { get; set;}
-            public string CategoryName { get; set; }
+            public string Name { get; set; }
+            public string Email { get; set; }
+            public string Phone { get; set; } //名稱還未定
         }
+
+        public List<ParticipantPeopleVM> ParticipantPeople { get; set; }
+        public class ParticipantPeopleVM
+        {
+            public string Name { get; set; }
+            public string Email { get; set; }
+            public string Phone { get; set; } //名稱還未定
+        }
+
+        public int CategoryId { get; set; }
         
         public int Sort {  get; set; }//這會用到嗎?資料庫排序?但每次只會有一筆進去?
         public bool? IsDeleted { get; set; }
@@ -53,36 +64,21 @@ namespace ApplicationCore.DTOs
 
         //SetTicket
         //票可能會有好幾張不同的資料
-        public List<TicketDetailViewModel> TicketDetail { get; set; }
-        public class TicketDetailViewModel
-        {
+        //public List<TicketDetailViewModel> TicketDetail { get; set; }
+        //public class TicketDetailViewModel
+        //{
             public int TicketTypeId { get; set; }
-            public string TicketName { get; set; }
+            public string TicketName { get; set; }//票種名稱
             public string TicketType { get; set; }
             public DateTime StartSaleTime { get; set; }
             public DateTime EndSaleTime { get; set; }
             public int Prince { get; set; }
-            public int Amount { get; set; }
-        }
+            public int Amount { get; set; } //數量
+        //}
 
-
-        //SetTable
-        //結果同時對應在event跟order表內?
-        public List<ContactPersonVM> ContactPerson {  get; set; }
-        public List<ParticipantPeopleVM> ParticipantPeople{  get; set; }
-        public class ParticipantPeopleVM
-        {
-            public string Name { get; set; }
-            public string Email { get; set; }
-            public string Phone { get; set; } //名稱還未定
-        }
-
-        public class ContactPersonVM
-        {
-            public string Name { get; set; }
-            public string Email { get; set; }
-            public string Phone { get; set; } //名稱還未定
-        }
+        //票區
+        public int SeatAreaId { get; set; }
+        
     }
 
     

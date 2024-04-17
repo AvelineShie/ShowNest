@@ -84,5 +84,5 @@ public partial class User
 
     public virtual ICollection<PreFill> PreFills { get; set; } = new List<PreFill>();
 
-    public virtual ICollection<PreferredActivityArea> PreferredActivityArea { get; set; } = new List<PreferredActivityArea>();
+    public virtual ICollection<PreferredActivityArea> PreferredActivityAreas { get; set; } = new List<PreferredActivityArea>();
 }
