@@ -18,8 +18,7 @@
             <v-container>
                     <v-stepper prev-text="上一步"
                                next-text="下一步"
-                               editable
-                               hide-actions
+                               
                                :items="['建立活動', '設定資料', '設定票種', '設定表單']"
                                v-model="stepButton">
                         @* 第一頁 *@
@@ -36,10 +35,10 @@
                                                   item-value="id"
                                                   class="w-25"
                                                   :items="organizations" 
-                                                  <!--CreatEventService同名即可?-->
+                                                  
                                                   density="compact"
                                                   label="選擇一個組織"
-                                                  variant="outlined">
+                                                  variant="outlined" >
                                         </v-select>
 
                                         <!-- Hide the organizations while not selected below -->
@@ -706,6 +705,10 @@
                                         </div>
                                     </div>
                                     <span class="map-note"><i class="fa-solid fa-circle-info"></i>  如果您的活動應適用文化部成年禮金「文化幣」折抵，請在建立活動後聯絡 SHOWNEST 審查開通。</span>
+                                    <div class="pages-change">
+                                        <button type="button" class="btn btn-outline-secondary" onclick="window.location.href='@Url.Action("SetTicket", "Dashboard")'">上一頁</button>
+                                        <button type="button" class="btn btn-outline-secondary" onclick="window.location.href='@Url.Action("EventHub", "Dashboard")'" id="send">送出</button>
+                                    </div>
                                 </div>
                             </div>
                         </template>
