@@ -51,7 +51,7 @@ namespace ShowNest.Web
             builder.Services.AddScoped<OverviewService>();
             builder.Services.AddScoped<OrgGeneralInfoService>();
             builder.Services.AddScoped<EventPageService>();
-            builder.Services.AddScoped<SearchEventService>();
+            //builder.Services.AddScoped<SearchEventService>();
 
             builder.Services.AddScoped<IEventRepository, EventRepository>();
             builder.Services.AddScoped<ICreateEventService, CreateEventService>();

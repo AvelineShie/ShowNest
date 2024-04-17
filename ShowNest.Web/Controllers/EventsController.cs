@@ -6,6 +6,7 @@ using ApplicationCore.Entities;
 using ApplicationCore.Interfaces;
 using Elfie.Serialization;
 using Infrastructure.Services;
+using Microsoft.AspNetCore.Authentication;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.ChangeTracking;
@@ -56,13 +57,13 @@ namespace ShowNest.Web.Controllers
         private readonly EventPageService _eventPageService;
         private readonly IHttpContextAccessor _httpContextAccessor;
         private readonly DatabaseContext _context;
-        private readonly SearchEventService _searchEventService;
+        //private readonly SearchEventService _searchEventService;
 
 
 
         public EventsController(EventIndexService eventIndexService, OrderTicketService orderQueryService,
             IOrderRepository orderRepo, EventPageService eventPageService, IEcpayOrderService ecpayOrderService,
-            IHttpContextAccessor httpContextAccessor, DatabaseContext context, SearchEventService searchEventService)
+            IHttpContextAccessor httpContextAccessor, DatabaseContext context)
         {
             _eventIndexService = eventIndexService;
             _orderQueryService = orderQueryService;
@@ -71,7 +72,7 @@ namespace ShowNest.Web.Controllers
             _ecpayOrderService = ecpayOrderService;
             _httpContextAccessor = httpContextAccessor;
             _context = context;
-            _searchEventService = searchEventService;
+            
         }
 
         [Route("Events/Explore")]
@@ -264,6 +265,21 @@ namespace ShowNest.Web.Controllers
 
             return View("EcpayView", data);
         }
-       
+
+        //檢查登入狀態BY大頭
+        [HttpGet("checkLoginStatus")]
+        public async Task<IActionResult> CheckLoginStatus()
+        {
+            var result = await HttpContext.AuthenticateAsync();
+            if (result.Succeeded)
+            {
+                return Ok(new { isLoggedIn = true });
+            }
+            else
+            {
+                return Ok(new { isLoggedIn = false });
+            }
+        }
+
     }
 }
