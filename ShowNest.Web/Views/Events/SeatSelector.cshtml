@@ -110,8 +110,11 @@
     <div class="btn-cancel">
         <a href="#">取消購票</a>
     </div>
-    <div class="btn-confirm" data-bs-toggle="modal" data-bs-target="#btn-confirm">
-        <a href="#">確認座位</a>
+    <div 
+        @@click="onConfirmSeatClicked"
+        class="btn-confirm" data-bs-toggle="modal" data-bs-target="#btn-confirm">
+        <a href="#"
+           :data-attr="subtotalTicketCount">確認座位</a>
     </div>
 </div>
 <div class="modal fade" id="btn-confirm" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
@@ -123,11 +126,11 @@
                 </div>
             </div>
             <div class="modal-body">
-                <div class="ticket-detail">
-                    <div class="price">TWD$3,800</div>
-                    <div class="ticket-with-seat-detail">
-                        <div class="seat-location">紫 2D 區 3 排 14 號</div>
-                        <div class="ticket-type">全票</div>
+                <div class="ticket-detail" v-for="ticket in tickets">
+                    <div class="price"v-if="ticket.seatNumber">TWD${{ ticket.price }}</div>
+                    <div class="ticket-with-seat-detail" v-if="ticket.seatNumber">
+                        <div class="seat-location">{{ ticket.seatAreaName }} {{ ticket.seatNumber }}</div>
+                        <div class="ticket-type">{{ ticket.ticketTypeName }}</div>
                     </div>
                 </div>
                 <div class="display-total-amount">
@@ -137,7 +140,7 @@
             <div class="modal-footer">
                 <div class="total-amount">
                     <span>總金額</span>
-                    <p>TWD$3,800</p>
+                    <p>TWD${{subtotalTicketsPrice}}</p>
                 </div>
                 <div class="seats-selection-complete">
                     <a @@="onConfirmationClicked">完成選位</a>
@@ -224,7 +227,7 @@
 <div class="seat-areas-and-showcases wrap d-flex width" v-if="isSeatMode">
     <div class="display-seat-area d-flex">
         <div class="display-seat-area-chart">
-            <a @@click="onBackToAreaSelected()">票區圖</a>
+            <a @@click="onBackToAreaSelected">票區圖</a>
         </div>
         <div class="current-area">
             <p>{{seatViewModel.seatAreaName}}</p>
