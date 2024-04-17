@@ -1,17 +1,31 @@
-﻿let page = 1
-let cardsPerPage = 9
+﻿
 let pageIndexContainer = $('#page-index')[0]
 let cardTemplate = $('.card-template')[0].content
 let totalPages = 0
 let totalEventsCount = 0
 
+
+let queryParametersDto = {
+    id: 0,
+    inputString: '',
+    maxPrice: 0,
+    minPrice: 0,
+    startTime: '0001-01-01T00:00:00',
+    endTime: '9999-12-31T23:59:59.9999999',
+    categoryTag: 0,
+    page: 1, // 頁碼，預設是第一頁
+    cardsPerPage: 9, // 一頁幾張卡
+}
+
 $(function () {
     loadAllCards()
+    categoryTagsColorChanging()
 })
 
 async function loadAllCards() {
     let cardsContainer = $('.cards')[0]
     cardsContainer.innerHTML = ''
+
     // for checking
     console.log('cardTemplate')
     console.log(cardTemplate)
@@ -19,14 +33,13 @@ async function loadAllCards() {
     console.log(cardsContainer)
     console.log('pageIndexContainer')
     console.log(pageIndexContainer)
-
     // for checking
-    await fetch(`/api/EventsIndex/GetEventsIndexCardsByApi?page=${page}&cardsPerPage=${cardsPerPage}`)
-        .then(res => res.json())
-        .then(cards => {
-            console.log('cards')
-            console.log(cards)
-            cards.data.forEach(function (data) {
+
+    await axios.post(`/api/EventsIndex/GetEventsIndexCardsByApi`, queryParametersDto)
+        .then(res => {
+            console.log(res)
+            cards = res.data.data
+            cards.forEach(function (data) {
                 var cardToAppend = cardTemplate.cloneNode(true)
                 console.log(data.eventId)
                 $(cardToAppend).find('a').attr('href', `/Events/EventPage/${data.eventId}`)
@@ -40,22 +53,13 @@ async function loadAllCards() {
                 totalEventsCount = data.totalEvents
             })
         })
+        .catch(err => {
+            console.error(err);
+        })
 
     renderPagination()
 }
 
-function convertEventTime(datetimeString) {
-    let formatter = Intl.DateTimeFormat('zh-TW', {
-        year: 'numeric',
-        month: '2-digit',
-        day: '2-digit',
-        hour: '2-digit',
-        minute: '2-digit',
-        hour12: false
-    })
-    let convertedDate = new Date(datetimeString)
-    return formatter.format(convertedDate).replace(/,/, '').replace(/(\d{2}:\d{2}):\d{2} (\w+)/, '$1 $2');
-}
 
 // pagination
 function renderPagination() {
@@ -73,7 +77,7 @@ function renderPagination() {
     $prevPageButton.on('click', function () {
         if (page > 1) {
             page--
-            loadCards()
+            loadAllCards()
         }
     })
 
@@ -91,9 +95,9 @@ function renderPagination() {
             class: 'index'
         })
         i === page ? $pageButton.addClass('active-index') : {}
-        $pageButton.on('click',function(){
+        $pageButton.on('click', function () {
             page = i
-            loadCards()
+            loadAllCards()
         })
         $paginationContainer.append($pageButton)
     }
@@ -109,23 +113,56 @@ function renderPagination() {
     $nextPageButton.on('click', function () {
         if (page < totalPages) {
             page++
-            loadCards()
+            loadAllCards()
         }
     })
 
     $paginationContainer.append($nextPageButton)
 }
 
+function categoryTagsColorChanging() {
+    let lastClickedTag = null
+    $('#categories-tags-div a').click(function (e) {
+        e.preventDefault()
+        
+        if ($(this).hasClass('categories-tag-clicked')) { // 點擊已經被選到的tag就取消選取
+            $(this).removeClass('categories-tag-clicked')
+            queryParametersDto.categoryTag = 0
+            console.log(queryParametersDto.categoryTag)
+        } else {
+            if (lastClickedTag) { // 點擊另一個tag就取消已經選取的
+                lastClickedTag.removeClass('categories-tag-clicked');
+            }
+            $(this).addClass('categories-tag-clicked')
+            lastClickedTag = $(this)
+            queryParametersDto.categoryTag = parseInt($(this).attr('id')) // 把id放進queryParametersDto
+            console.log(queryParametersDto.categoryTag)
+        }
+    })
+}
+
+function convertEventTime(datetimeString) {
+    let formatter = Intl.DateTimeFormat('zh-TW', {
+        year: 'numeric',
+        month: '2-digit',
+        day: '2-digit',
+        hour: '2-digit',
+        minute: '2-digit',
+        hour12: false
+    })
+    let convertedDate = new Date(datetimeString)
+    return formatter.format(convertedDate).replace(/,/, '').replace(/(\d{2}:\d{2}):\d{2} (\w+)/, '$1 $2');
+}
 
 
 (function () {
-    const searchString = localStorage.getItem('searchString'); 
+    const searchString = localStorage.getItem('searchString');
     const searchInput = document.getElementById("event-search-search-input");
     if (searchString) {
-        searchInput.value = searchString; 
+        searchInput.value = searchString;
     }
     window.addEventListener('unload', function (event) {
-        
+
         localStorage.removeItem('searchString');
     });
 })();
@@ -204,7 +241,7 @@ document.querySelectorAll(".dropdown-item").forEach(item => {
             newUrl += "?Price=" + priceValue;
         } else if (minPrice !== 0 || maxPrice !== 0) {
             newUrl += "?MinPrice=" + minPrice + "&MaxPrice=" + maxPrice;
-        } else if (timeValue !=='') {
+        } else if (timeValue !== '') {
             newUrl += "?startTime=" + timeValue;
         }
         else if (startTime !== '' && endTime !== '') {

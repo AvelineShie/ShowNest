@@ -83,26 +83,17 @@
 <section>
 	<div class="cards-wrap width">
 		<div class="cards">
-			@* @if (Model != null && Model.EventEventCards.Any())
-			{
-				foreach (var srarcheventCard in Model.EventEventCards)
-				{
-					@await Html.PartialAsync("~/PartialViews/_EventCards_Partial.cshtml", srarcheventCard)
-				}
-			}
-			else
-			{
-				<p>没有找到匹配的事件。</p>
-			} *@
-
-
-
-
-			@* @foreach (var card in Model.EventEventCards)
-			{
-				@await Html.PartialAsync("~/PartialViews/_EventCards_Partial.cshtml", card)
-				;
-			} *@
+				<a class="single-card">
+					<div class="card-name">
+						<img src="EventImgUrl " alt="">
+						<span>CategoryName</span>
+						<p>EventName</p>
+					</div>
+					<div class="card-info">
+						<p class="card-event-date"><i class="fa-regular fa-calendar-days"></i></p>
+						<p class="card-ticket-status"></p>
+					</div>
+				</a>
 		</div>
 	</div>
 	<div id="page-index" class="width">

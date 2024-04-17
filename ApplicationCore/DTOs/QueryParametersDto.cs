@@ -1,8 +1,6 @@
-﻿using Microsoft.AspNetCore.Mvc.ModelBinding;
-
-namespace ShowNest.Web.ViewModels.Events
+﻿namespace ShowNest.ApplicationCore.DTOs
 {
-	public class QueryParametersViewModel
+	public class QueryParametersDto
 	{
 		public int Id { get; set; } // 可null
 
@@ -17,5 +15,9 @@ namespace ShowNest.Web.ViewModels.Events
 		public DateTime EndTime { get; set; } = DateTime.MaxValue; // 預設值為 DateTime.MaxValue
 
 		public int CategoryTag { get; set; } = 0; // 預設值為0
-	}
+
+        public int page { get; set; }
+
+        public int cardsPerPage { get; set; }
+    }
 }

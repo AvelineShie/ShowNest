@@ -42,7 +42,7 @@ namespace ShowNest.Web.Services.AccountService
 
             try
             {
-                var existingUser = await _context.LogInInfos
+                var existingUser = await _context.LogInInfo
                     .FirstOrDefaultAsync(u => u.Account == model.Account || u.Email == model.Email);
 
                 if (existingUser != null)
@@ -70,7 +70,7 @@ namespace ShowNest.Web.Services.AccountService
                     CreatedAt = DateTime.Now
                 };
 
-                _context.LogInInfos.Add(loginInfo);
+                _context.LogInInfo.Add(loginInfo);
                 await _context.SaveChangesAsync();
 
                 return (true, null);
@@ -84,7 +84,7 @@ namespace ShowNest.Web.Services.AccountService
         public async Task<(bool IsSuccess, string ErrorMessage)> LogInAsync(LoginViewModel login)
         {
             //先檢查帳號
-            var dbUser = await _context.LogInInfos
+            var dbUser = await _context.LogInInfo
                 .FirstOrDefaultAsync(a => a.Account == login.Account || a.Email == login.Account);
 
             if (dbUser == null)
@@ -159,7 +159,7 @@ namespace ShowNest.Web.Services.AccountService
             }
 
             // 如果舊密碼比對成功，則進行密碼更新的操作
-            var dbUser = await _context.LogInInfos.FirstOrDefaultAsync(u => u.UserId == int.Parse(userIdClaim.Value));
+            var dbUser = await _context.LogInInfo.FirstOrDefaultAsync(u => u.UserId == int.Parse(userIdClaim.Value));
             if (dbUser == null)
             {
                 // 如果找不到對應的使用者，則返回失敗
@@ -186,7 +186,7 @@ namespace ShowNest.Web.Services.AccountService
             }
 
             // 使用獲取到的使用者ID來查詢資料庫
-            var dbUser = await _context.LogInInfos.FirstOrDefaultAsync(u => u.UserId == int.Parse(userIdClaim.Value));
+            var dbUser = await _context.LogInInfo.FirstOrDefaultAsync(u => u.UserId == int.Parse(userIdClaim.Value));
             if (dbUser == null)
             {
                 // 如果找不到對應的使用者，則返回失敗
@@ -208,7 +208,7 @@ namespace ShowNest.Web.Services.AccountService
             {
                 var user = await _context.Users
                     .Include(u => u.LogInInfo)
-                    .Include(u => u.PreferredActivityArea)
+                    .Include(u => u.PreferredActivityAreas)
                     .ThenInclude(p => p.Area)
                     .FirstOrDefaultAsync(u => u.Id == userId);
 
@@ -217,7 +217,7 @@ namespace ShowNest.Web.Services.AccountService
                     return (false, null, "找不到對應的使用者。");
                 }
                 // 檢查PreferredActivityAreas是否為null
-                if (user.PreferredActivityArea == null)
+                if (user.PreferredActivityAreas == null)
                 {
                     // 如果PreferredActivityAreas為null，則返回一個空列表
                     var selectedAreas = new List<string>();
@@ -225,7 +225,7 @@ namespace ShowNest.Web.Services.AccountService
                 else
                 {
                     // 嘗試訪問Area屬性
-                    var selectedAreas = user.PreferredActivityArea.Select(p => p.Area.Name).ToList();
+                    var selectedAreas = user.PreferredActivityAreas.Select(p => p.Area.Name).ToList();
                 }
                 var userAccountViewModel = new UserAccountViewModel
                 {
@@ -243,7 +243,7 @@ namespace ShowNest.Web.Services.AccountService
                     Status = user.Status,
                     CreatedAt = user.CreatedAt,
                     EditedAt = user.EditedAt,
-                    SelectedAreas = user.PreferredActivityArea.Select(p => p.AreaId).ToList()
+                    SelectedAreas = user.PreferredActivityAreas.Select(p => p.AreaId).ToList()
 
                 };
 
@@ -257,11 +257,12 @@ namespace ShowNest.Web.Services.AccountService
         //更新使用者資料
         public async Task<(bool IsSuccess, string ErrorMessage)> UpdateUserAccountByIdAsync(int userId, UserAccountViewModel model)
         {
+
             try
             {
                 var user = await _context.Users
                     .Include(u => u.LogInInfo)
-                    .Include(u => u.PreferredActivityArea)
+                    .Include(u => u.PreferredActivityAreas)
                     .FirstOrDefaultAsync(u => u.Id == userId);
                 if (user == null)
                 {
@@ -272,7 +273,7 @@ namespace ShowNest.Web.Services.AccountService
                 if (user.LogInInfo.Account != model.Account)
                 {
                     // 檢查新的Account是否重複
-                    var existingAccountUser = await _context.LogInInfos
+                    var existingAccountUser = await _context.LogInInfo
                         .FirstOrDefaultAsync(u => u.Account == model.Account && u.UserId != user.Id);
                     if (existingAccountUser != null)
                     {
@@ -281,13 +282,13 @@ namespace ShowNest.Web.Services.AccountService
                     // 如果新的Account與原本的不同且不存在重複，則更新
                     user.LogInInfo.Account = model.Account;
                 }
-
                 // 檢查Email是否需要更新
                 if (user.LogInInfo.Email != model.Email)
                 {
                     // 檢查新的Email是否重複
-                    var existingEmailUser = await _context.LogInInfos
+                    var existingEmailUser = await _context.LogInInfo
                         .FirstOrDefaultAsync(u => u.Email == model.Email && u.UserId != user.Id);
+
                     if (existingEmailUser != null)
                     {
                         return (false, "Email已存在");
@@ -311,7 +312,7 @@ namespace ShowNest.Web.Services.AccountService
                 // 確保不會NULL
                 model.SelectedAreas = model.SelectedAreas ?? new List<int>();
                 // 將現有的偏好設定轉換成一個集合，以便於查詢
-                var existingAreaIds = user.PreferredActivityArea.Select(p => p.AreaId).ToList();
+                var existingAreaIds = user.PreferredActivityAreas.Select(p => p.AreaId).ToList();
 
                 // 根據選擇的區域更新偏好設定
                 foreach (var areaId in model.SelectedAreas)
@@ -326,7 +327,7 @@ namespace ShowNest.Web.Services.AccountService
                     var area = await _context.Areas.FindAsync(areaId);
                     if (area != null)
                     {
-                        user.PreferredActivityArea.Add(new PreferredActivityArea
+                        user.PreferredActivityAreas.Add(new PreferredActivityArea
                         {
                             UserId = user.Id,
                             AreaId = area.Id
@@ -334,7 +335,7 @@ namespace ShowNest.Web.Services.AccountService
                     }
                 }
                 // 從資料庫中刪除已取消選擇的區域的偏好設定
-                var areasToRemove = user.PreferredActivityArea.Where(p => existingAreaIds.Contains(p.AreaId)).ToList();
+                var areasToRemove = user.PreferredActivityAreas.Where(p => existingAreaIds.Contains(p.AreaId)).ToList();
                 _context.PreferredActivityAreas.RemoveRange(areasToRemove);
 
                 // 更新LoginInfo的EditedAt欄位
@@ -349,7 +350,6 @@ namespace ShowNest.Web.Services.AccountService
                 return (false, ex.Message);
             }
         }
-
 
 
         private string HashPassword(string password)

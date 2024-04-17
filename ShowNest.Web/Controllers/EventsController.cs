@@ -6,6 +6,7 @@ using ApplicationCore.Entities;
 using ApplicationCore.Interfaces;
 using Elfie.Serialization;
 using Infrastructure.Services;
+using Microsoft.AspNetCore.Authentication;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.ChangeTracking;
@@ -56,13 +57,13 @@ namespace ShowNest.Web.Controllers
         private readonly EventPageService _eventPageService;
         private readonly IHttpContextAccessor _httpContextAccessor;
         private readonly DatabaseContext _context;
-        private readonly SearchEventService _searchEventService;
+        //private readonly SearchEventService _searchEventService;
 
 
 
         public EventsController(EventIndexService eventIndexService, OrderTicketService orderQueryService,
             IOrderRepository orderRepo, EventPageService eventPageService, IEcpayOrderService ecpayOrderService,
-            IHttpContextAccessor httpContextAccessor, DatabaseContext context, SearchEventService searchEventService)
+            IHttpContextAccessor httpContextAccessor, DatabaseContext context)
         {
             _eventIndexService = eventIndexService;
             _orderQueryService = orderQueryService;
@@ -71,54 +72,38 @@ namespace ShowNest.Web.Controllers
             _ecpayOrderService = ecpayOrderService;
             _httpContextAccessor = httpContextAccessor;
             _context = context;
-            _searchEventService = searchEventService;
+            
         }
 
-        //public IActionResult Index()
-        //{
-        //    return View();
-        //}
-
-        // 舊方法，先註解
+        [Route("Events/Explore")]
         public async Task<IActionResult> Index()
         {
-            //var eventIndexViewModel = await _eventIndexService.GetEventIndexViewModel();
-
-            //int CardsPerPage = 9;
-            //int TotalPages = (int)Math.Ceiling((double)eventIndexViewModel.EventEventCards.Count / CardsPerPage);
-            //page = Math.Max(1, Math.Min(page, TotalPages));
-
-            //eventIndexViewModel.EventEventCards = eventIndexViewModel.EventEventCards
-            //                                        .Skip((page - 1) * CardsPerPage)
-            //                                        .Take(CardsPerPage)
-            //                                        .ToList();
-
-            //ViewData["TotalPages"] = TotalPages;
-            //ViewData["CurrentPage"] = page;
-
             var eventIndexCategoryTags = await _eventIndexService.GetEventIndexCategoryTags();
 
             return View(eventIndexCategoryTags);
         }
 
-        [HttpGet]
-		[Route("Events/Explore")]
-		public IActionResult Search(QueryParametersViewModel queryParameters)
+        public IActionResult Search()
         {
-			Console.WriteLine($"Name: {queryParameters.inputstring}, MinPrice: {queryParameters.MinPrice}, MaxPrice: {queryParameters.MaxPrice}, StartTime: {queryParameters.StartTime}, EndTime: {queryParameters.EndTime}");
-			///Events/Explore?inputstring=play&MaxPrice=300&MinPrice=10&StartTime=0&EndTime=0&CategoryTag=2
-			var searchResults = _searchEventService.SearchEventString(
-			queryParameters.inputstring,
-			queryParameters.MinPrice,
-			queryParameters.MaxPrice,
-			queryParameters.StartTime,
-			queryParameters.EndTime
-		    );
-			
-			
+            return View();
+        }
 
-			return RedirectToAction("Index", "Events", searchResults);
-		}
+        //[HttpGet]
+        ////[Route("Events")]
+        //public IActionResult Search(QueryParametersViewModel queryParameters)
+        //{
+        //    Console.WriteLine($"Name: {queryParameters.inputstring}, MinPrice: {queryParameters.MinPrice}, MaxPrice: {queryParameters.MaxPrice}, StartTime: {queryParameters.StartTime}, EndTime: {queryParameters.EndTime}");
+        //    ///Events/Explore?inputstring=play&MaxPrice=300&MinPrice=10&StartTime=0&EndTime=0&CategoryTag=2
+        //    var searchResults = _searchEventService.SearchEventString(
+        //    queryParameters.inputstring,
+        //    queryParameters.MinPrice,
+        //    queryParameters.MaxPrice,
+        //    queryParameters.StartTime,
+        //    queryParameters.EndTime
+        //    );
+
+        //    return RedirectToAction("Index", "Events", searchResults);
+        //}
 
 
 
@@ -265,6 +250,21 @@ namespace ShowNest.Web.Controllers
 
             return View("EcpayView", data);
         }
-       
+
+        //檢查登入狀態BY大頭
+        [HttpGet("checkLoginStatus")]
+        public async Task<IActionResult> CheckLoginStatus()
+        {
+            var result = await HttpContext.AuthenticateAsync();
+            if (result.Succeeded)
+            {
+                return Ok(new { isLoggedIn = true });
+            }
+            else
+            {
+                return Ok(new { isLoggedIn = false });
+            }
+        }
+
     }
 }

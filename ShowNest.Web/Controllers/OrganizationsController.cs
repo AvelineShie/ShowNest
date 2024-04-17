@@ -20,10 +20,6 @@ namespace ShowNest.Web.Controllers
         {
             var organizationData = _organizationService.GetOrganizationDetails(organizationId);
 
-            if (organizationData == null)
-            {
-                return NotFound();
-            }
 
             return View(organizationData);
         }
@@ -40,9 +36,7 @@ namespace ShowNest.Web.Controllers
 
         public IActionResult EditOrganization(string id)
         {
-            var orgInfo = _organizationRepository.GetOrgById(int.Parse(id));
-
-            return View("CreateOrganization", orgInfo);
+            return View("CreateOrganization");
         }
     }
 }

@@ -11,21 +11,22 @@ public class OrganizationIndexViewModel
     public string OrganizationWeb { get; set; }
     public string OrganizationFBLink { get; set; }
     public string OrganizationEmail { get; set; }
-    public (IEnumerable<IGrouping<string, EventDetail>>, IEnumerable<IGrouping<string, EventDetail>>) GroupedEvents;
+	
+    public List<EventDetail> CurrentEvents { get; set; }
+    public List<EventDetail> GroupedPastEvents { get; set; }
+
 }
 
 public class EventDetail
 {
-    
-
-    internal readonly int OrganizationId=1;
+    internal int Month;
 
     public int Id { get; set; }
     public string EventImage { get; set; }
     public string EventName { get; set; }
     public DateTime StartTime { get; set; }
     public DateTime? EndTime { get; set; }
-    //以活動狀態 去 判斷 近期舉辦活動 跟 曾經舉辦活動
+    //以當天日期 去 判斷 近期舉辦活動 跟 曾經舉辦活動
     public string EventIntroduction { get; set; }
     public List<EventDetail> AllEvents { get; set; }
 }

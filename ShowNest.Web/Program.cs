@@ -44,14 +44,14 @@ namespace ShowNest.Web
             builder.Services.AddScoped<CategoryTagService>();
             builder.Services.AddScoped<HomeService>();
             builder.Services.AddScoped<EventIndexService>();
-            builder.Services.AddScoped<EventDetailService>();
+            
             builder.Services.AddScoped<OrganizationIndexService>();
             builder.Services.AddScoped<OrganizationDetailService>();
             builder.Services.AddScoped<ISeatsService, SeatsService>();
             builder.Services.AddScoped<OverviewService>();
             builder.Services.AddScoped<OrgGeneralInfoService>();
             builder.Services.AddScoped<EventPageService>();
-            builder.Services.AddScoped<SearchEventService>();
+            //builder.Services.AddScoped<SearchEventService>();
 
             builder.Services.AddScoped<IEventRepository, EventRepository>();
             builder.Services.AddScoped<ICreateEventService, CreateEventService>();
@@ -115,10 +115,10 @@ namespace ShowNest.Web
             //    pattern: "{OrganizationId}/{controller=Events}/{action=Index}/{EventId?}");
             ///以上測試中--------------------------------------------------------------------------------------------
 
-            app.MapControllerRoute(
-            name: "SwitchExploreEventPages",//探索活動頁>切換活動頁籤
-            pattern: "Events/Explore/{page=1}",
-            defaults: new { controller = "Events", action = "Index" });
+            //app.MapControllerRoute(
+            //name: "SwitchExploreEventPages",//探索活動頁>切換活動頁籤
+            //pattern: "Events/Explore",
+            //defaults: new { controller = "Events", action = "Index" });
 
             //app.MapControllerRoute(
             //name: "SearchEventPages",//探索活動頁>搜尋功能

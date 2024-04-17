@@ -21,10 +21,10 @@ namespace ApplicationCore.DTOs
         //SetEvent
         public string WebsiteLink { get; set; }
         public DateTime StartTime { get; set; }
-        public DateTime EndTime { get; set; }
+        public DateTime? EndTime { get; set; }
         public string MainOrganizer { get; set; }
         public string CoOrganizer { get; set; }
-        public int Attendance { get; set; } //活動人數
+        public int? Attendance { get; set; } //活動人數
         public byte EventStatus { get; set; }//線上實體
         public string StreamingName { get; set; }
         public string StreamingUrl {  get; set; }
@@ -68,7 +68,7 @@ namespace ApplicationCore.DTOs
         //public class TicketDetailViewModel
         //{
             public int TicketTypeId { get; set; }
-            public string TicketName { get; set; }
+            public string TicketName { get; set; }//票種名稱
             public string TicketType { get; set; }
             public DateTime StartSaleTime { get; set; }
             public DateTime EndSaleTime { get; set; }
@@ -77,9 +77,8 @@ namespace ApplicationCore.DTOs
         //}
 
         //票區
-        public int SeatAreaId {  get; set; }
-
-
+        public int SeatAreaId { get; set; }
+        
     }
 
     
