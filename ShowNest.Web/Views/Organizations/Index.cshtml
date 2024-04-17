@@ -63,9 +63,9 @@ https://cdn.jsdelivr.net/npm/fullcalendar@6.1.11/index.global.min.js
                 <!-- 列表模式 -->
                 <ul class="org-event-list" id="eventList">
                     <!-- foreach  正在進行的活動-->
+                    @foreach (var CurrentEvents in Model.GroupedCurrentEvents)
+                    {
                     <li>
-                        @foreach (var CurrentEvents in Model.CurrentEvents)
-                        {
                             <h2><a asp-controller="Events" asp-action="EventPage" asp-route-id="@CurrentEvents.Id">@CurrentEvents.EventName </a></h2>
 
                         <div class="date">
@@ -80,9 +80,8 @@ https://cdn.jsdelivr.net/npm/fullcalendar@6.1.11/index.global.min.js
                         <div class="description">
                                 @CurrentEvents.EventIntroduction
                         </div>
-                        }
-                    </li>
-                    
+                     </li>
+                    }
                     <!--  -->
 
                 </ul>
