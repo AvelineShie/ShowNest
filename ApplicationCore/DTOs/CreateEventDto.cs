@@ -21,10 +21,10 @@ namespace ApplicationCore.DTOs
         //SetEvent
         public string WebsiteLink { get; set; }
         public DateTime StartTime { get; set; }
-        public DateTime EndTime { get; set; }
+        public DateTime? EndTime { get; set; }
         public string MainOrganizer { get; set; }
         public string CoOrganizer { get; set; }
-        public int Attendance { get; set; } //活動人數
+        public int? Attendance { get; set; } //活動人數
         public byte EventStatus { get; set; }//線上實體
         public string StreamingName { get; set; }
         public string StreamingUrl {  get; set; }
