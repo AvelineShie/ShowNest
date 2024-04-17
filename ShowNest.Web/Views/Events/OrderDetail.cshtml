@@ -36,12 +36,12 @@
                     </div>
                     <!-- 付款失敗訂單 -->
                     <div class="display-table-row" v-if="PaymentFailStep">
-                        <div class="icon_wrapper order_canceled">
-                            <i class="fa fa-info-circle"></i>
+                        <div class="icon_wrapper order_pay">
+                            <i class="fa fa-exclamation-circle"></i>
                         </div>
                         <div class="message_wrapper">
-                            <h1 class="statius_title canceled_h1">您的訂單已取消。</h1>
-                            <p class="statius_content">您的訂單已取消。如果需要退款，請與 ShowNest 聯絡退款事宜。</p>
+                            <h1 class="statius_title pay_h1">尚未繳費完成</h1>
+                            <p class="statius_content">訂單已完成，請儘速完成繳費程序。</p>
                         </div>
                     </div>
                     <!-- 訂單完成 -->
@@ -216,9 +216,9 @@
                     <i class="fa fa-paper-plane" aria-hidden="true"></i> 送出表單內容
                 </button>
 
-                <button class="btn_print btn btn_cancelled" id="btn_cancelled"> 取消訂單</button>
+                <button class="btn_print btn btn_cancelled" id="btn_cancelled" V-if="PaymentRepay"> 取消訂單</button>
                 <label for="checkoutBtn">
-                        <button class="btn_print btn btn_payment" v-if="PaymentPendingStep" @@click="onCheckoutClicked"> 重新繳費</button>
+                    <button class="btn_print btn btn_payment" v-if="PaymentRepay" @@click="onCheckoutClicked"> 重新繳費</button>
                 </label>
                 <div class="contact_info_contaner">
                     <div class="contact_info">
@@ -380,6 +380,8 @@
             PaymentSuccessStep() { return this.OrderStatus == 1 },
             PaymentFailStep() { return this.OrderStatus == 2 },
             PaymentCancelStep() { return this.OrderStatus == 3 },
+            PaymentRepay() { return this.OrderStatus == 0 || this.OrderStatus == 2; },
+            
 
             NotFree() {
                 return this.TotalPrice > 0;

@@ -56,9 +56,9 @@
                         </tr>
                         <tr>
                             <th>狀態</th>
-                            <td v-if="userOrder.OrderStatus==0" class="ticket-payment-pending">待付款</td>
+                            <td v-if="userOrder.OrderStatus==0 || userOrder.OrderStatus==2" class="ticket-payment-pending">待付款</td>
                             <td v-else-if="userOrder.OrderStatus==1" class="ticket-paid">已付款</td>
-                            <td v-else-if="userOrder.OrderStatus==2" class="ticket-payment-pending">付款失敗</td>
+                            @* <td v-else-if="userOrder.OrderStatus==2" class="ticket-payment-pending">付款失敗</td> *@
                             <td v-else class="ticket-cancel">取消</td>
                         </tr>
                         <tr>
@@ -86,7 +86,7 @@
                 <div class="btn-contact-customer-service">
                     <a href="#">聯絡客服</a>
                 </div>
-                <div class="btn-cancel-order">
+                <div class="btn-cancel-order" v-if=" userOrder.OrderStatus!=3">
                     <a href="#">取消訂單</a>
                 </div>
             </div>
