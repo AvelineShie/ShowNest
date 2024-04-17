@@ -32,7 +32,7 @@ public partial class DatabaseContext : DbContext
 
     public virtual DbSet<IsPaidRecord> IsPaidRecords { get; set; }
 
-    public virtual DbSet<LogInInfo> LogInInfos { get; set; }
+    public virtual DbSet<LogInInfo> LogInInfo { get; set; }
 
     public virtual DbSet<Order> Orders { get; set; }
 
