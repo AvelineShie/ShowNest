@@ -242,26 +242,11 @@ namespace ShowNest.Web.Controllers
                 data.Add(key, formData[key]);
             }
 
-            string temp = formData["MerchantTradeNo"]; //寫在LINQ(下一行)會出錯，
-            var ecpayOrder = _context.EcpayOrders.Where(m => m.MerchantTradeNo == temp).FirstOrDefault();
-
-            if (ecpayOrder != null)
-            {
-                ecpayOrder.RtnCode = int.Parse(formData["RtnCode"]);
-                if (formData["RtnMsg"] == "Succeeded")
-                {
-                    ecpayOrder.RtnMsg = "已付款";
-                    var orderToUpdate = _context.Orders.FirstOrDefault(o => o.EcpayTradeNo == temp);
-                    if (orderToUpdate != null)
-                    {
-                        orderToUpdate.Status = 1;
-                        _context.SaveChanges(); // 保存變更到資料庫
-                    }
-                }
-                ecpayOrder.PaymentDate = Convert.ToDateTime(formData["PaymentDate"]);
-                ecpayOrder.SimulatePaid = int.Parse(formData["SimulatePaid"]);
-                _context.SaveChanges();
-            }
+            //string temp = formData["MerchantTradeNo"]; //寫在LINQ(下一行)會出錯，
+            //string checkCode = formData["CheckMacValue"];
+            //var ecpayOrder = _context.EcpayOrders.Where(m => m.MerchantTradeNo == temp).FirstOrDefault();
+           
+           
 
             return View("EcpayView", data);
         }

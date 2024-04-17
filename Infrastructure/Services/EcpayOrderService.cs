@@ -10,6 +10,7 @@ using System.Security.Cryptography;
 using System.Text;
 using System.Web;
 using ApplicationCore.Entities;
+using System.Collections;
 
 
 namespace Infrastructure.Services
@@ -18,12 +19,14 @@ namespace Infrastructure.Services
     {
         private readonly DatabaseContext _context;
         private readonly string _connectionStr;
+        private readonly string _website;
 
 
         public EcpayOrderService(DatabaseContext context, IConfiguration configuration)
         {
             _context = context;
             _connectionStr = configuration.GetConnectionString("DatabaseContext");
+            _website = configuration["WebsiteUrl"];
         }
         
         public async Task<Dictionary<string, string>> GenerateEcpayOrderAsync(int orderId)
@@ -37,7 +40,7 @@ namespace Infrastructure.Services
             var totalAmount = order.Tickets.Sum(i => i.TicketType.Price);
 
             var eventName = order.Event.Name;
-            var website = "https://77b4-1-164-227-63.ngrok-free.app";
+            var website = _website;
 
             //綠界需要的參數
             var ecpayData = new Dictionary<string, string>
@@ -48,10 +51,6 @@ namespace Infrastructure.Services
                 {"TradeDesc", "無"},
                 {"ItemName", $"{eventName}"},
                 {"ExpireDate", "1"},
-                {"CustomField1", ""},
-                {"CustomField2", ""},
-                {"CustomField3", ""},
-                {"CustomField4", ""},
                 {"ReturnURL", $"{website}/api/Ecpay/AddPayInfo"},
                 {"OrderResultURL", $"{website}/Events/PayInfo/{orderId}"},
                 {"PaymentInfoURL", $"{website}/api/Ecpay/AddAccountInfo"},
@@ -63,12 +62,10 @@ namespace Infrastructure.Services
                 {"EncryptType", "1"},
             };
             ecpayData.Add("CheckMacValue", await GetCheckMacValue(ecpayData).ConfigureAwait(false));
-
+            
             //var ecpayOrder = await _context.EcpayOrders.Where(i => i.MerchantTradeNo == tradeNo).FirstOrDefaultAsync();
-            var ecpayOrder = await _context.EcpayOrders.Where(i => i.OrderId == orderId).FirstOrDefaultAsync();
-            if (ecpayOrder == null)
-            {
-                ecpayOrder = new EcpayOrder();
+            
+                var ecpayOrder = new EcpayOrder();
                 ecpayOrder.MemberId = ecpayData["MerchantID"];
                 ecpayOrder.MerchantTradeNo = ecpayData["MerchantTradeNo"];
                 ecpayOrder.RtnCode = 0; //未付款
@@ -82,14 +79,12 @@ namespace Infrastructure.Services
                 ecpayOrder.SimulatePaid = 0;
                 ecpayOrder.OrderId = orderId;
 
-
-
                 _context.EcpayOrders.Add(ecpayOrder);
                 await _context.SaveChangesAsync();
-            }
 
             return ecpayData;
         }
+
 
         //-----------------------------------原始粗暴版綠界------------------------------------------------
         
@@ -161,7 +156,15 @@ namespace Infrastructure.Services
 
             checkValue = await GetSHA256(checkValue);
 
-            return await Task.FromResult(checkValue.ToUpper());
+            Mac = checkValue;
+
+            return checkValue.ToUpper();
+        }
+        public string Mac { get; private set; }
+
+        public string GetCalculatedMac()
+        {
+            return Mac;
         }
 
         public string GenerateOrderIdAsync()

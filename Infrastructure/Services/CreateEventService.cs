@@ -271,33 +271,109 @@ namespace Infrastructure.Services
         }
 
 
+
+
+
+
+
+
+
+
+
+
+
         //===自動實作====
         public EventAndTagMapping Add(EventAndTagMapping entity)
         {
             throw new NotImplementedException();
         }
 
-        public IEnumerable<EventAndTagMapping> AddRange(IEnumerable<EventAndTagMapping> entities)
+    //    public IEnumerable<EventAndTagMapping> AddRange(IEnumerable<EventAndTagMapping> entities)
+    //    {
+    //        throw new NotImplementedException();
+    //    }
+
+    //    public EventAndTagMapping Update(EventAndTagMapping entity)
+    //    {
+    //        throw new NotImplementedException();
+    //    }
+
+    //    public IEnumerable<EventAndTagMapping> UpdateRange(IEnumerable<EventAndTagMapping> entities)
+    //    {
+    //        throw new NotImplementedException();
+    //    }
+
+    //    public void Delete(EventAndTagMapping entity)
+    //    {
+    //        throw new NotImplementedException();
+    //    }
+
+    //    public void DeleteRange(IEnumerable<EventAndTagMapping> entities)
+    //    {
+    //        throw new NotImplementedException();
+    //    }
+
+    //    EventAndTagMapping IRepository<EventAndTagMapping>.GetById<TId>(TId id)
+    //    {
+    //        throw new NotImplementedException();
+    //    }
+
+    //    public EventAndTagMapping FirstOrDefault(Expression<Func<EventAndTagMapping, bool>> expression)
+    //    {
+    //        throw new NotImplementedException();
+    //    }
+
+    //    public EventAndTagMapping SingleOrDefault(Expression<Func<EventAndTagMapping, bool>> expression)
+    //    {
+    //        throw new NotImplementedException();
+    //    }
+
+    //    public bool Any(Expression<Func<EventAndTagMapping, bool>> expression)
+    //    {
+    //        throw new NotImplementedException();
+    //    }
+
+    //    public List<EventAndTagMapping> List(Expression<Func<EventAndTagMapping, bool>> expression)
+    //    {
+    //        throw new NotImplementedException();
+    //    }
+
+    //    List<EventAndTagMapping> IRepository<EventAndTagMapping>.All()
+    //    {
+    //        throw new NotImplementedException();
+    //    }
+
+    //    public Task<EventAndTagMapping> UpdateAsync(EventAndTagMapping entity)
+    //    {
+    //        throw new NotImplementedException();
+    //    }
+
+        Task<EventAndTagMapping> IRepository<EventAndTagMapping>.GetByIdAsync<TEntityId>(TEntityId id)
         {
             throw new NotImplementedException();
         }
 
-        public EventAndTagMapping Update(EventAndTagMapping entity)
+        IEnumerable<EventAndTagMapping> IRepository<EventAndTagMapping>.AddRange(IEnumerable<EventAndTagMapping> entities)
         {
             throw new NotImplementedException();
         }
 
-        public IEnumerable<EventAndTagMapping> UpdateRange(IEnumerable<EventAndTagMapping> entities)
+        EventAndTagMapping IRepository<EventAndTagMapping>.Update(EventAndTagMapping entity)
         {
             throw new NotImplementedException();
         }
 
-        public void Delete(EventAndTagMapping entity)
+        IEnumerable<EventAndTagMapping> IRepository<EventAndTagMapping>.UpdateRange(IEnumerable<EventAndTagMapping> entities)
         {
             throw new NotImplementedException();
         }
 
-        public void DeleteRange(IEnumerable<EventAndTagMapping> entities)
+        void IRepository<EventAndTagMapping>.Delete(EventAndTagMapping entity)
+        {
+            throw new NotImplementedException();
+        }
+
+        void IRepository<EventAndTagMapping>.DeleteRange(IEnumerable<EventAndTagMapping> entities)
         {
             throw new NotImplementedException();
         }
@@ -307,22 +383,22 @@ namespace Infrastructure.Services
             throw new NotImplementedException();
         }
 
-        public EventAndTagMapping FirstOrDefault(Expression<Func<EventAndTagMapping, bool>> expression)
+        EventAndTagMapping IRepository<EventAndTagMapping>.FirstOrDefault(Expression<Func<EventAndTagMapping, bool>> expression)
         {
             throw new NotImplementedException();
         }
 
-        public EventAndTagMapping SingleOrDefault(Expression<Func<EventAndTagMapping, bool>> expression)
+        EventAndTagMapping IRepository<EventAndTagMapping>.SingleOrDefault(Expression<Func<EventAndTagMapping, bool>> expression)
         {
             throw new NotImplementedException();
         }
 
-        public bool Any(Expression<Func<EventAndTagMapping, bool>> expression)
+        bool IRepository<EventAndTagMapping>.Any(Expression<Func<EventAndTagMapping, bool>> expression)
         {
             throw new NotImplementedException();
         }
 
-        public List<EventAndTagMapping> List(Expression<Func<EventAndTagMapping, bool>> expression)
+        List<EventAndTagMapping> IRepository<EventAndTagMapping>.List(Expression<Func<EventAndTagMapping, bool>> expression)
         {
             throw new NotImplementedException();
         }
@@ -332,12 +408,7 @@ namespace Infrastructure.Services
             throw new NotImplementedException();
         }
 
-        public Task<EventAndTagMapping> UpdateAsync(EventAndTagMapping entity)
-        {
-            throw new NotImplementedException();
-        }
-
-        Task<EventAndTagMapping> IRepository<EventAndTagMapping>.GetByIdAsync<TEntityId>(TEntityId id)
+        Task<EventAndTagMapping> IRepository<EventAndTagMapping>.UpdateAsync(EventAndTagMapping entity)
         {
             throw new NotImplementedException();
         }

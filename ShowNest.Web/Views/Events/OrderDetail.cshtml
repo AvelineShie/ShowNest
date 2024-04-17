@@ -34,6 +34,16 @@
                             <p class="statius_content">您的訂單已取消。如果需要退款，請與 ShowNest 聯絡退款事宜。</p>
                         </div>
                     </div>
+                    <!-- 付款失敗訂單 -->
+                    <div class="display-table-row" v-if="PaymentFailStep">
+                        <div class="icon_wrapper order_canceled">
+                            <i class="fa fa-info-circle"></i>
+                        </div>
+                        <div class="message_wrapper">
+                            <h1 class="statius_title canceled_h1">您的訂單已取消。</h1>
+                            <p class="statius_content">您的訂單已取消。如果需要退款，請與 ShowNest 聯絡退款事宜。</p>
+                        </div>
+                    </div>
                     <!-- 訂單完成 -->
                     <div class="display-table-row" v-if="PaymentSuccessStep">
                         <div class="icon_wrapper order_finished">

@@ -7,6 +7,7 @@ const options = {
         return {
             //CreateEvent
             e1: 1,
+            userId:2,
             selectedOrganization: {}, //組織下拉v-model
             organizations: [], //下拉items
             displaySelectActivityType: false, /*隱藏*/
@@ -16,6 +17,11 @@ const options = {
             radioCheck: {}, //所選任一活動
             checkbox: false, //初始未勾選
             stepButton: false, //初始不可按
+            radio: 'Option 1',
+            items: ['實體活動', '線上活動'],
+            selectedEvent: {},
+            events: [],
+            
 
             //SetEvent
             /*el: 2,*/
@@ -72,21 +78,46 @@ const options = {
 
 
 
-            //SetTable
-
         }
     },
     mounted() {
-        /*this.getOrganizationsById()*/
+        this.CreateAndEditEvent()
+        this.GetOrgEventsByOrgId()
         
     },
     methods: {
-        //getOrganizationsById() {
-        //    fetch('/api/CreateEvent/GetOrganizationsById',
+        GetOrgByUserId() {
+            fetch('api/CreateEvent/CreateEventbyUserId',
+                {
+                    method: 'POST', // 設定請求方法為 POST
+                    headers: { 'Content-Type': 'application/json' }, // 設定內容類型為 JSON
+                    body: JSON.stringify({ userId: this.userId }) 
+                }
+            )
+            .then(response => {
+                return response.json()
+            })
+            .then(data => {
+                if (!data.isSuccess) {
+                    this.selectedOrganization = { id: 0, name: '沒有組織，請先建立組織' }
+                    throw new Error(data.message)
+                }
+                this.organizations = data.body.organizations.map(x => {
+                    return { id: x.id, name: x.name }
+                })
+                this.selectedOrganization = null
+            })
+            .catch(err => {
+                console.error(err)
+            })
+        },
+
+        //CreateAndEditEvent() {
+        //    fetch('/api/CreateEvent/CreateAndEditEvent',
         //        {
-        //            method: 'POST', // 設定請求方法為 POST
-        //            headers: { 'Content-Type': 'application/json' }, // 設定內容類型為 JSON
-        //            body: JSON.stringify({ userId: this.userId }) // 將資料轉換成 JSON 字串
+        //            method: 'POST', 
+        //            headers: { 'Content-Type': 'application/json' }, 
+        //            body: JSON.stringify({ eventId: this.eventId })
         //        })
         //        .then(response => {
         //            return response.json()
@@ -105,9 +136,9 @@ const options = {
         //            console.error(err)
         //        })
         //},
-        //getEventsByOrganizationId() {
-        //    console.log(this.selectedOrganization)
-        //},
+        GetOrgEventsByOrgId() {
+            console.log(this.selectedOrganization)
+        },
         
         
 
@@ -123,28 +154,28 @@ const options = {
             deep: true
         },
 
-        //'selectedActivityType': {
-        //    handler: function (val) {
-        //        if (val === "既有的活動") {
-        //            this.displayExistingActivities = true
-        //            this.getEventsByOrganizationId()
-        //        }
-        //    }
-        //},
-        //'checkbox': {
-        //    handler: function (newVal) {
-        //        // 透過 newVal, prevVal 取得監聽前後變數的值
-        //        if (newVal == preVal) {
-        //            this.stepButton = false;
-        //            this.checkboxErrorMsg = "請勾選同意後進行!";
-        //        }
-        //        else {
-        //            this.stepButton = true;
-        //            this.checkboxErrorMsg = "";
-        //        }
-        //    },
-        //    immediate: false
-        //},
+        'selectedActivityType': {
+            handler: function (val) {
+                if (val === "既有的活動") {
+                    this.displayExistingActivities = true
+                    this.getEventsByOrganizationId()
+                }
+            }
+        },
+        'checkbox': {
+            handler: function (newVal) {
+                // 透過 newVal, prevVal 取得監聽前後變數的值
+                if (newVal == preVal) {
+                    this.stepButton = false;
+                    this.checkboxErrorMsg = "請勾選同意後進行!";
+                }
+                else {
+                    this.stepButton = true;
+                    this.checkboxErrorMsg = "";
+                }
+            },
+            immediate: false
+        },
     }
 }
 const app = createApp(options); // 創建一個 Vue 應用實例，使用 options 作為配置選項
@@ -154,6 +185,7 @@ app.use(vuetify).mount('#app');
 
 
 /*=============票區選擇===============*/
+//格式錯誤要改寫
 //import draggable from "@@/vuedraggable";
 //const SelectTicketArea = createApp({
 //    name: "two-lists",
@@ -190,7 +222,7 @@ app.use(vuetify).mount('#app');
 //            this.list1.push({ name: this.newOptionName, id: this.list1.length + 1 });
 //        },
 //        replace: function () {
-//            list1.length = 0; 
+//            list1.length = 0;
 //            list2.push({ name: this.newOptionName, id: 1 }); //因為list清空, 所以加入的是id=1
 //        },
 //        clone: function (el) {
@@ -259,6 +291,7 @@ app.use(vuetify).mount('#app');
 
 
 /*=============google map ==============*/
+//寫的格式錯誤
 //const { GoogleMap, Marker } = Vue3GoogleMap
 
 //const map = createApp({
