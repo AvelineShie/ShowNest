@@ -5,4 +5,20 @@
     margin: 0px 2px;
     border-radius: var(--common-border-radius);
     box-shadow: 3px 0px 0px 0px var(--light-green);
+    transition: .25s ease;
+}
+
+.categories-tag-clicked {
+    color: #fff;
+    background-color: var(--main-green);
+}
+
+.categories-tag:hover {
+    color: inherit;
+    transform: scale(1.1);
+    transition: .25s ease;
+}
+
+.categories-tag-clicked:hover{
+    color:#fff;
 }
