@@ -146,11 +146,17 @@ namespace Infrastructure.Services
                         // Handle case when endTime is null (no end time specified)
                         // Do nothing or apply a different logic based on your requirements
                     }
+                    var results = query.Select(et => new EventIndexDto
+                    {
+                        EventId =  et.Id.ToString(),
+                        EventName = et.Name,
+                        EventImgUrl = et.EventImage, 
+                        EventTime = et.StartTime, 
+                       
+                    }).ToList();
 
-                    var results = query.Select(n => n.Id.ToString()).ToList();
-                    
 
-                return OperationResultHelper.ReturnSuccessData(results);
+                    return OperationResultHelper.ReturnSuccessData(results);
                 }
                 
 

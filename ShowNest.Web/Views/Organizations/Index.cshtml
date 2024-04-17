@@ -95,20 +95,18 @@ https://cdn.jsdelivr.net/npm/fullcalendar@6.1.11/index.global.min.js
                 @foreach (var GroupedpastMonth in Model.GroupedPastEvents)
                 {
                 <div class="history-wrapper">
-                        <h3>@GroupedpastMonth.Month</h3>
+                        <h3>@GroupedpastMonth.Year/@GroupedpastMonth.Month</h3>
                     <ul class="history-list-past">
-                            @foreach (var PastEvents in Model.GroupedPastEvents)
-                        {
                         <li>
                             <div class="table-wrapp">
-                                        <div class="date-wrapp cell-wrapp"><span class="date">@PastEvents.StartTime.ToString("yyyy/MM/dd HH:mm")</span></div>
+                                    <div class="date-wrapp cell-wrapp"><span class="date">@GroupedpastMonth.StartTime.Day</span></div>
                                 <div class="title-wrapp cell-wrapp">
-                                            <a asp-controller="Events" asp-action="EventPage" asp-route-id="@PastEvents.Id">@PastEvents.EventIntroduction</a>
+                                        <a asp-controller="Events" asp-action="EventPage" asp-route-id="@GroupedpastMonth.Id">@GroupedpastMonth.EventName</a>
                                 </div>
                             </div>
                         </li>
                         <!--  -->
-                        }
+                        
                     </ul>
                 </div>
                 }
