@@ -68,7 +68,7 @@ namespace ApplicationCore.DTOs
         //public class TicketDetailViewModel
         //{
             public int TicketTypeId { get; set; }
-            public string TicketName { get; set; }
+            public string TicketName { get; set; }//票種名稱
             public string TicketType { get; set; }
             public DateTime StartSaleTime { get; set; }
             public DateTime EndSaleTime { get; set; }
@@ -77,9 +77,8 @@ namespace ApplicationCore.DTOs
         //}
 
         //票區
-        public int SeatAreaId {  get; set; }
-
-
+        public int SeatAreaId { get; set; }
+        
     }
 
     

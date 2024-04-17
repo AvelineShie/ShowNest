@@ -134,14 +134,14 @@ namespace Infrastructure.Services
         public int UpdateEvent(CreateEventDto require)
         {
             using (var tanscation = DbContext.Database.BeginTransaction())
-                try {
+                try { //同一活動內容
                     var selectedEvent = DbContext.Events
                         .FirstOrDefault(e => e.Id == require.EventId);
 
                     var contactPersonJson = JsonConvert.SerializeObject(require.ContactPerson);
                     var participantPeopleJson = JsonConvert.SerializeObject(require.ParticipantPeople);
 
-                    //只取欄位所需
+                    //取欄位所需
                     selectedEvent.Name = require.EventName;
                     selectedEvent.OrganizationId = require.OrgId;
                     selectedEvent.StartTime = require.StartTime;
@@ -165,57 +165,55 @@ namespace Infrastructure.Services
                     selectedEvent.IsPrivateEvent = require.IsPrivateEvent;
                     selectedEvent.IsFree = require.IsFree;
 
-                    //Tag: 尋找同活動下的標籤
+                    DbContext.SaveChanges();
+
+                    //Tag: 尋找同一個活動下的標籤
                     var sameEventTag = DbContext.EventAndTagMappings
-                        .Where(t => t.EventId == require.EventId)
-                        .Select(t => t.CategoryTagId == require.CategoryId);
+                        .Where(t => t.EventId == require.EventId).ToList(); ;
 
-                    
+                    sameEventTag.ForEach(tag => tag.CategoryTagId = require.CategoryId);
+                    DbContext.SaveChanges();
 
-                    //票種樣式
-                    //找活動id相同的票
-                    var selectedTicket = DbContext.TicketTypes
-                        .FirstOrDefault(t => t.EventId == require.EventId);
+                    //票名,時間,價格,數量
+                    //同一活動下的票種內容
+                    var sameEventTicketTypes = DbContext.TicketTypes
+                        .Where(t => t.EventId == require.EventId).ToList();
 
-                    selectedTicket.Name = require.TicketName;
-                    selectedTicket.StartSaleTime = require.StartSaleTime;
-                    selectedTicket.EndSaleTime = require.EndSaleTime;
-                    selectedTicket.Price = require.Prince;
-                    selectedTicket.CapacityAmount = require.Amount;
+                    sameEventTicketTypes.ForEach(
+                        tt => {
+                            tt.Name = require.TicketName;
+                            tt.StartSaleTime = require.StartSaleTime;
+                            tt.EndSaleTime = require.EndSaleTime;
+                            tt.Price = require.Prince;
+                            tt.CapacityAmount = require.Amount;
+                        }
+                    );
+                    DbContext.SaveChanges();
 
-                    //票區與票的對應
+                    //票區與票種:找出每一張票對應的票區,票種                    
+                    //同一特定活動(eventId)下的每個票種對應的票區
 
-                    //var selectedArea = DbContext.TicketTypeAndSeatAreaMappings
-                    //    .FirstOrDefault(sa => sa.)
-                    //var ticketAndSeatAreaMapping = new TicketTypeAndSeatAreaMapping
-                    //{
-                    //    TicketTypeId = require.TicketTypeId,
-                    //    SeatAreaId = require.SeatAreaId,
-                    //};
+                    foreach (var ticketType in sameEventTicketTypes)
+                    {
+                        var sameTicketTypeSeatAreas = DbContext.TicketTypeAndSeatAreaMappings
+                            .Where(t => t.TicketTypeId == ticketType.Id).ToList();
+                        foreach (var item in sameTicketTypeSeatAreas)
+                        {
+                            item.SeatAreaId = require.SeatAreaId;
+                        }
+                    }
 
-
-                    //DbContext.SaveChanges();
-                    //transcation.Commit();
+                    DbContext.SaveChanges();
+                    transcation.Commit();
 
                     return selectedEvent.Id;
-
                 }
                 catch (Exception ex)
                 {
-                    //transcation.Rollback();
+                    transcation.Rollback();
                     throw new Exception(ex.Message);
                 }
-
         }
-
-        //public CreateEventDto RenderEventData(int eventId)
-        //{
-
-        //}
-
-
-
-
 
         //===========自動實作==============
         public EventAndTagMapping Add(EventAndTagMapping entity)
