@@ -12,7 +12,7 @@ public class OrganizationIndexViewModel
     public string OrganizationFBLink { get; set; }
     public string OrganizationEmail { get; set; }
 	
-    public List<EventDetail> CurrentEvents { get; set; }
+    public List<EventDetail> GroupedCurrentEvents { get; set; }
     public List<EventDetail> GroupedPastEvents { get; set; }
 
 }
