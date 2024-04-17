@@ -19,12 +19,14 @@ namespace Infrastructure.Services
     {
         private readonly DatabaseContext _context;
         private readonly string _connectionStr;
+        private readonly string _website;
 
 
         public EcpayOrderService(DatabaseContext context, IConfiguration configuration)
         {
             _context = context;
             _connectionStr = configuration.GetConnectionString("DatabaseContext");
+            _website = configuration["WebsiteUrl"];
         }
         
         public async Task<Dictionary<string, string>> GenerateEcpayOrderAsync(int orderId)
@@ -38,7 +40,7 @@ namespace Infrastructure.Services
             var totalAmount = order.Tickets.Sum(i => i.TicketType.Price);
 
             var eventName = order.Event.Name;
-            var website = "https://77b4-1-164-227-63.ngrok-free.app";
+            var website = _website;
 
             //綠界需要的參數
             var ecpayData = new Dictionary<string, string>
