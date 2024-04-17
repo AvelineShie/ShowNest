@@ -19,28 +19,28 @@ namespace Infrastructure.Services
         private readonly IOrganizationRepository _organizationRepository;
         private readonly DatabaseContext _dbContext;
 
-    //    public CreateEventService(IOrganizationRepository organizationRepository, DatabaseContext context) : base(context)
-    //    {
-    //        _organizationRepository = organizationRepository;
-    //        _dbContext = context;
-    //    }
+        public CreateEventService(IOrganizationRepository organizationRepository, DatabaseContext context) : base(context)
+        {
+            _organizationRepository = organizationRepository;
+            _dbContext = context;
+        }
 
-    //    public IEnumerable<Organization> GetOrgByUserId(int userId)
-    //    {
-    //        var organizations = DbContext.Organizations
-    //            .Where(o => o.OwnerId == userId);
+        public IEnumerable<Organization> GetOrgByUserId(int userId)
+        {
+            var organizations = DbContext.Organizations
+                .Where(o => o.OwnerId == userId);
 
-    //        return organizations;
-    //    }
+            return organizations;
+        }
 
-    //    public IEnumerable<Event> GetOrgEventsByOrgId(int orgId)
-    //    {
-    //        var events = DbContext.Events
-    //            .Include(e => e.Organization)
-    //            .Where(e => e.OrganizationId == orgId);
+        public IEnumerable<Event> GetOrgEventsByOrgId(int orgId)
+        {
+            var events = DbContext.Events
+                .Include(e => e.Organization)
+                .Where(e => e.OrganizationId == orgId);
 
-    //        return events;
-    //    }
+            return events;
+        }
 
         //如果要跳轉到活動頁面,活動主頁設定用id去撈, 目前已經有API，類型可以直接設string，
 
@@ -97,8 +97,8 @@ namespace Infrastructure.Services
                     };
 
 
-    //    //            DbContext.EventAndTagMappings.Add(eventTags);
-    //    //            DbContext.SaveChanges();
+                    DbContext.EventAndTagMappings.Add(eventTags);
+                    DbContext.SaveChanges();
 
                     //TicketTypes: 活動與票卷的關係
                     var ticketDetail = new TicketType
@@ -110,9 +110,9 @@ namespace Infrastructure.Services
                         Price = request.Prince,
                         CapacityAmount = request.Amount,
 
-    //    //            };
-    //    //            DbContext.TicketTypes.Add(ticketDetail);
-    //    //            DbContext.SaveChanges();
+                    };
+                    DbContext.TicketTypes.Add(ticketDetail);
+                    DbContext.SaveChanges();
 
                     //票區與票的對應
                     var ticketAndSeatAreaMapping = new TicketTypeAndSeatAreaMapping
@@ -349,6 +349,66 @@ namespace Infrastructure.Services
     //    }
 
         Task<EventAndTagMapping> IRepository<EventAndTagMapping>.GetByIdAsync<TEntityId>(TEntityId id)
+        {
+            throw new NotImplementedException();
+        }
+
+        IEnumerable<EventAndTagMapping> IRepository<EventAndTagMapping>.AddRange(IEnumerable<EventAndTagMapping> entities)
+        {
+            throw new NotImplementedException();
+        }
+
+        EventAndTagMapping IRepository<EventAndTagMapping>.Update(EventAndTagMapping entity)
+        {
+            throw new NotImplementedException();
+        }
+
+        IEnumerable<EventAndTagMapping> IRepository<EventAndTagMapping>.UpdateRange(IEnumerable<EventAndTagMapping> entities)
+        {
+            throw new NotImplementedException();
+        }
+
+        void IRepository<EventAndTagMapping>.Delete(EventAndTagMapping entity)
+        {
+            throw new NotImplementedException();
+        }
+
+        void IRepository<EventAndTagMapping>.DeleteRange(IEnumerable<EventAndTagMapping> entities)
+        {
+            throw new NotImplementedException();
+        }
+
+        EventAndTagMapping IRepository<EventAndTagMapping>.GetById<TId>(TId id)
+        {
+            throw new NotImplementedException();
+        }
+
+        EventAndTagMapping IRepository<EventAndTagMapping>.FirstOrDefault(Expression<Func<EventAndTagMapping, bool>> expression)
+        {
+            throw new NotImplementedException();
+        }
+
+        EventAndTagMapping IRepository<EventAndTagMapping>.SingleOrDefault(Expression<Func<EventAndTagMapping, bool>> expression)
+        {
+            throw new NotImplementedException();
+        }
+
+        bool IRepository<EventAndTagMapping>.Any(Expression<Func<EventAndTagMapping, bool>> expression)
+        {
+            throw new NotImplementedException();
+        }
+
+        List<EventAndTagMapping> IRepository<EventAndTagMapping>.List(Expression<Func<EventAndTagMapping, bool>> expression)
+        {
+            throw new NotImplementedException();
+        }
+
+        List<EventAndTagMapping> IRepository<EventAndTagMapping>.All()
+        {
+            throw new NotImplementedException();
+        }
+
+        Task<EventAndTagMapping> IRepository<EventAndTagMapping>.UpdateAsync(EventAndTagMapping entity)
         {
             throw new NotImplementedException();
         }
