@@ -25,7 +25,7 @@ namespace Infrastructure.Services
             _context = context;
             _connectionStr = configuration.GetConnectionString("DatabaseContext");
         }
-
+        
         public async Task<Dictionary<string, string>> GenerateEcpayOrderAsync(int orderId)
         {
             var order = await _context.Orders
@@ -33,11 +33,11 @@ namespace Infrastructure.Services
                 .Include(i => i.Tickets)
                 .ThenInclude(i => i.TicketType)
                 .Where(i => i.Id == orderId).FirstOrDefaultAsync();
-            var tradeNo = order.EcpayTradeNo;
+            var tradeNo = GenerateOrderIdAsync();
             var totalAmount = order.Tickets.Sum(i => i.TicketType.Price);
 
             var eventName = order.Event.Name;
-            var website = "http://localhost:5171";
+            var website = "https://77b4-1-164-227-63.ngrok-free.app";
 
             //綠界需要的參數
             var ecpayData = new Dictionary<string, string>
@@ -64,7 +64,8 @@ namespace Infrastructure.Services
             };
             ecpayData.Add("CheckMacValue", await GetCheckMacValue(ecpayData).ConfigureAwait(false));
 
-            var ecpayOrder = await _context.EcpayOrders.Where(i => i.MerchantTradeNo == tradeNo).FirstOrDefaultAsync();
+            //var ecpayOrder = await _context.EcpayOrders.Where(i => i.MerchantTradeNo == tradeNo).FirstOrDefaultAsync();
+            var ecpayOrder = await _context.EcpayOrders.Where(i => i.OrderId == orderId).FirstOrDefaultAsync();
             if (ecpayOrder == null)
             {
                 ecpayOrder = new EcpayOrder();
@@ -79,6 +80,9 @@ namespace Infrastructure.Services
                 ecpayOrder.PaymentTypeChargeFee = "0";
                 ecpayOrder.TradeDate = ecpayData["MerchantTradeDate"];
                 ecpayOrder.SimulatePaid = 0;
+                ecpayOrder.OrderId = orderId;
+
+
 
                 _context.EcpayOrders.Add(ecpayOrder);
                 await _context.SaveChangesAsync();
@@ -87,58 +91,43 @@ namespace Infrastructure.Services
             return ecpayData;
         }
 
-        public async Task<Dictionary<string, string>> GenerateOrderAsync(string customerOrderId)
-        {
-            var orderId = GenerateOrderIdAsync();
-            var eventName = await GetCustomerOrderNameAsync(customerOrderId);
-            //需填入你的網址
-            var website = $"https://67b5-1-164-250-93.ngrok-free.app";
+        //-----------------------------------原始粗暴版綠界------------------------------------------------
+        
+        //public async Task<Dictionary<string, string>> GenerateOrderAsync(string customerOrderId)
+        //{
+        //    var orderId = GenerateOrderIdAsync();
+        //    var eventName = await GetCustomerOrderNameAsync(customerOrderId);
+        //    //需填入你的網址
+        //    var website = $"https://9fe4-1-164-227-63.ngrok-free.app";
 
-            int totalAmount = await GetCustomerOrderTotalAmountAsync(customerOrderId);
-            var order = new Dictionary<string, string>
-            {
-                //綠界需要的參數
-                {"MerchantTradeNo", orderId},
-                {"MerchantTradeDate", DateTime.Now.ToString("yyyy/MM/dd HH:mm:ss")},
-                {"TotalAmount", $"{totalAmount}"},
-                {"TradeDesc", "無"},
-                {"ItemName", $"{eventName}"},
-                {"ExpireDate", "1"},
-                {"CustomField1", ""},
-                {"CustomField2", ""},
-                {"CustomField3", ""},
-                {"CustomField4", ""},
-                {"ReturnURL", $"{website}/api/Ecpay/AddPayInfo"},
-                {"OrderResultURL", $"{website}/Events/PayInfo/{orderId}"},
-                {"PaymentInfoURL", $"{website}/api/Ecpay/AddAccountInfo"},
-                {"ClientRedirectURL", $"{website}/Events/PayInfo/{orderId}"},
-                {"MerchantID", "3002607"},
-                {"IgnorePayment", "GooglePay#WebATM#CVS#BARCODE"},
-                {"PaymentType", "aio"},
-                {"ChoosePayment", "ALL"},
-                {"EncryptType", "1"},
-            };
-            //檢查碼
-            order["CheckMacValue"] = await GetCheckMacValue(order);
-            return (order);
-            //var order =  new OrderDto
-            //{
-            //    MerchantTradeNo = orderId,
-            //    MerchantTradeDate = DateTime.Now.ToString("yyyy/MM/dd HH:mm:ss"),
-            //    TotalAmount = totalAmount,
-            //    TradeDesc =$"無",
-            //    ItemName=$"{eventName}",
-            //    ReturnURL = $"{website}/api/Ecpay/AddPayInfo",
-            //    OrderResultURL = $"{website}/Events/OrderDetail/{orderId}",
-            //    PaymentInfoURL=$"{website}/api/Ecpay/AddAccountInfo" ,
-            //    ClientBackURL = $"{website}/Events/OrderDetail/{orderId}",
-            //    MerchantID = "3002607",
-            //    PaymentType= "aio",
-            //    ChoosePayment = "ALL",
-            //    EncryptType= 1,
-            //};
-            //return order;
-        }
+        //    int totalAmount = await GetCustomerOrderTotalAmountAsync(customerOrderId);
+        //    var order = new Dictionary<string, string>
+        //    {
+        //        //綠界需要的參數
+        //        {"MerchantTradeNo", orderId},
+        //        {"MerchantTradeDate", DateTime.Now.ToString("yyyy/MM/dd HH:mm:ss")},
+        //        {"TotalAmount", $"{totalAmount}"},
+        //        {"TradeDesc", "無"},
+        //        {"ItemName", $"{eventName}"},
+        //        {"ExpireDate", "1"},
+        //        {"CustomField1", ""},
+        //        {"CustomField2", ""},
+        //        {"CustomField3", ""},
+        //        {"CustomField4", ""},
+        //        {"ReturnURL", $"{website}/api/Ecpay/AddPayInfo"},
+        //        {"OrderResultURL", $"{website}/Events/PayInfo/{orderId}"},
+        //        {"PaymentInfoURL", $"{website}/api/Ecpay/AddAccountInfo"},
+        //        {"ClientRedirectURL", $"{website}/Events/PayInfo/{orderId}"},
+        //        {"MerchantID", "3002607"},
+        //        {"IgnorePayment", "GooglePay#WebATM#CVS#BARCODE"},
+        //        {"PaymentType", "aio"},
+        //        {"ChoosePayment", "ALL"},
+        //        {"EncryptType", "1"},
+        //    };
+        //    //檢查碼
+        //    order["CheckMacValue"] = await GetCheckMacValue(order);
+        //    return (order);
+        //}
 
         private Task<string> GetSHA256(string value)
         {
@@ -157,14 +146,6 @@ namespace Infrastructure.Services
 
         public async Task<string> GetCheckMacValue(Dictionary<string, string> order)
         {
-            //// 使用反射獲取 OrderDto 的所有公共實例屬性
-            //var properties = typeof(OrderDto).GetProperties(BindingFlags.Public | BindingFlags.Instance);
-
-            //// 將屬性轉換為鍵值對，並按照鍵的字母順序排序
-            //var param = properties.OrderBy(p => p.Name)
-            //                      .Select(p => p.Name + "=" + p.GetValue(order))
-            //                      .ToList();
-
             var param = order.Keys.OrderBy(x => x).Select(key => key + "=" + order[key]).ToList();
             var checkValue = string.Join("&", param);
 

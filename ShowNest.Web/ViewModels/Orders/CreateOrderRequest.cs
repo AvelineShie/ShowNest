@@ -1,4 +1,3 @@
-using DemoShop.ApplicationCore.Interfaces.TodoService.Dto;
 using ShowNest.Web.ViewModels.Tickets;
 
 namespace ShowNest.Web.ViewModels.Orders;

@@ -64,6 +64,8 @@ public partial class Order
 
     public virtual ArchiveOrder ArchiveOrder { get; set; }
 
+    public virtual ICollection<EcpayOrder> EcpayOrders { get; set; } = new List<EcpayOrder>();
+
     public virtual Event Event { get; set; }
 
     public virtual ICollection<Ticket> Tickets { get; set; } = new List<Ticket>();

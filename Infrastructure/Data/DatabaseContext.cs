@@ -161,6 +161,11 @@ public partial class DatabaseContext : DbContext
             entity.Property(e => e.RtnMsg).HasMaxLength(50);
             entity.Property(e => e.TradeDate).HasMaxLength(50);
             entity.Property(e => e.TradeNo).HasMaxLength(50);
+
+            entity.HasOne(d => d.Order).WithMany(p => p.EcpayOrders)
+                .HasForeignKey(d => d.OrderId)
+                .OnDelete(DeleteBehavior.ClientSetNull)
+                .HasConstraintName("FK_EcpayOrders_Orders");
         });
 
         modelBuilder.Entity<Event>(entity =>
@@ -548,7 +553,7 @@ public partial class DatabaseContext : DbContext
                 .OnDelete(DeleteBehavior.ClientSetNull)
                 .HasConstraintName("FK_PreferredActivityArea_Area");
 
-            entity.HasOne(d => d.User).WithMany(p => p.PreferredActivityArea)
+            entity.HasOne(d => d.User).WithMany(p => p.PreferredActivityAreas)
                 .HasForeignKey(d => d.UserId)
                 .OnDelete(DeleteBehavior.ClientSetNull)
                 .HasConstraintName("FK_PreferredActivityArea_Users");

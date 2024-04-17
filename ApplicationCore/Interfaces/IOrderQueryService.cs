@@ -1,13 +1,4 @@
-﻿using ApplicationCore.Entities;
-using DemoShop.ApplicationCore.Interfaces.TodoService.Dto;
-using System;
-using System.Collections.Generic;
-using System.ComponentModel.DataAnnotations;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace ApplicationCore.Interfaces
+﻿namespace ApplicationCore.Interfaces
 {
     public interface IOrderQueryService
     {

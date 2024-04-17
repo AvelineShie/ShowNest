@@ -46,10 +46,10 @@
                 <div id="header-functions" class="">
                     <div id="header-functions-left" class="">
                         <a id="my-tickets" asp-controller="Account" asp-action="MyTicketList">我的票券</a>
-                        <a id="events-index" asp-controller="Events" asp-action="Index">探索活動</a>
+                        <a id="events-index" href="/Events/Explore">探索活動</a>
                         <div id="header-nav-search-div" class="d-flex align-items-center">
                             <i class="fa-solid fa-magnifying-glass" id="header-nav-magnifier-icon"></i>
-                            <form id="searchForm" method="Get" asp-action="search" asp-controller="events">
+                            <form id="searchForm" method="Get" asp-action="Search" asp-controller="Events">
                                 <input type="text" id="header-nav-search-input" name="inputstring" placeholder="搜尋活動">
                             </form>
                         </div>
@@ -171,6 +171,7 @@
     <script src="~/js/site.js" asp-append-version="true"></script>
     <script src="~/lib/vue/vue.global.min.js"></script>
     <script src="https://unpkg.com/vue-cookies@1.8.3/vue-cookies.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/axios@1.6.7/dist/axios.min.js"></script>
    	<script src="~/js/shared/_loggedinlayout.js"></script>
     @await RenderSectionAsync("Scripts", required: false)
     @await RenderSectionAsync("endJS", required: false)

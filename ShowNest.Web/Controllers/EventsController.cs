@@ -71,46 +71,38 @@ namespace ShowNest.Web.Controllers
             _ecpayOrderService = ecpayOrderService;
             _httpContextAccessor = httpContextAccessor;
             _context = context;
-            _searchEventService=
             _searchEventService = searchEventService;
         }
 
-        //public IActionResult Index()
-        //{
-        //    return View();
-        //}
-
-        // 舊方法，先註解
+        [Route("Events/Explore")]
         public async Task<IActionResult> Index()
         {
-            //var eventIndexViewModel = await _eventIndexService.GetEventIndexViewModel();
-
-            //int CardsPerPage = 9;
-            //int TotalPages = (int)Math.Ceiling((double)eventIndexViewModel.EventEventCards.Count / CardsPerPage);
-            //page = Math.Max(1, Math.Min(page, TotalPages));
-
-            //eventIndexViewModel.EventEventCards = eventIndexViewModel.EventEventCards
-            //                                        .Skip((page - 1) * CardsPerPage)
-            //                                        .Take(CardsPerPage)
-            //                                        .ToList();
-
-            //ViewData["TotalPages"] = TotalPages;
-            //ViewData["CurrentPage"] = page;
-
             var eventIndexCategoryTags = await _eventIndexService.GetEventIndexCategoryTags();
 
             return View(eventIndexCategoryTags);
         }
 
-        [HttpGet]
-        public IActionResult Search( string inputstring)
+        public IActionResult Search()
         {
-            ///Events/Search?Id=1&Name=SSS&MaxPrice=300&MinPrice=10&StartTime=0&EndTime=0&CategoryTag=2
-
-            //var searchResults = _searchEventService.SearchEventString(inputstring);
-
-            return RedirectToAction("Index", "Events", new { inputstring });
+            return View();
         }
+
+        //[HttpGet]
+        ////[Route("Events")]
+        //public IActionResult Search(QueryParametersViewModel queryParameters)
+        //{
+        //    Console.WriteLine($"Name: {queryParameters.inputstring}, MinPrice: {queryParameters.MinPrice}, MaxPrice: {queryParameters.MaxPrice}, StartTime: {queryParameters.StartTime}, EndTime: {queryParameters.EndTime}");
+        //    ///Events/Explore?inputstring=play&MaxPrice=300&MinPrice=10&StartTime=0&EndTime=0&CategoryTag=2
+        //    var searchResults = _searchEventService.SearchEventString(
+        //    queryParameters.inputstring,
+        //    queryParameters.MinPrice,
+        //    queryParameters.MaxPrice,
+        //    queryParameters.StartTime,
+        //    queryParameters.EndTime
+        //    );
+
+        //    return RedirectToAction("Index", "Events", searchResults);
+        //}
 
 
 
@@ -154,8 +146,8 @@ namespace ShowNest.Web.Controllers
         public async Task<IActionResult> PaymentInfo(string customerOrderId)
         {
             // var userId = _httpContextAccessor.HttpContext.User.Claims.FirstOrDefault(c => c.Type == ClaimTypes.NameIdentifier).Value;
-            //
-            // var GenerateOrderToEcpay = await _ecpayOrderService.GenerateOrderAsync(customerOrderId);
+            
+             //var GenerateOrderToEcpay = await _ecpayOrderService.GenerateOrderAsync(customerOrderId);
             // var checkMacValue = await _ecpayOrderService.GetCheckMacValue(GenerateOrderToEcpay);
             // ViewData["CheckMacValue"] = checkMacValue;
             return View();
@@ -164,8 +156,8 @@ namespace ShowNest.Web.Controllers
         public async Task<IActionResult> OrderDetail(string customerOrderId)
         {
 
-            var GenerateOrderToEcpay = await _ecpayOrderService.GenerateOrderAsync(customerOrderId);
-            return View(GenerateOrderToEcpay);
+            //var GenerateOrderToEcpay = await _ecpayOrderService.GenerateOrderAsync(customerOrderId);
+            return View();
         }
 
         public IActionResult BuyTicket()
@@ -251,7 +243,7 @@ namespace ShowNest.Web.Controllers
 
             string temp = formData["MerchantTradeNo"]; //寫在LINQ(下一行)會出錯，
             var ecpayOrder = _context.EcpayOrders.Where(m => m.MerchantTradeNo == temp).FirstOrDefault();
-            
+
             if (ecpayOrder != null)
             {
                 ecpayOrder.RtnCode = int.Parse(formData["RtnCode"]);
@@ -272,13 +264,6 @@ namespace ShowNest.Web.Controllers
 
             return View("EcpayView", data);
         }
-        [HttpGet]
-        public async Task<IActionResult> Ecpay(string customerOrderId)
-        {
-            var userId = _httpContextAccessor.HttpContext.User.Claims.FirstOrDefault(c => c.Type == ClaimTypes.NameIdentifier).Value;
-
-            var GenerateOrderToEcpay = await _ecpayOrderService.GenerateOrderAsync(customerOrderId);
-            return View(GenerateOrderToEcpay);
-        }
+       
     }
 }

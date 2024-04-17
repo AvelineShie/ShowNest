@@ -33,7 +33,7 @@
     <div v-for="userOrder in userOrderList">
         <div class="order-detail">
             <div class="order-id-with-pic">
-                <div class="order-id">#645920</div>
+                <div class="order-id">#{{userOrder.EcpayTradeNo}}</div>
                 <div class="event-pic"><img v-bind:src="userOrder.EventImage" width="250" height="130" alt="event image"></div>
             </div>
             <div class="order-event-detail">
@@ -56,8 +56,8 @@
                         </tr>
                         <tr>
                             <th>狀態</th>
-                            <td v-if="OrderStatus==0" class="ticket-payment-pending">待付款</td>
-                            <td v-else-if="OrderStatus==1" class="ticket-cancel">取消</td>
+                            <td v-if="userOrder.OrderStatus==0" class="ticket-payment-pending">待付款</td>
+                            <td v-else-if="userOrder.OrderStatus==1" class="ticket-cancel">取消</td>
                             <td v-else class="ticket-paid">已付款</td>
                         </tr>
                         <tr>
@@ -66,7 +66,7 @@
                         </tr>
                         <tr>
                             <th>票劵數量</th>
-                            <td>1</td>
+                            <td>{{userOrder.TicketAmount}}</td>
                         </tr>
                         <tr>
                             <th>總價</th>
@@ -77,7 +77,7 @@
             </div>
             <div class="order-btns">
                 <div class="btn-edit-order">
-                    <a v-on:click="gotoOrderDetailPage(userOrder.OrderId)">查看/修改資料</a>
+                    <a style="cursor:pointer;" v-on:click="gotoOrderDetailPage(userOrder.OrderId)">查看/修改資料</a>
                 </div>
                 <div class="btn-contact-organizer">
                     <a asp-controller="Organizations" asp-action="ContactOrganization">聯絡主辦單位</a>
@@ -240,7 +240,7 @@
                 console.log(res);
                 if (res.status) {
                     this.userOrderList = res.data;
-                    console.log(this.userOrderList);
+                    console.log(userOrderList,this.userOrderList);
                 }else{
                     console.log(res.msg);
                 }

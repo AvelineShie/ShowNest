@@ -4,7 +4,7 @@
     public class CreateEventViewModel
     {
         public List<OrgNameList> OrgNames { get; set; } //Owner's OrgId
-        
+        public List<CategoryTagsViewModel> EventCategoryTags { get; set; }
     }
 
     public class OrgNameList
@@ -19,6 +19,7 @@
         public int EventId { get; set; }
         public string EventName { get; set; }
     }
+
 }
 
 
