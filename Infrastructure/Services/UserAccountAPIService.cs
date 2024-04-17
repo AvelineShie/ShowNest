@@ -61,7 +61,7 @@ namespace Infrastructure.Services
 
                 try
                 {
-                    var data = connection.Query(sql, new { UserID = userId }).ToList();
+                    var data = connection.Query(sql, new { UserID = userId }).ToList().OrderByDescending(o=>o.OrderDate);
                     return OperationResultHelper.ReturnSuccessData(data);
                 }
                 catch (Exception ex)
