@@ -271,6 +271,17 @@ namespace Infrastructure.Services
         }
 
 
+
+
+
+
+
+
+
+
+
+
+
         //===自動實作====
         public EventAndTagMapping Add(EventAndTagMapping entity)
         {
