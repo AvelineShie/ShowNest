@@ -39,11 +39,11 @@ const options = {
             fetch('/api/Events/GetOrganizationsById',
                 {
                     method: 'POST', // 設定請求方法為 POST
-                    headers: { 'Content-Type': 'application/json' }, // 設定內容類型為 JSON
-                    body: JSON.stringify({ userId: this.userId }) // 將資料轉換成 JSON 字串
+                    headers: { 'Content-Type': 'application/json' }, // 設定內容格式為 JSON
+                    body: JSON.stringify({ userId: this.userId }) // 將要傳送的資料轉成 JSON
                 })
                 .then(response => {
-                    return response.json()
+                    return response.json() //讀取伺服器回應的主體數據，並將其解析為 JSON 
                 })
                 .then(data => {
                     if (!data.isSuccess) {

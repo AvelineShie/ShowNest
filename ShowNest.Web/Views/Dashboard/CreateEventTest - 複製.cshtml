@@ -33,10 +33,6 @@
 
                                     <!-- Hide the organizations while not selected below -->
                                     <div v-show="displaySelectActivityType">
-                                        @* <div class="new-activity">
-                                        <input type="radio" class="new-activiy-radio">
-                                        <label> 全新的活動</label>
-                                        </div> *@
                                         <v-select v-model="selectedActivityType"
                                                   class="w-25"
                                                   :items="activityTypes"
