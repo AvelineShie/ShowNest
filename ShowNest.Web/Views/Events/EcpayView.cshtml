@@ -19,7 +19,15 @@
     </div>
     <h2 >付款完成</h2>
     <p>訂單編號: #@Model.Id </p>
-    <p>您的付款已經成功處理,我們非常感謝您的支持。</p>
+    <p>您的付款已經成功處理,我們感謝您的購買。</p>
    
-    <a class="btn btn-primary mb-4 mt-4" href="@Url.Action("OrderDetail", "Events", new { id = Model.Id })">確認</a>
+    <a class="btn btn-primary mb-4 mt-4" onclick="navigateToOrderDetail()">確認</a>
 </div>
+<script>
+    function navigateToOrderDetail() {
+        window.location.href = '/Events/OrderDetail?id=' + @Model.Id;
+    }
+</script>
+
+@* href="@Url.Action("OrderDetail", "Events", new { id = Model.Id })">確認 
+asp-controller="Events" asp-action="OrderDetail" asp-route-id="@Model.Id"*@
