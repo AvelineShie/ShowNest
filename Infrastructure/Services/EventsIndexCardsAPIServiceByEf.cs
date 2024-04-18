@@ -88,9 +88,9 @@ namespace Infrastructure.Services
                                         .Include(ea => ea.EventAndTagMappings)
                                             .ThenInclude(ct => ct.CategoryTag)
                                         .Include(t => t.TicketTypes)
-                                            .ThenInclude(t => t.Tickets)
-                                            .ThenInclude(o => o.Order)
-                                            .ThenInclude(u => u.User)
+                                            //.ThenInclude(t => t.Tickets)
+                                            //.ThenInclude(o => o.Order)
+                                            //.ThenInclude(u => u.User) 
                                         .AsNoTracking();
 
                     // query string filters

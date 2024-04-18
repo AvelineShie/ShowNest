@@ -166,7 +166,7 @@ document.getElementById("header-nav-search-input").addEventListener("keypress", 
 });
 
 // 兩個下拉選單的查詢
-document.querySelectorAll(".dropdown-item").forEach(item => {
+document.querySelectorAll("#event-search-filter .dropdown-item").forEach(item => {
     item.addEventListener("click", function (event) {
         event.preventDefault();
         console.log("dropdown item clicked")
