@@ -18,6 +18,7 @@
     <None Include="wwwroot\js\API\userAPI.js" />
     <None Include="wwwroot\js\Events\Comps\headinfo.js" />
     <None Include="wwwroot\SeatsData.json" />
+    <Content Remove="wwwroot\css\Events\BuyTicket.css" />
   </ItemGroup>
 
   <ItemGroup>

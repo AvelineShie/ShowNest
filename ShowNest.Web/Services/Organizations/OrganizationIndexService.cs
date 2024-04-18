@@ -1,6 +1,7 @@
 ﻿using Infrastructure.Data;
 using ShowNest.Web.Services.Organizations;
 using ShowNest.Web.ViewModels.Organization;
+using static ShowNest.Web.ViewModels.Organization.OrganizationIndexViewModel;
 
 namespace ShowNest.Web.Services.Organization
 {
@@ -16,49 +17,52 @@ namespace ShowNest.Web.Services.Organization
         public OrganizationIndexViewModel GetOrganizationDetails(int organizationId)
         {
             var organization = _databaseContext.Organizations
-                                .Include(o => o.Events)
-                                .FirstOrDefault(o => o.Id == organizationId);
+                        .Include(o => o.Events).AsNoTracking()
+                        .FirstOrDefault(o => o.Id == organizationId);
 
             if (organization == null)
             {
                 return null;
             }
-            var currentDate = DateTime.Now.Date;
+            var currentDate = DateTime.Now;
 
-            // 先將事件按照開始時間排序
-            var sortedEvents = organization.Events.OrderBy(e => e.StartTime);
 
-            // 將事件按照開始時間的月份分組
-            var groupedEvents = sortedEvents
-                .GroupBy(e => e.StartTime.Month)
-                .Select(g => new { Month = g.Key, Events = g.ToList() })
+
+            // 從符合organizationId的活動事件中 取得所有現正進行中的活動事件
+            var currentEvents = organization.Events
+                .Where(e => e.EndTime >= currentDate)
+                .OrderBy(e => e.StartTime)
                 .ToList();
 
-            var currentEvents = groupedEvents.FirstOrDefault(g => g.Month == currentDate.Month)?.Events
-                .Select(e => new EventDetail
-                {
-                    Id = e.Id,
-                    EventImage = e.EventImage,
-                    EventName = e.Name,
-                    StartTime = e.StartTime,
-                    EventIntroduction = e.Introduction,
-                }).ToList();
+            //// 從符合organizationId的活動事件中 取得結束的活動事件
+            //var pastEvents = organization.Events
+            //    .Where(e => e.EndTime < currentDate)
+            //    .OrderBy(e => e.StartTime)
+            //    .GroupBy(e => e.StartTime.Month)
+            //    .ToList();
 
-            // 將過去的事件按照月份分類
-            var pastEventsGroupedByMonth = groupedEvents
-                .Where(g => g.Month < currentDate.Month)
-                .Select(g => new {
-                    g.Month,
-                    Events = g.Events.Select(e => new EventDetail
+            var groupedPastEvents = organization.Events
+                    .Where(e => e.EndTime < currentDate)
+                    .OrderBy(e => e.StartTime)
+                    .GroupBy(e => e.StartTime.Year)
+                    .Select(group => group.Select(e => new EventDetail
                     {
-                Id = e.Id,
-                EventImage = e.EventImage,
-                EventName = e.Name,
-                StartTime = e.StartTime,
-                EventIntroduction = e.Introduction,
-            }).ToList()
-        })
-        .ToList();
+                        Year = e.StartTime.Year,
+                        Month = e.StartTime.Month,
+                        Id = e.Id,
+                        EventName = e.Name,
+                        StartTime = e.StartTime,
+                    }))
+                    .ToList();
+
+
+
+            //// 將已經結束的事件按照開始時間的月份分組
+            //var pastGroupedEvents = pastEvents
+            //.GroupBy(e => new { e.StartTime.Year, e.StartTime.Month })
+            //.Select(g => new { Year = g.Key.Year, Month = g.Key.Month, Events = g.ToList() })
+            //.ToList();
+
             var result = new OrganizationIndexViewModel
             {
                 OrganizationId = organization.Id,
@@ -68,16 +72,20 @@ namespace ShowNest.Web.Services.Organization
                 OrganizationWeb = organization.OrganizationUrl,
                 OrganizationFBLink = organization.Fblink,
                 OrganizationEmail = organization.Email,
-                CurrentEvents = currentEvents,
-                GroupedPastEvents = pastEventsGroupedByMonth.Select(g => new EventDetail
+                GroupedCurrentEvents = currentEvents
+                .Select(e => new EventDetail
                 {
-                    Month = g.Month
-                   
-                }).ToList()
+                    Id = e.Id,
+                    EventImage = e.EventImage,
+                    EventName = e.Name,
+                    StartTime = e.StartTime,
+                    EventIntroduction = e.Introduction,
+                })
+                .ToList(),
+                GroupedPastEvents = groupedPastEvents.SelectMany(x => x).ToList(),
             };
-
             return result;
+       
         }
-
     }
 }
