@@ -47,9 +47,9 @@ namespace Infrastructure.Services
                 if (request.Id == 0 &&
                     string.IsNullOrEmpty(request.inputstring) &&
                     request.MaxPrice == 0 &&
-                    request.MinPrice == 0 &&
-                    request.StartTime == DateTime.MinValue &&
-                    request.EndTime == DateTime.MaxValue &&
+                    request.MinPrice == 99999999 &&
+                    request.StartTime == null &&
+                    request.EndTime == null &&
                     request.CategoryTag == 0)
                 {
                     var totalEventsCount = _databaseContext.Events.Count();
@@ -80,7 +80,7 @@ namespace Infrastructure.Services
                     string inputstring = request.inputstring;
                     decimal minPrice = request.MinPrice;
                     decimal maxPrice = request.MaxPrice;
-                    DateTime startTime = request.StartTime;
+                    DateTime? startTime = request.StartTime;
                     DateTime? endTime = request.EndTime;
 
                     var query = _databaseContext.Events
@@ -88,9 +88,7 @@ namespace Infrastructure.Services
                                         .Include(ea => ea.EventAndTagMappings)
                                             .ThenInclude(ct => ct.CategoryTag)
                                         .Include(t => t.TicketTypes)
-                                            //.ThenInclude(t => t.Tickets)
-                                            //.ThenInclude(o => o.Order)
-                                            //.ThenInclude(u => u.User) 
+                                        .Where(e => e.StartTime > DateTime.Today)
                                         .AsNoTracking();
 
                     // query string filters
@@ -100,44 +98,35 @@ namespace Infrastructure.Services
                     }
 
                     // price filter
-                    if (maxPrice <= 3000)
+                    if (!(minPrice == 0 && maxPrice > 3000))
                     {
                         query = query.Where(e => e.TicketTypes.Any(t => t.Price >= minPrice && t.Price <= maxPrice));
                     }
 
                     // Time range filters
-                    else if (endTime.HasValue)
+                    if (!(startTime == null && endTime == null))
                     {
-                        if (startTime == DateTime.Today && endTime.Value == DateTime.Today)
-                        {
-                            query = query.Where(e => e.StartTime.Date == DateTime.Today && e.EndTime.HasValue && e.EndTime.Value.Date == DateTime.Today);
-                        }
-                        else if (startTime == DateTime.Today && endTime.Value <= DateTime.Today.AddDays(7))
-                        {
-                            query = query.Where(e => e.StartTime.Date == DateTime.Today && e.EndTime.HasValue && e.EndTime.Value.Date <= DateTime.Today.AddDays(7));
-                        }
-                        else if (startTime == DateTime.Today && endTime.Value <= DateTime.Today.AddMonths(1))
-                        {
-                            query = query.Where(e => e.StartTime.Date == DateTime.Today && e.EndTime.HasValue && e.EndTime.Value.Date <= DateTime.Today.AddMonths(1));
-                        }
-                        else if (startTime == DateTime.Today && endTime.Value <= DateTime.Today.AddMonths(2))
-                        {
-                            query = query.Where(e => e.StartTime.Date == DateTime.Today && e.EndTime.HasValue && e.EndTime.Value.Date <= DateTime.Today.AddMonths(2));
-                        }
+                        query = query.Where(e => e.StartTime <= endTime);
                     }
-                    else
-                    {
-                        // Handle case when endTime is null (no end time specified)
-                        // Do nothing or apply a different logic based on your requirements
-                    }
-                    var results = query.Select(et => new EventIndexDto
-                    {
-                        EventId =  et.Id.ToString(),
-                        EventName = et.Name,
-                        EventImgUrl = et.EventImage, 
-                        EventTime = et.StartTime, 
-                       
-                    }).ToList();
+
+                    var totalEventsCount = query.Count();
+
+                    var results = query
+                        .OrderBy(q => q.EventAndTagMappings.FirstOrDefault().CategoryTagId)
+                        .ThenBy(q => q.Id)
+                        .Skip((page - 1) * cardsPerPage).Take(cardsPerPage)
+                        .Select(q => new EventIndexDto
+                        {
+                            EventId = q.Id.ToString(),
+                            EventName = q.Name,
+                            EventImgUrl = q.EventImage,
+                            CategoryName = q.EventAndTagMappings.FirstOrDefault(et => et.CategoryTagId == et.CategoryTag.Id).CategoryTag.Name,
+                            EventTime = q.StartTime,
+                            EventStatus = GetEventStatusAndCssClassName(q.StartTime)[0],
+                            EventStatusCssClass = GetEventStatusAndCssClassName(q.StartTime)[1],
+                            TotalEvents = totalEventsCount
+
+                        }).ToList();
 
 
                     return OperationResultHelper.ReturnSuccessData(results);
@@ -151,79 +140,5 @@ namespace Infrastructure.Services
                 return OperationResultHelper.ReturnErrorMsg(ex.Message);
             }
         }
-
-
-        //// PJ的方法寫這裡
-        //string inputstring = request.inputstring;
-        //decimal minPrice = request.MinPrice;
-        //decimal maxPrice = request.MaxPrice;
-        //DateTime startTime = request.StartTime;
-        //DateTime? endTime = request.EndTime;
-
-        //var query = _databaseContext.Events
-        //    .Include(o => o.Organization)
-        //    .Include(ea => ea.EventAndTagMappings)
-        //        .ThenInclude(ct => ct.CategoryTag)
-        //    .Include(t => t.TicketTypes)
-        //        .ThenInclude(t => t.Tickets)
-        //        .ThenInclude(o => o.Order)
-        //        .ThenInclude(u => u.User)
-        //    .AsNoTracking();
-
-        //if (!string.IsNullOrEmpty(inputstring))
-        //{
-        //    query = query.Where(en => en.Name.Contains(inputstring));
-        //}
-
-        //// Price range filters
-        //else if (minPrice == 0) // 免費
-        //{
-        //    query = query.Where(e => e.TicketTypes.Any(t => t.Price == 0));
-        //}
-        //else if (maxPrice < 1000)
-        //{
-        //    query = query.Where(e => e.TicketTypes.Any(t => t.Price > minPrice && t.Price < maxPrice));
-        //}
-        //else if (maxPrice < 2000)
-        //{
-        //    query = query.Where(e => e.TicketTypes.Any(t => t.Price > minPrice && t.Price < maxPrice));
-        //}
-        //else if (maxPrice < 3000)
-        //{
-        //    query = query.Where(e => e.TicketTypes.Any(t => t.Price > minPrice && t.Price < maxPrice));
-        //}
-        //else if (minPrice > 3000)
-        //{
-        //    query = query.Where(e => e.TicketTypes.Any(t => t.Price > minPrice));
-        //}
-
-        //// Time range filters
-        //else if (endTime.HasValue)
-        //{
-        //    if (startTime == DateTime.Today && endTime.Value == DateTime.Today)
-        //    {
-        //        query = query.Where(e => e.StartTime.Date == DateTime.Today && e.EndTime.HasValue && e.EndTime.Value.Date == DateTime.Today);
-        //    }
-        //    else if (startTime == DateTime.Today && endTime.Value <= DateTime.Today.AddDays(7))
-        //    {
-        //        query = query.Where(e => e.StartTime.Date == DateTime.Today && e.EndTime.HasValue && e.EndTime.Value.Date <= DateTime.Today.AddDays(7));
-        //    }
-        //    else if (startTime == DateTime.Today && endTime.Value <= DateTime.Today.AddMonths(1))
-        //    {
-        //        query = query.Where(e => e.StartTime.Date == DateTime.Today && e.EndTime.HasValue && e.EndTime.Value.Date <= DateTime.Today.AddMonths(1));
-        //    }
-        //    else if (startTime == DateTime.Today && endTime.Value <= DateTime.Today.AddMonths(2))
-        //    {
-        //        query = query.Where(e => e.StartTime.Date == DateTime.Today && e.EndTime.HasValue && e.EndTime.Value.Date <= DateTime.Today.AddMonths(2));
-        //    }
-        //}
-        //else
-        //{
-        //    // Handle case when endTime is null (no end time specified)
-        //    // Do nothing or apply a different logic based on your requirements
-        //}
-
-        //var results = query.Select(n => n.Id.ToString()).ToList();
-
     }
 }

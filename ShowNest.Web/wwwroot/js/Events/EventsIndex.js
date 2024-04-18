@@ -7,10 +7,10 @@ let totalEventsCount = 0
 let queryParametersDto = {
     id: 0,
     inputString: '',
-    maxPrice: 0,
+    maxPrice: 99999999,
     minPrice: 0,
-    startTime: '0001-01-01T00:00:00',
-    endTime: '9999-12-31T23:59:59.9999999',
+    startTime: null,
+    endTime: null,
     categoryTag: 0,
     page: 1, // 頁碼，預設是第一頁
     cardsPerPage: 9, // 一頁幾張卡
@@ -173,12 +173,6 @@ document.querySelectorAll("#event-search-filter .dropdown-item").forEach(item =>
         const filterValue = item.textContent.trim(); // 獲取選擇的篩選值
         console.log("filterValue :")
         console.log(filterValue)
-        // let minPrice = 0;
-        // let maxPrice = 0;
-        // let priceValue = '';
-        // let timeValue = '';
-        // let startTime = '';
-        // let endTime = '';
 
         // 根據選擇的篩選值設置相應的查詢參數值
 
@@ -194,33 +188,33 @@ document.querySelectorAll("#event-search-filter .dropdown-item").forEach(item =>
                 queryParametersDto.minPrice = 0
                 queryParametersDto.maxPrice = 0
                 break;
-            case "1 - 1000":
+            case "1 - 2000":
                 // minPrice = 1;
                 // maxPrice = 1000;
                 queryParametersDto.minPrice = 1;
-                queryParametersDto.maxPrice = 1000;
-                break;
-            case "1000 - 2000":
-                // minPrice = 1000;
-                // maxPrice = 2000;
-                queryParametersDto.minPrice = 1000;
                 queryParametersDto.maxPrice = 2000;
                 break;
-            case "2000 - 3000":
+            case "2000 - 4000":
+                // minPrice = 1000;
+                // maxPrice = 2000;
+                queryParametersDto.minPrice = 2000;
+                queryParametersDto.maxPrice = 4000;
+                break;
+            case "4000 - 6000":
                 // minPrice = 2000;
                 // maxPrice = 3000;
-                queryParametersDto.minPrice = 2000;
-                queryParametersDto.maxPrice = 3000;
+                queryParametersDto.minPrice = 4000;
+                queryParametersDto.maxPrice = 6000;
                 break;
-            case "3000 up":
+            case "6000 up":
                 // minPrice = 3000;
                 // maxPrice = Infinity; // 使用 Infinity 表示無限大
-                queryParametersDto.minPrice = 3000;
+                queryParametersDto.minPrice = 6000;
                 queryParametersDto.maxPrice = 99999999;
                 break;
             case "全部時間":
-                queryParametersDto.startTime = '0001-01-01T00:00:00'
-                queryParametersDto.endTime = '9999-12-31T23:59:59.9999999'
+                queryParametersDto.startTime = null
+                queryParametersDto.endTime = null
                 break;
             case "今天":
                 // // 設置 startTime 參數值為 today
@@ -230,26 +224,26 @@ document.querySelectorAll("#event-search-filter .dropdown-item").forEach(item =>
                 now.setDate(now.getDate() + 1)
                 queryParametersDto.endTime = now.toISOString().split('T')[0]
                 break;
-            case "一周內":
+            case "兩周內":
                 // 獲取一周後的日期
                 const oneWeekLater = new Date();
-                oneWeekLater.setDate(oneWeekLater.getDate() + 7);
+                oneWeekLater.setDate(oneWeekLater.getDate() + 14);
                 queryParametersDto.startTime = new Date().toISOString().split('T')[0];
                 queryParametersDto.endTime = oneWeekLater.toISOString().split('T')[0];
 
                 break;
-            case "一個月內":
+            case "兩個月內":
                 // 獲取一個月後的日期
                 const oneMonthLater = new Date();
-                oneMonthLater.setMonth(oneMonthLater.getMonth() + 1);
+                oneMonthLater.setMonth(oneMonthLater.getMonth() + 2);
                 queryParametersDto.startTime = new Date().toISOString().split('T')[0];
                 queryParametersDto.endTime = oneMonthLater.toISOString().split('T')[0];
 
                 break;
-            case "兩個月內":
+            case "四個月內":
                 // 獲取兩個月後的日期
                 const twoMonthsLater = new Date();
-                twoMonthsLater.setMonth(twoMonthsLater.getMonth() + 2);
+                twoMonthsLater.setMonth(twoMonthsLater.getMonth() + 4);
                 queryParametersDto.startTime = new Date().toISOString().split('T')[0];
                 queryParametersDto.endTime = twoMonthsLater.toISOString().split('T')[0];
                 break;
@@ -258,36 +252,5 @@ document.querySelectorAll("#event-search-filter .dropdown-item").forEach(item =>
         }
 
         loadCards()
-        // // 構建新的URL，僅包含更新後的查詢參數
-        // let newUrl = window.location.origin + window.location.pathname;
-
-        // if (priceValue !== '') {
-        //     newUrl += "?Price=" + priceValue;
-        // } else if (minPrice !== 0 || maxPrice !== 0) {
-        //     newUrl += "?MinPrice=" + minPrice + "&MaxPrice=" + maxPrice;
-        // } else if (timeValue !== '') {
-        //     newUrl += "?startTime=" + timeValue;
-        // }
-        // else if (startTime !== '' && endTime !== '') {
-        //     newUrl += "?StartTime=" + startTime + "&EndTime=" + endTime;
-        // }
-
-        // // 重定向到新的URL
-        // window.location.href = newUrl;
     });
 });
-
-
-
-// (function () {
-//     const searchString = localStorage.getItem('searchString');
-//     const searchInput = document.getElementById("event-search-search-input");
-//     if (searchString) {
-//         searchInput.value = searchString;
-//     }
-//     window.addEventListener('unload', function (event) {
-
-//         localStorage.removeItem('searchString');
-//     });
-// })();
-
