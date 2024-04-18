@@ -35,7 +35,6 @@ namespace ShowNest.Web
             // builder.Services.AddScoped<ISeatRepository, SeatRepository>();
             builder.Services.AddScoped<ISeatAreaRepository, SeatAreaRepository>();
             builder.Services.AddScoped<ITicketTypeRepository, TicketTypeRepository>();
-            builder.Services.AddScoped<IOrganizationRepository, OrganizationRepository>();
             builder.Services.AddScoped<CategoryTagsRepository>();
 
 
@@ -45,18 +44,21 @@ namespace ShowNest.Web
             builder.Services.AddScoped<CategoryTagService>();
             builder.Services.AddScoped<HomeService>();
             builder.Services.AddScoped<EventIndexService>();
-            builder.Services.AddScoped<EventDetailService>();
+            
             builder.Services.AddScoped<OrganizationIndexService>();
             builder.Services.AddScoped<OrganizationDetailService>();
             builder.Services.AddScoped<ISeatsService, SeatsService>();
             builder.Services.AddScoped<OverviewService>();
             builder.Services.AddScoped<OrgGeneralInfoService>();
             builder.Services.AddScoped<EventPageService>();
-            builder.Services.AddScoped<SearchEventService>();
+            //builder.Services.AddScoped<SearchEventService>();
 
             builder.Services.AddScoped<IEventRepository, EventRepository>();
-            builder.Services.AddScoped<CreateEventService>();
-            
+            builder.Services.AddScoped<ICreateEventService, CreateEventService>();
+            builder.Services.AddScoped<Infrastructure.Services.CreateEventService>();
+
+
+
             builder.Services.AddScoped<EventsApiService>();
             builder.Services.AddScoped<ITicketTypeService, TicketTypeService>();
 
@@ -83,6 +85,8 @@ namespace ShowNest.Web
             //登入餅乾
             builder.Services.AddAuthentication(CookieAuthenticationDefaults.AuthenticationScheme).AddCookie();
 
+           
+            
 
 
             var app = builder.Build();
@@ -94,8 +98,8 @@ namespace ShowNest.Web
                 // The default HSTS value is 30 days. You may want to change this for production scenarios, see https://aka.ms/aspnetcore-hsts.
                 app.UseHsts();
             }
-
-            app.UseHttpsRedirection();
+            //測試ECPay需要註解app.UseHttpsRedirection
+            //app.UseHttpsRedirection();
             app.UseStaticFiles();
 
             app.UseRouting();
@@ -112,14 +116,14 @@ namespace ShowNest.Web
             //    pattern: "{OrganizationId}/{controller=Events}/{action=Index}/{EventId?}");
             ///以上測試中--------------------------------------------------------------------------------------------
 
-            app.MapControllerRoute(
-            name: "SwitchExploreEventPages",//探索活動頁>切換活動頁籤
-            pattern: "Events/Explore/{page=1}",
-            defaults: new { controller = "Events", action = "Index" });
+            //app.MapControllerRoute(
+            //name: "SwitchExploreEventPages",//探索活動頁>切換活動頁籤
+            //pattern: "Events/Explore",
+            //defaults: new { controller = "Events", action = "Index" });
 
             //app.MapControllerRoute(
             //name: "SearchEventPages",//探索活動頁>搜尋功能
-            //pattern: "Events/{inputstring}",
+            //pattern: "Events/Search/{inputstring}",
             //defaults: new { controller = "Events", action = "Search" });
 
             app.MapControllerRoute(
@@ -127,10 +131,10 @@ namespace ShowNest.Web
             pattern: "Events/EventPage/{EventId}",
             defaults: new { controller = "Events", action = "EventPage" });
 
-            //app.MapControllerRoute(
-            //name: "OrganizationMainPages",//組織主頁面
-            //pattern: "Organizations/Index/OrganizationId={OrganizationId}/",
-            //defaults: new { controller = "Organizations", action = "Index" });
+            app.MapControllerRoute(
+            name: "OrganizationMainPages",//組織主頁面
+            pattern: "Organizations/Index/OrganizationId={OrganizationId}/",
+            defaults: new { controller = "Organizations", action = "Index" });
 
             app.MapControllerRoute(
             name: "NewEvent",
@@ -164,7 +168,7 @@ namespace ShowNest.Web
 
             app.MapControllerRoute(
                 name: "default",
-                pattern: "{controller=Home}/{action=Index}");
+                pattern: "{controller=Home}/{action=Index}/{id?}");
 
             app.Run();
         }

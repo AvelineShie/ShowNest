@@ -1,12 +1,15 @@
 ﻿using System.Collections.Generic;
 using System.Drawing.Text;
 using System.Globalization;
+using System.Security.Claims;
 using ApplicationCore.Entities;
 using ApplicationCore.Interfaces;
 using Elfie.Serialization;
 using Infrastructure.Services;
-using Microsoft.AspNetCore.Components;
+using Microsoft.AspNetCore.Authentication;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore.ChangeTracking;
 using Microsoft.Extensions.Logging;
 using ShowNest.Web.Models;
 using ShowNest.Web.Services;
@@ -18,7 +21,7 @@ using Ticket = ApplicationCore.Entities.Ticket;
 
 namespace ShowNest.Web.Controllers
 {
-    
+
     public class EventsController : Controller
     {
 
@@ -50,61 +53,59 @@ namespace ShowNest.Web.Controllers
         private readonly EventIndexService _eventIndexService;
         private readonly OrderTicketService _orderQueryService;
         private readonly IOrderRepository _orderRepo;
-        private readonly IOrderCenterService _orderService;
+        private readonly IEcpayOrderService _ecpayOrderService;
         private readonly EventPageService _eventPageService;
-        private readonly SearchEventService _searchEventService;
+        private readonly IHttpContextAccessor _httpContextAccessor;
+        private readonly DatabaseContext _context;
+        //private readonly SearchEventService _searchEventService;
 
 
 
-        public EventsController(EventIndexService eventIndexService, OrderTicketService orderQueryService, 
-            IOrderRepository orderRepo, EventPageService eventPageService,IOrderCenterService orderService, SearchEventService searchEventService)
+        public EventsController(EventIndexService eventIndexService, OrderTicketService orderQueryService,
+            IOrderRepository orderRepo, EventPageService eventPageService, IEcpayOrderService ecpayOrderService,
+            IHttpContextAccessor httpContextAccessor, DatabaseContext context)
         {
             _eventIndexService = eventIndexService;
             _orderQueryService = orderQueryService;
             _orderRepo = orderRepo;
             _eventPageService = eventPageService;
-            _orderService = orderService;
-            _searchEventService = searchEventService;
+            _ecpayOrderService = ecpayOrderService;
+            _httpContextAccessor = httpContextAccessor;
+            _context = context;
+            
         }
 
-        //public IActionResult Index()
-        //{
-        //    return View();
-        //}
-
-        // 舊方法，先註解
+        [Route("Events/Explore")]
         public async Task<IActionResult> Index()
         {
-            //var eventIndexViewModel = await _eventIndexService.GetEventIndexViewModel();
-
-            //int CardsPerPage = 9;
-            //int TotalPages = (int)Math.Ceiling((double)eventIndexViewModel.EventEventCards.Count / CardsPerPage);
-            //page = Math.Max(1, Math.Min(page, TotalPages));
-
-            //eventIndexViewModel.EventEventCards = eventIndexViewModel.EventEventCards
-            //                                        .Skip((page - 1) * CardsPerPage)
-            //                                        .Take(CardsPerPage)
-            //                                        .ToList();
-
-            //ViewData["TotalPages"] = TotalPages;
-            //ViewData["CurrentPage"] = page;
-
             var eventIndexCategoryTags = await _eventIndexService.GetEventIndexCategoryTags();
 
             return View(eventIndexCategoryTags);
         }
 
-        [HttpPost]
-        public IActionResult Search(string inputstring)
+        public IActionResult Search()
         {
-            ///Events/Search?Id=1&Name=SSS&MaxPrice=300&MinPrice=10&StartTime=0&EndTime=0&CategoryTag=2
-
-            var searchResults = _searchEventService.SearchEventString(inputstring);
-
-            return RedirectToAction("Index", "Events", new { searchResults });
+            return View();
         }
-    
-       
+
+        //[HttpGet]
+        ////[Route("Events")]
+        //public IActionResult Search(QueryParametersViewModel queryParameters)
+        //{
+        //    Console.WriteLine($"Name: {queryParameters.inputstring}, MinPrice: {queryParameters.MinPrice}, MaxPrice: {queryParameters.MaxPrice}, StartTime: {queryParameters.StartTime}, EndTime: {queryParameters.EndTime}");
+        //    ///Events/Explore?inputstring=play&MaxPrice=300&MinPrice=10&StartTime=0&EndTime=0&CategoryTag=2
+        //    var searchResults = _searchEventService.SearchEventString(
+        //    queryParameters.inputstring,
+        //    queryParameters.MinPrice,
+        //    queryParameters.MaxPrice,
+        //    queryParameters.StartTime,
+        //    queryParameters.EndTime
+        //    );
+
+        //    return RedirectToAction("Index", "Events", searchResults);
+        //}
+
+
 
         public IActionResult EventPage(int EventId)
         {
@@ -138,107 +139,63 @@ namespace ShowNest.Web.Controllers
 
         public IActionResult Registrations()
         {
-            
+
             var RegistrationsFakeData = _orderQueryService.GetRegistrationsFakeData();
             return View(RegistrationsFakeData);
         }
 
-        public IActionResult PaymentInfo()
+        public async Task<IActionResult> PaymentInfo(string customerOrderId)
         {
+            // var userId = _httpContextAccessor.HttpContext.User.Claims.FirstOrDefault(c => c.Type == ClaimTypes.NameIdentifier).Value;
+            
+             //var GenerateOrderToEcpay = await _ecpayOrderService.GenerateOrderAsync(customerOrderId);
+            // var checkMacValue = await _ecpayOrderService.GetCheckMacValue(GenerateOrderToEcpay);
+            // ViewData["CheckMacValue"] = checkMacValue;
             return View();
         }
 
-        public IActionResult OrderDetail()
+        public async Task<IActionResult> OrderDetail(string customerOrderId)
         {
-           
+
+            //var GenerateOrderToEcpay = await _ecpayOrderService.GenerateOrderAsync(customerOrderId);
             return View();
-            //string name = string.Empty;
-            //if (id.HasValue)
-            //{
-            //    var order = _orderRepo.FirstOrDefault(o => o.Id == id.Value);
-            //    if (order != null)
-            //    {
-            //        var ArchiveOrder = _archiveOrderRepo.List(ao => ao.OrderId == order.Id);
-            //        name = $"{order.Id} : {ArchiveOrder.Sum(ao => (ao.TicketPrice * ao.PurchaseAmount))}";
-            //    }
-            //}
-            //ViewData["OrderName"] = name;
         }
 
-        public IActionResult BuyTicket()
+        
+        /// step5 : 取得付款資訊，更新資料庫
+        [HttpPost]
+        [Route("Events/PayInfo/{id}")]
+        public ActionResult PayInfo(IFormCollection formData)
         {
-            var model = new TicketTypeSelectionViewModel()
+            var data = new Dictionary<string, string>();
+            foreach (string key in formData.Keys)
             {
-                EventDetail = new EventDetailViewModel()
-                {
-                    MainImage = "https://picsum.photos/1300/600/?random=10",
-                    EventName = "NOT SUPER JUNIOR-L.S.S. THE SHOW : TH3EE GUYS",
-                    StartTime = DateTime.Now,
-                    EventLocation = "亞洲國際博覽館 10號展館 / 國際機場亞洲國際博覽館",
-                    EventHost = "ShowNest",
-                    TicketCollectionChannel = "電子票券",
-                    SeatAreaImage = "https://picsum.photos/1200/1200/?random=10"
-                },
-                PaymentMethods = new List<PaymentMethodViewModel>
-                {
-                    new PaymentMethodViewModel()
-                    {
-                        PaymentMethodName = "信用卡"
-                    },
-                    new PaymentMethodViewModel()
-                    {
-                        PaymentMethodName = "ATM"
-                    }
-                },
-                TicketPriceRow = new List<TicketPriceViewModel>{
-                    new TicketPriceViewModel()
-                    {
-                        SeatArea = "B1特一, B1特二",
-                        SeatSelectionMethod = "自行選位",
-                        Tickets = new TicketsViewModel()
-                        {
-                            TicketTypeName = "全票",
-                            TicketPrice = 3000
-                        }
-                    },
-                    new TicketPriceViewModel()
-                    {
-                        SeatArea = "紫1D, 紫1B, 黃2C, 紫1A, 紫1C, 紅1A, 紅1B, 紅1C, 紅1D",
-                        SeatSelectionMethod = "自行選位",
-                        Tickets = new TicketsViewModel()
-                        {
-                            TicketTypeName = "全票",
-                            TicketPrice = 2600
-                        }
-                    },
-                    new TicketPriceViewModel()
-                    {
-                        SeatArea = "紫2C, 紅2B, 紫1E, 紅2D, 紅2C, 紫2B, 紫2D, 黃2B, 紅1E, 黃2D",
-                        SeatSelectionMethod = "自行選位",
-                        Tickets = new TicketsViewModel()
-                        {
-                            TicketTypeName = "全票",
-                            TicketPrice = 2400
-                        }
-                    },
-                    new TicketPriceViewModel()
-                    {
-                        SeatArea = "紫2C, 紅2B, 紅2D, 紅2C, 紫2B, 紫2D, 紫2E, 紅2E, 黃2A, 黃2E",
-                        SeatSelectionMethod = "自行選位",
-                        Tickets = new TicketsViewModel()
-                        {
-                            TicketTypeName = "全票",
-                            TicketPrice = 2200
-                        }
-                    }
-                }
-            };
-            return View(model);
+                data.Add(key, formData[key]);
+            }
+
+            //string temp = formData["MerchantTradeNo"]; //寫在LINQ(下一行)會出錯，
+            //string checkCode = formData["CheckMacValue"];
+            //var ecpayOrder = _context.EcpayOrders.Where(m => m.MerchantTradeNo == temp).FirstOrDefault();
+           
+           
+
+            return View("EcpayView", data);
         }
-        public async Task <IActionResult> Ecpay()
+
+        //檢查登入狀態BY大頭
+        [HttpGet("checkLoginStatus")]
+        public async Task<IActionResult> CheckLoginStatus()
         {
-            var GenerateOrderToEcpay = await _orderService.GenerateOrderAsync();
-            return View(GenerateOrderToEcpay);
+            var result = await HttpContext.AuthenticateAsync();
+            if (result.Succeeded)
+            {
+                return Ok(new { isLoggedIn = true });
+            }
+            else
+            {
+                return Ok(new { isLoggedIn = false });
+            }
         }
+
     }
 }

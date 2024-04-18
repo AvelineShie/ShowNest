@@ -2,6 +2,7 @@
 {
     public class OrgGeneralInfoViewModel
     {
+        public int OrgId { get; set; }
         public string OrgName { get; set; }
         public string OrgWebUrl { get; set; }
         public string OrgDescription { get; set; }

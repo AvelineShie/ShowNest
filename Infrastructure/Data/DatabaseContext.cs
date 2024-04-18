@@ -22,6 +22,8 @@ public partial class DatabaseContext : DbContext
 
     public virtual DbSet<CategoryTag> CategoryTags { get; set; }
 
+    public virtual DbSet<EcpayOrder> EcpayOrders { get; set; }
+
     public virtual DbSet<Event> Events { get; set; }
 
     public virtual DbSet<EventAndTagMapping> EventAndTagMappings { get; set; }
@@ -30,7 +32,7 @@ public partial class DatabaseContext : DbContext
 
     public virtual DbSet<IsPaidRecord> IsPaidRecords { get; set; }
 
-    public virtual DbSet<LogInInfo> LogInInfos { get; set; }
+    public virtual DbSet<LogInInfo> LogInInfo { get; set; }
 
     public virtual DbSet<Order> Orders { get; set; }
 
@@ -56,8 +58,8 @@ public partial class DatabaseContext : DbContext
 
     public virtual DbSet<User> Users { get; set; }
 
-    //protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
-    //    => optionsBuilder.UseSqlServer("Name=ConnectionStrings:ShowNestDb");
+    protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
+        => optionsBuilder.UseSqlServer("Name=ConnectionStrings:DatabaseContext");
 
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
@@ -143,6 +145,27 @@ public partial class DatabaseContext : DbContext
                 .HasMaxLength(50)
                 .HasComment("類別Tag名稱");
             entity.Property(e => e.Sort).HasComment("排序預設50");
+        });
+
+        modelBuilder.Entity<EcpayOrder>(entity =>
+        {
+            entity.HasKey(e => e.MerchantTradeNo);
+
+            entity.Property(e => e.MerchantTradeNo).HasMaxLength(50);
+            entity.Property(e => e.MemberId)
+                .HasMaxLength(50)
+                .HasColumnName("MemberID");
+            entity.Property(e => e.PaymentDate).HasColumnType("datetime");
+            entity.Property(e => e.PaymentType).HasMaxLength(50);
+            entity.Property(e => e.PaymentTypeChargeFee).HasMaxLength(50);
+            entity.Property(e => e.RtnMsg).HasMaxLength(50);
+            entity.Property(e => e.TradeDate).HasMaxLength(50);
+            entity.Property(e => e.TradeNo).HasMaxLength(50);
+
+            entity.HasOne(d => d.Order).WithMany(p => p.EcpayOrders)
+                .HasForeignKey(d => d.OrderId)
+                .OnDelete(DeleteBehavior.ClientSetNull)
+                .HasConstraintName("FK_EcpayOrders_Orders");
         });
 
         modelBuilder.Entity<Event>(entity =>
@@ -324,6 +347,10 @@ public partial class DatabaseContext : DbContext
             entity.Property(e => e.CreatedAt)
                 .HasComment("新增時間")
                 .HasColumnType("datetime");
+            entity.Property(e => e.EcpayTradeNo)
+                .IsRequired()
+                .HasMaxLength(50)
+                .HasComment("");
             entity.Property(e => e.EditedAt)
                 .HasComment("修改時間")
                 .HasColumnType("datetime");
@@ -331,17 +358,18 @@ public partial class DatabaseContext : DbContext
             entity.Property(e => e.IsDisplayed).HasComment("0不顯示參加活動1顯示");
             entity.Property(e => e.ParticipantPeople).HasComment("報名人資料JSON");
             entity.Property(e => e.PaymentType).HasComment("0免費1信用卡");
-            entity.Property(e => e.SeatNumber)
-                .HasMaxLength(50)
-                .HasComment("座位號碼ex3排13號");
             entity.Property(e => e.Status).HasComment("0待付款1成功2付款失敗3取消");
-            entity.Property(e => e.TicketId).HasComment("票券ID");
             entity.Property(e => e.UserId).HasComment("使用者ID");
+
+            entity.HasOne(d => d.Event).WithMany(p => p.Orders)
+                .HasForeignKey(d => d.EventId)
+                .OnDelete(DeleteBehavior.ClientSetNull)
+                .HasConstraintName("FK_Orders_Events");
 
             entity.HasOne(d => d.User).WithMany(p => p.Orders)
                 .HasForeignKey(d => d.UserId)
                 .OnDelete(DeleteBehavior.ClientSetNull)
-                .HasConstraintName("FK_Orders_Users1");
+                .HasConstraintName("FK_Orders_Users");
         });
 
         modelBuilder.Entity<OrgFan>(entity =>

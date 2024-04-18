@@ -19,10 +19,11 @@ namespace ShowNest.Web.ViewModels.Events
         public int EventCapacity { get; set; } // 活動人數
         public string OrganizationName { get; set; }
         public int OrganizationId { get; set; }
+        public int countOfParticipants { get; set; }
 
         public List<EventTicketType> EventTicketTypes { get; set; }
         public List<ParticipantPeople> AllParticipantPeoples { get; set; }//抓UserID、Image
-        public List<CategoryTags> EventCategoryTags { get; set; }
+        public List<CategoryTagsViewModel> EventCategoryTags { get; set; }
     }
 
     public class EventTicketType
@@ -36,13 +37,11 @@ namespace ShowNest.Web.ViewModels.Events
     }
     public class ParticipantPeople
     {
+        public int Id { get; set; }
         public string UserImage { get; set; }
         public string UserNickname { get; set; }
        
 
     }
-    public class CategoryTags
-    {
-        public string Name { get; set; }
-    }
+    
 }

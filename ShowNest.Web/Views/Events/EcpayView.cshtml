@@ -1,0 +1,11 @@
+@model System.Collections.Generic.Dictionary<string, string>
+
+
+<!--step6 : 顯示回傳結果-->
+<div class="width mt-4 mb-4">
+    @foreach (var key in @Model.Keys.ToList())
+    {
+        @(key) <input type="text" name="@key" value="@Model[key]" disabled /><br />
+    }
+    <a class="btn btn-primary mb-4 mt-3" asp-controller="Account" asp-action="Orders">確認</a>
+</div>

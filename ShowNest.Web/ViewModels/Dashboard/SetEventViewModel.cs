@@ -1,22 +1,15 @@
-﻿using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
-using Microsoft.Identity.Client;
-using ShowNest.Web.ViewModels.Events;
-using System.ComponentModel;
-
-namespace ShowNest.Web.ViewModels.Dashboard
+﻿namespace ShowNest.Web.ViewModels.Dashboard
 {
     public class SetEventViewModel
     {
-        //照mobile RWD順序
+
         public string OrganizationName { get; set; } //組織名
-        public string MainImageURL { get; set; } //圖片
 
         [Required]
         [StringLength(100)]
         public string EventName { get; set; }
         
-        public bool IsPrivateEvent { get; set; } //隱私狀態
-        public int EventType { get; set; }//活動分類
+       
 
         [Required]
         [StringLength(16)]
@@ -45,6 +38,10 @@ namespace ShowNest.Web.ViewModels.Dashboard
         
         public string EventIntroduction {  get; set; }//活動簡介
         public string EventDescription {  get; set; }//活動描述
+
+        public string EventImage { get; set; } //圖片
+        public bool IsPrivateEvent { get; set; } //隱私狀態
+        public List<CategoryTagsViewModel> EventCategoryTags { get; set; }//活動分類
 
     }
 }

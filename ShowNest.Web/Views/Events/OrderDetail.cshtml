@@ -2,6 +2,10 @@
     <link href="~/css/events/orderdetail.css" rel="stylesheet" />
 
 }
+@model System.Collections.Generic.Dictionary<string, string>
+
+
+
 
 <div id="orderDetail">
     <section class="section_wrap">
@@ -27,7 +31,17 @@
                         </div>
                         <div class="message_wrapper">
                             <h1 class="statius_title canceled_h1">您的訂單已取消。</h1>
-                            <p class="statius_content">您的訂單已取消。如果需要退款，請與 KKTIX 聯絡退款事宜。</p>
+                            <p class="statius_content">您的訂單已取消。如果需要退款，請與 ShowNest 聯絡退款事宜。</p>
+                        </div>
+                    </div>
+                    <!-- 付款失敗訂單 -->
+                    <div class="display-table-row" v-if="PaymentFailStep">
+                        <div class="icon_wrapper order_pay">
+                            <i class="fa fa-exclamation-circle"></i>
+                        </div>
+                        <div class="message_wrapper">
+                            <h1 class="statius_title pay_h1">尚未繳費完成</h1>
+                            <p class="statius_content">訂單已完成，請儘速完成繳費程序。</p>
                         </div>
                     </div>
                     <!-- 訂單完成 -->
@@ -53,7 +67,7 @@
 
             <div class="event_details">
                 <div class="order_number ">
-                    <h2>訂單編號 : #{{OrderId}}</h2>
+                    <h2>訂單編號 : #{{EcpayTradeNo}}</h2>
                 </div>
                 <div class="collapse_group">
                     <p class="d-inline-flex gap-1">
@@ -130,39 +144,8 @@
                 </div>
 
                 <!-- 待繳款 -->
-                <div class="unpay_payment_info" v-if="OrderStatus===0">
+                <div class="unpay_payment_info" v-if="PaymentPendingStep">
                     <div class="pickup_info">
-                        @* <h3 class="pickup_text">
-                            付款方式：ATM 虛擬帳號
-                        </h3>
-                        <dl class="info-list">
-                            <dt class="bank_number">銀行代碼</dt>
-                            <dd>808</dd>
-                            <dt class="bank_id">銀行帳號</dt>
-                            <dd>
-                                9555804923573789
-                                <div class="note_block">
-                                    本虛擬帳號僅對應到您的報名資料，請勿重複轉入到同一帳號
-                                </div>
-                            </dd>
-                            <dt class="area">分行名稱</dt>
-                            <dd class="area_address">
-                                玉山銀行營業部
-                            </dd>
-                            <dt class="company_name">帳戶名稱</dt>
-                            <dd>
-                                華娛網路娛樂股份有限公司
-                            </dd>
-                            <dt class="money">金額</dt>
-                            <dd>TWD$500</dd>
-                            <dt>繳款期限</dt>
-                            <dd>
-                                2024/02/18 22:33 (+0800)
-                                <div class="note_block">
-                                    系統以款項實際入帳時間為準，繳費期限前未入帳者訂單皆一律取消。因為各家銀行轉帳入帳時間不同，為保障您的權益，請及早付款。
-                                </div>
-                            </dd>
-                        </dl> *@
                         <h3 class="pickup_type">取票方式：電子票券</h3>
                         <hr>
                         <div class="pickup_caption">
@@ -233,8 +216,10 @@
                     <i class="fa fa-paper-plane" aria-hidden="true"></i> 送出表單內容
                 </button>
 
-                <button class="btn_print btn btn_cancelled" id="btn_cancelled"> 取消訂單</button>
-                <button class="btn_print btn btn_payment" id="btn_payment" v-if="NotFree"> 重新繳費</button>
+                <button class="btn_print btn btn_cancelled" id="btn_cancelled" V-if="PaymentRepay"> 取消訂單</button>
+                <label for="checkoutBtn">
+                    <button class="btn_print btn btn_payment" v-if="PaymentRepay" @@click="onCheckoutClicked"> 重新繳費</button>
+                </label>
                 <div class="contact_info_contaner">
                     <div class="contact_info">
                         <h3 class="contact_title">聯絡人資料</h3>
@@ -347,6 +332,9 @@
     </section>
 
 </div>
+@section endJs{
+    <script src="~/js/events/ecpay.js"></script>
+}
 
 <script type="module">
     import { headinfo } from "/js/Events/Comps/headinfo.js";
@@ -364,6 +352,7 @@
 
 
                 OrderId: 0,
+                EcpayTradeNo: "",
                 PaymentType: 0,
                 OrderStatus: 0, //定單狀態 0待付款1成功2付款失敗3取消
                 OrderDate: "", //定單成立日期
@@ -391,6 +380,8 @@
             PaymentSuccessStep() { return this.OrderStatus == 1 },
             PaymentFailStep() { return this.OrderStatus == 2 },
             PaymentCancelStep() { return this.OrderStatus == 3 },
+            PaymentRepay() { return this.OrderStatus == 0 || this.OrderStatus == 2; },
+            
 
             NotFree() {
                 return this.TotalPrice > 0;
@@ -410,6 +401,41 @@
             order.GetOrderDetailByOrderId(orderId, this.getGetOrderDetailByOrderIdSuccess);
         },
         methods: {
+            async onCheckoutClicked() {
+                const params = new URLSearchParams(window.location.search);
+                const orderId = params.get("id");
+                console.log("OrderID",orderId)
+
+                const response = await fetch('/api/Ecpay/GetEcpayOrderInfo', {
+                    method: 'POST',
+                    headers: {
+                        "content-type": "application/json"
+                    },
+                    body: JSON.stringify({
+                        orderId: +orderId
+                    })
+                });
+                const ecpayOrder = await response.json();
+                console.log(ecpayOrder);
+
+                const form = document.createElement('form');
+                form.method = 'POST';
+                form.action = 'https://payment-stage.ecpay.com.tw/Cashier/AioCheckOut/V5';
+
+                for (const key in ecpayOrder) {
+                    if (ecpayOrder.hasOwnProperty(key)) {
+                        const hiddenField = document.createElement('input');
+                        hiddenField.type = 'hidden';
+                        hiddenField.name = key;
+                        hiddenField.value = ecpayOrder[key];
+
+                        form.appendChild(hiddenField);
+                    }
+                }
+
+                document.body.appendChild(form);
+                form.submit();
+            },
             moneyformatter(value) { return tools.moneyformatter(value) },
             dateformatter(value) { return tools.dateformatter(value) },
 
@@ -421,6 +447,7 @@
                     //console.log(res.data);
 
                     this.OrderId = res.data.OrderId;
+                    this.EcpayTradeNo = res.data.EcpayTradeNo;
                     this.PaymentType = res.data.PaymentType;
                     this.OrderStatus = res.data.OrderStatus;
                     this.OrderDate = res.data.OrderDate;

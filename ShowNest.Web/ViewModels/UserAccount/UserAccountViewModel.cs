@@ -1,35 +1,41 @@
-﻿using System.Security.Policy;
+﻿using ShowNest.Web.Models.Attributes;
+using System;
+using System.Collections.Generic;
 
 namespace ShowNest.Web.ViewModels.UserAccount
 
 {
     public class UserAccountViewModel
     {
-        public string UserName { get; set; }
-        public string NickName { get; set; }
+        public UserAccountViewModel()
+        {
+            // 初始化SelectedAreas為一個空列表
+            SelectedAreas = new List<int>();
+        }
+
+        public int Id { get; set; }
+        [AccountRegex]
+        public string Account { get; set; }
+        public string Nickname { get; set; }
         public string Email { get; set; }
-        //public int PhoneNumberCode { get; set; }
-        public int PhoneNumber { get; set; }
-        public DateTime BirthDay { get; set; }
-        public Gender Gender { get; set; }
-        public List<ActivityRegion> PreferredActivityRegions { get; set; }
+        public string Mobile { get; set; }
+        public DateTime Birthday { get; set; }
+        public int? Gender { get; set; } // 使用Nullable<int>來表示可以為null的欄位
+        public string PersonalURL { get; set; }
+        public string PersonalProfile { get; set; }
+        public bool EdmSubscription { get; set; }
+        public string Image { get; set; }
+        public DateTime? LastLogInAt { get; set; } // 使用Nullable<DateTime>來表示可以為null的欄位
+        public int Status { get; set; }
+        public DateTime CreatedAt { get; set; }
+        public DateTime? EditedAt { get; set; } // 使用Nullable<DateTime>來表示可以為null的欄位
 
-        public string WebsiteUrl { get; set; }
-        public ThirdPartyLink Fb { get; set; }
-        public ThirdPartyLink Google { get; set; }
-
-        public string Bio { get; set; }
-        //public string Country { get; set; }
-        //public TimeZone TimeZone { get; set; }
-        public bool IsSubscribed { get; set; }
-        //public bool RestrictedLevel { get; set; }
-        //public bool OpenPersonalPage { get; set; }
-        public string ImageUrl { get; set; }
+        public List<int> SelectedAreas { get; set; }
     }
     public enum Gender
     {
-        Male = 0,
-        Female = 1,
+        男 = 0,
+        女 = 1,
         Other = 2
     };
 
@@ -46,6 +52,17 @@ namespace ShowNest.Web.ViewModels.UserAccount
         public string Scope { get; set; }
         public string Redirect_uri_encode { get; set; }
         public string State { get; set; }
+    }
+    public class PreferredActivityAreas
+    {
+        public int Id { get; set; }
+        public int UserId { get; set; }
+        public int AreaId { get; set; }
+    }
+    public class Area
+    {
+        public int Id { get; set; }
+        public string Name { get; set; }
     }
 
 }

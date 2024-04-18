@@ -95,6 +95,7 @@ h6 {
     margin: 0 10px;
     text-align: center;
     vertical-align: middle;
+    cursor: pointer;
 }
 
 .btn-confirm a:hover {
@@ -108,8 +109,7 @@ h6 {
     display: inline-block;
     color: var(--main-green);
     font-weight: bold;
-    counter-reset: price 0; /* 初始化計數器 */
-    content: counter(price);
+    content: attr(data-attr);
     border: 1px #fff solid;
     background-color: #fff;
     height: 18px;
@@ -156,12 +156,12 @@ h6 {
 
 .seats-selection-complete {
     margin-bottom: 20px;
+    color: #fff;
 }
 
 .seats-selection-complete a {
     display: block;
     background-color: var(--main-green);
-    color: #fff;
     height: 3em;
     line-height: 1.5em;
     width: 220px;
@@ -196,11 +196,11 @@ h6 {
     background-color: var(--main-green);
     padding: 20px 10px;
     margin-left: -1px;
-    counter-increment: price; /* 遞增計數器 */
+    box-sizing: border-box;
 }
 
 .ticket-with-seat-detail {
-    line-height: 1.2em;
+    line-height: 1.5em;
     margin-right: 10px;
 }
 

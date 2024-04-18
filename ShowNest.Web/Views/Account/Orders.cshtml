@@ -17,9 +17,7 @@
         new TabStatusViewModel { IsActive = false},
         new TabStatusViewModel { IsActive = false},
         new TabStatusViewModel { IsActive = false},
-        new TabStatusViewModel { IsActive = false},
         new TabStatusViewModel { IsActive = true},
-        new TabStatusViewModel { IsActive = false},
         new TabStatusViewModel { IsActive = false}
     })
     </div>
@@ -35,7 +33,7 @@
     <div v-for="userOrder in userOrderList">
         <div class="order-detail">
             <div class="order-id-with-pic">
-                <div class="order-id">#645920</div>
+                <div class="order-id">#{{userOrder.EcpayTradeNo}}</div>
                 <div class="event-pic"><img v-bind:src="userOrder.EventImage" width="250" height="130" alt="event image"></div>
             </div>
             <div class="order-event-detail">
@@ -58,9 +56,10 @@
                         </tr>
                         <tr>
                             <th>狀態</th>
-                            <td v-if="OrderStatus==0" class="ticket-payment-pending">待付款</td>
-                            <td v-else-if="OrderStatus==1" class="ticket-cancel">取消</td>
-                            <td v-else class="ticket-paid">已付款</td>
+                            <td v-if="userOrder.OrderStatus==0 || userOrder.OrderStatus==2" class="ticket-payment-pending">待付款</td>
+                            <td v-else-if="userOrder.OrderStatus==1" class="ticket-paid">已付款</td>
+                            @* <td v-else-if="userOrder.OrderStatus==2" class="ticket-payment-pending">付款失敗</td> *@
+                            <td v-else class="ticket-cancel">取消</td>
                         </tr>
                         <tr>
                             <th>票劵類型</th>
@@ -68,7 +67,7 @@
                         </tr>
                         <tr>
                             <th>票劵數量</th>
-                            <td>1</td>
+                            <td>{{userOrder.TicketAmount}}</td>
                         </tr>
                         <tr>
                             <th>總價</th>
@@ -79,7 +78,7 @@
             </div>
             <div class="order-btns">
                 <div class="btn-edit-order">
-                    <a asp-controller="Events" asp-action="OrderDetail">查看/修改資料</a>
+                    <a style="cursor:pointer;" v-on:click="gotoOrderDetailPage(userOrder.OrderId)">查看/修改資料</a>
                 </div>
                 <div class="btn-contact-organizer">
                     <a asp-controller="Organizations" asp-action="ContactOrganization">聯絡主辦單位</a>
@@ -87,14 +86,54 @@
                 <div class="btn-contact-customer-service">
                     <a href="#">聯絡客服</a>
                 </div>
-                <div class="btn-cancel-order">
+                <div class="btn-cancel-order" v-if=" userOrder.OrderStatus!=3">
                     <a href="#">取消訂單</a>
                 </div>
             </div>
         </div>
         <hr>
     </div>
-    @* 
+   
+</div>
+
+
+<script type="module">
+    import { user } from "/js/api/userAPI.js";
+    import { tools } from "/js/api/tools.js";
+
+    const app = Vue.createApp({
+        data() {
+            return {
+                userOrderList: []
+            }
+        },
+
+        mounted() {
+            user.GetUserOrderList(this.getUserOrderListSuccess);
+        },
+
+        methods: {
+            moneyformatter(value) { return tools.moneyformatter(value) },
+            dateformatter(value) { return tools.dateformatter(value) },
+
+            gotoOrderDetailPage(id){
+                window.location.href = `https://${window.location.host}/Events/OrderDetail?id=${id}`;
+            },
+
+            getUserOrderListSuccess(res) {
+                console.log(res);
+                if (res.status) {
+                    this.userOrderList = res.data;
+                    console.log(userOrderList,this.userOrderList);
+                }else{
+                    console.log(res.msg);
+                }
+            }
+        }
+    }).mount('#app');
+</script>
+
+@*
     <div class="order-detail">
         <div class="order-id-with-pic">
             <div class="order-id">#645920</div>
@@ -212,37 +251,3 @@
         </div>
     </div>
     <hr> *@
-</div>
-
-
-<script type="module">
-    import { user } from "/js/api/userAPI.js";
-    import { tools } from "/js/api/tools.js";
-
-    const app = Vue.createApp({
-        data() {
-            return {
-                userOrderList: []
-            }
-        },
-
-        mounted() {
-            user.GetUserOrderList(this.getUserOrderListSuccess);
-        },
-
-        methods: {
-            moneyformatter(value) { return tools.moneyformatter(value) },
-            dateformatter(value) { return tools.dateformatter(value) },
-
-            getUserOrderListSuccess(res) {
-                console.log(res);
-                if (res.status) {
-                    this.userOrderList = res.data;
-                    console.log(this.userOrderList);
-                }else{
-                    console.log(res.msg);
-                }
-            }
-        }
-    }).mount('#app');
-</script>

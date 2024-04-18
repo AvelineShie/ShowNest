@@ -21,7 +21,7 @@
 	<div id="event-search" class="width d-flex">
 		<div id="event-search-search-div" class="d-flex align-items-center">
 			<i class="fa-solid fa-magnifying-glass" id="header-nav-magnifier-icon"></i>
-			<input type="text" id="event-search-search-input" placeholder="搜索一場精彩活動">
+			<input type="text" id="event-search-search-input" placeholder="搜索一場精彩活動" value="">
 		</div>
 		<div id="event-search-filter">
 			<div id="filter-fee-wrap" class="d-inline-block align-items-center dropdown btn-group">
@@ -83,11 +83,17 @@
 <section>
 	<div class="cards-wrap width">
 		<div class="cards">
-			@* @foreach (var card in Model.EventEventCards)
-			{
-				@await Html.PartialAsync("~/PartialViews/_EventCards_Partial.cshtml", card)
-				;
-			} *@
+				<a class="single-card">
+					<div class="card-name">
+						<img src="EventImgUrl " alt="">
+						<span>CategoryName</span>
+						<p>EventName</p>
+					</div>
+					<div class="card-info">
+						<p class="card-event-date"><i class="fa-regular fa-calendar-days"></i></p>
+						<p class="card-ticket-status"></p>
+					</div>
+				</a>
 		</div>
 	</div>
 	<div id="page-index" class="width">

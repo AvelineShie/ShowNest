@@ -1,4 +1,6 @@
 ﻿using ApplicationCore.Interfaces;
+using CloudinaryDotNet;
+using CloudinaryDotNet.Actions;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
@@ -29,42 +31,18 @@ namespace ShowNest.Web.Controllers
             return View();
         }
 
-        public async Task<IActionResult> CreateEvent()
+        public IActionResult CreateEvent()
         {
-            //var userIdentifier = HttpContext.User.FindFirstValue(ClaimTypes.NameIdentifier);
-            //HttpContext?.User.Identities.FirstOrDefault()
-            //之後以HttpContext的登入訊息取得資料
-            var userId = 1; 
-            var vm = _createEventService.GetOrgByOwner(userId);
-            return View(vm);
-        }
-
-        [HttpGet]
-        public async Task<IActionResult> SetEvent()
-        {
-
             return View();
         }
 
-        //[HttpPost]
-        //[ValidateAntiForgeryToken]
-        //public async Task<IActionResult> SetEvent()
-        //{
+        //var userIdentifier = HttpContext.User.FindFirstValue(ClaimTypes.NameIdentifier);
+        //    HttpContext?.User.Identities.FirstOrDefault()
+        //之後以HttpContext的登入訊息取得資料
+        //var userId = 2;
+        //var vm = _createEventService.GetOrgByUserId(userId);
+        //return View(vm);
 
-        //    return View();
-        //}
-
-        public async Task<IActionResult> SetTicket()
-        {
-
-            return View();
-        }
-
-        public async Task<IActionResult> SetTable()
-        {
-
-            return View();
-        }
 
         public IActionResult EventHub()
         {
@@ -72,40 +50,39 @@ namespace ShowNest.Web.Controllers
         }
 
 
-        public IActionResult SetTicketPage()
-        {
-            var model = new SetTicketPageViewModel()
-            {
-                OrganizationName = "MafiaQQ",
+        //public IActionResult SetTicketPage()
+        //{
+        //    var model = new SetTicketPageViewModel()
+        //    {
+        //        OrganizationName = "MafiaQQ",
 
-                SetTickets = new List<SetTicketViewModel> {
-                    new SetTicketViewModel {
-                        TicketName = "一般套票",
-                        StartTime = new DateTime(2024, 2, 2, 5, 0, 0), // 使用 DateTime 型別
-                        EndTime = new DateTime(2024, 2, 6, 8, 0, 0),
-                        Price  = 750,
-                        Quantity = "300",
-                    },
-                    new SetTicketViewModel {
-                        TicketName = "搖滾區",
-                        StartTime = new DateTime(2024, 2, 2, 5, 0, 0),
-                        EndTime = new DateTime(2024, 2, 6, 8, 0, 0),
-                        Price  = 8000,
-                        Quantity = "100",
-                    },
-                    new SetTicketViewModel {
-                        TicketName = "包廂區",
-                        StartTime = new DateTime(2024, 2, 2, 5, 0, 0),
-                        EndTime = new DateTime(2024, 2, 6, 8, 0, 0),
-                        Price  = 10000,
-                        Quantity = "300",
-                    }
-                }
+        //        SetTickets = new List<TicketDetail> {
+        //            new TicketDetail {
+        //                TicketName = "一般套票",
+        //                StartTime = new DateTime(2024, 2, 2, 5, 0, 0), // 使用 DateTime 型別
+        //                EndTime = new DateTime(2024, 2, 6, 8, 0, 0),
+        //                Price  = 750,
+        //                Quantity = "300",
+        //            },
+        //            new TicketDetail {
+        //                TicketName = "搖滾區",
+        //                StartTime = new DateTime(2024, 2, 2, 5, 0, 0),
+        //                EndTime = new DateTime(2024, 2, 6, 8, 0, 0),
+        //                Price  = 8000,
+        //                Quantity = "100",
+        //            },
+        //            new TicketDetail {
+        //                TicketName = "包廂區",
+        //                StartTime = new DateTime(2024, 2, 2, 5, 0, 0),
+        //                EndTime = new DateTime(2024, 2, 6, 8, 0, 0),
+        //                Price  = 10000,
+        //                Quantity = "300",
+        //            }
+        //        }
 
-            };
-            return View("SetTicket", model);
-
-        }
+        //    };
+        //    return View("SetTicket", model);
+        //}
 
         public IActionResult Organizations(int id, string ViewType)
         {
@@ -136,7 +113,7 @@ namespace ShowNest.Web.Controllers
 
         }
 
-        public IActionResult CreateNewEvent()
+        public IActionResult CreateNewEvent() //範例
         {
             return View();
         }

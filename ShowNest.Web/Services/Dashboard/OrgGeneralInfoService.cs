@@ -17,8 +17,9 @@ namespace ShowNest.Web.Services.Dashboard
 
             var result = new OrgGeneralInfoViewModel
             {
+                OrgId = orgId,
                 OrgName = org.Name,
-                OrgWebUrl = org.OrganizationUrl,
+                OrgWebUrl = org.OuterUrl,
                 OrgDescription = org.Description,
                 OrgFbUrl = org.Fblink,
                 OrgIgUrl = org.Igaccount,

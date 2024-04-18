@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Collections;
 using System.Collections.Generic;
 
 namespace ApplicationCore.Entities;
@@ -68,8 +67,7 @@ public partial class TicketType
 
     public virtual Event Event { get; set; }
 
-    public virtual ICollection<TicketTypeAndSeatAreaMapping> TicketTypeAndSeatAreaMappings { get; set; } =
-        new List<TicketTypeAndSeatAreaMapping>();
+    public virtual ICollection<TicketTypeAndSeatAreaMapping> TicketTypeAndSeatAreaMappings { get; set; } = new List<TicketTypeAndSeatAreaMapping>();
 
     public virtual ICollection<Ticket> Tickets { get; set; } = new List<Ticket>();
 }
