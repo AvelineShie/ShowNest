@@ -1,4 +1,7 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using CloudinaryDotNet.Actions;
+using Microsoft.AspNetCore.Mvc;
+using ShowNest.Web.ViewModels.Shared;
+using System.Security.Claims;
 
 namespace ShowNest.Web.WebAPI
 {
@@ -20,8 +23,8 @@ namespace ShowNest.Web.WebAPI
         }
 
         //從使用者抓取組織id,然後再用組織id抓活動id
-        //[HttpPost]
-        //[Route("/api/CreateEvent/CreateEventbyUserId")]
+        [HttpPost]
+        [Route("/api/CreateEvent/CreateEventbyUserId")]
         //public async Task<OrgsEventsInfroViewModel> CreateEventbyUserId()
         //{
         //    //從Claim抓UserID
@@ -39,9 +42,24 @@ namespace ShowNest.Web.WebAPI
         //                        .ThenInclude(ou => ou.Organization)
         //                        .FirstOrDefaultAsync(x => x.Id == int.Parse(userIdFromClaim.Value));
 
+        //        var result = new OrgsEventsInfroViewModel();
+        //        result.UserOrg = new List<EventsInfro>();
+        //        foreach (var org in info.Organizations.OrderBy(o => o.Id))
+        //        {
+        //            var orgToAdd = new UserOrgInfo
+        //            {
+        //                UserOrgId = org.Id.ToString(),
+        //                UserOrgName = org.Name,
+        //                UserOrgUrl = $"{org.Name}URL"
+        //            };
+        //            result.UserOrg.Add(orgToAdd);
+        //        }
+        //        result.UserImgUrl = "https://picsum.photos/300/200/?random=10";
+
+        //        return result;
 
         //    }
-        //    return;
+        //    return info;
         //    //先用UserId抓出OrgId,OrgName,然後foreach丟進前端的JS的organization
         //}
 

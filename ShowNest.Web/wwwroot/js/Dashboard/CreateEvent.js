@@ -5,6 +5,7 @@ const vuetify = createVuetify();
 const options = {
     data() {
         return {
+            
             //CreateEvent
             e1: 1,
             userId:2,
@@ -81,7 +82,7 @@ const options = {
         }
     },
     mounted() {
-        this.CreateAndEditEvent()
+        /*this.CreateAndEditEvent()*/
         this.GetOrgEventsByOrgId()
         
     },

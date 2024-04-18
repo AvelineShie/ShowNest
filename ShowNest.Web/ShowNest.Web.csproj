@@ -26,6 +26,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <Compile Include="..\Infrastructure\Services\CreateEventService.cs" Link="CreateEventService.cs" />
     <Compile Include="Services\Dashboard\OrgGeneralInfoService.cs" />
     <Compile Include="Services\Dashboard\OverviewService.cs" />
   </ItemGroup>

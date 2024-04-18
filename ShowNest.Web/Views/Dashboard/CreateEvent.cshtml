@@ -312,10 +312,10 @@
                                             </div>
                                         </div>
                                     </div>
-                                    <div class="pages-change">
+                                    @* <div class="pages-change">
                                         <button type="button" class="btn btn-outline-secondary" onclick="window.location.href='@Url.Action("CreateEvent", "Dashboard")'">上一頁</button>
                                         <button type="submit" class="btn btn-outline-secondary" value="Upload">下一頁</button>
-                                    </div>
+                                    </div> *@
                                 </div>
                             </div>
                         </template>
@@ -379,77 +379,75 @@
                                                 }  *@
                                             </tbody>
                                         </table>
-                                        <div class="changeTicketSection">
-                                            
-
-                                            @* ===== 選擇票種 ====== *@
-                                            <div class="TicketTypeRow">
-                                                <div class="col-3">
-                                                    <h3>票種選項</h3>
-                                                    <draggable class="TicketTypeList" :list="TicketTypeList" @@change="log" itemKey="name">
-                                                        <template #item="{ element, index }">
-                                                            <div class="list-group-item">{{ element.name }} {{ index }}</div>
-                                                        </template>
-                                                    </draggable>
-                                                </div>
-
-                                                <div class="col-3">
-                                                    <h3>欲選擇的票種</h3>
-                                                    <draggable class="selectedTicketTypeList" :list="selectedTicketTypeList" @@change="log" itemKey="name">
-                                                        <template #item="{ element, index }">
-                                                            <div class="list-group-item">{{ element.name }} {{ index }}</div>
-                                                        </template>
-                                                    </draggable>
-                                                </div>
+                                    @* <div class="changeTicketSection" >
+                                        @* ===== 選擇票種 ====== 
+                                        <div class="TicketTypeRow">
+                                            <div class="col-3">
+                                                <h3>票種選項</h3>
+                                                <draggable class="TicketTypeList" :list="TicketTypeList" @@change="log" itemKey="name">
+                                                    <template #item="{ element, index }">
+                                                        <div class="list-group-item">{{ element.name }} {{ index }}</div>
+                                                    </template>
+                                                </draggable>
                                             </div>
 
-                                            <div class="section">
-                                                <div class="mb-3">
-                                                    <h4 class="sectionTitle">數量</h4>
-                                                    <input type="text" class="form-control h-50" id="formGroupExampleInput" placeholder=" ">
-                                                </div>
+                                            <div class="col-3">
+                                                <h3>欲選擇的票種</h3>
+                                                <draggable class="selectedTicketTypeList" :list="selectedTicketTypeList" @@change="log" itemKey="name">
+                                                    <template #item="{ element, index }">
+                                                        <div class="list-group-item">{{ element.name }} {{ index }}</div>
+                                                    </template>
+                                                </draggable>
                                             </div>
-
-                                            <div class="timeSection">
-                                                <h4 class="sectionTitle">販售時間</h4>
-                                                <input type="datetime-local" class="date-time">
-                                                <div class="space">至</div>
-                                                <input type="datetime-local" class="date-time">
-                                            </div>
-
-                                            @*  =====票區選項====== *@
-                                            <div class="TicketAreaRow">
-                                                <div class="col-3">
-                                                    <h3>票區選項</h3>
-                                                    <draggable class="ticketAreaList" :list="ticketAreaList" @@change="log" itemKey="name">
-                                                        <template #item="{ element, index }">
-                                                            <div class="list-group-item">{{ element.name }} {{ index }}</div>
-                                                        </template>
-                                                    </draggable>
-                                                </div>
-
-                                                <div class="col-3">
-                                                    <h3>欲選擇的票區</h3>
-                                                    <draggable class="selectedTicketAreaList" :list="selectedTicketAreaList" @@change="log" itemKey="name">
-                                                        <template #item="{ element, index }">
-                                                            <div class="list-group-item">{{ element.name }} {{ index }}</div>
-                                                        </template>
-                                                    </draggable>
-                                                </div>
-                                            </div>
-                                            <div class="section">
-                                                <button type="button" class="btn btn-outline-secondary btn-sm" id="submit">儲存</button>
-                                                <button type="button" class="btn btn-outline-secondary btn-sm" id="cancel">取消</button>
-                                            </div>
-
                                         </div>
 
-                                        <button type="button" class="btn btn-outline-secondary btn-sm" id="add-ticket">新增票種</button>
-                                    </div>
-                                    <div class="pages-change">
+                                        <div class="section">
+                                            <div class="mb-3">
+                                                <h4 class="sectionTitle">數量</h4>
+                                                <input type="text" class="form-control h-50" id="formGroupExampleInput" placeholder=" ">
+                                            </div>
+                                        </div>
+
+                                        <div class="timeSection">
+                                            <h4 class="sectionTitle">販售時間</h4>
+                                            <input type="datetime-local" class="date-time">
+                                            <div class="space">至</div>
+                                            <input type="datetime-local" class="date-time">
+                                        </div>
+
+                                        @*  =====票區選項====== 
+                                        <div class="TicketAreaRow">
+                                            <div class="col-3">
+                                                <h3>票區選項</h3>
+                                                <draggable class="ticketAreaList" :list="ticketAreaList" @@change="log" itemKey="name">
+                                                    <template #item="{ element, index }">
+                                                        <div class="list-group-item">{{ element.name }} {{ index }}</div>
+                                                    </template>
+                                                </draggable>
+                                            </div>
+
+                                            <div class="col-3">
+                                                <h3>欲選擇的票區</h3>
+                                                <draggable class="selectedTicketAreaList" :list="selectedTicketAreaList" @@change="log" itemKey="name">
+                                                    <template #item="{ element, index }">
+                                                        <div class="list-group-item">{{ element.name }} {{ index }}</div>
+                                                    </template>
+                                                </draggable>
+                                            </div>
+                                        </div>
+                                        <div class="section">
+                                            <button type="button" class="btn btn-outline-secondary btn-sm" id="submit">儲存</button>
+                                            <button type="button" class="btn btn-outline-secondary btn-sm" id="cancel">取消</button>
+                                        </div>
+
+                                    </div> *@
+
+                                    <button type="button" class="btn btn-outline-secondary btn-sm" id="add-ticket">新增票種</button>
+                                </div>
+                                    @* <div class="pages-change">
                                         <button type="button" class="btn btn-outline-secondary" onclick="window.location.href='@Url.Action("SetEvent", "Dashboard")'">上一頁</button>
                                         <button type="button" class="btn btn-outline-secondary" onclick="window.location.href='@Url.Action("SetTable", "Dashboard")'">下一頁</button>
-                                    </div>
+                                    </div> *@
                                 </div>
                             </div>
                         </template>
@@ -705,10 +703,10 @@
                                         </div>
                                     </div>
                                     <span class="map-note"><i class="fa-solid fa-circle-info"></i>  如果您的活動應適用文化部成年禮金「文化幣」折抵，請在建立活動後聯絡 SHOWNEST 審查開通。</span>
-                                    <div class="pages-change">
+                                    @* <div class="pages-change">
                                         <button type="button" class="btn btn-outline-secondary" onclick="window.location.href='@Url.Action("SetTicket", "Dashboard")'">上一頁</button>
                                         <button type="button" class="btn btn-outline-secondary" onclick="window.location.href='@Url.Action("EventHub", "Dashboard")'" id="send">送出</button>
-                                    </div>
+                                    </div> *@
                                 </div>
                             </div>
                         </template>

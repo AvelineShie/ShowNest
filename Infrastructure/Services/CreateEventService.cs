@@ -9,13 +9,14 @@ using System;
 using System.Diagnostics.Tracing;
 using System.Linq.Expressions;
 using System.Security.Cryptography;
+using Organization = ApplicationCore.Entities.Organization;
 
 namespace Infrastructure.Services
 {
 
     public class CreateEventService : EfRepository<Event>, ICreateEventService
     {
-
+        private readonly EfRepository<Event> _repository;
         private readonly IOrganizationRepository _organizationRepository;
         private readonly DatabaseContext _dbContext;
 
@@ -23,6 +24,7 @@ namespace Infrastructure.Services
         {
             _organizationRepository = organizationRepository;
             _dbContext = context;
+            
         }
 
         public IEnumerable<Organization> GetOrgByUserId(int userId)
@@ -288,66 +290,6 @@ namespace Infrastructure.Services
             throw new NotImplementedException();
         }
 
-    //    public IEnumerable<EventAndTagMapping> AddRange(IEnumerable<EventAndTagMapping> entities)
-    //    {
-    //        throw new NotImplementedException();
-    //    }
-
-    //    public EventAndTagMapping Update(EventAndTagMapping entity)
-    //    {
-    //        throw new NotImplementedException();
-    //    }
-
-    //    public IEnumerable<EventAndTagMapping> UpdateRange(IEnumerable<EventAndTagMapping> entities)
-    //    {
-    //        throw new NotImplementedException();
-    //    }
-
-    //    public void Delete(EventAndTagMapping entity)
-    //    {
-    //        throw new NotImplementedException();
-    //    }
-
-    //    public void DeleteRange(IEnumerable<EventAndTagMapping> entities)
-    //    {
-    //        throw new NotImplementedException();
-    //    }
-
-    //    EventAndTagMapping IRepository<EventAndTagMapping>.GetById<TId>(TId id)
-    //    {
-    //        throw new NotImplementedException();
-    //    }
-
-    //    public EventAndTagMapping FirstOrDefault(Expression<Func<EventAndTagMapping, bool>> expression)
-    //    {
-    //        throw new NotImplementedException();
-    //    }
-
-    //    public EventAndTagMapping SingleOrDefault(Expression<Func<EventAndTagMapping, bool>> expression)
-    //    {
-    //        throw new NotImplementedException();
-    //    }
-
-    //    public bool Any(Expression<Func<EventAndTagMapping, bool>> expression)
-    //    {
-    //        throw new NotImplementedException();
-    //    }
-
-    //    public List<EventAndTagMapping> List(Expression<Func<EventAndTagMapping, bool>> expression)
-    //    {
-    //        throw new NotImplementedException();
-    //    }
-
-    //    List<EventAndTagMapping> IRepository<EventAndTagMapping>.All()
-    //    {
-    //        throw new NotImplementedException();
-    //    }
-
-    //    public Task<EventAndTagMapping> UpdateAsync(EventAndTagMapping entity)
-    //    {
-    //        throw new NotImplementedException();
-    //    }
-
         Task<EventAndTagMapping> IRepository<EventAndTagMapping>.GetByIdAsync<TEntityId>(TEntityId id)
         {
             throw new NotImplementedException();
@@ -409,6 +351,11 @@ namespace Infrastructure.Services
         }
 
         Task<EventAndTagMapping> IRepository<EventAndTagMapping>.UpdateAsync(EventAndTagMapping entity)
+        {
+            throw new NotImplementedException();
+        }
+
+        IEnumerable<ApplicationCore.Entities.Organization> ICreateEventService.GetOrgByUserId(int userId)
         {
             throw new NotImplementedException();
         }
