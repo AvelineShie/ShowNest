@@ -1,11 +1,25 @@
-@model System.Collections.Generic.Dictionary<string, string>
+@* @model System.Collections.Generic.Dictionary<string, string>
+ *@
+@model EcpayClientComformViewModel
+
+@section topCSS {
+    <link href="~/css/account/ecpayview.css" rel="stylesheet" />
+}
 
 
 <!--step6 : 顯示回傳結果-->
-<div class="width mt-4 mb-4">
-    @foreach (var key in @Model.Keys.ToList())
-    {
-        @(key) <input type="text" name="@key" value="@Model[key]" disabled /><br />
-    }
-    <a class="btn btn-primary mb-4 mt-3" asp-controller="Account" asp-action="Orders">確認</a>
+<div class="width section_wrap context mt-4 mb-4">
+    <div style="display:none;" > 
+       @*  @foreach (var key in Model.Keys.ToList())
+        {
+            @(key) <input type="text" name="@key" value="@Model[key]" disabled />
+
+            <br />
+        } *@
+    </div>
+    <h2 >付款完成</h2>
+    <p>訂單編號: #@Model.Id </p>
+    <p>您的付款已經成功處理,我們非常感謝您的支持。</p>
+   
+    <a class="btn btn-primary mb-4 mt-4" href="@Url.Action("OrderDetail", "Events", new { id = Model.Id })">確認</a>
 </div>
