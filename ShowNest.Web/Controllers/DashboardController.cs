@@ -17,9 +17,9 @@ namespace ShowNest.Web.Controllers
     {
         private readonly OverviewService _overviewService;
         private readonly OrgGeneralInfoService _orgGeneralInfoService;
-        private readonly CreateEventService _createEventService;
+        private readonly ICreateEventService _createEventService;
 
-        public DashboardController(OverviewService overviewService, OrgGeneralInfoService orgGeneralInfoService, CreateEventService createEventService)
+        public DashboardController(OverviewService overviewService, OrgGeneralInfoService orgGeneralInfoService, ICreateEventService createEventService)
         {
             _overviewService = overviewService;
             _orgGeneralInfoService = orgGeneralInfoService;
