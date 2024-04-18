@@ -18,9 +18,11 @@ let queryParametersDto = {
 
 $(function () {
     loadCards()
-    categoryTagsColorChanging()
+    categoryTagsEvent()
+    dropdownItemEvent()
 })
 
+// 載入卡片
 async function loadCards() {
     let cardsContainer = $('.cards')[0]
     cardsContainer.innerHTML = ''
@@ -58,8 +60,7 @@ async function loadCards() {
     renderPagination()
 }
 
-
-// pagination
+// 分頁功能
 function renderPagination() {
 
     const $paginationContainer = $('#page-index')
@@ -121,7 +122,7 @@ function renderPagination() {
 }
 
 // 分類標籤顏色變換和更新DTO
-function categoryTagsColorChanging() {
+function categoryTagsEvent() {
     let lastClickedTag = null
     $('#categories-tags-div a').click(function (e) {
         e.preventDefault()
@@ -132,7 +133,7 @@ function categoryTagsColorChanging() {
             console.log(queryParametersDto.categoryTag)
         } else {
             if (lastClickedTag) { // 點擊另一個tag就取消已經選取的
-                lastClickedTag.removeClass('categories-tag-clicked');
+                lastClickedTag.removeClass('categories-tag-clicked')
             }
             $(this).addClass('categories-tag-clicked')
             lastClickedTag = $(this)
@@ -166,16 +167,22 @@ document.getElementById("header-nav-search-input").addEventListener("keypress", 
 });
 
 // 兩個下拉選單的查詢
-document.querySelectorAll("#event-search-filter .dropdown-item").forEach(item => {
-    item.addEventListener("click", function (event) {
+function dropdownItemEvent(){
+    let lastClickedItem = null
+    $('#event-search-filter .dropdown-item').click(function (event) {
         event.preventDefault();
-        console.log("dropdown item clicked")
-        const filterValue = item.textContent.trim(); // 獲取選擇的篩選值
-        console.log("filterValue :")
-        console.log(filterValue)
-
+        const filterValue = $(this).text().trim(); // 獲取選擇的篩選值
+    
+        if(lastClickedItem){
+            $('#event-search-filter .dropdown-item').removeClass('event-search-filter-clicked')
+        }
+        $(this).addClass('event-search-filter-clicked')
+        console.log('lastClickedItem')
+        console.log(lastClickedItem)
+        lastClickedItem = $(this)
+    
         // 根據選擇的篩選值設置相應的查詢參數值
-
+    
         switch (filterValue) {
             case "全部費用":
                 //// 不需要設置查詢參數值
@@ -230,7 +237,7 @@ document.querySelectorAll("#event-search-filter .dropdown-item").forEach(item =>
                 oneWeekLater.setDate(oneWeekLater.getDate() + 14);
                 queryParametersDto.startTime = new Date().toISOString().split('T')[0];
                 queryParametersDto.endTime = oneWeekLater.toISOString().split('T')[0];
-
+    
                 break;
             case "兩個月內":
                 // 獲取一個月後的日期
@@ -238,7 +245,7 @@ document.querySelectorAll("#event-search-filter .dropdown-item").forEach(item =>
                 oneMonthLater.setMonth(oneMonthLater.getMonth() + 2);
                 queryParametersDto.startTime = new Date().toISOString().split('T')[0];
                 queryParametersDto.endTime = oneMonthLater.toISOString().split('T')[0];
-
+    
                 break;
             case "四個月內":
                 // 獲取兩個月後的日期
@@ -250,7 +257,8 @@ document.querySelectorAll("#event-search-filter .dropdown-item").forEach(item =>
             default:
                 break;
         }
-
+    
         loadCards()
-    });
-});
+    })
+}
+

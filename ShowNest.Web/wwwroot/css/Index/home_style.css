@@ -464,6 +464,11 @@ h3 {
             background-color: #eee;
         }
 
+.event-search-filter-clicked{
+    background-color: var(--main-green);
+    color: #fff;
+}
+
 #filter-fee,
 #filter-time {
     color: var(--main-green);
