@@ -7,6 +7,8 @@ using ShowNest.ApplicationCore.DTOs;
 using ShowNest.Web.ViewModels.Orders;
 using Microsoft.EntityFrameworkCore;
 using CloudinaryDotNet.Actions;
+using System.Web;
+using System.Security.Policy;
 
 
 namespace ShowNest.Web.WebAPI
@@ -18,14 +20,15 @@ namespace ShowNest.Web.WebAPI
         private readonly IMemoryCache _cache;
         private readonly EcpayHttpHelpers _ecpayHttpHelpers;
         private readonly IEcpayOrderService _ecpayOrderService;
+        private readonly string _website;
 
         public EcpayApiController(DatabaseContext dbContext, EcpayHttpHelpers ecpayHttpHelpers, IMemoryCache cache,
-            IEcpayOrderService ecpayOrderService)
+            IEcpayOrderService ecpayOrderService, IConfiguration configuration)
         {
             _dbContext = dbContext;
             _ecpayHttpHelpers = ecpayHttpHelpers;
             _cache = cache;
-
+            _website = configuration["WebsiteUrl"];
             _ecpayOrderService = ecpayOrderService;
         }
 
@@ -89,12 +92,9 @@ namespace ShowNest.Web.WebAPI
         [Route("api/Ecpay/AddPayInfo")]
         public async Task<IActionResult> AddPayInfo([FromForm] IFormCollection info)
         {
-            
+            var website = _website;
             string receivedCheckMacValue = info["CheckMacValue"];
             string temp = info["MerchantTradeNo"];
-            var eventName = _dbContext.Orders.Select(e => e.Event.Name);
-            //var website = "https://77b4-1-164-227-63.ngrok-free.app";
-            var orderId = _dbContext.EcpayOrders.Select(o => o.OrderId);
             //var order = _dbContext.EcpayOrders.Where(m => m.MerchantTradeNo == temp).Select(x => x.OrderId).FirstOrDefault();
             var ecpayOrder = _dbContext.EcpayOrders.Where(m => m.MerchantTradeNo == temp).FirstOrDefault();
 
@@ -130,28 +130,43 @@ namespace ShowNest.Web.WebAPI
             return Content("0|error");
 
 
+            //string MerchantTradeDate = info["MerchantTradeDate"];
+            //string TotalAmount = info["TotalAmount"];
+            //string TradeDesc = info["TradeDesc"];
+            //string ItemName = info["ItemName"];
+            //string ExpireDate = info["ExpireDate"];
+            //string ReturnURL = info["ReturnURL"];
+            //string OrderResultURL = info["OrderResultURL"];
+            //string PaymentInfoURL = info["PaymentInfoURL"];
+            //string ClientRedirectURL = info["ClientRedirectURL"];
+            //string MerchantID = info["MerchantID"];
+            //string IgnorePayment = info["IgnorePayment"];
+            //string PaymentType = info["PaymentType"];
+            //string ChoosePayment = info["ChoosePayment"];
+            //string EncryptType = info["EncryptType"];
 
             //var orderInfo = new Dictionary<string, string>
             //{
-            //    {"MerchantTradeNo", ecpayOrder.MerchantTradeNo},
-            //    {"MerchantTradeDate",ecpayOrder.PaymentDate.ToString()},
-            //    {"TotalAmount", ecpayOrder.TradeAmt.ToString()},
-            //    {"TradeDesc", "無"},
-            //    {"ItemName",$"{eventName}"},
-            //    {"ExpireDate", "1"},
-            //    {"ReturnURL", $"{website}/api/Ecpay/AddPayInfo"},
-            //    {"OrderResultURL", $"{website}/Events/PayInfo/{orderId}"},
-            //    {"PaymentInfoURL", $"{website}/api/Ecpay/AddAccountInfo"},
-            //    {"ClientRedirectURL", $"{website}/Events/PayInfo/{orderId}"},
-            //    {"MerchantID", "3002607"},
-            //    {"IgnorePayment", "GooglePay#WebATM#CVS#BARCODE"},
-            //    {"PaymentType", "aio"},
-            //    {"ChoosePayment", "ALL"},
-            //    {"EncryptType", "1"},
+            //    {"MerchantTradeNo", temp},
+            //    {"MerchantTradeDate",MerchantTradeDate},
+            //    {"TotalAmount",TotalAmount},
+            //    {"TradeDesc", TradeDesc},
+            //    {"ItemName",ItemName},
+            //    {"ExpireDate", ExpireDate},
+            //    {"ReturnURL",ReturnURL},
+            //    {"OrderResultURL",OrderResultURL},
+            //    {"PaymentInfoURL", PaymentInfoURL},
+            //    {"ClientRedirectURL", ClientRedirectURL},
+            //    {"MerchantID", MerchantID},
+            //    {"IgnorePayment", IgnorePayment},
+            //    {"PaymentType",PaymentType},
+            //    {"ChoosePayment", ChoosePayment},
+            //    {"EncryptType", EncryptType},
             //};
             //string generatedCheckMacValue = await _ecpayOrderService.GetCheckMacValue(orderInfo);
+           
             //var tempffff = 111;
-            //if (receivedCheckMacValue.Equals(generatedCheckMacValue, StringComparison.OrdinalIgnoreCase))
+            //if (generatedCheckMacValue == receivedCheckMacValue)
             //{
             //    if (ecpayOrder != null)
             //    {
@@ -183,6 +198,7 @@ namespace ShowNest.Web.WebAPI
             //    return Content("0|error");
             //}
         }
+      
 
         [HttpPost]
         [Route("api/Ecpay/GetEcpayOrderInfo")]

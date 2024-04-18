@@ -52,11 +52,12 @@
 
             // 處理模態視窗中的按鈕點擊事件
             document.getElementById('loginBtn').addEventListener('click', function () {
-                window.location.href = '/Account/LogIn';
+                // 將eventId作為查詢參數傳遞給登入頁面
+                window.location.href = '/Account/LogIn?eventId=@Model.EventId';
             });
-
             document.getElementById('signUpBtn').addEventListener('click', function () {
-                window.location.href = '/Account/SignUp';
+                // 將eventId作為查詢參數傳遞給註冊頁面
+                window.location.href = '/Account/SignUp?eventId=@Model.EventId';
             });
 
             document.getElementById('cancelBtn').addEventListener('click', function () {
