@@ -51,7 +51,7 @@ namespace Infrastructure.Services
                 {"TradeDesc",$"None"},
                 {"ItemName", $"{eventName}"},
                 {"ExpireDate", "1"},
-                {"CustomField1",  $"?id={orderId}"},
+                {"CustomField1",  $"{orderId}"},
                 {"CustomField2", ""},
                 {"CustomField3", ""},
                 {"CustomField4", ""},
