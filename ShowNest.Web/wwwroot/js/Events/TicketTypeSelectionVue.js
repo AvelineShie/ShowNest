@@ -48,11 +48,17 @@ createApp({
             const redirectUrl = `/events/seatSelector?${params.toString()}`
             window.location = redirectUrl;
         },
+        moment() {
+            return moment();
+        }
     },
     async mounted() {
         const urlParams = new URLSearchParams(window.location.search);
         const eventId = urlParams.get('eventId');
 
         await this.fetchTicketTypes(eventId);
+        $cookies.remove('expireTimeOnSelection');
+        $cookies.remove('expireTimeOnRegistration');
+        $cookies.remove('expireTimeOnPayment');
     }
 }).mount('#app')
