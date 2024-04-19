@@ -1,4 +1,5 @@
-﻿using CloudinaryDotNet.Actions;
+﻿using ApplicationCore.Entities;
+using CloudinaryDotNet.Actions;
 using Microsoft.AspNetCore.Mvc;
 using ShowNest.Web.ViewModels.Shared;
 using System.Security.Claims;
@@ -22,46 +23,55 @@ namespace ShowNest.Web.WebAPI
             _CreateEventService = createEventInterface;
         }
 
-        //從使用者抓取組織id,然後再用組織id抓活動id
         [HttpPost]
         [Route("/api/CreateEvent/CreateEventbyUserId")]
-        //public async Task<OrgsEventsInfroViewModel> CreateEventbyUserId()
+        public async Task<OrgsEventsInfroViewModel> CreateEventbyUserId()
+        {
+            var userIdFromClaim = _httpContextAccessor.HttpContext.User.Claims
+                    .FirstOrDefault(c => c.Type == ClaimTypes.NameIdentifier);
+
+            if (userIdFromClaim == null)
+            {
+                return null;
+            }
+            else
+            {
+                var user = await _context.Users
+                .Include(u => u.OrganizationAndUserMappings)
+                .FirstOrDefaultAsync(u => u.Id == int.Parse(userIdFromClaim.Value));
+
+                if (user == null)
+                {
+                    return null;
+                }
+
+                //取得使用者底下的組織id的組織名稱
+                var orgIds = user.OrganizationAndUserMappings
+                    .Select(ou => ou.OrganizationId).ToList(); //得到一個orgId列表
+
+                // 使用LINQ來從組織集合中篩選出相對應的組織名稱
+                var orgNames = _context.Organizations
+                    .Where(org => orgIds.Contains(org.Id))
+                    .Select(org => org.Name)
+                    .ToList();
+
+                return new OrgsEventsInfroViewModel { };
+
+        //var organizations = await _context.Organizations
+        //    .Where(o => orgIds.Contains(o.Id))
+        //    .Select(o => new OrgsInfro
+        //    {
+        //        OrganizationId = o.Id,
+        //        OrganizationName = o.Name
+        //    }).ToListAsync();
+        //return new OrgsEventsInfroViewModel
         //{
-        //    //從Claim抓UserID
-        //    var userIdFromClaim = _httpContextAccessor.HttpContext.User.Claims
-        //            .FirstOrDefault(c => c.Type == ClaimTypes.NameIdentifier);
+        //    OrgsInfro = organizations,
+        //};
 
-        //    if (userIdFromClaim == null)
-        //    {
-        //        return null;
-        //    }
-        //    else
-        //    {
-        //        var info = await _context.Users
-        //                        .Include(u => u.OrganizationAndUserMappings)
-        //                        .ThenInclude(ou => ou.Organization)
-        //                        .FirstOrDefaultAsync(x => x.Id == int.Parse(userIdFromClaim.Value));
+    }
+        }
 
-        //        var result = new OrgsEventsInfroViewModel();
-        //        result.UserOrg = new List<EventsInfro>();
-        //        foreach (var org in info.Organizations.OrderBy(o => o.Id))
-        //        {
-        //            var orgToAdd = new UserOrgInfo
-        //            {
-        //                UserOrgId = org.Id.ToString(),
-        //                UserOrgName = org.Name,
-        //                UserOrgUrl = $"{org.Name}URL"
-        //            };
-        //            result.UserOrg.Add(orgToAdd);
-        //        }
-        //        result.UserImgUrl = "https://picsum.photos/300/200/?random=10";
-
-        //        return result;
-
-        //    }
-        //    return info;
-        //    //先用UserId抓出OrgId,OrgName,然後foreach丟進前端的JS的organization
-        //}
 
 
         //[HttpPost]
@@ -70,7 +80,6 @@ namespace ShowNest.Web.WebAPI
         //{
         //    try
         //    { 
-
         //        //int newEventId;
         //        if (request.EventId == 0)
         //        {   //取得使用者登入資訊:在view驗證即可
@@ -113,8 +122,7 @@ namespace ShowNest.Web.WebAPI
         }
     }
 
-
-
+    
 }
 
 

@@ -2,17 +2,17 @@ const { createApp, ref } = Vue
 const { createVuetify } = Vuetify
 const vuetify = createVuetify();
 
+
 const options = {
     data() {
         return {
-            
-            //CreateEvent
-            e1: 1,
-            userId:2,
+
+            //====================CreateEvent(R)
+            userId: 2,
             selectedOrganization: {}, //組織下拉v-model
             organizations: [], //下拉items
             displaySelectActivityType: false, /*隱藏*/
-            activityTypes: ["全新的活動", "既有的活動"], //活動下拉item
+            activityTypes: ["全新的活動", "既有的活動"], //活動下拉item/val
             selectedActivityType: "全新的活動", //活動下拉式v-model
             displayExistingActivities: false, //既有活動後打開
             radioCheck: {}, //所選任一活動
@@ -22,33 +22,56 @@ const options = {
             items: ['實體活動', '線上活動'],
             selectedEvent: {},
             events: [],
+
+            //====================SetEvent(R,U)
+            eventId: '',
+            OrgName: '',
+
+            eventNameInput: '',
+            startTime: '',
+            endTime: '',
+            noEndTime: false,
+            mainOrganizerInput: '',
+            coOrganizer: '',
+
+            number: '', //人數
+            unlimited: '',
+
+            placeName: '',
+            EventAddress: '',
+            updateMap:'',
+
+            streaming:'',
+            SHOWNESTLive: '', //線上選項
+
+            introduction: '',
+
             
+            eventStatus: [], //實體或線上
+            placeSection: true, //實體活動欄位
+            onlineEventArea: false, //線上活動欄位
 
-            //SetEvent
-            /*el: 2,*/
-            //OrganizationName: {},
-            //EventName: {},
-            //WebsiteLink: {},
-            //StartTime: {},
-            //EndTime: {},
-            //NoEndTime: false, //就關閉Endtime
-            //MainOrganizer: {},
-            //CoOrganizer: {},
-            //Attendance: {}, //活動人數
-            //UmlimitAttendance: false, //不限人數
-            //EventStatus: {},
-            //StreamingName: {},//所選串流平台
-            //LocationName: {},
-            //EventAddress: {},
-            //EventIntroduction: {},
-            //EventDescription: {},
-            //EventImage: {},
-            //IsPrivateEvent: [0, 1],
-            //EventType: [],
+            //地圖先不管:
+            //center: { lat: 40.689247, lng: -74.044502 },
+            //position:{ lat: 40.689247, lng: -74.044502 },
 
+            editor: ClassicEditor,
+            description: '',
+            editorConfig: {
+                language: 'zh-cn',
+                toolbar: ['bold', 'italic', 'heading', 'Superscript', 'link', 'undo', 'redo', 'imageUpload']
+            },
 
+            //圖片?? 傳入uri
+            fileupload: '',
+            restoreImg: '',
 
-            //SetTicket
+            public: '',
+            private:'',
+
+            tag:'',
+
+            //======================SetTicket(R,U)
             //選票種
             TicketTypeList: [
                 { id:1, name:"全票" }
@@ -82,36 +105,53 @@ const options = {
         }
     },
     mounted() {
+        this.GetOrgByUserId()
         /*this.CreateAndEditEvent()*/
-        this.GetOrgEventsByOrgId()
-        
+        /*this.GetOrgEventsByOrgId()*/
+
     },
     methods: {
+
         GetOrgByUserId() {
-            fetch('api/CreateEvent/CreateEventbyUserId',
+            fetch('/api/CreateEvent/CreateEventbyUserId',
                 {
                     method: 'POST', // 設定請求方法為 POST
                     headers: { 'Content-Type': 'application/json' }, // 設定內容類型為 JSON
-                    body: JSON.stringify({ userId: this.userId }) 
+                    body: JSON.stringify({ userId: this.userId })
                 }
             )
-            .then(response => {
-                return response.json()
-            })
-            .then(data => {
-                if (!data.isSuccess) {
-                    this.selectedOrganization = { id: 0, name: '沒有組織，請先建立組織' }
-                    throw new Error(data.message)
-                }
-                this.organizations = data.body.organizations.map(x => {
-                    return { id: x.id, name: x.name }
+                .then(response => {
+                    return response.json()
                 })
-                this.selectedOrganization = null
-            })
-            .catch(err => {
-                console.error(err)
-            })
+                .then(data => {
+                    if (!data.isSuccess) {
+                        this.selectedOrganization = { id: 0, name: '沒有組織，請先建立組織' }
+                        throw new Error(data.message)
+                    }
+                    this.organizations = data.body.organizations.map(x => {
+                        return { id: x.id, name: x.name }
+                    })
+                    this.selectedOrganization = null
+                })
+                .catch(err => {
+                    console.error(err)
+                })
         },
+
+        //add: function () {
+        //    this.list.push({ name: "Juan" });
+        //},
+        //replace: function () {
+        //    this.list = [{ name: "Edgard" }];
+        //},
+        clone: function (el) {
+            return {
+                name: el.name + " cloned"
+            };
+        },
+        log: function (evt) {
+            window.console.log(evt);
+        }
 
         //CreateAndEditEvent() {
         //    fetch('/api/CreateEvent/CreateAndEditEvent',
@@ -137,11 +177,11 @@ const options = {
         //            console.error(err)
         //        })
         //},
-        GetOrgEventsByOrgId() {
-            console.log(this.selectedOrganization)
-        },
-        
-        
+        //GetOrgEventsByOrgId() {
+        //    console.log(this.selectedOrganization)
+        //},
+
+
 
     },
     watch: {
@@ -163,25 +203,39 @@ const options = {
                 }
             }
         },
-        'checkbox': {
-            handler: function (newVal) {
-                // 透過 newVal, prevVal 取得監聽前後變數的值
-                if (newVal == preVal) {
-                    this.stepButton = false;
-                    this.checkboxErrorMsg = "請勾選同意後進行!";
-                }
-                else {
-                    this.stepButton = true;
-                    this.checkboxErrorMsg = "";
-                }
-            },
-            immediate: false
-        },
+
+        //'onlineEventArea': {
+        //    handler: function (value) {
+        //        if (value == "1") {
+        //            this.onlineEventArea = true
+        //            this.placeSection = false
+        //        }
+        //    }
+        //}
+
+        //'checkbox': {
+        //    handler: function (newVal) {
+        //        // 透過 newVal, prevVal 取得監聽前後變數的值
+        //        if (newVal == preVal) {
+        //            this.stepButton = false;
+        //            this.checkboxErrorMsg = "請勾選同意後進行!";
+        //        }
+        //        else {
+        //            this.stepButton = true;
+        //            this.checkboxErrorMsg = "";
+        //        }
+        //    },
+        //    immediate: false
+        //},
     }
 }
 const app = createApp(options); // 創建一個 Vue 應用實例，使用 options 作為配置選項
-app.component('draggable', vuedraggable);
-app.use(vuetify).mount('#app');
+app.component('draggable', vuedraggable)
+//app.component('GoogleMap', GoogleMap)
+//app.component('GoogleMapMarker', Marker)
+app.use(CKEditor)
+app.use(vuetify)
+app.mount('#app')
 
 
 
@@ -197,21 +251,21 @@ app.use(vuetify).mount('#app');
 //        return {
 //            list1: [
 //              { name: "特1A", id: 1 },
-                //{ name: "特1B", id: 2 },
-                //{ name: "2A區", id: 3 },
-                //{ name: "2B區", id: 4 },
-                //{ name: "2C區", id: 5 },
-                //{ name: "2D區", id: 6 },
-                //{ name: "2E區", id: 7 },
-                //{ name: "2F區", id: 8 },
-                //{ name: "2G區", id: 9 },
-                //{ name: "3A區", id: 10 },
-                //{ name: "3B區", id: 11 },
-                //{ name: "3C區", id: 12 },
-                //{ name: "3D區", id: 13 },
-                //{ name: "3E區", id: 14 },
-                //{ name: "3F區", id: 15 },
-                //{ name: "3G區", id: 16 }
+//{ name: "特1B", id: 2 },
+//{ name: "2A區", id: 3 },
+//{ name: "2B區", id: 4 },
+//{ name: "2C區", id: 5 },
+//{ name: "2D區", id: 6 },
+//{ name: "2E區", id: 7 },
+//{ name: "2F區", id: 8 },
+//{ name: "2G區", id: 9 },
+//{ name: "3A區", id: 10 },
+//{ name: "3B區", id: 11 },
+//{ name: "3C區", id: 12 },
+//{ name: "3D區", id: 13 },
+//{ name: "3E區", id: 14 },
+//{ name: "3F區", id: 15 },
+//{ name: "3G區", id: 16 }
 //            ],
 //            list2: [],
 //            新增一個變數來儲存使用者輸入的選項名稱

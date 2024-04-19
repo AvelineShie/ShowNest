@@ -27,6 +27,8 @@
                         <input id="password" type="password" name="Password" minlength="8" required placeholder="密碼" />
                     </div>
                     @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+
+                    <input type="hidden" name="eventId" value="@Context.Request.Query["eventId"]" />
                     <div class="submit"><input type="submit" value="登入" /></div>
 
                 </form>
@@ -41,7 +43,11 @@
                 <div class="forget-passwords"><a asp-controller="Account" asp-action="ForgetPassword">忘記密碼</a></div>
                 <div class="other-log-in-methods">使用第三方帳號進行登入</div>
                 <div class="third-party-log-in">
-                    <div class="FB-icon"><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/b/b9/2023_Facebook_icon.svg/225px-2023_Facebook_icon.svg.png" alt="third-party-signup:FB"></div>
+                    <a href="https://www.facebook.com/v13.0/dialog/oauth?client_id=YOUR_CLIENT_ID&redirect_uri=YOUR_REDIRECT_URI&scope=email">
+                        <div class="FB-icon">
+                            <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/b/b9/2023_Facebook_icon.svg/225px-2023_Facebook_icon.svg.png" alt="third-party-signup:FB">
+                        </div>
+                    </a>
                     <div class="google-icon"><img src="https://res.cloudinary.com/dwn2iafcc/image/upload/v1708967805/google-web-light-rd-na_wtcjhg.svg" alt="third-party-signup:Google"></div>
                 </div>
             </div>

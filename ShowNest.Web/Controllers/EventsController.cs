@@ -154,7 +154,7 @@ namespace ShowNest.Web.Controllers
             return View();
         }
 
-        public async Task<IActionResult> OrderDetail(string customerOrderId)
+        public async Task<IActionResult> OrderDetail(int customerOrderId)
         {
 
             //var GenerateOrderToEcpay = await _ecpayOrderService.GenerateOrderAsync(customerOrderId);
@@ -172,14 +172,11 @@ namespace ShowNest.Web.Controllers
             {
                 data.Add(key, formData[key]);
             }
-
-            //string temp = formData["MerchantTradeNo"]; //寫在LINQ(下一行)會出錯，
-            //string checkCode = formData["CheckMacValue"];
             //var ecpayOrder = _context.EcpayOrders.Where(m => m.MerchantTradeNo == temp).FirstOrDefault();
-           
-           
-
-            return View("EcpayView", data);
+            
+            string OrderId = formData["CustomField1"];
+            var model = new EcpayClientComformViewModel { Data = data, Id = OrderId };
+            return View("EcpayView", model);
         }
 
         //檢查登入狀態BY大頭

@@ -34,13 +34,22 @@ namespace ShowNest.Web.Controllers
         }
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> LogIn(LoginViewModel Login)
+        public async Task<IActionResult> LogIn(LoginViewModel Login, string eventId = null)
         {
             var result = await _accountService.LogInAsync(Login);
             if (result.IsSuccess)
             {
-                //登入成功，導向頁面
-                return RedirectToAction("Index", "Home");
+                // 登入成功，檢查是否有eventId參數
+                if (!string.IsNullOrEmpty(eventId))
+                {
+                    // 如果有eventId參數，則重定向到原本的活動頁
+                    return RedirectToAction("EventPage", "Events", new { eventId = eventId });
+                }
+                else
+                {
+                    // 否則，重定向到預設的頁面
+                    return RedirectToAction("Index", "Home");
+                }
             }
             else
             {
@@ -49,6 +58,7 @@ namespace ShowNest.Web.Controllers
                 return View(Login);
             }
         }
+
 
         //註冊
         [HttpGet]
@@ -59,7 +69,7 @@ namespace ShowNest.Web.Controllers
         [HttpPost]
         [AllowAnonymous]
         [ValidateAntiForgeryToken]
-        public async Task<ActionResult> SignUp(RegisterViewModel SignUp)
+        public async Task<ActionResult> SignUp(RegisterViewModel SignUp, string eventId = null)
         {
             if (ModelState.IsValid)
             {
@@ -71,8 +81,17 @@ namespace ShowNest.Web.Controllers
                     var loginResult = await _accountService.LogInAsync(new LoginViewModel { Account = SignUp.Account, Password = SignUp.Password });
                     if (loginResult.IsSuccess)
                     {
-                        // 登入成功後，重定向到首頁
-                        return RedirectToAction("Index", "Home");
+                        // 登入成功後，檢查是否有eventId參數
+                        if (!string.IsNullOrEmpty(eventId))
+                        {
+                            // 如果有eventId參數，則重定向到原本的活動頁
+                            return RedirectToAction("EventPage", "Events", new { eventId = eventId });
+                        }
+                        else
+                        {
+                            // 否則，重定向到預設的頁面
+                            return RedirectToAction("Index", "Home");
+                        }
                     }
                     else
                     {
@@ -251,5 +270,32 @@ namespace ShowNest.Web.Controllers
         {
             return View();
         }
+
+        //FB登入
+        //[HttpGet]
+        //public async Task<ActionResult> FacebookCallback(string code)
+        //{
+        //    // 使用code來換取access token
+        //    var accessToken = await GetAccessTokenAsync(code);
+
+        //    // 使用access token來取得用戶資訊
+        //    var userInfo = await GetUserInfoAsync(accessToken);
+
+        //    // 在這裡處理用戶資訊，例如將用戶資訊儲存到資料庫或進行登入處理
+        //    // 這裡假設你已經有一個方法來處理用戶資訊，例如_accountService.ProcessFacebookLogin(userInfo)
+        //    var result = await _accountService.ProcessFacebookLogin(userInfo);
+
+        //    if (result.IsSuccess)
+        //    {
+        //        // 登入成功，重定向到預設的頁面
+        //        return RedirectToAction("Index", "Home");
+        //    }
+        //    else
+        //    {
+        //        // 登入失敗，返回錯誤信息
+        //        ModelState.AddModelError("", result.ErrorMessage);
+        //        return View("LogIn"); // 返回登入頁面
+        //    }
+        //}
     }
 }

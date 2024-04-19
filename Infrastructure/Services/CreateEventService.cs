@@ -361,9 +361,9 @@ namespace Infrastructure.Services
         }
     }
 }
-        
 
-        
+
+
 //public CreateEventViewModel GetOrgByOwner(int OwnerId)
 //{
 //    // 根據 userID 找到它底下所有組織

@@ -464,6 +464,11 @@ h3 {
             background-color: #eee;
         }
 
+.event-search-filter-clicked {
+    background-color: var(--main-green);
+    color: #fff;
+}
+
 #filter-fee,
 #filter-time {
     color: var(--main-green);
@@ -487,6 +492,14 @@ h3 {
 /* end ----- categories-tags ----- */
 
 /* start ----- events-cards ----- */
+
+#no-filter-result-text {
+    text-align: center;
+    font-size: 20px;
+    font-weight: 600;
+    margin-top: 100px;
+    display:none;
+}
 
 #page-index {
     display: flex;

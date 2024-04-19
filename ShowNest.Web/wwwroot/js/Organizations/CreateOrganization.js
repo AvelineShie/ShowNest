@@ -26,8 +26,8 @@ createApp({
 
             creating: false,
             editing: false,
-            postUrl: '',
-            orgId:'',
+            orgId:0,
+
             name: '',
             organizationUrl: '',
             outerUrl: '',
@@ -44,6 +44,7 @@ createApp({
             contactName: '',
             contactMobile: '',
             contactTelephone: '',
+
             isChecked: false,
         }
     },
@@ -66,6 +67,22 @@ createApp({
             console.log(this.editing)
         },
         submit() {
+            console.log('submit()')
+
+            console.log(
+                this.orgId,
+                this.name,
+                this.organizationUrl,
+                this.outerUrl,
+                this.description,
+                this.fbLink,
+                this.igAccount,
+                this.email,
+                this.imgUrl,
+                this.contactName,
+                this.contactMobile,
+                this.contactTelephone
+            )
             axios.post('/api/CreateAndUpdateOrganization/CreateAndUpdateOrganization', {
                 orgId:this.orgId,
                 name: this.name,

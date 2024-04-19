@@ -22,7 +22,7 @@ namespace ShowNest.Web.WebAPI
 
         public async Task<IActionResult> GetEventsIndexCardsByApi([FromBody]QueryParametersDto request)
         {
-            return Ok(await _eventsIndexCardsAPIServiceByEf.GetCardsByPagesize(request));
+           return Ok(await _eventsIndexCardsAPIServiceByEf.GetCardsByPagesize(request));
         }
 
     }
