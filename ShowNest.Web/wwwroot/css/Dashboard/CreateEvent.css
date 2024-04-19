@@ -19,7 +19,7 @@
 
 .CreateEventTitle {
     font-size: 30px;
-    font-weight: 700px;
+    font-weight: 700;
     margin-bottom: 10px;
     color: var(--v-theme-surface-variant);
 }
@@ -401,12 +401,16 @@ html body #SetTicket.delete {
 }
 
 /*新增修改票種欄位*/
-#SetTicket .changeTicketSection {
+#SetTicket .changeTicketSection, .TicketAreaRow {
     background-color: lightgoldenrodyellow;
     border-radius: 5px;
     padding: 15px;
     margin-bottom: 15px;
 }
+
+
+
+
 
 #SetTicket .section {
     display: inline-block;

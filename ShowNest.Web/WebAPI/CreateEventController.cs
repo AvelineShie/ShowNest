@@ -1,4 +1,5 @@
-﻿using CloudinaryDotNet.Actions;
+﻿using ApplicationCore.Entities;
+using CloudinaryDotNet.Actions;
 using Microsoft.AspNetCore.Mvc;
 using ShowNest.Web.ViewModels.Shared;
 using System.Security.Claims;
@@ -22,43 +23,54 @@ namespace ShowNest.Web.WebAPI
             _CreateEventService = createEventInterface;
         }
 
-        //[HttpPost]
-        //[Route("/api/CreateEvent/CreateEventbyUserId")]
+        [HttpPost]
+        [Route("/api/CreateEvent/CreateEventbyUserId")]
+        public async Task<OrgsEventsInfroViewModel> CreateEventbyUserId()
+        {
+            var userIdFromClaim = _httpContextAccessor.HttpContext.User.Claims
+                    .FirstOrDefault(c => c.Type == ClaimTypes.NameIdentifier);
 
-        //public async Task<OrgsEventsInfroViewModel> CreateEventbyUserId()
+            if (userIdFromClaim == null)
+            {
+                return null;
+            }
+            else
+            {
+                var user = await _context.Users
+                .Include(u => u.OrganizationAndUserMappings)
+                .FirstOrDefaultAsync(u => u.Id == int.Parse(userIdFromClaim.Value));
+
+                if (user == null)
+                {
+                    return null;
+                }
+
+                //取得使用者底下的組織id的組織名稱
+                var orgIds = user.OrganizationAndUserMappings
+                    .Select(ou => ou.OrganizationId).ToList(); //得到一個orgId列表
+
+                // 使用LINQ來從組織集合中篩選出相對應的組織名稱
+                var orgNames = _context.Organizations
+                    .Where(org => orgIds.Contains(org.Id))
+                    .Select(org => org.Name)
+                    .ToList();
+
+                return new OrgsEventsInfroViewModel { };
+
+        //var organizations = await _context.Organizations
+        //    .Where(o => orgIds.Contains(o.Id))
+        //    .Select(o => new OrgsInfro
+        //    {
+        //        OrganizationId = o.Id,
+        //        OrganizationName = o.Name
+        //    }).ToListAsync();
+        //return new OrgsEventsInfroViewModel
         //{
-        //    var userIdFromClaim = _httpContextAccessor.HttpContext.User.Claims
-        //            .FirstOrDefault(c => c.Type == ClaimTypes.NameIdentifier);
+        //    OrgsInfro = organizations,
+        //};
 
-        //    if (userIdFromClaim == null)
-        //    {
-        //        return null;
-        //    }
-        //    else
-        //    {
-        //        var user = await _context.Users
-        //        .Include(u => u.OrganizationAndUserMappings)
-        //        .FirstOrDefaultAsync(u => u.Id == int.Parse(userIdFromClaim.Value));
-
-        //        if (user == null)
-        //        {
-        //            return null;
-        //        }
-
-        //        var orgIds = user.OrganizationAndUserMappings.Select(ou => ou.OrganizationId).ToList();
-        //        var organizations = await _context.Organizations
-        //            .Where(o => orgIds.Contains(o.Id))
-        //            .Select(o => new OrgsInfro
-        //            {
-        //                OrganizationId = o.Id,
-        //                OrganizationName = o.Name
-
-        //            }).ToListAsync();
-
-        //        return OrgsInfro = organizations;
-        //        //return organizations;
-        //    }
-        //}
+    }
+        }
 
 
 
@@ -110,8 +122,7 @@ namespace ShowNest.Web.WebAPI
         }
     }
 
-
-
+    
 }
 
 

@@ -79,7 +79,6 @@ namespace ShowNest.Web.Controllers
         //                Quantity = "300",
         //            }
         //        }
-
         //    };
         //    return View("SetTicket", model);
         //}

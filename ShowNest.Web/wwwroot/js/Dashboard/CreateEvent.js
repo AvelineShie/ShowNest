@@ -7,7 +7,7 @@ const options = {
     data() {
         return {
 
-            //CreateEvent
+            //====================CreateEvent(R)
             userId: 2,
             selectedOrganization: {}, //組織下拉v-model
             organizations: [], //下拉items
@@ -23,13 +23,35 @@ const options = {
             selectedEvent: {},
             events: [],
 
+            //====================SetEvent(R,U)
+            eventId: '',
+            OrgName: '',
 
-            //SetEvent
-            radioCheck: '',
-            eventStatus: [],
-            placeSection: { },
-            onlineEventArea: false,
+            eventNameInput: '',
+            startTime: '',
+            endTime: '',
+            noEndTime: false,
+            mainOrganizerInput: '',
+            coOrganizer: '',
 
+            number: '', //人數
+            unlimited: '',
+
+            placeName: '',
+            EventAddress: '',
+            updateMap:'',
+
+            streaming:'',
+            SHOWNESTLive: '', //線上選項
+
+            introduction: '',
+
+            
+            eventStatus: [], //實體或線上
+            placeSection: true, //實體活動欄位
+            onlineEventArea: false, //線上活動欄位
+
+            //地圖先不管:
             //center: { lat: 40.689247, lng: -74.044502 },
             //position:{ lat: 40.689247, lng: -74.044502 },
 
@@ -40,36 +62,43 @@ const options = {
                 toolbar: ['bold', 'italic', 'heading', 'Superscript', 'link', 'undo', 'redo', 'imageUpload']
             },
 
+            //圖片?? 傳入uri
+            fileupload: '',
+            restoreImg: '',
 
+            public: '',
+            private:'',
 
-            //SetTicket
+            tag:'',
+
+            //======================SetTicket(R,U)
             //選票種
-            //TicketTypeList: [
-            //    { id:1, name:"全票" }
-            //],
-            //selectedTicketType: [],
+            TicketTypeList: [
+                { id:1, name:"全票" }
+            ],
+            selectedTicketType: [],
 
             //選票區
-            //TicketAreaList:
-            //[
-            //    { id: 1, name: "特1A" },
-            //    { id: 2, name: "特1B" },
-            //    { id: 3, name: "2A區" },
-            //    { id: 4, name: "2B區" },
-            //    { id: 5, name: "2C區" },
-            //    { id: 6, name: "2D區" },
-            //    { id: 7, name: "2E區" },
-            //    { id: 8, name: "2F區" },
-            //    { id: 9, name: "2G區" },
-            //    { id: 10, name: "3A區" },
-            //    { id: 11, name: "3B區" },
-            //    { id: 12, name: "3C區" },
-            //    { id: 13, name: "3D區" },
-            //    { id: 14, name: "3E區" },
-            //    { id: 15, name: "3F區" },
-            //    { id: 16, name: "3G區" }
-            //],
-            //selectedTicketAreaList: [],
+            TicketAreaList:
+            [
+                { id: 1, name: "特1A" },
+                { id: 2, name: "特1B" },
+                { id: 3, name: "2A區" },
+                { id: 4, name: "2B區" },
+                { id: 5, name: "2C區" },
+                { id: 6, name: "2D區" },
+                { id: 7, name: "2E區" },
+                { id: 8, name: "2F區" },
+                { id: 9, name: "2G區" },
+                { id: 10, name: "3A區" },
+                { id: 11, name: "3B區" },
+                { id: 12, name: "3C區" },
+                { id: 13, name: "3D區" },
+                { id: 14, name: "3E區" },
+                { id: 15, name: "3F區" },
+                { id: 16, name: "3G區" }
+            ],
+            selectedTicketAreaList: [],
 
 
 
@@ -84,7 +113,7 @@ const options = {
     methods: {
 
         GetOrgByUserId() {
-            fetch('api/CreateEvent/CreateEventbyUserId',
+            fetch('/api/CreateEvent/CreateEventbyUserId',
                 {
                     method: 'POST', // 設定請求方法為 POST
                     headers: { 'Content-Type': 'application/json' }, // 設定內容類型為 JSON
@@ -108,6 +137,21 @@ const options = {
                     console.error(err)
                 })
         },
+
+        //add: function () {
+        //    this.list.push({ name: "Juan" });
+        //},
+        //replace: function () {
+        //    this.list = [{ name: "Edgard" }];
+        //},
+        clone: function (el) {
+            return {
+                name: el.name + " cloned"
+            };
+        },
+        log: function (evt) {
+            window.console.log(evt);
+        }
 
         //CreateAndEditEvent() {
         //    fetch('/api/CreateEvent/CreateAndEditEvent',
@@ -160,14 +204,14 @@ const options = {
             }
         },
 
-        'onlineEventArea': {
-            handler: function (value) {
-                if (value == "1") {
-                    this.onlineEventArea = true
-                    this.placeSection = false
-                }
-            }
-        }
+        //'onlineEventArea': {
+        //    handler: function (value) {
+        //        if (value == "1") {
+        //            this.onlineEventArea = true
+        //            this.placeSection = false
+        //        }
+        //    }
+        //}
 
         //'checkbox': {
         //    handler: function (newVal) {
