@@ -40,16 +40,14 @@ namespace Infrastructure.Services
 		{
 			try
 			{
-				int page = request.page;
-				int cardsPerPage = request.cardsPerPage;
-
-				// 沒有任何搜尋條件的情況下，樣本是全部的卡片
-
 				string inputstring = request.inputstring;
-				decimal minPrice = request.MinPrice;
 				decimal maxPrice = request.MaxPrice;
+				decimal minPrice = request.MinPrice;
 				DateTime? startTime = request.StartTime;
 				DateTime? endTime = request.EndTime;
+				int tagId = request.CategoryTag;
+				int page = request.page;
+				int cardsPerPage = request.cardsPerPage;
 
 				var query = _databaseContext.Events
 									.Include(o => o.Organization)
@@ -59,24 +57,28 @@ namespace Infrastructure.Services
 									.Where(e => e.StartTime > DateTime.Today)
 									.AsNoTracking();
 
-
-
 				// query string filters
 				if (!string.IsNullOrEmpty(inputstring))
 				{
-					query = query.Where(en => en.Name.Contains(inputstring));
+					query = query.Where(q => q.Name.Contains(inputstring));
+				}
+
+				// category tags filter
+				if(tagId != 0)
+				{
+					query = query.Where(q => q.EventAndTagMappings.Any(et => et.CategoryTagId == tagId));
 				}
 
 				// price filter
 				if (!(minPrice == 0 && maxPrice > 3000))
 				{
-					query = query.Where(e => e.TicketTypes.Any(t => t.Price >= minPrice && t.Price <= maxPrice));
+					query = query.Where(q => q.TicketTypes.Any(t => t.Price >= minPrice && t.Price <= maxPrice));
 				}
 
 				// Time range filters
 				if (!(startTime == null && endTime == null))
 				{
-					query = query.Where(e => e.StartTime <= endTime);
+					query = query.Where(q => q.StartTime <= endTime);
 				}
 
 				var totalEventsCount = query.Count();

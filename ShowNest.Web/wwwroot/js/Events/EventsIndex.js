@@ -18,6 +18,7 @@ let queryParametersDto = {
 
 $(function () {
     loadCards()
+    inputStringEvent()
     categoryTagsEvent()
     feeDropdownColorChanging()
     timeDropdownColorChanging()
@@ -26,8 +27,21 @@ $(function () {
 
 // 載入卡片
 async function loadCards() {
+    console.log('loadCards() executed')
     let cardsContainer = $('.cards')[0]
     cardsContainer.innerHTML = ''
+
+    // 從別的頁面用nav搜尋時的狀況：nav input有值，events input沒有值，搜尋字串為nav input的
+    if(getNavInputQueryString()){
+        $('#header-nav-search-input').val(getNavInputQueryString())
+        queryParametersDto.inputString = $('#header-nav-search-input').val() && !$('#event-search-search-input').val() ? $('#header-nav-search-input').val() : ''
+        clearNavInputCookie()
+    }
+
+    // 如果使用這把events input的文字清除，再直接按小標籤的話
+    if(!$('#event-search-search-input').val()){
+        queryParametersDto.inputString=''
+    }
 
     await axios.post(`/api/EventsIndex/GetEventsIndexCardsByApi`, queryParametersDto)
         .then(res => {
@@ -46,9 +60,9 @@ async function loadCards() {
             })
             totalEventsCount = cards.length !== 0 ? cards[0].totalEvents : 0
 
-            if(totalEventsCount == 0){
+            if (totalEventsCount == 0) {
                 $('#no-filter-result-text').css('display', 'block');
-            }else{
+            } else {
                 $('#no-filter-result-text').css('display', 'none');
             }
         })
@@ -125,7 +139,22 @@ function renderPagination() {
     }
 }
 
-// 分類標籤顏色變換和更新DTO
+// input 搜尋字串查詢功能
+function inputStringEvent() {
+    $('#event-search-search-input').keypress(function (e) {
+        if (e.which == 13) {
+            // 如果nav input和events input都有值，取events input的
+            // 在JS中，空字串被視為"假值"
+            queryParametersDto.inputString = $(this).val() ? $(this).val() : $('#header-nav-search-input').val()
+            console.log('queryParametersDto.inputString')
+            console.log(queryParametersDto.inputString)
+            loadCards()
+        }
+
+    })
+}
+
+// 分類標籤查詢功能和顏色變換
 function categoryTagsEvent() {
     let lastClickedTag = null
     $('#categories-tags-div a').click(function (e) {
@@ -144,63 +173,39 @@ function categoryTagsEvent() {
             queryParametersDto.categoryTag = parseInt($(this).attr('id')) // 把id放進queryParametersDto
             console.log(queryParametersDto.categoryTag)
         }
+
+        loadCards()
     })
 }
 
-// 卡片時間格式轉換
-function convertEventTime(datetimeString) {
-    let formatter = Intl.DateTimeFormat('zh-TW', {
-        year: 'numeric',
-        month: '2-digit',
-        day: '2-digit',
-        hour: '2-digit',
-        minute: '2-digit',
-        hour12: false
-    })
-    let convertedDate = new Date(datetimeString)
-    return formatter.format(convertedDate).replace(/,/, '').replace(/(\d{2}:\d{2}):\d{2} (\w+)/, '$1 $2');
-}
-
-// nav input 的查詢
-document.getElementById("header-nav-search-input").addEventListener("keypress", function (event) {
-    // 需要加上目前是不是在Explore頁，是的話直接執行查訊功能
-    if (event.key === "Enter") {
-        event.preventDefault();
-        queryParametersDto.inputString = document.getElementById("header-nav-search-input").value;
+// 從cookie取得nav input的值 (有需要的話可以改寫成拿到指定的cookie)
+function getNavInputQueryString() {
+    var nameForQuery = `navQueryString=`
+    var decodeAllCookies = decodeURIComponent(document.cookie)
+    var allCookies = decodeAllCookies.split(';')
+    for (var i = 0; i < allCookies.length; i++) {
+        var cookie = allCookies[i].trim()
+        if (cookie.indexOf(nameForQuery) == 0) {
+            return cookie.substring(nameForQuery.length, cookie.length)
+        }
+        else {
+            return ''
+        }
     }
-});
-
-function feeDropdownColorChanging() {
-    let lastClickedFeeItem = null
-    $('#filter-fee-wrap .dropdown-item').click(function (event) {
-        event.preventDefault()
-
-        if (lastClickedFeeItem) {
-            $('#filter-fee-wrap .dropdown-item').removeClass('event-search-filter-clicked')
-        }
-        $(this).addClass('event-search-filter-clicked')
-        console.log('lastClickedItem')
-        console.log(lastClickedFeeItem)
-        lastClickedFeeItem = $(this)
-    })
 }
 
-function timeDropdownColorChanging() {
-    let lastClickedTimeItem = null
-    $('#filter-time-wrap .dropdown-item').click(function (event) {
-        event.preventDefault()
+// 清除nav input的Cookie (有需要的話可以改寫成清除指定的cookie)
+function clearNavInputCookie() {
+    let yesterday = new Date()
+    yesterday.setDate(yesterday.getDate() - 1)
+    let expires = yesterday.toUTCString()
 
-        if (lastClickedTimeItem) {
-            $('#filter-time-wrap .dropdown-item').removeClass('event-search-filter-clicked')
-        }
-        $(this).addClass('event-search-filter-clicked')
-        console.log('lastClickedItem')
-        console.log(lastClickedTimeItem)
-        lastClickedTimeItem = $(this)
-    })
+    let cookieValue = getNavInputQueryString()
+
+    document.cookie = `navQueryString=${cookieValue}; expires=${expires}; path=/`
 }
 
-// 兩個下拉選單的查詢
+// 費用和時間選單查詢功能
 function dropdownItemEvent() {
     $('#event-search-filter .dropdown-item').click(function (event) {
 
@@ -287,3 +292,48 @@ function dropdownItemEvent() {
     })
 }
 
+// 卡片時間格式轉換
+function convertEventTime(datetimeString) {
+    let formatter = Intl.DateTimeFormat('zh-TW', {
+        year: 'numeric',
+        month: '2-digit',
+        day: '2-digit',
+        hour: '2-digit',
+        minute: '2-digit',
+        hour12: false
+    })
+    let convertedDate = new Date(datetimeString)
+    return formatter.format(convertedDate).replace(/,/, '').replace(/(\d{2}:\d{2}):\d{2} (\w+)/, '$1 $2');
+}
+
+// 費用選單顏色切換
+function feeDropdownColorChanging() {
+    let lastClickedFeeItem = null
+    $('#filter-fee-wrap .dropdown-item').click(function (event) {
+        event.preventDefault()
+
+        if (lastClickedFeeItem) {
+            $('#filter-fee-wrap .dropdown-item').removeClass('event-search-filter-clicked')
+        }
+        $(this).addClass('event-search-filter-clicked')
+        console.log('lastClickedItem')
+        console.log(lastClickedFeeItem)
+        lastClickedFeeItem = $(this)
+    })
+}
+
+// 時間選單顏色切換
+function timeDropdownColorChanging() {
+    let lastClickedTimeItem = null
+    $('#filter-time-wrap .dropdown-item').click(function (event) {
+        event.preventDefault()
+
+        if (lastClickedTimeItem) {
+            $('#filter-time-wrap .dropdown-item').removeClass('event-search-filter-clicked')
+        }
+        $(this).addClass('event-search-filter-clicked')
+        console.log('lastClickedItem')
+        console.log(lastClickedTimeItem)
+        lastClickedTimeItem = $(this)
+    })
+}
