@@ -22,12 +22,11 @@ namespace ShowNest.Web.WebAPI
             _CreateEventService = createEventInterface;
         }
 
-        //從使用者抓取組織id,然後再用組織id抓活動id
-        [HttpPost]
-        [Route("/api/CreateEvent/CreateEventbyUserId")]
+        //[HttpPost]
+        //[Route("/api/CreateEvent/CreateEventbyUserId")]
+
         //public async Task<OrgsEventsInfroViewModel> CreateEventbyUserId()
         //{
-        //    //從Claim抓UserID
         //    var userIdFromClaim = _httpContextAccessor.HttpContext.User.Claims
         //            .FirstOrDefault(c => c.Type == ClaimTypes.NameIdentifier);
 
@@ -37,31 +36,31 @@ namespace ShowNest.Web.WebAPI
         //    }
         //    else
         //    {
-        //        var info = await _context.Users
-        //                        .Include(u => u.OrganizationAndUserMappings)
-        //                        .ThenInclude(ou => ou.Organization)
-        //                        .FirstOrDefaultAsync(x => x.Id == int.Parse(userIdFromClaim.Value));
+        //        var user = await _context.Users
+        //        .Include(u => u.OrganizationAndUserMappings)
+        //        .FirstOrDefaultAsync(u => u.Id == int.Parse(userIdFromClaim.Value));
 
-        //        var result = new OrgsEventsInfroViewModel();
-        //        result.UserOrg = new List<EventsInfro>();
-        //        foreach (var org in info.Organizations.OrderBy(o => o.Id))
+        //        if (user == null)
         //        {
-        //            var orgToAdd = new UserOrgInfo
-        //            {
-        //                UserOrgId = org.Id.ToString(),
-        //                UserOrgName = org.Name,
-        //                UserOrgUrl = $"{org.Name}URL"
-        //            };
-        //            result.UserOrg.Add(orgToAdd);
+        //            return null;
         //        }
-        //        result.UserImgUrl = "https://picsum.photos/300/200/?random=10";
 
-        //        return result;
+        //        var orgIds = user.OrganizationAndUserMappings.Select(ou => ou.OrganizationId).ToList();
+        //        var organizations = await _context.Organizations
+        //            .Where(o => orgIds.Contains(o.Id))
+        //            .Select(o => new OrgsInfro
+        //            {
+        //                OrganizationId = o.Id,
+        //                OrganizationName = o.Name
+
+        //            }).ToListAsync();
+
+        //        return organizations;
 
         //    }
-        //    return info;
-        //    //先用UserId抓出OrgId,OrgName,然後foreach丟進前端的JS的organization
+
         //}
+
 
 
         //[HttpPost]
