@@ -30,7 +30,7 @@
             <p>活動名稱 / 描述</p>
         </div>
     </div>
-    <div v-for="userOrder in userOrderList">
+    <div id="order-details" v-for="userOrder in userOrderList">
         <div class="order-detail">
             <div class="order-id-with-pic">
                 <div class="order-id">#{{userOrder.OrderId}}</div>
@@ -91,7 +91,7 @@
                 </div>
             </div>
         </div>
-        <hr>
+        @* <hr> *@
     </div>
    
 </div>
