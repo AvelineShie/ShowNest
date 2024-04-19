@@ -19,6 +19,8 @@ let queryParametersDto = {
 $(function () {
     loadCards()
     categoryTagsEvent()
+    feeDropdownColorChanging()
+    timeDropdownColorChanging()
     dropdownItemEvent()
 })
 
@@ -26,15 +28,6 @@ $(function () {
 async function loadCards() {
     let cardsContainer = $('.cards')[0]
     cardsContainer.innerHTML = ''
-
-    // for checking
-    console.log('cardTemplate')
-    console.log(cardTemplate)
-    console.log('cardsContainer')
-    console.log(cardsContainer)
-    console.log('pageIndexContainer')
-    console.log(pageIndexContainer)
-    // for checking
 
     await axios.post(`/api/EventsIndex/GetEventsIndexCardsByApi`, queryParametersDto)
         .then(res => {
@@ -50,12 +43,20 @@ async function loadCards() {
                 $(cardToAppend).find('.card-event-date').html(`<i class="fa-regular fa-calendar-days"></i>${convertEventTime(data.eventTime)}`)
                 $(cardToAppend).find('.card-ticket-status').text(data.eventStatus)
                 cardsContainer.append(cardToAppend)
-                totalEventsCount = data.totalEvents
             })
+            totalEventsCount = cards.length !== 0 ? cards[0].totalEvents : 0
+
+            if(totalEventsCount == 0){
+                $('#no-filter-result-text').css('display', 'block');
+            }else{
+                $('#no-filter-result-text').css('display', 'none');
+            }
         })
         .catch(err => {
             console.error(err);
         })
+    console.log('totalEventsCount')
+    console.log(totalEventsCount)
 
     renderPagination()
 }
@@ -66,59 +67,62 @@ function renderPagination() {
     const $paginationContainer = $('#page-index')
     $paginationContainer.html('')
 
-    // previous page button
-    const $prevPageButton = $('<button>', {
-        text: '⭠',
-        class: 'index'
-    })
-    $prevPageButton.prop('disabled', queryParametersDto.page === 1)
-    $prevPageButton.attr('class', 'index')
-    $prevPageButton.on('click', function () {
-        if (queryParametersDto.page > 1) {
-            queryParametersDto.page--
-            loadCards()
-        }
-    })
-
-    $paginationContainer.append($prevPageButton)
-    console.log('totalEventsCount at render pagination() :')
-    console.log(totalEventsCount)
-    // numbers page button
-    totalPages = Math.ceil(totalEventsCount / queryParametersDto.cardsPerPage)
-    console.log('totalPages :')
-    console.log(totalPages)
-
-    for (let i = 1; i <= totalPages; i++) {
-        const $pageButton = $('<button>', {
-            text: i,
+    // 有活動的時候才顯示頁籤
+    if (totalEventsCount != 0) {
+        // previous page button
+        const $prevPageButton = $('<button>', {
+            text: '⭠',
             class: 'index'
         })
-        i === queryParametersDto.page ? $pageButton.addClass('active-index') : {}
-        $pageButton.on('click', function () {
-            queryParametersDto.page = i
-            console.log("queryParametersDto.page")
-            console.log(queryParametersDto.page)
-            loadCards()
+        $prevPageButton.prop('disabled', queryParametersDto.page === 1)
+        $prevPageButton.attr('class', 'index')
+        $prevPageButton.on('click', function () {
+            if (queryParametersDto.page > 1) {
+                queryParametersDto.page--
+                loadCards()
+            }
         })
-        $paginationContainer.append($pageButton)
-    }
 
-    // next page button
-    const $nextPageButton = $('<button>', {
-        text: '⭢',
-        class: 'index'
-    })
-    $nextPageButton.prop('disabled', queryParametersDto.page === totalPages)
-    $nextPageButton.attr('class', 'index')
+        $paginationContainer.append($prevPageButton)
+        console.log('totalEventsCount at render pagination() :')
+        console.log(totalEventsCount)
+        // numbers page button
+        totalPages = Math.ceil(totalEventsCount / queryParametersDto.cardsPerPage)
+        console.log('totalPages :')
+        console.log(totalPages)
 
-    $nextPageButton.on('click', function () {
-        if (queryParametersDto.page < totalPages) {
-            queryParametersDto.page++
-            loadCards()
+        for (let i = 1; i <= totalPages; i++) {
+            const $pageButton = $('<button>', {
+                text: i,
+                class: 'index'
+            })
+            i === queryParametersDto.page ? $pageButton.addClass('active-index') : {}
+            $pageButton.on('click', function () {
+                queryParametersDto.page = i
+                console.log("queryParametersDto.page")
+                console.log(queryParametersDto.page)
+                loadCards()
+            })
+            $paginationContainer.append($pageButton)
         }
-    })
 
-    $paginationContainer.append($nextPageButton)
+        // next page button
+        const $nextPageButton = $('<button>', {
+            text: '⭢',
+            class: 'index'
+        })
+        $nextPageButton.prop('disabled', queryParametersDto.page === totalPages)
+        $nextPageButton.attr('class', 'index')
+
+        $nextPageButton.on('click', function () {
+            if (queryParametersDto.page < totalPages) {
+                queryParametersDto.page++
+                loadCards()
+            }
+        })
+
+        $paginationContainer.append($nextPageButton)
+    }
 }
 
 // 分類標籤顏色變換和更新DTO
@@ -166,23 +170,44 @@ document.getElementById("header-nav-search-input").addEventListener("keypress", 
     }
 });
 
-// 兩個下拉選單的查詢
-function dropdownItemEvent(){
-    let lastClickedItem = null
-    $('#event-search-filter .dropdown-item').click(function (event) {
-        event.preventDefault();
-        const filterValue = $(this).text().trim(); // 獲取選擇的篩選值
-    
-        if(lastClickedItem){
-            $('#event-search-filter .dropdown-item').removeClass('event-search-filter-clicked')
+function feeDropdownColorChanging() {
+    let lastClickedFeeItem = null
+    $('#filter-fee-wrap .dropdown-item').click(function (event) {
+        event.preventDefault()
+
+        if (lastClickedFeeItem) {
+            $('#filter-fee-wrap .dropdown-item').removeClass('event-search-filter-clicked')
         }
         $(this).addClass('event-search-filter-clicked')
         console.log('lastClickedItem')
-        console.log(lastClickedItem)
-        lastClickedItem = $(this)
-    
+        console.log(lastClickedFeeItem)
+        lastClickedFeeItem = $(this)
+    })
+}
+
+function timeDropdownColorChanging() {
+    let lastClickedTimeItem = null
+    $('#filter-time-wrap .dropdown-item').click(function (event) {
+        event.preventDefault()
+
+        if (lastClickedTimeItem) {
+            $('#filter-time-wrap .dropdown-item').removeClass('event-search-filter-clicked')
+        }
+        $(this).addClass('event-search-filter-clicked')
+        console.log('lastClickedItem')
+        console.log(lastClickedTimeItem)
+        lastClickedTimeItem = $(this)
+    })
+}
+
+// 兩個下拉選單的查詢
+function dropdownItemEvent() {
+    $('#event-search-filter .dropdown-item').click(function (event) {
+
+        const filterValue = $(this).text().trim(); // 獲取選擇的篩選值
+
         // 根據選擇的篩選值設置相應的查詢參數值
-    
+
         switch (filterValue) {
             case "全部費用":
                 //// 不需要設置查詢參數值
@@ -237,7 +262,7 @@ function dropdownItemEvent(){
                 oneWeekLater.setDate(oneWeekLater.getDate() + 14);
                 queryParametersDto.startTime = new Date().toISOString().split('T')[0];
                 queryParametersDto.endTime = oneWeekLater.toISOString().split('T')[0];
-    
+
                 break;
             case "兩個月內":
                 // 獲取一個月後的日期
@@ -245,7 +270,7 @@ function dropdownItemEvent(){
                 oneMonthLater.setMonth(oneMonthLater.getMonth() + 2);
                 queryParametersDto.startTime = new Date().toISOString().split('T')[0];
                 queryParametersDto.endTime = oneMonthLater.toISOString().split('T')[0];
-    
+
                 break;
             case "四個月內":
                 // 獲取兩個月後的日期
@@ -257,7 +282,7 @@ function dropdownItemEvent(){
             default:
                 break;
         }
-    
+
         loadCards()
     })
 }
