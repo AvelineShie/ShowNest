@@ -350,8 +350,43 @@ namespace ShowNest.Web.Services.AccountService
                 return (false, ex.Message);
             }
         }
+        //FB登入功能
+        //public async Task<(bool IsSuccess, string ErrorMessage)> ProcessFacebookLogin(string userInfo)
+        //{
+        //    // 假設userInfo是一個包含用戶資訊的JSON字串
+        //    // 你需要將這個字串解析成一個物件，例如UserAccountViewModel
+        //    var userAccount = JsonConvert.DeserializeObject<UserAccountViewModel>(userInfo);
+
+        //    // 檢查資料庫中是否已經有該Facebook用戶的資料
+        //    var existingUser = await _context.LogInInfo.FirstOrDefaultAsync(u => u.FacebookId == userAccount.FacebookId);
+
+        //    if (existingUser != null)
+        //    {
+        //        // 如果已經有，則進行登入處理
+        //        // 這裡假設你已經有一個方法來進行登入處理，例如LogInAsync(userAccount)
+        //        var loginResult = await LogInAsync(new LoginViewModel { Account = existingUser.Account, Password = existingUser.Password });
+        //        return loginResult;
+        //    }
+        //    else
+        //    {
+        //        // 如果沒有，則將用戶資訊儲存到資料庫
+        //        // 這裡假設你已經有一個方法來註冊用戶，例如RegisterUserAsync(userAccount)
+        //        var registerResult = await RegisterUserAsync(userAccount, true);
+        //        if (registerResult.IsSuccess)
+        //        {
+        //            // 註冊成功後，將用戶登入
+        //            var loginResult = await LogInAsync(new LoginViewModel { Account = userAccount.Account, Password = userAccount.Password });
+        //            return loginResult;
+        //        }
+        //        else
+        //        {
+        //            return (false, registerResult.ErrorMessage);
+        //        }
+        //    }
+        //}
 
 
+        //雜湊
         private string HashPassword(string password)
         {
             using (SHA256 sha256Hash = SHA256.Create())
