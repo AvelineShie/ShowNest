@@ -270,5 +270,32 @@ namespace ShowNest.Web.Controllers
         {
             return View();
         }
+
+        //FB登入
+        //[HttpGet]
+        //public async Task<ActionResult> FacebookCallback(string code)
+        //{
+        //    // 使用code來換取access token
+        //    var accessToken = await GetAccessTokenAsync(code);
+
+        //    // 使用access token來取得用戶資訊
+        //    var userInfo = await GetUserInfoAsync(accessToken);
+
+        //    // 在這裡處理用戶資訊，例如將用戶資訊儲存到資料庫或進行登入處理
+        //    // 這裡假設你已經有一個方法來處理用戶資訊，例如_accountService.ProcessFacebookLogin(userInfo)
+        //    var result = await _accountService.ProcessFacebookLogin(userInfo);
+
+        //    if (result.IsSuccess)
+        //    {
+        //        // 登入成功，重定向到預設的頁面
+        //        return RedirectToAction("Index", "Home");
+        //    }
+        //    else
+        //    {
+        //        // 登入失敗，返回錯誤信息
+        //        ModelState.AddModelError("", result.ErrorMessage);
+        //        return View("LogIn"); // 返回登入頁面
+        //    }
+        //}
     }
 }
