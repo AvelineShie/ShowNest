@@ -55,10 +55,9 @@ namespace ShowNest.Web.WebAPI
 
         //            }).ToListAsync();
 
-        //        return organizations;
-
+        //        return OrgsInfro = organizations;
+        //        //return organizations;
         //    }
-
         //}
 
 
@@ -69,7 +68,6 @@ namespace ShowNest.Web.WebAPI
         //{
         //    try
         //    { 
-
         //        //int newEventId;
         //        if (request.EventId == 0)
         //        {   //取得使用者登入資訊:在view驗證即可

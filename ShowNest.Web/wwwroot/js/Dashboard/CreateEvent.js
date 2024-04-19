@@ -12,7 +12,7 @@ const options = {
             selectedOrganization: {}, //組織下拉v-model
             organizations: [], //下拉items
             displaySelectActivityType: false, /*隱藏*/
-            activityTypes: ["全新的活動", "既有的活動"], //活動下拉item
+            activityTypes: ["全新的活動", "既有的活動"], //活動下拉item/val
             selectedActivityType: "全新的活動", //活動下拉式v-model
             displayExistingActivities: false, //既有活動後打開
             radioCheck: {}, //所選任一活動
@@ -25,6 +25,11 @@ const options = {
 
 
             //SetEvent
+            radioCheck: '',
+            eventStatus: [],
+            placeSection: { },
+            onlineEventArea: false,
+
             //center: { lat: 40.689247, lng: -74.044502 },
             //position:{ lat: 40.689247, lng: -74.044502 },
 
@@ -154,6 +159,15 @@ const options = {
                 }
             }
         },
+
+        'onlineEventArea': {
+            handler: function (value) {
+                if (value == "1") {
+                    this.onlineEventArea = true
+                    this.placeSection = false
+                }
+            }
+        }
 
         //'checkbox': {
         //    handler: function (newVal) {
