@@ -50,11 +50,13 @@ h2 {
 
 .event-detail table a {
     color: var(--main-green);
+    cursor: pointer;
 }
 
 #add-to-calendar,
 #view-the-map {
     display: inline-block;
+    color: var(--main-green);
 }
 
 #add-to-calendar::before {

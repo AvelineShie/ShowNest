@@ -13,6 +13,10 @@
         public string EventHost { get; set; }
         public string TicketCollectionChannel { get; set; }
         
+        public string LocationLongitude { get; set; }
+        
+        public string LocationLatitude { get; set; }
+        
         public PaymentMethodViewModel PaymentMethodName { get; set; }
         public string SeatAreaImage { get; set; }
 

@@ -44,6 +44,8 @@ public class TicketTypeService : ITicketTypeService
                 EventName = eventDetails.Name,
                 StartTime = eventDetails.StartTime,
                 EventLocation = $"{eventDetails.LocationName} / {eventDetails.LocationAddress}",
+                LocationLongitude = eventDetails.Longitude,
+                LocationLatitude = eventDetails.Latitude,
                 EventHost = eventDetails.Organization.Name,
                 TicketCollectionChannel = "電子票券",
                 SeatAreaImage = "https://danichen12.github.io/00Project/booking/image/map.png"

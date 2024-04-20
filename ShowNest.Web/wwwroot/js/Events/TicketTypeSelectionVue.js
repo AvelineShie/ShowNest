@@ -48,8 +48,14 @@ createApp({
             const redirectUrl = `/events/seatSelector?${params.toString()}`
             window.location = redirectUrl;
         },
-        moment() {
-            return moment();
+        onViewMapClicked() {
+            const longitude = this.ticketTypeSelection.eventDetail.locationLongitude;
+            const latitude = this.ticketTypeSelection.eventDetail.locationLatitude;
+            const location = this.ticketTypeSelection.eventDetail.eventLocation.split('/')[0].trim();
+            let url = `https://www.google.com/maps/search/?api=1&query=${latitude},${longitude}(${location})`;
+            
+            console.log(url)
+            window.open(url, '_blank');
         }
     },
     async mounted() {
