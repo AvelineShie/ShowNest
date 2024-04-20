@@ -45,7 +45,6 @@ namespace Infrastructure.Services
         }
 
         //如果要跳轉到活動頁面,活動主頁設定用id去撈, 目前已經有API，類型可以直接設string，
-
         public int CreateEvent(CreateEventDto request)
         {
 
@@ -361,9 +360,9 @@ namespace Infrastructure.Services
         }
     }
 }
-        
 
-        
+
+
 //public CreateEventViewModel GetOrgByOwner(int OwnerId)
 //{
 //    // 根據 userID 找到它底下所有組織

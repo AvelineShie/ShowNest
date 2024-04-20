@@ -94,9 +94,9 @@
                     <!-- (右邊)圖片上傳區 -->
                     <div class="imageUpload log">
                         <h4>社群分享圖片</h4>
-                        <img src="https://picsum.photos/300/200/?random=10">
+                        <img :src="imgUrl">
                         <a class="file-input">
-                            <input class="file-upload form-control form-control-sm" type="file" id="form-control-sm">
+                            <input class="file-upload form-control form-control-sm" type="file" id="form-control-sm" @@change="imgUpload">
                         </a>
                         @* <div>
                         <button type="button" class="btn btn-outline-secondary">選擇圖片</button>

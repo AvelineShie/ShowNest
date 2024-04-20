@@ -18,4 +18,5 @@ global using ShowNest.Web.ViewModels.UserAccount;
 //global using ShowNest.Web.Data;
 global using System.ComponentModel.DataAnnotations;
 global using System.Security;
+global using Microsoft.AspNetCore.Http;
 

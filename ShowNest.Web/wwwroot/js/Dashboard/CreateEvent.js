@@ -7,12 +7,12 @@ const options = {
     data() {
         return {
 
-            //CreateEvent
+            //====================CreateEvent(R)
             userId: 2,
             selectedOrganization: {}, //組織下拉v-model
             organizations: [], //下拉items
             displaySelectActivityType: false, /*隱藏*/
-            activityTypes: ["全新的活動", "既有的活動"], //活動下拉item
+            activityTypes: ["全新的活動", "既有的活動"], //活動下拉item/val
             selectedActivityType: "全新的活動", //活動下拉式v-model
             displayExistingActivities: false, //既有活動後打開
             radioCheck: {}, //所選任一活動
@@ -23,8 +23,35 @@ const options = {
             selectedEvent: {},
             events: [],
 
+            //====================SetEvent(R,U)
+            eventId: '',
+            OrgName: '',
 
-            //SetEvent
+            eventNameInput: '',
+            startTime: '',
+            endTime: '',
+            noEndTime: false,
+            mainOrganizerInput: '',
+            coOrganizer: '',
+
+            number: '', //人數
+            unlimited: '',
+
+            placeName: '',
+            EventAddress: '',
+            updateMap:'',
+
+            streaming:'',
+            SHOWNESTLive: '', //線上選項
+
+            introduction: '',
+
+            
+            eventStatus: [], //實體或線上
+            placeSection: true, //實體活動欄位
+            onlineEventArea: false, //線上活動欄位
+
+            //地圖先不管:
             //center: { lat: 40.689247, lng: -74.044502 },
             //position:{ lat: 40.689247, lng: -74.044502 },
 
@@ -35,9 +62,16 @@ const options = {
                 toolbar: ['bold', 'italic', 'heading', 'Superscript', 'link', 'undo', 'redo', 'imageUpload']
             },
 
+            //圖片?? 傳入uri
+            fileupload: '',
+            restoreImg: '',
 
+            public: '',
+            private:'',
 
-            //SetTicket
+            tag:'',
+
+            //======================SetTicket(R,U)
             //選票種
             //TicketTypeList: [
             //    { id:1, name:"全票" }
@@ -66,20 +100,17 @@ const options = {
             //],
             //selectedTicketAreaList: [],
 
-
-
         }
     },
     mounted() {
-        this.GetOrgByUserId()
+        this.CreateEventbyUserId()
         /*this.CreateAndEditEvent()*/
         /*this.GetOrgEventsByOrgId()*/
-
     },
     methods: {
 
-        GetOrgByUserId() {
-            fetch('api/CreateEvent/CreateEventbyUserId',
+        CreateEventbyUserId() {
+            fetch('/api/CreateEvent/CreateEventbyUserId',
                 {
                     method: 'POST', // 設定請求方法為 POST
                     headers: { 'Content-Type': 'application/json' }, // 設定內容類型為 JSON
@@ -88,13 +119,15 @@ const options = {
             )
                 .then(response => {
                     return response.json()
+                    console.log(response)
                 })
                 .then(data => {
+                    
                     if (!data.isSuccess) {
                         this.selectedOrganization = { id: 0, name: '沒有組織，請先建立組織' }
                         throw new Error(data.message)
-                    }
-                    this.organizations = data.body.organizations.map(x => {
+                    } 
+                    this.orgNames = data.body.orgNames.map(x => {
                         return { id: x.id, name: x.name }
                     })
                     this.selectedOrganization = null
@@ -103,6 +136,8 @@ const options = {
                     console.error(err)
                 })
         },
+
+        
 
         //CreateAndEditEvent() {
         //    fetch('/api/CreateEvent/CreateAndEditEvent',
@@ -154,6 +189,15 @@ const options = {
                 }
             }
         },
+
+        //'onlineEventArea': {
+        //    handler: function (value) {
+        //        if (value == "1") {
+        //            this.onlineEventArea = true
+        //            this.placeSection = false
+        //        }
+        //    }
+        //}
 
         //'checkbox': {
         //    handler: function (newVal) {

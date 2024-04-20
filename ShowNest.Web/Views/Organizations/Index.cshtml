@@ -12,9 +12,8 @@
     <link href="~/css/organization/index.css" rel="stylesheet" />
 }
 @section endJS {
-    <script src="
-https://cdn.jsdelivr.net/npm/fullcalendar@6.1.11/index.global.min.js
-            "></script>
+    @* <script src="https://cdn.jsdelivr.net/npm/fullcalendar@6.1.11/index.global.min.js
+            "></script> *@
     <script src="~/js/organizations/index.js"></script>
 }
 
@@ -42,7 +41,7 @@ https://cdn.jsdelivr.net/npm/fullcalendar@6.1.11/index.global.min.js
                     <i class=""></i>
                 </div>
                 <div class="description-block">
-                    @Model.OrganizationDescription
+                    @Html.Raw(Model.OrganizationDescription)
                     
 
                 </div>

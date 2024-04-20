@@ -17,6 +17,7 @@
     <None Include="wwwroot\js\API\orderAPI.js" />
     <None Include="wwwroot\js\API\userAPI.js" />
     <None Include="wwwroot\js\Events\Comps\headinfo.js" />
+    <None Include="wwwroot\js\Organizations\FullCalendar.js" />
     <None Include="wwwroot\SeatsData.json" />
     <Content Remove="wwwroot\css\Events\BuyTicket.css" />
   </ItemGroup>
@@ -24,6 +25,11 @@
   <ItemGroup>
     <Content Remove="wwwroot\img\Events\LINE_ALBUM_課程紀錄_240216_1.jpg" />
     <Content Remove="wwwroot\js\API\orderAPI.js" />
+    <Content Remove="wwwroot\js\Organizations\FullCalendar.js" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <_ContentIncludedByDefault Remove="wwwroot\js\Organizations\FullCalendar.js" />
   </ItemGroup>
 
   <ItemGroup>
@@ -49,6 +55,7 @@
       <PrivateAssets>all</PrivateAssets>
       <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
     </PackageReference>
+    <PackageReference Include="Microsoft.Extensions.Configuration.Binder" Version="8.0.1" />
     <PackageReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Design" Version="7.0.12" />
     <PackageReference Include="Newtonsoft.Json" Version="13.0.3" />
     <PackageReference Include="Utf8Json" Version="1.3.7" />

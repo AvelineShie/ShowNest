@@ -13,132 +13,100 @@ using System.Threading.Tasks;
 
 namespace Infrastructure.Services
 {
-    public class EventsIndexCardsAPIServiceByEf
-    {
-        private readonly DatabaseContext _databaseContext;
+	public class EventsIndexCardsAPIServiceByEf
+	{
+		private readonly DatabaseContext _databaseContext;
 
-        public EventsIndexCardsAPIServiceByEf(DatabaseContext databaseContext)
-        {
-            _databaseContext = databaseContext;
-        }
+		public EventsIndexCardsAPIServiceByEf(DatabaseContext databaseContext)
+		{
+			_databaseContext = databaseContext;
+		}
 
-        static List<string> GetEventStatusAndCssClassName(DateTime input)
-        {
-            DateTime curr = DateTime.Now;
+		static List<string> GetEventStatusAndCssClassName(DateTime input)
+		{
+			DateTime curr = DateTime.Now;
 
-            if (curr < input)
-            {
-                return new List<string> { "開賣中", "green-status" };
-            }
-            else
-            {
-                return new List<string> { "已結束", "black-status" };
-            }
-        }
+			if (curr < input)
+			{
+				return new List<string> { "開賣中", "green-status" };
+			}
+			else
+			{
+				return new List<string> { "已結束", "black-status" };
+			}
+		}
 
-        public async Task<OperationResult> GetCardsByPagesize(QueryParametersDto request)
-        {
-            try
-            {
-                int page = request.page;
-                int cardsPerPage = request.cardsPerPage;
+		public async Task<OperationResult> GetCardsByPagesize(QueryParametersDto request)
+		{
+			try
+			{
+				string inputstring = request.inputstring;
+				decimal maxPrice = request.MaxPrice;
+				decimal minPrice = request.MinPrice;
+				DateTime? startTime = request.StartTime;
+				DateTime? endTime = request.EndTime;
+				int tagId = request.CategoryTag;
+				int page = request.page;
+				int cardsPerPage = request.cardsPerPage;
 
-                // 沒有任何搜尋條件的情況下，樣本是全部的卡片
-                if (request.Id == 0 &&
-                    string.IsNullOrEmpty(request.inputstring) &&
-                    request.MaxPrice == 0 &&
-                    request.MinPrice == 99999999 &&
-                    request.StartTime == null &&
-                    request.EndTime == null &&
-                    request.CategoryTag == 0)
-                {
-                    var totalEventsCount = _databaseContext.Events.Count();
-                    var cardsForCurrerntPage = await _databaseContext.EventAndTagMappings
-                            .Include(et => et.Event)
-                            .Include(et => et.CategoryTag)
-                            .OrderByDescending(et => et.CategoryTagId) // 從這邊開始方法相同
-                            .ThenBy(et => et.EventId)
-                            .Skip((page - 1) * cardsPerPage).Take(cardsPerPage)
-                            .Select(et => new EventIndexDto
-                            {
-                                EventId = et.Event.Id.ToString(),
-                                EventName = et.Event.Name,
-                                EventImgUrl = et.Event.EventImage,
-                                CategoryName = et.CategoryTag.Name,
-                                EventTime = et.Event.StartTime,
-                                EventStatus = GetEventStatusAndCssClassName(et.Event.StartTime)[0],
-                                EventStatusCssClass = GetEventStatusAndCssClassName(et.Event.StartTime)[1],
-                                TotalEvents = totalEventsCount
-                            })
-                            .ToListAsync();
+				var query = _databaseContext.Events
+									.Include(o => o.Organization)
+									.Include(ea => ea.EventAndTagMappings)
+										.ThenInclude(ct => ct.CategoryTag)
+									.Include(t => t.TicketTypes)
+									.Where(e => e.StartTime > DateTime.Today)
+									.AsNoTracking();
 
-                    return OperationResultHelper.ReturnSuccessData(cardsForCurrerntPage);
+				// query string filters
+				if (!string.IsNullOrEmpty(inputstring))
+				{
+					query = query.Where(q => q.Name.Contains(inputstring));
+				}
 
-                }
-                else
-                {
-                    string inputstring = request.inputstring;
-                    decimal minPrice = request.MinPrice;
-                    decimal maxPrice = request.MaxPrice;
-                    DateTime? startTime = request.StartTime;
-                    DateTime? endTime = request.EndTime;
+				// category tags filter
+				if(tagId != 0)
+				{
+					query = query.Where(q => q.EventAndTagMappings.Any(et => et.CategoryTagId == tagId));
+				}
 
-                    var query = _databaseContext.Events
-                                        .Include(o => o.Organization)
-                                        .Include(ea => ea.EventAndTagMappings)
-                                            .ThenInclude(ct => ct.CategoryTag)
-                                        .Include(t => t.TicketTypes)
-                                        .Where(e => e.StartTime > DateTime.Today)
-                                        .AsNoTracking();
+				// price filter
+				if (!(minPrice == 0 && maxPrice > 3000))
+				{
+					query = query.Where(q => q.TicketTypes.Any(t => t.Price >= minPrice && t.Price <= maxPrice));
+				}
 
-                    // query string filters
-                    if (!string.IsNullOrEmpty(inputstring))
-                    {
-                        query = query.Where(en => en.Name.Contains(inputstring));
-                    }
+				// Time range filters
+				if (!(startTime == null && endTime == null))
+				{
+					query = query.Where(q => q.StartTime <= endTime);
+				}
 
-                    // price filter
-                    if (!(minPrice == 0 && maxPrice > 3000))
-                    {
-                        query = query.Where(e => e.TicketTypes.Any(t => t.Price >= minPrice && t.Price <= maxPrice));
-                    }
+				var totalEventsCount = query.Count();
 
-                    // Time range filters
-                    if (!(startTime == null && endTime == null))
-                    {
-                        query = query.Where(e => e.StartTime <= endTime);
-                    }
+				var results = query
+					.OrderBy(q => q.EventAndTagMappings.FirstOrDefault().CategoryTagId)
+					.ThenBy(q => q.Id)
+					.Skip((page - 1) * cardsPerPage).Take(cardsPerPage)
+					.Select(q => new EventIndexDto
+					{
+						EventId = q.Id.ToString(),
+						EventName = q.Name,
+						EventImgUrl = q.EventImage,
+						CategoryName = q.EventAndTagMappings.FirstOrDefault(et => et.CategoryTagId == et.CategoryTag.Id).CategoryTag.Name,
+						EventTime = q.StartTime,
+						EventStatus = GetEventStatusAndCssClassName(q.StartTime)[0],
+						EventStatusCssClass = GetEventStatusAndCssClassName(q.StartTime)[1],
+						TotalEvents = totalEventsCount
 
-                    var totalEventsCount = query.Count();
+					}).ToList();
 
-                    var results = query
-                        .OrderBy(q => q.EventAndTagMappings.FirstOrDefault().CategoryTagId)
-                        .ThenBy(q => q.Id)
-                        .Skip((page - 1) * cardsPerPage).Take(cardsPerPage)
-                        .Select(q => new EventIndexDto
-                        {
-                            EventId = q.Id.ToString(),
-                            EventName = q.Name,
-                            EventImgUrl = q.EventImage,
-                            CategoryName = q.EventAndTagMappings.FirstOrDefault(et => et.CategoryTagId == et.CategoryTag.Id).CategoryTag.Name,
-                            EventTime = q.StartTime,
-                            EventStatus = GetEventStatusAndCssClassName(q.StartTime)[0],
-                            EventStatusCssClass = GetEventStatusAndCssClassName(q.StartTime)[1],
-                            TotalEvents = totalEventsCount
+				return OperationResultHelper.ReturnSuccessData(results);
 
-                        }).ToList();
-
-
-                    return OperationResultHelper.ReturnSuccessData(results);
-                }
-
-
-
-            }
-            catch (Exception ex)
-            {
-                return OperationResultHelper.ReturnErrorMsg(ex.Message);
-            }
-        }
-    }
+			}
+			catch (Exception ex)
+			{
+				return OperationResultHelper.ReturnErrorMsg(ex.Message);
+			}
+		}
+	}
 }

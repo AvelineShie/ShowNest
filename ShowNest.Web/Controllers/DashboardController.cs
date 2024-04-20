@@ -36,13 +36,13 @@ namespace ShowNest.Web.Controllers
             return View();
         }
 
-        //var userIdentifier = HttpContext.User.FindFirstValue(ClaimTypes.NameIdentifier);
-        //    HttpContext?.User.Identities.FirstOrDefault()
-        //之後以HttpContext的登入訊息取得資料
-        //var userId = 2;
-        //var vm = _createEventService.GetOrgByUserId(userId);
-        //return View(vm);
 
+    //    var userIdentifier = HttpContext.User.FindFirstValue(ClaimTypes.NameIdentifier);
+    //    HttpContext?.User.Identities.FirstOrDefault()
+    //之後以HttpContext的登入訊息取得資料
+    //    var userId = 2;
+    //    var vm = _createEventService.GetOrgByUserId(userId);
+    //    return View(vm);
 
         public IActionResult EventHub()
         {
@@ -79,7 +79,6 @@ namespace ShowNest.Web.Controllers
         //                Quantity = "300",
         //            }
         //        }
-
         //    };
         //    return View("SetTicket", model);
         //}
