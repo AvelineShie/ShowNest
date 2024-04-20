@@ -100,15 +100,12 @@ const options = {
             //],
             //selectedTicketAreaList: [],
 
-
-
         }
     },
     mounted() {
         this.CreateEventbyUserId()
         /*this.CreateAndEditEvent()*/
         /*this.GetOrgEventsByOrgId()*/
-
     },
     methods: {
 
@@ -122,12 +119,14 @@ const options = {
             )
                 .then(response => {
                     return response.json()
+                    console.log(response)
                 })
                 .then(data => {
+                    
                     if (!data.isSuccess) {
                         this.selectedOrganization = { id: 0, name: '沒有組織，請先建立組織' }
                         throw new Error(data.message)
-                    }
+                    } 
                     this.orgNames = data.body.orgNames.map(x => {
                         return { id: x.id, name: x.name }
                     })
