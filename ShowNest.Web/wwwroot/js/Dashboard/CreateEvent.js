@@ -73,46 +73,46 @@ const options = {
 
             //======================SetTicket(R,U)
             //選票種
-            TicketTypeList: [
-                { id:1, name:"全票" }
-            ],
-            selectedTicketType: [],
+            //TicketTypeList: [
+            //    { id:1, name:"全票" }
+            //],
+            //selectedTicketType: [],
 
             //選票區
-            TicketAreaList:
-            [
-                { id: 1, name: "特1A" },
-                { id: 2, name: "特1B" },
-                { id: 3, name: "2A區" },
-                { id: 4, name: "2B區" },
-                { id: 5, name: "2C區" },
-                { id: 6, name: "2D區" },
-                { id: 7, name: "2E區" },
-                { id: 8, name: "2F區" },
-                { id: 9, name: "2G區" },
-                { id: 10, name: "3A區" },
-                { id: 11, name: "3B區" },
-                { id: 12, name: "3C區" },
-                { id: 13, name: "3D區" },
-                { id: 14, name: "3E區" },
-                { id: 15, name: "3F區" },
-                { id: 16, name: "3G區" }
-            ],
-            selectedTicketAreaList: [],
+            //TicketAreaList:
+            //[
+            //    { id: 1, name: "特1A" },
+            //    { id: 2, name: "特1B" },
+            //    { id: 3, name: "2A區" },
+            //    { id: 4, name: "2B區" },
+            //    { id: 5, name: "2C區" },
+            //    { id: 6, name: "2D區" },
+            //    { id: 7, name: "2E區" },
+            //    { id: 8, name: "2F區" },
+            //    { id: 9, name: "2G區" },
+            //    { id: 10, name: "3A區" },
+            //    { id: 11, name: "3B區" },
+            //    { id: 12, name: "3C區" },
+            //    { id: 13, name: "3D區" },
+            //    { id: 14, name: "3E區" },
+            //    { id: 15, name: "3F區" },
+            //    { id: 16, name: "3G區" }
+            //],
+            //selectedTicketAreaList: [],
 
 
 
         }
     },
     mounted() {
-        this.GetOrgByUserId()
+        this.CreateEventbyUserId()
         /*this.CreateAndEditEvent()*/
         /*this.GetOrgEventsByOrgId()*/
 
     },
     methods: {
 
-        GetOrgByUserId() {
+        CreateEventbyUserId() {
             fetch('/api/CreateEvent/CreateEventbyUserId',
                 {
                     method: 'POST', // 設定請求方法為 POST
@@ -128,7 +128,7 @@ const options = {
                         this.selectedOrganization = { id: 0, name: '沒有組織，請先建立組織' }
                         throw new Error(data.message)
                     }
-                    this.organizations = data.body.organizations.map(x => {
+                    this.orgNames = data.body.orgNames.map(x => {
                         return { id: x.id, name: x.name }
                     })
                     this.selectedOrganization = null
@@ -138,20 +138,7 @@ const options = {
                 })
         },
 
-        //add: function () {
-        //    this.list.push({ name: "Juan" });
-        //},
-        //replace: function () {
-        //    this.list = [{ name: "Edgard" }];
-        //},
-        clone: function (el) {
-            return {
-                name: el.name + " cloned"
-            };
-        },
-        log: function (evt) {
-            window.console.log(evt);
-        }
+        
 
         //CreateAndEditEvent() {
         //    fetch('/api/CreateEvent/CreateAndEditEvent',

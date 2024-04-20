@@ -1,7 +1,11 @@
 ﻿using ApplicationCore.Entities;
 using CloudinaryDotNet.Actions;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.Data.SqlClient;
+using Microsoft.EntityFrameworkCore;
+using ShowNest.Web.ViewModels.Dashboard;
 using ShowNest.Web.ViewModels.Shared;
+using System.Collections.Generic;
 using System.Security.Claims;
 
 namespace ShowNest.Web.WebAPI
@@ -25,7 +29,7 @@ namespace ShowNest.Web.WebAPI
 
         [HttpPost]
         [Route("/api/CreateEvent/CreateEventbyUserId")]
-        public async Task<OrgsEventsInfroViewModel> CreateEventbyUserId()
+        public IActionResult CreateEventbyUserId()
         {
             var userIdFromClaim = _httpContextAccessor.HttpContext.User.Claims
                     .FirstOrDefault(c => c.Type == ClaimTypes.NameIdentifier);
@@ -35,8 +39,8 @@ namespace ShowNest.Web.WebAPI
                 return null;
             }
             else
-            {
-                var user = await _context.Users
+            {   
+                var user = _context.Users
                 .Include(u => u.OrganizationAndUserMappings)
                 .FirstOrDefaultAsync(u => u.Id == int.Parse(userIdFromClaim.Value));
 
@@ -45,31 +49,21 @@ namespace ShowNest.Web.WebAPI
                     return null;
                 }
 
-                //取得使用者底下的組織id的組織名稱
-                var orgIds = user.OrganizationAndUserMappings
-                    .Select(ou => ou.OrganizationId).ToList(); //得到一個orgId列表
+                // 找與登入者相同的使用者ID，並且找出該ID下的所有組織名稱
+                string sqlQuery = @"
+                SELECT o.OrgName
+                FROM Organizations o
+                INNER JOIN OrganizationAndUserMappings m ON o.OrgId = m.OrgId
+                WHERE m.UserId = @userId";
 
-                // 使用LINQ來從組織集合中篩選出相對應的組織名稱
                 var orgNames = _context.Organizations
-                    .Where(org => orgIds.Contains(org.Id))
-                    .Select(org => org.Name)
+                    .FromSqlRaw(sqlQuery, new SqlParameter("@userId", user))
+                    .Select(o => o.Name)
                     .ToList();
 
-                return new OrgsEventsInfroViewModel { };
+                return new JsonResult(orgNames); // 返回Json組織名稱表
 
-        //var organizations = await _context.Organizations
-        //    .Where(o => orgIds.Contains(o.Id))
-        //    .Select(o => new OrgsInfro
-        //    {
-        //        OrganizationId = o.Id,
-        //        OrganizationName = o.Name
-        //    }).ToListAsync();
-        //return new OrgsEventsInfroViewModel
-        //{
-        //    OrgsInfro = organizations,
-        //};
-
-    }
+            }
         }
 
 
