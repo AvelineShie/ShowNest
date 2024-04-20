@@ -43,6 +43,7 @@ public class TicketTypeService : ITicketTypeService
                 MainImage = eventDetails.EventImage,
                 EventName = eventDetails.Name,
                 StartTime = eventDetails.StartTime,
+                EndTime = eventDetails.EndTime,
                 EventLocation = $"{eventDetails.LocationName} / {eventDetails.LocationAddress}",
                 LocationLongitude = eventDetails.Longitude,
                 LocationLatitude = eventDetails.Latitude,

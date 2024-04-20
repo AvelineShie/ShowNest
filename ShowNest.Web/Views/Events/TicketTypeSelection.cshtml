@@ -11,6 +11,8 @@
 
 @section Scripts
 {
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.19.1/moment-with-locales.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment-timezone/0.5.45/moment-timezone-with-data.js"></script>
     <script src="~/js/Events/TicketTypeSelectionVue.js" asp-append-version="true"></script>
 }
 
@@ -30,7 +32,8 @@
                 <tr>
                     <th>開始時間</th>
                     <td>
-                        {{ticketTypeSelection.eventDetail.startTime}}<a id="add-to-calendar" href="" alt="">加入行事曆</a>
+                        {{ticketTypeSelection.eventDetail.startTime}}<a id="add-to-calendar" 
+                                                                        @@click="onAddToGoogleCalendarClicked">加入行事曆</a>
                     </td>
                 </tr>
                 <tr>
