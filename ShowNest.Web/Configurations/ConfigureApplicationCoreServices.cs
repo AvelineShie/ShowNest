@@ -13,6 +13,7 @@ namespace ShowNest.Web.Configurations
             services.AddScoped<IEcpayOrderService, EcpayOrderService>();
             services.AddScoped<IEventCardQueryService, EventCardQueryServiceByEf>();
             services.AddScoped<IOrganizationRepository, OrganizationRepository>();
+            services.AddScoped<IImgUploadService, CloudinaryService>();
 
             return services;
         }
