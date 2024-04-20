@@ -19,7 +19,7 @@
 
 .CreateEventTitle {
     font-size: 30px;
-    font-weight: 700px;
+    font-weight: 700;
     margin-bottom: 10px;
     color: var(--v-theme-surface-variant);
 }
@@ -34,6 +34,7 @@
     display: flex;
     grid-area: control;
     max-height: 52px;
+    
 }
 
 .eventItem {
@@ -401,12 +402,13 @@ html body #SetTicket.delete {
 }
 
 /*新增修改票種欄位*/
-#SetTicket .changeTicketSection {
+#SetTicket .changeTicketSection, .TicketAreaRow {
     background-color: lightgoldenrodyellow;
     border-radius: 5px;
     padding: 15px;
     margin-bottom: 15px;
 }
+
 
 #SetTicket .section {
     display: inline-block;
@@ -428,6 +430,10 @@ html body #SetTicket.delete {
     border: 1px solid #ced4da;
     border-radius: 5px;
     background-color: white;
+}
+
+#SetTicket .date-local{
+    width:120px;
 }
 
 #SetTicket.space .sectionTitle {
@@ -540,7 +546,7 @@ html body #SetTicket.delete {
         padding: 5px;
     }
 
-    .contactInformationForm tbody > tr > td{
+    contactInformationForm tbody > tr > td{
         line-height: 40px;
         height: 2em;
     }
@@ -576,7 +582,7 @@ li.list-group-item:first-child {
     font-weight: bold;
 }
 
-.contactInformationForm td > span {
+contactInformationForm td > span {
     color: #737373;
     margin-left: 15px;
 }
