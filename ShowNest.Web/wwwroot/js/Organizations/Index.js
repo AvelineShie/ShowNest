@@ -27,46 +27,4 @@ document.addEventListener('DOMContentLoaded', function() {
 
 
 
-////套用FullCalendar
-//document.addEventListener('DOMContentLoaded', function () {
-//    const calendarEl = document.getElementById('calendar');
-    
-//    const calendar = new FullCalendar.Calendar(calendarEl, {
-//        initialView: 'dayGridMonth'
-//        //>>>eventJson
-//        //範例
-//        //[{
-//        //        title: '登山活動：健行山林',
-//        //        start: '2024-06-07',
-//        //        end: '2024-06-12'
-//        //    }]
-//        ,
-//        editable: true,
-//        selectable: true,
-//        dayMaxEvents: true
-//    });
-    
-//    calendar.render()
-//});
 
-
-//document.addEventListener('DOMContentLoaded', function () {
-//    const calendarEl = document.getElementById('calendar');
-    
-
-//    // Fetch the JSON data from the server
-//    fetch('/Organizations/GetEventsJson')
-//        .then(response => response.json())
-//        .then(jsonEventsString => {
-//            const calendar = new FullCalendar.Calendar(calendarEl, {
-//                initialView: 'dayGridMonth',
-//                events: jsonEventsString, // Use the fetched JSON events here
-//                editable: true,
-//                selectable: true,
-//                dayMaxEvents: true
-//            });
-
-//            calendar.render();
-//        })
-//        .catch(error => console.error('Error fetching events:', error));
-//});

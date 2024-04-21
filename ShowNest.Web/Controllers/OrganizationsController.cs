@@ -28,9 +28,11 @@ namespace ShowNest.Web.Controllers
         }
 
 
-        public IActionResult ContactOrganization()
+        public IActionResult ContactOrganization(int organizationId)
         {
-            return View();
+            var ContactOrganizationDate= _organizationService.GetOrganizationDetails(organizationId);
+
+            return View(ContactOrganizationDate);
         }
 
         public IActionResult CreateOrganization()
