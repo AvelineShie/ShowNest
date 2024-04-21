@@ -1,7 +1,4 @@
-﻿
-
-
-/* 組織名稱欄 */
+﻿/* 組織名稱欄 */
 .header-title {
     display: flex;
     margin-top: 20px;
@@ -9,7 +6,7 @@
     border-bottom: 1px #ccc solid;
 }
 
-.organize{
+.organize {
     color: #999;
     line-height: 40px;
     font-size: 22px;
@@ -17,7 +14,7 @@
     margin-left: 30px;
 }
 
-.name{
+.name {
     line-height: 37px;
     font-size: 22px;
     color: var(--main-green);
@@ -25,7 +22,7 @@
 
 
 /* 正式版面 */
-.wrap{
+.wrap {
     margin: 0 auto;
     margin-bottom: 50px;
 }
@@ -33,20 +30,21 @@
 .container {
     color: #333333;
     margin-top: 5px;
-    display: flex;
-    flex-direction: row;
-    justify-content: space-between;
+    display: grid;
+    /* flex-direction: row;
+    justify-content: space-between; */
     max-width: 1100px;
+    grid-template-columns: 3fr 2fr;
 }
 
 /* 左半邊 */
-.main-content{
+.main-content {
     padding-right: 35px;
     width: 100%;
 }
 
-.contact-settings{
-    border-bottom:2px solid var(--dark-gray);
+.contact-settings {
+    border-bottom: 2px solid var(--dark-gray);
     display: block;
     padding-bottom: 8px;
 }
@@ -56,18 +54,20 @@ a {
     text-decoration: none;
 }
 
-li:first-child>a{
+li:first-child>a {
     color: var(--light-green);
 }
 
 /* 所有小標 */
-.essential-input, h4{
+.essential-input,
+h4 {
     margin-bottom: 5px;
     font-weight: bold;
 }
 
 /* 所有附註說明 */
-span.note, .map-note{
+span.note,
+.map-note {
     display: inline-block;
     margin-top: 5px;
     margin-bottom: 5px;
@@ -76,7 +76,7 @@ span.note, .map-note{
 }
 
 /* 所有必填欄位 */
-.essential-input::before{
+.essential-input::before {
     content: "*";
     display: inline-block;
     color: #c07525;
@@ -85,7 +85,8 @@ span.note, .map-note{
 }
 
 /* 所有小區塊 */
-.online-log, .log{
+.online-log,
+.log {
     display: block;
     margin-bottom: 15px;
     margin-top: 15px;
@@ -93,13 +94,13 @@ span.note, .map-note{
 }
 
 /* 所有radio */
-.form-check-label{
+.form-check-label {
     display: contents;
 }
 
 /*所有按鍵*/
-.main-content>button{
-    background-color:var(--main-green);
+.main-content>button {
+    background-color: var(--main-green);
     color: #FFF;
 }
 
@@ -112,21 +113,21 @@ span.note, .map-note{
 
 }
 
-.input-group > .form-control {
+.input-group>.form-control {
     width: 180px;
     line-height: 15px;
 
 }
 
 /*Boostrap change*/
-.input-group:not(.has-validation) > :not(:last-child):not(.dropdown-toggle):not(.dropdown-menu) {
+.input-group:not(.has-validation)> :not(:last-child):not(.dropdown-toggle):not(.dropdown-menu) {
     border-top-right-radius: 5px;
     border-bottom-right-radius: 5px;
 }
 
 .OK {
-color: var(--light-green);
-padding-top: 5px;  
+    color: var(--light-green);
+    padding-top: 5px;
 }
 
 .form-control {
@@ -134,60 +135,70 @@ padding-top: 5px;
     margin-right: 10px;
 }
 
-.btn-success{
+.btn-success {
     background-color: var(--main-green);
-    }
-.btn-success:hover{
-        background-color: var(--light-green);
-        }
+}
+
+.btn-success:hover {
+    background-color: var(--light-green);
+}
 
 .ck-editor__editable_inline {
     min-height: 300px;
 }
-#privacy-warning{
+
+#privacy-warning {
     font-size: 14px;
     color: #b21212;
 }
 
 /* 右欄 */
-.log > img {
+.imageUpload img{
+    width: 100%;
+}
+
+.log>img {
     margin-bottom: 18px;
 }
 
-button.btn-outline-secondary{
+button.btn-outline-secondary {
     margin-right: 10px;
-    background-color:var(--main-green);
-    color:#fff;
+    background-color: var(--main-green);
+    color: #fff;
 }
 
 
 /* IPAD */
-@media (max-width:1041px){
- .container {
+@media (max-width:1041px) {
+    .container {
         display: flex;
         flex-direction: column-reverse;
     }
-    .main-content{
+
+    .main-content {
         padding-right: 0px;
     }
+
     .imageUpload,
     .contact-info,
     .title {
         text-align: center;
     }
-    .imageUpload h4{
-        font-size:26px;
+
+    .imageUpload h4 {
+        font-size: 26px;
     }
 }
 
 /* MOBILE */
 @media (max-width:768px) {
 
-    
-    .button-submit{
-    padding-top: 20px;
+
+    .button-submit {
+        padding-top: 20px;
     }
-    .btn-success{
+
+    .btn-success {
         width: 100%;
     }
 
