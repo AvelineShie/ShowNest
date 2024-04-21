@@ -33,13 +33,9 @@ namespace ShowNest.Web.Services.Organization
                 .Where(e => e.EndTime >= currentDate)
                 .OrderBy(e => e.StartTime)
                 .ToList();
+            //string json = JsonConvert.SerializeObject(currentEvents, Formatting.Indented);
+            //Console.WriteLine(json);
 
-            //// 從符合organizationId的活動事件中 取得結束的活動事件
-            //var pastEvents = organization.Events
-            //    .Where(e => e.EndTime < currentDate)
-            //    .OrderBy(e => e.StartTime)
-            //    .GroupBy(e => e.StartTime.Month)
-            //    .ToList();
 
             var groupedPastEvents = organization.Events
                     .Where(e => e.EndTime < currentDate)
@@ -56,12 +52,6 @@ namespace ShowNest.Web.Services.Organization
                     .ToList();
 
 
-
-            //// 將已經結束的事件按照開始時間的月份分組
-            //var pastGroupedEvents = pastEvents
-            //.GroupBy(e => new { e.StartTime.Year, e.StartTime.Month })
-            //.Select(g => new { Year = g.Key.Year, Month = g.Key.Month, Events = g.ToList() })
-            //.ToList();
 
             var result = new OrganizationIndexViewModel
             {

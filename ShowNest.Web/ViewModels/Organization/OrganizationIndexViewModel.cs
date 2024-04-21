@@ -17,13 +17,6 @@ public class OrganizationIndexViewModel
     
 
 }
-//public class GroupedEventsByMonthViewModel
-//{
-//    public int Year { get; set; }
-//    public int Month { get; set; }
-//    public List<EventDetail> Events { get; set; }
-
-//}
 
 public class EventDetail
 {
