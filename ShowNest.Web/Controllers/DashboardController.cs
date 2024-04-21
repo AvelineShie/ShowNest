@@ -31,6 +31,11 @@ namespace ShowNest.Web.Controllers
             return View();
         }
 
+        public IActionResult SetEvent()
+        {
+            return View();
+        }
+
         public IActionResult CreateEvent()
         {
             return View();
