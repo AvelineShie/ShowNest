@@ -51,10 +51,11 @@ const options = {
             placeSection: true, //實體活動欄位
             onlineEventArea: false, //線上活動欄位
 
-            //地圖先不管:
-            //center: { lat: 40.689247, lng: -74.044502 },
-            //position:{ lat: 40.689247, lng: -74.044502 },
+            //地圖
+            center: { lat: 40.689247, lng: -74.044502 },
+            position:{ lat: 40.689247, lng: -74.044502 },
 
+            // CKEditor
             editor: ClassicEditor,
             description: '',
             editorConfig: {
@@ -62,10 +63,11 @@ const options = {
                 toolbar: ['bold', 'italic', 'heading', 'Superscript', 'link', 'undo', 'redo', 'imageUpload']
             },
 
-            //圖片?? 傳入uri
+            //圖片
             fileupload: '',
             restoreImg: '',
 
+            //活動隱私狀態
             public: '',
             private:'',
 
@@ -108,34 +110,49 @@ const options = {
         /*this.GetOrgEventsByOrgId()*/
     },
     methods: {
+        async CreateEventbyUserId() {
+            await axios.get('/api/CreateEvent/CreateEventbyUserId')
+                .then(res => {
+                    if (res.data == null) {
+                        this.selectedOrganization = { id: 0, name: '沒有組織，請先建立新組織' }
+                    }
+                    console.log(res.data)
+                    this.orgNames = res.data.forEach(o => console.log(o.orgName));
+                    this.orgNames = res.data.map(o => ({ id: o.orgId, name: o.orgName }));
+            })
+            .catch(err => {
+                console.error(err); 
+            })
 
-        CreateEventbyUserId() {
-            fetch('/api/CreateEvent/CreateEventbyUserId',
-                {
-                    method: 'POST', // 設定請求方法為 POST
-                    headers: { 'Content-Type': 'application/json' }, // 設定內容類型為 JSON
-                    body: JSON.stringify({ userId: this.userId })
-                }
-            )
-                .then(response => {
-                    return response.json()
-                    console.log(response)
-                })
-                .then(data => {
-                    
-                    if (!data.isSuccess) {
-                        this.selectedOrganization = { id: 0, name: '沒有組織，請先建立組織' }
-                        throw new Error(data.message)
-                    } 
-                    this.orgNames = data.body.orgNames.map(x => {
-                        return { id: x.id, name: x.name }
-                    })
-                    this.selectedOrganization = null
-                })
-                .catch(err => {
-                    console.error(err)
-                })
         },
+
+        imgUpload(e) {
+            let formData = new FormData();
+            for (let i = 0; i < e.target.filtes.length; i++) {
+                formData.append('files', e.target.files[i]);
+            }
+            axios.post('/api/ImgUploadApi/UploadImages', formData, {
+                header: {
+                    'Content-'
+                }
+            })
+        }
+
+        //    const data = await response.json();
+        //    if (!data.isSuccess) {
+        //        this.selectedOrganization = { id: 0, name: '沒有組織，請先建立組織' };
+        //        throw new Error(data.message);
+        //    }
+
+        //    this.orgNames = data.body.orgNames.map(x => {
+        //        return { id: x.id, name: x.name };
+        //    });
+        //    console.log(orgNames);
+
+        //    this.selectedOrganization = null;
+        //} catch (err) {
+        //    console.error(err);
+        //}
 
         
 
@@ -166,8 +183,6 @@ const options = {
         //GetOrgEventsByOrgId() {
         //    console.log(this.selectedOrganization)
         //},
-
-
 
     },
     watch: {
@@ -217,8 +232,8 @@ const options = {
 }
 const app = createApp(options); // 創建一個 Vue 應用實例，使用 options 作為配置選項
 app.component('draggable', vuedraggable)
-//app.component('GoogleMap', GoogleMap)
-//app.component('GoogleMapMarker', Marker)
+app.component('GoogleMap', GoogleMap)
+app.component('GoogleMapMarker', Marker)
 app.use(CKEditor)
 app.use(vuetify)
 app.mount('#app')

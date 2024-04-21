@@ -4,8 +4,7 @@ createApp({
     data() {
         return {
             ticketTypeSelection: {},
-            isAgreed: false,
-            time:'' 
+            isAgreed: false
         }
     },
     methods: {
@@ -69,10 +68,9 @@ createApp({
             
             window.open(url, '_blank');
         },
-        // startTimeFormatted(time) {
-        //     const startTimeString = this.ticketTypeSelection.eventDetail.startTime.toString();
-        //     return startTime = moment('startTimeString').format("YYYY/MM/DD HH:mm:ss");
-        // }
+        toFormatDate(datetime) {
+            return moment(this.ticketTypeSelection.eventDetail.startTime).format("YYYY/MM/DD HH:mm:ss")
+        }
     },
     async mounted() {
         const urlParams = new URLSearchParams(window.location.search);

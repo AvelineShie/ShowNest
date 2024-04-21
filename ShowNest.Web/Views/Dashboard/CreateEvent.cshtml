@@ -31,13 +31,14 @@
                                 <p>您尚未選擇組織，請選取此活動所屬之組織：</p>
                                 <v-select item-title="name"
                                             v-model="selectedOrganization"
-                                            item-value="id"
+                                            item-value="orgId"
                                             class="w-50"
                                             :items="orgNames"
                                             density="compact"
                                             label="選擇一個組織"
                                             variant="outlined">
                                 </v-select>
+
 
                                 <!-- Hide the organizations while not selected below -->
                                 <div v-show="displaySelectActivityType">
@@ -74,7 +75,7 @@
                                                 </div>
                                             </label>
                                         </div>
-                                        <input class="establishBtn" type="button" value="建立" />
+                                        @* <input class="establishBtn" type="button" value="建立" /> *@
                                     </div>
                                 </div>
                             </div>

@@ -27,9 +27,8 @@ namespace ShowNest.Web.WebAPI
             _CreateEventService = createEventInterface;
         }
 
-        [HttpPost]
-        [Route("/api/CreateEvent/CreateEventbyUserId")]
-        public IActionResult CreateEventbyUserId()
+        //[Route("/api/CreateEvent/CreateEventbyUserId")]
+        public async Task<IActionResult> CreateEventbyUserId()
         {
             var userIdFromClaim = _httpContextAccessor.HttpContext.User.Claims
                     .FirstOrDefault(c => c.Type == ClaimTypes.NameIdentifier);
@@ -39,30 +38,37 @@ namespace ShowNest.Web.WebAPI
                 return null;
             }
             else
-            {   
-                var user = _context.Users
-                .Include(u => u.OrganizationAndUserMappings)
-                .FirstOrDefaultAsync(u => u.Id == int.Parse(userIdFromClaim.Value));
+            {
+                //找相同使用者與其下組織
+                var info = await _context.Users
+                               .Include(u => u.OrganizationAndUserMappings)
+                               .ThenInclude(ou => ou.Organization)
+                               .FirstOrDefaultAsync(x => x.Id == int.Parse(userIdFromClaim.Value));
 
-                if (user == null)
+
+                List<OrgNameList> Organizations = new List<OrgNameList>();
+                foreach(var org in info.Organizations.OrderBy(o => o.Id))
                 {
-                    return null;
+                    OrgNameList orgNameList = new OrgNameList
+                    {
+                        OrgId = org.Id,
+                        OrgName = org.Name
+                    };
+                    Organizations.Add(orgNameList);
                 }
 
-                // 找與登入者相同的使用者ID，並且找出該ID下的所有組織名稱
+                return Ok(Organizations);
 
-                string sqlQuery = @"
-                    SELECT o.Name
-                    FROM Organizations o
-                    INNER JOIN OrganizationAndUserMapping om ON o.Id = om.OrganizationId
-                    WHERE om.UserId = o.Id";
 
-                var orgNames = _context.Organizations
-                    .FromSqlRaw(sqlQuery, new SqlParameter("@userId", userIdFromClaim.Value))
-                    .Select(o => o.Name)
-                    .ToList();
+               //var orgNames = new List<string>();
+               // foreach (var org in info.Organizations.OrderBy(o => o.Id))
+               // {
+               //     orgNames.Add(org.Name);
+               // }
 
-                return new JsonResult(orgNames); // 返回Json組織名稱表
+
+
+                //return Ok(orgNames); // 返回Json組織名稱表
 
             }
         }
@@ -117,7 +123,7 @@ namespace ShowNest.Web.WebAPI
         }
     }
 
-    
+
 }
 
 
