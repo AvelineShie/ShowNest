@@ -34,6 +34,7 @@
     display: flex;
     grid-area: control;
     max-height: 52px;
+    
 }
 
 .eventItem {
@@ -409,9 +410,6 @@ html body #SetTicket.delete {
 }
 
 
-
-
-
 #SetTicket .section {
     display: inline-block;
     max-width: 150px;
@@ -432,6 +430,10 @@ html body #SetTicket.delete {
     border: 1px solid #ced4da;
     border-radius: 5px;
     background-color: white;
+}
+
+#SetTicket .date-local{
+    width:120px;
 }
 
 #SetTicket.space .sectionTitle {
@@ -544,7 +546,7 @@ html body #SetTicket.delete {
         padding: 5px;
     }
 
-    .contactInformationForm tbody > tr > td{
+    contactInformationForm tbody > tr > td{
         line-height: 40px;
         height: 2em;
     }
@@ -580,7 +582,7 @@ li.list-group-item:first-child {
     font-weight: bold;
 }
 
-.contactInformationForm td > span {
+contactInformationForm td > span {
     color: #737373;
     margin-left: 15px;
 }

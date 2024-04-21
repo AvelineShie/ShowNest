@@ -28,11 +28,13 @@ public partial class DatabaseContext : DbContext
 
     public virtual DbSet<EventAndTagMapping> EventAndTagMappings { get; set; }
 
+    public virtual DbSet<Fblogininfo> Fblogininfos { get; set; }
+
     public virtual DbSet<HistoryPassword> HistoryPasswords { get; set; }
 
     public virtual DbSet<IsPaidRecord> IsPaidRecords { get; set; }
 
-    public virtual DbSet<LogInInfo> LogInInfo { get; set; }
+    public virtual DbSet<LogInInfo> LogInInfos { get; set; }
 
     public virtual DbSet<Order> Orders { get; set; }
 
@@ -265,6 +267,36 @@ public partial class DatabaseContext : DbContext
                 .HasForeignKey(d => d.EventId)
                 .OnDelete(DeleteBehavior.ClientSetNull)
                 .HasConstraintName("FK_EventAndTagMapping_pEvents");
+        });
+
+        modelBuilder.Entity<Fblogininfo>(entity =>
+        {
+            entity
+                .HasNoKey()
+                .ToTable("FBLogininfo");
+
+            entity.Property(e => e.AccessToken)
+                .IsRequired()
+                .HasMaxLength(50);
+            entity.Property(e => e.AccessTokenExpires).HasColumnType("datetime");
+            entity.Property(e => e.Email)
+                .IsRequired()
+                .HasMaxLength(100);
+            entity.Property(e => e.FacebookId)
+                .IsRequired()
+                .HasMaxLength(50);
+            entity.Property(e => e.Id).ValueGeneratedOnAdd();
+            entity.Property(e => e.LastLogin).HasColumnType("datetime");
+            entity.Property(e => e.Name)
+                .IsRequired()
+                .HasMaxLength(50);
+            entity.Property(e => e.ProfilePictureUrl).HasMaxLength(50);
+            entity.Property(e => e.RefreshToken).HasMaxLength(50);
+
+            entity.HasOne(d => d.IdNavigation).WithMany()
+                .HasForeignKey(d => d.Id)
+                .OnDelete(DeleteBehavior.ClientSetNull)
+                .HasConstraintName("FK_FBLogininfo_Users");
         });
 
         modelBuilder.Entity<HistoryPassword>(entity =>

@@ -31,10 +31,12 @@ async function loadCards() {
     let cardsContainer = $('.cards')[0]
     cardsContainer.innerHTML = ''
 
-    // 從別的頁面用nav搜尋時的狀況：nav input有值，events input沒有值，搜尋字串為nav input的
+    // 從別的頁面用nav搜尋時的狀況：把nav input的值從cookie拿到後給events input
     if(getNavInputQueryString()){
-        $('#header-nav-search-input').val(getNavInputQueryString())
-        queryParametersDto.inputString = $('#header-nav-search-input').val() && !$('#event-search-search-input').val() ? $('#header-nav-search-input').val() : ''
+        if(getNavInputQueryString()){
+            $('#event-search-search-input').val(getNavInputQueryString())
+            queryParametersDto.inputString = getNavInputQueryString()
+        }
         clearNavInputCookie()
     }
 
