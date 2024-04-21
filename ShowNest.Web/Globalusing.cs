@@ -1,7 +1,6 @@
 ﻿global using ApplicationCore.Interfaces;
 global using ApplicationCore.Helpers;
 global using ApplicationCore.DTOs;
-global using Facebook;
 global using Infrastructure.Data;
 global using Infrastructure.Services;
 global using Microsoft.EntityFrameworkCore;

@@ -19,6 +19,7 @@ using ShowNest.Web.Services.TicketTypes;
 
 
 
+
 namespace ShowNest.Web
 {
     public class Program
@@ -45,6 +46,7 @@ namespace ShowNest.Web
                     options.AppSecret = facebookSettings.ClientSecret;
                     options.CallbackPath = facebookSettings.CallbackPath;
                 });
+            builder.Services.AddHttpClient();
             // Registration Repository
             // builder.Services.AddScoped<ISeatRepository, SeatRepository>();
             builder.Services.AddScoped<ISeatAreaRepository, SeatAreaRepository>();
@@ -113,9 +115,6 @@ namespace ShowNest.Web
             app.UseAuthentication();
             app.UseAuthorization();
 
-
-            app.UseAuthorization();
-
             ///測試用路由
             //app.MapControllerRoute(
             //    name: "organizationEvents",
@@ -170,6 +169,12 @@ namespace ShowNest.Web
             pattern: "Dashboard/Organizations/{id}/{ViewType?}",
             defaults: new { controller = "Dashboard", Action = "Organizations" }
             );
+
+            //FB配置
+            app.MapControllerRoute(
+                name: "FacebookCallback",
+                pattern: "Account/FacebookCallback/{code}/{state}",
+                defaults: new { controller = "Account", action = "FacebookCallback" });
 
 
             app.MapControllerRoute(
