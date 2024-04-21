@@ -74,7 +74,6 @@ namespace ShowNest.Web.WebAPI
         }
 
 
-
         [HttpPost]
         [Route("/api/CreateEvent/CreateAndEditEvent")]
         public IActionResult CreateAndEditEvent(CreateEventDto request)

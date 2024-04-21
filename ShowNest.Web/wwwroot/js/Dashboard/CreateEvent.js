@@ -118,8 +118,7 @@ const options = {
                     if (res.data == null) {
                         this.selectedOrganization = { id: 0, name: '沒有組織，請先建立新組織' }
                     }
-                    console.log(res.data)
-                    this.orgNames = res.data.forEach(o => console.log(o.orgName));
+                    this.selectedOrganization = null;
                     this.orgNames = res.data.map(o => ({ id: o.orgId, name: o.orgName }));
             })
             .catch(err => {
