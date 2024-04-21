@@ -358,6 +358,14 @@ namespace ShowNest.Web.Services.AccountService
                 return (false, ex.Message);
             }
         }
+        //檢查使用者
+        public async Task<bool> UsernameExists(string username)
+        {
+            var existingUser = await _context.LogInInfos
+                .FirstOrDefaultAsync(u => u.Account == username);
+            return existingUser != null;
+        }
+
         //FB登入功能
         public async Task<(bool IsSuccess, string ErrorMessage)> HandleFacebookLoginAsync(string code, string state)
         {
