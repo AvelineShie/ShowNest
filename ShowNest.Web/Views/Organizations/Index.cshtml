@@ -1,5 +1,6 @@
 ﻿@using ShowNest.Web.ViewModels.Organization
 @model OrganizationIndexViewModel
+
 @{
     Layout = null;
 }
@@ -12,8 +13,30 @@
     <link href="~/css/organization/index.css" rel="stylesheet" />
 }
 @section endJS {
-    <script src="https://cdn.jsdelivr.net/npm/fullcalendar/index.global.min.js
-            "></script>
+    <script src="https://cdn.jsdelivr.net/npm/fullcalendar/index.global.min.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            const calendarEl = document.getElementById('calendar');
+            const calendar = new FullCalendar.Calendar(calendarEl, {
+                initialView: 'dayGridMonth'
+                ,
+                events:@Html.Raw(Model.FullCalendarJson)
+                // 範例
+                // [{
+                //        title: '登山活動：健行山林',
+                //        start: '2024-06-07',
+                // //        end: '2024-06-12'
+                //    }]
+                ,
+                editable: true,
+                selectable: true,
+                dayMaxEvents: true
+            });
+            
+            calendar.render()
+        });
+    </script>
+    
     <script src="~/js/organizations/index.js"></script>
 }
 
@@ -54,7 +77,9 @@
                     <h2>近期公開活動<a href="#"><i class="fa fa-rss-square"></i></a></h2>
                     <div class="switch-block">
                         行事曆模式
-                        <a href="#" class="Calendar" type="button"><i class="fa fa-calendar"></i></a>
+                        <a href="#" class="Calendar" type="button"><i class="fa fa-calendar"></i>
+                            @* @Html.Raw(Model.FullCalendarJson) *@
+                        </a>
                     </div>
                 </div>
                 <!-- 行事曆區塊-->

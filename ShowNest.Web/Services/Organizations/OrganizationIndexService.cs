@@ -1,4 +1,5 @@
-﻿using Infrastructure.Data;
+﻿using ApplicationCore.Entities;
+using Infrastructure.Data;
 using ShowNest.Web.Services.Organizations;
 using ShowNest.Web.ViewModels.Organization;
 using static ShowNest.Web.ViewModels.Organization.OrganizationIndexViewModel;
@@ -14,6 +15,7 @@ namespace ShowNest.Web.Services.Organization
             _databaseContext = databaseContext;
         }
 
+        
         public OrganizationIndexViewModel GetOrganizationDetails(int organizationId)
         {
             var organization = _databaseContext.Organizations
@@ -33,8 +35,18 @@ namespace ShowNest.Web.Services.Organization
                 .Where(e => e.EndTime >= currentDate)
                 .OrderBy(e => e.StartTime)
                 .ToList();
-            //string json = JsonConvert.SerializeObject(currentEvents, Formatting.Indented);
-            //Console.WriteLine(json);
+
+
+            var jsonEvents = currentEvents.Select(ev => new EventJsonModel
+            {
+                title = $"{ev.Name}",
+                start = ev.StartTime.ToString("yyyy-MM-dd"),
+                end = ev.EndTime?.ToString("yyyy-MM-dd") 
+            }).ToList();
+            string jsonEventsString = JsonConvert.SerializeObject(jsonEvents);
+
+            
+
 
 
             var groupedPastEvents = organization.Events
@@ -62,6 +74,7 @@ namespace ShowNest.Web.Services.Organization
                 OrganizationWeb = organization.OrganizationUrl,
                 OrganizationFBLink = organization.Fblink,
                 OrganizationEmail = organization.Email,
+                FullCalendarJson = jsonEventsString,
                 GroupedCurrentEvents = currentEvents
                 .Select(e => new EventDetail
                 {
@@ -77,5 +90,6 @@ namespace ShowNest.Web.Services.Organization
             return result;
        
         }
+
     }
 }
