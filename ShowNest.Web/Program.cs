@@ -37,14 +37,14 @@ namespace ShowNest.Web
             var facebookSettings = builder.Configuration.GetSection("Facebook").Get<FacebookSettings>();
             // 配置Facebook驗證與登入餅乾
 
-            builder.Services.AddAuthentication(CookieAuthenticationDefaults.AuthenticationScheme)
-                .AddCookie()
-                .AddFacebook(options =>
-                {
-                    options.AppId = facebookSettings.ClientId;
-                    options.AppSecret = facebookSettings.ClientSecret;
-                    options.CallbackPath = facebookSettings.CallbackPath;
-                });
+            //builder.Services.AddAuthentication(CookieAuthenticationDefaults.AuthenticationScheme)
+            //    .AddCookie()
+            //    .AddFacebook(options =>
+            //    {
+            //        options.AppId = facebookSettings.ClientId;
+            //        options.AppSecret = facebookSettings.ClientSecret;
+            //        options.CallbackPath = facebookSettings.CallbackPath;
+            //    });
             // Registration Repository
             // builder.Services.AddScoped<ISeatRepository, SeatRepository>();
             builder.Services.AddScoped<ISeatAreaRepository, SeatAreaRepository>();

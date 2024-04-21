@@ -19,7 +19,8 @@
                 <v-stepper prev-text="上一步"
                            next-text="下一步"
                            :items="['建立活動', '設定資料', '設定票種', '設定表單']"
-                           v-model="stepButton">
+                           v-model="stepButton"
+                           editable>
                     @* 第一頁 *@
                     <template v-slot:item.1>
                         <div class="wrap" id="CreateEvent">
@@ -245,10 +246,11 @@
 
                                     <div class="section">
                                         <h4 >社群分享圖片</h4>
-                                        <img id="uploadedImage" src='/img/Dashboard/upload-img.png'>
+                                            <img :src="imgUrl" id="uploadedImage" >
+                                        <a class="file-input">
+                                            <input class="file-upload form-control form-control-sm" type="file" id="form-control-sm" @@change="imgUpload">
+                                        </a>
                                         <div>
-                                            <!-- 添加文件上傳元素 -->
-                                            @* <input id="fileupload" type="file" name="images" multiple accept="image/gif, image/jpeg, image/png"> *@
                                                 <button class="btn btn-outline-secondary" accept="image/gif, image/jpeg, image/png" id="fileupload" >選擇圖片</button>
                                                 <button class="btn btn-outline-secondary" id="restoreImg" >還原圖片</button>
                                         </div>

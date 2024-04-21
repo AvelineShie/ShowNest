@@ -49,6 +49,21 @@ namespace ShowNest.Web.Controllers
             return View();
         }
 
+        public IActionResult SetEvent() //測試
+        {
+            return View();
+        }
+
+        public IActionResult SetTable()
+        {
+            return View();
+        }
+
+        public IActionResult SetTicket()
+        {
+            return View();
+        }
+
 
         //public IActionResult SetTicketPage()
         //{

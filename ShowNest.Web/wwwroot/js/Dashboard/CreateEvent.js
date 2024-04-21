@@ -22,10 +22,11 @@ const options = {
             items: ['實體活動', '線上活動'],
             selectedEvent: {},
             events: [],
+            orgNames:[],
 
             //====================SetEvent(R,U)
             eventId: '',
-            OrgName: '',
+            OrgNames: '',
 
             eventNameInput: '',
             startTime: '',
@@ -64,6 +65,7 @@ const options = {
             },
 
             //圖片
+            imgUrl: 'https://res.cloudinary.com/dl42higsa/image/upload/v1710816990/upload-img_ofm2yc.png',
             fileupload: '',
             restoreImg: '',
 
@@ -128,15 +130,22 @@ const options = {
 
         imgUpload(e) {
             let formData = new FormData();
-            for (let i = 0; i < e.target.filtes.length; i++) {
+            for (let i = 0; i < e.target.files.length; i++) {
                 formData.append('files', e.target.files[i]);
             }
             axios.post('/api/ImgUploadApi/UploadImages', formData, {
-                header: {
-                    'Content-'
+                headers: {
+                    'Content-Type': 'multipart/form-data'
                 }
             })
-        }
+                .then(res => {
+                    console.log(res)
+                    this.imgUrl = res.data[0]
+                })
+                .catch(err => {
+                    console.error(err);
+                })
+        },
 
         //    const data = await response.json();
         //    if (!data.isSuccess) {
@@ -232,8 +241,8 @@ const options = {
 }
 const app = createApp(options); // 創建一個 Vue 應用實例，使用 options 作為配置選項
 app.component('draggable', vuedraggable)
-app.component('GoogleMap', GoogleMap)
-app.component('GoogleMapMarker', Marker)
+//app.component('GoogleMap', GoogleMap)
+//app.component('GoogleMapMarker', Marker)
 app.use(CKEditor)
 app.use(vuetify)
 app.mount('#app')
