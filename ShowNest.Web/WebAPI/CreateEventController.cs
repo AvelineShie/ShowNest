@@ -59,19 +59,9 @@ namespace ShowNest.Web.WebAPI
 
                 return Ok(Organizations);
 
-
-               //var orgNames = new List<string>();
-               // foreach (var org in info.Organizations.OrderBy(o => o.Id))
-               // {
-               //     orgNames.Add(org.Name);
-               // }
-
-
-
-                //return Ok(orgNames); // 返回Json組織名稱表
-
             }
         }
+
 
 
         [HttpPost]
@@ -80,20 +70,20 @@ namespace ShowNest.Web.WebAPI
         {
             try
             {
-                int newEventId;
-                if (request.EventId == 0)
-                {   //取得使用者登入資訊:在view驗證即可
+                int selectedEventId; 
+                if (request.EventId == 0) //全新活動
+                {   //取得使用者登入資訊:在vue驗證即可
                     var userIdFromClaim = _httpContextAccessor.HttpContext.User.Claims.FirstOrDefault(c => c.Type == ClaimTypes.NameIdentifier);
                     request.EventId = int.Parse(userIdFromClaim.Value);
                     request.CreatedAt = DateTime.Now;
-                    newEventId = _CreateEventService.CreateEvent(request);
+                    selectedEventId = _CreateEventService.CreateEvent(request);
                 }
                 //若有活動id, 則進入修改活動
                 else
                 {
-                    newEventId = _CreateEventService.UpdateEvent(request);
+                    selectedEventId = _CreateEventService.UpdateEvent(request);
                 }
-                var successResult = OperationResultHelper.ReturnSuccessData(newEventId);
+                var successResult = OperationResultHelper.ReturnSuccessData(selectedEventId);
                 return Ok(successResult);
             }
             catch
@@ -110,8 +100,8 @@ namespace ShowNest.Web.WebAPI
         {
             try
             {
-                var newEvent = _CreateEventService.RenderEventData(int.Parse(eventId));
-                var successResult = OperationResultHelper.ReturnSuccessData(newEvent);
+                var selectedEventId = _CreateEventService.RenderEventData(int.Parse(eventId));
+                var successResult = OperationResultHelper.ReturnSuccessData(selectedEventId);
                 return Ok(successResult);
             }
             catch (Exception ex)

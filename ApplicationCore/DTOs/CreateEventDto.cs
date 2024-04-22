@@ -38,7 +38,7 @@ namespace ApplicationCore.DTOs
         public bool IsPrivateEvent { get; set; }
         public bool IsFree {  get; set; }
 
-
+        //問題是聯絡人跟報名人欄位選擇要怎麼存入DB?
         public List<ContactPersonVM> ContactPerson { get; set; }
         public class ContactPersonVM
         {
