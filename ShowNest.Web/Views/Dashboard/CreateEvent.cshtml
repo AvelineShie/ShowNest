@@ -18,7 +18,7 @@
             <v-container>
                 <v-stepper prev-text="上一步"
                            next-text="下一步"
-                           :items="['建立活動', '設定資料', '設定票種', '設定表單']"
+                           :items="['建立活動', '設定資料', '設定票種']"
                            v-model="stepButton"
                            editable>
                     @* 第一頁 *@
@@ -244,11 +244,15 @@
 
                                     <div class="section">
                                         <h4 >社群分享圖片</h4>
-                                            <img :src="imgUrl" id="uploadedImage" >
+                                           @*  <img :src="imgUrl" id="uploadedImage" > *@
                                             @* <input class="file-upload form-control form-control-sm" type="file" id="form-control-sm" > *@
                                         <div>
-                                            <button class="btn btn-outline-secondary" accept="image/gif, image/jpeg, image/png" type="files" id="fileupload" @@change="imgUpload">選擇圖片</button>
-                                            <button class="btn btn-outline-secondary" id="restoreImg" >還原圖片</button>
+                                            <img :src="imgUrl">
+                                            <a class="file-input">
+                                                <input class="file-upload form-control form-control-sm" type="file" id="form-control-sm" @@change="imgUpload">
+                                            </a>
+                                            @* <button class="btn btn-outline-secondary" accept="image/gif, image/jpeg, image/png" type="files" id="fileupload" @@change="imgUpload">選擇圖片</button>
+                                            <button class="btn btn-outline-secondary" id="restoreImg" >還原圖片</button> *@
                                     </div>
                                     </div>
                                     <span class="note">請提供尺寸為600x400px以內 且 檔案格式為 png.、jpg. 之圖片。</span>
@@ -417,264 +421,6 @@
                         </div>
                     </template>
 
-                    @* 第四頁 *@
-                    <template v-slot:item.4>
-                        <div class="header-title">
-                            <div class="organize">
-                                組織名稱
-                            </div>
-                            <div class="name">
-                                @*{{OrgName}} *@
-                                Mafia
-                            </div>
-                        </div>
-                        <div class="wrap">
-                            <div class="container">
-                                <div class="data-collection">
-                                    <!-- 如果只需聯絡人資料，報名人資料會隱藏 -->
-                                    <h4 class="data-type">收集資料類型</h4>
-                                    <div class="form-check">
-                                        <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault1">
-                                        <label class="form-check-label" for="flexRadioDefault1">
-                                            只需要聯絡人資料
-                                        </label>
-                                    </div>
-                                    <div class="form-check">
-                                        <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault2" checked>
-                                        <label class="form-check-label" for="flexRadioDefault2">
-                                            需要報名人資料
-                                        </label>
-                                    </div>
-                                </div>
-
-                                <div class="data-log">
-                                    <!-- 聯絡人資料 -->
-                                    <div class="contact-person">
-                                        <h3>聯絡人資料</h3>
-                                        <div class="table-log">
-                                            <ul class="list-group">
-                                                @* <li class="list-group-item">
-                                                    個人資料選項
-                                                </li> *@
-                                                <li class="list-group-item">
-                                                   @*  <input class="form-check-input me-1" type="checkbox" value="" aria-label="..."> *@
-                                                    姓名
-                                                </li>
-                                                <li class="list-group-item">
-                                                    @* <input class="form-check-input me-1" type="checkbox" value="" aria-label="..."> *@
-                                                    Email
-                                                </li>
-                                                <li class="list-group-item">
-                                                    @* <input class="form-check-input me-1" type="checkbox" value="" aria-label="..."> *@
-                                                    手機
-                                                </li>
-                                                @* <li class="list-group-item">
-                                                <input class="form-check-input me-1" type="checkbox" value="" aria-label="..."> 
-                                                身分證字號
-                                                </li>
-                                                <li class="list-group-item">
-                                                <input class="form-check-input me-1" type="checkbox" value="" aria-label="...">
-                                                聯絡電話
-                                                </li>
-                                                <li class="list-group-item">
-                                                <input class="form-check-input me-1" type="checkbox" value="" aria-label="...">
-                                                郵遞區號
-                                                </li>
-                                                <li class="list-group-item">
-                                                <input class="form-check-input me-1" type="checkbox" value="" aria-label="...">
-                                                地址
-                                                </li> *@
-                                            </ul>
-                                            <!-- 欄位選項 -->
-                                            @* <table class="contactInformationForm">
-                                                <thead>
-                                                    <tr>
-                                                        <th scope="col" colspan="2">選擇要填寫的欄位</th>
-                                                        <th scope="col">是否必填</th>
-                                                        <th scope="col">刪除</th> 
-                                                    </tr>
-                                                </thead>
-                                                <tbody>
-                                                    <tr>
-                                                        <th scope="row"></th>
-                                                        <td>姓名 <span>單行文字</span></td>
-                                                        <td><input class="form-check-input me-1" type="checkbox" value="" aria-label="..." disabled></td> 
-                                                        <td></td>
-                                                    </tr>
-                                                    <tr>
-                                                        <th scope="row"></th>
-                                                        <td>Email <span>Email</span></td>
-                                                        <td><input class="form-check-input me-1" type="checkbox" value="" aria-label="..." disabled></td> 
-                                                        <td></td>
-                                                    </tr>
-                                                    <tr>
-                                                        <th scope="row"></th>
-                                                        <td>手機<span>單行文字</span></td>
-                                                        <td><input class="form-check-input me-1" type="checkbox" value="手機" aria-label="..."></td>
-                                                        <td><button class="delete"><i class="fa-solid fa-x"></i></button></td> 
-                                                    </tr> *@
-                                                    @*<tr>
-                                                        <th scope="row"></th>
-                                                        <td>身分證字號<span>身分證字號</span></td>
-                                                        <td><input class="form-check-input me-1" type="checkbox" value="身分證字號" aria-label="..."></td>
-                                                        <td><button class="delete"><i class="fa-solid fa-x"></i></button></td>
-                                                    </tr>
-                                                    <tr>
-                                                    <th scope="row"></th>
-                                                    <td>連絡電話<span>單行文字</span></td>
-                                                    <td><input class="form-check-input me-1" type="checkbox" value="" aria-label="..."></td>
-                                                    <td><button class="delete"><i class="fa-solid fa-x"></i></button></td>
-                                                    </tr>
-                                                    <tr>
-                                                    <th scope="row"></th>
-                                                    <td>郵遞區號<span>單行文字</span></td>
-                                                    <td><input class="form-check-input me-1" type="checkbox" value="" aria-label="..."></td>
-                                                    <td><button class="delete"><i class="fa-solid fa-x"></i></button></td>
-                                                    </tr>
-                                                    <tr>
-                                                    <th scope="row"></th>
-                                                    <td>地址<span>單行文字</span></td>
-                                                    <td><input class="form-check-input me-1" type="checkbox" value="" aria-label="..."></td>
-                                                    <td><button class="delete"><i class="fa-solid fa-x"></i></button></td>
-                                                    </tr> *@
-
-                                                </tbody>
-                                            </table>
-                                        </div>
-                                    </div>
-
-                                    <!-- 報名人資料 -->
-                                    <div class="applicants">
-                                        <h3>報名人資料</h3>
-                                        <div class="table-log">
-                                            <ul class="list-group">
-                                                @* <li class="list-group-item">
-                                                    個人資料選項
-                                                </li> *@
-                                                <li class="list-group-item">
-                                                    @* <input class="form-check-input me-1" type="checkbox" value="" aria-label="..."> *@
-                                                    姓名
-                                                </li>
-                                                <li class="list-group-item">
-                                                    @* <input class="form-check-input me-1" type="checkbox" value="" aria-label="..."> *@
-                                                    Email
-                                                </li>
-                                                <li class="list-group-item">
-                                                    @* <input class="form-check-input me-1" type="checkbox" value="" aria-label="..."> *@
-                                                    手機
-                                                </li>
-                                                @* <li class="list-group-item">
-                                                <input class="form-check-input me-1" type="checkbox" value="" aria-label="...">
-                                                身分證字號
-                                                </li>
-                                                <li class="list-group-item">
-                                                <input class="form-check-input me-1" type="checkbox" value="" aria-label="...">
-                                                暱稱
-                                                </li> *@
-                                                @* <li class="list-group-item">
-                                                <input class="form-check-input me-1" type="checkbox" value="" aria-label="...">
-                                                聯絡電話
-                                                </li>
-                                                <li class="list-group-item">
-                                                <input class="form-check-input me-1" type="checkbox" value="" aria-label="...">
-                                                郵遞區號
-                                                </li>
-                                                <li class="list-group-item">
-                                                <input class="form-check-input me-1" type="checkbox" value="" aria-label="...">
-                                                地址
-                                                </li> *@
-                                            </ul>
-                                            <!-- 欄位選項 -->
-                                            @* <table class="contactInformationForm">
-                                                <thead>
-                                                    <tr>
-                                                        <th scope="col" colspan="2">選擇要填寫的欄位</th>
-                                                        <th scope="col">是否必填</th>
-                                                        <th scope="col">刪除</th> 
-                                                    </tr>
-                                                </thead>
-                                                <tbody>
-                                                    <tr>
-                                                        <th scope="row"></th>
-                                                        <td>姓名 <span>單行文字</span></td>
-                                                        <td><input class="form-check-input me-1" type="checkbox" value="" aria-label="..."></td>
-                                                        <td><button class="delete"><i class="fa-solid fa-x"></i></button></td> 
-                                                    </tr>
-                                                    <tr>
-                                                        <th scope="row"></th>
-                                                        <td>Email <span>Email</span></td>
-                                                        <td><input class="form-check-input me-1" type="checkbox" value="" aria-label="..."></td>
-                                                        <td><button class="delete"><i class="fa-solid fa-x"></i></button></td> 
-                                                    </tr>
-                                                    <tr>
-                                                        <th scope="row"></th>
-                                                        <td>手機<span>單行文字</span></td>
-                                                        <td><input class="form-check-input me-1" type="checkbox" value="" aria-label="..."></td>
-                                                        <td><button class="delete"><i class="fa-solid fa-x"></i></button></td> 
-                                                    </tr>
-                                                    <tr>
-                                                    <th scope="row"></th> *@
-                                                        @* <<td>身分證字號<span>身分證字號</span></td>
-                                                    td><input class="form-check-input me-1" type="checkbox" value="" aria-label="..."></td>
-                                                    <td><button class="delete"><i class="fa-solid fa-x"></i></button></td> *@
-                                                    </tr> 
-                                                    @* <tr>
-                                                    <th scope="row"></th>
-                                                    <td>連絡電話<span>單行文字</span></td>
-                                                    <td><input class="form-check-input me-1" type="checkbox" value="" aria-label="..."></td>
-                                                    <td><button class="delete"><i class="fa-solid fa-x"></i></button></td>
-                                                    </tr>
-                                                    <tr>
-                                                    <th scope="row"></th>
-                                                    <td>郵遞區號<span>單行文字</span></td>
-                                                    <td><input class="form-check-input me-1" type="checkbox" value="" aria-label="..."></td>
-                                                    <td><button class="delete"><i class="fa-solid fa-x"></i></button></td>
-                                                    </tr>
-                                                    <tr>
-                                                    <th scope="row"></th>
-                                                    <td>地址<span>單行文字</span></td>
-                                                    <td><input class="form-check-input me-1" type="checkbox" value="" aria-label="..."></td>
-                                                    <td><button class="delete"><i class="fa-solid fa-x"></i></button></td>
-                                                    </tr>
-                                                    <tr>
-                                                    <th scope="row"></th>
-                                                    <td>公司/組織名稱<span>單行文字</span></td>
-                                                    <td><input class="form-check-input me-1" type="checkbox" value="" aria-label="..."></td>
-                                                    <td><button class="delete"><i class="fa-solid fa-x"></i></button></td>
-                                                    </tr>
-                                                    <tr>
-                                                    <th scope="row"></th>
-                                                    <td>職稱<span>單行文字</span></td>
-                                                    <td><input class="form-check-input me-1" type="checkbox" value="" aria-label="..."></td>
-                                                    <td><button class="delete"><i class="fa-solid fa-x"></i></button></td>
-                                                    </tr>
-                                                    <tr>
-                                                    <th scope="row"></th>
-                                                    <td>公司地址<span>單行文字</span></td>
-                                                    <td><input class="form-check-input me-1" type="checkbox" value="" aria-label="..."></td>
-                                                    <td><button class="delete"><i class="fa-solid fa-x"></i></button></td>
-                                                    </tr>
-                                                    <tr>
-                                                    <th scope="row"></th>
-                                                    <td>公司電話<span>單行文字</span></td>
-                                                    <td><input class="form-check-input me-1" type="checkbox" value="" aria-label="..."></td>
-                                                    <td><button class="delete"><i class="fa-solid fa-x"></i></button></td>
-                                                    </tr> *@
-
-                                                </tbody>
-                                            </table>
-                                        </div>
-
-                                    </div>
-                                </div>
-                                <span class="map-note"><i class="fa-solid fa-circle-info"></i>  如果您的活動應適用文化部成年禮金「文化幣」折抵，請在建立活動後聯絡 SHOWNEST 審查開通。</span>
-                                @* <div class="pages-change">
-                                <button type="button" class="btn btn-outline-secondary" onclick="window.location.href='@Url.Action("SetTicket", "Dashboard")'">上一頁</button>
-                                <button type="button" class="btn btn-outline-secondary" onclick="window.location.href='@Url.Action("EventHub", "Dashboard")'" id="send">送出</button>
-                                </div> *@
-                            </div>
-                        </div>
-                    </template>
                 </v-stepper>
             </v-container>
         </v-app>
