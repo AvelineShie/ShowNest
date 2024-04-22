@@ -217,6 +217,12 @@ input[type=button] {
     margin-bottom: 30px;
 }
 
+.agreement input, label {
+    margin-right: 10px;
+    vertical-align: bottom;
+    cursor: pointer;
+}
+
 .agreement a {
     color: var(--main-green);
 }

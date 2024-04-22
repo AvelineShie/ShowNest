@@ -1,4 +1,5 @@
-﻿using Infrastructure.Data;
+﻿using ApplicationCore.Entities;
+using Infrastructure.Data;
 using ShowNest.Web.Services.Organizations;
 using ShowNest.Web.ViewModels.Organization;
 using static ShowNest.Web.ViewModels.Organization.OrganizationIndexViewModel;
@@ -14,6 +15,7 @@ namespace ShowNest.Web.Services.Organization
             _databaseContext = databaseContext;
         }
 
+        
         public OrganizationIndexViewModel GetOrganizationDetails(int organizationId)
         {
             var organization = _databaseContext.Organizations
@@ -34,12 +36,18 @@ namespace ShowNest.Web.Services.Organization
                 .OrderBy(e => e.StartTime)
                 .ToList();
 
-            //// 從符合organizationId的活動事件中 取得結束的活動事件
-            //var pastEvents = organization.Events
-            //    .Where(e => e.EndTime < currentDate)
-            //    .OrderBy(e => e.StartTime)
-            //    .GroupBy(e => e.StartTime.Month)
-            //    .ToList();
+
+            var jsonEvents = currentEvents.Select(ev => new EventJsonModel
+            {
+                title = $"{ev.Name}",
+                start = ev.StartTime.ToString("yyyy-MM-dd"),
+                end = ev.EndTime?.ToString("yyyy-MM-dd") 
+            }).ToList();
+            string jsonEventsString = JsonConvert.SerializeObject(jsonEvents);
+
+            
+
+
 
             var groupedPastEvents = organization.Events
                     .Where(e => e.EndTime < currentDate)
@@ -57,12 +65,6 @@ namespace ShowNest.Web.Services.Organization
 
 
 
-            //// 將已經結束的事件按照開始時間的月份分組
-            //var pastGroupedEvents = pastEvents
-            //.GroupBy(e => new { e.StartTime.Year, e.StartTime.Month })
-            //.Select(g => new { Year = g.Key.Year, Month = g.Key.Month, Events = g.ToList() })
-            //.ToList();
-
             var result = new OrganizationIndexViewModel
             {
                 OrganizationId = organization.Id,
@@ -72,6 +74,7 @@ namespace ShowNest.Web.Services.Organization
                 OrganizationWeb = organization.OrganizationUrl,
                 OrganizationFBLink = organization.Fblink,
                 OrganizationEmail = organization.Email,
+                FullCalendarJson = jsonEventsString,
                 GroupedCurrentEvents = currentEvents
                 .Select(e => new EventDetail
                 {
@@ -87,5 +90,6 @@ namespace ShowNest.Web.Services.Organization
             return result;
        
         }
+
     }
 }

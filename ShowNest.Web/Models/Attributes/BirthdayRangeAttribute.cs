@@ -19,7 +19,6 @@
                     return new ValidationResult("您的年齡超出我們的註冊範圍。");
                 }
             }
-
             return ValidationResult.Success;
         }
     }
