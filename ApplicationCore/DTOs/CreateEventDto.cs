@@ -38,24 +38,7 @@ namespace ApplicationCore.DTOs
         public bool IsPrivateEvent { get; set; }
         public bool IsFree {  get; set; }
 
-        //問題是聯絡人跟報名人欄位選擇要怎麼存入DB?
-        public List<ContactPersonVM> ContactPerson { get; set; }
-        public class ContactPersonVM
-        {
-            public string Name { get; set; }
-            public string Email { get; set; }
-            public string Phone { get; set; } //名稱還未定
-        }
-
-        public List<ParticipantPeopleVM> ParticipantPeople { get; set; }
-        public class ParticipantPeopleVM
-        {
-            public string Name { get; set; }
-            public string Email { get; set; }
-            public string Phone { get; set; } //名稱還未定
-        }
-
-        public int CategoryId { get; set; }
+        
         
         public int Sort {  get; set; }//這會用到嗎?資料庫排序?但每次只會有一筆進去?
         public bool? IsDeleted { get; set; }
@@ -64,9 +47,9 @@ namespace ApplicationCore.DTOs
 
         //SetTicket
         //票可能會有好幾張不同的資料
-        //public List<TicketDetailViewModel> TicketDetail { get; set; }
-        //public class TicketDetailViewModel
-        //{
+        public List<TicketDetailViewModel> TicketDetail { get; set; }
+        public class TicketDetailViewModel
+        {
             public int TicketTypeId { get; set; }
             public string TicketName { get; set; }//票種名稱
             public string TicketType { get; set; }
@@ -74,14 +57,20 @@ namespace ApplicationCore.DTOs
             public DateTime EndSaleTime { get; set; }
             public int Prince { get; set; }
             public int Amount { get; set; } //數量
-        //}
+        }
 
-        //票區
-        public int SeatAreaId { get; set; }
+        public List<TicketSeatArea> TicketSeatAreas { get; set; }
+        public class TicketSeatArea
+        {
+            //票區
+            public int SeatAreaId { get; set; }
+        }
         
     }
 
-    
-
-
+    public class CategoryTags
+    {
+        public int CategoryId { get; set; }
+        public string CategoryName { get; set; }
+    }
 }

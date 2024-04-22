@@ -2,6 +2,7 @@
 using ApplicationCore.Entities;
 using ApplicationCore.Interfaces;
 using Azure.Core;
+using CloudinaryDotNet.Actions;
 using Infrastructure.Data;
 using Microsoft.EntityFrameworkCore;
 using Newtonsoft.Json;
@@ -9,6 +10,7 @@ using System;
 using System.Diagnostics.Tracing;
 using System.Linq.Expressions;
 using System.Security.Cryptography;
+using static ApplicationCore.DTOs.CreateEventDto;
 using Organization = ApplicationCore.Entities.Organization;
 
 namespace Infrastructure.Services
@@ -52,9 +54,6 @@ namespace Infrastructure.Services
             using (var transcation = DbContext.Database.BeginTransaction())
                 try
                 {
-                    // 將列表轉 JSON 字串
-                    var contactPersonJson = JsonConvert.SerializeObject(request.ContactPerson);
-                    var participantPeopleJson = JsonConvert.SerializeObject(request.ParticipantPeople);
 
                     //設定活動資料
                     var activity = new Event
@@ -73,8 +72,6 @@ namespace Infrastructure.Services
                         StreamingPlatform = request.StreamingName,
                         StreamingUrl = request.StreamingUrl,
                         Capacity = request.Attendance,
-                        ContactPerson = contactPersonJson,
-                        ParticipantPeople = participantPeopleJson,
                         EventImage = request.EventImage,
                         Introduction = request.EventIntroduction,
                         Description = request.EventDescription,
@@ -94,32 +91,39 @@ namespace Infrastructure.Services
                     var eventTags = new EventAndTagMapping
                     {
                         EventId = request.EventId,
-                        CategoryTagId = request.CategoryId,
+                        //CategoryTagId = request.CategoryId,
                     };
 
 
                     DbContext.EventAndTagMappings.Add(eventTags);
                     DbContext.SaveChanges();
 
-                    //TicketTypes: 活動與票卷的關係
-                    var ticketDetail = new TicketType
-                    {
-                        EventId = request.EventId,
-                        Name = request.TicketName,
-                        StartSaleTime = request.StartSaleTime,
-                        EndSaleTime = request.EndSaleTime,
-                        Price = request.Prince,
-                        CapacityAmount = request.Amount,
 
-                    };
-                    DbContext.TicketTypes.Add(ticketDetail);
+                    //======================================以下是票卷
+                    //TicketTypes: 活動與票卷的關係
+                    //把票的資料跟票區ID全部一起foreach然後
+                    List<TicketDetailViewModel> TicketDetail = new List<TicketDetailViewModel>();
+                    foreach (var ticket in TicketDetail)
+                    {
+                        //TicketDetailViewModel ticketDetail = new TicketType
+                        //{
+                        //    EventId = request.EventId,
+                        //    Name = request.TicketName,
+                        //    StartSaleTime = request.StartSaleTime,
+                        //    EndSaleTime = request.EndSaleTime,
+                        //    Price = request.Prince,
+                        //    CapacityAmount = request.Amount,
+
+                        //};
+                        //DbContext.TicketTypes.Add(ticketDetail);
+                    }
                     DbContext.SaveChanges();
 
                     //票區與票的對應
                     var ticketAndSeatAreaMapping = new TicketTypeAndSeatAreaMapping
                     {
-                        TicketTypeId = request.TicketTypeId,
-                        SeatAreaId = request.SeatAreaId,
+                        //TicketTypeId = request.TicketTypeId,
+                        //SeatAreaId = request.SeatAreaId,
                     };
                     DbContext.TicketTypeAndSeatAreaMappings.Add(ticketAndSeatAreaMapping);
                     DbContext.SaveChanges();
@@ -145,9 +149,6 @@ namespace Infrastructure.Services
                     var selectedEvent = DbContext.Events
                         .FirstOrDefault(e => e.Id == request.EventId);
 
-                    var contactPersonJson = JsonConvert.SerializeObject(request.ContactPerson);
-                    var participantPeopleJson = JsonConvert.SerializeObject(request.ParticipantPeople);
-
                     //取欄位所需
                     selectedEvent.Name = request.EventName;
                     selectedEvent.OrganizationId = request.OrgId;
@@ -161,9 +162,7 @@ namespace Infrastructure.Services
                     //還有一欄給使用者自填活動主頁網址,視情況再放
                     selectedEvent.StreamingPlatform = request.StreamingName;
                     selectedEvent.StreamingUrl = request.StreamingUrl;
-                    selectedEvent.Capacity = request.Attendance;
-                    selectedEvent.ContactPerson = contactPersonJson;
-                    selectedEvent.ParticipantPeople = participantPeopleJson;
+                    selectedEvent.Capacity = request.Attendance; 
                     selectedEvent.EventImage = request.EventImage;
                     selectedEvent.Introduction = request.EventIntroduction;
                     selectedEvent.Description = request.EventDescription;
@@ -175,25 +174,36 @@ namespace Infrastructure.Services
                     DbContext.SaveChanges();
 
                     //Tag: 尋找同一個活動下的標籤
-                    var sameEventTag = DbContext.EventAndTagMappings
-                        .Where(t => t.EventId == request.EventId).ToList(); ;
+                    var eventCategoryTags = DbContext.EventAndTagMappings.Select(eatm => new CategoryTags
+                    {
+                        CategoryId = eatm.Id,
+                        CategoryName = eatm.CategoryTag.Name
+                    }).ToList();
 
-                    sameEventTag.ForEach(tag => tag.CategoryTagId = request.CategoryId);
-                    DbContext.SaveChanges();
+                    var sameEventTag = DbContext.EventAndTagMappings
+                        .Where(t => t.EventId == request.EventId).ToList(); 
+
+                    //sameEventTag.ForEach(tag => tag.CategoryTagId = request.CategoryId);
+                    //DbContext.SaveChanges();
 
                     //票名,時間,價格,數量
                     //同一活動下的票種內容
                     var sameEventTicketTypes = DbContext.TicketTypes
                         .Where(t => t.EventId == request.EventId).ToList();
 
+                    List<TicketDetailViewModel> TicketDetail = new List<TicketDetailViewModel>();
+                    foreach(var ticket in DbContext.TicketTypes)
+                    {
+
+                    }
                     sameEventTicketTypes.ForEach(
                         tt =>
                         {
-                            tt.Name = request.TicketName;
-                            tt.StartSaleTime = request.StartSaleTime;
-                            tt.EndSaleTime = request.EndSaleTime;
-                            tt.Price = request.Prince;
-                            tt.CapacityAmount = request.Amount;
+                            //tt.Name = request.TicketName;
+                            //tt.StartSaleTime = request.StartSaleTime;
+                            //tt.EndSaleTime = request.EndSaleTime;
+                            //tt.Price = request.Prince;
+                            //tt.CapacityAmount = request.Amount;
                         }
                     );
                     DbContext.SaveChanges();
@@ -207,7 +217,7 @@ namespace Infrastructure.Services
                             .Where(t => t.TicketTypeId == ticketType.Id).ToList();
                         foreach (var item in sameTicketTypeSeatAreas)
                         {
-                            item.SeatAreaId = request.SeatAreaId;
+                            //item.SeatAreaId = request.SeatAreaId;
                         }
                     }
 
@@ -227,11 +237,6 @@ namespace Infrastructure.Services
         {
 
             var activity = GetById(eventId);
-            
-
-            // JSON轉物件
-            var contactPersonDeserialize = JsonConvert.DeserializeObject(activity.ContactPerson);
-            var participantPeopleDeserialize = JsonConvert.DeserializeObject(activity.ParticipantPeople);
 
             var result = new CreateEventDto
             {
@@ -249,8 +254,6 @@ namespace Infrastructure.Services
                 StreamingName = activity.StreamingPlatform,
                 StreamingUrl = activity.StreamingUrl,
                 Attendance = activity.Capacity,
-                //ContactPerson = activity.ContactPerson,
-                //ParticipantPeople = participantPeopleJson,
 
                 EventImage = activity.EventImage,
                 EventIntroduction = activity.Introduction,

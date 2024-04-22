@@ -278,14 +278,14 @@
                                         <h4>活動分類</h4>
                                         <span class="note">你可以選擇最多 3 個分類。</span>
 
-                                        @* <ul class="tag-pool" v-model="tag">
+                                        <ul class="tag-pool" v-model="tag">
                                             <li>
-                                            @foreach (var tag in Model.EventCategoryTags)
+                                            @* @foreach (var tag in Model.EventCategoryTags)
                                             {
                                             @await Html.PartialAsync("~/PartialViews/_CategoryTags_Partial.cshtml", tag);
-                                            }
+                                            } *@
                                             </li>
-                                        </ul> *@
+                                        </ul>
                                         <div class="tag-pool">
                                             <div class="tag">演唱會</div>
                                             <div class="tag">課程講座</div>
