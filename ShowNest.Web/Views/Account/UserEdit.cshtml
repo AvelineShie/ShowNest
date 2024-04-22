@@ -3,6 +3,24 @@
     <link href="~/css/_partial/_accountnavbarpartial.css" rel="stylesheet" />
     <link href="~/css/account/useredit.css" rel="stylesheet" />
 }
+<script>
+    document.addEventListener('DOMContentLoaded', function () {
+        var usernameInput = document.querySelector('input[name="Account"]');
+        var originalUsername = usernameInput.value; // 儲存原始使用者名稱
+
+        usernameInput.addEventListener('change', function () {
+            var newUsername = this.value;
+            fetch('/YourController/CheckUsernameExists?username=' + newUsername)
+                .then(response => response.json())
+                .then(data => {
+                    if (data.exists) {
+                        alert('使用者名稱已存在，將復原為原始名稱。');
+                        usernameInput.value = originalUsername; // 復原使用者名稱
+                    }
+                });
+        });
+    });
+</script>
 <section class="section_wrap">
 
     <div id="UserEdit" class="width">
@@ -178,6 +196,7 @@
                     </button>
                 </div>
             </div>
+            <input type="hidden" name="OriginalAccount" value="@Model.Account" />
         </form>
     </div>
 </section>
