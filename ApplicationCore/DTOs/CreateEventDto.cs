@@ -12,10 +12,10 @@ namespace ApplicationCore.DTOs
     public class CreateEventDto
     {
         //CreateEvent
-        public int OwnerId { get; set; }
+        //public int OwnerId { get; set; }
         public int OrgId { get; set; }
         public string OrgName { get; set; }
-        public int EventId { get; set; }
+        //public int EventId { get; set; }
         public string EventName { get; set; }
         public DateTime StartTime { get; set; }
         public DateTime EndTime { get; set; }
@@ -24,10 +24,10 @@ namespace ApplicationCore.DTOs
         public string CoOrganizer { get; set; }
         public int Attendance { get; set; }
         public string EventStatus { get; set; }
-        public string StreamingName { get; set; }
-        public string StreamingUrl {  get; set; }
-        public string LocationName { get; set; }
-        public string EventAddress { get; set; }
+        //public string StreamingName { get; set; }
+        //public string StreamingUrl {  get; set; }
+        //public string LocationName { get; set; }
+        //public string EventAddress { get; set; }
         public string EventIntroduction { get; set; }
         public string EventDescription { get; set; }
         public string EventImage { get; set; }

@@ -60,29 +60,34 @@ namespace Infrastructure.Services
                     {
                         //Id = request.EventId,
                         Name = request.EventName,
-                        //OrganizationId = request.OrgId,
-                        //StartTime = request.StartTime,
+                        OrganizationId = request.OrgId,
+                        StartTime = request.StartTime,
                         //EndTime = request.EndTime,
-                        //Type = request.EventStatus,
-                        LocationName = request.LocationName,
-                        LocationAddress = request.EventAddress,
+                        Type = 0,
+                        //LocationName = request.LocationName,
+                        //LocationAddress = request.EventAddress,
                         //Longitude = request.Longitude,
                         //Latitude = request.Latitude,
                         //還有一欄給使用者自填活動主頁網址,視情況再放
-                        StreamingPlatform = request.StreamingName,
-                        StreamingUrl = request.StreamingUrl,
+                        //StreamingPlatform = request.StreamingName,
+                        //StreamingUrl = request.StreamingUrl,
                         //Capacity = request.Attendance,
                         EventImage = request.EventImage,
                         Introduction = request.EventIntroduction,
                         Description = request.EventDescription,
-                        MainOrganizer = request.MainOrganizer,
+                        MainOrganizer = request.MainOrganizer ?? "default",
                         CoOrganizer = request.CoOrganizer,
-                        //IsPrivateEvent = request.IsPrivateEvent,
-                        //IsFree = request.IsFree,
-                        //Sort = request.Sort, //排序
+                        IsPrivateEvent = request.IsPrivateEvent,
+                        IsFree = false,
+                        //Sort = request.Sort //排序
                         IsDeleted = false,
+                        Status = (byte)(request.EventStatus == "online" ? 0 : 1),
                         //CreatedAt = request.CreatedAt,
                         //EditedAt = request.EditedAt
+                        ContactPerson = "No People",
+                        ParticipantPeople = "No Participant",
+                        CreatedAt = DateTime.Now,
+                       
                     };
                     DbContext.Events.Add(activity);
                     DbContext.SaveChanges();
@@ -96,7 +101,7 @@ namespace Infrastructure.Services
 
 
                     //DbContext.EventAndTagMappings.Add(eventTags);
-                    DbContext.SaveChanges();
+                    //DbContext.SaveChanges();
 
 
                     //======================================以下是票卷
@@ -120,13 +125,13 @@ namespace Infrastructure.Services
                     //DbContext.SaveChanges();
 
                     //票區與票的對應
-                    var ticketAndSeatAreaMapping = new TicketTypeAndSeatAreaMapping
-                    {
-                        //TicketTypeId = request.TicketTypeId,
-                        //SeatAreaId = request.SeatAreaId,
-                    };
-                    DbContext.TicketTypeAndSeatAreaMappings.Add(ticketAndSeatAreaMapping);
-                    DbContext.SaveChanges();
+                    //var ticketAndSeatAreaMapping = new TicketTypeAndSeatAreaMapping
+                    //{
+                    //    //TicketTypeId = request.TicketTypeId,
+                    //    //SeatAreaId = request.SeatAreaId,
+                    //};
+                    //DbContext.TicketTypeAndSeatAreaMappings.Add(ticketAndSeatAreaMapping);
+                    //DbContext.SaveChanges();
 
                     transcation.Commit();
 
@@ -140,8 +145,6 @@ namespace Infrastructure.Services
                 }
 
         }
-
-
 
 
 

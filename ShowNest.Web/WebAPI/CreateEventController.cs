@@ -75,9 +75,11 @@ namespace ShowNest.Web.WebAPI
         [HttpPost]
         public IActionResult CreateAndEditEvent(CreateEventDto request)
         {
+            var newEventId = _CreateEventService.CreateEvent(request);
             return Ok(new
             {
-                IsSuccess = true
+                IsSuccess = true,
+                Id = newEventId
             });
         }
 

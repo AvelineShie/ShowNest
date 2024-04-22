@@ -8,7 +8,8 @@ const options = {
         return {
 
             //====================CreateEvent(R)
-            userId: 2,
+            userId: 1,
+            organzationId: 1,
             selectedOrganization: {}, //組織下拉v-model
             organizations: [], //下拉items
             displaySelectActivityType: false, /*隱藏*/
@@ -135,7 +136,10 @@ const options = {
                  "EventDescription":this.description,
                  "EventImage": this.imgUrl, 
                  "IsPrivateEvent": this.privacy, 
-                 "CategoryNames": this.selectedCategories, 
+                "CategoryNames": this.selectedCategories,
+                "OrgId": this.organzationId
+
+
                 
             })
                .then()
