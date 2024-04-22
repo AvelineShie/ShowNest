@@ -16,15 +16,10 @@ namespace ShowNest.Web.Controllers
 {
     public class AccountController : Controller
     {
-        //登入
         private readonly AccountService _accountService;
-        //註冊
-        private readonly AccountService _userService;
-
-        public AccountController(AccountService accountService, AccountService userService)
+        public AccountController(AccountService accountService)
         {
             _accountService = accountService;
-            _userService = userService;
         }
         //登入
         [HttpGet]
@@ -58,8 +53,6 @@ namespace ShowNest.Web.Controllers
                 return View(Login);
             }
         }
-
-
         //註冊
         [HttpGet]
         public IActionResult SignUp()
@@ -74,7 +67,7 @@ namespace ShowNest.Web.Controllers
             if (ModelState.IsValid)
             {
                 // 使用AccountService進行註冊
-                var result = await _userService.RegisterUserAsync(SignUp, ModelState.IsValid);
+                var result = await _accountService.RegisterUserAsync(SignUp, ModelState.IsValid);
                 if (result.IsSuccess)
                 {
                     // 註冊成功後，將用戶登入
@@ -226,7 +219,6 @@ namespace ShowNest.Web.Controllers
         {
             return View();
         }
-        
         public IActionResult Identities()
         {
             return View();
@@ -255,7 +247,6 @@ namespace ShowNest.Web.Controllers
         {
             return View();
         }
-
         //登出
         public async Task<IActionResult> logout()
         {
@@ -264,7 +255,6 @@ namespace ShowNest.Web.Controllers
             return RedirectToAction("Index", "Home");
 
         }
-
         //忘記密碼
         public IActionResult ForgetPassword()
         {

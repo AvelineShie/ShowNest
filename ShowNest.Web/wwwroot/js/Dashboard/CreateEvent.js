@@ -53,8 +53,7 @@ const options = {
             onlineEventArea: false, //線上活動欄位
 
             //地圖
-            center: { lat: 40.689247, lng: -74.044502 },
-            position:{ lat: 40.689247, lng: -74.044502 },
+            
 
             // CKEditor
             editor: ClassicEditor,
@@ -77,39 +76,19 @@ const options = {
 
             //======================SetTicket(R,U)
             //選票種
-            //TicketTypeList: [
-            //    { id:1, name:"全票" }
-            //],
-            //selectedTicketType: [],
+            TicketType: '',
+            StartTime: '',
+            EndTime: '',
+            Money: '',
+            Amount:'',
 
-            //選票區
-            //TicketAreaList:
-            //[
-            //    { id: 1, name: "特1A" },
-            //    { id: 2, name: "特1B" },
-            //    { id: 3, name: "2A區" },
-            //    { id: 4, name: "2B區" },
-            //    { id: 5, name: "2C區" },
-            //    { id: 6, name: "2D區" },
-            //    { id: 7, name: "2E區" },
-            //    { id: 8, name: "2F區" },
-            //    { id: 9, name: "2G區" },
-            //    { id: 10, name: "3A區" },
-            //    { id: 11, name: "3B區" },
-            //    { id: 12, name: "3C區" },
-            //    { id: 13, name: "3D區" },
-            //    { id: 14, name: "3E區" },
-            //    { id: 15, name: "3F區" },
-            //    { id: 16, name: "3G區" }
-            //],
-            //selectedTicketAreaList: [],
 
         }
     },
     mounted() {
         this.CreateEventbyUserId()
-        /*this.CreateAndEditEvent()*/
-        /*this.GetOrgEventsByOrgId()*/
+        this.GetOrgEventsByOrgId()
+        this.CreateAndEditEvent()
     },
     methods: {
         async CreateEventbyUserId() {
@@ -118,13 +97,19 @@ const options = {
                     if (res.data == null) {
                         this.selectedOrganization = { id: 0, name: '沒有組織，請先建立新組織' }
                     }
-                    this.selectedOrganization = null;
+                    this.selectedOrganization = null; //顯示預設字樣
                     this.orgNames = res.data.map(o => ({ id: o.orgId, name: o.orgName }));
             })
             .catch(err => {
                 console.error(err); 
             })
+        },
 
+        //取得上面的OrgId後傳值,那這樣是Get還是Post?
+        async GetEventByOrgId() {
+            await axios.post('/api/CreateEvent/GetEventByOrgId')
+                .then()
+            .catch()
         },
 
         imgUpload(e) {
@@ -146,51 +131,34 @@ const options = {
                 })
         },
 
-        //    const data = await response.json();
-        //    if (!data.isSuccess) {
-        //        this.selectedOrganization = { id: 0, name: '沒有組織，請先建立組織' };
-        //        throw new Error(data.message);
-        //    }
 
-        //    this.orgNames = data.body.orgNames.map(x => {
-        //        return { id: x.id, name: x.name };
-        //    });
-        //    console.log(orgNames);
-
-        //    this.selectedOrganization = null;
-        //} catch (err) {
-        //    console.error(err);
-        //}
-
-        
-
-        //CreateAndEditEvent() {
-        //    fetch('/api/CreateEvent/CreateAndEditEvent',
-        //        {
-        //            method: 'POST', 
-        //            headers: { 'Content-Type': 'application/json' }, 
-        //            body: JSON.stringify({ eventId: this.eventId })
-        //        })
-        //        .then(response => {
-        //            return response.json()
-        //        })
-        //        .then(data => {
-        //            if (!data.isSuccess) {
-        //                this.selectedOrganization = { id: 0, name: '沒有組織，請先建立組織' }
-        //                throw new Error(data.message)
-        //            }
-        //            this.organizations = data.body.organizations.map(x => {
-        //                return { id: x.id, name: x.name }
-        //            })
-        //            this.selectedOrganization = null
-        //        })
-        //        .catch(err => {
-        //            console.error(err)
-        //        })
-        //},
-        //GetOrgEventsByOrgId() {
-        //    console.log(this.selectedOrganization)
-        //},
+        CreateAndEditEvent() {
+            fetch('/api/CreateEvent/CreateAndEditEvent',
+                {
+                    method: 'POST', 
+                    headers: { 'Content-Type': 'application/json' }, 
+                    body: JSON.stringify({ eventId: this.eventId })
+                })
+                .then(response => {
+                    return response.json()
+                })
+                .then(data => {
+                    if (!data.isSuccess) {
+                        this.selectedOrganization = { id: 0, name: '沒有組織，請先建立組織' }
+                        throw new Error(data.message)
+                    }
+                    this.organizations = data.body.organizations.map(x => {
+                        return { id: x.id, name: x.name }
+                    })
+                    this.selectedOrganization = null
+                })
+                .catch(err => {
+                    console.error(err)
+                })
+        },
+        GetOrgEventsByOrgId() {
+            console.log(this.selectedOrganization)
+        },
 
     },
     watch: {
