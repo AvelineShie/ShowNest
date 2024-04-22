@@ -31,7 +31,7 @@ const options = {
             noEndTime: false,
             mainOrganizerInput: '',
             coOrganizer: '',
-            privacy: 'private',
+            privacy: false,
 
             number: 0, //人數
             unlimited: '',
@@ -46,8 +46,7 @@ const options = {
             SHOWNESTLive: '', //線上選項
 
             introduction: '',
-            description:'',
-            eventStatus: [], //實體或線上
+            eventStatus: 0, //實體或線上
 
             //地圖
             
@@ -121,18 +120,17 @@ const options = {
             console.log("submit form")
             axios.post('/api/CreateEvent/CreateAndEditEvent', {
                 "EventName": this.eventNameInput, 
-                 "StartTime": this.startTime, 
-                 "EndTime": this.endTime, 
+                "StartTime": this.startTime,
+                "EndTime": this.endTime,
                  "noEndTime": this.noEndTime,
-                 "MainOrganizer": this.mainOrganizerInput, // 主辦單位
-                 "CoOrganizer": this.coOrganizer, // 協辦單位
-                 "Attendance": this.number, // 活動人數
-                 "EventStatus": this.eventStatus, // 線上實體
+                 "MainOrganizer": this.mainOrganizerInput, 
+                 "CoOrganizer": this.coOrganizer,
+                 "Attendance": this.number, 
+                 "EventStatus": this.eventStatus, 
                  "StreamingName": this.streaming,
                  "StreamingUrl": this.SHOWNESTLive, 
-                 "LocationName": this.placeName, // 地點名稱
-                 "EventAddress": this.EventAddress, // 活動地址
-                 "unlimited": this.unlimited,
+                 "LocationName": this.placeName, 
+                 "EventAddress": this.EventAddress, 
                  "EventIntroduction": this.introduction, 
                  "EventDescription":this.description,
                  "EventImage": this.imgUrl, 
