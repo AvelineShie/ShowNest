@@ -130,7 +130,7 @@
                                     <!-- 活動時間 -->
                                     <div class="section">
                                         <h4 class="essential-input">活動舉辦時間</h4>
-                                            <input type="datetime-local" class="date-time" id="startTime" v-modle="startTime">
+                                            <input type="datetime-local" class="date-time" id="startTime" v-model="startTime">
                                         <div class="space">至</div>
                                         <input type="datetime-local" class="date-time" id="endTime" v-model="endTime">
                                         <div>
@@ -261,11 +261,11 @@
                                     <div class="section">
                                         <h4 asp-for="IsPrivate">活動隱私</h4>
                                         <div class="form-check form-check-inline">
-                                                <input class="form-check-input" v-model="public" type="radio" name="inlineRadioOptions" id="inlineRadio1" value="option1">
+                                                <input class="form-check-input" v-model="privacy" type="radio" value="0">
                                             <label class="form-check-label" for="inlineRadio1">公開</label>
                                         </div>
                                         <div class="form-check form-check-inline">
-                                            <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio2" value="option2" checked>
+                                                <input class="form-check-input" type="radio" v-model="privacy" value="1" checked>
                                             <label class="form-check-label" v-model="private" for="inlineRadio2">私人</label>
                                         </div>
                                         <div>
@@ -287,6 +287,9 @@
                                             </li>
                                         </ul>
                                         <div class="tag-pool">
+                                            @* <input type="checkbox" id="ch" style="display: none;">
+                                            <p></p>
+                                            <label for="ch"></label> *@
                                             <div class="tag">演唱會</div>
                                             <div class="tag">課程講座</div>
                                             <div class="tag">研討會</div>
@@ -303,9 +306,18 @@
                                             <div class="tag">運動</div>
                                         </div>
 
+                                        @* todo *@
+                                            <div v-for="(item, index) in categoryItems" :key="index">
+                                                <input type="checkbox" :id="'category-' + index" v-model="selectedCategories" :value="item">
+                                                <label :for="'category-' + index">{{ item }}</label>
+                                            </div>
+                                            <div>
+                                                已選擇的項目：{{ selectedCategories }}
+                                            </div>
                                     </div>
                                 </div>
                             </div>
+                                <button class="btn btn-success" v-on:click="CreateAndEditEvent">submit</button>
                             @* <div class="pages-change">
                             <button type="button" class="btn btn-outline-secondary" onclick="window.location.href='@Url.Action("CreateEvent", "Dashboard")'">上一頁</button>
                             <button type="submit" class="btn btn-outline-secondary" value="Upload">下一頁</button>
@@ -356,9 +368,9 @@
                                                     </v-select>
                                                 </td>
                                                 <td>
-                                                    <input type="date" class="date-local" v-model="StartTime">
+                                                    <input type="date" class="date-local" v-model="TicketStartTime">
                                                     <span>至</span>
-                                                    <input type="date" class="date-local" v-model="EndTime">
+                                                    <input type="date" class="date-local" v-model="TicketEndTime">
                                                 </td>
                                                 <td>TWD$
                                                     <input type="text" v-model="Money" class="form-control h-25 w-50 " id="formGroupExampleInput" placeholder=" ">
@@ -390,6 +402,8 @@
                                         </tr>
 
                                         }  *@
+
+                                        @* <button class="btn btn-success" v-on:click="CreateAndEditEvent">submit</button> *@
                                     </table>
 
                                     

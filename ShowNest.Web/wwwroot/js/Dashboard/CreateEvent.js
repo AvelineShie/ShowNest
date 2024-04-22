@@ -34,8 +34,9 @@ const options = {
             noEndTime: false,
             mainOrganizerInput: '',
             coOrganizer: '',
+            privacy: 'private',
 
-            number: '', //人數
+            number: 0, //人數
             unlimited: '',
 
             placeName: '',
@@ -76,11 +77,19 @@ const options = {
 
             //======================SetTicket(R,U)
             //選票種
-            TicketType: '',
-            StartTime: '',
-            EndTime: '',
-            Money: '',
-            Amount:'',
+            //TicketType: '',
+            //StartTime: '',
+            //EndTime: '',
+            //Money: '',
+            //Amount: '',
+
+            checkboxErrorMsg: '',
+
+            //todo
+            categoryItems: [
+                '音樂', '戲劇', '展覽', '電影', '藝文活動', '美食', '運動', '課程講座', '演唱會'
+            ],
+            selectedCategories: []
 
 
         }
@@ -88,7 +97,6 @@ const options = {
     mounted() {
         this.CreateEventbyUserId()
         this.GetOrgEventsByOrgId()
-        this.CreateAndEditEvent()
     },
     methods: {
         async CreateEventbyUserId() {
@@ -103,13 +111,6 @@ const options = {
             .catch(err => {
                 console.error(err); 
             })
-        },
-
-        //取得上面的OrgId後傳值,那這樣是Get還是Post?
-        async GetEventByOrgId() {
-            await axios.post('/api/CreateEvent/GetEventByOrgId')
-                .then()
-            .catch()
         },
 
         imgUpload(e) {
@@ -131,34 +132,83 @@ const options = {
                 })
         },
 
-
         CreateAndEditEvent() {
-            fetch('/api/CreateEvent/CreateAndEditEvent',
-                {
-                    method: 'POST', 
-                    headers: { 'Content-Type': 'application/json' }, 
-                    body: JSON.stringify({ eventId: this.eventId })
-                })
-                .then(response => {
-                    return response.json()
-                })
-                .then(data => {
-                    if (!data.isSuccess) {
-                        this.selectedOrganization = { id: 0, name: '沒有組織，請先建立組織' }
-                        throw new Error(data.message)
-                    }
-                    this.organizations = data.body.organizations.map(x => {
-                        return { id: x.id, name: x.name }
-                    })
-                    this.selectedOrganization = null
-                })
-                .catch(err => {
-                    console.error(err)
-                })
+            console.log("submit form")
+            axios.post('/api/CreateEvent/CreateAndEditEvent', {
+                "EventName": this.eventNameInput, 
+                 "StartTime": this.startTime, 
+                 "EndTime": this.endTime, 
+                 "noEndTime": this.noEndTime,
+                 "MainOrganizer": this.mainOrganizerInput, // 主辦單位
+                 "CoOrganizer": this.coOrganizer, // 協辦單位
+                 "Attendance": this.number, // 活動人數
+                 "EventStatus": this.eventStatus, // 線上實體
+                 "StreamingName": this.streaming,
+                 "StreamingUrl": this.SHOWNESTLive, 
+                 "LocationName": this. placeName, // 地點名稱
+                 "EventAddress": this.EventAddress, // 活動地址
+                 "unlimited": this.unlimited,
+                 "EventIntroduction": this.EventIntroduction, 
+                 "EventDescription": this.EventDescription, 
+                 "EventImage": this.EventImage, 
+                 "IsPrivateEvent": false, 
+                 "CategoryNames": this.CategoryNames 
+                
+            })
+               .then()
+                .catch()
         },
+
+
+        //CreateAndEditEvent() {
+        //    console.log("submit form")
+        //    axios.post('/api/CreateEvent/CreateNewEvent', {
+        //        "EventName": "Example Event",
+        //        "StartTime": "2024-04-22T09:00:00",
+        //        "EndTime": "2024-04-22T17:00:00",
+        //        "MainCompany": "Main Company Inc.",
+        //        "AssistCompany": "Assist Company Ltd.",
+        //        "Amount": 100,
+        //        "Type": "Conference",
+        //        "Title": "Advanced .NET and JavaScript Development",
+        //        "Address": "123 Main St, Anytown, USA",
+        //        "Intro": "Join us for a day of learning and networking.",
+        //        "Description": "This conference will cover the latest in .NET and JavaScript development, featuring expert talks and hands-on workshops.",
+        //        "ImgUrl": "https://example.com/event-image.jpg",
+        //        "Privacy": "Public",
+        //        "CategoryNames": ["Development", "Technology", "Networking"]
+        //    })
+        //        .then(res => {
+        //            console.log(res)
+        //        })
+
+
+            //fetch('/api/CreateEvent/CreateAndEditEvent',
+            //    {
+            //        method: 'POST', 
+            //        headers: { 'Content-Type': 'application/json' }, 
+            //        body: JSON.stringify({ eventId: this.eventId })
+            //    })
+            //    .then(response => {
+            //        return response.json()
+            //    })
+            //    .then(data => {
+            //        if (!data.isSuccess) {
+            //            this.selectedOrganization = { id: 0, name: '沒有組織，請先建立組織' }
+            //            throw new Error(data.message)
+            //        }
+            //        this.organizations = data.body.organizations.map(x => {
+            //            return { id: x.id, name: x.name }
+            //        })
+            //        this.selectedOrganization = null
+            //    })
+            //    .catch(err => {
+            //        console.error(err)
+            //    })
+        //},
         GetOrgEventsByOrgId() {
             console.log(this.selectedOrganization)
-        },
+        }
 
     },
     watch: {
