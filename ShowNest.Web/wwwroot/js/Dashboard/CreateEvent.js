@@ -25,9 +25,6 @@ const options = {
             orgNames:[],
 
             //====================SetEvent(R,U)
-            eventId: '',
-            OrgNames: '',
-
             eventNameInput: '',
             startTime: '',
             endTime: '',
@@ -39,19 +36,18 @@ const options = {
             number: 0, //人數
             unlimited: '',
 
+            //圖片
+            imgUrl: 'https://res.cloudinary.com/do2tfk5nk/image/upload/v1713610498/ShowNestImg/UnUploadedImg_vsrtfu.jpg',
+
             placeName: '',
             EventAddress: '',
-            updateMap:'',
 
             streaming:'',
             SHOWNESTLive: '', //線上選項
 
             introduction: '',
-
-            
+            description:'',
             eventStatus: [], //實體或線上
-            placeSection: true, //實體活動欄位
-            onlineEventArea: false, //線上活動欄位
 
             //地圖
             
@@ -64,17 +60,6 @@ const options = {
                 toolbar: ['bold', 'italic', 'heading', 'Superscript', 'link', 'undo', 'redo', 'imageUpload']
             },
 
-            //圖片
-            imgUrl: 'https://res.cloudinary.com/do2tfk5nk/image/upload/v1713610498/ShowNestImg/UnUploadedImg_vsrtfu.jpg',
-            fileupload: '',
-            restoreImg: '',
-
-            //活動隱私狀態
-            public: '',
-            private:'',
-
-            tag:'',
-
             //======================SetTicket(R,U)
             //選票種
             //TicketType: '',
@@ -83,7 +68,7 @@ const options = {
             //Money: '',
             //Amount: '',
 
-            checkboxErrorMsg: '',
+            //checkboxErrorMsg: '',
 
             //todo
             categoryItems: [
@@ -145,14 +130,14 @@ const options = {
                  "EventStatus": this.eventStatus, // 線上實體
                  "StreamingName": this.streaming,
                  "StreamingUrl": this.SHOWNESTLive, 
-                 "LocationName": this. placeName, // 地點名稱
+                 "LocationName": this.placeName, // 地點名稱
                  "EventAddress": this.EventAddress, // 活動地址
                  "unlimited": this.unlimited,
-                 "EventIntroduction": this.EventIntroduction, 
-                 "EventDescription": this.EventDescription, 
-                 "EventImage": this.EventImage, 
-                 "IsPrivateEvent": false, 
-                 "CategoryNames": this.CategoryNames 
+                 "EventIntroduction": this.introduction, 
+                 "EventDescription":this.description,
+                 "EventImage": this.imgUrl, 
+                 "IsPrivateEvent": this.privacy, 
+                 "CategoryNames": this.selectedCategories, 
                 
             })
                .then()

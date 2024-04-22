@@ -66,8 +66,8 @@ namespace Infrastructure.Services
                         Type = request.EventStatus,
                         LocationName = request.LocationName,
                         LocationAddress = request.EventAddress,
-                        Longitude = request.Longitude,
-                        Latitude = request.Latitude,
+                        //Longitude = request.Longitude,
+                        //Latitude = request.Latitude,
                         //還有一欄給使用者自填活動主頁網址,視情況再放
                         StreamingPlatform = request.StreamingName,
                         StreamingUrl = request.StreamingUrl,
@@ -78,7 +78,7 @@ namespace Infrastructure.Services
                         MainOrganizer = request.MainOrganizer,
                         CoOrganizer = request.CoOrganizer,
                         IsPrivateEvent = request.IsPrivateEvent,
-                        IsFree = request.IsFree,
+                        //IsFree = request.IsFree,
                         //Sort = request.Sort, //排序
                         IsDeleted = false,
                         //CreatedAt = request.CreatedAt,

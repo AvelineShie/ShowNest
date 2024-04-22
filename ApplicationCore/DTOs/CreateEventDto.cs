@@ -17,8 +17,6 @@ namespace ApplicationCore.DTOs
         //public string OrgName { get; set; }
         //public int EventId { get; set; }
         public string EventName { get; set; }
-
-        //SetEvent
         public DateTime StartTime { get; set; }
         public DateTime EndTime { get; set; }
         public bool noEndTime { get; set; }
