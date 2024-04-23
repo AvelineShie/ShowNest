@@ -19,6 +19,31 @@
                     }
                 });
         });
+
+        var upLoadImg = document.getElementById('form-control-sm');
+        upLoadImg.addEventListener('change', function (e) {
+            imgUpload(e);
+        });
+
+        function imgUpload(e) {
+            let formData = new FormData();
+            for (let i = 0; i < e.target.files.length; i++) {
+                formData.append('files', e.target.files[i]);
+            }
+            axios.post('/api/ImgUploadApi/UploadImages', formData, {
+                headers: {
+                    'Content-Type': 'multipart/form-data'
+                }
+            })
+                .then(res => {
+                    console.log(res);
+                    // 將圖片URL設置到隱藏的表單字段中
+                    document.getElementById('ImageUrl').value = res.data[0];
+                })
+                .catch(err => {
+                    console.error(err);
+                });
+        }
     });
 </script>
 <section class="section_wrap">
@@ -176,10 +201,10 @@
                 <!-- 右邊 -->
                 <div class="image-upload">
                     <div class="img-container">
-                        <img src="https://picsum.photos/200/150/?random=10">
+                        <img src="@Model.ImageUrl">
                     </div>
                     <a class="file-input ">
-                        <input class="file-upload form-control form-control-sm" asp-for="Image" type="file" name="Image" id="form-control-sm">
+                        <input class="file-upload form-control form-control-sm" asp-for="ImageUrl" type="file" name="Image" id="form-control-sm">
                     </a>
                     <span class="help-block pb-4">
                         <p>建議圖片尺寸為 250x250 以上正方形圖片，最大檔案容量為2MB。如果沒有上傳，會使用系統預設圖片。</p>
@@ -197,6 +222,7 @@
                 </div>
             </div>
             <input type="hidden" name="OriginalAccount" value="@Model.Account" />
+            <input type="hidden" id="ImageUrl" name="ImageUrl" value="">
         </form>
     </div>
 </section>
