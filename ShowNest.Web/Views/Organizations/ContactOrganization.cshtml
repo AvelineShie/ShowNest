@@ -1,4 +1,5 @@
-﻿
+﻿@using ShowNest.Web.ViewModels.Organization
+@model OrganizationIndexViewModel
 @section topCSS {
     <link href="~/css/organization/contactorganization.css" rel="stylesheet" />
 }
@@ -8,7 +9,7 @@
     <div id="contactOrg" class="main-wrap width">
             <!----------- Title------------>
             <div class="title">
-                <h2 id="title">聯絡主辦單位： 雲育鏈</h2>
+            <h2 id="title">聯絡主辦單位： @Model.OrganizationName</h2>
             </div>
 
             <!----------- Form------------>

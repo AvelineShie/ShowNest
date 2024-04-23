@@ -18,6 +18,8 @@ using ShowNest.Web.Services.Dashboard;
 using ShowNest.Web.Services.TicketTypes;
 
 
+
+
 namespace ShowNest.Web
 {
     public class Program
@@ -26,11 +28,25 @@ namespace ShowNest.Web
         {
             var builder = WebApplication.CreateBuilder(args);
 
+
+
             // 取得組態中資料庫連線設定
             string connectionString = builder.Configuration.GetConnectionString("DatabaseContext");
             //在DI Container註冊EF Core的DbContext
             builder.Services.AddDbContext<DatabaseContext>(options => options.UseSqlServer(connectionString).EnableSensitiveDataLogging());
+            // 讀取Facebook設定
+            var facebookSettings = builder.Configuration.GetSection("Facebook").Get<FacebookSettings>();
+            // 配置Facebook驗證與登入餅乾
 
+            builder.Services.AddAuthentication(CookieAuthenticationDefaults.AuthenticationScheme)
+                .AddCookie()
+                .AddFacebook(options =>
+                {
+                    options.AppId = facebookSettings.ClientId;
+                    options.AppSecret = facebookSettings.ClientSecret;
+                    options.CallbackPath = facebookSettings.CallbackPath;
+                });
+            builder.Services.AddHttpClient();
             // Registration Repository
             // builder.Services.AddScoped<ISeatRepository, SeatRepository>();
             builder.Services.AddScoped<ISeatAreaRepository, SeatAreaRepository>();
@@ -81,19 +97,11 @@ namespace ShowNest.Web
             //    opt.ClientId = "";
             //    opt.ClientSecret = "";
             //});
-            
-            //登入餅乾
-            builder.Services.AddAuthentication(CookieAuthenticationDefaults.AuthenticationScheme).AddCookie();
-
-           
-            
-
-
             var app = builder.Build();
 
             // Configure the HTTP request pipeline.
             if (!app.Environment.IsDevelopment())
-            {
+            {   
                 app.UseExceptionHandler("/Home/Error");
                 // The default HSTS value is 30 days. You may want to change this for production scenarios, see https://aka.ms/aspnetcore-hsts.
                 app.UseHsts();
@@ -105,9 +113,6 @@ namespace ShowNest.Web
             app.UseRouting();
             //先驗證再授權
             app.UseAuthentication();
-            app.UseAuthorization();
-
-
             app.UseAuthorization();
 
             ///測試用路由
@@ -160,10 +165,22 @@ namespace ShowNest.Web
             );
 
             app.MapControllerRoute(
+            name: "DashboardEventsIdentifying", // 活動後台
+            pattern: "Dashboard/Events/{id?}/{viewType?}",
+            defaults: new { controller = "Dashboard", Action = "Events" }
+            );
+
+            app.MapControllerRoute(
             name: "DashboardOrganizationIdentifying", // 組織後台
-            pattern: "Dashboard/Organizations/{id}/{ViewType?}",
+            pattern: "Dashboard/Organizations/{id?}/{viewType?}",
             defaults: new { controller = "Dashboard", Action = "Organizations" }
             );
+
+            //FB配置
+            app.MapControllerRoute(
+                name: "FacebookCallback",
+                pattern: "Account/FacebookCallback/{code}/{state}",
+                defaults: new { controller = "Account", action = "FacebookCallback" });
 
 
             app.MapControllerRoute(

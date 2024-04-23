@@ -24,7 +24,7 @@ namespace ShowNest.Web.ViewModels.UserAccount
         public string PersonalURL { get; set; }
         public string PersonalProfile { get; set; }
         public bool EdmSubscription { get; set; }
-        public string Image { get; set; }
+        public string ImageUrl { get; set; }
         public DateTime? LastLogInAt { get; set; } // 使用Nullable<DateTime>來表示可以為null的欄位
         public int Status { get; set; }
         public DateTime CreatedAt { get; set; }

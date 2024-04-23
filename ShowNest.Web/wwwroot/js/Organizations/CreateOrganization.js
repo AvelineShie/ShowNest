@@ -26,8 +26,8 @@ createApp({
 
             creating: false,
             editing: false,
-            postUrl: '',
-            orgId:'',
+            orgId: 0,
+
             name: '',
             organizationUrl: '',
             outerUrl: '',
@@ -40,10 +40,11 @@ createApp({
             fbLink: '',
             igAccount: '',
             email: '',
-            imgUrl: 'https://picsum.photos/800/180/?random=87',
+            imgUrl: 'https://res.cloudinary.com/do2tfk5nk/image/upload/v1713610498/ShowNestImg/UnUploadedImg_vsrtfu.jpg',
             contactName: '',
             contactMobile: '',
             contactTelephone: '',
+
             isChecked: false,
         }
     },
@@ -66,8 +67,24 @@ createApp({
             console.log(this.editing)
         },
         submit() {
+            console.log('submit()')
+
+            console.log(
+                this.orgId,
+                this.name,
+                this.organizationUrl,
+                this.outerUrl,
+                this.description,
+                this.fbLink,
+                this.igAccount,
+                this.email,
+                this.imgUrl,
+                this.contactName,
+                this.contactMobile,
+                this.contactTelephone
+            )
             axios.post('/api/CreateAndUpdateOrganization/CreateAndUpdateOrganization', {
-                orgId:this.orgId,
+                orgId: this.orgId,
                 name: this.name,
                 organizationUrl: this.organizationUrl,
                 outerUrl: this.outerUrl,
@@ -88,6 +105,24 @@ createApp({
                 console.log(operationResult.message)
             })
         },
+        imgUpload(e) {
+            let formData = new FormData();
+            for (let i = 0; i < e.target.files.length; i++) {
+                formData.append('files', e.target.files[i]);
+            }
+            axios.post('/api/ImgUploadApi/UploadImages', formData, {
+                headers: {
+                    'Content-Type': 'multipart/form-data'
+                }
+            })
+                .then(res => {
+                    console.log(res)
+                    this.imgUrl = res.data[0]
+                })
+                .catch(err => {
+                    console.error(err);
+                })
+        },
         dataFillingForEditOrg() {
             console.log('dataFillingForEditOrg()')
             if (this.editing) {
@@ -106,7 +141,7 @@ createApp({
                         console.log(res)
                         let info = res.data.data
                         this.name = info.name
-                        this.organizationUrl = info.organizationUrl
+                        this.organizationUrl = info.name
                         this.outerUrl = info.outerUrl
                         this.description = info.description
                         this.fbLink = info.fbLink

@@ -33,7 +33,7 @@ public partial class TicketType
     /// <summary>
     /// 票券數量
     /// </summary>
-    public int CapacityAmount { get; set; }
+    public int? CapacityAmount { get; set; }
 
     /// <summary>
     /// 票價

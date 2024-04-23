@@ -3,15 +3,16 @@
 
     public class CreateEventViewModel
     {
-        public List<OrgNameList> OrgNames { get; set; } //Owner's OrgId
+        public List<OrgNameList> Organizations { get; set; } 
         public List<CategoryTagsViewModel> EventCategoryTags { get; set; }
+        public List<EventNameList> Events { get; set; }
     }
 
     public class OrgNameList
     {
-        public int OrgId {get; set;}
+        public int OrgId { get; set; }
         public string OrgName { get; set; }
-        public List<EventNameList> EventNames { get; set; } //Each Event in Each Org 
+        
     }
 
     public class EventNameList

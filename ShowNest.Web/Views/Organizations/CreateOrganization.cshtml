@@ -23,24 +23,20 @@
                 <div class="org-name log">
                     <div class="mb-3">
                         <h4 class="essential-input">組織名稱</h4>
-                        <input v-model="name" type="text" class="form-control h-50" id="formGroupExampleInput" placeholder="">
+                        <input v-model="name" type="text" class="form-control h-50" id="formGroupExampleInput" placeholder="" required>
                     </div>
                 </div>
                 <!-- 網址 -->
-                <div class="websiteLink log">
+@*                 <div class="websiteLink log">
                     <h4 class="essential-input">網址</h4>
                     <div class="input-group mb-2 h-50 w-75">
                         <input v-model="organizationUrl" type="text" class="form-control" id="website" aria-label="Website Url" aria-describedby="website">
                         <div class="input-group-text" id="website">shownest.cc</div>
-
-                        @* <span class="OK">
-                        <i class="fa-solid fa-circle-check"></i> 可以使用
-                        </span> *@
                     </div>
                     <span class="org-note mt-1">
                         3 到 16 個小寫英文或數字。
                     </span>
-                </div>
+                </div> *@
                 <!-- 網站名稱 -->
                 <div class="websiteName log">
                     <div class="mb-3">
@@ -71,7 +67,7 @@
                     <div class="email log">
                         <div class="mb-3">
                             <h4 class="essential-input">回覆 E-mail 地址</h4>
-                            <input v-model="email" type="text" class="form-control h-50" id="formGroupExampleInput" placeholder=" ">
+                            <input v-model="email" type="text" class="form-control h-50" id="formGroupExampleInput" placeholder=" " required>
                         </div>
                     </div>
                     
@@ -94,9 +90,9 @@
                     <!-- (右邊)圖片上傳區 -->
                     <div class="imageUpload log">
                         <h4>社群分享圖片</h4>
-                        <img src="https://picsum.photos/300/200/?random=10">
+                        <img :src="imgUrl">
                         <a class="file-input">
-                            <input class="file-upload form-control form-control-sm" type="file" id="form-control-sm">
+                            <input class="file-upload form-control form-control-sm" type="file" id="form-control-sm" @@change="imgUpload">
                         </a>
                         @* <div>
                         <button type="button" class="btn btn-outline-secondary">選擇圖片</button>

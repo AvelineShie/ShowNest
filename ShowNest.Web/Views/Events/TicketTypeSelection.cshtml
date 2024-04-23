@@ -11,8 +11,9 @@
 
 @section Scripts
 {
-    @* <script src="~/js/Events/TicketTypeSelection.js"></script> *@
-    <script src="~/js/Events/TicketTypeSelectionVue.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.19.1/moment-with-locales.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment-timezone/0.5.45/moment-timezone-with-data.js"></script>
+    <script src="~/js/Events/TicketTypeSelectionVue.js" asp-append-version="true"></script>
 }
 
 <div id="app">
@@ -31,13 +32,15 @@
                 <tr>
                     <th>開始時間</th>
                     <td>
-                        {{ticketTypeSelection.eventDetail.startTime}}<a id="add-to-calendar" href="" alt="">加入行事曆</a>
+                        {{toFormatDate(ticketTypeSelection.eventDetail.startTime)}}<a id="add-to-calendar" 
+                                                                        @@click="onAddToGoogleCalendarClicked">加入行事曆</a>
                     </td>
                 </tr>
                 <tr>
                     <th>活動地點</th>
                     <td>
-                        {{ticketTypeSelection.eventDetail.eventLocation}}<a id="view-the-map" href="">檢視地圖</a>
+                        {{ticketTypeSelection.eventDetail.eventLocation}}<a id="view-the-map"
+                                                                            @@click="onViewMapClicked">檢視地圖</a>
                     </td>
                 </tr>
                 <tr>
@@ -97,8 +100,8 @@
             </div>
         </div>
         <div class="agreement">
-            <input type="checkbox" name="service-and-privacy-agreement" id="" v-model="isAgreed">
-            我已經閱讀並同意<a href=""> 服務條款 </a>與<a href=""> 隱私權政策 </a>
+            <input class="form-check-input" type="checkbox" name="service-and-privacy-agreement" id="agreement" v-model="isAgreed">
+            <label class="form-check-label" for="agreement">我已經閱讀並同意<a href=""> 服務條款 </a>與<a href=""> 隱私權政策 </a></label>
         </div>
 
     </div>

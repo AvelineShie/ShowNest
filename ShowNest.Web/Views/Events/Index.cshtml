@@ -12,77 +12,79 @@
 	<link href="~/css/_partial/_categorytags_partial.css" rel="stylesheet" />
 }
 
-<!-- slogan -->
-<section>
-	<h2 id="events-slogan">探索活動發掘精彩從此開始！</h2>
-</section>
-<!-- event-search -->
-<section>
-	<div id="event-search" class="width d-flex">
-		<div id="event-search-search-div" class="d-flex align-items-center">
-			<i class="fa-solid fa-magnifying-glass" id="header-nav-magnifier-icon"></i>
-			<input type="text" id="event-search-search-input" placeholder="搜索一場精彩活動" value="">
-		</div>
-		<div id="event-search-filter">
-			<div id="filter-fee-wrap" class="d-inline-block align-items-center dropdown btn-group">
-				<a id="filter-fee" class="dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown"
-					aria-expanded="false"><span>最低費用</span></a>
-				<ul class="dropdown-menu dropdown-menu-end">
-					<li><a id="filter-fee-all" class="dropdown-item" href="#">全部費用</a></li>
-					<li><a id="filter-fee-free" class="dropdown-item" href="#">免費</a></li>
-					<li>
-						<a id="filter-fee-to-1000" class="dropdown-item" href="#">
-							<i class="fa-solid fa-dollar-sign"></i>1 - 1000
-						</a>
-					</li>
-					<li>
-						<a id="filter-fee-to-2000" class="dropdown-item" href="#">
-							<i class="fa-solid fa-dollar-sign"></i>1000 - 2000
-						</a>
-					</li>
-					<li>
-						<a id="filter-fee-to-3000" class="dropdown-item" href="#">
-							<i class="fa-solid fa-dollar-sign"></i>2000 - 3000
-						</a>
-					</li>
-					<li>
-						<a id="filter-fee-3000-up" class="dropdown-item" href="#">
-							<i class="fa-solid fa-dollar-sign"></i>3000 up
-						</a>
-					</li>
-				</ul>
+<section id="all-body">
+	<!-- slogan -->
+	<section>
+		<h2 id="events-slogan">探索活動發掘精彩從此開始！</h2>
+	</section>
+	<!-- event-search -->
+	<section>
+		<div id="event-search" class="width d-flex">
+			<div id="event-search-search-div" class="d-flex align-items-center">
+				<i class="fa-solid fa-magnifying-glass" id="header-nav-magnifier-icon"></i>
+				<input type="text" id="event-search-search-input" placeholder="搜索一場精彩活動" value="">
 			</div>
-			<div id="filter-time-wrap" class="d-inline-block align-items-center dropdown btn-group">
-				<a id="filter-time" class="dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown"
-					aria-expanded="false"><span>參加時間</span></a>
-				<ul class="dropdown-menu dropdown-menu-end">
-					<li><a id="nav-user-setting" class="dropdown-item" href="#">全部時間</a></li>
-					<li><a id="nav-user-setting" class="dropdown-item" href="#">今天</a></li>
-					<li><a id="nav-user-setting" class="dropdown-item" href="#">一周內</a></li>
-					<li><a id="nav-user-setting" class="dropdown-item" href="#">一個月內</a></li>
-					<li><a id="nav-user-setting" class="dropdown-item" href="#">兩個月內</a></li>
-				</ul>
+			<div id="event-search-filter">
+				<div id="filter-fee-wrap" class="d-inline-block align-items-center dropdown btn-group">
+					<a id="filter-fee" class="dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown"
+					   aria-expanded="false"><span>最低費用</span></a>
+					<ul class="dropdown-menu dropdown-menu-end">
+						<li><a id="filter-fee-all" class="dropdown-item" href="#">全部費用</a></li>
+						<li><a id="filter-fee-free" class="dropdown-item" href="#">免費</a></li>
+						<li>
+							<a id="filter-fee-to-1000" class="dropdown-item" href="#">
+								<i class="fa-solid fa-dollar-sign"></i>1 - 2000
+							</a>
+						</li>
+						<li>
+							<a id="filter-fee-to-2000" class="dropdown-item" href="#">
+								<i class="fa-solid fa-dollar-sign"></i>2000 - 4000
+							</a>
+						</li>
+						<li>
+							<a id="filter-fee-to-3000" class="dropdown-item" href="#">
+								<i class="fa-solid fa-dollar-sign"></i>4000 - 6000
+							</a>
+						</li>
+						<li>
+							<a id="filter-fee-3000-up" class="dropdown-item" href="#">
+								<i class="fa-solid fa-dollar-sign"></i>6000 up
+							</a>
+						</li>
+					</ul>
+				</div>
+				<div id="filter-time-wrap" class="d-inline-block align-items-center dropdown btn-group">
+					<a id="filter-time" class="dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown"
+					   aria-expanded="false"><span>參加時間</span></a>
+					<ul class="dropdown-menu dropdown-menu-end">
+						<li><a id="nav-user-setting" class="dropdown-item" href="#">全部時間</a></li>
+						<li><a id="nav-user-setting" class="dropdown-item" href="#">今天</a></li>
+						<li><a id="nav-user-setting" class="dropdown-item" href="#">兩周內</a></li>
+						<li><a id="nav-user-setting" class="dropdown-item" href="#">兩個月內</a></li>
+						<li><a id="nav-user-setting" class="dropdown-item" href="#">四個月內</a></li>
+					</ul>
+				</div>
 			</div>
 		</div>
-	</div>
-</section>
-<!-- categories tags -->
-<section>
-	<div id="categories-tags-wrap" class="width d-flex">
-		<p class="">活動類別</p>
-		<div id="categories-tags-div" class="d-flex">
-			@foreach (var tag in Model.EventCategoryTags)
-			{
-				@await Html.PartialAsync("~/PartialViews/_CategoryTags_Partial.cshtml", tag)
-				;
-			}
+	</section>
+	<!-- categories tags -->
+	<section>
+		<div id="categories-tags-wrap" class="width d-flex">
+			<p class="">活動類別</p>
+			<div id="categories-tags-div" class="d-flex">
+				@foreach (var tag in Model.EventCategoryTags)
+				{
+					@await Html.PartialAsync("~/PartialViews/_CategoryTags_Partial.cshtml", tag)
+					;
+				}
+			</div>
 		</div>
-	</div>
-</section>
-<!-- cards -->
-<section>
-	<div class="cards-wrap width">
-		<div class="cards">
+	</section>
+	<!-- cards -->
+	<section>
+		<p id="no-filter-result-text">準備中，目前無符合活動</p>
+		<div class="cards-wrap width">
+			<div class="cards">
 				<a class="single-card">
 					<div class="card-name">
 						<img src="EventImgUrl " alt="">
@@ -94,23 +96,25 @@
 						<p class="card-ticket-status"></p>
 					</div>
 				</a>
+			</div>
 		</div>
-	</div>
-	<div id="page-index" class="width">
-		@* @if (viewDataPage > 1)
-		{
+		<div id="page-index" class="width">
+			@* @if (viewDataPage > 1)
+			{
 			<a href="@Url.Action("Index","Events", new {page = viewDataPage - 1})" class="index">⭠</a>
-		}
-		@for (int i = 1; i <= viewDataTotalPages; i++)
-		{
+			}
+			@for (int i = 1; i <= viewDataTotalPages; i++)
+			{
 			<a href="@Url.Action("Index","Events", new {page = i})"
-				class="@(i == viewDataPage ? "index active-index" : "index")">@i</a>
-		}
-		@if (viewDataPage < viewDataTotalPages)
-		{
+			class="@(i == viewDataPage ? "index active-index" : "index")">@i</a>
+			}
+			@if (viewDataPage < viewDataTotalPages)
+			{
 			<a href="@Url.Action("Index","Events", new {page = viewDataPage + 1})" class="index">⭢</a>
-		} *@
-	</div>
+			} *@
+		</div>
+	</section>
+
 </section>
 
 <template class="card-template">

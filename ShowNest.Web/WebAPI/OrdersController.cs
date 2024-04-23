@@ -44,7 +44,7 @@ namespace ShowNest.Web.WebAPI
         //    }
         //    return Ok(order);
         //}
-        [HttpPatch]
+        [HttpPost]
         public async Task<IActionResult> UpdateOrderDetail(OrderContactPerson param)
         {
             if (!ModelState.IsValid)
@@ -52,13 +52,14 @@ namespace ShowNest.Web.WebAPI
                 return BadRequest(ModelState);
             }
 
-            int orderId = param.OrderID;
-            string contactPersonJson = param.ContactPersonJson;
-            var order = await _orderTicketService.UpdateOrderDetailContactInfoByOrderId(contactPersonJson, orderId);
+            
             try
             {
-                //return Ok(_orderAPIService.UpdateOrderContactPerson(contactPersonJson, orderId));
-                return Ok(order);
+				int orderId = param.OrderID;
+				string contactPersonJson = param.ContactPersonJson;
+				var order = await _orderTicketService.UpdateOrderDetailContactInfoByOrderId(contactPersonJson, orderId);
+
+				return Ok(order);
             }
             catch (Exception ex)
             {

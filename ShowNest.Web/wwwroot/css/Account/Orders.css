@@ -51,7 +51,7 @@ td {
 }
 
 .wrap {
-    margin-bottom: 50px;
+    margin-bottom: auto;
 }
 
 /* account orders list title */
@@ -78,8 +78,14 @@ td {
 
 .order-detail {
     display: flex;
-    padding-bottom: 10px;
+    padding: 10px 0px 25px;
     margin: auto;
+    border-bottom: var(--common-border);
+}
+
+#order-details:last-of-type .order-detail {
+    margin-bottom: 50px;
+    border-bottom: none;
 }
 
 .order-id {
@@ -107,17 +113,17 @@ td {
     margin: 20px 0;
 }
 
-.event-title a {
-    color: var(--main-color);
-    font-size: 18px;
-    font-weight: 500;
-    text-decoration: none;
-}
+    .event-title a {
+        color: var(--main-color);
+        font-size: 18px;
+        font-weight: 500;
+        text-decoration: none;
+    }
 
-.event-title a:hover {
-    color: #598987;
-    text-decoration: underline;
-}
+        .event-title a:hover {
+            color: #598987;
+            text-decoration: underline;
+        }
 
 .ticket-paid {
     font-weight: bold;
@@ -140,47 +146,47 @@ td {
     margin: auto;
 }
 
-.order-btns a {
-    color: #333333;
-    display: block;
-    height: 2.5em;
-    width: 180px;
-    border: var(--common-border);
-    border-radius: 4px;
-    margin-top: -1px;
-    padding: 10px 10px;
-    text-decoration: none;
-    cursor:pointer;
-}
+    .order-btns a {
+        color: #333333;
+        display: block;
+        height: 2.5em;
+        width: 180px;
+        border: var(--common-border);
+        border-radius: 4px;
+        margin-top: -1px;
+        padding: 10px 10px;
+        text-decoration: none;
+        cursor: pointer;
+    }
 
-.order-btns a:hover {
-    background-color: #E5E5E5;
-}
+        .order-btns a:hover {
+            background-color: #E5E5E5;
+        }
 
-.order-btns .btn-edit-order {
-    border-radius: 4px;
-    margin-right: auto;
-}
+    .order-btns .btn-edit-order {
+        border-radius: 4px;
+        margin-right: auto;
+    }
 
-.order-btns .btn-edit-order a::before {
-    content: url(https://res.cloudinary.com/dwn2iafcc/image/upload/v1708764402/pencil-alt-solid_g0wcew.svg);
-    padding-right: 10px;
-}
+        .order-btns .btn-edit-order a::before {
+            content: url(https://res.cloudinary.com/dwn2iafcc/image/upload/v1708764402/pencil-alt-solid_g0wcew.svg);
+            padding-right: 10px;
+        }
 
-.order-btns .btn-contact-organizer a::before {
-    content: url(https://res.cloudinary.com/dwn2iafcc/image/upload/v1708764404/envelope-solid_sohnut.svg);
-    padding-right: 10px;
-}
+    .order-btns .btn-contact-organizer a::before {
+        content: url(https://res.cloudinary.com/dwn2iafcc/image/upload/v1708764404/envelope-solid_sohnut.svg);
+        padding-right: 10px;
+    }
 
-.order-btns .btn-contact-customer-service a::before {
-    content: url(https://res.cloudinary.com/dwn2iafcc/image/upload/v1708764403/paper-plane-solid_xywgkq.svg);
-    padding-right: 10px;
-}
+    .order-btns .btn-contact-customer-service a::before {
+        content: url(https://res.cloudinary.com/dwn2iafcc/image/upload/v1708764403/paper-plane-solid_xywgkq.svg);
+        padding-right: 10px;
+    }
 
-.order-btns .btn-cancel-order a::before {
-    content: url(https://res.cloudinary.com/dwn2iafcc/image/upload/v1708682220/circle-xmark-solid_filbbn.svg);
-    padding-right: 10px;
-}
+    .order-btns .btn-cancel-order a::before {
+        content: url(https://res.cloudinary.com/dwn2iafcc/image/upload/v1708682220/circle-xmark-solid_filbbn.svg);
+        padding-right: 10px;
+    }
 
 /* mobile */
 @media screen and (max-width: 768px) {
@@ -190,9 +196,9 @@ td {
     }
 
     .wrap {
-        margin: 25px auto;
+        margin-bottom: auto;
     }
-    
+
     .orders-list-title {
         display: none;
     }
@@ -228,14 +234,14 @@ td {
 
         /* start-li0 */
         .wrap {
-            margin: 50px auto;
+            margin-bottom: auto;
         }
     }
 
     @media (min-width:1151px) {
         .wrap {
             width: 75%;
-            margin: 50px auto;
+            margin-bottom: auto;
         }
     }
 }

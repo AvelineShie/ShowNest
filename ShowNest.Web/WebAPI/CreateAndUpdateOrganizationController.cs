@@ -17,7 +17,7 @@ namespace ShowNest.Web.WebAPI
         }
 
         [HttpPost]
-        public IActionResult CreateAndUpdateOrganization([FromBody] CreateOrganizationDto request)
+        public IActionResult CreateAndUpdateOrganization(CreateOrganizationDto request)
         {
             try
             {

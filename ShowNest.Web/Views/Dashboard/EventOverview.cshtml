@@ -1,4 +1,4 @@
-﻿
+﻿@model int
 @{
     ViewData["Title"] = "EventHub";
 }
@@ -9,7 +9,7 @@
 
 <body>
 
-    <div class="wrap">
+    <div id="app" class="wrap" event-id="@Model">
         <div class="container">
             <!------------ side menu start ------------>
             <input type="checkbox" name="" id="sideMenu-active" />
@@ -20,7 +20,7 @@
                                 aria-expanded="false" id="publish-btn">
                             未發佈
                         </button>
-                        <ul class="dropdown-menu" >
+                        <ul class="dropdown-menu">
                             <li><a class="dropdown-item" href="#">發佈活動</a></li>
                         </ul>
                     </div>
@@ -70,7 +70,7 @@
                             <span class="remain-number">45</span>
                         </div>
                     </div>
-                    <img src="~/img/Dashboard/pie-chart.png" alt="icon" class="pie-chart">
+                    @* <img src="~/img/Dashboard/pie-chart.png" alt="icon" class="pie-chart"> *@
                 </div>
                 <!----- header and subheader end ----->
                 <!-- date and place  -->
@@ -94,31 +94,18 @@
                                     <th>已付款</th>
                                     <th>待繳費</th>
                                     <th>剩餘</th>
-                                    <th class="text-muted">廢票</th>
                                 </tr>
                             </thead>
                             <tbody>
-                                <tr>
-                                    <td>搖滾區</td>
-                                    <td>2024/02/08 00:40 ~ 2024/04/10 00:40</td>
-                                    <td>販售中</td>
-                                    <td>TWD$30,000</td>
-                                    <td>20</td>
-                                    <td>0</td>
-                                    <td>0</td>
-                                    <td>20</td>
-                                    <td class="text-muted">0</td>
-                                </tr>
-                                <tr>
-                                    <td>一般票</td>
-                                    <td>2024/02/08 00:00 ~ 2024/04/10 00:00</td>
-                                    <td>販售中</td>
-                                    <td>TWD$350</td>
-                                    <td>不限定數量</td>
-                                    <td>0</td>
-                                    <td>0</td>
-                                    <td>不限定數量</td>
-                                    <td class="text-muted">0</td>
+                                <tr v-for="ticket in tickets" :key="ticket.ticketTypeName">
+                                    <td>{{ticket.ticketTypeName}}</td>
+                                    <td>{{ticket.startSellingTime}} ~ {{ticket.endSellingTime}}</td>
+                                    <td>{{ticket.status}}</td>
+                                    <td>TWD ${{ticket.price}}</td>
+                                    <td>{{ticket.soldAmount}}</td>
+                                    <td>{{ticket.paidAmout}}</td>
+                                    <td>{{ticket.waitingToPayAmout}}</td>
+                                    <td>{{ticket.remainAmout}}</td>
                                 </tr>
                             </tbody>
                             <tfoot>
@@ -127,21 +114,67 @@
                                     <td>0</td>
                                     <td>0</td>
                                     <td></td>
-                                    <td class="text-muted">0</td>
                                 </tr>
                                 <tr>
                                     <td colspan="2"></td>
                                     <td>總金額</td>
                                     <td colspan="2"></td>
                                     <td>TWD$0</td>
-                                    <td colspan="3"></td>
+                                    <td colspan="2"></td>
                                 </tr>
                             </tfoot>
 
                         </table>
                     </div>
 
-                    <div class="sales-method-statistics">
+
+                    <div class="current-order">
+                        <h3>最近訂單</h3>
+                        <div class="subscriber-data">
+                            <table>
+                                <thead>
+                                    <tr>
+                                        <th>訂單編號</th>
+                                        <th>聯絡人姓名</th>
+                                        <th>聯絡人Email</th>
+                                        <th>聯絡人電話</th>
+                                        <th>票數</th>
+                                        <th>金額</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td>123456789</td>
+                                        <td>李**</td>
+                                        <td>Hello@yahoo.com.tw</td>
+                                        <td>0988333777</td>
+                                        <td>1</td>
+                                        <td>$2000</td>
+                                    </tr>
+                                    <tr>
+                                        <td>120456489</td>
+                                        <td>林**</td>
+                                        <td>NoBug@yahoo.com.tw</td>
+                                        <td>0988333555</td>
+                                        <td>2</td>
+                                        <td>$300</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+                <!----- sales lists end -------->
+            </div>
+        </div>
+    </div>
+</body>
+
+@section endJS {
+    <script src="~/js/dashboard/eventoverview.js"></script>
+}
+
+@* <div class="sales-method-statistics">
                         <h3>售出方式數量統計</h3>
                         <table>
                             <thead>
@@ -214,46 +247,4 @@
                                 </tr>
                             </tfoot>
                         </table>
-                    </div>
-                    <div class="current-order">
-                        <h3>最近訂單</h3>
-                        <div class="subscriber-data">
-                            <table>
-                                <thead>
-                                    <tr>
-                                        <th>訂單編號</th>
-                                        <th>聯絡人姓名</th>
-                                        <th>聯絡人Email</th>
-                                        <th>聯絡人電話</th>
-                                        <th>票數</th>
-                                        <th>金額</th>
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                    <tr>
-                                        <td>123456789</td>
-                                        <td>李**</td>
-                                        <td>Hello@yahoo.com.tw</td>
-                                        <td>0988333777</td>
-                                        <td>1</td>
-                                        <td>$2000</td>
-                                    </tr>
-                                    <tr>
-                                        <td>120456489</td>
-                                        <td>林**</td>
-                                        <td>NoBug@yahoo.com.tw</td>
-                                        <td>0988333555</td>
-                                        <td>2</td>
-                                        <td>$300</td>
-                                    </tr>
-                                </tbody>
-                            </table>
-                        </div>
-                    </div>
-                </div>
-                <!----- sales lists end -------->
-            </div>
-        </div>
-
-
-</body>
+                    </div> *@

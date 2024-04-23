@@ -14,16 +14,10 @@ public class OrganizationIndexViewModel
 
     public List<EventDetail> GroupedCurrentEvents { get; set; }
     public List<EventDetail> GroupedPastEvents { get; set; }
-    
+    public string FullCalendarJson { get; set; }
+
 
 }
-//public class GroupedEventsByMonthViewModel
-//{
-//    public int Year { get; set; }
-//    public int Month { get; set; }
-//    public List<EventDetail> Events { get; set; }
-
-//}
 
 public class EventDetail
 {
@@ -35,6 +29,10 @@ public class EventDetail
     public DateTime StartTime { get; set; }
     public DateTime? EndTime { get; set; }
     public string EventIntroduction { get; set; }
-   
-
+}
+public class EventJsonModel
+{
+    public string title { get; set; }
+    public string start { get; set; }
+    public string end { get; set; }
 }

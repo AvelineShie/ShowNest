@@ -10,9 +10,9 @@
 
 		public int MinPrice { get; set; } = 0; // 預設值為0
 
-		public DateTime StartTime { get; set; } = DateTime.MinValue; // 預設值為 DateTime.MinValue
+		public DateTime? StartTime { get; set; } // 預設值為 DateTime.MinValue
 
-		public DateTime EndTime { get; set; } = DateTime.MaxValue; // 預設值為 DateTime.MaxValue
+		public DateTime? EndTime { get; set; } // 預設值為 DateTime.MaxValue
 
 		public int CategoryTag { get; set; } = 0; // 預設值為0
 
