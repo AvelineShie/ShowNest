@@ -23,7 +23,7 @@ const options = {
             items: ['實體活動', '線上活動'],
             selectedEvent: {},
             events: [],
-            orgNames:[],
+            orgNames: [],
 
             //====================SetEvent(R,U)
             eventNameInput: '',
@@ -43,14 +43,14 @@ const options = {
             placeName: '',
             EventAddress: '',
 
-            streaming:'',
+            streaming: '',
             SHOWNESTLive: '', //線上選項
 
             introduction: '',
             eventStatus: 0, //實體或線上
 
             //地圖
-            
+
 
             // CKEditor
             editor: ClassicEditor,
@@ -92,10 +92,10 @@ const options = {
                     }
                     this.selectedOrganization = null; //顯示預設字樣
                     this.orgNames = res.data.map(o => ({ id: o.orgId, name: o.orgName }));
-            })
-            .catch(err => {
-                console.error(err); 
-            })
+                })
+                .catch(err => {
+                    console.error(err);
+                })
         },
 
         imgUpload(e) {
@@ -120,27 +120,32 @@ const options = {
         CreateAndEditEvent() {
             console.log("submit form")
             axios.post('/api/CreateEvent/CreateAndEditEvent', {
-                "EventName": this.eventNameInput, 
+                "EventName": this.eventNameInput,
                 "StartTime": this.startTime,
                 "EndTime": this.endTime,
-                 "noEndTime": this.noEndTime,
-                 "MainOrganizer": this.mainOrganizerInput, 
-                 "CoOrganizer": this.coOrganizer,
-                 "Attendance": this.number, 
-                 "EventStatus": this.eventStatus, 
-                 "StreamingName": this.streaming,
-                 "StreamingUrl": this.SHOWNESTLive, 
-                 "LocationName": this.placeName, 
-                 "EventAddress": this.EventAddress, 
-                 "EventIntroduction": this.introduction, 
-                 "EventDescription":this.description,
-                 "EventImage": this.imgUrl, 
-                 "IsPrivateEvent": this.privacy, 
+                "noEndTime": this.noEndTime,
+                "MainOrganizer": this.mainOrganizerInput,
+                "CoOrganizer": this.coOrganizer,
+                "Attendance": this.number,
+                "EventStatus": this.eventStatus,
+                "StreamingName": this.streaming,
+                "StreamingUrl": this.SHOWNESTLive,
+                "LocationName": this.placeName,
+                "EventAddress": this.EventAddress,
+                "EventIntroduction": this.introduction,
+                "EventDescription": this.description,
+                "EventImage": this.imgUrl,
+                "IsPrivateEvent": this.privacy,
                 "CategoryNames": this.selectedCategories,
                 "OrgId": this.organzationId
             })
-               .then()
-                .catch()
+                .then(res =>{
+                    console.log(res)
+                    window.location.href=`/Dashboard/Events/${res.data.id}/Overview`
+                })
+                .catch(
+                    
+                )
         },
 
 
@@ -167,28 +172,28 @@ const options = {
         //        })
 
 
-            //fetch('/api/CreateEvent/CreateAndEditEvent',
-            //    {
-            //        method: 'POST', 
-            //        headers: { 'Content-Type': 'application/json' }, 
-            //        body: JSON.stringify({ eventId: this.eventId })
-            //    })
-            //    .then(response => {
-            //        return response.json()
-            //    })
-            //    .then(data => {
-            //        if (!data.isSuccess) {
-            //            this.selectedOrganization = { id: 0, name: '沒有組織，請先建立組織' }
-            //            throw new Error(data.message)
-            //        }
-            //        this.organizations = data.body.organizations.map(x => {
-            //            return { id: x.id, name: x.name }
-            //        })
-            //        this.selectedOrganization = null
-            //    })
-            //    .catch(err => {
-            //        console.error(err)
-            //    })
+        //fetch('/api/CreateEvent/CreateAndEditEvent',
+        //    {
+        //        method: 'POST', 
+        //        headers: { 'Content-Type': 'application/json' }, 
+        //        body: JSON.stringify({ eventId: this.eventId })
+        //    })
+        //    .then(response => {
+        //        return response.json()
+        //    })
+        //    .then(data => {
+        //        if (!data.isSuccess) {
+        //            this.selectedOrganization = { id: 0, name: '沒有組織，請先建立組織' }
+        //            throw new Error(data.message)
+        //        }
+        //        this.organizations = data.body.organizations.map(x => {
+        //            return { id: x.id, name: x.name }
+        //        })
+        //        this.selectedOrganization = null
+        //    })
+        //    .catch(err => {
+        //        console.error(err)
+        //    })
         //},
         GetOrgEventsByOrgId() {
             console.log(this.selectedOrganization)
