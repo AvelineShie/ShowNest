@@ -65,7 +65,7 @@
                                 <p>組織列表</p>
                                 @foreach (var org in userOrg)
                                 {
-                                    <li><a href="/Dashboard/Organizations/@org.UserOrgId?viewType=Overview" class="dropdown-item org">@org.UserOrgName</a></li>
+                                    <li><a href="/Dashboard/Organizations/@org.UserOrgId/Overview" class="dropdown-item org">@org.UserOrgName</a></li>
                                 }
                                 <li>
                                     <a asp-controller="Organizations" asp-action="CreateOrganization" class="dropdown-item org">
