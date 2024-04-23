@@ -296,14 +296,16 @@ html body #SetEvent .container {
 
 /* 右欄 */
 
-.section > img {
-    margin-bottom: 18px;
-}
+/*#form-control-sm {
+    max-width: 100px;
+    background-color: red;
+}*/
 
 .section img {
     width: 250px;
     height: 250px;
     object-fit: cover;
+    margin-bottom: 18px;
     /* 裁切圖片以填滿指定的大小 */
 }
 
@@ -371,6 +373,7 @@ html body #SetTicket.name {
 }
 
 #SetTicket td > button {
+    margin-top: 10px;
     border: #ccc 1px solid;
     box-shadow: #f2f2f2 0 -3px 0 inset;
     background-color: #fff;

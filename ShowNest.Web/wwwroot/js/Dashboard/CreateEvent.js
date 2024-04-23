@@ -8,7 +8,8 @@ const options = {
         return {
 
             //====================CreateEvent(R)
-            userId: 2,
+            userId: 1,
+            organzationId: 1,
             selectedOrganization: {}, //組織下拉v-model
             organizations: [], //下拉items
             displaySelectActivityType: false, /*隱藏*/
@@ -22,38 +23,34 @@ const options = {
             items: ['實體活動', '線上活動'],
             selectedEvent: {},
             events: [],
+            orgNames:[],
 
             //====================SetEvent(R,U)
-            eventId: '',
-            OrgName: '',
-
             eventNameInput: '',
             startTime: '',
             endTime: '',
             noEndTime: false,
             mainOrganizerInput: '',
             coOrganizer: '',
+            privacy: false,
 
-            number: '', //人數
+            number: 0, //人數
             unlimited: '',
+
+            //圖片
+            imgUrl: 'https://res.cloudinary.com/do2tfk5nk/image/upload/v1713610498/ShowNestImg/UnUploadedImg_vsrtfu.jpg',
 
             placeName: '',
             EventAddress: '',
-            updateMap:'',
 
             streaming:'',
             SHOWNESTLive: '', //線上選項
 
             introduction: '',
-
-            
-            eventStatus: [], //實體或線上
-            placeSection: true, //實體活動欄位
-            onlineEventArea: false, //線上活動欄位
+            eventStatus: 0, //實體或線上
 
             //地圖
-            center: { lat: 40.689247, lng: -74.044502 },
-            position:{ lat: 40.689247, lng: -74.044502 },
+            
 
             // CKEditor
             editor: ClassicEditor,
@@ -63,51 +60,28 @@ const options = {
                 toolbar: ['bold', 'italic', 'heading', 'Superscript', 'link', 'undo', 'redo', 'imageUpload']
             },
 
-            //圖片
-            fileupload: '',
-            restoreImg: '',
-
-            //活動隱私狀態
-            public: '',
-            private:'',
-
-            tag:'',
-
             //======================SetTicket(R,U)
             //選票種
-            //TicketTypeList: [
-            //    { id:1, name:"全票" }
-            //],
-            //selectedTicketType: [],
+            //TicketType: '',
+            //StartTime: '',
+            //EndTime: '',
+            //Money: '',
+            //Amount: '',
 
-            //選票區
-            //TicketAreaList:
-            //[
-            //    { id: 1, name: "特1A" },
-            //    { id: 2, name: "特1B" },
-            //    { id: 3, name: "2A區" },
-            //    { id: 4, name: "2B區" },
-            //    { id: 5, name: "2C區" },
-            //    { id: 6, name: "2D區" },
-            //    { id: 7, name: "2E區" },
-            //    { id: 8, name: "2F區" },
-            //    { id: 9, name: "2G區" },
-            //    { id: 10, name: "3A區" },
-            //    { id: 11, name: "3B區" },
-            //    { id: 12, name: "3C區" },
-            //    { id: 13, name: "3D區" },
-            //    { id: 14, name: "3E區" },
-            //    { id: 15, name: "3F區" },
-            //    { id: 16, name: "3G區" }
-            //],
-            //selectedTicketAreaList: [],
+            //checkboxErrorMsg: '',
+
+            //todo
+            categoryItems: [
+                '音樂', '戲劇', '展覽', '電影', '藝文活動', '美食', '運動', '課程講座', '演唱會'
+            ],
+            selectedCategories: []
+
 
         }
     },
     mounted() {
         this.CreateEventbyUserId()
-        /*this.CreateAndEditEvent()*/
-        /*this.GetOrgEventsByOrgId()*/
+        this.GetOrgEventsByOrgId()
     },
     methods: {
         async CreateEventbyUserId() {
@@ -116,73 +90,109 @@ const options = {
                     if (res.data == null) {
                         this.selectedOrganization = { id: 0, name: '沒有組織，請先建立新組織' }
                     }
-                    console.log(res.data)
-                    this.orgNames = res.data.forEach(o => console.log(o.orgName));
+                    this.selectedOrganization = null; //顯示預設字樣
                     this.orgNames = res.data.map(o => ({ id: o.orgId, name: o.orgName }));
             })
             .catch(err => {
                 console.error(err); 
             })
-
         },
 
         imgUpload(e) {
             let formData = new FormData();
-            for (let i = 0; i < e.target.filtes.length; i++) {
+            for (let i = 0; i < e.target.files.length; i++) {
                 formData.append('files', e.target.files[i]);
             }
             axios.post('/api/ImgUploadApi/UploadImages', formData, {
-                header: {
-                    'Content-'
+                headers: {
+                    'Content-Type': 'multipart/form-data'
                 }
             })
-        }
+                .then(res => {
+                    console.log(res)
+                    this.imgUrl = res.data[0]
+                })
+                .catch(err => {
+                    console.error(err);
+                })
+        },
 
-        //    const data = await response.json();
-        //    if (!data.isSuccess) {
-        //        this.selectedOrganization = { id: 0, name: '沒有組織，請先建立組織' };
-        //        throw new Error(data.message);
-        //    }
+        CreateAndEditEvent() {
+            console.log("submit form")
+            axios.post('/api/CreateEvent/CreateAndEditEvent', {
+                "EventName": this.eventNameInput, 
+                "StartTime": this.startTime,
+                "EndTime": this.endTime,
+                 "noEndTime": this.noEndTime,
+                 "MainOrganizer": this.mainOrganizerInput, 
+                 "CoOrganizer": this.coOrganizer,
+                 "Attendance": this.number, 
+                 "EventStatus": this.eventStatus, 
+                 "StreamingName": this.streaming,
+                 "StreamingUrl": this.SHOWNESTLive, 
+                 "LocationName": this.placeName, 
+                 "EventAddress": this.EventAddress, 
+                 "EventIntroduction": this.introduction, 
+                 "EventDescription":this.description,
+                 "EventImage": this.imgUrl, 
+                 "IsPrivateEvent": this.privacy, 
+                "CategoryNames": this.selectedCategories,
+                "OrgId": this.organzationId
+            })
+               .then()
+                .catch()
+        },
 
-        //    this.orgNames = data.body.orgNames.map(x => {
-        //        return { id: x.id, name: x.name };
-        //    });
-        //    console.log(orgNames);
-
-        //    this.selectedOrganization = null;
-        //} catch (err) {
-        //    console.error(err);
-        //}
-
-        
 
         //CreateAndEditEvent() {
-        //    fetch('/api/CreateEvent/CreateAndEditEvent',
-        //        {
-        //            method: 'POST', 
-        //            headers: { 'Content-Type': 'application/json' }, 
-        //            body: JSON.stringify({ eventId: this.eventId })
+        //    console.log("submit form")
+        //    axios.post('/api/CreateEvent/CreateNewEvent', {
+        //        "EventName": "Example Event",
+        //        "StartTime": "2024-04-22T09:00:00",
+        //        "EndTime": "2024-04-22T17:00:00",
+        //        "MainCompany": "Main Company Inc.",
+        //        "AssistCompany": "Assist Company Ltd.",
+        //        "Amount": 100,
+        //        "Type": "Conference",
+        //        "Title": "Advanced .NET and JavaScript Development",
+        //        "Address": "123 Main St, Anytown, USA",
+        //        "Intro": "Join us for a day of learning and networking.",
+        //        "Description": "This conference will cover the latest in .NET and JavaScript development, featuring expert talks and hands-on workshops.",
+        //        "ImgUrl": "https://example.com/event-image.jpg",
+        //        "Privacy": "Public",
+        //        "CategoryNames": ["Development", "Technology", "Networking"]
+        //    })
+        //        .then(res => {
+        //            console.log(res)
         //        })
-        //        .then(response => {
-        //            return response.json()
-        //        })
-        //        .then(data => {
-        //            if (!data.isSuccess) {
-        //                this.selectedOrganization = { id: 0, name: '沒有組織，請先建立組織' }
-        //                throw new Error(data.message)
-        //            }
-        //            this.organizations = data.body.organizations.map(x => {
-        //                return { id: x.id, name: x.name }
-        //            })
-        //            this.selectedOrganization = null
-        //        })
-        //        .catch(err => {
-        //            console.error(err)
-        //        })
+
+
+            //fetch('/api/CreateEvent/CreateAndEditEvent',
+            //    {
+            //        method: 'POST', 
+            //        headers: { 'Content-Type': 'application/json' }, 
+            //        body: JSON.stringify({ eventId: this.eventId })
+            //    })
+            //    .then(response => {
+            //        return response.json()
+            //    })
+            //    .then(data => {
+            //        if (!data.isSuccess) {
+            //            this.selectedOrganization = { id: 0, name: '沒有組織，請先建立組織' }
+            //            throw new Error(data.message)
+            //        }
+            //        this.organizations = data.body.organizations.map(x => {
+            //            return { id: x.id, name: x.name }
+            //        })
+            //        this.selectedOrganization = null
+            //    })
+            //    .catch(err => {
+            //        console.error(err)
+            //    })
         //},
-        //GetOrgEventsByOrgId() {
-        //    console.log(this.selectedOrganization)
-        //},
+        GetOrgEventsByOrgId() {
+            console.log(this.selectedOrganization)
+        }
 
     },
     watch: {
@@ -232,8 +242,8 @@ const options = {
 }
 const app = createApp(options); // 創建一個 Vue 應用實例，使用 options 作為配置選項
 app.component('draggable', vuedraggable)
-app.component('GoogleMap', GoogleMap)
-app.component('GoogleMapMarker', Marker)
+//app.component('GoogleMap', GoogleMap)
+//app.component('GoogleMapMarker', Marker)
 app.use(CKEditor)
 app.use(vuetify)
 app.mount('#app')

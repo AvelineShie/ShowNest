@@ -1,7 +1,9 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Jil;
+using Microsoft.AspNetCore.Mvc;
 using ShowNest.Web.Services.Events;
 using ShowNest.Web.Services.Organization;
 using ShowNest.Web.ViewModels.Organization;
+using System.Text.Json;
 
 namespace ShowNest.Web.Controllers
 {
@@ -15,18 +17,22 @@ namespace ShowNest.Web.Controllers
             _organizationService = organizationService;
             _organizationRepository = organizationRepository;
         }
+        
 
         public IActionResult Index(int organizationId)
         {
             var organizationData = _organizationService.GetOrganizationDetails(organizationId);
-
+            
 
             return View(organizationData);
         }
 
-        public IActionResult ContactOrganization()
+
+        public IActionResult ContactOrganization(int organizationId)
         {
-            return View();
+            var ContactOrganizationDate= _organizationService.GetOrganizationDetails(organizationId);
+
+            return View(ContactOrganizationDate);
         }
 
         public IActionResult CreateOrganization()

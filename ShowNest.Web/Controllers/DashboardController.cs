@@ -108,6 +108,18 @@ namespace ShowNest.Web.Controllers
         //    var vm = _createEventService.GetOrgByUserId(userId);
         //    return View(vm);
 
+
+        public IActionResult SetTable()
+        {
+            return View();
+        }
+
+        public IActionResult SetTicket()
+        {
+            return View();
+        }
+
+
         //public IActionResult SetTicketPage()
         //{
         //    var model = new SetTicketPageViewModel()

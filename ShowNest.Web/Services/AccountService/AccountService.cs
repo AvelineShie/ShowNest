@@ -38,8 +38,6 @@ namespace ShowNest.Web.Services.AccountService
             _httpClient = httpClient;
             _facebookSettings = facebookSettings.Value; 
         }
-
-
         //註冊
         public async Task<(bool IsSuccess, string ErrorMessage)> RegisterUserAsync(RegisterViewModel model, bool isValid)
         {
@@ -141,7 +139,6 @@ namespace ShowNest.Web.Services.AccountService
             }
 
         }
-
         //修改密碼
         public async Task<(bool IsSuccess, string ErrorMessage)> ChangePassword(ChangePasswordViewModel model, bool isValid)
         {
@@ -208,7 +205,6 @@ namespace ShowNest.Web.Services.AccountService
             // 比對雜湊後的舊密碼與資料庫中的密碼雜湊
             return storedHash == hashedOldPassword;
         }
-
         //取得使用者資料
         public async Task<(bool IsSuccess, UserAccountViewModel UserAccount, string ErrorMessage)> GetUserAccountByIdAsync(int userId)
         {
@@ -247,7 +243,7 @@ namespace ShowNest.Web.Services.AccountService
                     PersonalURL = user.PersonalUrl,
                     PersonalProfile = user.PersonalProfile,
                     EdmSubscription = user.EdmSubscription,
-                    Image = user.Image,
+                    ImageUrl = user.Image,
                     Status = user.Status,
                     CreatedAt = user.CreatedAt,
                     EditedAt = user.EditedAt,
@@ -313,7 +309,7 @@ namespace ShowNest.Web.Services.AccountService
                 user.PersonalUrl = model.PersonalURL;
                 user.PersonalProfile = model.PersonalProfile;
                 user.EdmSubscription = model.EdmSubscription;
-                user.Image = model.Image;
+                user.Image = model.ImageUrl;
                 user.EditedAt = DateTime.Now;
                 user.LogInInfo.EditedAt = DateTime.Now;
 
@@ -358,6 +354,20 @@ namespace ShowNest.Web.Services.AccountService
                 return (false, ex.Message);
             }
         }
+        //雜湊
+        private string HashPassword(string password)
+        {
+            using (SHA256 sha256Hash = SHA256.Create())
+            {
+                byte[] bytes = sha256Hash.ComputeHash(Encoding.UTF8.GetBytes(password));
+                StringBuilder builder = new StringBuilder();
+                for (int i = 0; i < bytes.Length; i++)
+                {
+                    builder.Append(bytes[i].ToString("x2"));
+                }
+                return builder.ToString();
+            }
+        }
         //FB登入功能
         public async Task<(bool IsSuccess, string ErrorMessage)> HandleFacebookLoginAsync(string code, string state)
         {
@@ -385,7 +395,6 @@ namespace ShowNest.Web.Services.AccountService
                 return (false, ex.Message);
             }
         }
-
         public async Task<Tuple<bool, string>> ProcessFacebookLogin(string userInfo)
         {
             var userAccount = JsonConvert.DeserializeObject<FBUserViewModel>(userInfo);
@@ -464,7 +473,6 @@ namespace ShowNest.Web.Services.AccountService
                 throw new Exception("無法獲取用戶資訊");
             }
         }
-
         //解決OAuth state問題
         public void FacebookLogin()
         {
@@ -491,19 +499,6 @@ namespace ShowNest.Web.Services.AccountService
             }
             return res.ToString();
         }
-        //雜湊
-        private string HashPassword(string password)
-        {
-            using (SHA256 sha256Hash = SHA256.Create())
-            {
-                byte[] bytes = sha256Hash.ComputeHash(Encoding.UTF8.GetBytes(password));
-                StringBuilder builder = new StringBuilder();
-                for (int i = 0; i < bytes.Length; i++)
-                {
-                    builder.Append(bytes[i].ToString("x2"));
-                }
-                return builder.ToString();
-            }
-        }
+
     }
 }

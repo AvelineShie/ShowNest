@@ -65,6 +65,34 @@
             });
         });
     </script>
+    <script>
+        (g => { var h, a, k, p = "The Google Maps JavaScript API", c = "google", l = "importLibrary", q = "__ib__", m = document, b = window; b = b[c] || (b[c] = {}); var d = b.maps || (b.maps = {}), r = new Set, e = new URLSearchParams, u = () => h || (h = new Promise(async (f, n) => { await (a = m.createElement("script")); e.set("libraries", [...r] + ""); for (k in g) e.set(k.replace(/[A-Z]/g, t => "_" + t[0].toLowerCase()), g[k]); e.set("callback", c + ".maps." + q); a.src = `https://maps.${c}apis.com/maps/api/js?` + e; d[q] = f; a.onerror = () => h = n(Error(p + " could not load.")); a.nonce = m.querySelector("script[nonce]")?.nonce || ""; m.head.append(a) })); d[l] ? console.warn(p + " only loads once. Ignoring:", g) : d[l] = (f, ...n) => r.add(f) && u().then(() => d[l](f, ...n)) })
+            ({ key: "AIzaSyB3EaB96udUsBhoJ7Wb28Eul-JZCvLctcE", v: "beta" });
+        let map;
+        async function initMap() {
+            // The location of BS
+            const position = { lat: @Model.Latitude, lng: @Model.Longitude };
+            // Request needed libraries.
+            // ts-ignore
+            const { Map } = await google.maps.importLibrary("maps");
+            const { AdvancedMarkerView } = await google.maps.importLibrary("marker");
+
+            // The map, centered at BS
+            map = new Map(document.getElementById("map"), {
+                zoom: 15,
+                center: position,
+                mapId: "DEMO_MAP_ID",
+            });
+
+            // The marker, positioned at BS
+            const marker = new AdvancedMarkerView({
+                map: map,
+                position: position,
+                title: "BS",
+            });
+        }
+        initMap();
+        </script>
 }
 
 
@@ -109,8 +137,9 @@
                     <li class="pc-hide">
                         <p class="info-besiness">
                             <i class="fa fa-solid fa-sitemap mobi"></i>
-                            @Model.EventLocationName
-                            <a href="" class="a-Contact-organization">聯絡主辦單位</a>
+                            <a asp-controller="Organizations" asp-action="Index" asp-route-OrganizationId="@Model.OrganizationId">@Model.OrganizationName</a>
+                            <a asp-controller="Organizations" asp-action="ContactOrganization" asp-route-OrganizationId="@Model.OrganizationId" class="a-Contact-organization">聯絡主辦單位</a>
+                            
                         </p>
                     </li>
                 </ul>
@@ -123,7 +152,7 @@
                 <i class="fa-solid fa-sitemap"></i>
                 主辦單位
                 <a asp-controller="Organizations" asp-action="Index" asp-route-OrganizationId="@Model.OrganizationId">@Model.OrganizationName</a>
-                <a href="~/Organizations/Index/@Model.OrganizationId" id="btn-Contact-organization">聯絡主辦單位</a>
+                <a asp-controller="Organizations" asp-action="ContactOrganization" asp-route-OrganizationId="@Model.OrganizationId" id="btn-Contact-organization">聯絡主辦單位</a>
             </div>
             <!-- 活動header頁 結束-->
         </div>
@@ -159,9 +188,9 @@
             </div>
             <div class="side-content">
                 <div class="btn-group">
-                    <a href="https://www.google.com/maps/dir/?api=1&destination=106台北市大安區忠孝東路三段96號11號樓之1" target="_blank"
+                    <a href="https://www.google.com/maps/dir/?api=1&destination=106 @Model.EventLocationAddress" target="_blank"
                        type="button" class="btn  btn-success">規劃路線</a>
-                    <a href="https://www.google.com/maps/search/?api=1&query=25.0415706%2C121.5363193" target="_blank"
+                    <a href="https://www.google.com/maps/search/?api=1&query=@Model.Latitude%@Model.Longitude" target="_blank"
                        type="button" class="btn btn-success">檢視較大地圖</a>
                 </div>
 
@@ -192,7 +221,7 @@
                             </td>
                             <td class="price">
                                 <span class="currency">TWD$</span>
-                                <span class="currency-value">@ticket.TicketPrice.ToString()</span>
+                                <span class="currency-value">@ticket.TicketPrice.ToString("F0")</span>
                             </td>
                         </tr>
                     }

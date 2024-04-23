@@ -27,7 +27,7 @@ namespace ShowNest.Web.WebAPI
             _CreateEventService = createEventInterface;
         }
 
-        //[Route("/api/CreateEvent/CreateEventbyUserId")]
+        [Route("/api/CreateEvent/CreateEventbyUserId")]
         public async Task<IActionResult> CreateEventbyUserId()
         {
             var userIdFromClaim = _httpContextAccessor.HttpContext.User.Claims
@@ -59,50 +59,28 @@ namespace ShowNest.Web.WebAPI
 
                 return Ok(Organizations);
 
-
-               //var orgNames = new List<string>();
-               // foreach (var org in info.Organizations.OrderBy(o => o.Id))
-               // {
-               //     orgNames.Add(org.Name);
-               // }
-
-
-
-                //return Ok(orgNames); // 返回Json組織名稱表
-
             }
         }
 
-
-
         [HttpPost]
-        [Route("/api/CreateEvent/CreateAndEditEvent")]
+        public IActionResult CreateNewEvent(CreateNewEventDto request)
+        {
+            return Ok(new
+            {
+                IsSuccess = true
+            });
+        }
+
+        
+        [HttpPost]
         public IActionResult CreateAndEditEvent(CreateEventDto request)
         {
-            try
+            var newEventId = _CreateEventService.CreateEvent(request);
+            return Ok(new
             {
-                int newEventId;
-                if (request.EventId == 0)
-                {   //取得使用者登入資訊:在view驗證即可
-                    var userIdFromClaim = _httpContextAccessor.HttpContext.User.Claims.FirstOrDefault(c => c.Type == ClaimTypes.NameIdentifier);
-                    request.EventId = int.Parse(userIdFromClaim.Value);
-                    request.CreatedAt = DateTime.Now;
-                    newEventId = _CreateEventService.CreateEvent(request);
-                }
-                //若有活動id, 則進入修改活動
-                else
-                {
-                    newEventId = _CreateEventService.UpdateEvent(request);
-                }
-                var successResult = OperationResultHelper.ReturnSuccessData(newEventId);
-                return Ok(successResult);
-            }
-            catch
-            (Exception ex)
-            {
-                var errorResult = OperationResultHelper.ReturnErrorMsg(ex.Message);
-                return BadRequest(errorResult);
-            }
+                IsSuccess = true,
+                Id = newEventId
+            });
         }
 
         //以活動id打路由去呼叫頁面的資料
@@ -111,8 +89,8 @@ namespace ShowNest.Web.WebAPI
         {
             try
             {
-                var newEvent = _CreateEventService.RenderEventData(int.Parse(eventId));
-                var successResult = OperationResultHelper.ReturnSuccessData(newEvent);
+                var selectedEventId = _CreateEventService.RenderEventData(int.Parse(eventId));
+                var successResult = OperationResultHelper.ReturnSuccessData(selectedEventId);
                 return Ok(successResult);
             }
             catch (Exception ex)
@@ -121,6 +99,8 @@ namespace ShowNest.Web.WebAPI
                 return BadRequest(errorResult);
             }
         }
+
+
     }
 
 

@@ -18,8 +18,9 @@
             <v-container>
                 <v-stepper prev-text="上一步"
                            next-text="下一步"
-                           :items="['建立活動', '設定資料', '設定票種', '設定表單']"
-                           v-model="stepButton">
+                           :items="['建立活動', '設定資料', ]"
+                           v-model="stepButton"
+                           editable>
                     @* 第一頁 *@
                     <template v-slot:item.1>
                         <div class="wrap" id="CreateEvent">
@@ -42,41 +43,40 @@
 
                                 <!-- Hide the organizations while not selected below -->
                                 <div v-show="displaySelectActivityType">
-                                        <v-select v-model="selectedActivityType"
-                                                  class="w-50"
-                                                  :items="activityTypes"
-                                                  variant="outlined"
-                                                  density="compact"
-                                                  label="選擇一個活動類別"></v-select>
+                                    <v-select v-model="selectedActivityType"
+                                                class="w-50"
+                                                :items="activityTypes"
+                                                variant="outlined"
+                                                density="compact"
+                                                label="選擇一個活動類別"></v-select>
 
-                                        <!--隱藏區域--!>
-                                        <div class="activity-select" v-if="displayExistingActivities">
-                                            <p class="notice">您也可以直接套用既有的活動設定（基本資料、表單、票種），節省您寶貴的時間</p>
-                                            <h3 class="lined">以最近舉辦的活動做為樣板</h3>
-                                            <div>
-                                                <input type="radio" for="eventItem1" v-model="radioCheck" name="eventRadio"> </input>
-                                                                    <label id="eventItem1">{{Model.EventName}}</label>
-                                            </div>
-                                            <div>
-                                                <input type="radio" for="eventItem2" v-model="radioCheck" name="eventRadio"> </input>
-                                                <label id="eventItem2">{{Model.EventName}} </label>
-                                            </div>
+                                    <!--隱藏區域--!>
+                                    <div class="activity-select" v-if="displayExistingActivities">
+                                        <p class="notice">您也可以直接套用既有的活動設定（基本資料、表單、票種），節省您寶貴的時間</p>
+                                        <h3 class="lined">以最近舉辦的活動做為樣板</h3>
+                                        <div>
+                                            <input type="radio" for="eventItem1" v-model="radioCheck" name="eventRadio"> </input>
+                                                                <label id="eventItem1">{{Model.EventName}}</label>
                                         </div>
-
-                                        <div class="TOSzone">
-                                            <label for="agree">
-                                                <input type="checkbox" class="isChecked"
-                                                        v-model="checkbox"
-                                                        :rules="[v => !!v || '請勾選同意後進行!']"
-                                                        required> 我已經閱讀並同意
-                                                <a href="">主辦單位服務條款</a> 與 <a href="">隱私權政策</a>
-                                                <div class="invalid-feedback">
-                                                    {{checkboxErrorMsg}}
-                                                </div>
-                                            </label>
+                                        <div>
+                                            <input type="radio" for="eventItem2" v-model="radioCheck" name="eventRadio"> </input>
+                                            <label id="eventItem2">{{Model.EventName}} </label>
                                         </div>
-                                        @* <input class="establishBtn" type="button" value="建立" /> *@
                                     </div>
+
+                                    <div class="TOSzone">
+                                        <label for="agree">
+                                            <input type="checkbox" class="isChecked"
+                                                    v-model="checkbox"
+                                                    :rules="[v => !!v || '請勾選同意後進行!']"
+                                                    required> 我已經閱讀並同意
+                                            <a href="">主辦單位服務條款</a> 與 <a href="">隱私權政策</a>
+                                            <div class="invalid-feedback">
+                                                {{checkboxErrorMsg}}
+                                            </div>
+                                        </label>
+                                    </div>
+                                    @* <input class="establishBtn" type="button" value="建立" /> *@
                                 </div>
                             </div>
                         </div>
@@ -93,7 +93,6 @@
                                         <div class="name" >
                                             {{OrgName}}
                                             Mafia
-                                            
                                         </div>
                                     </div>
 
@@ -131,7 +130,7 @@
                                     <!-- 活動時間 -->
                                     <div class="section">
                                         <h4 class="essential-input">活動舉辦時間</h4>
-                                            <input type="datetime-local" class="date-time" id="startTime" v-modle="startTime">
+                                            <input type="datetime-local" class="date-time" id="startTime" v-model="startTime">
                                         <div class="space">至</div>
                                         <input type="datetime-local" class="date-time" id="endTime" v-model="endTime">
                                         <div>
@@ -195,7 +194,7 @@
                                             <!-- <button type="button" class="update-map">更新地圖</button> -->
                                         </div>
                                         <!--------地圖 -------->
-                                        <google-map api-key="AIzaSyBPB4VPZKkuM469YuZcRdGGKnsItE1C7ik" style="width: 545px; height: 400px" :center="center" :zoom="15">
+                                        <google-map api-key="" style="width: 545px; height: 400px" :center="center" :zoom="15">
                                             <google-map-marker :options="{ position: center }" />
                                         </google-map>
 
@@ -245,13 +244,16 @@
 
                                     <div class="section">
                                         <h4 >社群分享圖片</h4>
-                                        <img id="uploadedImage" src='/img/Dashboard/upload-img.png'>
+                                           @*  <img :src="imgUrl" id="uploadedImage" > *@
+                                            @* <input class="file-upload form-control form-control-sm" type="file" id="form-control-sm" > *@
                                         <div>
-                                            <!-- 添加文件上傳元素 -->
-                                            @* <input id="fileupload" type="file" name="images" multiple accept="image/gif, image/jpeg, image/png"> *@
-                                                <button class="btn btn-outline-secondary" accept="image/gif, image/jpeg, image/png" id="fileupload" >選擇圖片</button>
-                                                <button class="btn btn-outline-secondary" id="restoreImg" >還原圖片</button>
-                                        </div>
+                                            <img :src="imgUrl">
+                                            <a class="file-input">
+                                                <input class="file-upload form-control form-control-sm" type="file" id="form-control-sm" @@change="imgUpload">
+                                            </a>
+                                            @* <button class="btn btn-outline-secondary" accept="image/gif, image/jpeg, image/png" type="files" id="fileupload" @@change="imgUpload">選擇圖片</button>
+                                            <button class="btn btn-outline-secondary" id="restoreImg" >還原圖片</button> *@
+                                    </div>
                                     </div>
                                     <span class="note">請提供尺寸為600x400px以內 且 檔案格式為 png.、jpg. 之圖片。</span>
 
@@ -259,11 +261,11 @@
                                     <div class="section">
                                         <h4 asp-for="IsPrivate">活動隱私</h4>
                                         <div class="form-check form-check-inline">
-                                                <input class="form-check-input" v-model="public" type="radio" name="inlineRadioOptions" id="inlineRadio1" value="option1">
+                                                <input class="form-check-input" v-model="privacy" type="radio" value="0">
                                             <label class="form-check-label" for="inlineRadio1">公開</label>
                                         </div>
                                         <div class="form-check form-check-inline">
-                                            <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio2" value="option2" checked>
+                                                <input class="form-check-input" type="radio" v-model="privacy" value="1" checked>
                                             <label class="form-check-label" v-model="private" for="inlineRadio2">私人</label>
                                         </div>
                                         <div>
@@ -276,16 +278,25 @@
                                         <h4>活動分類</h4>
                                         <span class="note">你可以選擇最多 3 個分類。</span>
 
-                                        @* <ul class="tag-pool" v-model="tag">
+                                        <ul class="tag-pool" v-model="tag">
                                             <li>
-                                            @foreach (var tag in Model.EventCategoryTags)
+                                            @* @foreach (var tag in Model.EventCategoryTags)
                                             {
                                             @await Html.PartialAsync("~/PartialViews/_CategoryTags_Partial.cshtml", tag);
-                                            }
+                                            } *@
                                             </li>
-                                        </ul> *@
+                                        </ul>
                                         <div class="tag-pool">
-                                            <div class="tag">演唱會</div>
+                                                @* todo *@
+                                                <div v-for="(item, index) in categoryItems" :key="index" class="tag" >
+                                                    <input type="checkbox" :id="'category-' + index" v-model="selectedCategories" :value="item" >
+                                                    <label :for="'category-' + index">{{ item }}</label>
+                                                </div>
+                                                <div>
+                                                    @* 已選擇的項目：{{ selectedCategories }} *@
+                                                </div>
+                                            </div>
+                                            @* <div class="tag">演唱會</div>
                                             <div class="tag">課程講座</div>
                                             <div class="tag">研討會</div>
                                             <div class="tag">社群展覽</div>
@@ -298,12 +309,13 @@
                                             <div class="tag">職場工作術</div>
                                             <div class="tag">科技資訊</div>
                                             <div class="tag">休閒</div>
-                                            <div class="tag">運動</div>
+                                            <div class="tag">運動</div> *@
                                         </div>
 
-                                    </div>
+                                        
                                 </div>
                             </div>
+                                <button class="btn btn-success" v-on:click="CreateAndEditEvent">submit</button>
                             @* <div class="pages-change">
                             <button type="button" class="btn btn-outline-secondary" onclick="window.location.href='@Url.Action("CreateEvent", "Dashboard")'">上一頁</button>
                             <button type="submit" class="btn btn-outline-secondary" value="Upload">下一頁</button>
@@ -338,23 +350,6 @@
                                                 <th scope="col"></th>
                                             </tr>
                                         </thead>
-                                        <tbody>
-                                            <tr>
-                                                <td class="color-label"></td>
-                                                <td>全票(Sample)</td>
-                                                <td>2F區</td>
-                                                <td>
-                                                    2024/03/02 ~
-                                                    2024/04/5
-                                                </td>
-                                                <td>TWD$ 5000</td>
-                                                <td>1</td>
-                                                <td>
-                                                    <button class="edit">編輯</button>
-                                                </td>
-                                            </tr>
-
-                                        </tbody>
 
                                        @*  =================Ticket Edit============= *@
                                         <tbody>
@@ -366,19 +361,20 @@
                                                               :items="['特1A', '特1B', '2A區' , '2B區' , '2C區' , '2D區','2E區','2F區','2G區','3A區','3B區','3C區','3D區','3E區','3F區','3G區']"
                                                               variant="outlined"
                                                               density="compact" 
-                                                              style="width: 100px; height: 30px;">
+                                                              style="width: 100px; height: 30px;"
+                                                              v-model="TicketType">
                                                     </v-select>
                                                 </td>
                                                 <td>
-                                                    <input type="date" class="date-local">
+                                                    <input type="date" class="date-local" v-model="TicketStartTime">
                                                     <span>至</span>
-                                                    <input type="date" class="date-local">
+                                                    <input type="date" class="date-local" v-model="TicketEndTime">
                                                 </td>
                                                 <td>TWD$
-                                                    <input type="text" class="form-control h-25 w-50 " id="formGroupExampleInput" placeholder=" ">
+                                                    <input type="text" v-model="Money" class="form-control h-25 w-50 " id="formGroupExampleInput" placeholder=" ">
                                                 </td>
                                                 <td>
-                                                    <input type="text" class="form-control h-25 w-50 " id="formGroupExampleInput" placeholder=" ">
+                                                    <input type="text" v-model="Amount" class="form-control h-25 w-50 " id="formGroupExampleInput" placeholder=" ">
                                                 </td>
                                                 <td>
                                                     <button type="button" class="btn btn-outline-secondary btn-sm" id="submit">儲存</button>
@@ -404,11 +400,13 @@
                                         </tr>
 
                                         }  *@
+
+                                        @* <button class="btn btn-success" v-on:click="CreateAndEditEvent">submit</button> *@
                                     </table>
 
                                     
                                 </div>
-                                <button type="button" class="btn btn-outline-secondary btn-sm" id="add-ticket">新增票種</button>
+                                @* <button type="button" class="btn btn-outline-secondary btn-sm" id="add-ticket">新增票種</button> *@
                             </div>
 
                             @* <div class="pages-change">
@@ -418,264 +416,6 @@
                         </div>
                     </template>
 
-                    @* 第四頁 *@
-                    <template v-slot:item.4>
-                        <div class="header-title">
-                            <div class="organize">
-                                組織名稱
-                            </div>
-                            <div class="name">
-                                @*{{OrgName}} *@
-                                Mafia
-                            </div>
-                        </div>
-                        <div class="wrap">
-                            <div class="container">
-                                <div class="data-collection">
-                                    <!-- 如果只需聯絡人資料，報名人資料會隱藏 -->
-                                    <h4 class="data-type">收集資料類型</h4>
-                                    <div class="form-check">
-                                        <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault1">
-                                        <label class="form-check-label" for="flexRadioDefault1">
-                                            只需要聯絡人資料
-                                        </label>
-                                    </div>
-                                    <div class="form-check">
-                                        <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault2" checked>
-                                        <label class="form-check-label" for="flexRadioDefault2">
-                                            需要報名人資料
-                                        </label>
-                                    </div>
-                                </div>
-
-                                <div class="data-log">
-                                    <!-- 聯絡人資料 -->
-                                    <div class="contact-person">
-                                        <h3>聯絡人資料</h3>
-                                        <div class="table-log">
-                                            <ul class="list-group">
-                                                @* <li class="list-group-item">
-                                                    個人資料選項
-                                                </li> *@
-                                                <li class="list-group-item">
-                                                   @*  <input class="form-check-input me-1" type="checkbox" value="" aria-label="..."> *@
-                                                    姓名
-                                                </li>
-                                                <li class="list-group-item">
-                                                    @* <input class="form-check-input me-1" type="checkbox" value="" aria-label="..."> *@
-                                                    Email
-                                                </li>
-                                                <li class="list-group-item">
-                                                    @* <input class="form-check-input me-1" type="checkbox" value="" aria-label="..."> *@
-                                                    手機
-                                                </li>
-                                                @* <li class="list-group-item">
-                                                <input class="form-check-input me-1" type="checkbox" value="" aria-label="..."> 
-                                                身分證字號
-                                                </li>
-                                                <li class="list-group-item">
-                                                <input class="form-check-input me-1" type="checkbox" value="" aria-label="...">
-                                                聯絡電話
-                                                </li>
-                                                <li class="list-group-item">
-                                                <input class="form-check-input me-1" type="checkbox" value="" aria-label="...">
-                                                郵遞區號
-                                                </li>
-                                                <li class="list-group-item">
-                                                <input class="form-check-input me-1" type="checkbox" value="" aria-label="...">
-                                                地址
-                                                </li> *@
-                                            </ul>
-                                            <!-- 欄位選項 -->
-                                            @* <table class="contactInformationForm">
-                                                <thead>
-                                                    <tr>
-                                                        <th scope="col" colspan="2">選擇要填寫的欄位</th>
-                                                        <th scope="col">是否必填</th>
-                                                        <th scope="col">刪除</th> 
-                                                    </tr>
-                                                </thead>
-                                                <tbody>
-                                                    <tr>
-                                                        <th scope="row"></th>
-                                                        <td>姓名 <span>單行文字</span></td>
-                                                        <td><input class="form-check-input me-1" type="checkbox" value="" aria-label="..." disabled></td> 
-                                                        <td></td>
-                                                    </tr>
-                                                    <tr>
-                                                        <th scope="row"></th>
-                                                        <td>Email <span>Email</span></td>
-                                                        <td><input class="form-check-input me-1" type="checkbox" value="" aria-label="..." disabled></td> 
-                                                        <td></td>
-                                                    </tr>
-                                                    <tr>
-                                                        <th scope="row"></th>
-                                                        <td>手機<span>單行文字</span></td>
-                                                        <td><input class="form-check-input me-1" type="checkbox" value="手機" aria-label="..."></td>
-                                                        <td><button class="delete"><i class="fa-solid fa-x"></i></button></td> 
-                                                    </tr> *@
-                                                    @*<tr>
-                                                        <th scope="row"></th>
-                                                        <td>身分證字號<span>身分證字號</span></td>
-                                                        <td><input class="form-check-input me-1" type="checkbox" value="身分證字號" aria-label="..."></td>
-                                                        <td><button class="delete"><i class="fa-solid fa-x"></i></button></td>
-                                                    </tr>
-                                                    <tr>
-                                                    <th scope="row"></th>
-                                                    <td>連絡電話<span>單行文字</span></td>
-                                                    <td><input class="form-check-input me-1" type="checkbox" value="" aria-label="..."></td>
-                                                    <td><button class="delete"><i class="fa-solid fa-x"></i></button></td>
-                                                    </tr>
-                                                    <tr>
-                                                    <th scope="row"></th>
-                                                    <td>郵遞區號<span>單行文字</span></td>
-                                                    <td><input class="form-check-input me-1" type="checkbox" value="" aria-label="..."></td>
-                                                    <td><button class="delete"><i class="fa-solid fa-x"></i></button></td>
-                                                    </tr>
-                                                    <tr>
-                                                    <th scope="row"></th>
-                                                    <td>地址<span>單行文字</span></td>
-                                                    <td><input class="form-check-input me-1" type="checkbox" value="" aria-label="..."></td>
-                                                    <td><button class="delete"><i class="fa-solid fa-x"></i></button></td>
-                                                    </tr> *@
-
-                                                </tbody>
-                                            </table>
-                                        </div>
-                                    </div>
-
-                                    <!-- 報名人資料 -->
-                                    <div class="applicants">
-                                        <h3>報名人資料</h3>
-                                        <div class="table-log">
-                                            <ul class="list-group">
-                                                @* <li class="list-group-item">
-                                                    個人資料選項
-                                                </li> *@
-                                                <li class="list-group-item">
-                                                    @* <input class="form-check-input me-1" type="checkbox" value="" aria-label="..."> *@
-                                                    姓名
-                                                </li>
-                                                <li class="list-group-item">
-                                                    @* <input class="form-check-input me-1" type="checkbox" value="" aria-label="..."> *@
-                                                    Email
-                                                </li>
-                                                <li class="list-group-item">
-                                                    @* <input class="form-check-input me-1" type="checkbox" value="" aria-label="..."> *@
-                                                    手機
-                                                </li>
-                                                @* <li class="list-group-item">
-                                                <input class="form-check-input me-1" type="checkbox" value="" aria-label="...">
-                                                身分證字號
-                                                </li>
-                                                <li class="list-group-item">
-                                                <input class="form-check-input me-1" type="checkbox" value="" aria-label="...">
-                                                暱稱
-                                                </li> *@
-                                                @* <li class="list-group-item">
-                                                <input class="form-check-input me-1" type="checkbox" value="" aria-label="...">
-                                                聯絡電話
-                                                </li>
-                                                <li class="list-group-item">
-                                                <input class="form-check-input me-1" type="checkbox" value="" aria-label="...">
-                                                郵遞區號
-                                                </li>
-                                                <li class="list-group-item">
-                                                <input class="form-check-input me-1" type="checkbox" value="" aria-label="...">
-                                                地址
-                                                </li> *@
-                                            </ul>
-                                            <!-- 欄位選項 -->
-                                            @* <table class="contactInformationForm">
-                                                <thead>
-                                                    <tr>
-                                                        <th scope="col" colspan="2">選擇要填寫的欄位</th>
-                                                        <th scope="col">是否必填</th>
-                                                        <th scope="col">刪除</th> 
-                                                    </tr>
-                                                </thead>
-                                                <tbody>
-                                                    <tr>
-                                                        <th scope="row"></th>
-                                                        <td>姓名 <span>單行文字</span></td>
-                                                        <td><input class="form-check-input me-1" type="checkbox" value="" aria-label="..."></td>
-                                                        <td><button class="delete"><i class="fa-solid fa-x"></i></button></td> 
-                                                    </tr>
-                                                    <tr>
-                                                        <th scope="row"></th>
-                                                        <td>Email <span>Email</span></td>
-                                                        <td><input class="form-check-input me-1" type="checkbox" value="" aria-label="..."></td>
-                                                        <td><button class="delete"><i class="fa-solid fa-x"></i></button></td> 
-                                                    </tr>
-                                                    <tr>
-                                                        <th scope="row"></th>
-                                                        <td>手機<span>單行文字</span></td>
-                                                        <td><input class="form-check-input me-1" type="checkbox" value="" aria-label="..."></td>
-                                                        <td><button class="delete"><i class="fa-solid fa-x"></i></button></td> 
-                                                    </tr>
-                                                    <tr>
-                                                    <th scope="row"></th> *@
-                                                        @* <<td>身分證字號<span>身分證字號</span></td>
-                                                    td><input class="form-check-input me-1" type="checkbox" value="" aria-label="..."></td>
-                                                    <td><button class="delete"><i class="fa-solid fa-x"></i></button></td> *@
-                                                    </tr> 
-                                                    @* <tr>
-                                                    <th scope="row"></th>
-                                                    <td>連絡電話<span>單行文字</span></td>
-                                                    <td><input class="form-check-input me-1" type="checkbox" value="" aria-label="..."></td>
-                                                    <td><button class="delete"><i class="fa-solid fa-x"></i></button></td>
-                                                    </tr>
-                                                    <tr>
-                                                    <th scope="row"></th>
-                                                    <td>郵遞區號<span>單行文字</span></td>
-                                                    <td><input class="form-check-input me-1" type="checkbox" value="" aria-label="..."></td>
-                                                    <td><button class="delete"><i class="fa-solid fa-x"></i></button></td>
-                                                    </tr>
-                                                    <tr>
-                                                    <th scope="row"></th>
-                                                    <td>地址<span>單行文字</span></td>
-                                                    <td><input class="form-check-input me-1" type="checkbox" value="" aria-label="..."></td>
-                                                    <td><button class="delete"><i class="fa-solid fa-x"></i></button></td>
-                                                    </tr>
-                                                    <tr>
-                                                    <th scope="row"></th>
-                                                    <td>公司/組織名稱<span>單行文字</span></td>
-                                                    <td><input class="form-check-input me-1" type="checkbox" value="" aria-label="..."></td>
-                                                    <td><button class="delete"><i class="fa-solid fa-x"></i></button></td>
-                                                    </tr>
-                                                    <tr>
-                                                    <th scope="row"></th>
-                                                    <td>職稱<span>單行文字</span></td>
-                                                    <td><input class="form-check-input me-1" type="checkbox" value="" aria-label="..."></td>
-                                                    <td><button class="delete"><i class="fa-solid fa-x"></i></button></td>
-                                                    </tr>
-                                                    <tr>
-                                                    <th scope="row"></th>
-                                                    <td>公司地址<span>單行文字</span></td>
-                                                    <td><input class="form-check-input me-1" type="checkbox" value="" aria-label="..."></td>
-                                                    <td><button class="delete"><i class="fa-solid fa-x"></i></button></td>
-                                                    </tr>
-                                                    <tr>
-                                                    <th scope="row"></th>
-                                                    <td>公司電話<span>單行文字</span></td>
-                                                    <td><input class="form-check-input me-1" type="checkbox" value="" aria-label="..."></td>
-                                                    <td><button class="delete"><i class="fa-solid fa-x"></i></button></td>
-                                                    </tr> *@
-
-                                                </tbody>
-                                            </table>
-                                        </div>
-
-                                    </div>
-                                </div>
-                                <span class="map-note"><i class="fa-solid fa-circle-info"></i>  如果您的活動應適用文化部成年禮金「文化幣」折抵，請在建立活動後聯絡 SHOWNEST 審查開通。</span>
-                                @* <div class="pages-change">
-                                <button type="button" class="btn btn-outline-secondary" onclick="window.location.href='@Url.Action("SetTicket", "Dashboard")'">上一頁</button>
-                                <button type="button" class="btn btn-outline-secondary" onclick="window.location.href='@Url.Action("EventHub", "Dashboard")'" id="send">送出</button>
-                                </div> *@
-                            </div>
-                        </div>
-                    </template>
                 </v-stepper>
             </v-container>
         </v-app>
