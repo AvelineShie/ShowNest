@@ -243,7 +243,7 @@ namespace ShowNest.Web.Services.AccountService
                     PersonalURL = user.PersonalUrl,
                     PersonalProfile = user.PersonalProfile,
                     EdmSubscription = user.EdmSubscription,
-                    Image = user.Image,
+                    ImageUrl = user.Image,
                     Status = user.Status,
                     CreatedAt = user.CreatedAt,
                     EditedAt = user.EditedAt,
@@ -309,7 +309,7 @@ namespace ShowNest.Web.Services.AccountService
                 user.PersonalUrl = model.PersonalURL;
                 user.PersonalProfile = model.PersonalProfile;
                 user.EdmSubscription = model.EdmSubscription;
-                user.Image = model.Image;
+                user.Image = model.ImageUrl;
                 user.EditedAt = DateTime.Now;
                 user.LogInInfo.EditedAt = DateTime.Now;
 

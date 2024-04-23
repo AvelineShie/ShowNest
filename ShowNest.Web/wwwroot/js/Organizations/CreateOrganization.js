@@ -141,7 +141,7 @@ createApp({
                         console.log(res)
                         let info = res.data.data
                         this.name = info.name
-                        this.organizationUrl = info.organizationUrl
+                        this.organizationUrl = info.name
                         this.outerUrl = info.outerUrl
                         this.description = info.description
                         this.fbLink = info.fbLink

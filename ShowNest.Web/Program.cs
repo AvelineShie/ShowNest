@@ -165,8 +165,14 @@ namespace ShowNest.Web
             );
 
             app.MapControllerRoute(
+            name: "DashboardEventsIdentifying", // 活動後台
+            pattern: "Dashboard/Events/{id?}/{viewType?}",
+            defaults: new { controller = "Dashboard", Action = "Events" }
+            );
+
+            app.MapControllerRoute(
             name: "DashboardOrganizationIdentifying", // 組織後台
-            pattern: "Dashboard/Organizations/{id}/{ViewType?}",
+            pattern: "Dashboard/Organizations/{id?}/{viewType?}",
             defaults: new { controller = "Dashboard", Action = "Organizations" }
             );
 

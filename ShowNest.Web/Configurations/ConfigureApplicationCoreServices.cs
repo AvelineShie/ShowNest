@@ -14,6 +14,8 @@ namespace ShowNest.Web.Configurations
             services.AddScoped<IEventCardQueryService, EventCardQueryServiceByEf>();
             services.AddScoped<IOrganizationRepository, OrganizationRepository>();
             services.AddScoped<IImgUploadService, CloudinaryService>();
+            services.AddScoped<IEventOverviewService, EventOverviewService>();
+            
 
             return services;
         }

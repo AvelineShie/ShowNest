@@ -18,12 +18,14 @@ namespace ShowNest.Web.Controllers
         private readonly OverviewService _overviewService;
         private readonly OrgGeneralInfoService _orgGeneralInfoService;
         private readonly ICreateEventService _createEventService;
+        private readonly IEventOverviewService _eventOverviewService;
 
-        public DashboardController(OverviewService overviewService, OrgGeneralInfoService orgGeneralInfoService, ICreateEventService createEventService)
+        public DashboardController(OverviewService overviewService, OrgGeneralInfoService orgGeneralInfoService, ICreateEventService createEventService, IEventOverviewService eventOverviewService)
         {
             _overviewService = overviewService;
             _orgGeneralInfoService = orgGeneralInfoService;
             _createEventService = createEventService;
+            _eventOverviewService = eventOverviewService;
         }
 
         public IActionResult Index()
@@ -41,19 +43,70 @@ namespace ShowNest.Web.Controllers
             return View();
         }
 
-
-    //    var userIdentifier = HttpContext.User.FindFirstValue(ClaimTypes.NameIdentifier);
-    //    HttpContext?.User.Identities.FirstOrDefault()
-    //之後以HttpContext的登入訊息取得資料
-    //    var userId = 2;
-    //    var vm = _createEventService.GetOrgByUserId(userId);
-    //    return View(vm);
-
         public IActionResult EventHub()
         {
             return View();
         }
 
+        public IActionResult Events(int id, string viewType)
+        {
+            switch (viewType)
+            {
+                case "Overview":
+                    {
+                        int eventId = id;
+                        return View("EventOverview", eventId);
+                    }
+                case "GeneralInfo":
+                    {
+                        return View("EventGeneralInfo");
+                    }
+                default:
+                    return BadRequest("Invalid view type.");
+
+            }
+        }
+
+        public IActionResult Organizations(int id, string ViewType)
+        {
+
+            switch (ViewType)
+            {
+                case "Overview":
+                    {
+                        var overviewViewModel = _overviewService.GetOverviewViewModel(id);
+                        return View("OrgOverview", overviewViewModel);
+                    }
+                    
+                case "OrgAccount":
+                    return View("OrgAccount");
+                case "GeneralInfo":
+                    {
+                        var orgGeneralInfoViewModel = _orgGeneralInfoService.GetOrgGeneralInfoViewModel(id);
+                        return View("OrgGeneralInfo", orgGeneralInfoViewModel);
+                    }
+                    
+                case "OrgAuthority":
+                    return View("OrgAuthority");
+
+                default: 
+                    return BadRequest("Invalid view type.");
+
+            }
+
+        }
+
+        public IActionResult CreateNewEvent() //範例
+        {
+            return View();
+        }
+
+        //    var userIdentifier = HttpContext.User.FindFirstValue(ClaimTypes.NameIdentifier);
+        //    HttpContext?.User.Identities.FirstOrDefault()
+        //之後以HttpContext的登入訊息取得資料
+        //    var userId = 2;
+        //    var vm = _createEventService.GetOrgByUserId(userId);
+        //    return View(vm);
 
 
         public IActionResult SetTable()
@@ -100,38 +153,5 @@ namespace ShowNest.Web.Controllers
         //    return View("SetTicket", model);
         //}
 
-        public IActionResult Organizations(int id, string ViewType)
-        {
-
-            switch (ViewType)
-            {
-                case "Overview":
-                    {
-                        var overviewViewModel = _overviewService.GetOverviewViewModel(id);
-                        return View("Overview", overviewViewModel);
-                    }
-                    
-                case "OrgAccount":
-                    return View("OrgAccount");
-                case "OrgGeneralInfo":
-                    {
-                        var orgGeneralInfoViewModel = _orgGeneralInfoService.GetOrgGeneralInfoViewModel(id);
-                        return View("OrgGeneralInfo", orgGeneralInfoViewModel);
-                    }
-                    
-                case "OrgAuthority":
-                    return View("OrgAuthority");
-
-                default: 
-                    return BadRequest("Invalid view type.");
-
-            }
-
-        }
-
-        public IActionResult CreateNewEvent() //範例
-        {
-            return View();
-        }
     }
 }

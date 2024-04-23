@@ -1,8 +1,8 @@
-body {
+/* body {
     display: flex;
     flex-direction: column;
     height: 100vh
-}
+} */
 
 
 * {
@@ -10,13 +10,18 @@ body {
 }
 
 /* main Body */
-.section_wrap {
+#layout-content{
+    display: flex;
+}
+
+#overview{
+    /* min-height:600px; */
     flex-grow: 1;
 }
 
 .main-content {
     width: 100%;
-    overflow: auto;
+    /* overflow: auto; */
 }
 
 .bold {
