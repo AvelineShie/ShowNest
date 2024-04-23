@@ -138,9 +138,6 @@ const options = {
                  "IsPrivateEvent": this.privacy, 
                 "CategoryNames": this.selectedCategories,
                 "OrgId": this.organzationId
-
-
-                
             })
                .then()
                 .catch()
