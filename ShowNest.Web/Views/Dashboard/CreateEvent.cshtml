@@ -287,10 +287,16 @@
                                             </li>
                                         </ul>
                                         <div class="tag-pool">
-                                            @* <input type="checkbox" id="ch" style="display: none;">
-                                            <p></p>
-                                            <label for="ch"></label> *@
-                                            <div class="tag">演唱會</div>
+                                                @* todo *@
+                                                <div v-for="(item, index) in categoryItems" :key="index" class="tag" >
+                                                    <input type="checkbox" :id="'category-' + index" v-model="selectedCategories" :value="item" >
+                                                    <label :for="'category-' + index">{{ item }}</label>
+                                                </div>
+                                                <div>
+                                                    @* 已選擇的項目：{{ selectedCategories }} *@
+                                                </div>
+                                            </div>
+                                            @* <div class="tag">演唱會</div>
                                             <div class="tag">課程講座</div>
                                             <div class="tag">研討會</div>
                                             <div class="tag">社群展覽</div>
@@ -303,18 +309,10 @@
                                             <div class="tag">職場工作術</div>
                                             <div class="tag">科技資訊</div>
                                             <div class="tag">休閒</div>
-                                            <div class="tag">運動</div>
+                                            <div class="tag">運動</div> *@
                                         </div>
 
-                                        @* todo *@
-                                            <div v-for="(item, index) in categoryItems" :key="index">
-                                                <input type="checkbox" :id="'category-' + index" v-model="selectedCategories" :value="item">
-                                                <label :for="'category-' + index">{{ item }}</label>
-                                            </div>
-                                            <div>
-                                                已選擇的項目：{{ selectedCategories }}
-                                            </div>
-                                    </div>
+                                        
                                 </div>
                             </div>
                                 <button class="btn btn-success" v-on:click="CreateAndEditEvent">submit</button>
