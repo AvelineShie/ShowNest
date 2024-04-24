@@ -1,4 +1,6 @@
-﻿namespace ShowNest.Web.ViewModels.Dashboard
+﻿using static ShowNest.Web.ViewModels.Dashboard.OrgNameList;
+
+namespace ShowNest.Web.ViewModels.Dashboard
 {
 
     public class CreateEventViewModel
@@ -12,14 +14,16 @@
     {
         public int OrgId { get; set; }
         public string OrgName { get; set; }
-        
+
+        public class EventNameList
+        {
+            public int EventId { get; set; }
+            public string EventName { get; set; }
+        }
+
     }
 
-    public class EventNameList
-    {
-        public int EventId { get; set; }
-        public string EventName { get; set; }
-    }
+
 
 }
 

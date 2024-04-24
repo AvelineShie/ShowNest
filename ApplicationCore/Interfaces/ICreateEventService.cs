@@ -7,7 +7,7 @@ namespace ApplicationCore.Interfaces
     {
         IEnumerable<Event> GetOrgEventsByOrgId(int orgId);
         public int CreateEvent(CreateEventDto require);
-        IEnumerable<Organization> GetOrgByUserId(int userId);
+        //IEnumerable<Organization> GetOrgByUserId(int userId);
         public int UpdateEvent(CreateEventDto require);
         CreateEventDto RenderEventData(int eventId);
     }
