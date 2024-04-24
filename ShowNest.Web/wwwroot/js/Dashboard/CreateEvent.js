@@ -12,20 +12,23 @@ const options = {
             organzationId: 1,
             selectedOrganization: {}, //組織下拉v-model
             organizations: [], //下拉items
-            displaySelectActivityType: false, /*隱藏*/
+            displaySelectActivityType: true, /*隱藏*/
             activityTypes: ["全新的活動", "既有的活動"], //活動下拉item/val
             selectedActivityType: "全新的活動", //活動下拉式v-model
             displayExistingActivities: false, //既有活動後打開
             radioCheck: {}, //所選任一活動
             checkbox: false, //初始未勾選
-            stepButton: false, //初始不可按
+            stepButton: true, 
             radio: 'Option 1',
             items: ['實體活動', '線上活動'],
             selectedEvent: {},
             events: [],
             orgNames: [],
 
-            //====================SetEvent(R,U)
+
+            eventsforInput: [],
+
+            //============================SetEvent(R,U)
             eventNameInput: '',
             startTime: '',
             endTime: '',
@@ -33,6 +36,7 @@ const options = {
             mainOrganizerInput: '',
             coOrganizer: '',
             privacy: false,
+            
 
             number: 0, //人數
             unlimited: '',
@@ -60,7 +64,7 @@ const options = {
                 toolbar: ['bold', 'italic', 'heading', 'Superscript', 'link', 'undo', 'redo', 'imageUpload']
             },
 
-            //======================SetTicket(R,U)
+            //=================================SetTicket(R,U)
             //選票種
             //TicketType: '',
             //StartTime: '',
@@ -82,12 +86,15 @@ const options = {
     mounted() {
         this.CreateEventbyUserId()
         this.GetOrgEventsByOrgId()
+        this.fetchActivitiesByOrgId()
+
     },
     methods: {
         async CreateEventbyUserId() {
             await axios.get('/api/CreateEvent/CreateEventbyUserId')
                 .then(res => {
                     if (res.data == null) {
+                    console.log(res.data)
                         this.selectedOrganization = { id: 0, name: '沒有組織，請先建立新組織' }
                     }
                     this.selectedOrganization = null; //顯示預設字樣
@@ -96,6 +103,31 @@ const options = {
                 .catch(err => {
                     console.error(err);
                 })
+        },
+
+        handleActivityTypeChange(activityTypes) {
+            if (activityTypes === "既有的活動") {
+                // 如果選擇了"既有的活動"，則觸發請求該組織下的所有活動
+                this.fetchActivitiesByOrgId(this.selectedOrganization.id);
+            }
+        },
+
+        async fetchActivitiesByOrgId(orgId) {
+            await axios.get(`/api/CreateEvent/GetActivitiesByOrgId`)
+            .then(res => {
+
+                if (res.data === null) {
+                    return console.log(err);
+                } else {
+                console.log(res.data)
+                    this.eventsforInput = res.data.map(a => ({ eventId: a.eventId, eventName: a.eventName }));
+                }
+                console.log("this.eventsforInput")
+                console.log(this.eventsforInput)
+            })
+            .catch(err => {
+                console.error(err);
+            })
         },
 
         imgUpload(e) {
@@ -195,8 +227,9 @@ const options = {
         //        console.error(err)
         //    })
         //},
+
         GetOrgEventsByOrgId() {
-            console.log(this.selectedOrganization)
+            /*console.log(this.selectedOrganization)*/
         }
 
     },
@@ -215,9 +248,17 @@ const options = {
             handler: function (val) {
                 if (val === "既有的活動") {
                     this.displayExistingActivities = true
-                    this.getEventsByOrganizationId()
+                    this.selectedOrganization()
                 }
             }
+        },
+
+        selectedOrganization: {
+            handler: function (newVal) {
+                if (newVal && newVal.id) {
+                    this.handleActivityTypeChange(newVal.id);
+                }},
+            deep: true
         },
 
         //'onlineEventArea': {
@@ -247,8 +288,6 @@ const options = {
 }
 const app = createApp(options); // 創建一個 Vue 應用實例，使用 options 作為配置選項
 app.component('draggable', vuedraggable)
-//app.component('GoogleMap', GoogleMap)
-//app.component('GoogleMapMarker', Marker)
 app.use(CKEditor)
 app.use(vuetify)
 app.mount('#app')
@@ -361,21 +400,4 @@ app.mount('#app')
 //}).mount('#app');
 
 
-/*=============google map ==============*/
-//寫的格式錯誤
-//const { GoogleMap, Marker } = Vue3GoogleMap
 
-//const map = createApp({
-//  setup() {
-//    const center = { lat: 40.689247, lng: -74.044502 };
-
-//    return {
-//      center
-//    }
-//  }
-//})
-
-//map.component('GoogleMap', GoogleMap)
-//map.component('GoogleMapMarker', Marker)
-
-//map.mount('#app')

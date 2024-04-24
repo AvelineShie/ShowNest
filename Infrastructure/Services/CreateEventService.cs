@@ -9,6 +9,7 @@ using Newtonsoft.Json;
 using System;
 using System.Diagnostics.Tracing;
 using System.Linq.Expressions;
+using System.Reflection;
 using System.Security.Cryptography;
 using static ApplicationCore.DTOs.CreateEventDto;
 using Organization = ApplicationCore.Entities.Organization;
@@ -29,16 +30,9 @@ namespace Infrastructure.Services
             
         }
 
-        public IEnumerable<Organization> GetOrgByUserId(int userId)
-        {
-            var organizations = DbContext.Organizations
-                .Where(o => o.OwnerId == userId);
-
-            return organizations;
-        }
-
+        //找出同一組織的活動
         public IEnumerable<Event> GetOrgEventsByOrgId(int orgId)
-        {
+        {  
             var events = DbContext.Events
                 .Include(e => e.Organization)
                 .Where(e => e.OrganizationId == orgId);
@@ -46,7 +40,7 @@ namespace Infrastructure.Services
             return events;
         }
 
-        //如果要跳轉到活動頁面,活動主頁設定用id去撈, 目前已經有API，類型可以直接設string，
+
         public int CreateEvent(CreateEventDto request)
         {
 
@@ -62,7 +56,7 @@ namespace Infrastructure.Services
                         Name = request.EventName,
                         OrganizationId = request.OrgId,
                         StartTime = request.StartTime,
-                        //EndTime = request.EndTime,
+                        EndTime = request.EndTime,
                         Type = 0,
                         //LocationName = request.LocationName,
                         //LocationAddress = request.EventAddress,
@@ -71,7 +65,7 @@ namespace Infrastructure.Services
                         //還有一欄給使用者自填活動主頁網址,視情況再放
                         //StreamingPlatform = request.StreamingName,
                         //StreamingUrl = request.StreamingUrl,
-                        //Capacity = request.Attendance,
+                        Capacity = request.Attendance,
                         EventImage = request.EventImage,
                         Introduction = request.EventIntroduction,
                         Description = request.EventDescription,
@@ -89,19 +83,18 @@ namespace Infrastructure.Services
                         CreatedAt = DateTime.Now,
                        
                     };
+
+                    //活動標籤: 
+                    var eventTags = new EventAndTagMapping
+                    {
+                        EventId = request.EventId,
+                        CategoryTagId = request.CategoryId
+                    };
+
                     DbContext.Events.Add(activity);
+                    DbContext.EventAndTagMappings.Add(eventTags);
+
                     DbContext.SaveChanges();
-
-                    //活動標籤
-                    //var eventTags = new EventAndTagMapping
-                    //{
-                    //    EventId = request.EventId,
-                    //    CategoryTagId = request.CategoryId,
-                    //};
-
-
-                    //DbContext.EventAndTagMappings.Add(eventTags);
-                    //DbContext.SaveChanges();
 
 
                     //======================================以下是票卷
@@ -110,17 +103,17 @@ namespace Infrastructure.Services
                     //List<TicketDetailViewModel> TicketDetail = new List<TicketDetailViewModel>();
                     //foreach (var ticket in TicketDetail)
                     //{
-                        //TicketDetailViewModel ticketDetail = new TicketType
-                        //{
-                        //    EventId = request.EventId,
-                        //    Name = request.TicketName,
-                        //    StartSaleTime = request.StartSaleTime,
-                        //    EndSaleTime = request.EndSaleTime,
-                        //    Price = request.Prince,
-                        //    CapacityAmount = request.Amount,
+                    //TicketDetailViewModel ticketDetail = new TicketType
+                    //{
+                    //    EventId = request.EventId,
+                    //    Name = request.TicketName,
+                    //    StartSaleTime = request.StartSaleTime,
+                    //    EndSaleTime = request.EndSaleTime,
+                    //    Price = request.Prince,
+                    //    CapacityAmount = request.Amount,
 
-                        //};
-                        //DbContext.TicketTypes.Add(ticketDetail);
+                    //};
+                    //DbContext.TicketTypes.Add(ticketDetail);
                     //}
                     //DbContext.SaveChanges();
 
@@ -145,12 +138,6 @@ namespace Infrastructure.Services
                 }
 
         }
-
-
-
-
-
-
 
 
 
@@ -227,7 +214,7 @@ namespace Infrastructure.Services
             throw new NotImplementedException();
         }
 
-        IEnumerable<ApplicationCore.Entities.Organization> ICreateEventService.GetOrgByUserId(int userId)
+        IEnumerable<Event> ICreateEventService.GetOrgEventsByOrgId(int orgId)
         {
             throw new NotImplementedException();
         }
@@ -241,6 +228,13 @@ namespace Infrastructure.Services
         {
             throw new NotImplementedException();
         }
+
+        //IEnumerable<ApplicationCore.Entities.Organization> ICreateEventService.GetOrgByUserId(int userId)
+        //{
+        //    throw new NotImplementedException();
+        //}
+
+
     }
 }
 
