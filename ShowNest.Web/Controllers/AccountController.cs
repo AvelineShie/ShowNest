@@ -42,7 +42,7 @@ namespace ShowNest.Web.Controllers
                 }
                 else
                 {
-                    // 否則，重定向到預設的頁面
+                    // 否則回到首頁
                     return RedirectToAction("Index", "Home");
                 }
             }
@@ -66,7 +66,7 @@ namespace ShowNest.Web.Controllers
         {
             if (ModelState.IsValid)
             {
-                // 使用AccountService進行註冊
+                // 使用AccountService內的方法進行註冊
                 var result = await _accountService.RegisterUserAsync(SignUp, ModelState.IsValid);
                 if (result.IsSuccess)
                 {
@@ -82,23 +82,22 @@ namespace ShowNest.Web.Controllers
                         }
                         else
                         {
-                            // 否則，重定向到預設的頁面
+                            // 沒eventId回首頁
                             return RedirectToAction("Index", "Home");
                         }
                     }
                     else
                     {
-                        // 登入失敗，返回VIEW以顯示錯誤訊息
+                        // 註冊登入失敗錯誤訊息
                         ModelState.AddModelError("", loginResult.ErrorMessage);
                     }
                 }
                 else
                 {
-                    // 註冊失敗，返回VIEW以顯示錯誤訊息
+                    // 註冊失敗錯誤訊息
                     ModelState.AddModelError("", result.ErrorMessage);
                 }
             }
-
             //如果MODEL狀態不正確，則返回VIEW以顯示錯誤訊息
             return View(SignUp);
         }
@@ -110,9 +109,8 @@ namespace ShowNest.Web.Controllers
             var userIdClaim = User.Claims.FirstOrDefault(c => c.Type == ClaimTypes.NameIdentifier);
             if (userIdClaim == null)
             {
-                return RedirectToAction("LogIn"); // 如果用戶未登入，則重定向到登入頁面
+                return RedirectToAction("LogIn"); //如果用戶未登入，則重定向到登入頁面
             }
-
             // 從Claim中取得使用者的ID並轉換為整數
             var userId = int.Parse(userIdClaim.Value);
 
@@ -124,10 +122,8 @@ namespace ShowNest.Web.Controllers
                 ModelState.AddModelError(string.Empty, result.ErrorMessage);
                 return View();
             }
-
             // 從Service的結果中獲取UserAccountViewModel實例
             var viewModel = result.UserAccount;
-
             return View(viewModel); // 將ViewModel傳遞給View
         }
         //編輯寫入資料
@@ -139,23 +135,18 @@ namespace ShowNest.Web.Controllers
             var selectedAreaIds = string.IsNullOrEmpty(selectedAreaIdsString)
                 ? new List<int>()
                 : selectedAreaIdsString.Split(',').Select(int.Parse).ToList();
-
             // 將selectedAreaIds賦值給model的SelectedAreas屬性
             model.SelectedAreas = selectedAreaIds;
-
             if (ModelState.IsValid)
             {
                 // 從HttpContext中獲取當前使用者的ID
                 var userIdClaim = User.Claims.FirstOrDefault(c => c.Type == ClaimTypes.NameIdentifier);
-
                 if (userIdClaim == null)
                 {
                     return RedirectToAction("LogIn"); // 如果用戶未登入，則重定向到登入頁面
                 }
-
                 // 從Claim中取得使用者的ID並轉換為整數
                 var userId = int.Parse(userIdClaim.Value);
-
                 // 使用Service來更新使用者資料，包含偏好設定
                 var result = await _accountService.UpdateUserAccountByIdAsync(userId, model);
                 if (result.IsSuccess)
@@ -177,10 +168,8 @@ namespace ShowNest.Web.Controllers
                     {
                         ModelState.AddModelError(string.Empty, result.ErrorMessage);
                     }
-                   
                 }
             }
-
             return View(model);
         }
         //修改密碼
@@ -201,9 +190,7 @@ namespace ShowNest.Web.Controllers
                 {
                     // 密碼更換成功，重定向到成功頁面或者提示用戶
                     await HttpContext.SignOutAsync(CookieAuthenticationDefaults.AuthenticationScheme);
-
                     TempData["Message"] = "修改成功，請重新登入";
-
                     return RedirectToAction("LogIn");
                 }
                 else
@@ -214,6 +201,19 @@ namespace ShowNest.Web.Controllers
             }
             // 如果模型無效，則返回視圖以顯示錯誤訊息
             return View(model);
+        }
+        //登出
+        public async Task<IActionResult> logout()
+        {
+            await HttpContext.SignOutAsync(CookieAuthenticationDefaults.AuthenticationScheme);
+
+            return RedirectToAction("Index", "Home");
+
+        }
+        //忘記密碼
+        public IActionResult ForgetPassword()
+        {
+            return View();
         }
         public IActionResult Prefills()
         {
@@ -247,20 +247,6 @@ namespace ShowNest.Web.Controllers
         {
             return View();
         }
-        //登出
-        public async Task<IActionResult> logout()
-        {
-            await HttpContext.SignOutAsync(CookieAuthenticationDefaults.AuthenticationScheme);
-
-            return RedirectToAction("Index", "Home");
-
-        }
-        //忘記密碼
-        public IActionResult ForgetPassword()
-        {
-            return View();
-        }
-
         //FB登入
         //[HttpGet]
         //public async Task<ActionResult> FacebookCallback(string code)

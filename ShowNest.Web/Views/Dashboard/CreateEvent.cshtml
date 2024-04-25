@@ -177,6 +177,8 @@
                                             <google-map-marker :options="{ position: center }" />
                                             </google-map> *@
 
+                                            <div id="map"></div>
+
                                             <span class="map-note">
                                                 位置不對怎麼辦？您可以手動拖曳地圖上的標示，移動到指定位置
                                             </span>
@@ -256,15 +258,6 @@
                                         <div class="section">
                                             <h4>活動分類</h4>
                                             <span class="note">你可以選擇最多 1 個分類。</span>
-
-                                            <ul class="tag-pool">
-                                                <li>
-                                                    @* @foreach (var tag in Model.EventCategoryTags)
-                                                    {
-                                                    @await Html.PartialAsync("~/PartialViews/_CategoryTags_Partial.cshtml", tag);
-                                                    } *@
-                                                </li>
-                                            </ul>
                                             <div class="tag-pool">
                                                 @* todo *@
                                                 <div v-for="(item, index) in categoryItems" :key="index" class="tag">
@@ -272,20 +265,7 @@
                                                     <label :for="'category-' + index">{{ item }}</label>
                                                 </div>
                                             </div>
-                                            @* <div class="tag">演唱會</div>
-                                            <div class="tag">課程講座</div>
-                                            <div class="tag">研討會</div>
-                                            <div class="tag">社群展覽</div>
-                                            <div class="tag">電影</div>
-                                            <div class="tag">音樂會</div>
-                                            <div class="tag">藝人見面會</div>
-                                            <div class="tag">遊戲競賽</div>
-                                            <div class="tag">親子</div>
-                                            <div class="tag">聯誼</div>
-                                            <div class="tag">職場工作術</div>
-                                            <div class="tag">科技資訊</div>
-                                            <div class="tag">休閒</div>
-                                            <div class="tag">運動</div> *@
+                                           
                                         </div>
 
 
@@ -406,6 +386,11 @@
         <script src="https://cdn.jsdelivr.net/npm/@@ckeditor/ckeditor5-vue@5.1.0/dist/ckeditor.min.js"></script>
         <script src="~/lib/vuetify/vuetify.min.js"></script>
         <script src="/js/Dashboard/CreateEvent.js" asp-append-version="true"></script>
+        <script>
+            /*map start*/
+            (g => { var h, a, k, p = "The Google Maps JavaScript API", c = "google", l = "importLibrary", q = "__ib__", m = document, b = window; b = b[c] || (b[c] = {}); var d = b.maps || (b.maps = {}), r = new Set, e = new URLSearchParams, u = () => h || (h = new Promise(async (f, n) => { await (a = m.createElement("script")); e.set("libraries", [...r] + ""); for (k in g) e.set(k.replace(/[A-Z]/g, t => "_" + t[0].toLowerCase()), g[k]); e.set("callback", c + ".maps." + q); a.src = `https://maps.${c}apis.com/maps/api/js?` + e; d[q] = f; a.onerror = () => h = n(Error(p + " could not load.")); a.nonce = m.querySelector("script[nonce]")?.nonce || ""; m.head.append(a) })); d[l] ? console.warn(p + " only loads once. Ignoring:", g) : d[l] = (f, ...n) => r.add(f) && u().then(() => d[l](f, ...n)) })
+                ({ key: "AIzaSyBPB4VPZKkuM469YuZcRdGGKnsItE1C7ik", v: "beta" });
+        </script>
     }
 </body>
 
