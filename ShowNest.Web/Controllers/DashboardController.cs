@@ -43,11 +43,6 @@ namespace ShowNest.Web.Controllers
             return View();
         }
 
-        public IActionResult EventHub()
-        {
-            return View();
-        }
-
         public IActionResult Events(int id, string viewType)
         {
             switch (viewType)
@@ -59,7 +54,8 @@ namespace ShowNest.Web.Controllers
                     }
                 case "GeneralInfo":
                     {
-                        return View("EventGeneralInfo");
+                        int eventId = id;
+                        return View("EventGeneralInfo", eventId);
                     }
                 default:
                     return BadRequest("Invalid view type.");

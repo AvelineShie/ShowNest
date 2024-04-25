@@ -1,4 +1,3 @@
-
 body {
     display: flex;
     flex-direction: column;
@@ -12,18 +11,22 @@ body {
 
 /* main Body */
 .section_wrap {
-    flex-grow: 1;
+    height: 100%;
 }
 
 .main-content {
     width: 100%;
     max-width: 1200px;
+    height: 100%;
     overflow: auto;
+    margin-left: 20px;
 }
+
 .gap {
     padding: 10px 0;
 }
-.bold{
+
+.bold {
     font-weight: bold;
 }
 
@@ -49,21 +52,22 @@ header.org_header {
 .org-title {
     color: var(--main-green);
     font-weight: bold;
-
 }
 
-.org-title{
+.org-title {
     font-size: 20px;
     font-weight: bold;
 }
+
 /* --------org-info-title----------- */
 .org-info-title {
     padding: 30px 32px 8px 20px;
     display: flex;
     align-items: center;
 }
-.general-title{
-    padding-right: 10px; 
+
+.general-title {
+    padding-right: 10px;
     font-weight: 500;
 }
 
@@ -74,85 +78,112 @@ header.org_header {
     background-color: var(--main-green);
     border: none;
 }
+
 .btn-primary:hover {
     background-color: var(--light-green);
 }
+
 .btn i {
     padding-right: 5px;
 }
+
 /* -------information Setting----------- */
-.info-container{
+.info-container {
     display: grid;
-    grid-template-columns: 3fr 2fr;
+    grid-template-columns: 2fr 2fr;
     gap: 20px;
     line-height: 1.5;
     padding-bottom: 40px;
 }
 
-.information{
+.information {
     padding: 10px 32px 8px 20px;
     margin-bottom: 10px;
-    /* width: 100%; */
 }
+
+.information img {
+    width: 100%;
+}
+
 .info-title {
     font-size: 18px;
     font-weight: bold;
 }
-.websiteURL a{
+
+.websiteURL a {
     font-size: 15px;
     color: var(--main-green);
 }
-.websiteURL a:hover{
+
+.websiteURL a:hover {
     color: var(--light-green);
-    
 }
+
 .desc {
-    width:100%;
+    /* width: 100%; */
 }
-.img-container img{
-    object-fit:cover;
+
+.img-container {
     width: 100%;
 }
+
+.img-container img {
+    object-fit: cover;
+    width: 100%;
+}
+
 /* -------Advanced Setting----------- */
 
-.contact-settings{
-    border-bottom:2px solid var(--dark-gray);
+.contact-settings {
+    border-bottom: 2px solid var(--dark-gray);
     display: block;
     padding-bottom: 8px;
     line-height: 1;
 }
-.advancedSetting{
+
+.advancedSetting {
+    /* min-width: 300px; */
+    padding-top: 10px;
     margin: 0px 50px 10px 0px;
+}
+
+#map {
+    min-height: 400px;
 }
 
 @media screen and (max-width:768px) {
 
-    .info-container{
+    .info-container {
         flex-direction: column-reverse;
     }
+
     .col-4 {
         min-width: 90px;
     }
+
     .information,
-    .advancedSetting{
+    .advancedSetting {
         padding: 10px 0px 8px 20px;
         width: 90%;
     }
-    .org-info-title{
+
+    .org-info-title {
         padding: 30px 0px 8px 20px;
         min-width: 302px;
         flex-direction: column;
     }
-    .contact-info{
+
+    .contact-info {
         width: 50%;
     }
-    .general-title{
+
+    .general-title {
         padding: 14px 0;
         padding-right: 0px;
     }
-    .orgName{
+
+    .orgName {
         border-top: 1px solid var(--dark-gray);
         padding-top: 30px;
     }
-
 }
