@@ -19,7 +19,7 @@ namespace ShowNest.Web.WebAPI
         {
             try
             {
-                var eventsOverviewDto = await _eventOverviewService.GetEventsOverviewTicketInfo(eventId);
+                var eventsOverviewDto = await _eventOverviewService.GetEventOverviewDto(eventId);
                 return Ok(eventsOverviewDto);
             }
             catch (Exception ex)
