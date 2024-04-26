@@ -55,7 +55,8 @@ namespace Infrastructure.Services
                                 .Include(ea => ea.EventAndTagMappings)
                                     .ThenInclude(ct => ct.CategoryTag)
                                 .Include(t => t.TicketTypes)
-                                .Where(e => e.StartTime > DateTime.Today);
+                                .Where(e => e.StartTime > DateTime.Today &&
+                                            e.EventAndTagMappings.Any());
 
                 // query string filters
                 if (!string.IsNullOrEmpty(inputstring))
