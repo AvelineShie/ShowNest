@@ -1,4 +1,4 @@
-﻿@model OrgGeneralInfoViewModel
+﻿@model int
 
 @{
     ViewData["Title"] = "OrgGeneralInfo";
@@ -15,102 +15,96 @@
 <section id="OrgGeneralInfo" class="d-flex section_wrap">
     <div class="sideBarMenu">
         <nav>
-            <div><a asp-controller="Organizations" asp-action="Index" asp-route-OrganizationId="@Model.OrgId"><i class="fa-solid fa-arrow-up-right-from-square fa-sm"></i>組織公開頁面</a></div>
-            <div><a href="/Dashboard/Organizations/@Model.OrgId/Overview"><i class="fa-solid fa-users fa-sm"></i>活動列表</a></div>
-            @* <div><a href="?viewType=OrgAccount"><i class="fa-solid fa-cart-arrow-down fa-sm"></i>組織帳務</a></div> *@
-            <div><a href="/Dashboard/Organizations/@Model.OrgId/GeneralInfo"><i class="fa-solid fa-circle-info fa-sm"></i>一般資訊</a></div>
-            @* <div><a href="?viewType=OrgAuthority"><i class="fa-solid fa-tags fa-sm"></i>權限管理</a></div> *@
+            @* <div class="dropdown" id="sidemenu-dropdown">
+                <button class="btn btn-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown"
+                        aria-expanded="false" id="publish-btn">
+                    未發佈
+                </button>
+                <ul class="dropdown-menu">
+                    <li><a class="dropdown-item" href="#">發佈活動</a></li>
+                </ul>
+            </div> *@
+
+            <div><a href="/Events/EventPage/@Model"><i class="fa-solid fa-arrow-up-right-from-square fa-sm"></i>活動公開頁面</a></div>
+            <div><a href="/Dashboard/Events/@Model/Overview"><i class="fa-solid fa-gauge-simple"></i>活動主控台</a></div>
+            @* <p>活動資訊</p>
+            <div><a href="#"><i class="fa-solid fa-users fa-sm"></i>報名人列表</a></div>
+            <div><a href="#"><i class="fa-solid fa-cart-arrow-down fa-sm"></i>訂單</a></div>
+            <div><a href="#"><i class="fa-regular fa-clipboard fa-sm"></i>簽到簿</a></div>
+
+            <p>活動設定</p> *@
+            <div><a href="/Dashboard/Events/@Model/GeneralInfo"><i class="fa-solid fa-circle-info fa-sm"></i>基本資料</a></div>
+            @*                 <div><a href="#"><i class="fa-solid fa-location-dot fa-sm"></i>活動地點</a></div>
+            <div><a href="#"><i class="fa-solid fa-tags fa-sm"></i>票種資訊</a></div>
+            <div><a href="#"><i class="fa-regular fa-pen-to-square fa-sm"></i>報名表單</a></div>
+            <div><a href="#"><i class="fa-solid fa-envelope fa-sm"></i>通知信件</a></div>
+            <div><a href="#"><i class="fa-solid fa-circle-arrow-up fa-sm"></i>升級活動</a></div>
+            *@
         </nav>
     </div>
 
-    <div id="app" class="main-content">
+    <div id="app" class="main-content" event-id="@Model">
         <header class="org_header">
-            <span class="org-name">組織名稱</span>
-            <span class="org-title bold">@Model.OrgName</span>
+            <span class="org-name">活動名稱</span>
+            <span class="org-title bold">{{eventName}}</span>
         </header>
         <div class="org-info-title">
             <h2 class="general-title">一般資訊</h2>
-            <button class="btn btn-success" @@click="redirectToEditOrganizationPage" orgId="@Model.OrgId"><i class="fa-regular fa-pen-to-square"></i>編輯</button>
-            @* <span v-text="@Model.OrgId"></span> *@
+            <button class="btn btn-success" orgId="@Model"><i class="fa-regular fa-pen-to-square"></i>編輯</button>
         </div>
 
         <div class="info-container">
             <div class="information">
                 <div class="orgName gap">
-                    <div class="info-title"><label>組織名稱</label></div>
-                    <div class="description"><p>@Model.OrgName</p></div>
+                    <div class="info-title"><label>活動名稱</label></div>
+                    <div class="description"><p>{{eventName}}</p></div>
                 </div>
-                <div class="website gap">
-                    <div class="info-title"><label>網站</label></div>
-                    <div class="websiteURL">
-                        <a href="@Model.OrgWebUrl">@Model.OrgWebUrl</a>
-                    </div>
+                <div class="gap">
+                    <div class="info-title"><label>舉辦時間</label></div>
+                    <div class="description"><p>{{eventTime}}</p></div>
                 </div>
-                <div class="desc gap">
+                <div class="gap" v-if="organizer">
+                    <div class="info-title"><label>主辦單位</label></div>
+                    <div class="description"><p>{{organizer}}</p></div>
+                </div>
+                <div class="gap" v-if="coOrganizer">
+                    <div class="info-title"><label>主辦單位</label></div>
+                    <div class="description"><p>{{coOrganizer}}</p></div>
+                </div>
+                <div class="gap">
+                    <div class="info-title"><label>活動人數</label></div>
+                    <div class="description"><p>{{capacity}}</p></div>
+                </div>
+                <div class="gap">
+                    <div class="info-title"><label>活動形式</label></div>
+                    <div class="description"><p>{{eventType}}</p></div>
+                </div>
+                <div class="gap" v-if="eventBrief">
+                    <div class="info-title"><label>簡介</label></div>
+                    <div class="description"><p>{{eventBrief}}</p></div>
+                </div>
+                <div class="gap" v-if="eventDescription">
                     <div class="info-title"><label>描述</label></div>
-                    <div class="description"><p>@Html.Raw(Model.OrgDescription)</p></div>
+                    <div class="description"><p v-html="eventDescription"></p></div>
                 </div>
-                @if (!string.IsNullOrEmpty(Model.OrgFbUrl))
-                {
-                    <div class="twitter gap">
-                        <div class="info-title"><label>Twitter 帳號</label></div>
-                        <div class="websiteURL">
-                            <a href="@Model.OrgFbUrl">@Model.OrgFbUrl</a>
-                        </div>
-                    </div>
-                }
-                @if (!string.IsNullOrEmpty(Model.OrgIgUrl))
-                {
-                    <div class="flickr  gap">
-                        <div class="info-title"><label>IG官方帳號</label></div>
-                        <div class="websiteURL">
-                            <a href="@Model.OrgIgUrl">@Model.OrgIgUrl</a>
-                        </div>
-                    </div>
-                }
-                @if (!string.IsNullOrEmpty(Model.OrgEmail))
-                {
-                    <div class="feeback-mail gap">
-                        <div class="info-title"><label>回覆 E-mail 地址</label></div>
-                        <div class="websiteURL">
-                            <a href="#">@Model.OrgEmail</a>
-                        </div>
-                    </div>
-                }
-                @* <div class="contect-opt gap">
-                    <div class="info-title"><label>顯示/隱藏 「聯絡主辦單位」</label></div>
-                    <div class="description"><p>顯示</p></div>
-                </div> *@
-                @* <div class="privacy gap">
-                    <div class="info-title"><label>隱私權政策</label></div>
-                    <div class="websiteURL"><a href="#">https://robbank.com.privacy</a></div>
-                </div> *@
             </div>
             <div class="advancedSetting">
+                <div class="orgName gap">
                 <div class="info-title"><label>圖像</label></div>
-                <div class="img-container gap">
-                    <img src="@Model.OrgImgUrl">
+                <div class="img-container"><img :src="eventImg"></div>
                 </div>
-                <div class="contact-settings gap">
-                    <h3 class="contact-info">聯絡資訊</h3>
-                </div>
-                <div class="contactName gap">
-                    <div class="info-title"><label>聯絡人名稱</label></div>
-                    <div class="description"><p>@Model.OrgContactName</p></div>
-                </div>
-                <div class="mobile gap">
-                    <div class="info-title"><label>聯絡人行動電話</label></div>
-                    <div class="description"><p>@Model.OrgContactCellphone</p></div>
-                </div>
-                <div class="tel gap">
-                    <div class="info-title"><label>聯絡人一般電話</label></div>
-                    <div class="description"><p>@Model.OrgContactTelepohone</p></div>
-                </div>
-                <div>
-                </div>
+                <div class="gap">
+                    <div class="info-title"><label>地圖</label></div>
+                    <p>{{eventLocation}}</p>
+                    <div id="map"></div>
+                </div>             
             </div>
+        </div>
+    </div>
 </section>
 
+
+
 @section endJS {
-    <script src="~/js/dashboard/orggeneralinfo.js"></script>
+    <script src="~/js/dashboard/eventgeneralinfo.js"></script>
 }
