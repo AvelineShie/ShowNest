@@ -13,7 +13,7 @@
         <input type="checkbox" name="" id="sideMenu-active" />
         <div class="sideBarMenu">
             <nav>
-                <div class="dropdown" id="sidemenu-dropdown">
+                @* <div class="dropdown" id="sidemenu-dropdown">
                     <button class="btn btn-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown"
                             aria-expanded="false" id="publish-btn">
                         未發佈
@@ -21,23 +21,23 @@
                     <ul class="dropdown-menu">
                         <li><a class="dropdown-item" href="#">發佈活動</a></li>
                     </ul>
-                </div>
+                </div> *@
 
-                <div><a href="#"><i class="fa-solid fa-arrow-up-right-from-square fa-sm"></i>活動公開頁面</a></div>
-                <div><a href="#"><i class="fa-solid fa-gauge-simple"></i>活動主控台</a></div>
-                <p>活動資訊</p>
+                <div><a href="/Events/EventPage/@Model"><i class="fa-solid fa-arrow-up-right-from-square fa-sm"></i>活動公開頁面</a></div>
+                <div><a href="/Dashboard/Events/@Model/Overview"><i class="fa-solid fa-gauge-simple"></i>活動主控台</a></div>
+                @* <p>活動資訊</p>
                 <div><a href="#"><i class="fa-solid fa-users fa-sm"></i>報名人列表</a></div>
                 <div><a href="#"><i class="fa-solid fa-cart-arrow-down fa-sm"></i>訂單</a></div>
                 <div><a href="#"><i class="fa-regular fa-clipboard fa-sm"></i>簽到簿</a></div>
 
-                <p>活動設定</p>
-                <div><a href="#"><i class="fa-solid fa-circle-info fa-sm"></i>基本資料</a></div>
-                <div><a href="#"><i class="fa-solid fa-location-dot fa-sm"></i>活動地點</a></div>
+                <p>活動設定</p> *@
+                <div><a href="/Dashboard/Events/@Model/GeneralInfo"><i class="fa-solid fa-circle-info fa-sm"></i>基本資料</a></div>
+@*                 <div><a href="#"><i class="fa-solid fa-location-dot fa-sm"></i>活動地點</a></div>
                 <div><a href="#"><i class="fa-solid fa-tags fa-sm"></i>票種資訊</a></div>
                 <div><a href="#"><i class="fa-regular fa-pen-to-square fa-sm"></i>報名表單</a></div>
                 <div><a href="#"><i class="fa-solid fa-envelope fa-sm"></i>通知信件</a></div>
                 <div><a href="#"><i class="fa-solid fa-circle-arrow-up fa-sm"></i>升級活動</a></div>
-            </nav>
+ *@            </nav>
         </div>
         <!--------- side menu end ------------>
         <!---------- main content  start------------->

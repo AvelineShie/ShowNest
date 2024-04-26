@@ -59,7 +59,7 @@ namespace Infrastructure.Services
                         OrganizationId = request.OrgId,
                         StartTime = request.StartTime,
                         EndTime = request.EndTime,
-                        Type = 0,
+                        Type = request.EventStatus,
                         //LocationName = request.LocationName,
                         //LocationAddress = request.EventAddress,
                         //Longitude = request.Longitude,
@@ -118,13 +118,6 @@ namespace Infrastructure.Services
 
                     DbContext.SaveChanges();
 
-                    //票區與票的對應
-                    //var ticketAndSeatAreaMapping = new TicketTypeAndSeatAreaMapping
-                    //{
-                    //    //TicketTypeId = request.TicketTypeId,
-                    //    //SeatAreaId = request.SeatAreaId,};
-                    //DbContext.TicketTypeAndSeatAreaMappings.Add(ticketAndSeatAreaMapping);
-                    //DbContext.SaveChanges();
 
                     transcation.Commit();
 
@@ -137,78 +130,6 @@ namespace Infrastructure.Services
                     throw new Exception(ex.Message);
                 }
 
-        }
-
-        //編輯既有活動
-        public int UpdateEvent(CreateEventDto request)
-        {
-            using (var transcation = DbContext.Database.BeginTransaction())
-                try
-                { var targetEvent = DbContext.Events
-                        .FirstOrDefault(e => e.Id == request.EventId);
-
-                    targetEvent.Name = request.EventName;
-                    targetEvent.Id = request.EventId;
-                    targetEvent.OrganizationId = request.CategoryId;
-                    targetEvent.StartTime = request.StartTime;
-                    targetEvent.EndTime = request.EndTime;
-                    targetEvent.Type = request.EventStatus;
-                    //targetEvent.StreamingPlatform = request.StreamingName;
-                    //targetEvent.StreamingUrl = request.StreamingUrl;
-                    //targetEvent.LocationName = request.LocationName;
-                    //targetEvent.LocationAddress = request.EventAddress;
-                    //targetEvent.Longitude = request.Longitude;
-                    //targetEvent.Latitude = request.Latitude;
-                    targetEvent.Capacity = request.Attendance;
-                    targetEvent.EventImage = request.EventImage;
-                    targetEvent.Introduction = request.EventIntroduction;
-                    targetEvent.Description = request.EventDescription;
-                    targetEvent.MainOrganizer = request.MainOrganizer;
-                    targetEvent.CoOrganizer = request.CoOrganizer;
-                    targetEvent.IsPrivateEvent = request.IsPrivateEvent;
-                    //targetEvent.ContactPerson = request.ContactPerson;
-                    //targetEvent.ParticipantPeople = request.ParticipantPeople;
-                    //targetEvent.IsFree = request.IsFree;
-                    targetEvent.EditedAt = DateTime.Now;
-
-                    //CategoryTag
-                    var targetTag = DbContext.EventAndTagMappings
-                         .FirstOrDefault(e => e.EventId == request.EventId);
-                    targetTag.CategoryTagId = request.CategoryId;
-
-                    //Ticket
-                    List<TicketDetailViewModel> TicketDetail = new List<TicketDetailViewModel>();
-                    var targetTicket = DbContext.TicketTypes
-                        .FirstOrDefault(t => t.EventId == request.EventId);
-
-                    if (targetTicket != null)
-                    {
-                        foreach (var ticket in TicketDetail)
-                        {
-                            
-                            targetTicket.Id = ticket.TicketTypeId;
-                            targetTicket.EventId = ticket.EventId;
-                            targetTicket.Name = ticket.TicketName;
-                            targetTicket.StartSaleTime = ticket.StartSaleTime;
-                            targetTicket.EndSaleTime = ticket.EndSaleTime;
-                            targetTicket.Price = ticket.Price;
-                            targetTicket.CapacityAmount = ticket.Amount;
-                            targetTicket.EditedAt = ticket.EditedAt;
-
-                        }
-                    }
-
-                    DbContext.SaveChanges();
-                    transcation.Commit();
-
-                    return targetEvent.Id;
-
-                }
-                catch (Exception ex)
-                {
-                    transcation.Rollback();
-                    throw new Exception(ex.Message);
-                }
         }
 
         //活動渲染
@@ -265,6 +186,79 @@ namespace Infrastructure.Services
 
             return result;
         }
+
+        //編輯既有活動
+        //public int UpdateEvent(CreateEventDto request)
+        //{
+        //    using (var transcation = DbContext.Database.BeginTransaction())
+        //        try
+        //        { var targetEvent = DbContext.Events
+        //                .FirstOrDefault(e => e.Id == request.EventId);
+
+        //            targetEvent.Name = request.EventName;
+        //            targetEvent.Id = request.EventId;
+        //            targetEvent.OrganizationId = request.CategoryId;
+        //            targetEvent.StartTime = request.StartTime;
+        //            targetEvent.EndTime = request.EndTime;
+        //            targetEvent.Type = request.EventStatus;
+        //            //targetEvent.StreamingPlatform = request.StreamingName;
+        //            //targetEvent.StreamingUrl = request.StreamingUrl;
+        //            //targetEvent.LocationName = request.LocationName;
+        //            //targetEvent.LocationAddress = request.EventAddress;
+        //            //targetEvent.Longitude = request.Longitude;
+        //            //targetEvent.Latitude = request.Latitude;
+        //            targetEvent.Capacity = request.Attendance;
+        //            targetEvent.EventImage = request.EventImage;
+        //            targetEvent.Introduction = request.EventIntroduction;
+        //            targetEvent.Description = request.EventDescription;
+        //            targetEvent.MainOrganizer = request.MainOrganizer;
+        //            targetEvent.CoOrganizer = request.CoOrganizer;
+        //            targetEvent.IsPrivateEvent = request.IsPrivateEvent;
+        //            //targetEvent.ContactPerson = request.ContactPerson;
+        //            //targetEvent.ParticipantPeople = request.ParticipantPeople;
+        //            //targetEvent.IsFree = request.IsFree;
+        //            targetEvent.EditedAt = DateTime.Now;
+
+        //            //CategoryTag
+        //            var targetTag = DbContext.EventAndTagMappings
+        //                 .FirstOrDefault(e => e.EventId == request.EventId);
+        //            targetTag.CategoryTagId = request.CategoryId;
+
+        //            //Ticket
+        //            List<TicketDetailViewModel> TicketDetail = new List<TicketDetailViewModel>();
+        //            var targetTicket = DbContext.TicketTypes
+        //                .FirstOrDefault(t => t.EventId == request.EventId);
+
+        //            if (targetTicket != null)
+        //            {
+        //                foreach (var ticket in TicketDetail)
+        //                {
+                            
+        //                    targetTicket.Id = ticket.TicketTypeId;
+        //                    targetTicket.EventId = ticket.EventId;
+        //                    targetTicket.Name = ticket.TicketName;
+        //                    targetTicket.StartSaleTime = ticket.StartSaleTime;
+        //                    targetTicket.EndSaleTime = ticket.EndSaleTime;
+        //                    targetTicket.Price = ticket.Price;
+        //                    targetTicket.CapacityAmount = ticket.Amount;
+        //                    targetTicket.EditedAt = ticket.EditedAt;
+
+        //                }
+        //            }
+
+        //            DbContext.SaveChanges();
+        //            transcation.Commit();
+
+        //            return targetEvent.Id;
+
+        //        }
+        //        catch (Exception ex)
+        //        {
+        //            transcation.Rollback();
+        //            throw new Exception(ex.Message);
+        //        }
+        //}
+
 
 
 
@@ -348,6 +342,11 @@ namespace Infrastructure.Services
         }
 
         Task<EventAndTagMapping> IRepository<EventAndTagMapping>.GetByIdAsync<TEntityId>(TEntityId id)
+        {
+            throw new NotImplementedException();
+        }
+
+        int ICreateEventService.UpdateEvent(CreateEventDto require)
         {
             throw new NotImplementedException();
         }
