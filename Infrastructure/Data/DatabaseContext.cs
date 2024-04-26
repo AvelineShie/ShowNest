@@ -350,9 +350,9 @@ public partial class DatabaseContext : DbContext
                 .IsRequired()
                 .HasMaxLength(100)
                 .HasComment("電子郵件");
-            //entity.Property(e => e.GId)
-            //    .HasComment("GoogleId")
-            //    .HasColumnName("GId");
+            entity.Property(e => e.Gid)
+                .HasComment("GoogleId")
+                .HasColumnName("GId");
             entity.Property(e => e.Password)
                 .IsRequired()
                 .HasComment("密碼");
