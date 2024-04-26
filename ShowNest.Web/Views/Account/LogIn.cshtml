@@ -7,7 +7,7 @@
 @section topCSS {
     <link rel="stylesheet" href="~/css/Account/LogIn.css">
 }
-
+<script src="https://accounts.google.com/gsi/client" async defer></script>
 
 <div class="wallpaper">
 
@@ -43,12 +43,21 @@
                 <div class="forget-passwords"><a asp-controller="Account" asp-action="ForgetPassword">忘記密碼</a></div>
                 <div class="other-log-in-methods">使用第三方帳號進行登入</div>
                 <div class="third-party-log-in">
-                    <a href="https://www.facebook.com/v13.0/dialog/oauth?client_id=YOUR_CLIENT_ID&redirect_uri=YOUR_REDIRECT_URI&scope=email">
-                        <div class="FB-icon">
-                            <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/b/b9/2023_Facebook_icon.svg/225px-2023_Facebook_icon.svg.png" alt="third-party-signup:FB">
-                        </div>
-                    </a>
-                    <div class="google-icon"><img src="https://res.cloudinary.com/dwn2iafcc/image/upload/v1708967805/google-web-light-rd-na_wtcjhg.svg" alt="third-party-signup:Google"></div>
+
+                    <div id="g_id_onload"
+                         data-client_id="674030001662-o9lopaeeoom0hu2o4ekci7h7d33fs6rv.apps.googleusercontent.com"
+                         data-login_uri="https://localhost:7156/Account/ValidGoogleLogin"
+                         data-auto_prompt="false">
+                    </div>
+                    <div class="g_id_signin"
+                         data-type="standard"
+                         data-size="large"
+                         data-theme="outline"
+                         data-text="sign_in_with"
+                         data-shape="rectangular"
+                         data-logo_alignment="left">
+                    </div>
+
                 </div>
             </div>
         </div>

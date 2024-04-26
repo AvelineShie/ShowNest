@@ -28,11 +28,11 @@ public partial class DatabaseContext : DbContext
 
     public virtual DbSet<EventAndTagMapping> EventAndTagMappings { get; set; }
 
-    public virtual DbSet<Fblogininfo> Fblogininfos { get; set; }
-
     public virtual DbSet<HistoryPassword> HistoryPasswords { get; set; }
 
     public virtual DbSet<IsPaidRecord> IsPaidRecords { get; set; }
+
+    public virtual DbSet<LineLogininfo> LineLogininfos { get; set; }
 
     public virtual DbSet<LogInInfo> LogInInfos { get; set; }
 
@@ -193,9 +193,7 @@ public partial class DatabaseContext : DbContext
                 .HasComment("結束時間")
                 .HasColumnType("datetime");
             entity.Property(e => e.EventImage).HasComment("活動主圖");
-            entity.Property(e => e.Introduction)
-                .HasMaxLength(150)
-                .HasComment("活動簡介");
+            entity.Property(e => e.Introduction).HasComment("活動簡介");
             entity.Property(e => e.IsDeleted).HasComment("資料封存或強制下架");
             entity.Property(e => e.IsFree).HasComment("是否免費");
             entity.Property(e => e.IsPrivateEvent).HasComment("是否公開活動");
@@ -213,11 +211,11 @@ public partial class DatabaseContext : DbContext
                 .HasComment("經度");
             entity.Property(e => e.MainOrganizer)
                 .IsRequired()
-                .HasMaxLength(50)
+                .HasMaxLength(100)
                 .HasComment("主辦單位");
             entity.Property(e => e.Name)
                 .IsRequired()
-                .HasMaxLength(100)
+                .HasMaxLength(200)
                 .HasComment("活動名稱");
             entity.Property(e => e.OrganizationId).HasComment("組織ID");
             entity.Property(e => e.ParticipantPeople)
@@ -229,7 +227,7 @@ public partial class DatabaseContext : DbContext
                 .HasColumnType("datetime");
             entity.Property(e => e.Status).HasComment("0未發佈1已發佈");
             entity.Property(e => e.StreamingPlatform)
-                .HasMaxLength(100)
+                .HasMaxLength(200)
                 .HasComment("串流平台");
             entity.Property(e => e.StreamingUrl)
                 .HasMaxLength(500)
@@ -269,36 +267,6 @@ public partial class DatabaseContext : DbContext
                 .HasConstraintName("FK_EventAndTagMapping_pEvents");
         });
 
-        modelBuilder.Entity<Fblogininfo>(entity =>
-        {
-            entity
-                .HasNoKey()
-                .ToTable("FBLogininfo");
-
-            entity.Property(e => e.AccessToken)
-                .IsRequired()
-                .HasMaxLength(50);
-            entity.Property(e => e.AccessTokenExpires).HasColumnType("datetime");
-            entity.Property(e => e.Email)
-                .IsRequired()
-                .HasMaxLength(100);
-            entity.Property(e => e.FacebookId)
-                .IsRequired()
-                .HasMaxLength(50);
-            entity.Property(e => e.Id).ValueGeneratedOnAdd();
-            entity.Property(e => e.LastLogin).HasColumnType("datetime");
-            entity.Property(e => e.Name)
-                .IsRequired()
-                .HasMaxLength(50);
-            entity.Property(e => e.ProfilePictureUrl).HasMaxLength(50);
-            entity.Property(e => e.RefreshToken).HasMaxLength(50);
-
-            entity.HasOne(d => d.IdNavigation).WithMany()
-                .HasForeignKey(d => d.Id)
-                .OnDelete(DeleteBehavior.ClientSetNull)
-                .HasConstraintName("FK_FBLogininfo_Users");
-        });
-
         modelBuilder.Entity<HistoryPassword>(entity =>
         {
             entity.ToTable("HistoryPassword");
@@ -333,6 +301,32 @@ public partial class DatabaseContext : DbContext
             entity.Property(e => e.Result).HasComment("付款結果");
         });
 
+        modelBuilder.Entity<LineLogininfo>(entity =>
+        {
+            entity.HasKey(e => e.Id).HasName("PK__LineLogi__3214EC0725EE17E5");
+
+            entity.ToTable("LineLogininfo");
+
+            entity.HasIndex(e => e.LineUserId, "idx_LineUserId").IsUnique();
+
+            entity.Property(e => e.Birthdate).HasColumnType("date");
+            entity.Property(e => e.CreatedAt)
+                .HasDefaultValueSql("(getdate())")
+                .HasColumnType("datetime");
+            entity.Property(e => e.Email).HasMaxLength(255);
+            entity.Property(e => e.Gender).HasMaxLength(10);
+            entity.Property(e => e.LineUserId)
+                .IsRequired()
+                .HasMaxLength(255);
+            entity.Property(e => e.Name)
+                .IsRequired()
+                .HasMaxLength(255);
+            entity.Property(e => e.PictureUrl).HasMaxLength(255);
+            entity.Property(e => e.UpdatedAt)
+                .HasDefaultValueSql("(getdate())")
+                .HasColumnType("datetime");
+        });
+
         modelBuilder.Entity<LogInInfo>(entity =>
         {
             entity.HasKey(e => e.UserId);
@@ -356,6 +350,9 @@ public partial class DatabaseContext : DbContext
                 .IsRequired()
                 .HasMaxLength(100)
                 .HasComment("電子郵件");
+            entity.Property(e => e.Gid)
+                .HasComment("GoogleId")
+                .HasColumnName("GId");
             entity.Property(e => e.Password)
                 .IsRequired()
                 .HasComment("密碼");
