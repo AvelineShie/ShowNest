@@ -2,6 +2,7 @@
 {
     public class HomeCarouselViewModel
     {
+        public int EventId { get; set; }
         public string CarouselImgUrl { get; set; }
     }
 }
