@@ -36,9 +36,12 @@ namespace Infrastructure.Services
         public async Task<List<CategoryTag>> GetNumbersOfCardsByCategoryId(int cardAmount, int categoryId)
         {
             var categoryTagsQuery = await DbContext.CategoryTags
+                .AsNoTracking()
                 .Where(c => c.Id == categoryId)
-                .Include(c => c.EventAndTagMappings.Take(cardAmount))
+                .Include(c => c.EventAndTagMappings)
                 .ThenInclude(et => et.Event)
+                .Where(c => c.EventAndTagMappings.Any(et => et.Event.StartTime > DateTime.Today))
+                .Take(cardAmount)
                 .ToListAsync();
 
             return categoryTagsQuery;

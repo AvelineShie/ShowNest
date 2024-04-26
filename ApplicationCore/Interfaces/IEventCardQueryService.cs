@@ -12,6 +12,7 @@ namespace ApplicationCore.Interfaces
     {
         Task<List<CategoryTag>> GetAllCardsByCategoryId(int categoryId);
 
+        //Task<List<CategoryTag>> GetNumbersOfCardsByCategoryId(int cardAmount, int categoryId);
         Task<List<CategoryTag>> GetNumbersOfCardsByCategoryId(int cardAmount, int categoryId);
         Task<List<EventIndexDto>> GetEventIndexCards();
     }
