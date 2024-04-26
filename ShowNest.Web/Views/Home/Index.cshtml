@@ -15,10 +15,7 @@
 }
 
 @section EndJS {
-    <script>
-        var activeCarouselImg = document.querySelector('.carousel-item')
-        activeCarouselImg.classList.add('active')
-    </script>
+    <script src="~/js/home/index.js"></script>
 }
 
 <!-- event-slides -->
@@ -50,14 +47,14 @@
 <!-- categories -->
 <section id="categories-section">
     <div id="categories" class="width">
-        <a href="">依興趣找活動</a>
-        <a href=""><i class="fa-solid fa-person-chalkboard"></i>學習</a>
-        <a href=""><i class="fa-solid fa-hands-clapping"></i>演出</a>
-        <a href=""><i class="fa-solid fa-landmark"></i>展覽</a>
-        <a href=""><i class="fa-solid fa-star-half-stroke"></i>聯誼</a>
-        <a href=""><i class="fa-solid fa-utensils"></i>美食</a>
-        <a href=""><i class="fa-solid fa-shoe-prints"></i>戶外</a>
-        <a asp-controller="Events" asp-action="Index">更多分類 >></a>
+@*         <a href="">依興趣找活動</a> *@
+        <a asp-controller="Events" asp-action="Index" category-id="1"><i class="fa-solid fa-headphones"></i>音樂</a>
+        <a asp-controller="Events" asp-action="Index" category-id="2"><i class="fa-solid fa-hands-clapping"></i>戲劇</a>
+        <a asp-controller="Events" asp-action="Index" category-id="3"><i class="fa-solid fa-landmark"></i>展覽</a>
+        <a asp-controller="Events" asp-action="Index" category-id="4"><i class="fa-solid fa-film"></i>電影</a>
+        <a asp-controller="Events" asp-action="Index" category-id="6"><i class="fa-solid fa-utensils"></i>美食</a>
+        <a asp-controller="Events" asp-action="Index" category-id="7"><i class="fa-solid fa-shoe-prints"></i>運動</a>
+        <a asp-controller="Events" asp-action="Index" category-id="0"><i class="fa-solid fa-star-half-stroke"></i>更多分類</a>
     </div>
 </section>
 <!-- annoucement -->
