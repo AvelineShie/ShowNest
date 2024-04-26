@@ -368,137 +368,125 @@ namespace ShowNest.Web.Services.AccountService
                 return builder.ToString();
             }
         }
-        //FB登入功能
-        public async Task<(bool IsSuccess, string ErrorMessage)> HandleFacebookLoginAsync(string code, string state)
-        {
-            // 從session中檢索原始的狀態參數
-            var originalState = _httpContextAccessor.HttpContext.Session.GetString("FacebookState");
+        ////FB登入功能
+        //public async Task<(bool IsSuccess, string ErrorMessage)> HandleFacebookLoginAsync(string code, string state)
+        //{
+        //    // 從session中檢索原始的狀態參數
+        //    var originalState = _httpContextAccessor.HttpContext.Session.GetString("FacebookState");
 
-            // 驗證狀態參數
-            if (originalState != state)
-            {
-                return (false, "OAuth state was missing or invalid.");
-            }
-            try
-            {
-                // 獲取 access token
-                var accessToken = await GetAccessTokenAsync(code);
-                // 獲取用戶資訊
-                var userInfo = await GetUserInfoAsync(accessToken);
-                // 處理 Facebook 登入
-                var result = await ProcessFacebookLogin(userInfo.ToString());
+        //    // 驗證狀態參數
+        //    if (originalState != state)
+        //    {
+        //        return (false, "OAuth state was missing or invalid.");
+        //    }
+        //    try
+        //    {
+        //        // 獲取 access token
+        //        var accessToken = await GetAccessTokenAsync(code);
+        //        // 獲取用戶資訊
+        //        var userInfo = await GetUserInfoAsync(accessToken);
+        //        // 處理 Facebook 登入
+        //        var result = await ProcessFacebookLogin(userInfo.ToString());
 
-                return (result.Item1, result.Item2);
-            }
-            catch (Exception ex)
-            {
-                return (false, ex.Message);
-            }
-        }
-        public async Task<Tuple<bool, string>> ProcessFacebookLogin(string userInfo)
-        {
-            var userAccount = JsonConvert.DeserializeObject<FBUserViewModel>(userInfo);
-            // 檢查資料庫中是否已經有該Facebook用戶的資料
-            var existingUser = await _context.Fblogininfos
-                .FirstOrDefaultAsync(u => u.FacebookId == userAccount.FacebookId);
+        //        return (result.Item1, result.Item2);
+        //    }
+        //    catch (Exception ex)
+        //    {
+        //        return (false, ex.Message);
+        //    }
+        //}
+        //public async Task<Tuple<bool, string>> ProcessFacebookLogin(string userInfo)
+        //{
+        //    var userAccount = JsonConvert.DeserializeObject<FBUserViewModel>(userInfo);
+        //    // 檢查資料庫中是否已經有該Facebook用戶的資料
+        //    var existingUser = await _context.Fblogininfos
+        //        .FirstOrDefaultAsync(u => u.FacebookId == userAccount.FacebookId);
 
-            if (existingUser != null)
-            {
-                // 如果已經有，則進行登入處理
-                // 這裡假設你已經有一個方法來進行登入處理，例如LogInAsync(userAccount)
-                // 首先，我們需要從Users資料表中找到相關的LogInInfo資料
-                var user = await _context.Users
-                    .Include(u => u.LogInInfo) // 加載與User相關聯的LogInInfo
-                    .FirstOrDefaultAsync(u => u.Id == existingUser.Id);
+        //    if (existingUser != null)
+        //    {
+        //        // 如果已經有，則進行登入處理
+        //        // 這裡假設你已經有一個方法來進行登入處理，例如LogInAsync(userAccount)
+        //        // 首先，我們需要從Users資料表中找到相關的LogInInfo資料
+        //        var user = await _context.Users
+        //            .Include(u => u.LogInInfo) // 加載與User相關聯的LogInInfo
+        //            .FirstOrDefaultAsync(u => u.Id == existingUser.Id);
 
-                if (user != null && user.LogInInfo != null)
-                {
-                    var loginResult = await LogInAsync(new LoginViewModel { Account = userAccount.Email, Password = user.LogInInfo.Password });
-                    return new Tuple<bool, string>(loginResult.IsSuccess, string.Empty); // 登入成功，錯誤訊息為空
-                }
-            }
-            //else
-            //{
-            //    // 如果沒有，則將用戶資訊儲存到資料庫
-            //    // 這裡假設你已經有一個方法來註冊用戶，例如RegisterUserAsync(userAccount)
-            //    var registerResult = await RegisterUserAsync(userAccount, true);
-            //    if (registerResult.IsSuccess)
-            //    {
-            //        // 註冊成功後，將用戶登入
-            //        var loginResult = await LogInAsync(new LoginViewModel { Account = userAccount.Account, Password = userAccount.Password });
-            //        return loginResult;
-            //    }
-            //    else
-            //    {
-            //        return (false, registerResult.ErrorMessage);
-            return new Tuple<bool, string>(false, "未知錯誤"); // 登入失敗，返回錯誤訊息
-            //    }
-            //}
-        }
-        //拿TOKEN
-        public async Task<string> GetAccessTokenAsync(string code)
-        {
-            var appId = _facebookSettings.ClientId;
-            var appSecret = _facebookSettings.ClientSecret;
-            var redirectUri = _facebookSettings.CallbackPath;
+        //        if (user != null && user.LogInInfo != null)
+        //        {
+        //            var loginResult = await LogInAsync(new LoginViewModel { Account = userAccount.Email, Password = user.LogInInfo.Password });
+        //            return new Tuple<bool, string>(loginResult.IsSuccess, string.Empty); // 登入成功，錯誤訊息為空
+        //        }
+        //    }
+        //    //else
+        //    //FB路不通，暫停
+        //    return new Tuple<bool, string>(false, "未知錯誤"); // 登入失敗，返回錯誤訊息
+        //    //    }
+        //    //}
+        //}
+        ////拿TOKEN
+        //public async Task<string> GetAccessTokenAsync(string code)
+        //{
+        //    var appId = _facebookSettings.ClientId;
+        //    var appSecret = _facebookSettings.ClientSecret;
+        //    var redirectUri = _facebookSettings.CallbackPath;
 
-            var tokenEndpoint = $"https://graph.facebook.com/v13.0/oauth/access_token?client_id={appId}&redirect_uri={HttpUtility.UrlEncode(redirectUri)}&client_secret={appSecret}&code={code}";
+        //    var tokenEndpoint = $"https://graph.facebook.com/v13.0/oauth/access_token?client_id={appId}&redirect_uri={HttpUtility.UrlEncode(redirectUri)}&client_secret={appSecret}&code={code}";
 
-            var response = await _httpClient.GetAsync(tokenEndpoint);
-            if (response.IsSuccessStatusCode)
-            {
-                var content = await response.Content.ReadAsStringAsync();
-                var tokenResponse = JsonConvert.DeserializeObject<dynamic>(content);
-                return tokenResponse.access_token;
-            }
-            else
-            {
-                throw new Exception("無法獲取access token");
-            }
-        }
-        //換資料
-        public async Task<dynamic> GetUserInfoAsync(string accessToken)
-        {
-            var userInfoEndpoint = $"https://graph.facebook.com/v13.0/me?fields=id,name,email&access_token={accessToken}";
+        //    var response = await _httpClient.GetAsync(tokenEndpoint);
+        //    if (response.IsSuccessStatusCode)
+        //    {
+        //        var content = await response.Content.ReadAsStringAsync();
+        //        var tokenResponse = JsonConvert.DeserializeObject<dynamic>(content);
+        //        return tokenResponse.access_token;
+        //    }
+        //    else
+        //    {
+        //        throw new Exception("無法獲取access token");
+        //    }
+        //}
+        ////換資料
+        //public async Task<dynamic> GetUserInfoAsync(string accessToken)
+        //{
+        //    var userInfoEndpoint = $"https://graph.facebook.com/v13.0/me?fields=id,name,email&access_token={accessToken}";
 
-            var response = await _httpClient.GetAsync(userInfoEndpoint);
-            if (response.IsSuccessStatusCode)
-            {
-                var content = await response.Content.ReadAsStringAsync();
-                var userInfo = JsonConvert.DeserializeObject<dynamic>(content);
-                return userInfo;
-            }
-            else
-            {
-                throw new Exception("無法獲取用戶資訊");
-            }
-        }
-        //解決OAuth state問題
-        public void FacebookLogin()
-        {
-            var state = GenerateRandomString(); // 實現這個方法來生成隨機字串
-             _httpContextAccessor.HttpContext.Session.SetString("FacebookState", state); // 將state值存儲在session中
+        //    var response = await _httpClient.GetAsync(userInfoEndpoint);
+        //    if (response.IsSuccessStatusCode)
+        //    {
+        //        var content = await response.Content.ReadAsStringAsync();
+        //        var userInfo = JsonConvert.DeserializeObject<dynamic>(content);
+        //        return userInfo;
+        //    }
+        //    else
+        //    {
+        //        throw new Exception("無法獲取用戶資訊");
+        //    }
+        //}
+        ////解決OAuth state問題
+        //public void FacebookLogin()
+        //{
+        //    var state = GenerateRandomString(); // 實現這個方法來生成隨機字串
+        //     _httpContextAccessor.HttpContext.Session.SetString("FacebookState", state); // 將state值存儲在session中
 
-            var redirectUrl = $"https://www.facebook.com/v13.0/dialog/oauth?client_id={_facebookSettings.ClientId}&redirect_uri={HttpUtility.UrlEncode(_facebookSettings.CallbackPath)}&scope=email&state={state}";
-            _httpContextAccessor.HttpContext.Response.Redirect(redirectUrl);
-        }
-        //產生亂數字串提供給認證亂碼用
-        private string GenerateRandomString(int length = 32)
-        {
-            const string valid = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890";
-            StringBuilder res = new StringBuilder();
-            using (RNGCryptoServiceProvider rng = new RNGCryptoServiceProvider())
-            {
-                byte[] uintBuffer = new byte[4];
-                while (length-- > 0)
-                {
-                    rng.GetBytes(uintBuffer);
-                    uint num = BitConverter.ToUInt32(uintBuffer, 0);
-                    res.Append(valid[(int)(num % valid.Length)]);
-                }
-            }
-            return res.ToString();
-        }
+        //    var redirectUrl = $"https://www.facebook.com/v13.0/dialog/oauth?client_id={_facebookSettings.ClientId}&redirect_uri={HttpUtility.UrlEncode(_facebookSettings.CallbackPath)}&scope=email&state={state}";
+        //    _httpContextAccessor.HttpContext.Response.Redirect(redirectUrl);
+        //}
+        ////產生亂數字串提供給認證亂碼用
+        //private string GenerateRandomString(int length = 32)
+        //{
+        //    const string valid = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890";
+        //    StringBuilder res = new StringBuilder();
+        //    using (RNGCryptoServiceProvider rng = new RNGCryptoServiceProvider())
+        //    {
+        //        byte[] uintBuffer = new byte[4];
+        //        while (length-- > 0)
+        //        {
+        //            rng.GetBytes(uintBuffer);
+        //            uint num = BitConverter.ToUInt32(uintBuffer, 0);
+        //            res.Append(valid[(int)(num % valid.Length)]);
+        //        }
+        //    }
+        //    return res.ToString();
+        //}
 
     }
 }
