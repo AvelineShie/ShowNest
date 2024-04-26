@@ -65,6 +65,7 @@ namespace ShowNest.Web.WebAPI
             }
         }
 
+        //已有活動選項
         [Route("/api/CreateEvent/GetActivitiesByOrgId")]
         public async Task<IActionResult> fetchActivitiesByOrgId()
         {
@@ -125,22 +126,22 @@ namespace ShowNest.Web.WebAPI
             });
         }
 
-        [HttpPost] //建立全新或更新活動(施工)
+        [HttpPost] //建立全新活動
         public IActionResult CreateAndEditEvent(CreateEventDto request)
         {
             var newEventId = _CreateEventService.CreateEvent(request);
+            request.EditedAt = DateTime.Now;
 
             return Ok(new
             {
                 IsSuccess = true,
-                Id = newEventId
+                Id = newEventId,
+
             });
+            
         }
 
-
-
-        //以活動id打路由去呼叫頁面的資料(施工)
-        [Route("{eventId}")]
+        //渲染
         public IActionResult RenderEventData(string eventId)
         {
             try
