@@ -150,6 +150,9 @@ namespace Infrastructure.Services
                 EventAddress = eventData.LocationAddress,
                 Longitude = eventData.Longitude,
                 Latitude = eventData.Latitude,
+                MainOrganizer = eventData.MainOrganizer,
+                CoOrganizer = eventData.CoOrganizer,
+                Attendance = eventData.Capacity,
 
                 EventIntroduction = eventData.Introduction,
                 EventDescription = eventData.Description,

@@ -8,8 +8,8 @@ const options = {
         return {
 
             //====================CreateEvent(R)
-            userId: 1,
-            organzationId: 1,
+            userId: '',
+            organzationId: '',
             selectedOrganization: {}, //組織下拉v-model
             organizations: [], //下拉items
             displaySelectActivityType: true, /*隱藏*/
@@ -31,6 +31,7 @@ const options = {
             //============================SetEvent(C,U)
             Orgname: '',
 
+            eventId:'',
             eventNameInput: '',
             startTime: '',
             endTime: '',
@@ -38,7 +39,6 @@ const options = {
 
             mainOrganizerInput: '',
             coOrganizer: '',
-
 
             privacy: false,
             
@@ -61,7 +61,7 @@ const options = {
             marker: null,
 
             streaming: '',
-            SHOWNESTLive: '', //線上選項
+            streamingUrl: '', 
 
             introduction: '',
 
@@ -79,6 +79,7 @@ const options = {
             selectedCategories: [],
 
             //=================================SetTicket(C)
+            ticketTypeId:'',
             ticketTypeInput: '',
             TicketStartTime: '',
             TicketEndTime: '',
@@ -131,84 +132,6 @@ const options = {
             })
         }, 
 
-
-        //建立活動與既有活動
-        CreateAndEditEvent() {
-            console.log("submit form")
-            axios.post('/api/CreateEvent/CreateAndEditEvent', {
-                "EventName": this.eventNameInput,
-                "StartTime": this.startTime,
-                "EndTime": this.endTime,
-                "noEndTime": this.noEndTime,
-                "MainOrganizer": this.mainOrganizerInput,
-                "CoOrganizer": this.coOrganizer,
-                "Attendance": this.number,
-                "EventStatus": this.eventStatus,
-                "StreamingName": this.streaming,
-                "StreamingUrl": this.SHOWNESTLive,
-                "LocationName": this.placeName,
-                "EventAddress": this.EventAddress,
-                "EventIntroduction": this.introduction,
-                "EventDescription": this.description,
-                "EventImage": this.imgUrl,
-                "IsPrivateEvent": this.privacy,
-                "CategoryNames": this.selectedCategories,
-                "OrgId": this.organzationId
-            })
-                .then(res =>{
-                    console.log(res)
-                    window.location.href=`/Dashboard/Events/${res.data.id}/Overview`
-                })
-                .catch(
-                    
-                )
-        },
-
-        //選擇活動& pass eventId
-        handleEventSelection() {
-            this.stepButton = 2; //跳轉
-            this.EditEventRender(parseInt(this.radioCheck));
-            console.log(this.radioCheck)
-        },
-
-        //渲染活動內容
-        EditEventRender() {
-            console.log("Render Success!");
-            axios.get('/api/CreateEvent/RenderEventData"', {
-                params: {
-                    eventId: parseInt(this.radioCheck.eventId)
-                }
-            })
-                .then(res => {
-                    let info = res.data;
-                    console.log(res.data);
-                })
-                .catch(err => {
-                    console.error(err);
-                });
-        },
-
-
-        //圖床
-        imgUpload(e) {
-            let formData = new FormData();
-            for (let i = 0; i < e.target.files.length; i++) {
-                formData.append('files', e.target.files[i]);
-            }
-            axios.post('/api/ImgUploadApi/UploadImages', formData, {
-                headers: {
-                    'Content-Type': 'multipart/form-data'
-                }
-            })
-                .then(res => {
-                    console.log(res)
-                    this.imgUrl = res.data[0]
-                })
-                .catch(err => {
-                    console.error(err);
-                })
-        },
-
         //地圖
         googleMap() {
             (g => { var h, a, k, p = "The Google Maps JavaScript API", c = "google", l = "importLibrary", q = "__ib__", m = document, b = window; b = b[c] || (b[c] = {}); var d = b.maps || (b.maps = {}), r = new Set, e = new URLSearchParams, u = () => h || (h = new Promise(async (f, n) => { await (a = m.createElement("script")); e.set("libraries", [...r] + ""); for (k in g) e.set(k.replace(/[A-Z]/g, t => "_" + t[0].toLowerCase()), g[k]); e.set("callback", c + ".maps." + q); a.src = `https://maps.${c}apis.com/maps/api/js?` + e; d[q] = f; a.onerror = () => h = n(Error(p + " could not load.")); a.nonce = m.querySelector("script[nonce]")?.nonce || ""; m.head.append(a) })); d[l] ? console.warn(p + " only loads once. Ignoring:", g) : d[l] = (f, ...n) => r.add(f) && u().then(() => d[l](f, ...n)) })
@@ -242,6 +165,124 @@ const options = {
             }
             initMap()
         },
+
+        //建立活動與既有活動
+        CreateAndEditEvent() {
+            console.log("submit form")
+            axios.post('/api/CreateEvent/CreateAndEditEvent', {
+                "EventName": this.eventNameInput,
+                "StartTime": this.startTime,
+                "EndTime": this.endTime,
+                "noEndTime": this.noEndTime,
+                "MainOrganizer": this.mainOrganizerInput,
+                "CoOrganizer": this.coOrganizer,
+                "Attendance": this.number,
+                "EventStatus": this.eventStatus,
+                "StreamingName": this.streaming,
+                "StreamingUrl": this.streamingUrl,
+                "LocationName": this.placeName,
+                "EventAddress": this.EventAddress,
+                "EventIntroduction": this.introduction,
+                "EventDescription": this.description,
+                "EventImage": this.imgUrl,
+                "IsPrivateEvent": this.privacy,
+                "CategoryNames": this.selectedCategories,
+                "OrgId": this.organzationId,
+
+            })
+                .then(res =>{
+                    console.log(res)
+                    window.location.href = `/Dashboard/Events/${res.data.id}/Overview`
+                })
+                .catch(
+                    
+                )
+        },
+
+        //選擇活動& pass eventId
+        handleEventSelection() {
+            this.stepButton = 2; //跳轉
+            this.EditEventRender(this.radioCheck);
+            console.log(this.radioCheck)
+        },
+
+        //渲染活動內容
+        EditEventRender() {
+            console.log("Render Success!");
+            axios.get('/api/CreateEvent/RenderEventData', {
+                params: {
+                    eventId: parseInt(this.radioCheck)
+                }
+            })
+                .then(res => {
+                    let info = res.data.data;
+                    console.log(res.data);
+
+                    //DB回傳字首會變小
+                    this.organzationId = info.orgId
+                    this.Orgname = info.orgname //只有代ID進來沒辦法渲染名字
+
+                    this.eventId = info.eventId
+                    this.eventNameInput = info.eventName
+                    this.startTime = info.startTime
+                    this.endTime = info.endTime 
+                    this.mainOrganizerInput = info.mainOrganizer 
+                    this.coOrganizer = info.coOrganizer
+                    this.privacy = info.isPrivateEvent
+                    this.number = info.attendance 
+                    this.eventStatus = info.eventStatus
+
+                    this.imgUrl = info.eventImage
+                    this.placeName = info.locationName 
+                    this.EventAddress = info.eventAddress 
+                    this.streaming = info.streamingName
+                    this.streamingUrl = info.streamingUrl
+                    this.longitude = info.longitude
+                    this.latitude = info.latitude
+
+                    this.introduction = info.eventIntroduction
+                    this.description = info.eventDescription
+
+                    this.categoryItems = info.categoryNames
+
+                    //========================Ticket
+                    this.ticketTypeId = info.ticketTypeId
+                    this.ticketTypeInput = info.ticketName
+                    this.TicketStartTime = info.startSaleTime
+                    this.TicketEndTime = info.endSaleTime
+                    this.Money = info.price
+                    this.Amount = info.amount
+
+                    this.googleMap()
+
+                })
+                .catch(err => {
+                    console.error(err);
+                });
+        },
+
+
+        //圖床
+        imgUpload(e) {
+            let formData = new FormData();
+            for (let i = 0; i < e.target.files.length; i++) {
+                formData.append('files', e.target.files[i]);
+            }
+            axios.post('/api/ImgUploadApi/UploadImages', formData, {
+                headers: {
+                    'Content-Type': 'multipart/form-data'
+                }
+            })
+                .then(res => {
+                    console.log(res)
+                    this.imgUrl = res.data[0]
+                })
+                .catch(err => {
+                    console.error(err);
+                })
+        },
+
+       
 
         //地理編碼
         //getLatLng() {

@@ -58,7 +58,7 @@
                                                             <p class="notice">您也可以直接套用既有的活動設定（基本資料、表單、票種），節省您寶貴的時間</p>
                                                             <h3 class="lined">以最近舉辦的活動做為樣板</h3>
                                                             <div v-for="event in eventsforInput" :key="event.eventId">
-                                                                                   <input type="radio" :id="event.eventId" v-model="radioCheck" :value="event.eventId" name="eventRadio" >
+                                                              <input type="radio" :id="event.eventId" v-model="radioCheck" :value="event.eventId" name="eventRadio" >
                                                                <label :for="event.eventId">{{event.eventName}}</label>
                                                             </div>
 
@@ -344,22 +344,7 @@
                                         </tbody>
 
                                         @* ================Result Ticket============ 用foreach跑變數結果*@
-                                        @* @foreach (var ticket in Model.SetTickets)
-                                        {
-                                        <tr>
-                                        <td class="color-label"></td>
-                                        <td>@ticket.TicketName</td>
-                                        <td>@ticket.StartTime.ToString("yyyy/MM/dd HH:mm") ~
-                                        @ticket.EndTime.ToString("yyyy/MM/dd HH:mm")</td>
-                                        <td>TWD$ @ticket.Price</td>
-                                        <td>@ticket.Quantity</td>
-                                        <td>
-                                        <button class="edit">編輯</button>
-                                        <button class="delete">刪除</button>
-                                        </td>
-                                        </tr>
-
-                                        }  *@
+                                        
 
                                         @* <button class="btn btn-success" v-on:click="CreateAndEditEvent">submit</button> *@
                                     </table>
@@ -389,7 +374,6 @@
         <script src="https://cdn.jsdelivr.net/npm/@@ckeditor/ckeditor5-build-classic@41.3.0/build/ckeditor.min.js"></script>
         <script src="https://cdn.jsdelivr.net/npm/@@ckeditor/ckeditor5-vue@5.1.0/dist/ckeditor.min.js"></script>
         <script src="~/lib/vuetify/vuetify.min.js"></script>
-        <script src="/js/Dashboard/CreateEvent.js" asp-append-version="true"></script>
         <script src="/js/Dashboard/CreateEvent.js" asp-append-version="true"></script>
         @* <script>
             /*map start*/
