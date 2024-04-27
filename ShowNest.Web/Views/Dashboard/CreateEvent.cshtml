@@ -70,7 +70,7 @@
                                                                         v-model="checkbox"
                                                 @* :rules="[v => !!v || '請勾選同意後進行!']" *@
                                                                         required> 我已經閱讀並同意
-                                                                <a href="">主辦單位服務條款</a> 與 <a href="">隱私權政策</a>handleEventSelection
+                                                                <a href="">主辦單位服務條款</a> 與 <a href="">隱私權政策</a>
                                                 @* <div class="invalid-feedback">
                                                                     {{checkboxErrorMsg}}
                                                                 </div> *@
@@ -102,9 +102,6 @@
                                             <div class="mb-3">
                                                 <h4 class="essential-input">活動名稱</h4>
                                                 <input type="text" v-model="eventNameInput" class="form-control h-50" id="EventNameInput" placeholder=" ">
-                                                @* <div class="invalid-feedback">
-                                                請輸入活動名稱!
-                                                </div> *@
                                             </div>
                                         </div>
 
@@ -122,9 +119,9 @@
                                                 </div>
                                                 <span class="map-note">如果你沒有提供結束時間，系統不會顯示結束時間。活動會在開始時間到時結束販售。</span>
                                             </div>
-                                            <div class="invalid-feedback" id="timeError" style="display: none;">
+                                            @* <div class="invalid-feedback" id="timeError" style="display: none;">
                                                 請選擇活動舉辦時間!
-                                            </div>
+                                            </div> *@
                                         </div>
 
                                         <!-- 主辦與協辦單位 -->
@@ -155,13 +152,13 @@
                                         <div class="section">
                                             <h4>活動形式</h4>
                                             <select class="form-select h-50" v-model="eventStatus"  id="EventStatus">
-                                                <option selected value="physical">實體活動</option>
-                                                <option value="online">線上活動</option>
+                                                <option value="1" >實體活動</option>
+                                                <option value="0">線上活動</option>
                                             </select>
                                         </div>
 
                                         <!-- 實體活動＆地址欄（有地圖） -->
-                                        <div class="place-section" @* v-show="placeSection" *@>
+                                        <div class="place-section" v-if="eventStatus === 1">
                                             <div class="section">
                                                 <h4 class="essential-input">場地名稱</h4>
                                                 <input type="text" class="form-control h-50" v-model="placeName" id="LocationName" placeholder=" ">
@@ -187,15 +184,15 @@
                                         </div>
 
                                         <!-- 線上活動欄 -->
-                                        <div class="online-section" v-show="onlineEventArea">
+                                        <div class="online-section" v-if="eventStatus === 0">
                                             <div class="form-check">
-                                                <input class="form-check-input" type="radio" v-model="streaming" name="flexRadioDefault" id="flexRadioDefault1" value="0">
+                                                <input class="form-check-input" type="radio" v-model="streaming" name="flexRadioDefault" id="flexRadioDefault1" >
                                                 <label class="form-check-label" for="flexRadioDefault1">
                                                     其他串流平台 (可於 主控台>活動地點 設定電子票券之線上活動連結)
                                                 </label>
                                             </div>
                                             <div class="form-check">
-                                                <input class="form-check-input" type="radio" v-model="SHOWNESTLive" name="flexRadioDefault" id="flexRadioDefault2" value="1" checked>
+                                                <input class="form-check-input" type="radio" v-model="streamingUrl" name="flexRadioDefault" id="flexRadioDefault2"  checked>
                                                 <label class="form-check-label" for="flexRadioDefault2">
                                                     SHOWNEST Live
                                                     <span class="note">SHOWNEST Live 提供多元方案應援你的線上活動創意，點此查看詳情或請來信 biz@shownest.com 洽詢，將有專人提供報價</span>
@@ -279,7 +276,7 @@
                                @*  <button class="btn btn-success" v-on:click="CreateAndEditEvent" onclick="window.location.href='@Url.Action("", "")'">submit</button> *@
                                 <div class="pages-change">
                                     <button type="button" class="btn btn-outline-secondary" @@click="stepButton = 1" >上一頁</button>
-                                    <button type="submit" class="btn btn-outline-secondary" v-on:click="CreateAndEditEvent"  value="Upload" @@click="handleClick">下一頁</button>
+                                    <button type="submit" class="btn btn-outline-secondary" value="Upload" @@click="handleClick">下一頁</button>
                                 </div>
                             </div>
                         </div>
@@ -317,9 +314,8 @@
                                                 <td class="color-label"></td>
                                                 <td>
                                                     <div>
-                                                        <v-text-field :rules="rules"
-                                                                      hide-details="auto"
-                                                                      label=" " 
+                                                        <v-text-field hide-details="auto"
+                                                                      label="" 
                                                                       variant="outlined"
                                                                       v-model="ticketTypeInput"></v-text-field>
                                                     </div>
@@ -336,14 +332,29 @@
                                                 <td>
                                                     <input type="text" v-model="Amount" class="form-control h-25 w-50 " id="formGroupExampleInput" placeholder=" ">
                                                 </td>
+                                                
                                                 <td>
-                                                    <button type="button" class="btn btn-outline-secondary btn-sm" id="submit">儲存</button>
+                                                    <button type="button" class="btn btn-outline-secondary btn-sm" id="submit" @@click="saveTicket">新增</button>
                                                     <button type="button" class="btn btn-outline-secondary btn-sm" id="cancel">取消</button>
                                                 </td>
                                             </tr>
+                                            <tr v-for="ticket in TicketDetail" :key="ticket.name">
+                                                <td class="color-label"></td>
+                                                <td>{{ ticket.type }}</td>
+                                                <td>{{ ticket.startTime }} 至 {{ ticket.endTime }}</td>
+                                                <td>TWD$ {{ ticket.price }}</td>
+                                                <td>{{ ticket.quantity }}</td>
+                                                <td>
+                                                    <button class="delete" @@click="deleteTicket(ticket.type)">
+                                                        <i class="fa-solid fa-x"></i>
+                                                    </button>
+                                                </td>
+                                            </tr>
+
+                                            @* ===================票種生成======================= *@
+                                            
                                         </tbody>
 
-                                        @* ================Result Ticket============ 用foreach跑變數結果*@
                                         
 
                                         @* <button class="btn btn-success" v-on:click="CreateAndEditEvent">submit</button> *@
@@ -356,7 +367,7 @@
 
                             <div class="pages-change">
                                 <button type="button" class="btn btn-outline-secondary" @@click="stepButton = 2">上一頁</button>
-                                <button type="button" class="btn btn-outline-secondary" onclick="window.location.href='https://localhost:7156/Dashboard/Events/35/Overview'">確認送出</button>
+                                <button type="button" class="btn btn-outline-secondary"  v-on:click="CreateAndEditEvent">確認送出</button>
                             </div>
                         </div>
                     </template>
