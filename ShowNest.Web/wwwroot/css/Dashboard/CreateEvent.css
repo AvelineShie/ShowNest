@@ -37,6 +37,17 @@
     
 }
 
+.activity-select input{
+    margin-right:9px;
+}
+
+.activity-select> div{
+    font-size: 16px;
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+
+
 .eventItem {
     margin-top: 10px;
     margin-bottom: 10px;
@@ -356,7 +367,7 @@ html body #SetTicket.organize {
     border-bottom: #999 solid 1px;
 }
 
-#SetTicket td > button {
+button.delete {
     margin-top: 10px;
     border: #ccc 1px solid;
     box-shadow: #f2f2f2 0 -3px 0 inset;
@@ -365,7 +376,7 @@ html body #SetTicket.organize {
     font-size: 15px;
     line-height: 1.33333333;
     border-radius: 2px;
-    color: var(--main-green);
+    color: darkred;
 }
 
 html body #SetTicket.delete {

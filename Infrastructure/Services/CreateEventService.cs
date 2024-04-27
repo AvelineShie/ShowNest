@@ -8,6 +8,7 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Logging;
 using Newtonsoft.Json;
 using System;
+using System.Diagnostics.Metrics;
 using System.Diagnostics.Tracing;
 using System.Linq.Expressions;
 using System.Net.Sockets;
@@ -50,7 +51,6 @@ namespace Infrastructure.Services
             using (var transcation = DbContext.Database.BeginTransaction())
                 try
                 {
-
                     //設定活動資料
                     var activity = new Event
                     {
@@ -118,10 +118,10 @@ namespace Infrastructure.Services
 
                     DbContext.SaveChanges();
 
-
                     transcation.Commit();
 
                     return activity.Id;
+                   
 
                 }
                 catch (Exception ex)
@@ -129,7 +129,6 @@ namespace Infrastructure.Services
                     transcation.Rollback();
                     throw new Exception(ex.Message);
                 }
-
         }
 
         //活動渲染
