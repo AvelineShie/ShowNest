@@ -29,6 +29,7 @@ const options = {
             eventsforInput: [],
 
             //============================SetEvent(C,U)
+
             Orgname: '',
 
             eventId:'',
@@ -45,7 +46,7 @@ const options = {
 
             number: 0, //人數
             unlimited: '',
-            eventStatus: 0, //實體或線上
+            eventStatus: 1, //預設實體
 
             //圖片
             imgUrl: 'https://res.cloudinary.com/do2tfk5nk/image/upload/v1713610498/ShowNestImg/UnUploadedImg_vsrtfu.jpg',
@@ -79,20 +80,21 @@ const options = {
             selectedCategories: [],
 
             //=================================SetTicket(C)
-            ticketTypeId:'',
             ticketTypeInput: '',
             TicketStartTime: '',
             TicketEndTime: '',
             Money: '',
             Amount: '',
 
+            TicketDetail: [], //Render Data
+            
         }
     },
     mounted() {
+        this.googleMap()
         this.CreateEventbyUserId()
         this.GetOrgEventsByOrgId()
         this.fetchActivitiesByOrgId()
-        this.googleMap()
 
     },
     methods: {
@@ -134,6 +136,16 @@ const options = {
 
         //地圖
         googleMap() {
+            this.$nextTick(() => {
+                // 確保地圖元素存在
+                const mapElement = document.getElementById('map');
+                if (mapElement) {
+                    console.log("Hello Map");
+                    this.initMap(mapElement);
+                } else {
+                    console.error("地圖元素不存在");
+                }
+            });
             (g => { var h, a, k, p = "The Google Maps JavaScript API", c = "google", l = "importLibrary", q = "__ib__", m = document, b = window; b = b[c] || (b[c] = {}); var d = b.maps || (b.maps = {}), r = new Set, e = new URLSearchParams, u = () => h || (h = new Promise(async (f, n) => { await (a = m.createElement("script")); e.set("libraries", [...r] + ""); for (k in g) e.set(k.replace(/[A-Z]/g, t => "_" + t[0].toLowerCase()), g[k]); e.set("callback", c + ".maps." + q); a.src = `https://maps.${c}apis.com/maps/api/js?` + e; d[q] = f; a.onerror = () => h = n(Error(p + " could not load.")); a.nonce = m.querySelector("script[nonce]")?.nonce || ""; m.head.append(a) })); d[l] ? console.warn(p + " only loads once. Ignoring:", g) : d[l] = (f, ...n) => r.add(f) && u().then(() => d[l](f, ...n)) })
                 ({ key: "AIzaSyBPB4VPZKkuM469YuZcRdGGKnsItE1C7ik", v: "beta" });
             let map;
@@ -163,12 +175,13 @@ const options = {
                     title: "BS",
                 });
             }
-            initMap()
+            /*initMap()*/
         },
 
         //建立活動與既有活動
         CreateAndEditEvent() {
             console.log("submit form")
+            window.location.href = 'https://localhost:7156/Dashboard/Events/33/Overview';
             axios.post('/api/CreateEvent/CreateAndEditEvent', {
                 "EventName": this.eventNameInput,
                 "StartTime": this.startTime,
@@ -189,14 +202,16 @@ const options = {
                 "CategoryNames": this.selectedCategories,
                 "OrgId": this.organzationId,
 
+
+
             })
                 .then(res =>{
                     console.log(res)
                     window.location.href = `/Dashboard/Events/${res.data.id}/Overview`
                 })
-                .catch(
-                    
-                )
+                .catch(err => {
+                    console.error(err);
+                })
         },
 
         //選擇活動& pass eventId
@@ -261,7 +276,6 @@ const options = {
                 });
         },
 
-
         //圖床
         imgUpload(e) {
             let formData = new FormData();
@@ -281,8 +295,6 @@ const options = {
                     console.error(err);
                 })
         },
-
-       
 
         //地理編碼
         //getLatLng() {
@@ -330,6 +342,35 @@ const options = {
             this.$router.push({ path: `/Dashboard/Events/${this.eventsforInput.eventId}/Overview` }); //建立活動後的ID
             this.CreateAndEditEvent();
         },
+
+        saveTicket() {
+            // 從您的輸入欄位獲取票卷資訊
+            const newTicket = {
+                type: this.ticketTypeInput,
+                startTime: this.TicketStartTime,
+                endTime: this.TicketEndTime,
+                price: this.Money,
+                quantity: this.Amount,
+            };
+
+           /* console.log(newTicket.type)*/
+
+            // 將新票卷加入TicketDetail
+            this.TicketDetail.push(newTicket);
+
+            // 清空輸入欄位
+            this.ticketTypeInput = '';
+            this.TicketStartTime = '';
+            this.TicketEndTime = '';
+            this.Money = '';
+            this.Amount = '';
+        },
+
+        deleteTicket(ticketTypeName) {
+            console.log('刪除的票卷ID:', ticketTypeName);
+            this.TicketDetail = this.TicketDetail.filter(ticket => ticket.type !== ticketTypeName);
+        }
+
 
 
     },
