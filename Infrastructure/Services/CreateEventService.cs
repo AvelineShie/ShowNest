@@ -42,7 +42,7 @@ namespace Infrastructure.Services
             return events;
         }
 
-        //建立新活動
+        //建立新活動 
         public int CreateEvent(CreateEventDto request)
         {
 
@@ -258,6 +258,12 @@ namespace Infrastructure.Services
         //            throw new Exception(ex.Message);
         //        }
         //}
+
+
+
+
+
+
 
 
 

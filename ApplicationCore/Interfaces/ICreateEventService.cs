@@ -10,6 +10,7 @@ namespace ApplicationCore.Interfaces
         int CreateEvent(CreateEventDto require);
         int UpdateEvent(CreateEventDto require);
         CreateEventDto RenderEventData(int eventId);
+        CreateEventDto EditEventRender(int eventId);
     }
 
 }

@@ -28,18 +28,24 @@ const options = {
 
             eventsforInput: [],
 
-            //============================SetEvent(R,U)
+            //============================SetEvent(C,U)
+            Orgname: '',
+
             eventNameInput: '',
             startTime: '',
             endTime: '',
             noEndTime: false,
+
             mainOrganizerInput: '',
             coOrganizer: '',
+
+
             privacy: false,
             
 
             number: 0, //人數
             unlimited: '',
+            eventStatus: 0, //實體或線上
 
             //圖片
             imgUrl: 'https://res.cloudinary.com/do2tfk5nk/image/upload/v1713610498/ShowNestImg/UnUploadedImg_vsrtfu.jpg',
@@ -47,14 +53,17 @@ const options = {
             placeName: '',
             EventAddress: '',
 
+            //地圖
+            //使用者輸入後,轉經緯度, 一方面送入資料庫,另一方面渲染畫面
+            longitude: '',
+            latitude: '',
+            map: null, // 用來存儲地圖實例的變量
+            marker: null,
+
             streaming: '',
             SHOWNESTLive: '', //線上選項
 
             introduction: '',
-            eventStatus: 0, //實體或線上
-
-            //地圖
-
 
             // CKEditor
             editor: ClassicEditor,
@@ -64,22 +73,17 @@ const options = {
                 toolbar: ['bold', 'italic', 'heading', 'Superscript', 'link', 'undo', 'redo', 'imageUpload']
             },
 
-            //=================================SetTicket(R,U)
-            //選票種
-            //TicketType: '',
-            //StartTime: '',
-            //EndTime: '',
-            //Money: '',
-            //Amount: '',
-
-            //checkboxErrorMsg: '',
-
-            //todo
             categoryItems: [
                 '音樂', '戲劇', '展覽', '電影', '藝文活動', '美食', '運動', '課程講座', '演唱會'
             ],
-            selectedCategories: []
+            selectedCategories: [],
 
+            //=================================SetTicket(C)
+            ticketTypeInput: '',
+            TicketStartTime: '',
+            TicketEndTime: '',
+            Money: '',
+            Amount: '',
 
         }
     },
@@ -87,9 +91,11 @@ const options = {
         this.CreateEventbyUserId()
         this.GetOrgEventsByOrgId()
         this.fetchActivitiesByOrgId()
+        this.googleMap()
 
     },
     methods: {
+        //組織下拉
         async CreateEventbyUserId() {
             await axios.get('/api/CreateEvent/CreateEventbyUserId')
                 .then(res => {
@@ -105,50 +111,28 @@ const options = {
                 })
         },
 
-        handleActivityTypeChange(activityTypes) {
-            if (activityTypes === "既有的活動") {
-                // 如果選擇了"既有的活動"，則觸發請求該組織下的所有活動
-                this.fetchActivitiesByOrgId(this.selectedOrganization.id);
-            }
-        },
+        GetOrgEventsByOrgId() {
+            console.log(this.selectedOrganization)
+        }, //示範
 
-        async fetchActivitiesByOrgId(orgId) {
+        //活動列表
+        async fetchActivitiesByOrgId() {
             await axios.get(`/api/CreateEvent/GetActivitiesByOrgId`)
             .then(res => {
 
-                if (res.data === null) {
-                    return console.log(err);
-                } else {
-                console.log(res.data)
+                if (res.data !== null) {
+
                     this.eventsforInput = res.data.map(a => ({ eventId: a.eventId, eventName: a.eventName }));
+                    console.log( this.eventsforInput)
                 }
-                console.log("this.eventsforInput")
-                console.log(this.eventsforInput)
             })
             .catch(err => {
                 console.error(err);
             })
-        },
+        }, 
 
-        imgUpload(e) {
-            let formData = new FormData();
-            for (let i = 0; i < e.target.files.length; i++) {
-                formData.append('files', e.target.files[i]);
-            }
-            axios.post('/api/ImgUploadApi/UploadImages', formData, {
-                headers: {
-                    'Content-Type': 'multipart/form-data'
-                }
-            })
-                .then(res => {
-                    console.log(res)
-                    this.imgUrl = res.data[0]
-                })
-                .catch(err => {
-                    console.error(err);
-                })
-        },
 
+        //建立活動與既有活動
         CreateAndEditEvent() {
             console.log("submit form")
             axios.post('/api/CreateEvent/CreateAndEditEvent', {
@@ -180,57 +164,132 @@ const options = {
                 )
         },
 
+        //選擇活動& pass eventId
+        handleEventSelection() {
+            this.stepButton = 2; //跳轉
+            this.EditEventRender(parseInt(this.radioCheck));
+            console.log(this.radioCheck)
+        },
 
-        //CreateAndEditEvent() {
-        //    console.log("submit form")
-        //    axios.post('/api/CreateEvent/CreateNewEvent', {
-        //        "EventName": "Example Event",
-        //        "StartTime": "2024-04-22T09:00:00",
-        //        "EndTime": "2024-04-22T17:00:00",
-        //        "MainCompany": "Main Company Inc.",
-        //        "AssistCompany": "Assist Company Ltd.",
-        //        "Amount": 100,
-        //        "Type": "Conference",
-        //        "Title": "Advanced .NET and JavaScript Development",
-        //        "Address": "123 Main St, Anytown, USA",
-        //        "Intro": "Join us for a day of learning and networking.",
-        //        "Description": "This conference will cover the latest in .NET and JavaScript development, featuring expert talks and hands-on workshops.",
-        //        "ImgUrl": "https://example.com/event-image.jpg",
-        //        "Privacy": "Public",
-        //        "CategoryNames": ["Development", "Technology", "Networking"]
-        //    })
-        //        .then(res => {
-        //            console.log(res)
-        //        })
+        //渲染活動內容
+        EditEventRender() {
+            console.log("Render Success!");
+            axios.get('/api/CreateEvent/RenderEventData"', {
+                params: {
+                    eventId: parseInt(this.radioCheck.eventId)
+                }
+            })
+                .then(res => {
+                    let info = res.data;
+                    console.log(res.data);
+                })
+                .catch(err => {
+                    console.error(err);
+                });
+        },
 
 
-        //fetch('/api/CreateEvent/CreateAndEditEvent',
-        //    {
-        //        method: 'POST', 
-        //        headers: { 'Content-Type': 'application/json' }, 
-        //        body: JSON.stringify({ eventId: this.eventId })
-        //    })
-        //    .then(response => {
-        //        return response.json()
-        //    })
-        //    .then(data => {
-        //        if (!data.isSuccess) {
-        //            this.selectedOrganization = { id: 0, name: '沒有組織，請先建立組織' }
-        //            throw new Error(data.message)
-        //        }
-        //        this.organizations = data.body.organizations.map(x => {
-        //            return { id: x.id, name: x.name }
-        //        })
-        //        this.selectedOrganization = null
+        //圖床
+        imgUpload(e) {
+            let formData = new FormData();
+            for (let i = 0; i < e.target.files.length; i++) {
+                formData.append('files', e.target.files[i]);
+            }
+            axios.post('/api/ImgUploadApi/UploadImages', formData, {
+                headers: {
+                    'Content-Type': 'multipart/form-data'
+                }
+            })
+                .then(res => {
+                    console.log(res)
+                    this.imgUrl = res.data[0]
+                })
+                .catch(err => {
+                    console.error(err);
+                })
+        },
+
+        //地圖
+        googleMap() {
+            (g => { var h, a, k, p = "The Google Maps JavaScript API", c = "google", l = "importLibrary", q = "__ib__", m = document, b = window; b = b[c] || (b[c] = {}); var d = b.maps || (b.maps = {}), r = new Set, e = new URLSearchParams, u = () => h || (h = new Promise(async (f, n) => { await (a = m.createElement("script")); e.set("libraries", [...r] + ""); for (k in g) e.set(k.replace(/[A-Z]/g, t => "_" + t[0].toLowerCase()), g[k]); e.set("callback", c + ".maps." + q); a.src = `https://maps.${c}apis.com/maps/api/js?` + e; d[q] = f; a.onerror = () => h = n(Error(p + " could not load.")); a.nonce = m.querySelector("script[nonce]")?.nonce || ""; m.head.append(a) })); d[l] ? console.warn(p + " only loads once. Ignoring:", g) : d[l] = (f, ...n) => r.add(f) && u().then(() => d[l](f, ...n)) })
+                ({ key: "AIzaSyBPB4VPZKkuM469YuZcRdGGKnsItE1C7ik", v: "beta" });
+            let map;
+            let latFormData = 25.033493 //緯度
+            let lngFormData = 121.564101 //經度
+
+            async function initMap() {
+                // The location of BS
+                // const position = { lat: parseFloat(this.longitude), lng: parseFloat(this.latitude) };
+                const position = { lat: latFormData, lng: lngFormData };
+                // Request needed libraries.
+                // ts-ignore
+                const { Map } = await google.maps.importLibrary("maps");
+                const { AdvancedMarkerView } = await google.maps.importLibrary("marker");
+
+                // The map, centered at BS
+                map = new Map(document.getElementById("map"), {
+                    zoom: 15,
+                    center: position,
+                    mapId: "DEMO_MAP_ID",
+                });
+
+                // The marker, positioned at BS
+                const marker = new AdvancedMarkerView({
+                    map: map,
+                    position: position,
+                    title: "BS",
+                });
+            }
+            initMap()
+        },
+
+        //地理編碼
+        //getLatLng() {
+        //    const geocoder = new google.maps.Geocoder();
+        //    return new Promise((resolve, reject) => {
+        //        geocoder.geocode({ 'address': this.EventAddress }, (results, status) => {
+        //            if (status === 'OK') {
+        //                const lat = results[0].geometry.location.lat();
+        //                const lng = results[0].geometry.location.lng();
+        //                this.latitude = lat;
+        //                this.longitude = lng;
+        //                resolve({ lat, lng });
+        //                console.log(latitude, longitude)
+        //                this.googleMap();
+        //            } else {
+        //                reject(new Error('Geocode was not successful for the following reason: ' + status));
+        //            }
+        //        });
+        //    });
+        //},
+        
+
+        //axios.get(`/api/CreateAndUpdateOrganization/EditOrganizationDataFilling/${orgIdFromLink}`)
+        //    .then(res => {
+        //        console.log(res)
+        //        let info = res.data.data
+        //        this.name = info.name
+        //        this.organizationUrl = info.name
+        //        this.outerUrl = info.outerUrl
+        //        this.description = info.description
+        //        this.fbLink = info.fbLink
+        //        this.igAccount = info.igAccount
+        //        this.email = info.email
+        //        this.imgUrl = info.imgUrl
+        //        this.contactName = info.contactName
+        //        this.contactMobile = info.contactMobile
+        //        this.contactTelephone = info.contactTelephone
         //    })
         //    .catch(err => {
-        //        console.error(err)
+        //        console.error(err);
         //    })
-        //},
 
-        GetOrgEventsByOrgId() {
-            /*console.log(this.selectedOrganization)*/
-        }
+        handleClick() {
+            this.stepButton = 3;
+            this.$router.push({ path: `/Dashboard/Events/${this.eventsforInput.eventId}/Overview` }); //建立活動後的ID
+            this.CreateAndEditEvent();
+        },
+
 
     },
     watch: {
@@ -244,31 +303,16 @@ const options = {
             deep: true
         },
 
+        //選擇既有活動後觸發列表
         'selectedActivityType': {
             handler: function (val) {
                 if (val === "既有的活動") {
                     this.displayExistingActivities = true
-                    this.selectedOrganization()
+                    this.fetchActivitiesByOrgId();
                 }
             }
         },
 
-        selectedOrganization: {
-            handler: function (newVal) {
-                if (newVal && newVal.id) {
-                    this.handleActivityTypeChange(newVal.id);
-                }},
-            deep: true
-        },
-
-        //'onlineEventArea': {
-        //    handler: function (value) {
-        //        if (value == "1") {
-        //            this.onlineEventArea = true
-        //            this.placeSection = false
-        //        }
-        //    }
-        //}
 
         //'checkbox': {
         //    handler: function (newVal) {
@@ -286,118 +330,17 @@ const options = {
         //},
     }
 }
-const app = createApp(options); // 創建一個 Vue 應用實例，使用 options 作為配置選項
-app.component('draggable', vuedraggable)
+const app = createApp(options);
+// 創建一個 Vue 應用實例，使用 options 作為配置選項
 app.use(CKEditor)
 app.use(vuetify)
 app.mount('#app')
 
 
 
-/*=============票區選擇===============*/
-//格式錯誤要改寫
-//import draggable from "@@/vuedraggable";
-//const SelectTicketArea = createApp({
-//    name: "two-lists",
-//    components: {
-//        draggable
-//    },
-//    data() {
-//        return {
-//            list1: [
-//              { name: "特1A", id: 1 },
-//{ name: "特1B", id: 2 },
-//{ name: "2A區", id: 3 },
-//{ name: "2B區", id: 4 },
-//{ name: "2C區", id: 5 },
-//{ name: "2D區", id: 6 },
-//{ name: "2E區", id: 7 },
-//{ name: "2F區", id: 8 },
-//{ name: "2G區", id: 9 },
-//{ name: "3A區", id: 10 },
-//{ name: "3B區", id: 11 },
-//{ name: "3C區", id: 12 },
-//{ name: "3D區", id: 13 },
-//{ name: "3E區", id: 14 },
-//{ name: "3F區", id: 15 },
-//{ name: "3G區", id: 16 }
-//            ],
-//            list2: [],
-//            新增一個變數來儲存使用者輸入的選項名稱
-//            newOptionName: ''
-//        };
-//    },
-//    methods: {
-//        add: function () {
-//            this.list1.push({ name: this.newOptionName, id: this.list1.length + 1 });
-//        },
-//        replace: function () {
-//            list1.length = 0;
-//            list2.push({ name: this.newOptionName, id: 1 }); //因為list清空, 所以加入的是id=1
-//        },
-//        clone: function (el) {
-//            return {
-//                name: el.name
-//            };
-//        },
-//        log: function (evt) {
-//            console.log(evt);
-//        }
-//    },
-//}).mount('#app');
 
-//<ul>
-//  <li>特1A</li>
-//  <li>特1B</li>
-//  <li>2A區</li>
-//  <li>2B區</li>
-//  <li>2C區</li>
-//  <li>2D區</li>
-//  <li>2E區</li>
-//  <li>2F區</li>
-//  <li>2G區</li>
-//  <li>3A區</li>
-//  <li>3B區</li>
-//  <li>3C區</li>
-//  <li>3D區</li>
-//  <li>3E區</li>
-//  <li>3F區</li>
-//  <li>3G區</li>
-//</ul>
 
-/*===========票種選擇===========*/
 
-//const SelectTicketType = createApp({
-//    name: "two-lists",
-//    components: {
-//        draggable
-//    },
-//    data() {
-//        return {
-//            list1: [
-//                { name: "全票", id: 100 },
-//            ],
-//            list2: []
-//        };
-//    },
-//    methods: {
-//        add: function () {
-//            this.list1.push({ name: "全票" });
-//        },
-//        replace: function () {
-//            list1.length = 0; // 清空 list1
-//            list2.push({ name: "全票" }); // list2添加新的全票
-//        },
-//        clone: function (el) {
-//            return {
-//                name: el.name
-//            };
-//        },
-//        log: function (evt) {
-//            console.log(evt);
-//        }
-//    },
-//}).mount('#app');
 
 
 

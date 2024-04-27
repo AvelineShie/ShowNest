@@ -142,11 +142,13 @@ namespace ShowNest.Web.WebAPI
         }
 
         //渲染
-        public IActionResult RenderEventData(string eventId)
+        [HttpGet]
+        [Route("/api/CreateEvent/RenderEventData")]
+        public IActionResult RenderEventData([FromQuery] int eventId)
         {
             try
             {
-                var selectedEventId = _CreateEventService.RenderEventData(int.Parse(eventId));
+                var selectedEventId = _CreateEventService.EditEventRender(eventId);
                 var successResult = OperationResultHelper.ReturnSuccessData(selectedEventId);
                 return Ok(successResult);
             }

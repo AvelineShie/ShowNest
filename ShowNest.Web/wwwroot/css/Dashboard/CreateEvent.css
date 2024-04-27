@@ -118,7 +118,7 @@ div.v-selection-control-group {
     margin-left: 30px;
 }
 
-.name {
+html body .Orgname {
     line-height: 37px;
     font-size: 22px;
     color: var(--main-green);
@@ -321,20 +321,9 @@ button.btn-outline-secondary {
 
 .tag {
     display: inline-block;
-    border-radius: 5px;
-    background-color: var(--light-green);
-    line-height: 20px;
-    font-size: 15px;
-    padding: 3px;
-    color: #f5f5f5;
     margin: 3px;
 }
 
-.tag:hover {
-    box-shadow: 0 1px 1px rgba(0,0,0,0.06);
-    background-color: var(--light-green);
-    cursor: pointer;
-}
 
 .pages-change {
     display: flex;
@@ -360,11 +349,6 @@ html body #SetTicket.organize {
     margin-left: 30px;
 }
 
-html body #SetTicket.name {
-    line-height: 37px;
-    font-size: 22px;
-    color: var(--main-green);
-}
 
 /* ªí³æ */
 #SetTicket th {
