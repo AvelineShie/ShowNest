@@ -35,5 +35,10 @@ public partial class LogInInfo
     /// </summary>
     public DateTime? EditedAt { get; set; }
 
+    /// <summary>
+    /// GoogleId
+    /// </summary>
+    public int? Gid { get; set; }
+
     public virtual User User { get; set; }
 }
