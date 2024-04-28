@@ -119,7 +119,19 @@ p.step_text {
     font-weight: 400;
 }
 
-@media only screen and (max-width:768px) {
+@media only screen and (max-width:1400px) {
+    .no_seat .progress_container {
+        width: 95%;
+        margin: auto;
+        padding: 20px 0;
+    }
+    
+    .no_seat .step {
+        min-width: 250px;
+    }
+}
+
+@media only screen and (max-width:1000px) {
 
     .progress_container {
         width: 95%;
