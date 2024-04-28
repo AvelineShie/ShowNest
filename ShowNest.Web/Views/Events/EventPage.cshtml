@@ -158,7 +158,7 @@
             <!-- 活動header頁 結束-->
         </div>
         <!-- --手機板 下一步--- -->
-         <div id="mobile-btn-success" class="p-3 d-flex justify-content-center">
+         <div id="mobile-btn-success" class="">
             <a href="~/Events/BuyTicket/@Model.EventId" class="btn btn-success w-50"
                type="button">下一步</a>
         </div> 
@@ -276,11 +276,13 @@
 
             <div class="modal-body">
                 <p>
-                    立刻成為 ShowNest 會員，加速活動報名流程，並且讓您的資料更有保障。
+                    立刻成為 ShowNest 會員<br>加速活動報名流程，讓您的資料更有保障。
                 </p>
-                <button id="loginBtn" class="btn btn-primary">登入</button>
-                <button id="signUpBtn" class="btn btn-secondary">註冊</button>
-                <button id="cancelBtn" class="btn btn-danger">取消</button>
+                <div id="control-buttons">
+                    <button id="loginBtn" class="btn btn-success">登入</button>
+                    <button id="signUpBtn" class="btn btn-success">註冊</button>
+                    <button id="cancelBtn" class="btn btn-secondary">取消</button>
+                </div>
             </div>
         </div>
     </div>
