@@ -2,6 +2,10 @@
     margin: 20px auto 0 auto;
 }
 
+.no_seat .progress_container {
+    margin: 20px auto;
+}
+
 .step_progress_bar {
     max-width: 1200px;
     display: flex;
@@ -19,6 +23,10 @@
     border-radius: 50px;
     position: relative;
     border: 3px solid rgb(218, 218, 218);
+}
+
+.no_seat .step {
+    min-width: 300px;
 }
 
 p.step_text {
