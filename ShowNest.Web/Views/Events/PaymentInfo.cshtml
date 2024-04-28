@@ -77,12 +77,20 @@
                     </table>
                 </div>
             </div>
-            <div class="progress_container">
+            <div class="progress_container" v-if="data.hasSeats">
                 @await Html.PartialAsync("_PurchaseStepsPartial", new List<StepStatusViewModel> {
-                new StepStatusViewModel { InProgress = false, IsDisabled = true },
-                new StepStatusViewModel { InProgress = false, IsDisabled = true },
-                new StepStatusViewModel { InProgress = false, IsDisabled = true },
-                new StepStatusViewModel { InProgress = true, IsDisabled = false }
+                    new StepStatusViewModel { InProgress = false, IsDisabled = true },
+                    new StepStatusViewModel { InProgress = false, IsDisabled = true },
+                    new StepStatusViewModel { InProgress = false, IsDisabled = true },
+                    new StepStatusViewModel { InProgress = true, IsDisabled = false }
+                })
+            </div>
+            <div class="progress_container" v-if="!data.hasSeats">
+                @await Html.PartialAsync("_PurchaseStepsPartialWithoutSeats", new List<StepStatusViewModel>
+                {
+                    new StepStatusViewModel {InProgress = false, IsDisabled = true},
+                    new StepStatusViewModel {InProgress = false, IsDisabled = true},
+                    new StepStatusViewModel {InProgress = true, IsDisabled = false}
                 })
             </div>
             <form name="finalOrder" class="">

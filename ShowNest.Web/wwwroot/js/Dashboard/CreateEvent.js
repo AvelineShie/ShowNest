@@ -92,6 +92,7 @@ const options = {
     },
     mounted() {
         this.googleMap()
+        this.InputGoogleMap()
         this.CreateEventbyUserId()
         this.GetOrgEventsByOrgId()
         this.fetchActivitiesByOrgId()
@@ -111,15 +112,99 @@ const options = {
         },
 
 
-        //地圖
+        //地圖：資料庫生成
+        googleMap() {
+            (g => { var h, a, k, p = "The Google Maps JavaScript API", c = "google", l = "importLibrary", q = "__ib__", m = document, b = window; b = b[c] || (b[c] = {}); var d = b.maps || (b.maps = {}), r = new Set, e = new URLSearchParams, u = () => h || (h = new Promise(async (f, n) => { await (a = m.createElement("script")); e.set("libraries", [...r] + ""); for (k in g) e.set(k.replace(/[A-Z]/g, t => "_" + t[0].toLowerCase()), g[k]); e.set("callback", c + ".maps." + q); a.src = `https://maps.${c}apis.com/maps/api/js?` + e; d[q] = f; a.onerror = () => h = n(Error(p + " could not load.")); a.nonce = m.querySelector("script[nonce]")?.nonce || ""; m.head.append(a) })); d[l] ? console.warn(p + " only loads once. Ignoring:", g) : d[l] = (f, ...n) => r.add(f) && u().then(() => d[l](f, ...n)) })
+                ({ key: "AIzaSyBPB4VPZKkuM469YuZcRdGGKnsItE1C7ik", v: "beta" });
+
+            let map;
+            console.log(lat, lng)
+
+            //if (this.latitude && this.longitude == null) {
+            //    let latFormData = parseFloat(lat)
+            //    let lngFormData = parseFloat(lng)
+            //}
+
+            let latFormData = parseFloat(this.latitude)
+            let lngFormData = parseFloat(this.longitude)
+
+            console.log(latFormData, lngFormData);
+
+            async function initMap() {
+                const position = { lat: latFormData, lng: lngFormData };
+                const { Map } = await google.maps.importLibrary("maps");
+                const { AdvancedMarkerView } = await google.maps.importLibrary("marker");
+
+                map = new Map(document.getElementById("map"), {
+                    zoom: 15,
+                    center: position,
+                    mapId: "DEMO_MAP_ID",
+                });
+
+                const marker = new AdvancedMarkerView({
+                    map: map,
+                    position: position,
+                    title: "SHOWNEST",
+                });
+            }
+            initMap()
+        },
+
+        //地圖手動刷新
+        InputGoogleMap(lat, lng) {
+            (g => { var h, a, k, p = "The Google Maps JavaScript API", c = "google", l = "importLibrary", q = "__ib__", m = document, b = window; b = b[c] || (b[c] = {}); var d = b.maps || (b.maps = {}), r = new Set, e = new URLSearchParams, u = () => h || (h = new Promise(async (f, n) => { await (a = m.createElement("script")); e.set("libraries", [...r] + ""); for (k in g) e.set(k.replace(/[A-Z]/g, t => "_" + t[0].toLowerCase()), g[k]); e.set("callback", c + ".maps." + q); a.src = `https://maps.${c}apis.com/maps/api/js?` + e; d[q] = f; a.onerror = () => h = n(Error(p + " could not load.")); a.nonce = m.querySelector("script[nonce]")?.nonce || ""; m.head.append(a) })); d[l] ? console.warn(p + " only loads once. Ignoring:", g) : d[l] = (f, ...n) => r.add(f) && u().then(() => d[l](f, ...n)) })
+                ({ key: "AIzaSyBPB4VPZKkuM469YuZcRdGGKnsItE1C7ik", v: "beta" });
+
+            let map;
+            console.log(lat, lng)
+
+            //if (this.latitude && this.longitude == null) {
+            //    let latFormData = parseFloat(lat)
+            //    let lngFormData = parseFloat(lng)
+            //}
+
+            let latFormData = parseFloat(lat)
+            let lngFormData = parseFloat(lng)
+            
+            console.log(latFormData, lngFormData);
+
+            async function initMap() {
+                const position = { lat: latFormData, lng: lngFormData };
+                const { Map } = await google.maps.importLibrary("maps");
+                const { AdvancedMarkerView } = await google.maps.importLibrary("marker");
+
+                map = new Map(document.getElementById("map"), {
+                    zoom: 15,
+                    center: position,
+                    mapId: "DEMO_MAP_ID",
+                });
+                
+                const marker = new AdvancedMarkerView({
+                    map: map,
+                    position: position,
+                    title: "SHOWNEST",
+                });
+            }
+            initMap()
+        },
+
+
+
         googleMap(lat, lng) {
             (g => { var h, a, k, p = "The Google Maps JavaScript API", c = "google", l = "importLibrary", q = "__ib__", m = document, b = window; b = b[c] || (b[c] = {}); var d = b.maps || (b.maps = {}), r = new Set, e = new URLSearchParams, u = () => h || (h = new Promise(async (f, n) => { await (a = m.createElement("script")); e.set("libraries", [...r] + ""); for (k in g) e.set(k.replace(/[A-Z]/g, t => "_" + t[0].toLowerCase()), g[k]); e.set("callback", c + ".maps." + q); a.src = `https://maps.${c}apis.com/maps/api/js?` + e; d[q] = f; a.onerror = () => h = n(Error(p + " could not load.")); a.nonce = m.querySelector("script[nonce]")?.nonce || ""; m.head.append(a) })); d[l] ? console.warn(p + " only loads once. Ignoring:", g) : d[l] = (f, ...n) => r.add(f) && u().then(() => d[l](f, ...n)) })
                 ({ key: "AIzaSyBPB4VPZKkuM469YuZcRdGGKnsItE1C7ik", v: "beta" });
 
             let map;
             console.log(lat, lng)
-            let latFormData = parseFloat(lat)
-            let lngFormData = parseFloat(lng)
+
+            if (this.latitude && this.longitude == null) {
+                let latFormData = parseFloat(lat)
+                let lngFormData = parseFloat(lng)
+            }
+
+            let latFormData = parseFloat(this.latitude)
+            let lngFormData = parseFloat(this.longitude)
+            
             console.log(latFormData, lngFormData);
 
             async function initMap() {
@@ -153,9 +238,9 @@ const options = {
                     this.latitude = lat;
                     this.longitude = lng;
                     console.log(lat, lng)
-                    alert('Geocode was not successful for the following reason: ' + status);
+                    /*alert('Geocode was not successful for the following reason: ' + status);*/
 
-                    googleMap(lat, lng);
+                    this.InputGoogleMap(lat, lng);
                 }
             });
         },

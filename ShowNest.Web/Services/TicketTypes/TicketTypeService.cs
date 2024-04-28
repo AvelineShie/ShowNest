@@ -98,4 +98,31 @@ public class TicketTypeService : ITicketTypeService
             Tickets = tickets
         };
     }
+
+    public async Task<AvailableTicketsResponseViewModel> GetAvailableTickets(AutoSeatSelectionRequestViewModel request)
+    {
+        var tickets = new List<AvailableTicketViewModel>();
+
+        foreach (var criteria in request.Criteria)
+        {
+            var query = from ticketType in _dbContext.TicketTypes
+                join ticket in _dbContext.Tickets on ticketType.Id equals ticket.TicketTypeId
+                where ticket.OrderId == null && ticketType.Id == criteria.TicketTypeId
+                orderby ticket.Id
+                select new AvailableTicketViewModel
+                {
+                    Price = ticketType.Price,
+                    TicketTypeName = ticketType.Name,
+                    TicketId = ticket.Id
+                };
+            var result = await query.Take(criteria.TicketCount).ToListAsync();
+
+            tickets.AddRange(result);
+        }
+
+        return new AvailableTicketsResponseViewModel()
+        {
+            Tickets = tickets
+        };
+    }
 }

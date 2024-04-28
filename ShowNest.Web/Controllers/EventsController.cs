@@ -115,7 +115,10 @@ namespace ShowNest.Web.Controllers
         }
 
 
-
+        public IActionResult TicketTypeSelectionWithoutSeats()
+        {
+            return View();
+        }
 
         public IActionResult TicketTypeSelection()
         {
