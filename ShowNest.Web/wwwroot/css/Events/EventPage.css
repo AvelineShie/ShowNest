@@ -81,7 +81,13 @@ p .fa {
 
 #pc-btn-success {
     text-decoration: none;
-    color: #fff;
+    color: #f00;
+}
+
+#mobile-btn-success{
+    padding: 20px 0px;
+    display:flex;
+    justify-content: center;
 }
 
 .loge {
@@ -251,10 +257,60 @@ ul.attendees {
     right: 0px;
 }
 
+/* 登入彈窗 */
+#loginModal{
+    font-family: sans-serif;
+    line-height: 1.5em;
+    letter-spacing: .05em;
+}
+
+#loginModal .modal-body p{
+    padding: 20px 0px 40px;
+    display: flex;
+    justify-content: center;
+    text-align: center;
+}
+
+#loginModal button.close{
+    color: var(--drak-gray);
+    background-color: #fff;
+    border: var(--light-gray) 1px solid;
+    border-radius: var(--common-border-radius);
+}
+
+#loginModal .modal-body button{
+    padding: 8px 30px;
+}
+
+#control-buttons {
+    display: flex;
+    justify-content: space-between;
+}
+
+#loginModal #loginBtn,
+#loginModal #signUpBtn{
+    margin-right:30px;
+}
+
+#loginModal #loginBtn{
+    background-color: var(--dark-green);
+}
+
+#loginModal #signUpBtn{
+    background-color: var(--main-green);
+}
+
+#loginModal #cancelBtn{
+    background-color: var(--dark-gray);
+}
+
 
 @media (min-width:768px) {
     /* 共用 */
-
+    #mobile-btn-success{
+        display: none;
+        color:#f00;
+    }
 
     .warp {
         max-width: 1200px;
@@ -369,6 +425,11 @@ ul.attendees {
 }
 
 @media (min-width:1000px) {
+    #mobile-btn-success{
+        display: none;
+        color:#f00;
+    }
+
     /* 地圖 */
     .btn-wrapper {
         width: 750px;
