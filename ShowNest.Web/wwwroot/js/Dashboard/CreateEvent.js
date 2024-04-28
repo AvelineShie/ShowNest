@@ -405,6 +405,18 @@ const options = {
             
         },
 
+        saveTicket(index) {
+            this.ticketDetail.splice(index, 1);
+
+            this.ticketDetail.push({
+                type: this.ticketDetail[index].ticketName,
+                startTime: this.ticketDetail[index].startSaleTime,
+                endTime: this.ticketDetail[index].endSaleTime,
+                price: this.ticketDetail[index].price,
+                quantity: this.ticketDetail[index].amount
+            });
+        },
+
 
         deleteTicket(index) {
             this.ticketDetail.splice(index, 1); // 刪除指定索引的票卷
