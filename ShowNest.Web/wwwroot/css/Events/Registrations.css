@@ -17,7 +17,7 @@ body {
 .main_wrap {
     margin: 20px auto;
     line-height: 1.5em;
-    width: 90%;
+    width: 80%;
 }
 
 .count_down_timer {
@@ -28,7 +28,6 @@ body {
     margin: auto;
     text-align: center;
     justify-content: center;
-    /*width: 75%;*/
 }
 
 h2 {
