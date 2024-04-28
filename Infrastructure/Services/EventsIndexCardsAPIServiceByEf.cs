@@ -85,6 +85,7 @@ namespace Infrastructure.Services
                 var totalEventsCount = query.Count();
 
                 var results = await query
+                    .AsNoTracking()
                     .OrderBy(q => q.EventAndTagMappings.FirstOrDefault().CategoryTagId)
                     .ThenBy(q => q.Id)
                     .Skip((page - 1) * cardsPerPage).Take(cardsPerPage)
