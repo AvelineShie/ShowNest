@@ -31,7 +31,7 @@ public partial class Event
     public DateTime? EndTime { get; set; }
 
     /// <summary>
-    /// 0線上1實體
+    /// 0線上1實體2有座位
     /// </summary>
     public byte Type { get; set; }
 

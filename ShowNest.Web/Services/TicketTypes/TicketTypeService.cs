@@ -42,6 +42,7 @@ public class TicketTypeService : ITicketTypeService
                 EventId = eventDetails.Id,
                 MainImage = eventDetails.EventImage,
                 EventName = eventDetails.Name,
+                Type = eventDetails.Type,
                 StartTime = eventDetails.StartTime,
                 EndTime = eventDetails.EndTime,
                 EventLocation = $"{eventDetails.LocationName} / {eventDetails.LocationAddress}",
