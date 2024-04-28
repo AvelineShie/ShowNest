@@ -40,7 +40,8 @@ createApp({
                 }));
             this.save(flowId, {
                 eventDetail: this.ticketTypeSelection.eventDetail, 
-                selectedTickets
+                selectedTickets,
+                hasSeats: true
             });
 
             const params = new URLSearchParams();

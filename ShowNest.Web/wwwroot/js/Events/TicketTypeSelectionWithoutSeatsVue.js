@@ -53,6 +53,7 @@ createApp({
                 eventDetail: this.ticketTypeSelection.eventDetail,
                 selectedTickets,
                 tickets,
+                hasSeats: false
             });
 
             const params = new URLSearchParams();

@@ -83,7 +83,7 @@
                     </table>
                 </div>
             </div>
-            <div class="progress_container">
+            <div class="progress_container" v-if="data.hasSeats">
                 @await Html.PartialAsync("_PurchaseStepsPartial", new List<StepStatusViewModel>
                 {
                     new StepStatusViewModel {InProgress = false, IsDisabled = true},
@@ -92,10 +92,20 @@
                     new StepStatusViewModel {InProgress = false, IsDisabled = false}
                 })
             </div>
+            <div class="progress_container" v-if="!data.hasSeats">
+                @await Html.PartialAsync("_PurchaseStepsPartialWithoutSeats", new List<StepStatusViewModel>
+                {
+                    new StepStatusViewModel {InProgress = false, IsDisabled = true},
+                    new StepStatusViewModel {InProgress = true, IsDisabled = false},
+                    new StepStatusViewModel {InProgress = false, IsDisabled = false}
+                })
+            </div>
         </div>
-        <button 
+        <button
             @@click="onCancelPurchaseClicked"
-            class="btn_cancel btn" id="btn_cancel">取消購票</button>
+            class="btn_cancel btn" id="btn_cancel">
+            取消購票
+        </button>
         <div class="order_details">
             <table class="ticket_table_data_list table cart-ticket-list">
                 <thead>
