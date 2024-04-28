@@ -25,3 +25,16 @@ public class RegisterViewModel
 
 
 }
+public class GoogleRegisterViewModel
+{
+    [Required]
+    [AccountRegex]
+    public string Account { get; set; }
+
+    [Required]
+    [EmailAddress]
+    public string Email { get; set; }
+
+    // 移除了密碼和確認密碼欄位
+    // 其他欄位根據需要進行調整
+}

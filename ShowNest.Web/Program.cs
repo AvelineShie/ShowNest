@@ -28,7 +28,13 @@ namespace ShowNest.Web
         {
             var builder = WebApplication.CreateBuilder(args);
 
-
+            // 添加 Session
+            builder.Services.AddSession(options =>
+            {
+                options.IdleTimeout = TimeSpan.FromMinutes(30);
+                options.Cookie.HttpOnly = true;
+                options.Cookie.IsEssential = true;
+            });
 
             // 取得組態中資料庫連線設定
             string connectionString = builder.Configuration.GetConnectionString("DatabaseContext");
@@ -90,7 +96,7 @@ namespace ShowNest.Web
             builder.Services
                .AddApplicationCoreServices()
                .AddWebServices();
-
+              
             //// Facebook Data 測試中
             //builder.Services.AddAuthentication().AddFacebook(opt =>
             //{
@@ -115,6 +121,8 @@ namespace ShowNest.Web
             app.UseAuthentication();
             app.UseAuthorization();
 
+            //啟動Session
+            app.UseSession();
             ///測試用路由
             //app.MapControllerRoute(
             //    name: "organizationEvents",
