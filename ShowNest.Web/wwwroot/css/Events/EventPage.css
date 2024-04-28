@@ -84,6 +84,9 @@ p .fa {
     background-color: #FFF;
     box-shadow: 0 0 20px 0 #000;
 }
+.btn-group #plan-route {
+    border-right: 1px solid var(--light-green);
+}
 
 #pc-btn-success {
     text-decoration: none;
@@ -364,6 +367,10 @@ ul.attendees {
     .map-wrapper .address {
         margin: 20px;
     }
+    
+    .btn-group {
+        right: 20px;
+    }
 
     /* 活動票券 */
     .tickets {
@@ -441,7 +448,11 @@ ul.attendees {
 
     .map-wrapper .address {
         display: flex;
-        margin: 20px;
+        margin: 20px 48px;
+    }
+    
+    .btn-group {
+        right: 48px;
     }
 }
 
