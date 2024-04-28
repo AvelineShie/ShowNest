@@ -107,13 +107,9 @@ p .fa {
 }
 
 .description {
-    margin: 10px 20px;
+    margin: 30px auto;
+    width: 75%;
 }
-
-.description p {
-    padding-left: 30px;
-}
-
 
 .description ol {
     list-style-type: decimal;
