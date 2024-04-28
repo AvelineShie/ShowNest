@@ -92,6 +92,11 @@ createApp({
             return moment(this.ticketTypeSelection.eventDetail.startTime).format("YYYY/MM/DD HH:mm:ss")
         }
     },
+    computed: {
+        eventHasSeats() {
+            return this.ticketTypeSelection.eventDetail.type === 2;
+        }
+    },
     async mounted() {
         const urlParams = new URLSearchParams(window.location.search);
         const eventId = urlParams.get('eventId');

@@ -67,7 +67,7 @@
                 </tr>
             </table>
         </div>
-        <div class="progress_container" v-if="ticketTypeSelection.eventDetail.type === 2">
+        <div class="progress_container" v-if="eventHasSeats">
             @await Html.PartialAsync("_PurchaseStepsPartial", new List<StepStatusViewModel>
             {
                 new StepStatusViewModel {InProgress = false, IsDisabled = true},
@@ -76,7 +76,7 @@
                 new StepStatusViewModel {InProgress = false, IsDisabled = false}
             })
         </div>
-        <div class="progress_container" v-if="ticketTypeSelection.eventDetail.type !== 2">
+        <div class="progress_container" v-if="!eventHasSeats">
             @await Html.PartialAsync("_PurchaseStepsPartialWithoutSeats", new List<StepStatusViewModel>
             {
                 new StepStatusViewModel {InProgress = true, IsDisabled = false},
@@ -84,7 +84,7 @@
                 new StepStatusViewModel {InProgress = false, IsDisabled = false}
             })
         </div>
-        <div class="seats-areas-chart" v-if="ticketTypeSelection.eventDetail.type === 2">
+        <div class="seats-areas-chart" v-if="eventHasSeats">
             <img :src="ticketTypeSelection.eventDetail.seatAreaImage" alt="Event Seat Area Image">
         </div>
         <div class="ticket-price-table">
@@ -92,7 +92,7 @@
                 <div class="ticket-type">
                     <p>票種</p>
                 </div>
-                <div class="seats-select-type">
+                <div class="seats-select-type" v-if="eventHasSeats">
                     <p>座位</p>
                 </div>
                 <div class="the-price">
@@ -104,7 +104,7 @@
                     {{ticketPriceRow.tickets.ticketTypeName}}
                     <span>{{ticketPriceRow.seatArea}}</span>
                 </div>
-                <div class="select-type">{{ticketPriceRow.seatSelectionMethod}}</div>
+                <div class="select-type" v-if="eventHasSeats">{{ticketPriceRow.seatSelectionMethod}}</div>
                 <div class="ticket-price">{{ticketPriceRow.tickets.ticketPrice}}</div>
                 <div class="amount">
                     <input id="btn-minus" type="button" value="-" @@click="onTicketPriceRowClicked(ticketPriceRow, -1)">

@@ -111,7 +111,7 @@
                 <thead>
                 <tr class="gray_block">
                     <th class="ticket_type">票種</th>
-                    <th class="seat">座位</th>
+                    <th class="seat" v-if="data.hasSeats">座位</th>
                     <th class="price ">金額</th>
                 </tr>
                 </thead>
@@ -120,7 +120,7 @@
                     <td class="ticket_name">{{ticket.ticketTypeName}}</td>
                     <td class="ticket-data">
                         <table class="seat_detail_group cart_ticket_list_subtable_with_seat">
-                            <tbody class="seat_detail_group">
+                            <tbody class="seat_detail_group" v-if="data.hasSeats">
                             <tr>
                                 <td class="seat_details">
                                     <ul>
