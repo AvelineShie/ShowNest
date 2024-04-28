@@ -110,7 +110,6 @@ namespace ShowNest.Web.Services.Events
             targetOrder.ContactPerson = contactJsonString;
             return await _orderRepo.UpdateAsync(targetOrder);
         }
-      
 
 
         public async Task<CreateOrderResponse> CreateOrder(int userId, CreateOrderRequest request)
@@ -139,9 +138,12 @@ namespace ShowNest.Web.Services.Events
                     .FirstOrDefault(i => i.Id == ticketViewModel.TicketId);
                 ticket.OrderId = order.Id;
 
-                var seat = _dbContext.Seats
-                    .FirstOrDefault(i => i.Id == ticketViewModel.SeatId);
-                seat.Status = 2;
+                if (ticketViewModel.HasSeat)
+                {
+                    var seat = _dbContext.Seats
+                        .FirstOrDefault(i => i.Id == ticketViewModel.SeatId);
+                    seat.Status = 2;
+                }
             }
 
             _dbContext.SaveChanges();

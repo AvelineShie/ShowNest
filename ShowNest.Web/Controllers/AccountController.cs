@@ -232,8 +232,10 @@ namespace ShowNest.Web.Controllers
                 // 如果eventId為空或空字符串，將用戶重定向到首頁
                 return RedirectToAction("Index", "Home");
             }
-
-            var baseUri = "https://localhost:7156/Account/GoogleRegisterOrLogin";
+            //未佈署版本
+            //var baseUri = "https://localhost:7156/Account/GoogleRegisterOrLogin";
+            //佈署修正
+            var baseUri = "https://shownestci.azurewebsites.net/Account/GoogleRegisterOrLogin";
             var loginUri = $"{baseUri}?eventId={eventId}";
             return Json(new { loginUri = loginUri });
         }

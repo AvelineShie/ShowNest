@@ -19,4 +19,6 @@ public class AutoSelectedSeatViewModel
 
     public int TicketId { get; set; }
     public int SeatId { get; set; }
+
+    public bool HasSeat { get; set; } = true;
 }

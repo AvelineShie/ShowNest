@@ -38,34 +38,27 @@ createApp({
                     TicketTypeId: i.id,
                     TicketCount: i.tickets.purchaseAmount
                 }));
-            let data = {
+
+            const response = await fetch('/api/TicketTypes/GetAvailableTickets', {
+                method: 'POST',
+                headers: {
+                    "content-type": "application/json"
+                },
+                body: JSON.stringify({
+                    Criteria: selectedTickets
+                })
+            });
+            const tickets = (await response.json()).tickets
+            this.save(flowId, {
                 eventDetail: this.ticketTypeSelection.eventDetail,
                 selectedTickets,
-                hasSeats: true
-            };
-
-            if (this.ticketTypeSelection.eventDetail.type !== 2) {
-                const response = await fetch('/api/TicketTypes/GetAvailableTickets', {
-                    method: 'POST',
-                    headers: {
-                        "content-type": "application/json"
-                    },
-                    body: JSON.stringify({
-                        Criteria: selectedTickets
-                    })
-                });
-                data.tickets = (await response.json()).tickets;
-                data.hasSeats = false
-            }
-            this.save(flowId, data);
+                tickets,
+                hasSeats: false
+            });
 
             const params = new URLSearchParams();
             params.append("flowId", flowId);
-
-            let redirectUrl = `/events/seatSelector?${params.toString()}`
-            if (this.ticketTypeSelection.eventDetail.type !== 2) {
-                redirectUrl = `/events/registrations?${params.toString()}`
-            }
+            const redirectUrl = `/events/registrations?${params.toString()}`
             window.location = redirectUrl;
         },
         onViewMapClicked() {

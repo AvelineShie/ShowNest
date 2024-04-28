@@ -32,4 +32,12 @@ public class TicketTypesController : ControllerBase
 
         return Ok(tickets);
     }
+
+    [HttpPost]
+    public async Task<IActionResult> GetAvailableTickets(AutoSeatSelectionRequestViewModel request)
+    {
+        var tickets = await _ticketTypeService.GetAvailableTickets(request);
+
+        return Ok(tickets);
+    }
 }
