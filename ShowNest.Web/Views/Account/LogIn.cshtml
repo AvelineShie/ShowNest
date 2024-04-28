@@ -8,6 +8,17 @@
     <link rel="stylesheet" href="~/css/Account/LogIn.css">
 }
 <script src="https://accounts.google.com/gsi/client" async defer></script>
+<script>
+    // 假設您已經有了一個eventId
+    var eventId = "您的eventId值";
+
+    // 發送AJAX請求到後端來獲取包含eventId的登入URI
+    $.get("/您的控制器/GenerateGoogleOneTapLoginUri", { eventId: eventId }, function (data) {
+        // 使用返回的URI設置data-login_uri的值
+        $(".g_id_signin").attr("data-login_uri", data.loginUri);
+    });
+</script>
+
 
 <div class="wallpaper">
 
@@ -46,7 +57,7 @@
 
                     <div id="g_id_onload"
                          data-client_id="674030001662-o9lopaeeoom0hu2o4ekci7h7d33fs6rv.apps.googleusercontent.com"
-                         data-login_uri="https://localhost:7156/Account/ValidGoogleLogin"
+                         @* data-login_uri="https://localhost:7156/Account/GoogleRegisterOrLogin" *@
                          data-auto_prompt="false">
                     </div>
                     <div class="g_id_signin"
@@ -63,3 +74,24 @@
         </div>
     </div>
 </div>
+<script>
+    // 獲取URL中的eventId參數
+    var urlParams = new URLSearchParams(window.location.search);
+    var eventId = urlParams.get('eventId');
+
+    // 使用eventId設置data-login_uri的值
+    var loginUri = `/Account/GoogleRegisterOrLogin?eventId=${eventId}`;
+    document.getElementById('g_id_onload').setAttribute('data-login_uri', loginUri);
+
+    // 重新初始化Google的登入按鈕
+    google.accounts.id.initialize({
+        client_id: '674030001662-o9lopaeeoom0hu2o4ekci7h7d33fs6rv.apps.googleusercontent.com',
+        callback: handleCredentialResponse
+    });
+    google.accounts.id.prompt(); // 顯示登入提示
+
+    // 處理登入回應的函數
+    function handleCredentialResponse(response) {
+        // 處理登入回應
+    }
+</script>

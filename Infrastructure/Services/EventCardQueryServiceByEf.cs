@@ -36,6 +36,7 @@ namespace Infrastructure.Services
         public async Task<List<Event>> GetNumbersOfCardsByCategoryId(int cardAmount, int categoryId)
         {
             var categoryTagsQuery = await DbContext.Events
+                .AsNoTracking()
                 .Include(e => e.EventAndTagMappings)
                 .ThenInclude(et => et.CategoryTag)
                 .Where(e => e.EventAndTagMappings.Any(et => et.CategoryTagId == categoryId) &&
@@ -60,10 +61,11 @@ namespace Infrastructure.Services
         //    return categoryTagsQuery;
         //}
 
-        //一次拿取全部卡片，太耗效能，這個方法目前不用
+        //一次拿取全部卡片，太耗效能，已改寫
         public async Task<List<EventIndexDto>> GetEventIndexCards()
         {
             //var query = await DbContext.EventAndTagMappings
+            //    .AsNoTracking()
             //    .Include(et => et.Event)
             //    .Include(et => et.CategoryTag)
             //    .OrderBy(et => et.CategoryTagId)
