@@ -9,15 +9,20 @@
     font-size: var(--main-font-size);
     font-family: sans-serif;
 }
+.og-banner img {
+    vertical-align: middle;
+    border: 0;
+    width: 100%;
+}
 
-
-
-img {
+.description img {
     vertical-align: middle;
     border: 0;
     margin: 0 auto;
     display: block;
 }
+
+
 
 h1 {
     font-size: 28px;
