@@ -467,12 +467,10 @@ namespace ShowNest.Web.Services.AccountService
                 {
                     return (false, null, "驗證 Google 授權失敗");
                 }
-
                 var email = payload.Email;
                 var name = payload.Name;
                 var openId = payload.Subject;
                 var pictureUrl = payload.Picture;
-
                 // 檢查用戶是否已經存在
                 var existingUser = _context.LogInInfos.FirstOrDefault(u => u.Email == email || u.GId == openId);
                 if (existingUser == null)
@@ -486,14 +484,11 @@ namespace ShowNest.Web.Services.AccountService
                     };
                     _context.Users.Add(newUser);
                     await _context.SaveChangesAsync(); // 先儲存 User 記錄
-
                     // 生成一個隨機密碼並儲存到變數中
                     var randomPassword = GenerateRandomPassword();
-
                     // 將隨機密碼儲存到 Session 中
                     _httpContextAccessor.HttpContext.Session.SetString("TempPassword", randomPassword);
                     _httpContextAccessor.HttpContext.Session.SetString("IsGoogleRegister", "true");
-
                     // 創建一個 LogInInfo 實例，並將 GId 設置為 Google 登入後獲得的 GId
                     var newLoginInfo = new LogInInfo
                     {
@@ -506,7 +501,6 @@ namespace ShowNest.Web.Services.AccountService
                     };
                     _context.LogInInfos.Add(newLoginInfo);
                     await _context.SaveChangesAsync(); // 再儲存 LogInInfo 記錄
-
                     // 創建一個 ClaimsIdentity 實例，並將使用者的資訊添加到它的 Claims 集合中
                     var claims = new List<Claim>
             {
@@ -514,7 +508,6 @@ namespace ShowNest.Web.Services.AccountService
                 new Claim(ClaimTypes.NameIdentifier, newUser.Id.ToString())
             };
                     var claimsIdentity = new ClaimsIdentity(claims, CookieAuthenticationDefaults.AuthenticationScheme);
-
                     // 使用 SignInAsync 方法將使用者登入到應用程式中
                     await _httpContextAccessor.HttpContext.SignInAsync(CookieAuthenticationDefaults.AuthenticationScheme,
                         new ClaimsPrincipal(claimsIdentity),
@@ -522,7 +515,6 @@ namespace ShowNest.Web.Services.AccountService
                         {
                             IsPersistent = true
                         });
-
                     // 返回重定向到修改密碼頁面的結果
                     return (true, "/Account/ChangePassword", null);
                 }

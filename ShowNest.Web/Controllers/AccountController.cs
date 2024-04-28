@@ -203,7 +203,6 @@ namespace ShowNest.Web.Controllers
             {
                 eventId = null;
             }
-
             var result = await _accountService.RegisterOrLoginWithGoogle(formCredential, formToken, cookiesToken, eventId);
             if (result.IsSuccess)
             {
@@ -212,7 +211,6 @@ namespace ShowNest.Web.Controllers
                 {
                     // 如果eventId不存在，則重定向到首頁
                     return RedirectToAction("Index", "Home");
-
                 }
                 else
                 {
@@ -239,8 +237,11 @@ namespace ShowNest.Web.Controllers
             var loginUri = $"{baseUri}?eventId={eventId}";
             return Json(new { loginUri = loginUri });
         }
-
-
+        
+        
+        
+        
+        
         //忘記密碼
         public IActionResult ForgetPassword()
         {
