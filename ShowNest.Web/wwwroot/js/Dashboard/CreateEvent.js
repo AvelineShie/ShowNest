@@ -82,13 +82,17 @@ const options = {
 
             //=================================SetTicket(C)
             ticketTypeInput: '',
-            TicketStartTime: '',
-            TicketEndTime: '',
-            Money: '',
-            Amount: '',
+            eventId: '',
+            ticketName:'',
+            startSaleTime: '',
+            endSaleTime:'',
+            price: '',
+            amount: '',
 
-            TicketDetail: [], //Render Data
-            
+            ticketDetail: [], //Render Data
+            savedTicketDetail: [], 
+            showTable: true, // 控制表格的顯示與否
+
         }
     },
     mounted() {
@@ -119,11 +123,6 @@ const options = {
 
             let map;
             console.log(lat, lng)
-
-            //if (this.latitude && this.longitude == null) {
-            //    let latFormData = parseFloat(lat)
-            //    let lngFormData = parseFloat(lng)
-            //}
 
             let latFormData = parseFloat(lat)
             let lngFormData = parseFloat(lng)
@@ -194,7 +193,7 @@ const options = {
                     this.latitude = lat;
                     this.longitude = lng;
                     console.log(lat, lng)
-                    /*alert('Geocode was not successful for the following reason: ' + status);*/
+                    /*alert('Geocode was this status' + status);*/
 
                     this.InputGoogleMap(lat, lng);
                 }
@@ -238,7 +237,7 @@ const options = {
         }, 
 
 
-        //建立活動與既有活動
+        //建立活動
         CreateAndEditEvent() {
             console.log("submit form")
             axios.post('/api/CreateEvent/CreateAndEditEvent', {
@@ -258,9 +257,20 @@ const options = {
                 "EventDescription": this.description,
                 "EventImage": this.imgUrl,
                 "IsPrivateEvent": this.privacy,
+
                 "CategoryNames": this.selectedCategories,
                 "OrgId": this.organzationId,
 
+                "ticketDetail" : info.ticketDetail
+                    .map(ticket => ({
+                        "ticketTypeId": ticket.ticketTypeId,
+                        "eventId": ticket.eventId,
+                        "ticketName": ticket.ticketName,
+                        "startSaleTime": ticket.startSaleTime,
+                        "endSaleTime": ticket.endSaleTime,
+                        "price": ticket.price,
+                        "amount": ticket.amount,
+                    }))
             })
                 .then(res =>{
                     console.log(res)
@@ -321,12 +331,6 @@ const options = {
 
 
                     //========================Ticket
-                    //this.ticketTypeId = info.ticketTypeId
-                    //this.ticketTypeInput = info.ticketName
-                    //this.TicketStartTime = info.startSaleTime
-                    //this.TicketEndTime = info.endSaleTime
-                    //this.Money = info.price
-                    //this.Amount = info.amount
                     
                     this.ticketDetail = info.ticketDetail
                         .map(ticket => ({
@@ -366,62 +370,45 @@ const options = {
                 })
         },
 
-
-        //axios.get(`/api/CreateAndUpdateOrganization/EditOrganizationDataFilling/${orgIdFromLink}`)
-        //    .then(res => {
-        //        console.log(res)
-        //        let info = res.data.data
-        //        this.name = info.name
-        //        this.organizationUrl = info.name
-        //        this.outerUrl = info.outerUrl
-        //        this.description = info.description
-        //        this.fbLink = info.fbLink
-        //        this.igAccount = info.igAccount
-        //        this.email = info.email
-        //        this.imgUrl = info.imgUrl
-        //        this.contactName = info.contactName
-        //        this.contactMobile = info.contactMobile
-        //        this.contactTelephone = info.contactTelephone
-        //    })
-        //    .catch(err => {
-        //        console.error(err);
-        //    })
-
         handleClick() {
             this.stepButton = 3;
             this.$router.push({ path: `/Dashboard/Events/${this.eventsforInput.eventId}/Overview` }); //建立活動後的ID
             this.CreateAndEditEvent();
         },
 
-        saveTicket() {
-            // 從您的輸入欄位獲取票卷資訊
-            const newTicket = {
-                type: this.ticketTypeInput,
-                startTime: this.TicketStartTime,
-                endTime: this.TicketEndTime,
-                price: this.Money,
-                quantity: this.Amount,
-            };
-
-           /* console.log(newTicket.type)*/
-
-            // 將新票卷加入TicketDetail
-            this.TicketDetail.push(newTicket);
-
+        addNewTicket(index) {
+            if (index >= 0 && index < this.ticketDetail.length) {
+                // 直接修改 ticketDetail 陣列中的物件
+                this.ticketDetail[index] = {
+                    ticketName: this.ticketTypeInput,
+                    startSaleTime: this.startSaleTime,
+                    endSaleTime: this.endSaleTime,
+                    price: this.prince,
+                    amount: this.amount
+                };
+            } else {
+                // 添加新的票卷
+                this.ticketDetail.push({
+                    TicketName: this.ticketTypeInput,
+                    StartSaleTime: this.startSaleTime,
+                    EndSaleTime: this.endSaleTime,
+                    Price: this.price,
+                    Amount: this.amount
+                });
+            }
             // 清空輸入欄位
             this.ticketTypeInput = '';
-            this.TicketStartTime = '';
-            this.TicketEndTime = '';
-            this.Money = '';
-            this.Amount = '';
+            this.startSaleTime = '';
+            this.endSaleTime = '';
+            this.price = '';
+            this.amount = '';
+            
         },
 
-        deleteTicket(ticketTypeName) {
-            console.log('刪除的票卷ID:', ticketTypeName);
-            this.TicketDetail = this.TicketDetail.filter(ticket => ticket.type !== ticketTypeName);
-        }
 
-
+        deleteTicket(index) {
+            this.ticketDetail.splice(index, 1); // 刪除指定索引的票卷
+        },
 
     },
     watch: {

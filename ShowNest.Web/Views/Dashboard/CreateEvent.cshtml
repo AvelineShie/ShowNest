@@ -318,25 +318,25 @@
                                                     </div>
                                                 </td>
                                                 <td>
-                                                    <input type="date" class="date-local" v-model="TicketStartTime">
+                                                    <input type="date" class="date-local" v-model="startSaleTimee">
                                                     <span>至</span>
-                                                    <input type="date" class="date-local" v-model="TicketEndTime">
+                                                    <input type="date" class="date-local" v-model="endSaleTime">
                                                 </td>
                                                 <td>
                                                     TWD$
-                                                    <input type="text" v-model="Money" class="form-control h-25 w-50 " id="formGroupExampleInput" placeholder=" ">
+                                                    <input type="text" v-model="price" class="form-control h-25 w-50 " id="formGroupExampleInput" placeholder=" ">
                                                 </td>
                                                 <td>
-                                                    <input type="text" v-model="Amount" class="form-control h-25 w-50 " id="formGroupExampleInput" placeholder=" ">
+                                                    <input type="text" v-model="amount" class="form-control h-25 w-50 " id="formGroupExampleInput" placeholder=" ">
                                                 </td>
                                                 
                                                 <td>
-                                                    <button type="button" class="btn btn-outline-secondary btn-sm" id="submit" @@click="saveTicket">新增</button>
-                                                    <button type="button" class="btn btn-outline-secondary btn-sm" id="cancel">取消</button>
+                                                    <button type="button" class="btn btn-outline-secondary btn-sm" id="submit" @@click="addNewTicket(index)">新增</button>
+                                                  @*   <button type="button" class="btn btn-outline-secondary btn-sm" id="cancel" @@click="deleteTicket(index)">取消</button> *@
                                                 </td>
                                             </tr>
                                            @*  =====================使用者新增票種 (Create)*@
-                                            <tr v-for="ticket in ticketDetail" :key="ticket.name">
+                                            @* <tr v-for="ticket in ticketDetail" :key="ticket.name">
                                                 <td class="color-label"></td>
                                                 <td>{{ ticket.type }}</td>
                                                 <td>{{ ticket.startTime }} 至 {{ ticket.endTime }}</td>
@@ -347,10 +347,10 @@
                                                         <i class="fa-solid fa-x"></i>
                                                     </button>
                                                 </td>
-                                            </tr>
+                                            </tr> *@
 
                                             @* ===================票種生成（Read）================ *@
-                                            <tr v-for="ticket in ticketDetail" :key="ticket.ticketTypeId">
+                                            @* <tr v-for="ticket in ticketDetail" :key="ticket.ticketTypeId">
                                                 <td class="color-label"></td>
                                                 <td>{{ ticket.ticketName }}</td>
                                                 <td>{{ ticket.startSaleTime }} 至 {{ ticket.endSaleTime }}</td>
@@ -361,7 +361,38 @@
                                                         <i class="fa-solid fa-x"></i>
                                                     </button>
                                                 </td>
+                                            </tr> *@
+
+
+                                            @* =====================渲染用票卷表單 *@
+                                            <tr v-for="(ticket, index) in ticketDetail" :key="index">
+                                                <td class="color-label"></td>
+                                                <td>
+                                                    <div>
+                                                        <v-text-field hide-details="auto"
+                                                            label=""
+                                                            variant="outlined"
+                                                            v-model="ticket.ticketName"></v-text-field>
+                                                    </div>
+                                                </td>
+                                                <td>
+                                                    <input type="datetime-local" class="date-local" v-model="ticket.startSaleTime">
+                                                    <span>至</span>
+                                                    <input type="datetime-local" class="date-local" v-model="ticket.endSaleTime">
+                                                </td>
+                                                <td>
+                                                    TWD$
+                                                    <input type="text" v-model="ticket.price" class="form-control h-25 w-50 " id="formGroupExampleInput" placeholder=" ">
+                                                </td>
+                                                <td>
+                                                    <input type="text" v-model="ticket.amount" class="form-control h-25 w-50 " id="formGroupExampleInput" placeholder=" ">
+                                                </td>
+                                                <td>
+                                                    <button type="button" class="btn btn-outline-secondary btn-sm" id="submit" @@click="addNewTicket(index)">儲存</button>
+                                                    <button type="button" class="btn btn-outline-secondary btn-sm" id="cancel" @@click="deleteTicket(index)">刪除</button>
+                                                </td>
                                             </tr>
+
                                             
                                         </tbody>
 
