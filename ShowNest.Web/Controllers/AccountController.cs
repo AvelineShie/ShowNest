@@ -198,19 +198,26 @@ namespace ShowNest.Web.Controllers
             string? formToken = Request.Form["g_csrf_token"];
             string? cookiesToken = Request.Cookies["g_csrf_token"];
 
+            // 如果eventId是null字符，將其設置為null，不然第三方登入會一直錯誤
+            if (eventId == "null")
+            {
+                eventId = null;
+            }
+
             var result = await _accountService.RegisterOrLoginWithGoogle(formCredential, formToken, cookiesToken, eventId);
             if (result.IsSuccess)
             {
                 // 直接根據eventId是否存在來決定重定向的目標
-                if (!string.IsNullOrEmpty(eventId))
-                {
-                    // 如果eventId存在，則重定向到指定的活動頁面
-                    return RedirectToAction("EventPage", "Events", new { eventId = eventId });
-                }
-                else
+                if (eventId == null)
                 {
                     // 如果eventId不存在，則重定向到首頁
                     return RedirectToAction("Index", "Home");
+
+                }
+                else
+                {
+                    // 如果eventId存在，則重定向到指定的活動頁面
+                    return RedirectToAction("EventPage", "Events", new { eventId = eventId });
                 }
             }
             else
@@ -222,6 +229,12 @@ namespace ShowNest.Web.Controllers
         //Google抓活動
         public IActionResult GenerateGoogleOneTapLoginUri(string eventId)
         {
+            if (string.IsNullOrEmpty(eventId))
+            {
+                // 如果eventId為空或空字符串，將用戶重定向到首頁
+                return RedirectToAction("Index", "Home");
+            }
+
             var baseUri = "https://localhost:7156/Account/GoogleRegisterOrLogin";
             var loginUri = $"{baseUri}?eventId={eventId}";
             return Json(new { loginUri = loginUri });
