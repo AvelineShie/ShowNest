@@ -253,7 +253,7 @@
                                         <!-- 活動分類(標籤) -->
                                         <div class="section">
                                             <h4>活動分類</h4>
-                                            <span class="note">請選擇１個分類。</span>
+                                            <span class="note">請選擇1個分類。</span>
                                             <div class="tag-pool">
                                                 @* todo *@
                                                 <div v-for="(item, index) in categoryItems" :key="index" class="tag">
@@ -312,9 +312,9 @@
                                                 <td>
                                                     <div>
                                                         <v-text-field hide-details="auto"
-                                                                      label="" 
-                                                                      variant="outlined"
-                                                                      v-model="ticketTypeInput"></v-text-field>
+                                                            label="" 
+                                                            variant="outlined"
+                                                            v-model="ticketTypeInput"></v-text-field>
                                                     </div>
                                                 </td>
                                                 <td>
@@ -335,7 +335,8 @@
                                                     <button type="button" class="btn btn-outline-secondary btn-sm" id="cancel">取消</button>
                                                 </td>
                                             </tr>
-                                            <tr v-for="ticket in TicketDetail" :key="ticket.name">
+                                           @*  =====================使用者新增票種 (Create)*@
+                                            <tr v-for="ticket in ticketDetail" :key="ticket.name">
                                                 <td class="color-label"></td>
                                                 <td>{{ ticket.type }}</td>
                                                 <td>{{ ticket.startTime }} 至 {{ ticket.endTime }}</td>
@@ -348,7 +349,19 @@
                                                 </td>
                                             </tr>
 
-                                            @* ===================票種生成======================= *@
+                                            @* ===================票種生成（Read）================ *@
+                                            <tr v-for="ticket in ticketDetail" :key="ticket.ticketTypeId">
+                                                <td class="color-label"></td>
+                                                <td>{{ ticket.ticketName }}</td>
+                                                <td>{{ ticket.startSaleTime }} 至 {{ ticket.endSaleTime }}</td>
+                                                <td>TWD$ {{ ticket.price }}</td>
+                                                <td>{{ ticket.amount }}</td>
+                                                <td>
+                                                    <button class="delete" @@click="deleteTicket(ticket.type)">
+                                                        <i class="fa-solid fa-x"></i>
+                                                    </button>
+                                                </td>
+                                            </tr>
                                             
                                         </tbody>
 

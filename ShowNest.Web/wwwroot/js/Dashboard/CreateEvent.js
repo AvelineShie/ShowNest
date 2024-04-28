@@ -74,6 +74,7 @@ const options = {
                 toolbar: ['bold', 'italic', 'heading', 'Superscript', 'link', 'undo', 'redo', 'imageUpload']
             },
 
+            categoryId:'',
             categoryItems: [
                 '音樂', '戲劇', '展覽', '電影', '藝文活動', '美食', '運動', '課程講座', '演唱會'
             ],
@@ -92,7 +93,6 @@ const options = {
     },
     mounted() {
         this.googleMap()
-        this.InputGoogleMap()
         this.CreateEventbyUserId()
         this.GetOrgEventsByOrgId()
         this.fetchActivitiesByOrgId()
@@ -112,45 +112,7 @@ const options = {
         },
 
 
-        //地圖：資料庫生成
-        googleMap() {
-            (g => { var h, a, k, p = "The Google Maps JavaScript API", c = "google", l = "importLibrary", q = "__ib__", m = document, b = window; b = b[c] || (b[c] = {}); var d = b.maps || (b.maps = {}), r = new Set, e = new URLSearchParams, u = () => h || (h = new Promise(async (f, n) => { await (a = m.createElement("script")); e.set("libraries", [...r] + ""); for (k in g) e.set(k.replace(/[A-Z]/g, t => "_" + t[0].toLowerCase()), g[k]); e.set("callback", c + ".maps." + q); a.src = `https://maps.${c}apis.com/maps/api/js?` + e; d[q] = f; a.onerror = () => h = n(Error(p + " could not load.")); a.nonce = m.querySelector("script[nonce]")?.nonce || ""; m.head.append(a) })); d[l] ? console.warn(p + " only loads once. Ignoring:", g) : d[l] = (f, ...n) => r.add(f) && u().then(() => d[l](f, ...n)) })
-                ({ key: "AIzaSyBPB4VPZKkuM469YuZcRdGGKnsItE1C7ik", v: "beta" });
-
-            let map;
-            console.log(lat, lng)
-
-            //if (this.latitude && this.longitude == null) {
-            //    let latFormData = parseFloat(lat)
-            //    let lngFormData = parseFloat(lng)
-            //}
-
-            let latFormData = parseFloat(this.latitude)
-            let lngFormData = parseFloat(this.longitude)
-
-            console.log(latFormData, lngFormData);
-
-            async function initMap() {
-                const position = { lat: latFormData, lng: lngFormData };
-                const { Map } = await google.maps.importLibrary("maps");
-                const { AdvancedMarkerView } = await google.maps.importLibrary("marker");
-
-                map = new Map(document.getElementById("map"), {
-                    zoom: 15,
-                    center: position,
-                    mapId: "DEMO_MAP_ID",
-                });
-
-                const marker = new AdvancedMarkerView({
-                    map: map,
-                    position: position,
-                    title: "SHOWNEST",
-                });
-            }
-            initMap()
-        },
-
-        //地圖手動刷新
+        //地圖手動輸入刷新
         InputGoogleMap(lat, lng) {
             (g => { var h, a, k, p = "The Google Maps JavaScript API", c = "google", l = "importLibrary", q = "__ib__", m = document, b = window; b = b[c] || (b[c] = {}); var d = b.maps || (b.maps = {}), r = new Set, e = new URLSearchParams, u = () => h || (h = new Promise(async (f, n) => { await (a = m.createElement("script")); e.set("libraries", [...r] + ""); for (k in g) e.set(k.replace(/[A-Z]/g, t => "_" + t[0].toLowerCase()), g[k]); e.set("callback", c + ".maps." + q); a.src = `https://maps.${c}apis.com/maps/api/js?` + e; d[q] = f; a.onerror = () => h = n(Error(p + " could not load.")); a.nonce = m.querySelector("script[nonce]")?.nonce || ""; m.head.append(a) })); d[l] ? console.warn(p + " only loads once. Ignoring:", g) : d[l] = (f, ...n) => r.add(f) && u().then(() => d[l](f, ...n)) })
                 ({ key: "AIzaSyBPB4VPZKkuM469YuZcRdGGKnsItE1C7ik", v: "beta" });
@@ -188,19 +150,13 @@ const options = {
             initMap()
         },
 
-
-
+        //自動代入Data
         googleMap(lat, lng) {
             (g => { var h, a, k, p = "The Google Maps JavaScript API", c = "google", l = "importLibrary", q = "__ib__", m = document, b = window; b = b[c] || (b[c] = {}); var d = b.maps || (b.maps = {}), r = new Set, e = new URLSearchParams, u = () => h || (h = new Promise(async (f, n) => { await (a = m.createElement("script")); e.set("libraries", [...r] + ""); for (k in g) e.set(k.replace(/[A-Z]/g, t => "_" + t[0].toLowerCase()), g[k]); e.set("callback", c + ".maps." + q); a.src = `https://maps.${c}apis.com/maps/api/js?` + e; d[q] = f; a.onerror = () => h = n(Error(p + " could not load.")); a.nonce = m.querySelector("script[nonce]")?.nonce || ""; m.head.append(a) })); d[l] ? console.warn(p + " only loads once. Ignoring:", g) : d[l] = (f, ...n) => r.add(f) && u().then(() => d[l](f, ...n)) })
                 ({ key: "AIzaSyBPB4VPZKkuM469YuZcRdGGKnsItE1C7ik", v: "beta" });
 
             let map;
             console.log(lat, lng)
-
-            if (this.latitude && this.longitude == null) {
-                let latFormData = parseFloat(lat)
-                let lngFormData = parseFloat(lng)
-            }
 
             let latFormData = parseFloat(this.latitude)
             let lngFormData = parseFloat(this.longitude)
@@ -245,8 +201,6 @@ const options = {
             });
         },
 
-
-
         //組織下拉
         async CreateEventbyUserId() {
             await axios.get('/api/CreateEvent/CreateEventbyUserId')
@@ -287,7 +241,6 @@ const options = {
         //建立活動與既有活動
         CreateAndEditEvent() {
             console.log("submit form")
-            window.location.href = 'https://localhost:7156/Dashboard/Events/33/Overview';
             axios.post('/api/CreateEvent/CreateAndEditEvent', {
                 "EventName": this.eventNameInput,
                 "StartTime": this.startTime,
@@ -336,6 +289,7 @@ const options = {
                 .then(res => {
                     let info = res.data.data;
                     console.log(res.data);
+                    console.log(info.Ti);
 
                     //DB回傳字首會變小
                     this.organzationId = info.orgId
@@ -358,21 +312,33 @@ const options = {
                     this.streamingUrl = info.streamingUrl
                     this.longitude = info.longitude
                     this.latitude = info.latitude
-
+                    this.googleMap()
                     this.introduction = info.eventIntroduction
                     this.description = info.eventDescription
 
+                    this.categoryId = info.categoryId //待處理
                     this.categoryItems = info.categoryNames
 
-                    //========================Ticket
-                    this.ticketTypeId = info.ticketTypeId
-                    this.ticketTypeInput = info.ticketName
-                    this.TicketStartTime = info.startSaleTime
-                    this.TicketEndTime = info.endSaleTime
-                    this.Money = info.price
-                    this.Amount = info.amount
 
-                    this.googleMap()
+                    //========================Ticket
+                    //this.ticketTypeId = info.ticketTypeId
+                    //this.ticketTypeInput = info.ticketName
+                    //this.TicketStartTime = info.startSaleTime
+                    //this.TicketEndTime = info.endSaleTime
+                    //this.Money = info.price
+                    //this.Amount = info.amount
+                    
+                    this.ticketDetail = info.ticketDetail
+                        .map(ticket => ({
+                        ticketTypeId: ticket.ticketTypeId,
+                        eventId: ticket.eventId,
+                        ticketName: ticket.ticketName,
+                        startSaleTime: ticket.startSaleTime,
+                        endSaleTime: ticket.endSaleTime,
+                        price: ticket.price,
+                        amount: ticket.amount,
+                        }));
+                    console.log(info.ticketDetail);
 
                 })
                 .catch(err => {
@@ -400,8 +366,6 @@ const options = {
                 })
         },
 
-       
-        
 
         //axios.get(`/api/CreateAndUpdateOrganization/EditOrganizationDataFilling/${orgIdFromLink}`)
         //    .then(res => {
