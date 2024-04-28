@@ -60,13 +60,13 @@ namespace Infrastructure.Services
                         StartTime = request.StartTime,
                         EndTime = request.EndTime,
                         Type = request.EventStatus,
-                        //LocationName = request.LocationName,
-                        //LocationAddress = request.EventAddress,
-                        //Longitude = request.Longitude,
-                        //Latitude = request.Latitude,
+                        LocationName = request.LocationName,
+                        LocationAddress = request.EventAddress,
+                        Longitude = request.Longitude,
+                        Latitude = request.Latitude,
                         //還有一欄給使用者自填活動主頁網址,視情況再放
-                        //StreamingPlatform = request.StreamingName,
-                        //StreamingUrl = request.StreamingUrl,
+                        StreamingPlatform = request.StreamingName,
+                        StreamingUrl = request.StreamingUrl,
                         Capacity = request.Attendance,
                         EventImage = request.EventImage,
                         Introduction = request.EventIntroduction,
@@ -138,6 +138,7 @@ namespace Infrastructure.Services
             var result = new CreateEventDto
             {
                 OrgId = eventData.OrganizationId,
+                //OrgName= eventData.Name,
                 EventId = eventData.Id,
                 EventName = eventData.Name,
                 StartTime = eventData.StartTime,
@@ -159,6 +160,7 @@ namespace Infrastructure.Services
                 IsPrivateEvent = eventData.IsPrivateEvent,
 
             };
+          
 
             //tag
             var tagData = DbContext.EventAndTagMappings

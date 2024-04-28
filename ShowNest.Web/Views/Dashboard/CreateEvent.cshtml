@@ -166,17 +166,14 @@
                                             </div>
                                             <div class="section">
                                                 <h4 class="essential-input">活動地址</h4>
-                                                <input type="text" class="form-control w-50 h-50" id="EventAddress" v-model="EventAddress" placeholder=" ">
-                                                <div class="invalid-feedback">活動地點位置不可為空白喔！</div>
-                                                <button type="button" class="h-25 btn btn-outline-secondary " id="upadte-map" @@click="getLatLng">更新地圖</button>
+                                                <input type="text" class="form-control w-50 h-50" id="EventAddress" v-model="eventAddress" placeholder=" ">
+                                                <button type="button" class="h-25 btn btn-outline-secondary " id="upadte-map" @@click="geocode">更新地圖</button>
                                 
                                             </div>
-                                            <!--------地圖 -------->
-                                            @* <google-map api-key="" style="width: 545px; height: 400px" :center="center" :zoom="15">
-                                            <google-map-marker :options="{ position: center }" />
-                                            </google-map> *@
 
-                                            <div id="map"></div>
+                                            <div id="map">
+                                                
+                                            </div>
 
                                             <span class="map-note">
                                                 位置不對怎麼辦？您可以手動拖曳地圖上的標示，移動到指定位置
@@ -378,6 +375,7 @@
     </div>
 
     @section Scripts {
+        
         <!-- 引入 Vue 3 -->
         <script src="https://cdn.jsdelivr.net/npm/sortablejs@1.10.2/Sortable.min.js"></script>
         <!-- 引入 vue3-draggable -->
@@ -386,11 +384,8 @@
         <script src="https://cdn.jsdelivr.net/npm/@@ckeditor/ckeditor5-vue@5.1.0/dist/ckeditor.min.js"></script>
         <script src="~/lib/vuetify/vuetify.min.js"></script>
         <script src="/js/Dashboard/CreateEvent.js" asp-append-version="true"></script>
-        @* <script>
-            /*map start*/
-            (g => { var h, a, k, p = "The Google Maps JavaScript API", c = "google", l = "importLibrary", q = "__ib__", m = document, b = window; b = b[c] || (b[c] = {}); var d = b.maps || (b.maps = {}), r = new Set, e = new URLSearchParams, u = () => h || (h = new Promise(async (f, n) => { await (a = m.createElement("script")); e.set("libraries", [...r] + ""); for (k in g) e.set(k.replace(/[A-Z]/g, t => "_" + t[0].toLowerCase()), g[k]); e.set("callback", c + ".maps." + q); a.src = `https://maps.${c}apis.com/maps/api/js?` + e; d[q] = f; a.onerror = () => h = n(Error(p + " could not load.")); a.nonce = m.querySelector("script[nonce]")?.nonce || ""; m.head.append(a) })); d[l] ? console.warn(p + " only loads once. Ignoring:", g) : d[l] = (f, ...n) => r.add(f) && u().then(() => d[l](f, ...n)) })
-                ({ key: "AIzaSyBPB4VPZKkuM469YuZcRdGGKnsItE1C7ik", v: "beta" });
-        </script> *@
+        @* <script src="~/js/map.js"></script> *@
+        
         <style scoped>
             .tag input[type="checkbox"] {
                 border: none;
