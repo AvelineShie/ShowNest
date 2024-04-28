@@ -25,6 +25,7 @@
   <ItemGroup>
     <Content Remove="wwwroot\img\Events\LINE_ALBUM_課程紀錄_240216_1.jpg" />
     <Content Remove="wwwroot\js\API\orderAPI.js" />
+    <Content Remove="wwwroot\js\map.js" />
   </ItemGroup>
 
   <ItemGroup>

@@ -63,24 +63,41 @@ namespace ShowNest.Web.Services.General
 
             var result = new List<EventCardViewModel>();
 
-            foreach (var categoryTag in queryResult)
+            foreach (var singleEvent in queryResult)
             {
-                var categoryName = categoryTag.Name;
+                var categoryName = singleEvent.EventAndTagMappings.FirstOrDefault().CategoryTag.Name;
 
-                foreach (var eventAndTagMapping in categoryTag.EventAndTagMappings)
+                result.Add(new EventCardViewModel
                 {
-                    result.Add(new EventCardViewModel
-                    {
-                        EventId = eventAndTagMapping.Event.Id.ToString(),
-                        EventName = eventAndTagMapping.Event.Name,
-                        EventImgUrl = eventAndTagMapping.Event.EventImage,
-                        CategoryName = categoryName,
-                        EventTime = eventAndTagMapping.Event.StartTime,
-                        EventStatus = GetEventStatusAndCssClassName(eventAndTagMapping.Event.StartTime)[0],
-                        EventStatusCssClass = GetEventStatusAndCssClassName(eventAndTagMapping.Event.StartTime)[1],
-                    });
-                }
+                    EventId = singleEvent.Id.ToString(),
+                    EventName = singleEvent.Name,
+                    EventImgUrl = singleEvent.EventImage,
+                    CategoryName = categoryName,
+                    EventTime = singleEvent.StartTime,
+                    EventStatus = GetEventStatusAndCssClassName(singleEvent.StartTime)[0],
+                    EventStatusCssClass = GetEventStatusAndCssClassName(singleEvent.StartTime)[1],
+                });
+
             }
+
+            //foreach (var categoryTag in queryResult)
+            //{
+            //    var categoryName = categoryTag.Name;
+
+            //    foreach (var eventAndTagMapping in categoryTag.EventAndTagMappings)
+            //    {
+            //        result.Add(new EventCardViewModel
+            //        {
+            //            EventId = eventAndTagMapping.Event.Id.ToString(),
+            //            EventName = eventAndTagMapping.Event.Name,
+            //            EventImgUrl = eventAndTagMapping.Event.EventImage,
+            //            CategoryName = categoryName,
+            //            EventTime = eventAndTagMapping.Event.StartTime,
+            //            EventStatus = GetEventStatusAndCssClassName(eventAndTagMapping.Event.StartTime)[0],
+            //            EventStatusCssClass = GetEventStatusAndCssClassName(eventAndTagMapping.Event.StartTime)[1],
+            //        });
+            //    }
+            //}
 
             return result;
         }

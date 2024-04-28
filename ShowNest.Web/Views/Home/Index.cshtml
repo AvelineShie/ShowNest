@@ -28,9 +28,9 @@
             <button type="button" data-bs-target="#event-slides" data-bs-slide-to="2" aria-label="Slide 3"></button>
         </div>
         <div class="carousel-inner">
-            @foreach (var img in Model.HomeCarousels)
+            @foreach (var homeCarouselsModel in Model.HomeCarousels)
             {
-                @await Html.PartialAsync("~/PartialViews/Home/_CarouselImg_Partial.cshtml", img)
+                @await Html.PartialAsync("~/PartialViews/Home/_CarouselImg_Partial.cshtml", homeCarouselsModel)
                 ;
             }
         </div>

@@ -33,21 +33,39 @@ namespace Infrastructure.Services
             return categoryTagsQuery;
         }
 
-        public async Task<List<CategoryTag>> GetNumbersOfCardsByCategoryId(int cardAmount, int categoryId)
+        public async Task<List<Event>> GetNumbersOfCardsByCategoryId(int cardAmount, int categoryId)
         {
-            var categoryTagsQuery = await DbContext.CategoryTags
-                .Where(c => c.Id == categoryId)
-                .Include(c => c.EventAndTagMappings.Take(cardAmount))
-                .ThenInclude(et => et.Event)
+            var categoryTagsQuery = await DbContext.Events
+                .AsNoTracking()
+                .Include(e => e.EventAndTagMappings)
+                .ThenInclude(et => et.CategoryTag)
+                .Where(e => e.EventAndTagMappings.Any(et => et.CategoryTagId == categoryId) &&
+                            e.StartTime > DateTime.Today)
+                .Take(cardAmount)
                 .ToListAsync();
+
 
             return categoryTagsQuery;
         }
 
-        //一次拿取全部卡片，太耗效能，這個方法目前不用
+        //public async Task<List<CategoryTag>> GetNumbersOfCardsByCategoryId(int cardAmount, int categoryId)
+        //{
+        //    var categoryTagsQuery = await DbContext.CategoryTags
+        //        .Where(c => c.Id == categoryId)
+        //        .Include(c => c.EventAndTagMappings.Take(cardAmount))
+        //        .ThenInclude(et => et.Event)
+        //        .Where(c => c.EventAndTagMappings.Any(et => et.Event.StartTime > DateTime.Today))
+        //        .ToListAsync();
+
+
+        //    return categoryTagsQuery;
+        //}
+
+        //一次拿取全部卡片，太耗效能，已改寫
         public async Task<List<EventIndexDto>> GetEventIndexCards()
         {
             //var query = await DbContext.EventAndTagMappings
+            //    .AsNoTracking()
             //    .Include(et => et.Event)
             //    .Include(et => et.CategoryTag)
             //    .OrderBy(et => et.CategoryTagId)

@@ -38,7 +38,7 @@ async function loadCards() {
         clearQueryCookie('navQueryString')
     }
 
-    // 如果使用這把events input的文字清除，再直接按小標籤的話
+    // 如果使用者把events input的文字清除，再直接按小標籤的話
     if (!$('#event-search-search-input').val()) {
         queryParametersDto.inputString = ''
     }
@@ -49,7 +49,6 @@ async function loadCards() {
         queryParametersDto.categoryTag = parseInt(getQueryFromCookie('queryCategoryId'))
         clearQueryCookie('queryCategoryId')
         $(`#categories-tags-div a[id="${queryParametersDto.categoryTag}"]`).addClass('categories-tag-clicked');
-
     }
 
     await axios.post(`/api/EventsIndex/GetEventsIndexCardsByApi`, queryParametersDto)

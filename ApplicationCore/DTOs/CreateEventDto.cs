@@ -21,7 +21,7 @@ namespace ApplicationCore.DTOs
         public DateTime? EndTime { get; set; }
         public string MainOrganizer { get; set; }
         public string CoOrganizer { get; set; }
-        public int Attendance { get; set; }
+        public int? Attendance { get; set; }
         public byte EventStatus { get; set; }
 
         public string StreamingName { get; set; }

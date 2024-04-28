@@ -5,6 +5,7 @@
     "@cloudinary/vue": "^1.12.1",
     "@fawmi/vue-google-maps": "^0.9.79",
     "cloudinary": "^2.1.0",
+    "vue-router": "^4.3.2",
     "vue2-google-maps": "^0.10.7",
     "vuedraggable": "^2.24.3"
   }

@@ -8,6 +8,7 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Logging;
 using Newtonsoft.Json;
 using System;
+using System.Diagnostics.Metrics;
 using System.Diagnostics.Tracing;
 using System.Linq.Expressions;
 using System.Net.Sockets;
@@ -42,7 +43,7 @@ namespace Infrastructure.Services
             return events;
         }
 
-        //建立新活動
+        //建立新活動 
         public int CreateEvent(CreateEventDto request)
         {
 
@@ -50,7 +51,6 @@ namespace Infrastructure.Services
             using (var transcation = DbContext.Database.BeginTransaction())
                 try
                 {
-
                     //設定活動資料
                     var activity = new Event
                     {
@@ -60,13 +60,13 @@ namespace Infrastructure.Services
                         StartTime = request.StartTime,
                         EndTime = request.EndTime,
                         Type = request.EventStatus,
-                        //LocationName = request.LocationName,
-                        //LocationAddress = request.EventAddress,
-                        //Longitude = request.Longitude,
-                        //Latitude = request.Latitude,
+                        LocationName = request.LocationName,
+                        LocationAddress = request.EventAddress,
+                        Longitude = request.Longitude,
+                        Latitude = request.Latitude,
                         //還有一欄給使用者自填活動主頁網址,視情況再放
-                        //StreamingPlatform = request.StreamingName,
-                        //StreamingUrl = request.StreamingUrl,
+                        StreamingPlatform = request.StreamingName,
+                        StreamingUrl = request.StreamingUrl,
                         Capacity = request.Attendance,
                         EventImage = request.EventImage,
                         Introduction = request.EventIntroduction,
@@ -118,10 +118,10 @@ namespace Infrastructure.Services
 
                     DbContext.SaveChanges();
 
-
                     transcation.Commit();
 
                     return activity.Id;
+                   
 
                 }
                 catch (Exception ex)
@@ -129,7 +129,6 @@ namespace Infrastructure.Services
                     transcation.Rollback();
                     throw new Exception(ex.Message);
                 }
-
         }
 
         //活動渲染
@@ -139,6 +138,7 @@ namespace Infrastructure.Services
             var result = new CreateEventDto
             {
                 OrgId = eventData.OrganizationId,
+                //OrgName= eventData.Name,
                 EventId = eventData.Id,
                 EventName = eventData.Name,
                 StartTime = eventData.StartTime,
@@ -150,6 +150,9 @@ namespace Infrastructure.Services
                 EventAddress = eventData.LocationAddress,
                 Longitude = eventData.Longitude,
                 Latitude = eventData.Latitude,
+                MainOrganizer = eventData.MainOrganizer,
+                CoOrganizer = eventData.CoOrganizer,
+                Attendance = eventData.Capacity,
 
                 EventIntroduction = eventData.Introduction,
                 EventDescription = eventData.Description,
@@ -157,6 +160,7 @@ namespace Infrastructure.Services
                 IsPrivateEvent = eventData.IsPrivateEvent,
 
             };
+          
 
             //tag
             var tagData = DbContext.EventAndTagMappings
@@ -258,6 +262,12 @@ namespace Infrastructure.Services
         //            throw new Exception(ex.Message);
         //        }
         //}
+
+
+
+
+
+
 
 
 

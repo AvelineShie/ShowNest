@@ -72,7 +72,7 @@ namespace ShowNest.Web.Services.Events
                 Longitude = EventPage.Longitude,
                 Latitude = EventPage.Latitude,
                 EventRegistered = 1,//計算已經報名的人數，未處理
-                EventCapacity = (int)EventPage.Capacity,
+                EventCapacity = EventPage.Capacity.HasValue ? (int)EventPage.Capacity.Value : 0,
                 OrganizationId = EventPage.OrganizationId,
                 OrganizationName = EventPage.Organization.Name,
                 EventTicketTypes = eventTicketTypes,

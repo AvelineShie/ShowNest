@@ -1,11 +1,12 @@
 ﻿@using ShowNest.Web.ViewModels.Organization
 @model OrganizationIndexViewModel
 
-@{
+@* @{
     Layout = null;
-}
+} *@
 @{
     Layout = "_LayoutForEventPage";
+    ViewData["Title"] = Model.OrganizationName;
     //先套用EventPage的footer公版，後續有時間再做Organizations的佈景公版
 }
 @section topCSS {

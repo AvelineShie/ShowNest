@@ -4,4 +4,9 @@ $(function () {
 		queryCategoryId = $(this).attr('category-id')
 		document.cookie = "queryCategoryId=" + queryCategoryId + "; path=/"
 	})
+	var img = new Image();
+	img.src = $('img.transparent')[0].src
+	img.onload = function () {
+		$('img.transparent').removeClass('transparent')
+	}
 })
