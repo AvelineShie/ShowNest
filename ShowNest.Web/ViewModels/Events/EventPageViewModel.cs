@@ -22,8 +22,10 @@ namespace ShowNest.Web.ViewModels.Events
         public int countOfParticipants { get; set; }
 
         public List<EventTicketType> EventTicketTypes { get; set; }
-        public List<ParticipantPeople> AllParticipantPeoples { get; set; }//抓UserID、Image
+        public List<ParticipantPeople> AllParticipantPeoples { get; set; } = new List<ParticipantPeople>();//抓UserID、Image
         public List<CategoryTagsViewModel> EventCategoryTags { get; set; }
+
+
     }
 
     public class EventTicketType

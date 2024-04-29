@@ -37,6 +37,17 @@
     
 }
 
+.activity-select input{
+    margin-right:9px;
+}
+
+.activity-select> div{
+    font-size: 16px;
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+
+
 .eventItem {
     margin-top: 10px;
     margin-bottom: 10px;
@@ -118,7 +129,7 @@ div.v-selection-control-group {
     margin-left: 30px;
 }
 
-.name {
+html body .Orgname {
     line-height: 37px;
     font-size: 22px;
     color: var(--main-green);
@@ -321,20 +332,9 @@ button.btn-outline-secondary {
 
 .tag {
     display: inline-block;
-    border-radius: 5px;
-    background-color: var(--light-green);
-    line-height: 20px;
-    font-size: 15px;
-    padding: 3px;
-    color: #f5f5f5;
     margin: 3px;
 }
 
-.tag:hover {
-    box-shadow: 0 1px 1px rgba(0,0,0,0.06);
-    background-color: var(--light-green);
-    cursor: pointer;
-}
 
 .pages-change {
     display: flex;
@@ -360,11 +360,6 @@ html body #SetTicket.organize {
     margin-left: 30px;
 }
 
-html body #SetTicket.name {
-    line-height: 37px;
-    font-size: 22px;
-    color: var(--main-green);
-}
 
 /* ªí³æ */
 #SetTicket th {
@@ -372,7 +367,7 @@ html body #SetTicket.name {
     border-bottom: #999 solid 1px;
 }
 
-#SetTicket td > button {
+button.delete {
     margin-top: 10px;
     border: #ccc 1px solid;
     box-shadow: #f2f2f2 0 -3px 0 inset;
@@ -381,7 +376,7 @@ html body #SetTicket.name {
     font-size: 15px;
     line-height: 1.33333333;
     border-radius: 2px;
-    color: var(--main-green);
+    color: darkred;
 }
 
 html body #SetTicket.delete {

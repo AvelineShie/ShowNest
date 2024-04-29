@@ -38,7 +38,7 @@
             </div>
             <div class="ongoing-event-list gap">
                 <h3>正在舉辦的活動</h3>
-                <a class="btn btn-primary">建立活動</a>
+                <a href="/Dashboard/CreateEvent" class="btn btn-primary">建立活動</a>
             </div>
             <div class="events-box">
                 <div class="events">
@@ -74,7 +74,7 @@
                                             活動主控台
                                         </button>
                                     </a>
-                                    <a asp-controller="Dashboard" asp-action="Events" asp-route-viewType="#">
+                                    @* <a asp-controller="Dashboard" asp-action="Events" asp-route-viewType="#">
                                         <button class="btn btn-light">
                                             訂單
                                         </button>
@@ -83,7 +83,7 @@
                                         <button class="btn btn-light">
                                             簽到簿
                                         </button>
-                                    </a>
+                                    </a> *@
                                     <a href="/Events/EventPage/@singleEvent.OrgEventId">
                                         <button class="btn btn-success">
                                             <i class="fa-solid  fa-arrow-up-right-from-square"></i>活動頁面
@@ -131,7 +131,7 @@
                                                 活動主控台
                                             </button>
                                         </a>
-                                        <a asp-controller="Dashboard" asp-action="Events" asp-route-viewType="#">
+                                        @* <a asp-controller="Dashboard" asp-action="Events" asp-route-viewType="#">
                                             <button class="btn btn-light">
                                                 訂單
                                             </button>
@@ -140,7 +140,7 @@
                                             <button class="btn btn-light">
                                                 簽到簿
                                             </button>
-                                        </a>
+                                        </a> *@
                                         <a href="/Events/EventPage/@singleEvent.OrgEventId">
                                             <button class="btn btn-success">
                                                 <i class="fa-solid  fa-arrow-up-right-from-square"></i>活動頁面

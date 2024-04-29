@@ -32,15 +32,21 @@
                 <tr>
                     <th>開始時間</th>
                     <td>
-                        {{toFormatDate(ticketTypeSelection.eventDetail.startTime)}}<a id="add-to-calendar" 
-                                                                        @@click="onAddToGoogleCalendarClicked">加入行事曆</a>
+                        {{toFormatDate(ticketTypeSelection.eventDetail.startTime)}}
+                        <a id="add-to-calendar"
+                           @@click="onAddToGoogleCalendarClicked">
+                            加入行事曆
+                        </a>
                     </td>
                 </tr>
                 <tr>
                     <th>活動地點</th>
                     <td>
-                        {{ticketTypeSelection.eventDetail.eventLocation}}<a id="view-the-map"
-                                                                            @@click="onViewMapClicked">檢視地圖</a>
+                        {{ticketTypeSelection.eventDetail.eventLocation}}
+                        <a id="view-the-map"
+                           @@click="onViewMapClicked">
+                            檢視地圖
+                        </a>
                     </td>
                 </tr>
                 <tr>
@@ -61,41 +67,49 @@
                 </tr>
             </table>
         </div>
-        <div class="progress_container">
+        <div class="progress_container" v-if="eventHasSeats">
             @await Html.PartialAsync("_PurchaseStepsPartial", new List<StepStatusViewModel>
             {
+                new StepStatusViewModel {InProgress = false, IsDisabled = true},
+                new StepStatusViewModel {InProgress = false, IsDisabled = true},
                 new StepStatusViewModel {InProgress = true, IsDisabled = false},
-                new StepStatusViewModel {InProgress = false, IsDisabled = false},
+                new StepStatusViewModel {InProgress = false, IsDisabled = false}
+            })
+        </div>
+        <div class="progress_container" v-if="!eventHasSeats" :class="{no_seat: !eventHasSeats}">
+            @await Html.PartialAsync("_PurchaseStepsPartialWithoutSeats", new List<StepStatusViewModel>
+            {
+                new StepStatusViewModel {InProgress = true, IsDisabled = false},
                 new StepStatusViewModel {InProgress = false, IsDisabled = false},
                 new StepStatusViewModel {InProgress = false, IsDisabled = false}
             })
         </div>
-        <div class="seats-areas-chart">
+        <div class="seats-areas-chart" v-if="eventHasSeats">
             <img :src="ticketTypeSelection.eventDetail.seatAreaImage" alt="Event Seat Area Image">
         </div>
-        <div class="ticket-price-table">
+        <div class="ticket-price-table"  :class="{no_seat: !eventHasSeats}">
             <div class="ticket-price-title">
                 <div class="ticket-type">
                     <p>票種</p>
                 </div>
-                <div class="seats-select-type">
+                <div class="seats-select-type" v-if="eventHasSeats">
                     <p>座位</p>
                 </div>
                 <div class="the-price">
                     <p>票價</p>
                 </div>
             </div>
-            <div class="ticket-data-row" v-for="ticketPriceRow in ticketTypeSelection.ticketPriceRow">
-                <div class="area">
+            <div class="ticket-data-row" v-for="ticketPriceRow in ticketTypeSelection.ticketPriceRow" :class="{no_seat: !eventHasSeats}">
+                <div class="area" :class="{no_seat: !eventHasSeats}">
                     {{ticketPriceRow.tickets.ticketTypeName}}
-                    <span>{{ticketPriceRow.seatArea}}</span>
+                    <span v-if="eventHasSeats">{{ticketPriceRow.seatArea}}</span>
                 </div>
-                <div class="select-type">{{ticketPriceRow.seatSelectionMethod}}</div>
-                <div class="ticket-price">{{ticketPriceRow.tickets.ticketPrice}}</div>
+                <div class="select-type" v-if="eventHasSeats">{{ticketPriceRow.seatSelectionMethod}}</div>
+                <div class="ticket-price">TWD${{ticketPriceRow.tickets.ticketPrice}}</div>
                 <div class="amount">
                     <input id="btn-minus" type="button" value="-" @@click="onTicketPriceRowClicked(ticketPriceRow, -1)">
                     <input type="number" name="ticket-amount" id="input-ticket-amount" v-model="ticketPriceRow.tickets.purchaseAmount">
-                    <input id="btn-plus" type="button" value="+"  @@click="onTicketPriceRowClicked(ticketPriceRow, 1)">
+                    <input id="btn-plus" type="button" value="+" @@click="onTicketPriceRowClicked(ticketPriceRow, 1)">
                 </div>
             </div>
         </div>

@@ -9,6 +9,6 @@ namespace ApplicationCore.Interfaces
 {
     public interface IEventOverviewService
     {
-        Task<List<EventsOverviewTicketsDto>> GetEventsOverviewTicketInfo(int eventId);
+        Task<EventsOverviewDto> GetEventOverviewDto(int eventId);
     }
 }

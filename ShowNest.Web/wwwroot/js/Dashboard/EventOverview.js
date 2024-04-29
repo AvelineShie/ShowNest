@@ -3,22 +3,23 @@
 createApp({
     data() {
         return {
-            eventId: '',
+            // general section
+            eventId: 0,
+            eventName: '',
+            allRemainedTicketsCount: 0,
+            allSoldTicketsCount: 0,
+            allTicketsAmount: 0,
+            eventTime: '',
+            eventPlace: '',
 
+            //tickets section
             tickets: [],
+            totalPaidAmount: 0,
+            totalWaitingToPayAmount: 0,
+            totalPaidPrice: 0,
 
-            // TicketTypeId: 0,
-            // ticketTypeName: '',
-            // startSellingTime: '',
-            // endSellingTime: '',
-            // sellingStatus: 0,
-            // price: 0,
-            // soldAmount: 0,
-            // paidAmout: 0,
-            // waitingToPayAmout: 0,
-            // remainAmout: 0,
-
-            priceOfPaidAmout: 0,
+            // orders section
+            orders:[],
         }
     },
     methods: {
@@ -31,28 +32,37 @@ createApp({
             })
                 .then(res => {
                     console.log(res)
-                    // res.data.forEach(ticket => {
 
-                    //     this.TicketTypeId = ticket.TicketTypeId
-                    //     this.ticketTypeName = ticket.ticketTypeName
-                    //     this.startSellingTime = ticket.startSellingTime
-                    //     this.endSellingTime = ticket.endSellingTime
-                    //     this.sellingStatus = true
-                    //     this.price = ticket.price
-                    //     this.soldAmount = ticket.soldAmount
-                    //     this.paidAmout = ticket.paidAmout
-                    //     this.waitingToPayAmout = ticket.waitingToPayAmout
-                    //     this.remainAmout = ticket.remainAmout
+                    //general section
+                    this.eventId = res.data.eventId
+                    this.eventName = res.data.eventName
+                    this.eventTime = res.data.eventTime
+                    this.eventPlace = res.data.eventPlace
+                    this.allRemainedTicketsCount = res.data.allRemainedTicketsCount
+                    this.allSoldTicketsCount = res.data.allSoldTicketsCount
+                    this.allTicketsAmount = res.data.allTicketsAmount
 
-                    // })
-                    this.tickets = res.data.map(x => {
+                    // tickets section
+                    let ticketsData = res.data.tickets
+                    this.tickets = ticketsData.map(x => {
                         return {
                             ...x,
-                            status: x.sellingStatus ? '販售中' : '已售完'
+                            status: x.sellingStatus ? '販售中' : '已售完',
                         }
                     })
-                    console.log('this.tickets')
-                    console.log(this.tickets)
+                    ticketsData.forEach(e => {
+                        this.totalPaidAmount += e.paidAmount
+                        this.totalWaitingToPayAmount += e.waitingToPayAmount
+                        this.totalPaidPrice += (e.paidAmount * e.price)
+                    });
+
+                    // orders section
+                    let ordersData = res.data.orders
+                    this.orders = ordersData.map(x =>{
+                        return{
+                            ...x,
+                        }
+                    })
                 })
                 .catch(err => {
                     console.error(err);

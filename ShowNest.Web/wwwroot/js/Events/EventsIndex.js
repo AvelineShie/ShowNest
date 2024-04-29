@@ -32,17 +32,23 @@ async function loadCards() {
     cardsContainer.innerHTML = ''
 
     // 從別的頁面用nav搜尋時的狀況：把nav input的值從cookie拿到後給events input
-    if(getNavInputQueryString()){
-        if(getNavInputQueryString()){
-            $('#event-search-search-input').val(getNavInputQueryString())
-            queryParametersDto.inputString = getNavInputQueryString()
-        }
-        clearNavInputCookie()
+    if (getQueryFromCookie('navQueryString')) {
+        $('#event-search-search-input').val(getQueryFromCookie('navQueryString'))
+        queryParametersDto.inputString = getQueryFromCookie('navQueryString')
+        clearQueryCookie('navQueryString')
     }
 
-    // 如果使用這把events input的文字清除，再直接按小標籤的話
-    if(!$('#event-search-search-input').val()){
-        queryParametersDto.inputString=''
+    // 如果使用者把events input的文字清除，再直接按小標籤的話
+    if (!$('#event-search-search-input').val()) {
+        queryParametersDto.inputString = ''
+    }
+
+    // 從首頁點擊分類icon時，讀取queryCategoryId cookie
+    // 同時把頁面上的小標籤加上active class
+    if (getQueryFromCookie('queryCategoryId')) {
+        queryParametersDto.categoryTag = parseInt(getQueryFromCookie('queryCategoryId'))
+        clearQueryCookie('queryCategoryId')
+        $(`#categories-tags-div a[id="${queryParametersDto.categoryTag}"]`).addClass('categories-tag-clicked');
     }
 
     await axios.post(`/api/EventsIndex/GetEventsIndexCardsByApi`, queryParametersDto)
@@ -158,7 +164,10 @@ function inputStringEvent() {
 
 // 分類標籤查詢功能和顏色變換
 function categoryTagsEvent() {
-    let lastClickedTag = null
+    let lastClickedTag = $('#categories-tags-div a').filter('.categories-tag-clicked') || null
+    console.log('lastClickedTag :')
+    console.log(lastClickedTag)
+    console.log('lastClickedTag :')
     $('#categories-tags-div a').click(function (e) {
         e.preventDefault()
 
@@ -181,8 +190,8 @@ function categoryTagsEvent() {
 }
 
 // 從cookie取得nav input的值 (有需要的話可以改寫成拿到指定的cookie)
-function getNavInputQueryString() {
-    var nameForQuery = `navQueryString=`
+function getQueryFromCookie(cookieName) {
+    var nameForQuery = `${cookieName}=`
     var decodeAllCookies = decodeURIComponent(document.cookie)
     var allCookies = decodeAllCookies.split(';')
     for (var i = 0; i < allCookies.length; i++) {
@@ -190,21 +199,18 @@ function getNavInputQueryString() {
         if (cookie.indexOf(nameForQuery) == 0) {
             return cookie.substring(nameForQuery.length, cookie.length)
         }
-        else {
-            return ''
-        }
     }
 }
 
 // 清除nav input的Cookie (有需要的話可以改寫成清除指定的cookie)
-function clearNavInputCookie() {
+function clearQueryCookie(cookieName) {
     let yesterday = new Date()
     yesterday.setDate(yesterday.getDate() - 1)
     let expires = yesterday.toUTCString()
 
-    let cookieValue = getNavInputQueryString()
+    let cookieValue = getQueryFromCookie(cookieName)
 
-    document.cookie = `navQueryString=${cookieValue}; expires=${expires}; path=/`
+    document.cookie = `${cookieName}=${cookieValue}; expires=${expires}; path=/`
 }
 
 // 費用和時間選單查詢功能

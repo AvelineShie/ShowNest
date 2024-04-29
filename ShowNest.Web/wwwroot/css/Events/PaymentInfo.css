@@ -11,8 +11,9 @@ body {
 /* main Body */
 
 .main_wrap {
-    margin-top: 20px;
+    margin: 20px auto;
     line-height: 1.5em;
+    width: 80%;
 }
 
 .count_down_group {
@@ -28,9 +29,7 @@ body {
     margin: auto;
     text-align: center;
     justify-content: center;
-    width: 75%;
 }
-
 
 h2 {
     font-weight: 500;
@@ -76,12 +75,13 @@ label {
         content: "▿";
         left: -5px;
     }
+    
     .event_detail_collapse:focus,
     .btn:focus,
     .btn:active:focus,
     .event_detail_collapse.btn:hover {
         box-shadow: none;
-        background-color: none;
+        background-color: transparent;
     }
 
 .final_order_list_title {
@@ -258,93 +258,6 @@ th.ticket {
     padding-bottom: 30px;
 }
 
-/* -------progress container---------- */
-/*.progress_container {
-    margin: 20px auto 0 auto;
-    padding: 40px;
-}
-
-.step_progress_bar {
-    display: flex;
-    margin: 0 auto;
-    margin-bottom: 40px;
-    justify-content: space-evenly;
-    gap: 20px;
-}
-
-.step {
-    text-align: center;
-    background-color: rgb(240, 240, 240);
-    display: flex;
-    align-items: center;
-    border-radius: 50px;
-    position: relative;
-    border: 3px solid rgb(218, 218, 218);
-}
-
-p.step_text {
-    margin-top: 10px;
-    color: var(--main-green);
-    line-height: 2;
-    width: 150px;
-    vertical-align: bottom;
-    font-weight: bold;
-    text-align: left;
-    padding-left: 8px;
-}
-
-.number {
-    margin-left: 10px;
-    border-radius: 100%;
-    line-height: 2;
-    width: 30px;
-    border: 1px solid var(--light-green);
-    background-color: white;
-    color: var(--main-green);
-    display: inline-block;
-    transition: background-color 500ms;
-}
-
-.step.progressing {
-    color: var(--main-green);
-    background-color: var(--main-green);
-    border: 3px solid var(--light-green);
-}
-
-    .step.progressing p {
-        color: white;
-    }
-
-    .step.progressing span {
-        color: var(--light-green);
-    }
-
-.step.disabled::after {
-    content: '';
-    position: absolute;
-    height: 6px;
-    width: 67%;
-    background-color: hsla(0, 3%, 71%, 0.5);
-    left: 100%;
-    bottom: 43%;
-    z-index: -1;
-}
-
-.disabled {
-    color: #FBFBFB;
-    border: 3px solid hsl(162, 17%, 50%);
-    background-color: hsl(148, 17%, 60%);
-}
-
-    .disabled .number {
-        color: var(--light-green);
-    }
-
-    .disabled p {
-        color: white;
-        font-weight: 400;
-    }*/
-
 /* -------btn submit---------- */
 
 .btn_submit {
@@ -373,6 +286,9 @@ a.btn_submit {
 
 
 @media screen and (max-width:1000px) {
+    .main_wrap {
+        width: 90%;
+    }
     .title {
         text-align: center;
         line-height: 1.5;
@@ -614,4 +530,5 @@ a.btn_submit {
     .collapse th{
         padding:5px 0 5px 5px;
     }
+    
 }

@@ -11,6 +11,8 @@ using ShowNest.Web.Services.AccountService;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
+using Google.Apis.Auth;
+using Microsoft.Extensions.Logging;
 
 namespace ShowNest.Web.Controllers
 {
@@ -34,21 +36,17 @@ namespace ShowNest.Web.Controllers
             var result = await _accountService.LogInAsync(Login);
             if (result.IsSuccess)
             {
-                // 登入成功，檢查是否有eventId參數
                 if (!string.IsNullOrEmpty(eventId))
                 {
-                    // 如果有eventId參數，則重定向到原本的活動頁
                     return RedirectToAction("EventPage", "Events", new { eventId = eventId });
                 }
                 else
                 {
-                    // 否則，重定向到預設的頁面
                     return RedirectToAction("Index", "Home");
                 }
             }
             else
             {
-                // 登入失敗，返回錯誤信息
                 ModelState.AddModelError("", result.ErrorMessage);
                 return View(Login);
             }
@@ -66,97 +64,70 @@ namespace ShowNest.Web.Controllers
         {
             if (ModelState.IsValid)
             {
-                // 使用AccountService進行註冊
                 var result = await _accountService.RegisterUserAsync(SignUp, ModelState.IsValid);
                 if (result.IsSuccess)
                 {
-                    // 註冊成功後，將用戶登入
                     var loginResult = await _accountService.LogInAsync(new LoginViewModel { Account = SignUp.Account, Password = SignUp.Password });
                     if (loginResult.IsSuccess)
                     {
-                        // 登入成功後，檢查是否有eventId參數
                         if (!string.IsNullOrEmpty(eventId))
                         {
-                            // 如果有eventId參數，則重定向到原本的活動頁
                             return RedirectToAction("EventPage", "Events", new { eventId = eventId });
                         }
                         else
                         {
-                            // 否則，重定向到預設的頁面
                             return RedirectToAction("Index", "Home");
                         }
                     }
                     else
                     {
-                        // 登入失敗，返回VIEW以顯示錯誤訊息
                         ModelState.AddModelError("", loginResult.ErrorMessage);
                     }
                 }
                 else
                 {
-                    // 註冊失敗，返回VIEW以顯示錯誤訊息
                     ModelState.AddModelError("", result.ErrorMessage);
                 }
             }
-
-            //如果MODEL狀態不正確，則返回VIEW以顯示錯誤訊息
             return View(SignUp);
         }
         //編輯取得資料
         [HttpGet]
         public async Task<IActionResult> UserEdit()
         {
-            // 從HttpContext中獲取當前使用者的ID
             var userIdClaim = User.Claims.FirstOrDefault(c => c.Type == ClaimTypes.NameIdentifier);
             if (userIdClaim == null)
             {
-                return RedirectToAction("LogIn"); // 如果用戶未登入，則重定向到登入頁面
+                return RedirectToAction("LogIn");
             }
-
-            // 從Claim中取得使用者的ID並轉換為整數
             var userId = int.Parse(userIdClaim.Value);
 
-            // 使用Service來取得使用者資料
             var result = await _accountService.GetUserAccountByIdAsync(userId);
             if (!result.IsSuccess)
             {
-                // 如果資料庫操作失敗，顯示錯誤訊息
                 ModelState.AddModelError(string.Empty, result.ErrorMessage);
                 return View();
             }
-
-            // 從Service的結果中獲取UserAccountViewModel實例
             var viewModel = result.UserAccount;
-
-            return View(viewModel); // 將ViewModel傳遞給View
+            return View(viewModel);
         }
         //編輯寫入資料
         [HttpPost]
         public async Task<IActionResult> UserEdit(UserAccountViewModel model)
         {
-            // 從表單提交的資料中提取出所有選中的區域ID
             var selectedAreaIdsString = Request.Form["SelectedAreaIds"].ToString();
             var selectedAreaIds = string.IsNullOrEmpty(selectedAreaIdsString)
                 ? new List<int>()
                 : selectedAreaIdsString.Split(',').Select(int.Parse).ToList();
-
-            // 將selectedAreaIds賦值給model的SelectedAreas屬性
             model.SelectedAreas = selectedAreaIds;
-
             if (ModelState.IsValid)
             {
-                // 從HttpContext中獲取當前使用者的ID
                 var userIdClaim = User.Claims.FirstOrDefault(c => c.Type == ClaimTypes.NameIdentifier);
-
                 if (userIdClaim == null)
                 {
-                    return RedirectToAction("LogIn"); // 如果用戶未登入，則重定向到登入頁面
+                    return RedirectToAction("LogIn");
                 }
-
-                // 從Claim中取得使用者的ID並轉換為整數
                 var userId = int.Parse(userIdClaim.Value);
-
-                // 使用Service來更新使用者資料，包含偏好設定
                 var result = await _accountService.UpdateUserAccountByIdAsync(userId, model);
                 if (result.IsSuccess)
                 {
@@ -177,10 +148,8 @@ namespace ShowNest.Web.Controllers
                     {
                         ModelState.AddModelError(string.Empty, result.ErrorMessage);
                     }
-                   
                 }
             }
-
             return View(model);
         }
         //修改密碼
@@ -199,21 +168,86 @@ namespace ShowNest.Web.Controllers
                 var result = await _accountService.ChangePassword(model, true);
                 if (result.IsSuccess)
                 {
-                    // 密碼更換成功，重定向到成功頁面或者提示用戶
+                    //修改成功刪除Session資料
+                    HttpContext.Session.Remove("TempPassword");
+                    HttpContext.Session.Remove("IsGoogleRegister");
+
                     await HttpContext.SignOutAsync(CookieAuthenticationDefaults.AuthenticationScheme);
-
                     TempData["Message"] = "修改成功，請重新登入";
-
                     return RedirectToAction("LogIn");
                 }
                 else
                 {
-                    // 密碼更換失敗，顯示錯誤訊息
-                    ModelState.AddModelError(string.Empty, result.ErrorMessage);
+                    // 如果 ModelState 無效，則將錯誤訊息存儲到 TempData 中
+                    TempData["ErrorMessage"] = "請確認輸入是否正確。";
                 }
             }
-            // 如果模型無效，則返回視圖以顯示錯誤訊息
             return View(model);
+        }
+        //登出
+        public async Task<IActionResult> logout()
+        {
+            await HttpContext.SignOutAsync(CookieAuthenticationDefaults.AuthenticationScheme);
+            return RedirectToAction("Index", "Home");
+        }
+        //GOOGLE進入點
+        //GOOGLE登入或註冊
+        public async Task<IActionResult> GoogleRegisterOrLogin(string eventId = null)
+        {
+            string? formCredential = Request.Form["credential"];
+            string? formToken = Request.Form["g_csrf_token"];
+            string? cookiesToken = Request.Cookies["g_csrf_token"];
+
+            // 如果eventId是null字符，將其設置為null，不然第三方登入會一直錯誤
+            if (eventId == "null")
+            {
+                eventId = null;
+            }
+            var result = await _accountService.RegisterOrLoginWithGoogle(formCredential, formToken, cookiesToken, eventId);
+            if (result.IsSuccess)
+            {
+                // 直接根據eventId是否存在來決定重定向的目標
+                if (eventId == null)
+                {
+                    // 如果eventId不存在，則重定向到首頁
+                    return RedirectToAction("Index", "Home");
+                }
+                else
+                {
+                    // 如果eventId存在，則重定向到指定的活動頁面
+                    return RedirectToAction("EventPage", "Events", new { eventId = eventId });
+                }
+            }
+            else
+            {
+                ModelState.AddModelError("", result.ErrorMessage);
+                return View("Error"); // 假設你有一個名為"Error"的視圖來顯示錯誤訊息
+            }
+        }
+        //Google抓活動
+        public IActionResult GenerateGoogleOneTapLoginUri(string eventId)
+        {
+            if (string.IsNullOrEmpty(eventId))
+            {
+                // 如果eventId為空或空字符串，將用戶重定向到首頁
+                return RedirectToAction("Index", "Home");
+            }
+            //未佈署版本
+            //var baseUri = "https://localhost:7156/Account/GoogleRegisterOrLogin";
+            //佈署修正
+            var baseUri = "https://shownestci.azurewebsites.net/Account/GoogleRegisterOrLogin";
+            var loginUri = $"{baseUri}?eventId={eventId}";
+            return Json(new { loginUri = loginUri });
+        }
+        
+        
+        
+        
+        
+        //忘記密碼
+        public IActionResult ForgetPassword()
+        {
+            return View();
         }
         public IActionResult Prefills()
         {
@@ -247,45 +281,5 @@ namespace ShowNest.Web.Controllers
         {
             return View();
         }
-        //登出
-        public async Task<IActionResult> logout()
-        {
-            await HttpContext.SignOutAsync(CookieAuthenticationDefaults.AuthenticationScheme);
-
-            return RedirectToAction("Index", "Home");
-
-        }
-        //忘記密碼
-        public IActionResult ForgetPassword()
-        {
-            return View();
-        }
-
-        //FB登入
-        //[HttpGet]
-        //public async Task<ActionResult> FacebookCallback(string code)
-        //{
-        //    // 使用code來換取access token
-        //    var accessToken = await GetAccessTokenAsync(code);
-
-        //    // 使用access token來取得用戶資訊
-        //    var userInfo = await GetUserInfoAsync(accessToken);
-
-        //    // 在這裡處理用戶資訊，例如將用戶資訊儲存到資料庫或進行登入處理
-        //    // 這裡假設你已經有一個方法來處理用戶資訊，例如_accountService.ProcessFacebookLogin(userInfo)
-        //    var result = await _accountService.ProcessFacebookLogin(userInfo);
-
-        //    if (result.IsSuccess)
-        //    {
-        //        // 登入成功，重定向到預設的頁面
-        //        return RedirectToAction("Index", "Home");
-        //    }
-        //    else
-        //    {
-        //        // 登入失敗，返回錯誤信息
-        //        ModelState.AddModelError("", result.ErrorMessage);
-        //        return View("LogIn"); // 返回登入頁面
-        //    }
-        //}
     }
 }

@@ -2,7 +2,6 @@
 @model RegistrationViewModel;
 @{
     var registration = Model;
-    // var tickets = Model.TicketSeats;
 }
 
 @section topCSS
@@ -18,12 +17,12 @@
 
 
 <div class="count_down_group">
-    <div id="countdownOnRegistration" class="count_down_timer main_wrap width d-flex">
+    <div id="countdownOnRegistration" class="count_down_timer d-flex width">
         您的訂單已保留，請在 {{ counter }} 內完成填寫資料並確認訂單。若超過時限，系統將自動取消。
     </div>
 </div>
-<section id="registrations" class="section_wrap">
-    <div class="main_event_order main_wrap width">
+<section id="registrations" class="section_wrap width">
+    <div class="main_event_order main_wrap">
         <div class="title">
             <h2>{{data.eventDetail && data.eventDetail.eventName}}</h2>
         </div>
@@ -83,7 +82,7 @@
                     </table>
                 </div>
             </div>
-            <div class="progress_container">
+            <div class="progress_container" v-if="data.hasSeats">
                 @await Html.PartialAsync("_PurchaseStepsPartial", new List<StepStatusViewModel>
                 {
                     new StepStatusViewModel {InProgress = false, IsDisabled = true},
@@ -92,16 +91,27 @@
                     new StepStatusViewModel {InProgress = false, IsDisabled = false}
                 })
             </div>
+            <div class="progress_container" v-if="!data.hasSeats" :class="{no_seat: !data.hasSeats}">
+                @await Html.PartialAsync("_PurchaseStepsPartialWithoutSeats", new List<StepStatusViewModel>
+                {
+                    new StepStatusViewModel {InProgress = false, IsDisabled = true},
+                    new StepStatusViewModel {InProgress = true, IsDisabled = false},
+                    new StepStatusViewModel {InProgress = false, IsDisabled = false}
+                })
+            </div>
         </div>
-        <button 
+        <button
             @@click="onCancelPurchaseClicked"
-            class="btn_cancel btn" id="btn_cancel">取消購票</button>
+            class="btn_cancel btn" id="btn_cancel">
+            取消購票
+        </button>
         <div class="order_details">
             <table class="ticket_table_data_list table cart-ticket-list">
                 <thead>
                 <tr class="gray_block">
                     <th class="ticket_type">票種</th>
-                    <th class="seat">座位</th>
+                    <th class="seat" v-if="data.hasSeats">座位</th>
+                    <th class="seat" v-if="!data.hasSeats"></th>
                     <th class="price ">金額</th>
                 </tr>
                 </thead>
@@ -110,7 +120,7 @@
                     <td class="ticket_name">{{ticket.ticketTypeName}}</td>
                     <td class="ticket-data">
                         <table class="seat_detail_group cart_ticket_list_subtable_with_seat">
-                            <tbody class="seat_detail_group">
+                            <tbody class="seat_detail_group" v-if="data.hasSeats">
                             <tr>
                                 <td class="seat_details">
                                     <ul>

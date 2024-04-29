@@ -8,49 +8,63 @@ const options = {
         return {
 
             //====================CreateEvent(R)
-            userId: 1,
-            organzationId: 1,
+            userId: '',
+            organzationId: '',
             selectedOrganization: {}, //組織下拉v-model
             organizations: [], //下拉items
-            displaySelectActivityType: false, /*隱藏*/
+            displaySelectActivityType: true, /*隱藏*/
             activityTypes: ["全新的活動", "既有的活動"], //活動下拉item/val
             selectedActivityType: "全新的活動", //活動下拉式v-model
             displayExistingActivities: false, //既有活動後打開
             radioCheck: {}, //所選任一活動
             checkbox: false, //初始未勾選
-            stepButton: false, //初始不可按
+            stepButton: true, 
             radio: 'Option 1',
             items: ['實體活動', '線上活動'],
             selectedEvent: {},
             events: [],
             orgNames: [],
 
-            //====================SetEvent(R,U)
+
+            eventsforInput: [],
+
+            //============================SetEvent(C,U)
+
+            Orgname: '',
+
+            eventId:'',
             eventNameInput: '',
             startTime: '',
             endTime: '',
             noEndTime: false,
+
             mainOrganizerInput: '',
             coOrganizer: '',
+
             privacy: false,
+            
 
             number: 0, //人數
             unlimited: '',
+            eventStatus: 1, //預設實體
 
             //圖片
             imgUrl: 'https://res.cloudinary.com/do2tfk5nk/image/upload/v1713610498/ShowNestImg/UnUploadedImg_vsrtfu.jpg',
 
             placeName: '',
-            EventAddress: '',
-
-            streaming: '',
-            SHOWNESTLive: '', //線上選項
-
-            introduction: '',
-            eventStatus: 0, //實體或線上
+            eventAddress: '', 
 
             //地圖
 
+            longitude: '',
+            latitude: '',
+            map: null, // 存儲地圖實例
+            marker: null,
+
+            streaming: '',
+            streamingUrl: '', 
+
+            introduction: '',
 
             // CKEditor
             editor: ClassicEditor,
@@ -60,34 +74,138 @@ const options = {
                 toolbar: ['bold', 'italic', 'heading', 'Superscript', 'link', 'undo', 'redo', 'imageUpload']
             },
 
-            //======================SetTicket(R,U)
-            //選票種
-            //TicketType: '',
-            //StartTime: '',
-            //EndTime: '',
-            //Money: '',
-            //Amount: '',
-
-            //checkboxErrorMsg: '',
-
-            //todo
+            categoryId:'',
             categoryItems: [
                 '音樂', '戲劇', '展覽', '電影', '藝文活動', '美食', '運動', '課程講座', '演唱會'
             ],
-            selectedCategories: []
+            selectedCategories: [],
 
+            //=================================SetTicket(C)
+            ticketTypeInput: '',
+            eventId: '',
+            ticketName:'',
+            startSaleTime: '',
+            endSaleTime:'',
+            price: '',
+            amount: '',
+
+            ticketDetail: [], //Render Data
+            savedTicketDetail: [], 
+            showTable: true, // 控制表格的顯示與否
 
         }
     },
     mounted() {
+        this.googleMap()
         this.CreateEventbyUserId()
         this.GetOrgEventsByOrgId()
+        this.fetchActivitiesByOrgId()
+
     },
     methods: {
+        checkMap() {
+            this.$nextTick(() => {
+                // 確保地圖元素存在
+                const mapElement = document.getElementById('map');
+                if (mapElement) {
+                    this.googleMap(mapElement);
+                } else {
+                    console.error("地圖元素不存在");
+                }
+            });
+        },
+
+
+        //地圖手動輸入刷新
+        InputGoogleMap(lat, lng) {
+            (g => { var h, a, k, p = "The Google Maps JavaScript API", c = "google", l = "importLibrary", q = "__ib__", m = document, b = window; b = b[c] || (b[c] = {}); var d = b.maps || (b.maps = {}), r = new Set, e = new URLSearchParams, u = () => h || (h = new Promise(async (f, n) => { await (a = m.createElement("script")); e.set("libraries", [...r] + ""); for (k in g) e.set(k.replace(/[A-Z]/g, t => "_" + t[0].toLowerCase()), g[k]); e.set("callback", c + ".maps." + q); a.src = `https://maps.${c}apis.com/maps/api/js?` + e; d[q] = f; a.onerror = () => h = n(Error(p + " could not load.")); a.nonce = m.querySelector("script[nonce]")?.nonce || ""; m.head.append(a) })); d[l] ? console.warn(p + " only loads once. Ignoring:", g) : d[l] = (f, ...n) => r.add(f) && u().then(() => d[l](f, ...n)) })
+                ({ key: "AIzaSyBPB4VPZKkuM469YuZcRdGGKnsItE1C7ik", v: "beta" });
+
+            let map;
+            console.log(lat, lng)
+
+            let latFormData = parseFloat(lat)
+            let lngFormData = parseFloat(lng)
+            
+            console.log(latFormData, lngFormData);
+
+            async function initMap() {
+                const position = { lat: latFormData, lng: lngFormData };
+                const { Map } = await google.maps.importLibrary("maps");
+                const { AdvancedMarkerView } = await google.maps.importLibrary("marker");
+
+                map = new Map(document.getElementById("map"), {
+                    zoom: 15,
+                    center: position,
+                    mapId: "DEMO_MAP_ID",
+                });
+                
+                const marker = new AdvancedMarkerView({
+                    map: map,
+                    position: position,
+                    title: "SHOWNEST",
+                });
+            }
+            initMap()
+        },
+
+        //自動代入Data
+        googleMap(lat, lng) {
+            (g => { var h, a, k, p = "The Google Maps JavaScript API", c = "google", l = "importLibrary", q = "__ib__", m = document, b = window; b = b[c] || (b[c] = {}); var d = b.maps || (b.maps = {}), r = new Set, e = new URLSearchParams, u = () => h || (h = new Promise(async (f, n) => { await (a = m.createElement("script")); e.set("libraries", [...r] + ""); for (k in g) e.set(k.replace(/[A-Z]/g, t => "_" + t[0].toLowerCase()), g[k]); e.set("callback", c + ".maps." + q); a.src = `https://maps.${c}apis.com/maps/api/js?` + e; d[q] = f; a.onerror = () => h = n(Error(p + " could not load.")); a.nonce = m.querySelector("script[nonce]")?.nonce || ""; m.head.append(a) })); d[l] ? console.warn(p + " only loads once. Ignoring:", g) : d[l] = (f, ...n) => r.add(f) && u().then(() => d[l](f, ...n)) })
+                ({ key: "AIzaSyBPB4VPZKkuM469YuZcRdGGKnsItE1C7ik", v: "beta" });
+
+            let map;
+            console.log(lat, lng)
+
+            let latFormData = parseFloat(this.latitude)
+            let lngFormData = parseFloat(this.longitude)
+            
+            console.log(latFormData, lngFormData);
+
+            async function initMap() {
+                const position = { lat: latFormData, lng: lngFormData };
+                const { Map } = await google.maps.importLibrary("maps");
+                const { AdvancedMarkerView } = await google.maps.importLibrary("marker");
+
+                map = new Map(document.getElementById("map"), {
+                    zoom: 15,
+                    center: position,
+                    mapId: "DEMO_MAP_ID",
+                });
+                
+                const marker = new AdvancedMarkerView({
+                    map: map,
+                    position: position,
+                    title: "SHOWNEST",
+                });
+            }
+            initMap()
+        },
+
+        //地理編碼
+        geocode() {
+            const geocoder = new google.maps.Geocoder();
+            geocoder.geocode({ address: this.eventAddress }, (results, status) => {
+                if (status === 'OK') {
+                    console.log(results)
+                    const lat = results[0].geometry.location.lat();
+                    const lng = results[0].geometry.location.lng();
+                    this.latitude = lat;
+                    this.longitude = lng;
+                    console.log(lat, lng)
+                    /*alert('Geocode was this status' + status);*/
+
+                    this.InputGoogleMap(lat, lng);
+                }
+            });
+        },
+
+        //組織下拉
         async CreateEventbyUserId() {
             await axios.get('/api/CreateEvent/CreateEventbyUserId')
                 .then(res => {
                     if (res.data == null) {
+                    console.log(res.data)
                         this.selectedOrganization = { id: 0, name: '沒有組織，請先建立新組織' }
                     }
                     this.selectedOrganization = null; //顯示預設字樣
@@ -98,6 +216,141 @@ const options = {
                 })
         },
 
+        GetOrgEventsByOrgId() {
+            console.log(this.selectedOrganization)
+        }, //示範
+
+        //活動列表
+        async fetchActivitiesByOrgId() {
+            await axios.get(`/api/CreateEvent/GetActivitiesByOrgId`)
+            .then(res => {
+
+                if (res.data !== null) {
+
+                    this.eventsforInput = res.data.map(a => ({ eventId: a.eventId, eventName: a.eventName }));
+                    console.log( this.eventsforInput)
+                }
+            })
+            .catch(err => {
+                console.error(err);
+            })
+        }, 
+
+
+        //建立活動
+        CreateAndEditEvent() {
+            console.log("submit form")
+            axios.post('/api/CreateEvent/CreateAndEditEvent', {
+                "EventName": this.eventNameInput,
+                "StartTime": this.startTime,
+                "EndTime": this.endTime,
+                "noEndTime": this.noEndTime,
+                "MainOrganizer": this.mainOrganizerInput,
+                "CoOrganizer": this.coOrganizer,
+                "Attendance": this.number,
+                "EventStatus": this.eventStatus,
+                "StreamingName": this.streaming,
+                "StreamingUrl": this.streamingUrl,
+                "LocationName": this.placeName,
+                "EventAddress": this.eventAddress,
+                "EventIntroduction": this.introduction,
+                "EventDescription": this.description,
+                "EventImage": this.imgUrl,
+                "IsPrivateEvent": this.privacy,
+
+                "CategoryNames": this.selectedCategories,
+                "OrgId": this.organzationId,
+
+                "ticketDetail" : info.ticketDetail
+                    .map(ticket => ({
+                        "ticketTypeId": ticket.ticketTypeId,
+                        "eventId": ticket.eventId,
+                        "ticketName": ticket.ticketName,
+                        "startSaleTime": ticket.startSaleTime,
+                        "endSaleTime": ticket.endSaleTime,
+                        "price": ticket.price,
+                        "amount": ticket.amount,
+                    }))
+            })
+                .then(res =>{
+                    console.log(res)
+                    window.location.href = `/Dashboard/Events/${res.data.id}/Overview`
+                })
+                .catch(err => {
+                    console.error(err);
+                })
+        },
+
+        //選擇活動& pass eventId
+        handleEventSelection() {
+            this.stepButton = 2; //跳轉
+            this.EditEventRender(this.radioCheck);
+            console.log(this.radioCheck)
+        },
+
+        //渲染活動內容
+        EditEventRender() {
+            console.log("Render Success!");
+            axios.get('/api/CreateEvent/RenderEventData', {
+                params: {
+                    eventId: parseInt(this.radioCheck)
+                }
+            })
+                .then(res => {
+                    let info = res.data.data;
+                    console.log(res.data);
+                    console.log(info.Ti);
+
+                    //DB回傳字首會變小
+                    this.organzationId = info.orgId
+                    this.Orgname = info.orgname //只有代ID進來沒辦法渲染名字
+
+                    this.eventId = info.eventId
+                    this.eventNameInput = info.eventName
+                    this.startTime = info.startTime
+                    this.endTime = info.endTime 
+                    this.mainOrganizerInput = info.mainOrganizer 
+                    this.coOrganizer = info.coOrganizer
+                    this.privacy = info.isPrivateEvent
+                    this.number = info.attendance 
+                    this.eventStatus = info.eventStatus
+
+                    this.imgUrl = info.eventImage
+                    this.placeName = info.locationName 
+                    this.eventAddress = info.eventAddress 
+                    this.streaming = info.streamingName
+                    this.streamingUrl = info.streamingUrl
+                    this.longitude = info.longitude
+                    this.latitude = info.latitude
+                    this.googleMap()
+                    this.introduction = info.eventIntroduction
+                    this.description = info.eventDescription
+
+                    this.categoryId = info.categoryId //待處理
+                    this.categoryItems = info.categoryNames
+
+
+                    //========================Ticket
+                    
+                    this.ticketDetail = info.ticketDetail
+                        .map(ticket => ({
+                        ticketTypeId: ticket.ticketTypeId,
+                        eventId: ticket.eventId,
+                        ticketName: ticket.ticketName,
+                        startSaleTime: ticket.startSaleTime,
+                        endSaleTime: ticket.endSaleTime,
+                        price: ticket.price,
+                        amount: ticket.amount,
+                        }));
+                    console.log(info.ticketDetail);
+
+                })
+                .catch(err => {
+                    console.error(err);
+                });
+        },
+
+        //圖床
         imgUpload(e) {
             let formData = new FormData();
             for (let i = 0; i < e.target.files.length; i++) {
@@ -117,87 +370,61 @@ const options = {
                 })
         },
 
-        CreateAndEditEvent() {
-            console.log("submit form")
-            axios.post('/api/CreateEvent/CreateAndEditEvent', {
-                "EventName": this.eventNameInput,
-                "StartTime": this.startTime,
-                "EndTime": this.endTime,
-                "noEndTime": this.noEndTime,
-                "MainOrganizer": this.mainOrganizerInput,
-                "CoOrganizer": this.coOrganizer,
-                "Attendance": this.number,
-                "EventStatus": this.eventStatus,
-                "StreamingName": this.streaming,
-                "StreamingUrl": this.SHOWNESTLive,
-                "LocationName": this.placeName,
-                "EventAddress": this.EventAddress,
-                "EventIntroduction": this.introduction,
-                "EventDescription": this.description,
-                "EventImage": this.imgUrl,
-                "IsPrivateEvent": this.privacy,
-                "CategoryNames": this.selectedCategories,
-                "OrgId": this.organzationId
-            })
-                .then(res =>{
-                    console.log(res)
-                    window.location.href=`/Dashboard/Events/${res.data.id}/Overview`
-                })
-                .catch(
-                    
-                )
+        handleClick() {
+            this.stepButton = 3;
+        },
+
+        submitClick() {
+            window.location.href = `/Dashboard/Events/${this.eventId}/Overview`
+            this.CreateAndEditEvent();
+            console.log('開始建立活動!')
+        },
+
+        addNewTicket(index) {
+            if (index >= 0 && index < this.ticketDetail.length) {
+                // 直接修改 ticketDetail 陣列中的物件
+                this.ticketDetail[index] = {
+                    ticketName: this.ticketTypeInput,
+                    startSaleTime: this.startSaleTime,
+                    endSaleTime: this.endSaleTime,
+                    price: this.prince,
+                    amount: this.amount
+                };
+            } else {
+                // 添加新的票卷
+                this.ticketDetail.push({
+                    TicketName: this.ticketTypeInput,
+                    StartSaleTime: this.startSaleTime,
+                    EndSaleTime: this.endSaleTime,
+                    Price: this.price,
+                    Amount: this.amount
+                });
+            }
+            // 清空輸入欄位
+            this.ticketTypeInput = '';
+            this.startSaleTime = '';
+            this.endSaleTime = '';
+            this.price = '';
+            this.amount = '';
+            
+        },
+
+        saveTicket(index) {
+            this.ticketDetail.splice(index, 1);
+
+            this.ticketDetail.push({
+                type: this.ticketDetail[index].ticketName,
+                startTime: this.ticketDetail[index].startSaleTime,
+                endTime: this.ticketDetail[index].endSaleTime,
+                price: this.ticketDetail[index].price,
+                quantity: this.ticketDetail[index].amount
+            });
         },
 
 
-        //CreateAndEditEvent() {
-        //    console.log("submit form")
-        //    axios.post('/api/CreateEvent/CreateNewEvent', {
-        //        "EventName": "Example Event",
-        //        "StartTime": "2024-04-22T09:00:00",
-        //        "EndTime": "2024-04-22T17:00:00",
-        //        "MainCompany": "Main Company Inc.",
-        //        "AssistCompany": "Assist Company Ltd.",
-        //        "Amount": 100,
-        //        "Type": "Conference",
-        //        "Title": "Advanced .NET and JavaScript Development",
-        //        "Address": "123 Main St, Anytown, USA",
-        //        "Intro": "Join us for a day of learning and networking.",
-        //        "Description": "This conference will cover the latest in .NET and JavaScript development, featuring expert talks and hands-on workshops.",
-        //        "ImgUrl": "https://example.com/event-image.jpg",
-        //        "Privacy": "Public",
-        //        "CategoryNames": ["Development", "Technology", "Networking"]
-        //    })
-        //        .then(res => {
-        //            console.log(res)
-        //        })
-
-
-        //fetch('/api/CreateEvent/CreateAndEditEvent',
-        //    {
-        //        method: 'POST', 
-        //        headers: { 'Content-Type': 'application/json' }, 
-        //        body: JSON.stringify({ eventId: this.eventId })
-        //    })
-        //    .then(response => {
-        //        return response.json()
-        //    })
-        //    .then(data => {
-        //        if (!data.isSuccess) {
-        //            this.selectedOrganization = { id: 0, name: '沒有組織，請先建立組織' }
-        //            throw new Error(data.message)
-        //        }
-        //        this.organizations = data.body.organizations.map(x => {
-        //            return { id: x.id, name: x.name }
-        //        })
-        //        this.selectedOrganization = null
-        //    })
-        //    .catch(err => {
-        //        console.error(err)
-        //    })
-        //},
-        GetOrgEventsByOrgId() {
-            console.log(this.selectedOrganization)
-        }
+        deleteTicket(index) {
+            this.ticketDetail.splice(index, 1); // 刪除指定索引的票卷
+        },
 
     },
     watch: {
@@ -211,23 +438,16 @@ const options = {
             deep: true
         },
 
+        //選擇既有活動後觸發列表
         'selectedActivityType': {
             handler: function (val) {
                 if (val === "既有的活動") {
                     this.displayExistingActivities = true
-                    this.getEventsByOrganizationId()
+                    this.fetchActivitiesByOrgId();
                 }
             }
         },
 
-        //'onlineEventArea': {
-        //    handler: function (value) {
-        //        if (value == "1") {
-        //            this.onlineEventArea = true
-        //            this.placeSection = false
-        //        }
-        //    }
-        //}
 
         //'checkbox': {
         //    handler: function (newVal) {
@@ -245,137 +465,17 @@ const options = {
         //},
     }
 }
-const app = createApp(options); // 創建一個 Vue 應用實例，使用 options 作為配置選項
-app.component('draggable', vuedraggable)
-//app.component('GoogleMap', GoogleMap)
-//app.component('GoogleMapMarker', Marker)
+const app = createApp(options);
+// 創建一個 Vue 應用實例，使用 options 作為配置選項
 app.use(CKEditor)
 app.use(vuetify)
 app.mount('#app')
 
 
 
-/*=============票區選擇===============*/
-//格式錯誤要改寫
-//import draggable from "@@/vuedraggable";
-//const SelectTicketArea = createApp({
-//    name: "two-lists",
-//    components: {
-//        draggable
-//    },
-//    data() {
-//        return {
-//            list1: [
-//              { name: "特1A", id: 1 },
-//{ name: "特1B", id: 2 },
-//{ name: "2A區", id: 3 },
-//{ name: "2B區", id: 4 },
-//{ name: "2C區", id: 5 },
-//{ name: "2D區", id: 6 },
-//{ name: "2E區", id: 7 },
-//{ name: "2F區", id: 8 },
-//{ name: "2G區", id: 9 },
-//{ name: "3A區", id: 10 },
-//{ name: "3B區", id: 11 },
-//{ name: "3C區", id: 12 },
-//{ name: "3D區", id: 13 },
-//{ name: "3E區", id: 14 },
-//{ name: "3F區", id: 15 },
-//{ name: "3G區", id: 16 }
-//            ],
-//            list2: [],
-//            新增一個變數來儲存使用者輸入的選項名稱
-//            newOptionName: ''
-//        };
-//    },
-//    methods: {
-//        add: function () {
-//            this.list1.push({ name: this.newOptionName, id: this.list1.length + 1 });
-//        },
-//        replace: function () {
-//            list1.length = 0;
-//            list2.push({ name: this.newOptionName, id: 1 }); //因為list清空, 所以加入的是id=1
-//        },
-//        clone: function (el) {
-//            return {
-//                name: el.name
-//            };
-//        },
-//        log: function (evt) {
-//            console.log(evt);
-//        }
-//    },
-//}).mount('#app');
-
-//<ul>
-//  <li>特1A</li>
-//  <li>特1B</li>
-//  <li>2A區</li>
-//  <li>2B區</li>
-//  <li>2C區</li>
-//  <li>2D區</li>
-//  <li>2E區</li>
-//  <li>2F區</li>
-//  <li>2G區</li>
-//  <li>3A區</li>
-//  <li>3B區</li>
-//  <li>3C區</li>
-//  <li>3D區</li>
-//  <li>3E區</li>
-//  <li>3F區</li>
-//  <li>3G區</li>
-//</ul>
-
-/*===========票種選擇===========*/
-
-//const SelectTicketType = createApp({
-//    name: "two-lists",
-//    components: {
-//        draggable
-//    },
-//    data() {
-//        return {
-//            list1: [
-//                { name: "全票", id: 100 },
-//            ],
-//            list2: []
-//        };
-//    },
-//    methods: {
-//        add: function () {
-//            this.list1.push({ name: "全票" });
-//        },
-//        replace: function () {
-//            list1.length = 0; // 清空 list1
-//            list2.push({ name: "全票" }); // list2添加新的全票
-//        },
-//        clone: function (el) {
-//            return {
-//                name: el.name
-//            };
-//        },
-//        log: function (evt) {
-//            console.log(evt);
-//        }
-//    },
-//}).mount('#app');
 
 
-/*=============google map ==============*/
-//寫的格式錯誤
-//const { GoogleMap, Marker } = Vue3GoogleMap
 
-//const map = createApp({
-//  setup() {
-//    const center = { lat: 40.689247, lng: -74.044502 };
 
-//    return {
-//      center
-//    }
-//  }
-//})
 
-//map.component('GoogleMap', GoogleMap)
-//map.component('GoogleMapMarker', Marker)
 
-//map.mount('#app')

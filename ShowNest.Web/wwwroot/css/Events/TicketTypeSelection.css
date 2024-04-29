@@ -107,6 +107,10 @@ h2 {
     width: 40%;
 }
 
+.no_seat .ticket-price-title .ticket-type {
+    width: 60%;
+}
+
 .ticket-price-title .seats-select-type {
     width: 20%;
 }
@@ -114,6 +118,13 @@ h2 {
 .ticket-price-title .the-price {
     width: 15%;
     text-align: right;
+}
+
+.no_seat .ticket-price-title .the-price {
+    width: 20%;
+}
+.no_seat .ticket-price-title .amount {
+    width: 20%;
 }
 
 .ticket-data-row {
@@ -134,6 +145,12 @@ h2 {
     vertical-align: middle;
 }
 
+.no_seat.area {
+    flex-direction: column;
+    width: 60%;
+    vertical-align: middle;
+}
+
 .area span {
     display: block;
     width: 90%;
@@ -151,11 +168,21 @@ h2 {
     text-align: right;
 }
 
+.no_seat .ticket-price {
+    width: 20%;
+    margin-left: 50px;
+}
+
 .amount {
     width: 24%;
     text-align: right;
     line-height: 2em;
     vertical-align: middle;
+}
+
+.no_seat .amount {
+    width: 20%;
+    margin-right: 10px;
 }
 
 #input-ticket-amount {
@@ -272,10 +299,18 @@ input[type=button] {
         align-items: normal;
         justify-content: center;
     }
+    
+    .no_seat .ticket-data-row {
+        height: 10em;
+    }
 
     .area {
         width: 65%;
         height: 3.5em;
+    }
+
+    .no_seat .area {
+        line-height: 3em;
     }
 
     .select-type {
@@ -291,6 +326,11 @@ input[type=button] {
         height: 3em;
         text-align: left;
     }
+    
+    .no_seat .ticket-price {
+        width: 20%;
+        margin-left: 0;
+    }
 
     .amount {
         width: 35%;
@@ -299,10 +339,21 @@ input[type=button] {
         padding-right: 5px;
         text-align: right;
     }
+    
+    .no_seat .amount {
+        width: 35%;
+    }
 
     .agreement {
         line-height: 2em;
         margin: 30px 10px;
+    }
+
+    .agreement input, label {
+        margin-right: 10px;
+        vertical-align: baseline;
+        cursor: pointer;
+        display: inline;
     }
 
     .btn-next-step a {
@@ -330,6 +381,10 @@ input[type=button] {
     .amount,
     .select-type,
     .ticket-price {
+        width: 100%;
+    }
+    
+    .no_seat .amount {
         width: 100%;
     }
 }

@@ -35,5 +35,7 @@ public partial class LogInInfo
     /// </summary>
     public DateTime? EditedAt { get; set; }
 
+    public string GId { get; set; }
+
     public virtual User User { get; set; }
 }

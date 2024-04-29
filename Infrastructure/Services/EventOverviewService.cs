@@ -1,7 +1,9 @@
 ﻿using ApplicationCore.DTOs;
+using ApplicationCore.Entities;
 using ApplicationCore.Interfaces;
 using Infrastructure.Data;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.Logging;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -19,15 +21,55 @@ namespace Infrastructure.Services
             _dbContext = dbContext;
         }
 
-        public async Task<List<EventsOverviewTicketsDto>> GetEventsOverviewTicketInfo(int eventId)
+        public async Task<EventsOverviewDto> GetEventOverviewDto(int eventId)
         {
-            var ticketInfo = await _dbContext.TicketTypes
+            var generalInfo = _dbContext.Events
+                .AsNoTracking()
+                .FirstOrDefault(e => e.Id == eventId);
+
+            var tickets = await GetEventsOverviewTicketsInfo(eventId) ?? new List<EventsOverviewTicketsDto>();
+
+            int allSoldTicketsCount = 0;
+            int allRemainedTicketsCount = 0;
+            int allTicketsAmount = 0;
+
+            var orders = await GetEventsOverviewOrdersInfo(eventId);
+
+            foreach (var ticket in tickets)
+            {
+                allSoldTicketsCount += ticket.SoldAmount;
+                allRemainedTicketsCount += ticket.RemainAmount;
+            }
+
+            allTicketsAmount += (allSoldTicketsCount + allRemainedTicketsCount);
+
+            var result = new EventsOverviewDto
+            {
+                EventId = generalInfo.Id,
+                EventName = generalInfo.Name,
+                AllSoldTicketsCount = allSoldTicketsCount,
+                AllRemainedTicketsCount = allRemainedTicketsCount,
+                AllTicketsAmount = allTicketsAmount,
+                EventTime = generalInfo.StartTime.ToString("yyyy/MM/dd HH:ss"),
+                EventPlace = $"{generalInfo.LocationName} / {generalInfo.LocationAddress}",
+                Tickets = tickets,
+                Orders = orders
+            };
+
+            return result;
+        }
+
+        public async Task<List<EventsOverviewTicketsDto>> GetEventsOverviewTicketsInfo(int eventId)
+        {
+            try
+            {
+                var ticketsInfo = await _dbContext.TicketTypes
+                .AsNoTracking()
                 .Include(tt => tt.Tickets)
                 .ThenInclude(t => t.Order)
                 .Where(tt => tt.EventId == eventId)
                 .Select(tt => new EventsOverviewTicketsDto
                 {
-                    EventId = tt.EventId,
                     TicketTypeId = tt.Id,
                     TicketTypeName = tt.Name,
                     StartSellingTime = tt.StartSaleTime.ToString("yyyy/MM/dd HH:mm"),
@@ -43,20 +85,20 @@ namespace Infrastructure.Services
                                     .Select(t => t.Order)
                                     .Where(o => o.Status == 0 || o.Status == 1)
                                     .Count(),
-                    PaidAmout = tt.Tickets
+                    PaidAmount = tt.Tickets
                                     .Where(t => t.TicketTypeId == tt.Id)
                                     .Where(t => t.OrderId == t.Order.Id)
                                     .Select(t => t.Order)
                                     .Count(o => o.Status == 1),
-                    WaitingToPayAmout = tt.Tickets
+                    WaitingToPayAmount = tt.Tickets
                                     .Where(t => t.TicketTypeId == tt.Id)
                                     .Where(t => t.OrderId == t.Order.Id)
                                     .Select(t => t.Order)
                                     .Count(o => o.Status == 0),
-                    RemainAmout = (int)tt.CapacityAmount - tt.Tickets
+                    RemainAmount = (int)tt.CapacityAmount - tt.Tickets
                                     .Where(t => t.TicketTypeId == tt.Id)
                                     .Where(t => t.OrderId == t.Order.Id)
-                                    .Select (t => t.Order)
+                                    .Select(t => t.Order)
                                     .Where(o => o.Status == 0 || o.Status == 1)
                                     .Count(),
                     PriceOfPaidAmout = tt.Tickets
@@ -68,7 +110,46 @@ namespace Infrastructure.Services
                 })
                 .ToListAsync();
 
-            return ticketInfo;
+                return ticketsInfo;
+            }
+            catch
+            {
+                return null;
+            }
+            
         }
+
+        public async Task<List<EventsOverviewOrdersDto>> GetEventsOverviewOrdersInfo(int eventId)
+        {
+            try
+            {
+                var ordersInfo = await _dbContext.Orders
+                        .AsNoTracking()
+                        .Include(o => o.Event)
+                        .Where(o => o.EventId == eventId && o.Tickets.Any())
+                        .Include(o => o.Tickets)
+                            .ThenInclude(t => t.TicketType)
+                        .Include(o => o.User)
+                            .ThenInclude(u => u.LogInInfo)
+                        .Select(o => new EventsOverviewOrdersDto
+                        {
+                            OrderId = o.Id,
+                            UserName = o.User.Nickname,
+                            UserEmail = o.User.LogInInfo.Email,
+                            UserPhone = o.User.Mobile,
+                            OrderedTicketAmount = o.Tickets.Count,
+                            OrderedTicketTotalPrice = (int)o.Tickets.Sum(t => t.TicketType.Price),
+                        })
+                        .ToListAsync();
+
+                return ordersInfo;
+            }
+            catch
+            {
+                return null;
+            }
+            
+        }
+
     }
 }
