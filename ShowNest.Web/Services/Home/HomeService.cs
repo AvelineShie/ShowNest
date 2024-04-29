@@ -21,7 +21,7 @@ namespace ShowNest.Web.Services.Home
         {
             var homeViewModel = new HomeViewModel();
 
-            homeViewModel.HomeCarousels = await _homeCarouselService.GetCarouselViewModel(100, 121, 114);
+            homeViewModel.HomeCarousels = await _homeCarouselService.GetCarouselViewModel(100, 101, 60);
             homeViewModel.MainSectionTag1Cards = await _eventCardService.GetNumbersOfCardsViewModelByCategoryId(6, 10);
             homeViewModel.MainSectionTag2Cards = await _eventCardService.GetNumbersOfCardsViewModelByCategoryId(6, 3);
             homeViewModel.MainSectionTag3Cards = await _eventCardService.GetNumbersOfCardsViewModelByCategoryId(6, 2);
