@@ -19,12 +19,12 @@
             您的訂單已保留，請在 {{ counter }} 內完成填寫資料並確認訂單。若超過時限，系統將自動取消。
         </div>
 </div>
-<section id="paymentInfo" class="section_wrap">
- <div class="main_event_order">
-    <div class="title main_wrap width">
+<section id="paymentInfo" class="section_wrap width ">
+ <div class="main_event_order main_wrap">
+    <div class="title">
             <h2>{{data.eventDetail && data.eventDetail.eventName}}</h2>
         </div>
-    <div class="event_details main_wrap width">
+    <div class="event_details">
             <div class="collapse_group">
                 <p class="d-inline-flex gap-1">
                     <button class="event_detail_collapse btn" type="button" data-bs-toggle="collapse"
@@ -85,7 +85,7 @@
                     new StepStatusViewModel { InProgress = true, IsDisabled = false }
                 })
             </div>
-            <div class="progress_container" v-if="!data.hasSeats">
+            <div class="progress_container" v-if="!data.hasSeats" :class="{no_seat: !data.hasSeats}">
                 @await Html.PartialAsync("_PurchaseStepsPartialWithoutSeats", new List<StepStatusViewModel>
                 {
                     new StepStatusViewModel {InProgress = false, IsDisabled = true},

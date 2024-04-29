@@ -9,14 +9,20 @@
     font-size: var(--main-font-size);
     font-family: sans-serif;
 }
-
-
-
-img {
+.og-banner img {
     vertical-align: middle;
+    border: 0;
     width: 100%;
-    border: 0px;
 }
+
+.description img {
+    vertical-align: middle;
+    border: 0;
+    margin: 0 auto;
+    display: block;
+}
+
+
 
 h1 {
     font-size: 28px;
@@ -78,6 +84,9 @@ p .fa {
     background-color: #FFF;
     box-shadow: 0 0 20px 0 #000;
 }
+.btn-group #plan-route {
+    border-right: 1px solid var(--light-green);
+}
 
 #pc-btn-success {
     text-decoration: none;
@@ -101,13 +110,9 @@ p .fa {
 }
 
 .description {
-    margin: 10px 20px;
+    margin: 30px auto;
+    width: 75%;
 }
-
-.description p {
-    padding-left: 30px;
-}
-
 
 .description ol {
     list-style-type: decimal;
@@ -362,6 +367,10 @@ ul.attendees {
     .map-wrapper .address {
         margin: 20px;
     }
+    
+    .btn-group {
+        right: 20px;
+    }
 
     /* 活動票券 */
     .tickets {
@@ -439,7 +448,11 @@ ul.attendees {
 
     .map-wrapper .address {
         display: flex;
-        margin: 20px;
+        margin: 20px 48px;
+    }
+    
+    .btn-group {
+        right: 48px;
     }
 }
 
