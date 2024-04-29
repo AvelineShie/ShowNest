@@ -16,9 +16,13 @@
                 .Select(e => new HomeCarouselViewModel
                 {
                     EventId = e.Id,
-                    CarouselImgUrl = e.EventImage
+                    //CarouselImgUrl = e.EventImage
                 })
                 .ToListAsync();
+
+            result[0].CarouselImgUrl = "https://res.cloudinary.com/dwn2iafcc/image/upload/c_fill,h_360,w_1200/v1714316703/LDAV-bn_KKTIX-1140360_lkc7zn.jpg";
+            result[1].CarouselImgUrl = "https://res.cloudinary.com/dwn2iafcc/image/upload/c_fill,h_360,w_1200/v1713854127/Snipaste_2024-04-22_14-41-27_fly5hx.jpg";
+            result[2].CarouselImgUrl = "https://res.cloudinary.com/dwn2iafcc/image/upload/c_fill,h_360,w_1200/v1714316335/kktix____1140x360_pncumw.png";
 
             return result;
         }
