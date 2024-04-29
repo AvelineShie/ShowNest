@@ -43,7 +43,6 @@ const options = {
 
             privacy: false,
             
-
             number: 0, //人數
             unlimited: '',
             eventStatus: 1, //預設實體
@@ -81,15 +80,27 @@ const options = {
             selectedCategories: [],
 
             //=================================SetTicket(C)
-            ticketTypeInput: '',
-            eventId: '',
-            ticketName:'',
-            startSaleTime: '',
-            endSaleTime:'',
-            price: '',
-            amount: '',
+            //ticketTypeInput: '',
+            //eventId: '',
+            //ticketName:'',
+            //startSaleTime: '',
+            //endSaleTime:'',
+            //price: '',
+            //amount: '',
+            //ticketDetail: [],
 
-            ticketDetail: [], //Render Data
+            //Render Data
+            ticketDetail: [
+                {
+                    ticketTypeInput: '',
+                    eventId: '',
+                    ticketName: '',
+                    startSaleTime: '',
+                    endSaleTime: '',
+                    price: '',
+                    amount: '',
+                }
+            ],
             savedTicketDetail: [], 
             showTable: true, // 控制表格的顯示與否
 
@@ -216,15 +227,15 @@ const options = {
                 })
         },
 
+        //示範
         GetOrgEventsByOrgId() {
             console.log(this.selectedOrganization)
-        }, //示範
+        }, 
 
         //活動列表
         async fetchActivitiesByOrgId() {
             await axios.get(`/api/CreateEvent/GetActivitiesByOrgId`)
             .then(res => {
-
                 if (res.data !== null) {
 
                     this.eventsforInput = res.data.map(a => ({ eventId: a.eventId, eventName: a.eventName }));
@@ -235,7 +246,6 @@ const options = {
                 console.error(err);
             })
         }, 
-
 
         //建立活動
         CreateAndEditEvent() {
@@ -376,7 +386,7 @@ const options = {
 
         submitClick() {
             window.location.href = `/Dashboard/Events/${this.eventId}/Overview`
-            this.CreateAndEditEvent();
+            this.CreateAndEditEvent(); //缺少參數
             console.log('開始建立活動!')
         },
 
@@ -420,7 +430,6 @@ const options = {
                 quantity: this.ticketDetail[index].amount
             });
         },
-
 
         deleteTicket(index) {
             this.ticketDetail.splice(index, 1); // 刪除指定索引的票卷
