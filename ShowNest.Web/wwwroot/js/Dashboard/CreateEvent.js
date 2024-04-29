@@ -372,8 +372,12 @@ const options = {
 
         handleClick() {
             this.stepButton = 3;
-            this.$router.push({ path: `/Dashboard/Events/${this.eventsforInput.eventId}/Overview` }); //建立活動後的ID
+        },
+
+        submitClick() {
+            window.location.href = `/Dashboard/Events/${this.eventId}/Overview`
             this.CreateAndEditEvent();
+            console.log('開始建立活動!')
         },
 
         addNewTicket(index) {

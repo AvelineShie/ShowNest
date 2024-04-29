@@ -92,6 +92,7 @@
                                             </div>
                                             <div class="Orgname">
                                                 Build School
+                                                @* @Model.OrgName *@
                                             </div>
                                         </div>
 
@@ -287,7 +288,7 @@
                                     組織名稱
                                 </div>
                                 <div class="Orgname">
-                                    @* {{OrgName}} *@
+                                    @* @Model.OrgName *@
                                     Build School
                                 </div>
                             </div>
@@ -308,7 +309,7 @@
                                         @*  =================Ticket Edit============= *@
                                         <tbody>
                                             <tr>
-                                                <td class="color-label"></td>
+                                                @* <td class="color-label"></td>
                                                 <td>
                                                     <div>
                                                         <v-text-field hide-details="auto"
@@ -332,9 +333,9 @@
                                                 
                                                 <td>
                                                     <button type="button" class="btn btn-outline-secondary btn-sm" id="submit" @@click="addNewTicket(index)">新增</button>
-                                                  @*   <button type="button" class="btn btn-outline-secondary btn-sm" id="cancel" @@click="deleteTicket(index)">取消</button> *@
+                                                  <button type="button" class="btn btn-outline-secondary btn-sm" id="cancel" @@click="deleteTicket(index)">取消</button> 
                                                 </td>
-                                            </tr>
+                                            </tr> *@
 
                                             @* =====================渲染用票卷表單 *@
                                             <tr v-for="(ticket, index) in ticketDetail" :key="index">
@@ -393,7 +394,7 @@
 
                             <div class="pages-change">
                                 <button type="button" class="btn btn-outline-secondary" @@click="stepButton = 2">上一頁</button>
-                                <button type="button" class="btn btn-outline-secondary"  v-on:click="CreateAndEditEvent">確認送出</button>
+                                <button type="button" class="btn btn-outline-secondary" @@click="submitClick">確認送出</button>
                             </div>
                         </div>
                     </template>

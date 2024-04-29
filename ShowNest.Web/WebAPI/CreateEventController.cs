@@ -150,6 +150,7 @@ namespace ShowNest.Web.WebAPI
             {
                 var selectedEventId = _CreateEventService.EditEventRender(eventId);
                 var successResult = OperationResultHelper.ReturnSuccessData(selectedEventId);
+
                 return Ok(successResult);
             }
             catch (Exception ex)
