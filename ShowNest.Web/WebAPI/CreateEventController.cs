@@ -74,7 +74,7 @@ namespace ShowNest.Web.WebAPI
 
             if (userIdFromClaim == null)
             {
-                return null;
+                return NotFound("User not found.");
             }
             else
             {
@@ -113,8 +113,6 @@ namespace ShowNest.Web.WebAPI
 
                 return Ok(Events);
             }
-
-
         }
 
         [HttpPost] //示範
