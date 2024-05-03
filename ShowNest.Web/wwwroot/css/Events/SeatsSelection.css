@@ -50,6 +50,7 @@ a {
 
 .display-seat-area-chart a:hover {
     background-color: var(--function-color-hover);
+    cursor: pointer;
 }
 
 .display-seat-area-chart a::before {
@@ -182,6 +183,7 @@ a {
 
 .zoom-in-zoom-out img:hover {
     opacity: 1;
+    cursor: pointer;
 }
 
 .seats-group {

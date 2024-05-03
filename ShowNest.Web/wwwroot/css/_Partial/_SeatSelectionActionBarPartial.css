@@ -54,6 +54,7 @@ h6 {
 
 .action-bar-left .btn-cancel a:hover {
     background-color: #ddd;
+    cursor: pointer;
 }
 
 .action-bar-left .btn-user-guide a::before {
@@ -174,6 +175,7 @@ h6 {
 
 .seats-selection-complete a:hover {
     background-color: var(--function-color-hover);
+    cursor: pointer;
 }
 
 .selected-tickets {
