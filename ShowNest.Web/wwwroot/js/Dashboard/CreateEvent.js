@@ -80,14 +80,14 @@ const options = {
             selectedCategories: [],
 
             //=================================SetTicket(C)
-            //ticketTypeInput: '',
-            //eventId: '',
-            //ticketName:'',
-            //startSaleTime: '',
-            //endSaleTime:'',
-            //price: '',
-            //amount: '',
-            //ticketDetail: [],
+            ticketTypeInput: '',
+            eventId: '',
+            ticketName:'',
+            startSaleTime: '',
+            endSaleTime:'',
+            price: '',
+            amount: '',
+            ticketDetail: [],
 
             //Render Data
             ticketDetail: [
@@ -385,7 +385,15 @@ const options = {
         },
 
         submitClick() {
-            window.location.href = `/Dashboard/Events/${this.eventId}/Overview`
+            this.CreateAndEditEvent()
+            console.log('Hello')
+            if (this.eventId == null) {
+                window.location.href = `Dashboard/CreateEvent`
+            }
+            else {
+                window.location.href = `/Dashboard/Events/${this.eventId}/Overview`
+            }
+
             this.CreateAndEditEvent(); //缺少參數
             console.log('開始建立活動!')
         },

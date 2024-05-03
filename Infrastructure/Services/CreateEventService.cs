@@ -55,6 +55,7 @@ namespace Infrastructure.Services
                     var activity = new Event
                     {
                         //Id = request.EventId,
+                        Id = request.EventId, //Todo:應該是33
                         Name = request.EventName,
                         OrganizationId = request.OrgId,
                         StartTime = request.StartTime,
@@ -104,13 +105,12 @@ namespace Infrastructure.Services
                     {
                         var TicketResult = new TicketType
                         {
-                            EventId = ticket.TicketTypeId,
                             Name = ticket.TicketName,
                             StartSaleTime = ticket.StartSaleTime,
                             EndSaleTime = ticket.EndSaleTime,
                             CapacityAmount = ticket.Amount,
                             Price = ticket.Price,
-                            CreatedAt = ticket.CreatedAt,
+                            CreatedAt = DateTime.Now,
 
                         };
                         DbContext.TicketTypes.Add(TicketResult);
@@ -177,11 +177,11 @@ namespace Infrastructure.Services
                 {
                     TicketTypeId = t.Id,
                     EventId = t.EventId,
-                    TicketName = t.Name, 
+                    TicketName = t.Name,
                     StartSaleTime = t.StartSaleTime,
                     EndSaleTime = t.EndSaleTime,
                     Price = Convert.ToInt32(t.Price),
-                    Amount = t.CapacityAmount, 
+                    Amount = t.CapacityAmount,
                 })
                 .ToList();
 
