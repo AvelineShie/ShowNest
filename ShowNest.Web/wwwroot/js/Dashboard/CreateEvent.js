@@ -117,6 +117,7 @@ const options = {
     },
     mounted() {
         this.googleMap()
+        this.renderTags()
         this.CreateEventbyUserId()
         this.GetOrgEventsByOrgId()
         this.fetchActivitiesByOrgId()
@@ -277,6 +278,7 @@ const options = {
                 "EventImage": this.imgUrl,
                 "IsPrivateEvent": this.privacy,
 
+                //CategoryNames會包含{ id: 1, name: '音樂' },
                 "CategoryNames": this.selectedCategories,
                 "OrgId": this.organzationId,
 
@@ -345,8 +347,10 @@ const options = {
                     this.introduction = info.eventIntroduction
                     this.description = info.eventDescription
 
-                    this.categoryId = info.categoryId //todo
-                    this.categoryItems = info.categoryNames
+                    // 渲染標籤
+                    this.renderTags();
+                    //this.categoryId = info.categoryId 
+                    //this.categoryItems = info.categoryNames
 
 
                     //========================Ticket
@@ -364,13 +368,31 @@ const options = {
                     console.log(info.ticketDetail);
 
                     //=======================CategoryTag
-                   
+
+                    //this.selectedCategories = info.selectedCategories.map(categoryId => {
+                    //    let category = this.categoryItems.find(item => item.id === categoryId);
+                    //    return category ? category.name : '';
+                    //});
+
+                    
 
 
                 })
                 .catch(err => {
                     console.error(err);
                 });
+        },
+
+        //渲染標籤
+        renderTags() {
+                let tags = '';
+                this.categoryItems.forEach(category => {
+                    tags += `<div class="tag">
+                    <input type="checkbox" id="category-${category.id}" v-model="selectedCategories" :value="category.id" @change="selectCategory(category.id)">
+                    <label for="category-${category.id}" href="./Events/Index" class="categories-tag">${category.name}</label>
+                </div>`;
+                });
+                return tags;
         },
 
         //圖床
