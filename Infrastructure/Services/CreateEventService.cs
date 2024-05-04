@@ -52,10 +52,10 @@ namespace Infrastructure.Services
                 try
                 {
                     //設定活動資料
+                    //DB = DTO
                     var activity = new Event
                     {
-                        //Id = request.EventId,
-                        Id = request.EventId, //Todo:應該是33
+                        Id = request.EventId, //需要ID? 建立時會長ID不是?
                         Name = request.EventName,
                         OrganizationId = request.OrgId,
                         StartTime = request.StartTime,
@@ -89,13 +89,18 @@ namespace Infrastructure.Services
                     };
                     DbContext.Events.Add(activity);
 
-                    //活動標籤: 
+                    // 儲存活動資料並獲取新活動的ID
+                    DbContext.SaveChanges(); // 儲存活動資料，活動的ID在此自動生成
+
+
+                    //======================活動標籤: 
+                    var eventId = activity.Id;
                     var eventTags = new EventAndTagMapping
                     {
-                        EventId = request.EventId,
+                        EventId = eventId,
                         CategoryTagId = request.CategoryId
                     };
-
+                    
                     DbContext.EventAndTagMappings.Add(eventTags);
 
 
@@ -116,8 +121,9 @@ namespace Infrastructure.Services
                         DbContext.TicketTypes.Add(TicketResult);
                     }
 
-                    DbContext.SaveChanges();
+                    //============
 
+                    DbContext.SaveChanges();
                     transcation.Commit();
 
                     return activity.Id;
@@ -132,6 +138,7 @@ namespace Infrastructure.Services
         }
 
         //活動渲染
+        //DTO = BD
         public CreateEventDto EditEventRender(int eventId)
         {
             var eventData = GetById(eventId);
@@ -165,9 +172,17 @@ namespace Infrastructure.Services
             //tag
             var tagData = DbContext.EventAndTagMappings
                 .Where(d => d.EventId == eventId)
-                .Select(d => new CreateEventDto{
+                .Select(d => new CreateEventDto
+                {
                     CategoryId = d.CategoryTagId
-                });
+                }).FirstOrDefault();
+
+            // 如果找到標籤ID，則將其添加到結果中
+            if (tagData != null)
+            {
+                result.CategoryId = tagData.CategoryId;
+            }
+            
 
 
             //Tickets

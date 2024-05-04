@@ -335,6 +335,11 @@ button.btn-outline-secondary {
     margin: 3px;
 }
 
+/*todo*/
+.tag:focus {
+    background-color: var(--main-green);
+}
+
 
 .pages-change {
     display: flex;

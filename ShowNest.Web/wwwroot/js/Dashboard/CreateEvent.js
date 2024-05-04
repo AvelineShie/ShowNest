@@ -73,11 +73,20 @@ const options = {
                 toolbar: ['bold', 'italic', 'heading', 'Superscript', 'link', 'undo', 'redo', 'imageUpload']
             },
 
-            categoryId:'',
+            //todo
             categoryItems: [
-                '音樂', '戲劇', '展覽', '電影', '藝文活動', '美食', '運動', '課程講座', '演唱會'
+                { id: 1, name: '音樂' },
+                { id: 2, name: '戲劇' },
+                { id: 3, name: '展覽' },
+                { id: 4, name: '電影' },
+                { id: 5, name: '藝文活動' },
+                { id: 6, name: '美食' },
+                { id: 7, name: '運動' },
+                { id: 8, name: '課程講座' },
+                { id: 10, name: '演唱會' }
             ],
             selectedCategories: [],
+            
 
             //=================================SetTicket(C)
             ticketTypeInput: '',
@@ -130,7 +139,7 @@ const options = {
         //地圖手動輸入刷新
         InputGoogleMap(lat, lng) {
             (g => { var h, a, k, p = "The Google Maps JavaScript API", c = "google", l = "importLibrary", q = "__ib__", m = document, b = window; b = b[c] || (b[c] = {}); var d = b.maps || (b.maps = {}), r = new Set, e = new URLSearchParams, u = () => h || (h = new Promise(async (f, n) => { await (a = m.createElement("script")); e.set("libraries", [...r] + ""); for (k in g) e.set(k.replace(/[A-Z]/g, t => "_" + t[0].toLowerCase()), g[k]); e.set("callback", c + ".maps." + q); a.src = `https://maps.${c}apis.com/maps/api/js?` + e; d[q] = f; a.onerror = () => h = n(Error(p + " could not load.")); a.nonce = m.querySelector("script[nonce]")?.nonce || ""; m.head.append(a) })); d[l] ? console.warn(p + " only loads once. Ignoring:", g) : d[l] = (f, ...n) => r.add(f) && u().then(() => d[l](f, ...n)) })
-                ({ key: "AIzaSyBPB4VPZKkuM469YuZcRdGGKnsItE1C7ik", v: "beta" });
+                ({ key: "", v: "beta" });
 
             let map;
             console.log(lat, lng)
@@ -163,7 +172,7 @@ const options = {
         //自動代入Data
         googleMap(lat, lng) {
             (g => { var h, a, k, p = "The Google Maps JavaScript API", c = "google", l = "importLibrary", q = "__ib__", m = document, b = window; b = b[c] || (b[c] = {}); var d = b.maps || (b.maps = {}), r = new Set, e = new URLSearchParams, u = () => h || (h = new Promise(async (f, n) => { await (a = m.createElement("script")); e.set("libraries", [...r] + ""); for (k in g) e.set(k.replace(/[A-Z]/g, t => "_" + t[0].toLowerCase()), g[k]); e.set("callback", c + ".maps." + q); a.src = `https://maps.${c}apis.com/maps/api/js?` + e; d[q] = f; a.onerror = () => h = n(Error(p + " could not load.")); a.nonce = m.querySelector("script[nonce]")?.nonce || ""; m.head.append(a) })); d[l] ? console.warn(p + " only loads once. Ignoring:", g) : d[l] = (f, ...n) => r.add(f) && u().then(() => d[l](f, ...n)) })
-                ({ key: "AIzaSyBPB4VPZKkuM469YuZcRdGGKnsItE1C7ik", v: "beta" });
+                ({ key: "", v: "beta" });
 
             let map;
             console.log(lat, lng)
@@ -271,7 +280,7 @@ const options = {
                 "CategoryNames": this.selectedCategories,
                 "OrgId": this.organzationId,
 
-                "ticketDetail" : info.ticketDetail
+                "ticketDetail" : this.ticketDetail
                     .map(ticket => ({
                         "ticketTypeId": ticket.ticketTypeId,
                         "eventId": ticket.eventId,
@@ -283,8 +292,9 @@ const options = {
                     }))
             })
                 .then(res =>{
-                    console.log(res)
-                    window.location.href = `/Dashboard/Events/${res.data.id}/Overview`
+                    console.log(res) //傳入DB後的回應
+                    const eventId = res.data.id; // 獲取ID
+                    window.location.href = `/Dashboard/Events/${eventId}/Overview`; // 使用ID進行頁面跳轉
                 })
                 .catch(err => {
                     console.error(err);
@@ -309,11 +319,10 @@ const options = {
                 .then(res => {
                     let info = res.data.data;
                     console.log(res.data);
-                    console.log(info.Ti);
 
                     //DB回傳字首會變小
                     this.organzationId = info.orgId
-                    this.Orgname = info.orgname //只有代ID進來沒辦法渲染名字
+                    this.Orgname = info.orgname 
 
                     this.eventId = info.eventId
                     this.eventNameInput = info.eventName
@@ -336,12 +345,11 @@ const options = {
                     this.introduction = info.eventIntroduction
                     this.description = info.eventDescription
 
-                    this.categoryId = info.categoryId //待處理
+                    this.categoryId = info.categoryId //todo
                     this.categoryItems = info.categoryNames
 
 
                     //========================Ticket
-                    
                     this.ticketDetail = info.ticketDetail
                         .map(ticket => ({
                         ticketTypeId: ticket.ticketTypeId,
@@ -352,7 +360,12 @@ const options = {
                         price: ticket.price,
                         amount: ticket.amount,
                         }));
+
                     console.log(info.ticketDetail);
+
+                    //=======================CategoryTag
+                   
+
 
                 })
                 .catch(err => {
@@ -389,12 +402,13 @@ const options = {
             console.log('Hello')
             if (this.eventId == null) {
                 window.location.href = `Dashboard/CreateEvent`
+                alert('建立活動失敗，請重新填寫');
             }
             else {
                 window.location.href = `/Dashboard/Events/${this.eventId}/Overview`
             }
 
-            this.CreateAndEditEvent(); //缺少參數
+            this.CreateAndEditEvent(); //缺少參數?
             console.log('開始建立活動!')
         },
 
@@ -427,6 +441,7 @@ const options = {
             
         },
 
+        //儲存票卷資料
         saveTicket(index) {
             this.ticketDetail.splice(index, 1);
 
@@ -439,9 +454,16 @@ const options = {
             });
         },
 
+        //刪除票卷
         deleteTicket(index) {
             this.ticketDetail.splice(index, 1); // 刪除指定索引的票卷
         },
+
+        //標籤值更新
+        selectCategory(selectedCategory) {
+            this.selectedCategories = [];
+            this.selectedCategories.push(selectedCategory);
+        }
 
     },
     watch: {

@@ -35,7 +35,7 @@ namespace ApplicationCore.DTOs
         public string EventDescription { get; set; }
         public string EventImage { get; set; }
         public bool IsPrivateEvent { get; set; }
-        public List<string> CategoryNames { get; set; }
+        //public List<string> CategoryNames { get; set; }
         public int CategoryId { get; set; }
 
         //public string ContactPerson { get; set; }

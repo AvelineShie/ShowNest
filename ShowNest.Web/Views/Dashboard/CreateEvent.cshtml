@@ -255,10 +255,9 @@
                                             <h4>活動分類</h4>
                                             <span class="note">請選擇1個分類。</span>
                                             <div class="tag-pool">
-                                                @* todo *@
-                                                <div v-for="(item, index) in categoryItems" :key="index" class="tag">
-                                                    <input type="checkbox" :id="'category-' + index" v-model="selectedCategories" :value="item">
-                                                    <label :for="'category-' + index" href="./Events/Index" class="categories-tag">{{ item }}</label>
+                                                <div v-for="(item, index) in categoryItems" :key="item.id" class="tag" >
+                                                    <input type="checkbox" :id="'category-' + item.id" v-model="selectedCategories" :value="item" @@change="selectCategory(item)" >
+                                                    <label :for="'category-' + item.id" href="./Events/Index" class="categories-tag">{{ item.name }}</label>
                                                 </div>
                                                 @* <div>
                                                     已選擇的項目：{{ selectedCategories }}
