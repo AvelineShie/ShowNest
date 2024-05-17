@@ -24,18 +24,19 @@ namespace ApplicationCore.DTOs
         public int? Attendance { get; set; }
         public byte EventStatus { get; set; }
 
-        public string StreamingName { get; set; }
-        public string StreamingUrl { get; set; }
-        public string LocationName { get; set; }
-        public string EventAddress { get; set; }
-        public string Longitude { get; set; }
-        public string Latitude { get; set; }
+        public string? StreamingName { get; set; }
+        public string? StreamingUrl { get; set; }
+        public string? LocationName { get; set; }
+        public string? EventAddress { get; set; }
+        public string? Longitude { get; set; }
+        public string? Latitude { get; set; }
 
         public string EventIntroduction { get; set; }
         public string EventDescription { get; set; }
-        public string EventImage { get; set; }
+        public string? EventImage { get; set; }
         public bool IsPrivateEvent { get; set; }
-        //public List<string> CategoryNames { get; set; }
+
+        //選擇複數時：public List<string> CategoryNames { get; set; }
         public int CategoryId { get; set; }
 
         //public string ContactPerson { get; set; }
@@ -49,20 +50,19 @@ namespace ApplicationCore.DTOs
         public DateTime? EditedAt { get; set; }
 
         //SetTicket
-        //票可能會有好幾張不同的資料
+        //票會有複數不同的資料
         public List<TicketDetailViewModel> TicketDetail { get; set; }
         public class TicketDetailViewModel
         {
+            //public string TicketType { get; set; }
             public int TicketTypeId { get; set; }
             public int EventId { get; set; }
             public string TicketName { get; set; }//票種名稱
-            //public string TicketType { get; set; }
             public DateTime StartSaleTime { get; set; }
             public DateTime EndSaleTime { get; set; }
             public int Price { get; set; }
             public int? Amount { get; set; } //數量
             public DateTime CreatedAt { get; set; }
-            public DateTime? EditedAt { get; set; }
 
         }
 

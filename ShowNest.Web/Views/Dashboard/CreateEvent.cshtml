@@ -34,15 +34,16 @@
                                     <p>您尚未選擇組織，請選取此活動所屬之組織：</p>
                                     <v-select item-title="name"
                                               v-model="selectedOrganization"
-                                              item-value="orgId"
+                                              :item-value="organzationId"
                                               class="w-50"
                                               :items="orgNames"
                                               density="compact"
                                               label="選擇一個組織"
                                               variant="outlined">
+                                             
                                     </v-select>
-
-
+                                   
+                                   
                                     <!-- Hide the organizations while not selected below -->
                                     <div v-show="displaySelectActivityType">
                                         <v-select v-model="selectedActivityType"
@@ -255,15 +256,11 @@
                                             <h4>活動分類</h4>
                                             <span class="note">請選擇1個分類。</span>
                                             <div class="tag-pool">
-                                                <!-- Create event -->
                                                 <div v-for="(item, index) in categoryItems" :key="item.id" class="tag" >
                                                     <input type="checkbox" :id="'category-' + item.id" v-model="selectedCategories" :value="item" @@change="selectCategory(item)" >
                                                     <label :for="'category-' + item.id" href="./Events/Index" class="categories-tag">{{ item.name }}</label>
                                                 </div>
-                                                
-                                                <!-- Reander event -->
-                                                <div ref="tagsContainer"></div>
-
+                                               
                                                 <!-- test -->
                                                 <div>
                                                     已選擇的項目：{{ selectedCategories }}
@@ -311,34 +308,6 @@
 
                                         @*  =================Ticket Edit============= *@
                                         <tbody>
-                                            <tr>
-                                                @* <td class="color-label"></td>
-                                                <td>
-                                                    <div>
-                                                        <v-text-field hide-details="auto"
-                                                            label="" 
-                                                            variant="outlined"
-                                                            v-model="ticketTypeInput"></v-text-field>
-                                                    </div>
-                                                </td>
-                                                <td>
-                                                    <input type="date" class="date-local" v-model="startSaleTimee">
-                                                    <span>至</span>
-                                                    <input type="date" class="date-local" v-model="endSaleTime">
-                                                </td>
-                                                <td>
-                                                    TWD$
-                                                    <input type="text" v-model="price" class="form-control h-25 w-50 " id="formGroupExampleInput" placeholder=" ">
-                                                </td>
-                                                <td>
-                                                    <input type="text" v-model="amount" class="form-control h-25 w-50 " id="formGroupExampleInput" placeholder=" ">
-                                                </td>
-                                                
-                                                <td>
-                                                    <button type="button" class="btn btn-outline-secondary btn-sm" id="submit" @@click="addNewTicket(index)">新增</button>
-                                                  <button type="button" class="btn btn-outline-secondary btn-sm" id="cancel" @@click="deleteTicket(index)">取消</button> 
-                                                </td>
-                                            </tr> *@
 
                                             @* =====================渲染用票卷表單 *@
                                             <tr v-for="(ticket, index) in ticketDetail" :key="index">
@@ -348,7 +317,8 @@
                                                         <v-text-field hide-details="auto"
                                                             label=""
                                                             variant="outlined"
-                                                            v-model="ticket.ticketName"></v-text-field>
+                                                            v-model="ticket.ticketName">
+                                                        </v-text-field>
                                                     </div>
                                                 </td>
                                                 <td>
@@ -364,13 +334,13 @@
                                                     <input type="text" v-model="ticket.amount" class="form-control h-25 w-50 " id="formGroupExampleInput" placeholder=" ">
                                                 </td>
                                                 <td>
-                                                    <button type="button" class="btn btn-outline-secondary btn-sm" id="submit" @@click="saveTicket(index)">儲存</button>
-                                                    <button type="button" class="btn btn-outline-secondary btn-sm" id="cancel" @@click="deleteTicket(index)">刪除</button>
-                                                </td>
+                                                    <button type="button" class="btn btn-outline-secondary btn-sm" id="submit" @@click="addNewTicket(index)">儲存</button>
+@*                                                  <button type="button" class="btn btn-outline-secondary btn-sm" id="cancel" @@click="deleteTicket(index)">刪除</button>
+ *@                                                </td>
                                             </tr>
 
-                                            @* ===================票種生成（Read）================ *@
-                                            <tr v-for="ticket in ticketDetail" :key="ticket.ticketTypeId">
+                                            @* ===================前端票種儲存後渲染================ *@
+                                            <tr v-for="ticket in ticketDetail" :key="ticket.ticketTypeId" >
                                                 <td class="color-label"></td>
                                                 <td>{{ ticket.ticketName }}</td>
                                                 <td>{{ ticket.startSaleTime }} 至 {{ ticket.endSaleTime }}</td>

@@ -103,7 +103,7 @@ public partial class Event
     /// <summary>
     /// 協辦單位
     /// </summary>
-    public string CoOrganizer { get; set; }
+    public string? CoOrganizer { get; set; }
 
     /// <summary>
     /// 是否公開活動

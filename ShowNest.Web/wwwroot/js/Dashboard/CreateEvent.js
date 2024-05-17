@@ -9,9 +9,9 @@ const options = {
 
             //====================CreateEvent(R)
             userId: '',
-            organzationId: '',
-            selectedOrganization: {}, //組織下拉v-model
-            organizations: [], //下拉items
+            organzationId: 1,
+            selectedOrganization: [], //組織下拉v-model
+            orgNames: [],//下拉items
             displaySelectActivityType: true, /*隱藏*/
             activityTypes: ["全新的活動", "既有的活動"], //活動下拉item/val
             selectedActivityType: "全新的活動", //活動下拉式v-model
@@ -23,14 +23,12 @@ const options = {
             items: ['實體活動', '線上活動'],
             selectedEvent: {},
             events: [],
-            orgNames: [],
-
 
             eventsforInput: [],
 
             //============================SetEvent(C,U)
 
-            Orgname: '',
+            /*Orgname: '',*/
 
             eventId:'',
             eventNameInput: '',
@@ -73,7 +71,6 @@ const options = {
                 toolbar: ['bold', 'italic', 'heading', 'Superscript', 'link', 'undo', 'redo', 'imageUpload']
             },
 
-            //todo
             categoryItems: [
                 { id: 1, name: '音樂' },
                 { id: 2, name: '戲劇' },
@@ -88,20 +85,9 @@ const options = {
             selectedCategories: [],
             
 
-            //=================================SetTicket(C)
-            ticketTypeInput: '',
-            eventId: '',
-            ticketName:'',
-            startSaleTime: '',
-            endSaleTime:'',
-            price: '',
-            amount: '',
-            ticketDetail: [],
-
             //Render Data
             ticketDetail: [
                 {
-                    ticketTypeInput: '',
                     eventId: '',
                     ticketName: '',
                     startSaleTime: '',
@@ -111,7 +97,9 @@ const options = {
                 }
             ],
             savedTicketDetail: [], 
-            showTable: true, // 控制表格的顯示與否
+            showTable: true, // 控制表格的顯示與否,
+            //orgId: '',
+            //orgname: '',
 
         }
     },
@@ -124,31 +112,18 @@ const options = {
 
     },
     methods: {
-        checkMap() {
-            this.$nextTick(() => {
-                // 確保地圖元素存在
-                const mapElement = document.getElementById('map');
-                if (mapElement) {
-                    this.googleMap(mapElement);
-                } else {
-                    console.error("地圖元素不存在");
-                }
-            });
-        },
-
-
         //地圖手動輸入刷新
         InputGoogleMap(lat, lng) {
             (g => { var h, a, k, p = "The Google Maps JavaScript API", c = "google", l = "importLibrary", q = "__ib__", m = document, b = window; b = b[c] || (b[c] = {}); var d = b.maps || (b.maps = {}), r = new Set, e = new URLSearchParams, u = () => h || (h = new Promise(async (f, n) => { await (a = m.createElement("script")); e.set("libraries", [...r] + ""); for (k in g) e.set(k.replace(/[A-Z]/g, t => "_" + t[0].toLowerCase()), g[k]); e.set("callback", c + ".maps." + q); a.src = `https://maps.${c}apis.com/maps/api/js?` + e; d[q] = f; a.onerror = () => h = n(Error(p + " could not load.")); a.nonce = m.querySelector("script[nonce]")?.nonce || ""; m.head.append(a) })); d[l] ? console.warn(p + " only loads once. Ignoring:", g) : d[l] = (f, ...n) => r.add(f) && u().then(() => d[l](f, ...n)) })
-                ({ key: "", v: "beta" });
+                ({ key: "AIzaSyBfdBJM1O3m1EPh0SXiX1vTDiTW52WCIIw", v: "beta" });
 
             let map;
-            console.log(lat, lng)
+            /*console.log(lat, lng)*/
 
             let latFormData = parseFloat(lat)
             let lngFormData = parseFloat(lng)
             
-            console.log(latFormData, lngFormData);
+            /*console.log(latFormData, lngFormData);*/
 
             async function initMap() {
                 const position = { lat: latFormData, lng: lngFormData };
@@ -173,15 +148,14 @@ const options = {
         //自動代入Data
         googleMap(lat, lng) {
             (g => { var h, a, k, p = "The Google Maps JavaScript API", c = "google", l = "importLibrary", q = "__ib__", m = document, b = window; b = b[c] || (b[c] = {}); var d = b.maps || (b.maps = {}), r = new Set, e = new URLSearchParams, u = () => h || (h = new Promise(async (f, n) => { await (a = m.createElement("script")); e.set("libraries", [...r] + ""); for (k in g) e.set(k.replace(/[A-Z]/g, t => "_" + t[0].toLowerCase()), g[k]); e.set("callback", c + ".maps." + q); a.src = `https://maps.${c}apis.com/maps/api/js?` + e; d[q] = f; a.onerror = () => h = n(Error(p + " could not load.")); a.nonce = m.querySelector("script[nonce]")?.nonce || ""; m.head.append(a) })); d[l] ? console.warn(p + " only loads once. Ignoring:", g) : d[l] = (f, ...n) => r.add(f) && u().then(() => d[l](f, ...n)) })
-                ({ key: "", v: "beta" });
+                ({ key: "AIzaSyBfdBJM1O3m1EPh0SXiX1vTDiTW52WCIIw", v: "beta" });
 
             let map;
-            console.log(lat, lng)
+            /*console.log(lat, lng)*/
 
             let latFormData = parseFloat(this.latitude)
             let lngFormData = parseFloat(this.longitude)
-            
-            console.log(latFormData, lngFormData);
+            /*console.log(latFormData, lngFormData);*/
 
             async function initMap() {
                 const position = { lat: latFormData, lng: lngFormData };
@@ -208,12 +182,12 @@ const options = {
             const geocoder = new google.maps.Geocoder();
             geocoder.geocode({ address: this.eventAddress }, (results, status) => {
                 if (status === 'OK') {
-                    console.log(results)
+                    /*console.log(results)*/
                     const lat = results[0].geometry.location.lat();
                     const lng = results[0].geometry.location.lng();
                     this.latitude = lat;
                     this.longitude = lng;
-                    console.log(lat, lng)
+                    /*console.log(lat, lng)*/
                     /*alert('Geocode was this status' + status);*/
 
                     this.InputGoogleMap(lat, lng);
@@ -226,16 +200,17 @@ const options = {
             await axios.get('/api/CreateEvent/CreateEventbyUserId')
                 .then(res => {
                     if (res.data == null) {
-                    console.log(res.data)
+                   
                         this.selectedOrganization = { id: 0, name: '沒有組織，請先建立新組織' }
                     }
-                    this.selectedOrganization = null; //顯示預設字樣
+
                     this.orgNames = res.data.map(o => ({ id: o.orgId, name: o.orgName }));
+                    console.log(res.data[1].orgId); //todo
                 })
                 .catch(err => {
                     console.error(err);
                 })
-        },
+        },        
 
         //示範
         GetOrgEventsByOrgId() {
@@ -247,7 +222,6 @@ const options = {
             await axios.get(`/api/CreateEvent/GetActivitiesByOrgId`)
             .then(res => {
                 if (res.data !== null) {
-
                     this.eventsforInput = res.data.map(a => ({ eventId: a.eventId, eventName: a.eventName }));
                     console.log( this.eventsforInput)
                 }
@@ -259,8 +233,10 @@ const options = {
 
         //建立活動
         CreateAndEditEvent() {
-            console.log("submit form")
+            console.log(this.orgNames)
             axios.post('/api/CreateEvent/CreateAndEditEvent', {
+                //"DTO": data
+                "OrgId": this.organzationId,//todo
                 "EventName": this.eventNameInput,
                 "StartTime": this.startTime,
                 "EndTime": this.endTime,
@@ -278,29 +254,32 @@ const options = {
                 "EventImage": this.imgUrl,
                 "IsPrivateEvent": this.privacy,
 
-                //CategoryNames會包含{ id: 1, name: '音樂' },
-                "CategoryNames": this.selectedCategories,
-                "OrgId": this.organzationId,
-
-                "ticketDetail" : this.ticketDetail
+                "CategoryId": this.selectedCategories[0].id,
+                
+                "TicketDetail" : this.ticketDetail
                     .map(ticket => ({
-                        "ticketTypeId": ticket.ticketTypeId,
-                        "eventId": ticket.eventId,
-                        "ticketName": ticket.ticketName,
-                        "startSaleTime": ticket.startSaleTime,
-                        "endSaleTime": ticket.endSaleTime,
-                        "price": ticket.price,
-                        "amount": ticket.amount,
+                        "TicketTypeId": ticket.ticketTypeId,
+                        "TicketName": ticket.ticketName,
+                        "StartSaleTime": ticket.startSaleTime,
+                        "EndSaleTime": ticket.endSaleTime,
+                        "Price": ticket.price,
+                        "Amount": ticket.amount,
                     }))
-            })
-                .then(res =>{
-                    console.log(res) //傳入DB後的回應
-                    const eventId = res.data.id; // 獲取ID
-                    window.location.href = `/Dashboard/Events/${eventId}/Overview`; // 使用ID進行頁面跳轉
+
+                
+            }) 
+                .then(res => {
+                    window.location.href = `/Dashboard/Events/${res.data.id}/Overview`
+                    
                 })
                 .catch(err => {
                     console.error(err);
                 })
+        },
+
+        //tag item
+        selectCategory(item) {
+            this.selectedCategories = [item]; // 將 selectedCategories 設置為包含選取項的單一元素陣列
         },
 
         //選擇活動& pass eventId
@@ -347,13 +326,11 @@ const options = {
                     this.introduction = info.eventIntroduction
                     this.description = info.eventDescription
 
-                    // 渲染標籤
+                    // ============Render Tag
                     this.renderTags();
-                    //this.categoryId = info.categoryId 
-                    //this.categoryItems = info.categoryNames
 
 
-                    //========================Ticket
+                    //========================Render Ticket
                     this.ticketDetail = info.ticketDetail
                         .map(ticket => ({
                         ticketTypeId: ticket.ticketTypeId,
@@ -366,16 +343,6 @@ const options = {
                         }));
 
                     console.log(info.ticketDetail);
-
-                    //=======================CategoryTag
-
-                    //this.selectedCategories = info.selectedCategories.map(categoryId => {
-                    //    let category = this.categoryItems.find(item => item.id === categoryId);
-                    //    return category ? category.name : '';
-                    //});
-
-                    
-
 
                 })
                 .catch(err => {
@@ -415,27 +382,20 @@ const options = {
                 })
         },
 
+        //跳轉第三頁
         handleClick() {
             this.stepButton = 3;
         },
 
+        //送出
         submitClick() {
             this.CreateAndEditEvent()
-            console.log('Hello')
-            if (this.eventId == null) {
-                window.location.href = `Dashboard/CreateEvent`
-                alert('建立活動失敗，請重新填寫');
-            }
-            else {
-                window.location.href = `/Dashboard/Events/${this.eventId}/Overview`
-            }
-
-            this.CreateAndEditEvent(); //缺少參數?
-            console.log('開始建立活動!')
         },
 
+        //票卷: 儲存Btn
         addNewTicket(index) {
             if (index >= 0 && index < this.ticketDetail.length) {
+                //index < ticketDtail's item 數量
                 // 直接修改 ticketDetail 陣列中的物件
                 this.ticketDetail[index] = {
                     ticketName: this.ticketTypeInput,
@@ -445,38 +405,27 @@ const options = {
                     amount: this.amount
                 };
             } else {
-                // 添加新的票卷
-                this.ticketDetail.push({
-                    TicketName: this.ticketTypeInput,
-                    StartSaleTime: this.startSaleTime,
-                    EndSaleTime: this.endSaleTime,
-                    Price: this.price,
-                    Amount: this.amount
-                });
+                // 添加新的票卷內容
+                //this.ticketDetail.push({
+                //    TicketName: this.ticketTypeInput,
+                //    StartSaleTime: this.startSaleTime,
+                //    EndSaleTime: this.endSaleTime,
+                //    Price: this.price,
+                //    Amount: this.amount
+                //});
             }
+            console.log(this.ticketDetail)
             // 清空輸入欄位
-            this.ticketTypeInput = '';
-            this.startSaleTime = '';
-            this.endSaleTime = '';
-            this.price = '';
-            this.amount = '';
+            //this.ticketTypeInput = '';
+            //this.startSaleTime = '';
+            //this.endSaleTime = '';
+            //this.price = '';
+            //this.amount = '';
             
         },
 
-        //儲存票卷資料
-        saveTicket(index) {
-            this.ticketDetail.splice(index, 1);
-
-            this.ticketDetail.push({
-                type: this.ticketDetail[index].ticketName,
-                startTime: this.ticketDetail[index].startSaleTime,
-                endTime: this.ticketDetail[index].endSaleTime,
-                price: this.ticketDetail[index].price,
-                quantity: this.ticketDetail[index].amount
-            });
-        },
-
-        //刪除票卷
+        //todo: 會通通刪除
+        //票卷:刪除Btn
         deleteTicket(index) {
             this.ticketDetail.splice(index, 1); // 刪除指定索引的票卷
         },
@@ -508,6 +457,41 @@ const options = {
                 }
             }
         },
+
+        //選組織
+        'selectedOrganization': {
+            handler: function (value) {
+                
+                if (value != '') {
+                    console.log(value);
+                    //var index = this.orgNames.findIndex(
+                    //    (value) => orgNames.name === value
+
+                    //);
+                    //console.log(index);
+
+                    //var index = this.orgNames.findIndex(
+                    //    (value) => this.orgName.name === value
+
+                    //);
+                    
+                }
+                
+                
+            }
+        }
+        //handleChange(value) {
+
+        //    if (this.orgNames !== null) {
+        //        console.log(value);
+
+        //        var index = this.orgNames.findIndex(
+        //            (value) => orgNames.name === value
+        //        );
+
+        //        console.log(index);
+        //    }
+        //},
 
 
         //'checkbox': {

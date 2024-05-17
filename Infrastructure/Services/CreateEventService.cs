@@ -33,7 +33,7 @@ namespace Infrastructure.Services
             
         }
 
-        //找出同一組織的活動
+        //示範:找出同一組織的活動
         public IEnumerable<Event> GetOrgEventsByOrgId(int orgId)
         {  
             var events = DbContext.Events
@@ -46,16 +46,15 @@ namespace Infrastructure.Services
         //建立新活動 
         public int CreateEvent(CreateEventDto request)
         {
-
             //會用到不同資料表的部分分開寫
-            using (var transcation = DbContext.Database.BeginTransaction())
+            using (var transcation = _dbContext.Database.BeginTransaction())
                 try
                 {
                     //設定活動資料
                     //DB = DTO
                     var activity = new Event
                     {
-                        Id = request.EventId, //需要ID? 建立時會長ID不是?
+                        /*Id = request.EventId,*/
                         Name = request.EventName,
                         OrganizationId = request.OrgId,
                         StartTime = request.StartTime,
@@ -65,7 +64,6 @@ namespace Infrastructure.Services
                         LocationAddress = request.EventAddress,
                         Longitude = request.Longitude,
                         Latitude = request.Latitude,
-                        //還有一欄給使用者自填活動主頁網址,視情況再放
                         StreamingPlatform = request.StreamingName,
                         StreamingUrl = request.StreamingUrl,
                         Capacity = request.Attendance,
@@ -76,58 +74,60 @@ namespace Infrastructure.Services
                         CoOrganizer = request.CoOrganizer,
                         IsPrivateEvent = request.IsPrivateEvent,
                         IsFree = false,
-                        //Sort = request.Sort //排序
                         IsDeleted = false,
+
                         //Status = (byte)(request.EventStatus == "online" ? 0 : 1),
                         Status = request.EventStatus,
 
-                        //EditedAt = request.EditedAt
                         ContactPerson = "No People",
                         ParticipantPeople = "No Participant",
                         CreatedAt = DateTime.Now,
-                       
+
                     };
-                    DbContext.Events.Add(activity);
+                    //DbContext.Events.Add(activity);
+                    _dbContext.Events.Add(activity);
+
 
                     // 儲存活動資料並獲取新活動的ID
-                    DbContext.SaveChanges(); // 儲存活動資料，活動的ID在此自動生成
+                    _dbContext.SaveChanges(); // 儲存活動資料，活動的ID在此自動生成
 
 
                     //======================活動標籤: 
-                    var eventId = activity.Id;
+
                     var eventTags = new EventAndTagMapping
                     {
-                        EventId = eventId,
+                        EventId = activity.Id, //新活動id
                         CategoryTagId = request.CategoryId
                     };
-                    
-                    DbContext.EventAndTagMappings.Add(eventTags);
+
+                    _dbContext.EventAndTagMappings.Add(eventTags);
 
 
                     //======================================以下是票卷
-                    List<TicketDetailViewModel> TicketDetail = new List<TicketDetailViewModel>();
-                    foreach (var ticket in TicketDetail)
+
+                    //List<TicketDetailViewModel> TicketDetail = new List<TicketDetailViewModel>();
+
+                    foreach (var ticket in request.TicketDetail)
                     {
                         var TicketResult = new TicketType
                         {
+                            EventId = activity.Id, //存入新的eventId
                             Name = ticket.TicketName,
                             StartSaleTime = ticket.StartSaleTime,
                             EndSaleTime = ticket.EndSaleTime,
-                            CapacityAmount = ticket.Amount,
-                            Price = ticket.Price,
+                            CapacityAmount = ticket.Amount.HasValue? (int)ticket.Amount.Value:0,
+                            Price = Convert.ToDecimal(ticket.Price),
                             CreatedAt = DateTime.Now,
 
                         };
-                        DbContext.TicketTypes.Add(TicketResult);
+                        _dbContext.TicketTypes.Add(TicketResult);
                     }
 
-                    //============
-
-                    DbContext.SaveChanges();
+                    
+                    _dbContext.SaveChanges();
                     transcation.Commit();
 
                     return activity.Id;
-                   
 
                 }
                 catch (Exception ex)
@@ -167,22 +167,10 @@ namespace Infrastructure.Services
                 IsPrivateEvent = eventData.IsPrivateEvent,
 
             };
-          
 
-            //tag
-            var tagData = DbContext.EventAndTagMappings
-                .Where(d => d.EventId == eventId)
-                .Select(d => new CreateEventDto
-                {
-                    CategoryId = d.CategoryTagId
-                }).FirstOrDefault();
 
-            // 如果找到標籤ID，則將其添加到結果中
-            if (tagData != null)
-            {
-                result.CategoryId = tagData.CategoryId;
-            }
-            
+            //tag渲染: todo
+            //var tagData = DbContext.EventAndTagMappings
 
 
             //Tickets
@@ -190,7 +178,7 @@ namespace Infrastructure.Services
                 .Where(t => t.EventId == eventId)
                 .Select(t => new TicketDetailViewModel
                 {
-                    TicketTypeId = t.Id,
+                    //TicketTypeId = t.Id,
                     EventId = t.EventId,
                     TicketName = t.Name,
                     StartSaleTime = t.StartSaleTime,
@@ -261,7 +249,6 @@ namespace Infrastructure.Services
         //                    targetTicket.Price = ticket.Price;
         //                    targetTicket.CapacityAmount = ticket.Amount;
         //                    targetTicket.EditedAt = ticket.EditedAt;
-
         //                }
         //            }
 
@@ -277,6 +264,24 @@ namespace Infrastructure.Services
         //            throw new Exception(ex.Message);
         //        }
         //}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
