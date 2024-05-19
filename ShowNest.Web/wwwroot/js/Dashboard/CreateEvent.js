@@ -406,13 +406,13 @@ const options = {
                 };
             } else {
                 // 添加新的票卷內容
-                //this.ticketDetail.push({
-                //    TicketName: this.ticketTypeInput,
-                //    StartSaleTime: this.startSaleTime,
-                //    EndSaleTime: this.endSaleTime,
-                //    Price: this.price,
-                //    Amount: this.amount
-                //});
+                this.ticketDetail.push({
+                    TicketName: this.ticketTypeInput,
+                    StartSaleTime: this.startSaleTime,
+                    EndSaleTime: this.endSaleTime,
+                    Price: this.price,
+                    Amount: this.amount
+                });
             }
             console.log(this.ticketDetail)
             // 清空輸入欄位
@@ -494,20 +494,7 @@ const options = {
         //},
 
 
-        //'checkbox': {
-        //    handler: function (newVal) {
-        //        // 透過 newVal, prevVal 取得監聽前後變數的值
-        //        if (newVal == preVal) {
-        //            this.stepButton = false;
-        //            this.checkboxErrorMsg = "請勾選同意後進行!";
-        //        }
-        //        else {
-        //            this.stepButton = true;
-        //            this.checkboxErrorMsg = "";
-        //        }
-        //    },
-        //    immediate: false
-        //},
+        
     }
 }
 const app = createApp(options);
